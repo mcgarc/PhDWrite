@@ -1,0 +1,109 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                 Preamble                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% This LaTeX document uses Cameron's LaTeX template (or some form of it) which
+% is ever-evolving.
+
+% --- Requirements ---
+%
+% Packages from Ubuntu [required for]:
+%     texlive-publishers [revtex4-1]
+%     texlive-science [siunitx]
+
+\documentclass[a4paper]{article}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{siunitx}
+
+% --- Macros ---
+%\newcommand{\diff}{\mathrm{d}} USE \dd (physics) instead
+\newcommand{\cm}[1]{\textcolor{blue}{#1}} % For my comments
+\newcommand{\ph}[1]{\textcolor{green}{#1}} % Placeholders
+%\renewcommand{\cm}[1]{} % Uncomment to remove my comments
+\newcommand{\incfig}[2]{\includegraphics[width=#1\textwidth]{#2}}
+
+\title{Coplanar waveguides for use on a molecule chip}
+\author{Cameron McGarry}
+
+
+\begin{document}
+
+\maketitle
+
+
+The original proposal for a microfabricated molecule chip trap by Andr\'e et
+al.~\cite{Andre2006} suggested that an integrated coplanar waveguide (CPW) could
+be used to drive microwave transitions in trapped molecules. In this document,
+we will review the feasibility of this proposal for a simple single-layer chip.
+
+\section{Basic CPW behaviour}
+
+The coplaner waveguide was originally proposed by Cheng P Wen\footnote{Wen
+should be awarded with much kudos for his spectacular naming convention.} in
+1969~\cite{1127105}. CPWs are formed from a conductor layer on some substrate,
+with two parralel channels of conuctor carved out in order to create a centre
+conductor strip, with the other conucting regions forming a surrouding ground
+plane. A cut-out of a CPW is illustrated in Fig.~\ref{fig:CPWxsec}. The CPW's
+geometry is defined by the centre conductor width ($S=2a$) and the channel width
+($W=b-a$). In all cases that will be discussed herein, we will assume that the
+height of the substrate ($h1$) far exceeds the other distances, that is $h_1
+\sim \infty$.
+
+\begin{figure}
+  \includegraphics{./figs/2019-01-18_stripline_xsection.png}
+  \caption{Cross section of a CPW. Taken from Simons~\cite{Simons2004}}
+  \label{fig:CPWxsec}
+\end{figure}
+
+It is common to define the planar geometry in terms of the ratio
+\begin{equation}
+  k_0 = \frac{S}{S+2W} = \frac{a}{b}.
+  \label{eqn:kratio}
+\end{equation}
+For this and all other $k_i$ we have the corresponding value
+\begin{equation}
+  k'_i = \sqrt{1-k^2_i}.
+\end{equation}
+CPW demonstrates\cite{1127105} that by a conformal mapping of the CPW geometry
+we can describe waveguide in terms of elliptic integrals of the first kind
+$K(k)$. In our limit we have that
+\begin{equation}
+  \frac{K(k'_0)}{K(k_0)} = k_0
+\end{equation}
+which allows us to write
+\begin{align}
+  C &= 4\epsilon_0\epsilon_\mathrm{eff} k_0^{-1} \\
+  %L &= \frac{\mu_0}{4} k_0\\
+  Z &= \frac{1}{C v_\mathrm{ph}} = \frac{1}{4}\sqrt{\frac{\mu_0}{\epsilon_0
+    \epsilon-\mathrm{eff}}}k_0
+    &\approx \frac{30\pi}{\sqrt{\epsilon_\mathrm{eff}}}k_0 \mathrm{[Ohms]}
+\end{align}
+where  $\epsilon_\mathrm{eff}$ is the
+effective permittivity, related to the relative permittivity of the substrate
+($\epsilon_\mathrm{r1}$) and the phase speed in the substrate ($v_\mathrm{ph}$)
+by
+\begin{equation}
+  \epsilon_\mathrm{eff} = \left(\frac{v_\mathrm{ph}}{c}\right)^{-2} = 
+  \frac{1 + \epsilon_\mathrm{r1}}{2}.
+\end{equation}
+
+% Note that Simons goes into great detail about the various different
+% conductor-surrounded CPWs here, but we don't need to worry about those so
+% much. See page 47 of my notebook (2019-01-17) and mathematica notebook
+% 2019-01-18_* for information on how some of these terms can be neglected. We
+% can just use OG CPW's results
+
+In order to impedance match our CPW (probably to $Z=50\si{\ohm}$) we can choose
+the permittivity of our substrate (to the extent that we have choice of
+substrate) and the waveguide geometry via choice of $S$ and $W$.
+
+\section{Attenuation}
+
+\section{Resonators}
+
+
+\bibliographystyle{unsrt}
+\bibliography{bib}
+\end{document}
