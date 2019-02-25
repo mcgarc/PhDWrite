@@ -36,6 +36,7 @@
 
 \maketitle
 
+\cm{TODO: Need to discuss Q=beta/2alpha}
 
 The original proposal for a microfabricated molecule chip trap by Andr\'e et
 al.~\cite{Andre2006} suggested that an integrated coplanar waveguide (CPW) could
@@ -223,7 +224,69 @@ magnitude at around \SI{4}{\kelvin}. \cite{1717770}
 
 \subsection{Conductor losses}
 
-Conductor losses are well-described by the usual 
+Conductor losses are given by the following set of equations\cite{Simons2004}
+\begin{equation}
+  \alpha_c = \frac{R_c +R_g}{2Z_0}
+\end{equation}
+where $R_c$ describes the series resistance of the centre strip
+\begin{equation}
+  R_c = \frac{R_s}{4 S(1-k_0^2)K^2(k_0)}\left[ \pi + \log\left(\frac{4\pi
+  S}{t}\right) - k_0\log\left(\frac{1+k_0}{1-k_0}\right) \right],
+\end{equation}
+and $R_g$ is the corresponding series resistance of the ground place
+\begin{equation}
+  R_s = \frac{k_0 R_s}{4S(1-k_0^2)K^2(k_0)}\left[\pi +
+  \log\left(\frac{4\pi(S+2W)}{t}\right) -
+  \frac{1}{k_0}\log\left(\frac{1+k_0}{1-k_0}\right)\right]
+\end{equation}
+(note that we cannot take a $t\to 0$ as this would physically equate to there
+being no conductor and hence no circuit). The skin effect surface is
+\begin{equation}
+  R_s = \frac{1}{\delta\sigma}
+\end{equation}
+with $\sigma$ being the conductivity of the conductor, and
+\begin{equation}
+  \delta = \sqrt{\frac{2}{\omega\mu_0\mu_r\sigma}}
+\end{equation}
+being the skin depth at the target frequncy.
+
+% TODO
+% A few more bits here:
+%  When is Rs valid? (Relation of t and skin-depth (delta))
+%  Actual dependencies worth nothing? a propto sqrt(f) , sim. for sigma?
+
+
+As above, we will normally fix $k_0$ so as to choose the waveguide's impedance
+($Z_0$). Consider an example case of gold conductor on a silicon substrate. As
+per CPW\cite{1127105} (\cm{TODO: and my Mathematica work, this should go
+above...}) we will have $\epsilon_\mathrm{r1} \approx 10$ so require $k_0
+\approx 1/3$ to achieve impedance matching at $Z_0 = \SI{50}{\ohm}$. The only
+free parameters are now the conductor thickness $t$, and the size of the centre
+width conductor $S$.
+
+\cm{TODO: need more thorough analysis of this next part}
+
+Typically we will expect a thickness of no more than a few hundred nanometres,
+and the centre conductor to have a width of only a few microns. Setting
+$t=\SI{100}{\nano\metre}$ and $S=\SI{1}{\micro\metre}$ we will have
+\begin{equation}
+  \alpha_c \approx \SI{600}{\neper \per \meter}.
+\end{equation}
+% sigma Au source: https://hypertextbook.com/facts/2004/JennelleBaptiste.shtml
+This completely dominates the dielectric loss, and is far larger than we can
+stand. At lower temperature (a few Kelvin), the conductivity of gold will
+increase by a factor of 100 \cm{actual citation needed...}, which would improve
+the loss to
+\begin{equation}
+  \alpha_c \approx \SI{60}{\neper \per \meter}.
+\end{equation}
+
+This corresponds to $Q=7$. It appears the conductor losses are going to be the
+dominant source of decay in our waveguide. Other successful CPWs and CPW
+resonators at such high frequencies have used 
+
+
+
 
 \subsection{Radiative losses}
 
