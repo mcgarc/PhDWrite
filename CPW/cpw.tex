@@ -124,9 +124,9 @@ We must have $k_0 < 1$ which makes the $q=1/2$ assumption pretty poor.
 We can now consider the impedance of the CPW
 \begin{align}
   %L &= \frac{\mu_0}{4} k_0\\
-  Z &= \frac{1}{C v_\mathrm{ph}} = \frac{1}{4}\sqrt{\frac{\mu_0}{\epsilon_0
-    \epsilon_\mathrm{eff}}}k_0 \\
-    &\approx \frac{30\pi}{\sqrt{\epsilon_\mathrm{eff}}}k_0 \mathrm{[Ohms]}.
+  Z &= \frac{1}{C v_\mathrm{ph}} \\
+    &= \frac{1}{4}\sqrt{\frac{\mu_0}{\epsilon_0 \epsilon_\mathrm{eff}}}k_0 \\
+    &\approx \frac{30\pi}{\sqrt{\epsilon_\mathrm{eff}}}k_0 \, \mathrm{[Ohms]}.
 \end{align}
 In order to impedance match our CPW (probably to $Z=\SI{50}{\ohm}$) we can choose
 the permittivity of our substrate (to the extent that we have choice of
@@ -171,7 +171,7 @@ comparing the loss formula in dB (which is log-base ten, with a factor of ten
 and based on power, not amplitude)
 \begin{align*}
   \alpha' &= \frac{1}{x}20\log_{10}\lvert \frac{A(0)}{A(x)} \rvert \si{\dB}\\
-          &= \frac{20}{x}{x}\log_{10}(e^{\alpha x}) \si{\dB} \\
+          &= \frac{20}{x}\log_{10}(e^{\alpha x}) \si{\dB} \\
           &= 20 \log_{10}(e) \alpha \si{\dB} \\
           &\approx 8.7 \left(\frac{\si{\dB}}{\si{\neper}}\right) \alpha.
 \end{align*}
@@ -202,23 +202,32 @@ use the usual $q=1/2$ approximation, and consdier our target frequency
 $f\approx\SI{40}{\giga\hertz}$ for
 \begin{equation}
   \alpha_d \sim 200\sqrt{2\epsilon_\mathrm{r1}}\tan\delta_e
-  \si{\neper\per\meter}.
+  \,[\si{\neper\per\meter}].
 \end{equation}
 
 For a typical substrate we will expect $\tan\delta_e\leq10^{-3}$ and
-$\epsilon_\mathrm{r1} \sim 100$ so the limit on the dielectric loss component is
+$\epsilon_\mathrm{r1} \sim 10$ so the limit on the dielectric loss component is
 \begin{equation}
-  \alpha_d \leq 3 \si{\neper\per\meter}.
+  \alpha_d \leq \SI{0.9}{\neper\per\meter}.
 \end{equation}
 
-\cm{Conclude this subsection, this seems pretty high (because goes like freq.
-and we are on order of magnitude higher than we usually would be...) can we get
-some nice substrate (high res Si?) to reduce this? What about  Converting to
-Np/wavelength?}
+Compare to the results of  Cao et al.~\cm{TODO: CITE and show Fig. 9}, who
+investigated loss in CPWs and other wavguides up to the \si{\tera\hertz}
+r\'egime. The measurement of dielectic loss for a $Z=\SI{100}{\ohm}$ shows the
+expected linear dependence of dielectric loss on frequency, and has value under
+our predicted bound at \SI{40}{\giga\hertz}.
+
+It may be possible to achieve lower losses at lower temperature, as the
+tangential dielectric loss has been shown to decrease by around an order of
+magnitude at around \SI{4}{\kelvin}. \cite{1717770}
 
 \subsection{Conductor losses}
 
 Conductor losses are well-described by the usual 
+
+\subsection{Radiative losses}
+
+\subsection{Comparison of loss mechanisms}
 
 \section{Resonators}
 
