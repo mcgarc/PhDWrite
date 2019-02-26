@@ -167,6 +167,11 @@ where we have used `Neper' as the natural unit to desribe loss. We will normally
 set $x$ to something sensible such as \SI{1}{\meter} or one wavelength $\lambda$
 so that loss is expressed in $\si{\neper}/\mathrm{length}$.
 
+The phase constant is the imaginary part of the propogation constant:
+\begin{equation}
+  \beta = \frac{2\pi}{\lambda}
+\end{equation}
+
 The Neper corresponds to approximately \SI{8.7}{\dB}, as can be seen readily by
 comparing the loss formula in dB (which is log-base ten, with a factor of ten
 and based on power, not amplitude)
@@ -183,6 +188,33 @@ by the summation of each of the contributing terms:
 \begin{equation}
   \alpha = \alpha_d + \alpha_c + \alpha_r.
 \end{equation}
+
+It is common to describe resonators and waveguides in terms of a quality
+factor~\cite{1125652}
+\begin{equation}
+  Q = \omega \frac{\text{Energy stored per unit length}}{\text{Power loss}}.
+\end{equation}
+For our purposes we consider the enrgy stored to be the energy that we keep in
+the waveguide after traversing some distance $L$. Taking this to be the energy
+contributed by the electric field, this is
+\begin{equation}
+  \frac{\epsilon_0}{2} \lvert A(L) \rvert^2.
+\end{equation}
+The power loss is then all the dissipated power
+\begin{equation}
+  \epsilon_0 \left[ \lvert A(0) \rvert^2 - \lvert A(L) \rvert^2 \right] c/L.
+\end{equation}
+We therefore have quality factor
+\begin{equation}
+  Q = \frac{(2\pi/\lambda)}{e^{2\alpha} -1}
+\end{equation}
+where we have taken $L=\SI{1}{\meter}$, so that $\alpha$ is expressed in Neper
+per meter and $\lambda$ in metre. Note that for low loss ($\alpha \ll1$) this
+can be expanded for
+\begin{equation}
+  Q = \frac{\beta}{2 \alpha}
+\end{equation}
+which is a commonly-used form of Q.
 
 \subsection{Dielectric losses}
 
@@ -209,7 +241,11 @@ $f\approx\SI{40}{\giga\hertz}$ for
 For a typical substrate we will expect $\tan\delta_e\leq10^{-3}$ and
 $\epsilon_\mathrm{r1} \sim 10$ so the limit on the dielectric loss component is
 \begin{equation}
-  \alpha_d \leq \SI{0.9}{\neper\per\meter}.
+  \alpha_d \leq \SI{0.9}{\neper\per\meter},
+\end{equation}
+or as a Q-factor
+\begin{equation}
+  Q_d \geq 170.
 \end{equation}
 
 Compare to the results of  Cao et al.~\cm{TODO: CITE and show Fig. 9}, who
@@ -281,12 +317,12 @@ the loss to
   \alpha_c \approx \SI{60}{\neper \per \meter}.
 \end{equation}
 
-This corresponds to $Q=7$. It appears the conductor losses are going to be the
-dominant source of decay in our waveguide. Other successful CPWs and CPW
-resonators at such high frequencies have used 
-
-
-
+This corresponds to $Q\sim10^{-50}$. It appears the conductor losses are going
+to be the dominant source of decay in our waveguide. Other successful CPWs and
+CPW resonators at such high frequencies have used a significantly larger
+conductor areas~\cite{1127105, doi:10.1063/1.3010859} or have had control of
+substrate thickness~\cite{L.Cao2013} so that impedance does not only depend on
+$k_0$ but also on $h$.
 
 \subsection{Radiative losses}
 
