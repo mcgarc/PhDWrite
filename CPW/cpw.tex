@@ -118,7 +118,10 @@ filling factor as
 \begin{equation}
   q = \frac{R}{2}k_0.
 \end{equation}
-We must have $k_0 < 1$ which makes the $q=1/2$ assumption pretty poor.
+We will typically have $S\sim W$, therefore the $q=1/2$ approximation will  not
+usually be correct to an order of magnitude. It is better to take $q\sim
+\frac{1}{2} \frac{1}{2} \frac{1}{3} = \frac{1}{12}$.
+%We must have $k_0 < 1$ which makes the $q=1/2$ assumption pretty poor.
 
 We can now consider the impedance of the CPW
 \begin{align}
@@ -166,7 +169,7 @@ so that loss is expressed in $\si{\neper}/\mathrm{length}$.
 
 The phase constant is the imaginary part of the propogation constant:
 \begin{equation}
-  \beta = \frac{2\pi}{\lambda}
+  \beta = \frac{2\pi}{\lambda}.
 \end{equation}
 
 The Neper corresponds to approximately \SI{8.7}{\dB}, as can be seen readily by
@@ -183,8 +186,9 @@ We can anticipate three main sources of loss, those from the dielectric, the
 conductor and radiative losses. \cite{Simons2004} The total loss is described
 by the summation of each of the contributing terms:
 \begin{equation}
-  \alpha = \alpha_d + \alpha_c + \alpha_r.
+  \alpha = \alpha_d + \alpha_c + \alpha_r,
 \end{equation}
+which are for dielectric, conductor and radiation losses respectively.
 
 It is common to describe resonators in terms of a quality
 factor~\cite{1125652}
@@ -237,21 +241,21 @@ equation \ref{eqn:fillfact}.
 As per the above, $k_0$ is effectively fixed by our impedance matching, so the
 dielectric loss will be entirely a function of the properties of the material,
 going linearly with $\tan\delta_e$. For an order of magnitude comparison, we can
-use the usual $q=1/2$ approximation, and consdier our target frequency
+use the above approxiamtion $q=1/12$, and consdier our target frequency
 $f\approx\SI{40}{\giga\hertz}$ for
 \begin{equation}
-  \alpha_d \sim 200\sqrt{2\epsilon_\mathrm{r1}}\tan\delta_e
+  \alpha_d \sim 30\sqrt{2\epsilon_\mathrm{r1}}\tan\delta_e
   \,[\si{\neper\per\meter}].
 \end{equation}
 
 For a typical substrate we will expect $\tan\delta_e\leq10^{-3}$ and
 $\epsilon_\mathrm{r1} \sim 10$ so the limit on the dielectric loss component is
 \begin{equation}
-  \alpha_d \leq \SI{0.9}{\neper\per\meter},
+  \alpha_d \leq \SI{0.1}{\neper\per\meter},
 \end{equation}
 or as a Q-factor
 \begin{equation}
-  Q_d \geq 460.
+  Q_d \geq 4000.
 \end{equation}
 
 Compare to the results of  Cao et al.~\cite{L.Cao2013}, who
@@ -313,13 +317,18 @@ being the skin depth at the target frequncy.
 
 As above, we will normally fix $k_0$ so as to choose the waveguide's impedance
 ($Z_0$). Consider an example case of gold conductor on a silicon substrate. As
-per CPW\cite{1127105} (\cm{TODO: and my Mathematica work, this should go
-above...}) we will have $\epsilon_\mathrm{r1} \approx 10$ so require $k_0
+per CPW\cite{1127105}  we will have $\epsilon_\mathrm{r1} \approx 10$ so require $k_0
 \approx 1/3$ to achieve impedance matching at $Z_0 = \SI{50}{\ohm}$. The only
 free parameters are now the conductor thickness $t$, and the size of the centre
-width conductor $S$.
+width conductor $S$. This is illustrated in Fig.~\ref{fig:conductorQ}.
 
-\cm{TODO: need more thorough analysis of this next part}
+\begin{figure}
+  \includegraphics[width=\textwidth]{./figs/conductor_Q.pdf}
+  \caption{Quality factor due to conductor losses for a CPW of fixed impedance
+  $Z_0=\SI{50}{\ohm}$ for varying centre conductor width ($S$) with conducotr
+  thickness as a parameter.}
+  \label{fig:conductorQ}
+\end{figure}
 
 Typically we will expect a thickness of no more than a few hundred nanometres,
 and the centre conductor to have a width of only a few microns. Setting
@@ -345,7 +354,14 @@ $k_0$ but also on $h$.
 
 \subsection{Radiative losses}
 
+The losses due to radiation are almost entirely negligible. Cao et
+al.~\cite{L.Cao2013} report a loss of $\alpha_r = \SI{0.43}{\decibel \per \milli
+\meter}$, which scales cubcially with the frequency~\cite{81658}. This means we
+can expect $\alpha_r \sim 10^{-2}$ at our frequencies.
+
 \subsection{Comparison of loss mechanisms}
+
+
 
 \section{Resonators}
 
