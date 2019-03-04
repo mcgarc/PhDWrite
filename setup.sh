@@ -15,7 +15,7 @@ fi
 if [ ! -f $BIBTEXDIR/bib.bib ]; then 
   read -e -p "Enter .bib file path: " BIBPATH
   BIBPATH="${BIBPATH//\~/$HOME}"
-  ln $BIBPATH $BIBTEXDIR/bib.bib
+  ln -s $BIBPATH $BIBTEXDIR/bib.bib
 fi
 
 echo "Setup complete!"
