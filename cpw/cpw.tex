@@ -339,8 +339,8 @@ $t=\SI{100}{\nano\metre}$ and $S=\SI{1}{\micro\metre}$ we will have
 % sigma Au source: https://hypertextbook.com/facts/2004/JennelleBaptiste.shtml
 This completely dominates the dielectric loss, and is far larger than we can
 stand. At lower temperature (a few Kelvin), the conductivity of gold will
-increase by a factor of 100 \cm{actual citation needed...}, which would improve
-the loss to
+increase by a factor of 100 which would improve the loss to
+% TODO Would probably be good to have an actual cite here.
 \begin{equation}
   \alpha_c \approx \SI{60}{\neper \per \meter}.
 \end{equation}
@@ -354,16 +354,33 @@ $k_0$ but also on $h$.
 
 \subsection{Radiative losses}
 
-The losses due to radiation are almost entirely negligible. Cao et
+The losses due to radiation are of similar order to the dielectric losse. Cao et
 al.~\cite{L.Cao2013} report a loss of $\alpha_r = \SI{0.43}{\decibel \per \milli
-\meter}$, which scales cubcially with the frequency~\cite{81658}. This means we
-can expect $\alpha_r \sim 10^{-2}$ at our frequencies.
+\meter}$ at $f=\SI{1}{\tera\hertz}$. It is known that~\cite{81658} $\alpha
+\propto f^3$; which means we can expect $\alpha_r \sim 10^{-2}$ at our
+frequencies.
 
 \subsection{Comparison of loss mechanisms}
 
+Clearly the conductor losses will be the dominant form of signal attenuation. We
+have assumed a gold conductor, and even at low temperatures we anticipate loss
+from the conductor of order $\alpha_c \sim 100 \alpha_d \sim
+\SI{10}{\neper\meter}$. This is fairly significant, and may prevent us from
+implementing CPW resonators with $S\sim\si{\micro\meter}$. This will be
+investigated in section \ref{sec:resonators}. Note that existing
+CPW resonators on gold have had much larger centre conductor widths, and hence
+much lower conductor losses~\cite{1127105}. One possible solution may be to use
+superconducting materials to build the CPW.
 
+That said, it should be noted that the high loss should not prevent us from
+using the CPW to directly drive microwave transitions in trapped molecules, as
+we will still be able to pass signal through the waveguide without the need to
+construct a waveguide.
+
+\section{Superconducting CPWs}
 
 \section{Resonators}
+\label{sec:resonators}
 
 
 \bibliographystyle{unsrt}
