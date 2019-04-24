@@ -13,6 +13,17 @@
 
 \documentclass[a4paper]{article}
 
+% --- Macro dependencies ---
+\usepackage{xcolor}
+
+% --- Common ---
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{siunitx}
+
+% --- More optional ---
+\usepackage{tabularx} 
+
 % --- Macros ---
 %\newcommand{\diff}{\mathrm{d}} USE \dd (physics) instead
 \newcommand{\cm}[1]{\textcolor{blue}{#1}} % For my comments
@@ -24,14 +35,16 @@
 \author{Cameron McGarry\\ 
 Supervisors: Mike Tarbutt and Ben Sauer}
 
-
 \begin{document}
 
 \maketitle
 
-
-
-
+\cm{
+  The original proposal for a microfabricated molecule chip trap by Andr\'e et
+al.~\cite{Andre2006} suggested that an integrated coplanar waveguide (CPW) could
+be used to drive microwave transitions in trapped molecules. In this document,
+we will review the feasibility of this proposal for a simple single-layer chip.
+}
 
 It has been proposed~\cite{Andre2006} that a microfabricated chip trap could be
 used to constrain the movement of cold molecules in proximity to a microwave
@@ -77,6 +90,8 @@ building hybrid systems~\cite{Nirrengarten2006}.
 %trap types will be discussed, before we cover our proposal and explore how it
 %could be used as a molecule trap.
 
+\section{Coplanar waveguides for use on a molecule chip}
+\include{sections/cpw}
 
 \bibliographystyle{unsrt}
 \bibliography{bib}

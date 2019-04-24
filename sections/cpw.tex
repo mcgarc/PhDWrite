@@ -1,48 +1,4 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                 Preamble                 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% This LaTeX document uses Cameron's LaTeX template (or some form of it) which
-% is ever-evolving.
-
-% --- Requirements ---
-%
-% Packages from Ubuntu [required for]:
-%     texlive-publishers [revtex4-1]
-%     texlive-science [siunitx]
-
-\documentclass[a4paper]{article}
-
-% --- Macro dependencies ---
-\usepackage{xcolor}
-
-% --- Common ---
-\usepackage{graphicx}
-\usepackage{amsmath}
-\usepackage{siunitx}
-\usepackage{tabularx}
-
-% --- Macros ---
-%\newcommand{\diff}{\mathrm{d}} USE \dd (physics) instead
-\newcommand{\cm}[1]{\textcolor{blue}{#1}} % For my comments
-\newcommand{\ph}[1]{\textcolor{green}{#1}} % Placeholders
-%\renewcommand{\cm}[1]{} % Uncomment to remove my comments
-\newcommand{\incfig}[2]{\includegraphics[width=#1\textwidth]{#2}}
-
-\title{Coplanar waveguides for use on a molecule chip}
-\author{Cameron McGarry}
-
-
-\begin{document}
-
-\maketitle
-
-The original proposal for a microfabricated molecule chip trap by Andr\'e et
-al.~\cite{Andre2006} suggested that an integrated coplanar waveguide (CPW) could
-be used to drive microwave transitions in trapped molecules. In this document,
-we will review the feasibility of this proposal for a simple single-layer chip.
-
-\section{Behaviour of a Coplanar Waveguide}
+\subsection{Behaviour of a Coplanar Waveguide}
 
 The coplaner waveguide (CPW) was originally proposed by Cheng P.~Wen in
 1969~\cite{1127105}. CPWs are formed from a conductor layer on some substrate,
@@ -147,7 +103,7 @@ and $W$.
 % 2019-01-18_* for information on how some of these terms can be neglected. We
 % can just use OG CPW's results
 
-\section{Attenuation in CPW Resonators}
+\subsection{Attenuation in CPW Resonators}
 
 Andr\'e et al.'s \cm{Punctuation here?} original proposal suggested that a
 single photon inside a CPW resonator cavity could be coupled to a (cloud of)
@@ -220,7 +176,7 @@ For a resonator of length $L = \lambda/2$, this yields
 \end{equation}
 
 
-\section{Loss modes}
+\subsection{Loss modes}
 
 To understand whether we can achieve high enough quality factors to implement a
 resonator, we must consider all modes of loss from the system. For the initial
@@ -236,7 +192,7 @@ by the summation of each of the contributing terms:
 \end{equation}
 which are for dielectric, conductor and radiation losses respectively.
 
-\subsection{Dielectric losses}
+\subsubsection{Dielectric losses}
 
 Collins~\cite{Collin2007} tells us that the dielectric loss is given by
 \begin{equation}
@@ -291,7 +247,7 @@ It may be possible to achieve lower losses at lower temperature, as the
 tangential dielectric loss has been shown to decrease by around an order of
 magnitude at around \SI{4}{\kelvin}. \cite{1717770}
 
-\subsection{Conductor losses}
+\subsubsection{Conductor losses}
 
 Conductor losses are given by the following set of equations\cite{Simons2004}
 \begin{equation}
@@ -363,7 +319,7 @@ increase by a factor of 100 which would improve the loss to
 %substrate thickness~\cite{L.Cao2013} so that impedance does not only depend on
 %$k_0$ but also on $h$.
 
-\subsection{Radiative losses}
+\subsubsection{Radiative losses}
 
 The losses due to radiation are of similar order to the dielectric losse. Cao et
 al.~\cite{L.Cao2013} report a loss of $\alpha_r = \SI{0.43}{\decibel \per \milli
@@ -371,7 +327,7 @@ al.~\cite{L.Cao2013} report a loss of $\alpha_r = \SI{0.43}{\decibel \per \milli
 \propto f^3$; which means we can expect $\alpha_r \sim 10^{-2}$ \cm{units?} at
 our frequencies.
 
-\subsection{Comparison of loss mechanisms}
+\subsubsection{Comparison of loss mechanisms}
 
 Clearly the conductor losses will be the dominant form of signal attenuation. We
 have assumed a gold conductor, and even at low temperatures we anticipate loss
@@ -391,7 +347,7 @@ construct a waveguide.
 % Incorporate both the below as subsections into new section, something like
 % outlook? / what we would like to do after this maybe if possible
 
-\section{Losses for various dielectric substrates}
+\subsection{Losses for various dielectric substrates}
 
 It has been assumed until this point that the substrate we will be using is
 silicon, however for the purposes of a molecule chip, that may not be the case.
@@ -449,8 +405,3 @@ Also of importance from these results is that the losses are very high on the
   resonator. However, point out that despite this we can still use a taper
   around a thin region, so we can still pump in a lot of power that we know will
   be dissipated and then drive transitions in trapped molecules directly.}
-
-
-\bibliographystyle{unsrt}
-\bibliography{bib}
-\end{document}
