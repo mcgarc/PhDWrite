@@ -11,10 +11,20 @@
 %     texlive-publishers [revtex4-1]
 %     texlive-science [siunitx]
 
-\documentclass[a4paper]{article}
+%\documentclass[a4paper]{article}
+\documentclass[
+ aps,
+ prb,
+ a4paper,
+ superscriptaddress,
+ notitlepage,
+ %longbibliography,
+ nofootinbib,
+ preprint % gives 12pt font
+]{revtex4-1}
 
 % --- Macro dependencies ---
-\usepackage{xcolor}
+%\usepackage{xcolor} % Uncomment if not using bibliography links
 
 % --- Common ---
 \usepackage{graphicx}
@@ -24,6 +34,19 @@
 % --- More optional ---
 \usepackage{tabularx} 
 
+% --- Bibliography Links ---
+\usepackage{hyperref}
+\usepackage[dvipsnames]{xcolor}
+\hypersetup{
+	colorlinks=true,
+  linkcolor=Blue,
+	citecolor=Blue,
+	urlcolor=Blue
+}
+
+% --- Bib title (not line) ---
+\def\bibsection{\section*{\refname}}
+
 % --- Macros ---
 %\newcommand{\diff}{\mathrm{d}} USE \dd (physics) instead
 \newcommand{\cm}[1]{\textcolor{blue}{#1}} % For my comments
@@ -31,67 +54,78 @@
 %\renewcommand{\cm}[1]{} % Uncomment to remove my comments
 \newcommand{\incfig}[2]{\includegraphics[width=#1\textwidth]{#2}}
 
-\title{Molecule chip}
-\author{Cameron McGarry\\ 
-Supervisors: Mike Tarbutt and Ben Sauer}
+% --- Table of contents ---
+% disable subsections and subsubsections in the TOC
+% very specific to revtex
+\makeatletter
+%\def\l@subsection#1#2{}
+\def\l@subsubsection#1#2{}
+\makeatother
+
+% Uncomment and fill if using article
+%\title{Early stage assessment: molecule chip}
+%\author{Cameron McGarry\\ 
+%Supervisors: Mike Tarbutt and Ben Sauer}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Begin Document and Title/ Abstract     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 
-\maketitle
+% Title page
 
-\cm{
-  The original proposal for a microfabricated molecule chip trap by Andr\'e et
-al.~\cite{Andre2006} suggested that an integrated coplanar waveguide (CPW) could
-be used to drive microwave transitions in trapped molecules. In this document,
-we will review the feasibility of this proposal for a simple single-layer chip.
-}
+\pagenumbering{gobble}
+\begin{titlepage}
+  \begin{center}
+    \vspace*{1cm}
+    \textbf{Early stage assessment: molecule chip} \\
+    \vspace{1.5cm}
+     \textbf{Cameron McGarry} \\
+    \vspace{0.5cm}
+     Supervisors: Mike Tarbutt and Ben Sauer \\
+    \vspace{0.5cm}
+     {Imperial College London, Department of Physics} \\
+  \end{center}
+\end{titlepage}
 
-It has been proposed~\cite{Andre2006} that a microfabricated chip trap could be
-used to constrain the movement of cold molecules in proximity to a microwave
-resonator, allowing direct manipulation of the molecule's rotational energy
-structure. Recent work into cooling molecules below the Doppler
-limit~\cite{Truppe2017} suggests that such a ``molecule chip'' is now realisable.
-Such a chip would be similar to existing atomic
-counterparts~\cite{RevModPhys.79.235, 2011Ac}, forming a robust environment for
-investigation of quantum effects. Applications are proposed in a variety of
-quantum settings, including quantum information~\cite{Folman2000} and
-atomic clocks~\cite{RAMIREZMARTINEZ2011247}. Chips are also candidates for
-building hybrid systems~\cite{Nirrengarten2006}.
 
-%A chip trap uses currents (voltages) on the surface of an integrated circuit to
-%form a magnetic (electric) field above its surface that can be used to constrain
-%the movement of particles in its vicinity. Such devices have been used in
-%experiments on atoms, showing promise of providing a compact and robust
-%environment for investigating quantum effects\cite{RevModPhys.79.235, 2011Ac}.
-%Applications have been proposed in a variety of quantum settings , especially with technologies such as
-%superconducting qubits\cite{Wallraff2004} whose features of high controllability
-%but short decoherence times balance with the atomic system's properties of low
-%controllability and long coherence times.
-%
-%An analogous device using molecules instead of atoms, the molecule chip, was
-%originally proposed in 2006 by Andr\'e et al. \cite{Andre2006}. The molecule
-%chip would operate using electric dipole transitions between the rotational
-%energy levels of the molecule, as opposed to atom chips, which rely on magnetic
-%dipole transitions between hyperfine sub-levels\cite{2011Ac}. This offers an
-%increase in the coupling strength of several orders of magnitude, which could
-%result in a significant increase in system controllability and coherence times.
-%
-%Cold molecule technologies have traditionally been much more challenging to
-%develop than their equivalents in cold atoms due to the more complex energy
-%structure typical of molecules\cite{Andre2006}, but recent developments in cold molecule
-%sources\cite{Truppe2017} suggest that the creation of a molecule chip is now
-%achievable.
-%
-%In this report, we will present the progress of an ongoing project to design and
-%build a molecule chip based on the proposal of Andr\'e et al.\cite{Andre2006}
-%and loaded from  the cold molecule source described by Truppe et
-%al.\cite{Truppe2017}. We will begin by presenting a review of Andr\'e et al.'s
-%proposal, and then move on to describe chip trapping in more detail. Different
-%trap types will be discussed, before we cover our proposal and explore how it
-%could be used as a molecule trap.
+\pagenumbering{roman}
+
+% Abstract
+\section*{Abstract}
+\input{./sections/abs}
+\clearpage
+
+% TOC
+\tableofcontents
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                Body Start                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagenumbering{arabic}
+
+\section{Introduction}
+\input{sections/intro}
+
+\section{Literature review}
+\input{sections/litrev}
+
+\section{Confinement of molecules close to a surface}
+\input{sections/molsatsurf}
 
 \section{Coplanar waveguides for use on a molecule chip}
-\include{sections/cpw}
+\label{sec:cpw}
+\input{sections/cpw}
+
+\section{Experimental design}
+\input{sections/experiment}
+
+\section*{Acknowledgements}
+\input{./sections/acks}
+
 
 \bibliographystyle{unsrt}
 \bibliography{bib}
