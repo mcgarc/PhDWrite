@@ -30,6 +30,7 @@
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{siunitx}
+\usepackage{setspace} % For line spacing
 
 % --- More optional ---
 \usepackage{tabularx} 
@@ -53,6 +54,11 @@
 \newcommand{\ph}[1]{\textcolor{green}{#1}} % Placeholders
 %\renewcommand{\cm}[1]{} % Uncomment to remove my comments
 \newcommand{\incfig}[2]{\includegraphics[width=#1\textwidth]{#2}}
+\newcommand{\myeqref}[1]{eqn~\eqref{#1}}
+\newcommand{\myfigref}[1]{Fig.~\ref{#1}}
+
+% --- Line spacing ---
+\linespread{1.5}
 
 % --- Table of contents ---
 % disable subsections and subsubsections in the TOC
@@ -90,7 +96,6 @@
 \end{titlepage}
 
 
-\pagenumbering{roman}
 
 % Abstract
 \section*{Abstract}
@@ -101,11 +106,14 @@
 \tableofcontents
 \clearpage
 
+% Numbers on
+\pagenumbering{arabic}
+%NOTE This must be manually set so that numbering starts on title page
+\setcounter{page}{3} 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                Body Start                %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\pagenumbering{arabic}
 
 \section{Introduction}
 \input{sections/intro}
