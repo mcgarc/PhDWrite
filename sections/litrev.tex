@@ -38,7 +38,63 @@ discussion}% TODO
 that the electrostatic trap is not achievable in our intended design. As such we
 will focus in this section on magnetostatic trapping of atoms above a chip.
 
-% TODO Continue this
+The basic principle of a magnetic wire trap is explained in Reichel et
+al.~\cite{Reichel1999}. As illustrated in \myfigref{litrev:fig:reicheltrap} a
+bias field that is applied to the electric field of a straight, current-carrying
+wire will create a zero. The field magnitude that must be applied to create the
+zero at a height $h$ for a wire carrying current $I$ is given by simple
+electromagnetism~\cite{Jackson1975}
+%
+\begin{equation}
+  B = \frac{\mu_0 I}{2\pi h}.
+  \label{litrev:eqn:bias}
+\end{equation}
+
+\begin{figure}
+  \includegraphics[width=0.75\textwidth]{./figs/litrev/reicheltrap.pdf}
+  \caption{The combination of the magnetic field due to a straight wire and a
+  constant bias are shown to produce a zero, forming a two-dimensional trap for
+  weak field seekers. This is the basic principle underlying all magnetic wire
+  traps. Reproduced from Reichel et al.~\cite{Reichel1999}
+  }
+  \label{litrev:fig:reicheltrap}
+\end{figure}
+
+Such a field will form a two-dimensional trap for weak-field seeking particles.
+To achieve a three-dimensional trap, we can overlay an additional wire,
+carrying a smaller current than the first such that there is now some component
+of magnetic field along the axis of the original trap. Applying a bias along
+this axial direction will re-introduce a field minimum, forming a three-dimensional
+\emph{dimple trap} shown in \myfigref{litrev:fig:dimpletrap}.~\cite{2011Ac}
+Since this trap is now at a minimum rather than a zero, it is a Ioffe-Pritchard
+trap, which is not susceptible to Majorana losses~\cite{PhysRevLett.51.1336}.
+
+\begin{figure}
+  \includegraphics[width=0.75\textwidth]{./figs/litrev/dimpletrap.png}
+  \caption{The field of a straight wire trap (current $I_0$ is perturbed by a
+  second wire carrying a current $I_1 \ll I_0 $ and accompanying bias
+  ($B_{b,x}$). The resulting field forms a three-dimensional dimple trap.
+  }
+  \label{litrev:fig:dimpletrap}
+\end{figure}
+
+Other variations on the wire trap are possible. Running two perturbing wires
+across one axis (with currents $I_1$ and $I_2$) will form an H-trap, shown in
+\myfigref{litrev:fig:trapvariations}. Here the minimum will exist between the
+two perturbing wires. Note that depending on the relative signs of $I_1$ and
+$I_2$ it is possible to form either a Ioffe-Pritchard (currents parallel) or a
+quadrupole trap (currents anti-parallel). Approximations of these shapes can be
+formed by bending a single wire to create the axial confinement, forming either
+a Z-trap (Ioffe-Pritchard) or U-trap (quadrupole), both also shown in
+\myfigref{litrev:fig:trapvariations}.
+
+\begin{figure}
+  % TODO Tikz version of X, H, U, Z fig. from my MRes
+  %\includegraphics[width=0.75\textwidth]{./figs/litrev/??}
+  \caption{TODO
+  }
+  \label{litrev:fig:trapvariations}
+\end{figure}
 
 \subsubsection{Loading}
 
