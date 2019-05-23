@@ -42,8 +42,8 @@ The basic principle of a magnetic wire trap is explained in Reichel et
 al.~\cite{Reichel1999}. As illustrated in \myfigref{litrev:fig:reicheltrap} a
 bias field that is applied to the electric field of a straight, current-carrying
 wire will create a zero. The field magnitude that must be applied to create the
-zero at a height $h$ for a wire carrying current $I$ is given by simple
-electromagnetism~\cite{Jackson1975}
+zero at a height $h$ for a wire carrying current $I$ is given by the magnitude
+of the field at that point~\cite{Jackson1975}
 %
 \begin{equation}
   B = \frac{\mu_0 I}{2\pi h}.
@@ -66,8 +66,9 @@ carrying a smaller current than the first such that there is now some component
 of magnetic field along the axis of the original trap. Applying a bias along
 this axial direction will re-introduce a field minimum, forming a three-dimensional
 \emph{dimple trap} shown in \myfigref{litrev:fig:dimpletrap}.~\cite{2011Ac}
-Since this trap is now at a minimum rather than a zero, it is a Ioffe-Pritchard
-trap, which is not susceptible to Majorana losses~\cite{PhysRevLett.51.1336}.
+Since the trap centre is now in general a field minimum minimum rather than a
+zero, it is a Ioffe-Pritchard trap, which is not susceptible to Majorana
+losses~\cite{PhysRevLett.51.1336}.
 
 \begin{figure}
   \includegraphics[width=0.75\textwidth]{./figs/litrev/dimpletrap.png}
@@ -90,7 +91,6 @@ a Z-trap (Ioffe-Pritchard) or U-trap (quadrupole), both also shown in
 
 \begin{figure}
   \centering
-  % TODO Tikz version of X, H, U, Z fig. from my MRes
 \begin{tikzpicture}
   % H
   \draw[thick, ->] (-6,0) -- (-3,0);
@@ -115,32 +115,107 @@ a Z-trap (Ioffe-Pritchard) or U-trap (quadrupole), both also shown in
     of $I_1$ and $I_2$ will be the same, however their relative signs can be
     chosen to form either a quardupole ($I_1 = -I_2$) or Ioffe-Pritchard ($I_1 =
     I_2$) trap. Note that these cases correspond to the U and Z wires
-    approximating the currents through the H wire respectively.
+    approximating the currents through the H wire respectively. The bias fields
+    requisit for trapping are not shown.
   }
   \label{litrev:fig:trapvariations}
 \end{figure}
 
+% Maths for the traps, freq. grad. etc.
+The trapping field of the dimple trap close to the centre can be described in
+terms of the usual Ioffe-Pritchard equation~\cite{Foot2005}
+%
+\begin{equation}
+  \mathbf{B} = B_0 \begin{bmatrix} 1 \\ 0 \\0 \end{bmatrix}
+               + B' \begin{bmatrix} 0 \\ -y \\ z \end{bmatrix}
+               + \frac{B''}{2} \begin{bmatrix} 
+                  x^2 - \frac{1}{2}(y^2 + z^2) \\
+                  -xy \\
+                  -xz
+               \end{bmatrix},
+\end{equation}
+%
+where we have chosen the origin to be the trap centre (not to be confused with
+the centre of the dimple wires). In this case, the field gradient and curvature
+are
+%
+\begin{equation}
+  B' = \frac{\mu_0 I_0}{2\pi h^2}
+\end{equation}
+%
+and
+%
+\begin{equation}
+  B'' = \frac{\mu_0 I_1}{\pi h^3}
+\end{equation}
+%
+respectively. The field at the trap centre is
+%
+\begin{equation}
+  B_0 = \widetilde{B}_x + \frac{\mu_0 I_1}{2\pi h}
+\end{equation}
+%
+where $\widetilde{B}_i$ represents the bias field applied in the $i$ direction.
+The trap frequencies are given by
+\begin{equation}
+  \omega_x = \sqrt{\frac{\mu_m}{m}B''}
+\end{equation}
+and
+\begin{equation}
+  \omega_\perp = \sqrt{\frac{\mu_m {B'}^2}{m B_0}}
+\end{equation}
+where $\mu_m$ is the magnetic moment of the trapped particle, and we have taken
+$x$ to be the axial direction (aligned with $I_0$).~\cite{2011Ac}
+Taking the dimple to be a representative trap type, we can estimate the expected
+frequencies that we would expect to achieve based on the current and trapping
+height.
+
+The current that can be achieved in the chip will be limited by thermal
+properties of the final chip design.  We will see in section \cm{TODO: ref} that
+we plan to follow a multi-layer design similar to that found in B\"ohi et
+al.~\cite{Boehi2009}, who report~\cite{rohtula} a maximum current density in the
+trapping wires of \SI{5.5e10}{\ampere\per\metre\squared}. Trapping wire sizes
+will have an area of order $\SI{1}{\micro\metre} \times \SI{1}{\micro\metre}$,
+resulting in a total current \SI{55}{\milli\ampere}.
+
+In section \ref{litrev:manipulation} we will discuss how the interaction between
+the molecules and microwave fields from an integrated CPW \cm{TODO: Is this
+introduced yet?} make $h \sim \SI{10}{\micro\metre}$ a desirable trapping
+height. Using \myeqref{litrev:eqn:axisfreq} and \myeqref{litrev:eqn:transfreq}
+we can therfore anticipate trapping frequencies of
+%
+\begin{align}
+  \omega_x &= \SI{555555}{\radian \per \second} \\
+  \omega_\perp &= \SI{555555}{\radian \per \second}.
+\end{align}
+\cm{TODO: figure these out}
+%
+Frequencies for the other trap types should be calculated numerically, but the
+above figures are presented as a representative example of what can be expected
+from a wire trap.
+
 \subsubsection{Loading}
 
-Folman et al.~\cite{Folman2000} were one of the first to demonstrate mirror-MOT
-loading, where the surface of the chip is used as the mirror to from a MOT close
-to the surface. The mirror-MOT held $10^8$ \cm{7\^Li} atoms, and was formed of
-four laser beams, with two reflected off the chip, making the six beams in total
-that are required for trapping. The magnetic field is generated by coils in
-anti-Helmholtz configuration, which are switched off in favour of a large
-U-shaped wire, which provides a quadrupole field whose zero is aligned with the
-chip. This is a very common scheme to bring atoms close to the chip
-surface~\cite{Reichel1999, PhysRevLett.97.200405, 2011Ac, Boehi2009}, however it
-has also been shown~\cite{0256-307X-25-9-034} that it is possible to forego the
-coil MOT and load atoms directly from a MOT formed by a U-wire.
+Reichel et al.~\cite{Reichel1999} were one of the first to demonstrate
+mirror-MOT loading, where the surface of the chip is used as the mirror to from
+a MOT close to the surface. The mirror-MOT held $5\times10^6$ \cm{87\^Rb} atoms,
+and was formed of four laser beams, with two reflected off the chip, making the
+six beams in total that are required for trapping. The magnetic field is
+generated by coils in anti-Helmholtz configuration, which are switched off in
+favour of a large U-shaped wire, which provides a quadrupole field whose zero is
+aligned with the chip. This is a very common scheme to bring atoms close to the
+chip surface~\cite{Folman2000, PhysRevLett.97.200405, 2011Ac, Boehi2009},
+however it has also been shown~\cite{0256-307X-25-9-034} that it is possible to
+forego the coil MOT and load atoms directly from a MOT formed by a U-wire.
 
-After establishing a mirror-MOT, Folman et al. changed the bias field in order
+After establishing a mirror-MOT, Reichel et al. changed the bias field in order
 to bring the cloud closer to the surface. They then turn off the lasers so that
 the trapping is purely magnetic, and transfer to the trapping
 wires on the chip. An adiabatic change of the bias fields can then be used to
-draw the atoms closer to the surface~\cite{Reichel1999}. In the case of a
-straight wire trap and hence \myeqref{TODO}, to increase the bias field will
-also decrease the trapping height.
+draw the atoms closer to the surface~\cite{Reichel1999, Folman2000}. This
+principle can be exemplified by the straight wire trap, with
+\myeqref{litlitrev:eqn:bias} showing that trapping closer to the wire requires a
+higher bias field (or a lower current).
 
 This principle can be extended to more complex trap types and varying the
 currents through the trapping wires trapping.~\cite{Folman2000} It is also
@@ -191,6 +266,10 @@ infancy~\cite{Anderegg2019}, so this is left as a possibility for future
 research.
 
 \subsubsection{Manipulation in the trap}
+\label{litrev:manipulation}
+
+% Make sure we discuss VdW and Casmir-Poldar (sp?) shift, basically just
+% reproduce the start of Ed's notebook.
 
 
 \subsection{Cold molecule sources}
