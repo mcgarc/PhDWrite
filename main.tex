@@ -34,6 +34,7 @@
 
 % --- More optional ---
 \usepackage{tabularx} 
+\usepackage{xpatch} % To patch the TOC
 
 % --- Bibliography Links ---
 \usepackage{hyperref}
@@ -65,12 +66,19 @@
 \linespread{1.5}
 
 % --- Table of contents ---
-% disable subsections and subsubsections in the TOC
-% very specific to revtex
+% Patch TOC to exclude *-ed sections (default behaivour in most classes, but
+% changed by design in revtex). Also exclude (sub)subsections
+% Patch is quite specific to revtex
 \makeatletter
-%\def\l@subsection#1#2{}
-\def\l@subsubsection#1#2{}
+%\def\l@subsection#1#2{} % Uncomment to exclude subsection
+\def\l@subsubsection#1#2{} % Uncomment to exclude subsubsection
+\patchcmd{\@ssect@ltx}
+    {\addcontentsline{toc}{#1}{\protect\numberline{}#8}}
+    {}
+    {}
+    {}
 \makeatother
+
 
 % Uncomment and fill if using article
 %\title{Early stage assessment: molecule chip}
@@ -98,8 +106,6 @@
      {Imperial College London, Department of Physics} \\
   \end{center}
 \end{titlepage}
-
-
 
 % Abstract
 \section*{Abstract}
