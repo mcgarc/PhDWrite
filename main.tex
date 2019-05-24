@@ -14,7 +14,7 @@
 %\documentclass[a4paper]{article}
 \documentclass[
  aps,
- prb,
+ %prb,
  a4paper,
  superscriptaddress,
  notitlepage,
@@ -71,7 +71,7 @@
 % Patch is quite specific to revtex
 \makeatletter
 %\def\l@subsection#1#2{} % Uncomment to exclude subsection
-\def\l@subsubsection#1#2{} % Uncomment to exclude subsubsection
+%\def\l@subsubsection#1#2{} % Uncomment to exclude subsubsection
 \patchcmd{\@ssect@ltx}
     {\addcontentsline{toc}{#1}{\protect\numberline{}#8}}
     {}
@@ -128,17 +128,10 @@
 \section{Introduction}
 \input{sections/intro}
 
-\section{Literature review}
+\section{Atomic and molecular chip traps}
 \input{sections/litrev}
 
-\section{Confinement of molecules close to a surface}
-\input{sections/molsatsurf}
-
-\section{Coplanar waveguides for use on a molecule chip}
-\label{sec:cpw}
-\input{sections/cpw}
-
-\section{Experimental design}
+\section{Experiment design}
 \input{sections/experiment}
 
 \section{Outlook}

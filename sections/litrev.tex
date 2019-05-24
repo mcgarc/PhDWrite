@@ -1,3 +1,9 @@
+% Take-away points:
+%   Magnetic trap
+%   How to get CPW on (Bohi)
+%   MTT + big U to load is viable
+%   Required PSD???
+
 At the time of the original molecule chip proposal~\cite{Andre2006}, to see atom
 chips had been loaded using a magneto-optical trap (MOT) as a
 source~\cite{Reichel1999, Ott2001}, however a molecule MOT had not yet been
@@ -15,20 +21,13 @@ These developments have made the implementation of a molecule chip feasible. In
 this section, we will review the state of the field, including work on atom
 chips and these supporting technologies.
 
-\subsection{Atom chips}
-
-% Take-away points:
-%   Magnetic trap
-%   How to get CPW on (Bohi)
-%   MTT + big U to load is viable
-%   Required PSD???
+\subsection{Wire traps}
+\cm{need to say something somewhere about how magnetic trapping works}
 
 In developing the molecule chip, we have been able to draw upon the
 well-developed field of atom chips to inform our design choices. Let us consider
 three different aspects of chip design: trapping on the chip, loading into this
 trap, manipulation of trapped atoms or molecules.
-
-\subsubsection{Chip traps}
 
 The Andr\'e proposal~\cite{Andre2006} suggests the use of an electrostatic trap
 to contain the molecules, however this is not the only option available. In
@@ -170,6 +169,9 @@ Taking the dimple to be a representative trap type, we can estimate the expected
 frequencies that we would expect to achieve based on the current and trapping
 height.
 
+\cm{ Need to review these two paragraphs. Perhaps I can just pull the numbers
+from literature or straight out of the experiment section. }
+
 The current that can be achieved in the chip will be limited by thermal
 properties of the final chip design.  We will see in section \cm{TODO: ref} that
 we plan to follow a multi-layer design similar to that found in B\"ohi et
@@ -190,11 +192,11 @@ we can therfore anticipate trapping frequencies of
 \end{align}
 \cm{TODO: figure these out}
 %
-Frequencies for the other trap types should be calculated numerically, but the
-above figures are presented as a representative example of what can be expected
-from a wire trap.
+Frequencies for the other trap types should be calculated numerically\cm{TODO:
+should I reference my MRes?}, but the above figures are presented as a
+representative example of what can be expected from a wire trap.
 
-\subsubsection{Loading}
+\subsection{Loading wire traps}
 
 Reichel et al.~\cite{Reichel1999} were one of the first to demonstrate
 mirror-MOT loading, where the surface of the chip is used as the mirror to from
@@ -265,26 +267,17 @@ for loading, but molecular optical tweezers are still in their
 infancy~\cite{Anderegg2019}, so this is left as a possibility for future
 research.
 
-\subsubsection{Manipulation in the trap}
-\label{litrev:manipulation}
+\subsection{Molecule chips}
+\label{litrev:molculechips}
+
+\subsection{Coherent quantum control of atoms and molecules}
+\label{litrev:control}
+
+% Start with macroscopic, build up to atom chips w/ CPWs
 
 % Make sure we discuss VdW and Casmir-Poldar (sp?) shift, basically just
 % reproduce the start of Ed's notebook.
 
-
-\subsection{Cold molecule sources}
-
-Note that every one \cm{check this is the case} of the above loading methods for
-chips begins with an atomic MOT. Whilst there do exist atom~\cite{Dekker2000},
-and even molecule chips~\cite{Bethlem2000. Meek2008} that don't rely on a MOT,
-it seems that having a molecular MOT will vastly increase the loading schemes
-available to use. At the time of Andr\'e's proposal~\cite{Andre2006}, this had
-not been achieved, but today molecular MOTs, and even sub-Doppler cooling of
-molecules has been achieved, as we will discuss below.
-
-\subsection{Molecule chips}
-
-\subsection{Fabrication methods}
 
 % Photolith
 % Electroplating

@@ -1,1 +1,418 @@
-experiment
+\subsection{Microwaves on a chip}
+
+\subsubsection{The coplanar waveguide}
+
+The coplaner waveguide (CPW) was originally proposed by Cheng P.~Wen in
+1969~\cite{1127105}. CPWs are formed from a conductor layer on some substrate,
+with two parralel channels of conuctor carved out in order to create a centre
+conductor strip, with the other conucting regions forming a surrouding ground
+plane. A segment of a CPW is illustrated in Fig.~\ref{fig:CPWxsec}. The
+CPW's geometry is defined by the centre conductor width ($S=2a$) and the channel
+width ($W=b-a$). In all cases that will be discussed herein, we will assume that
+the height of the substrate ($h1$) far exceeds the other distances, that is $h_1
+\gg S$, whilst $S \sim W$.
+
+\begin{figure}
+  \includegraphics{./figs/2019-01-18_stripline_xsection.png}
+  \caption{Cross section of a CPW. Taken from Simons~\cite{Simons2004}}
+  \label{fig:CPWxsec}
+\end{figure}
+
+It is common to define the planar geometry in terms of the
+ratio~\cite{1127105, Simons2004}
+\begin{equation}
+  k_0 = \frac{S}{S+2W} = \frac{a}{b}.
+  \label{eqn:k0def}
+\end{equation}
+For this and all other $k_i$ we have the corresponding value
+\begin{equation}
+  k'_i = \sqrt{1-k^2_i}.
+\end{equation}
+Wen demonstrates~\cite{1127105} that by a conformal mapping of the CPW geometry
+we can describe waveguide in terms of elliptic integrals of the first kind
+$K(k)$. In the limiting case of large $h_1$, we have that
+\begin{equation}
+  \frac{K(k'_0)}{K(k_0)} = k_0.
+  \label{eqn:k0rat}
+\end{equation}
+
+The capacitance of a CPW can then be found by considering the contribution due
+to the propgation through the air and through the substrate. Wen gives the
+total capacitance as~\cite{Simons2004}
+\begin{equation}
+  C = 4\epsilon_0\epsilon_\mathrm{eff} k_0^{-1}
+\end{equation}
+where
+\begin{equation}
+  \epsilon_\mathrm{eff} = \frac{1 + \epsilon_\mathrm{r1}}{2}.
+  \label{eqn:epsilon_eff_approx}
+\end{equation}
+However, this is an approximation of the more accurate
+formula~\cite{Simons2004}
+\begin{equation}
+  \epsilon_\mathrm{eff} = 1 + q(\epsilon_\mathrm{r1} - 1)
+  \label{eqn:epsilon_eff}
+\end{equation}
+where $q$ is a filling factor, describing the proportion of the wave that
+travels inside the dielectric vs. inside the air. Note that we obtain
+eqn~\ref{eqn:epsilon_eff_approx} from eqn~\ref{eqn:epsilon_eff} by assuming $q =
+1/2$.
+
+The filling factor can be found by the aforementioned conformal mapping
+technique to be~\cite{Simons2004}
+\begin{equation}
+  q = \frac{1}{2}\frac{K(k_1)}{K(k'_1)}\frac{K(k'_0)}{K(k_0)}.
+  \label{eqn:fillfact}
+\end{equation}
+Here we have introduced
+\begin{equation*}
+  k_1 = \frac{\sinh (\pi S/ 4h_1)}{\sinh [\pi (S+2W)/4h_1]}
+\end{equation*}
+whose dependence clearly vanishes in the large $h_1$ limit. We can
+computationally show that
+\begin{equation}
+  R = \lim_{h_1 \to \infty} \frac{K(k_1)}{K(k'_1)} \approx 0.563.
+  \label{eqn:kratlim}
+\end{equation}
+Now, using eqns~\ref{eqn:k0def} and \ref{eqn:kratlim} we can re-write the
+filling factor as
+\begin{equation}
+  q = \frac{R}{2}k_0.
+\end{equation}
+
+\cm{Is this definitely true? If so, need to make the last line of this para more
+clear.}
+We will typically have $S\sim W$, therefore the $q=1/2$ approximation will  not
+usually be correct to an order of magnitude. It is better to take $q\sim
+\frac{1}{2} \times \frac{1}{2} \times \frac{1}{3} = \frac{1}{12}$.
+%We must have $k_0 < 1$ which makes the $q=1/2$ assumption pretty poor.
+
+We can now consider the impedance of the CPW~\cite{Simons2004}
+\begin{align}
+  %L &= \frac{\mu_0}{4} k_0\\
+  Z &= \frac{1}{C v_\mathrm{ph}} \\
+    &= \frac{1}{4}\sqrt{\frac{\mu_0}{\epsilon_0 \epsilon_\mathrm{eff}}}k_0 \\
+    &\approx \frac{30\pi}{\sqrt{\epsilon_\mathrm{eff}}}k_0 \, \mathrm{[Ohms]}.
+\end{align}
+In order to impedance match our CPW (at the standard value $Z=\SI{50}{\ohm}$) we
+can choose the permittivity of our substrate (to the extent that we have choice
+of substrate, as discussed below) and the waveguide geometry via choice of $S$
+and $W$.
+
+% Note that Simons goes into great detail about the various different
+% conductor-surrounded CPWs here, but we don't need to worry about those so
+% much. See page 47 of my notebook (2019-01-17) and mathematica notebook
+% 2019-01-18_* for information on how some of these terms can be neglected. We
+% can just use OG CPW's results
+
+\subsubsection{CPW Resonators}
+
+Andr\'e et al.'s \cm{Punctuation here?} original proposal suggested that a
+single photon inside a CPW resonator cavity could be coupled to a (cloud of)
+trapped molecule(s). In this section we will briefly outline the behaviour of a
+CPW resonator, and in the following sections we will outline whether this is
+feasible. % It isn't.
+
+It is common to describe resonators in terms of a quality
+factor~\cite{Jackson1975, 1125652}
+\begin{equation}
+  Q = \omega \frac{\text{Energy stored }}{\text{Power loss}}.
+\end{equation}
+For our purposes we consider the enrgy stored to be the energy that we keep in
+the waveguide after traversing the resonatr's length $L$. Taking this to be the
+energy contributed by the electric field, this is
+\begin{equation}
+  \frac{\epsilon_0}{2} V \lvert A(L) \rvert^2
+\end{equation}
+where $A(x)$ is the amplitude of the field at position $x$, and $V$ is the field
+volume.  The power loss is then all the dissipated power, which comes from
+considering the energy flow as per a Poynting vector~\cite{Jackson1975},
+\begin{equation}
+  \frac{\epsilon_0 c}{2L}V \left[ \lvert A(0) \rvert^2 - \lvert A(L) \rvert^2
+  \right] c/L.
+\end{equation}
+
+The loss in a waveguide is described in terms of a complex propogation
+constant~\cite{Collin2007} $\gamma$ such that the amplitude of the signal
+satisfies
+\begin{equation}
+  A(x) = A(0)e^{-\gamma x}.
+\end{equation}
+In order to describe the attenuation, look at the magnitude of this equation,
+writing $\gamma = \alpha +i\beta$,
+\begin{equation}
+  \lvert\frac{A(x)}{A(0)}\rvert = e^{-\alpha x}
+\end{equation}
+where $\alpha$ is called the attenuation constant. Taking logs it is clear that
+\begin{equation}
+  \alpha = \frac{1}{x}\log\lvert\frac{A(0)}{A(x)}\rvert\,\si{\neper}
+\end{equation}
+where we have used the `Neper'~(\si{\neper}) \cm{TODO: cite} as the natural unit
+to desribe loss. We will normally set $x$ to 
+\SI{1}{\meter} or one wavelength $\lambda$ so that loss is expressed in
+$\si{\neper \per \meter}/\mathrm{length}$ or $\si{\neper}/\lambda$.
+%\footnote{
+%The phase constant is the imaginary part of the propogation constant:
+%\begin{equation}
+%  \beta = \frac{2\pi}{\lambda}.
+%\end{equation}}
+%
+%
+%The Neper corresponds to approximately \SI{8.7}{\dB}, as can be seen readily by
+%comparing the loss formula in dB (which is log-base ten, with a factor of ten
+%and based on power, not amplitude)
+%\begin{align*}
+%  \alpha' &= \frac{1}{x}20\log_{10}\lvert \frac{A(0)}{A(x)} \rvert \si{\dB}\\
+%          &= \frac{20}{x}\log_{10}(e^{\alpha x}) \si{\dB} \\
+%          &= 20 \log_{10}(e) \alpha \si{\dB} \\
+%          &\approx 8.7 \left(\frac{\si{\dB}}{\si{\neper}}\right) \alpha.
+%\end{align*}
+
+We therefore have quality factor
+\begin{equation}
+  Q = \frac{\beta L}{e^{2\alpha L} -1}
+\end{equation}
+For a resonator of length $L = \lambda/2$, this yields
+\begin{equation}
+  Q = \frac{\pi}{e^{\alpha \lambda} - 1}.
+\end{equation}
+
+
+\subsubsection{Microwave loss modes}
+
+To understand whether we can achieve high enough quality factors to implement a
+resonator, we must consider all modes of loss from the system. For the initial
+investigation, we will consider a simple and common example system, where a gold
+CPW is fabricated on a high resistivity silicon substrate (HiRes Si). \cm{TODO:
+cite}
+
+We can anticipate three main sources of loss: those from the dielectric, the
+conductor and radiative losses. \cite{Simons2004} The total loss is described
+by the summation of each of the contributing terms:
+\begin{equation}
+  \alpha = \alpha_d + \alpha_c + \alpha_r,
+\end{equation}
+which are for dielectric, conductor and radiation losses respectively.
+
+\subsubsection*{Dielectric losses}
+
+Collins~\cite{Collin2007} tells us that the dielectric loss is given by
+\begin{equation}
+  \alpha_d =
+  \frac{\pi}{\lambda_0}\frac{\epsilon_\mathrm{r1}}{\sqrt{\epsilon_\mathrm{eff}}}
+  q \tan \delta_e
+\end{equation}
+where $\lambda_0$ is the wavelength in free space, $\tan \delta_e$ is the
+dielectric loss tangent of the substrate, and $q$ is the filling factor from
+eqn~\ref{eqn:fillfact}.
+
+As per the above, $k_0$ is effectively fixed by our impedance matching, so the
+dielectric loss will be entirely a function of the properties of the material,
+going linearly with $\tan\delta_e$. For an order of magnitude comparison, we can
+use the above approxiamtion $q=1/12$, and consdier our target frequency
+$f\approx\SI{40}{\giga\hertz}$ for
+\begin{equation}
+  \alpha_d \sim 30\sqrt{2\epsilon_\mathrm{r1}}\tan\delta_e
+  \,[\si{\neper\per\meter}].
+\end{equation}
+
+For a typical substrate we will expect $\tan\delta_e\leq10^{-3}$ and
+$\epsilon_\mathrm{r1} \sim 10$ so the limit on the dielectric loss component is
+\begin{equation}
+  \alpha_d \leq \SI{0.1}{\neper\per\meter},
+\end{equation}
+or as a Q-factor
+\begin{equation}
+  Q_d \geq 4000.
+\end{equation}
+
+Compare to the results of  Cao et al.~\cite{L.Cao2013}, who
+investigated loss in CPWs and other wavguides up to the \si{\tera\hertz}
+r\'egime. The measurement of dielectic loss for a $Z=\SI{100}{\ohm}$ shows the
+expected linear dependence of dielectric loss on frequency, and has value under
+our predicted bound at \SI{40}{\giga\hertz}. The results of their relevant
+numerical analysis are reproduced in Fig.~\ref{fig:CaoFig9}.
+
+% TODO I'm not sure it's actually worth having this fig...
+\begin{figure}
+  \ph{Cao Fig. 9 to go here}
+  \caption{Here we reproduce numerical results from Cao et al.~\cite{L.Cao2013}
+  who evaluate dielectric loss of various wvaguides up to the \si{\tera\hertz}
+  r\'egime. Their CPW geometry is not in the same high $h$ limit, and produces
+  $Z_0 = \SI{50}{\ohm}$, however the losses they achieve are similar to our
+  predictions.
+  }
+  \label{fig:CaoFig9}
+\end{figure}
+
+It may be possible to achieve lower losses at lower temperature, as the
+tangential dielectric loss has been shown to decrease by around an order of
+magnitude at around \SI{4}{\kelvin}. \cite{1717770}
+
+\subsubsection*{Conductor losses}
+
+Conductor losses are given by the following set of equations\cite{Simons2004}
+\begin{equation}
+  \alpha_c = \frac{R_c +R_g}{2Z_0}
+\end{equation}
+where $R_c$ describes the series resistance of the centre strip
+\begin{equation}
+  R_c = \frac{R_s}{4 S(1-k_0^2)K^2(k_0)}\left[ \pi + \log\left(\frac{4\pi
+  S}{t}\right) - k_0\log\left(\frac{1+k_0}{1-k_0}\right) \right],
+\end{equation}
+and $R_g$ is the corresponding series resistance of the ground place
+\begin{equation}
+  R_s = \frac{k_0 R_s}{4S(1-k_0^2)K^2(k_0)}\left[\pi +
+  \log\left(\frac{4\pi(S+2W)}{t}\right) -
+  \frac{1}{k_0}\log\left(\frac{1+k_0}{1-k_0}\right)\right]
+\end{equation}
+(note that we cannot take a $t\to 0$ as this would physically equate to there
+being no conductor and hence no circuit). The skin effect surface is
+\begin{equation}
+  R_s = \frac{1}{\delta\sigma}
+\end{equation}
+with $\sigma$ being the conductivity of the conductor, and
+\begin{equation}
+  \delta = \sqrt{\frac{2}{\omega\mu_0\mu_r\sigma}}
+\end{equation}
+being the skin depth at the target frequncy.
+
+% TODO
+% A few more bits here:
+%  When is Rs valid? (Relation of t and skin-depth (delta))
+%  Actual dependencies worth nothing? a propto sqrt(f) , sim. for sigma?
+
+
+As above, we will normally fix $k_0$ so as to choose the waveguide's impedance
+($Z_0$). Consider an example case of gold conductor on a silicon substrate. As
+per CPW\cite{1127105}  we will have $\epsilon_\mathrm{r1} \approx 10$ so require $k_0
+\approx 1/3$ to achieve impedance matching at $Z_0 = \SI{50}{\ohm}$. The only
+free parameters are now the conductor thickness $t$, and the size of the centre
+width conductor $S$. This is illustrated in Fig.~\ref{fig:conductorQ}.
+
+\begin{figure}
+  \includegraphics[width=\textwidth]{./figs/conductor_Q.pdf}
+  \caption{Quality factor due to conductor losses for a CPW of fixed impedance
+  $Z_0=\SI{50}{\ohm}$ for varying centre conductor width ($S$) with conducotr
+  thickness as a parameter.}
+  \label{fig:conductorQ}
+\end{figure}
+
+Typically we will expect a thickness of no more than a few hundred nanometres
+\cm{more with electroplating! need to check all my numbers},
+and the centre conductor to have a width of only a few microns. Setting
+$t=\SI{100}{\nano\metre}$ and $S=\SI{1}{\micro\metre}$ we will have
+\begin{equation}
+  \alpha_c \approx \SI{600}{\neper \per \meter}.
+\end{equation}
+% sigma Au source: https://hypertextbook.com/facts/2004/JennelleBaptiste.shtml
+This completely dominates the dielectric loss, and is far larger than we can
+stand. At lower temperature (a few Kelvin), the conductivity of gold will
+increase by a factor of 100 which would improve the loss to
+% TODO Would probably be good to have an actual cite here.
+\begin{equation}
+  \alpha_c \approx \SI{60}{\neper \per \meter}.
+\end{equation}
+
+%This corresponds to $Q\sim5$. It appears the conductor losses are going
+%to be the dominant source of decay in our waveguide. Other successful CPWs and
+%CPW resonators at such high frequencies have used a significantly larger
+%conductor areas~\cite{1127105, doi:10.1063/1.3010859} or have had control of
+%substrate thickness~\cite{L.Cao2013} so that impedance does not only depend on
+%$k_0$ but also on $h$.
+
+\subsubsection*{Radiative losses}
+
+The losses due to radiation are of similar order to the dielectric losse. Cao et
+al.~\cite{L.Cao2013} report a loss of $\alpha_r = \SI{0.43}{\decibel \per \milli
+\meter}$ at $f=\SI{1}{\tera\hertz}$. It is known that~\cite{81658} $\alpha
+\propto f^3$; which means we can expect $\alpha_r \sim 10^{-2}$ \cm{units?} at
+our frequencies.
+
+\subsubsection*{Comparison of loss mechanisms}
+
+Clearly the conductor losses will be the dominant form of signal attenuation. We
+have assumed a gold conductor, and even at low temperatures we anticipate loss
+from the conductor of order $\alpha_c \sim 100 \alpha_d \sim
+\SI{10}{\neper\meter}$. This is fairly significant, and may prevent us from
+implementing CPW resonators with $S\sim\si{\micro\meter}$. This will be
+investigated in section~\ref{sec:resonators}. Note that existing
+CPW resonators on gold have had much larger centre conductor widths, and hence
+much lower conductor losses~\cite{1127105}. One possible solution may be to use
+superconducting materials to build the CPW.
+
+That said, it should be noted that the high loss should not prevent us from
+using the CPW to directly drive microwave transitions in trapped molecules, as
+we will still be able to pass signal through the waveguide without the need to
+construct a waveguide.
+
+% Incorporate both the below as subsections into new section, something like
+% outlook? / what we would like to do after this maybe if possible
+
+\subsubsection{Losses for various dielectric substrates}
+
+It has been assumed until this point that the substrate we will be using is
+silicon, however for the purposes of a molecule chip, that may not be the case.
+It may be advantageous to fabricate the CPW on an insulating layer, such that
+DC trapping wires can be positioned directly beneath the CPW, such that the trap
+centre is in the region where the microwave field is strongest.
+
+There are various possible methods of fabricating such a device, one that was
+shown to be succesful by B\"ohi et al.~\cite{Boehi2009} is to spin coat
+polyimide onto a silicon chip with trapping wires, before using photolithography
+to lay down the CPW. It may also be possible to use other materials as the
+insulating layer, such as aluminium nitride, which is well-known to be a good
+substrate for microwave components \cm{TODO: cite} or silicon nitride, which is
+commonly used as an insulating layer in microfabrication. \cm{TODO: cite
+conversation with VJ?}.
+
+A first estimate towards the feasibility of realising a CPW resonator on such a
+substrate is to estimate the losses that will be achieved for a single-layer CPW
+structure, with $h_1 \gg S$. Applying the formulae for loss as discussed in the
+previous section, we can find the various loss modes for the materials of
+interest. The results of these equations are presented in
+table~\ref{table:losses}.
+
+\begin{table}[h]
+  %\begin{tabularx}{\textwidth}{lp{0.25\linewidth}p{0.1\linewidth}p{0.1\linewidth}}
+  \begin{tabularx}{\textwidth}{lXXX}
+    Substrate &
+    Conductor loss -- $S=\SI{10}{\micro\meter}$ (\si{\neper \per \milli \meter})
+    & Conductor loss -- $S=\SI{1}{\micro\meter}$ (\si{\neper \per \milli \meter})
+    & Dielectric loss ($10^{-4}\si{\neper \per \milli \meter}$) \\
+    \hline
+    HiRes Si & 0.19 & 1.36 & 6.9 \\
+    Polyimide & 0.07 & 0.46 & 46 \\
+    Aluminium nitride & 0.05 & 0.41 & 3.8
+  \end{tabularx}
+    \caption{
+      \cm{Is it OK for me to have these cites here (and only here?)} The sources
+      of loss modes for HiRes Si~\cite{1717770, 517417},
+      polyimide~\cite{5734805}  and aluminium nitride~\cite{1666171} \cm{find
+      bettter cite here}, for CPWs which are impedance matched at \SI{50}{\ohm}.
+      Note that conductor loss varies across substrates due to the change of
+      $k_0$ that is required to impedance match, and that dielectric loss is
+      independent of the change in $S$. \cm{What is the wire height?}}
+    \label{table:losses}
+\end{table}
+
+From these results, we see that in all cases the conductor losses dominate.  It
+  is prudent at this point to note that conductor losses can be significantly
+  reduced by using superconducting wires to carry currents, as has been achieved
+  for atom chips\cite{PhysRevLett.97.200405, Hattermann2017}. This would also
+  allow higher current densities and hence deeper traps, however it was decided
+  that it would not be feasible to cool the chip to the required temperatures in
+  this experiment.
+
+Also of importance from these results is that the losses are very high on the
+  length scale of a resonator. \cm{L is about a cm, so we can get values for Q
+  factor, which we will find are not critically damped, so we can't have a
+  resonator. However, point out that despite this we can still use a taper
+  around a thin region, so we can still pump in a lot of power that we know will
+  be dissipated and then drive transitions in trapped molecules directly.}
+
+\subsection{Multi-layer chip}
+
+\subsection{Trapping wire design}
+
+\subsection{Design for a molecule chip trap}
