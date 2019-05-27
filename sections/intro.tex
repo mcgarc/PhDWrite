@@ -1,21 +1,54 @@
-\cm{
-  The original proposal for a microfabricated molecule chip trap by Andr\'e et
-al.~\cite{Andre2006} suggested that an integrated coplanar waveguide (CPW) could
-be used to drive microwave transitions in trapped molecules. In this document,
-we will review the feasibility of this proposal for a simple single-layer chip.
-}
+When Weinstein and Libbrecht first proposed a scheme for microscopic confinement
+of atoms using microfabricated magnetic traps~\cite{PhysRevA.52.4004}, it was at
+a time when production, ultra-cooling and trapping of atoms was already well
+understood and commonly practiced.~\cm{TODO: cites for each of these} Only four
+years later, Reichel et al.~\cite{Reichel1999} demonstrated the first atomic
+``chip trap,'' a microfabricated device using wires on the surface of a planar
+substrate. By the nature of the design and fabrication technique, a chip trap is
+more robust and scalable than its macroscopic counterparts~\cm{TODO: cite} and
+as such has many applications in quantum technology.
 
-It has been proposed~\cite{Andre2006} that a microfabricated chip trap could be
-used to constrain the movement of cold molecules in proximity to a microwave
-resonator, allowing direct manipulation of the molecule's rotational energy
-structure. Recent work into cooling molecules below the Doppler
-limit~\cite{Truppe2017} suggests that such a ``molecule chip'' is now realisable.
-Such a chip would be similar to existing atomic
-counterparts~\cite{RevModPhys.79.235, 2011Ac}, forming a robust environment for
-investigation of quantum effects. Applications are proposed in a variety of
-quantum settings, including quantum information~\cite{Folman2000} and
-atomic clocks~\cite{RAMIREZMARTINEZ2011247}. Chips are also candidates for
-building hybrid systems~\cite{Nirrengarten2006}.
+\cm{TODO: find examples and continue talking about applications as separate
+paragraph note espeically MW stuff. Need to introduce MOT as a concept}.
+
+In 2006, Andre et al.~\cite{Andre2006} published a proposal for a molecular chip
+trap. The coupling microwaves to the rotational structure of a diatomic molecule
+would be several orders of magnitude stronger than the coupling to hyperfine
+transitions in an atom. \cm{Why is this good?}
+
+At the time of proposal, the field of ultracold molecules was still relatively
+unexplored, with the first molecular MOT was not created until~\cm{cite molecule
+MOT}. Indeed production of cold molecules has shown in many ways to be more
+challenging than for atoms, in large part due to the significantly more complex
+energy sturcutre they exhibit.~\cm{CITE} Today however we are able to cool
+molecules below the Doppler limit~\cite{Truppe2017}, coherently control the
+states of such molecules~\cite{PhysRevLett.120.163201} and load molecules into a
+tweezer array.~\cite{Anderegg2019}
+
+The groundwork has been laid to produce a molecular chip trap. In the following
+subsections I will discuss further the field of ultra-cooling of atoms and
+molecules, and the need for a molecule chip. The rest of the report will focus
+on chip trapping, the design of our molecule chip and the outlook for the
+remainder of the project.
+
+%%\cm{
+%%  The original proposal for a microfabricated molecule chip trap by Andr\'e et
+%%al.~\cite{Andre2006} suggested that an integrated coplanar waveguide (CPW) could
+%%be used to drive microwave transitions in trapped molecules. In this document,
+%%we will review the feasibility of this proposal for a simple single-layer chip.
+%%}
+%%
+%%It has been proposed~\cite{Andre2006} that a microfabricated chip trap could be
+%%used to constrain the movement of cold molecules in proximity to a microwave
+%%resonator, allowing direct manipulation of the molecule's rotational energy
+%%structure. Recent work into cooling molecules below the Doppler
+%%limit~\cite{Truppe2017} suggests that such a ``molecule chip'' is now realisable.
+%%Such a chip would be similar to existing atomic
+%%counterparts~\cite{RevModPhys.79.235, 2011Ac}, forming a robust environment for
+%%investigation of quantum effects. Applications are proposed in a variety of
+%%quantum settings, including quantum information~\cite{Folman2000} and
+%%atomic clocks~\cite{RAMIREZMARTINEZ2011247}. Chips are also candidates for
+%%building hybrid systems~\cite{Nirrengarten2006}.
 
 %A chip trap uses currents (voltages) on the surface of an integrated circuit to
 %form a magnetic (electric) field above its surface that can be used to constrain
@@ -49,10 +82,13 @@ building hybrid systems~\cite{Nirrengarten2006}.
 %trap types will be discussed, before we cover our proposal and explore how it
 %could be used as a molecule trap.
 
-\subsection{Laser cooling and trapping of atoms}
+\subsection{Atoms vs. molecules}
 
-\subsection{Cold molecule sources}
-\label{intro:moleculesources}
+\subsection{Producing cold atoms}
+\label{intro:coldatoms}
+
+\subsection{Producing cold molecules}
+\label{intro:coldmols}
 
 Note that every one \cm{check this is the case} of the above loading methods for
 chips begins with an atomic MOT. Whilst there do exist atom~\cite{Dekker2000},
@@ -62,6 +98,14 @@ available to use. At the time of Andr\'e's proposal~\cite{Andre2006}, this had
 not been achieved, but today molecular MOTs, and even sub-Doppler cooling of
 molecules has been achieved, as we will discuss below.
 
-\subsection{Laser cooling and trapping of molecules}
-
 \subsection{From macro to micro: the need for chip traps}
+
+\subsection{Structure of this report}
+
+In this document, I will outline the ongoing progress in the design and
+implementation of a molecular chip trap. In section \ref{litrev} I will present
+the existing research that has been undertaken in the fields of atomic and
+molecular chip traps. Next, section \ref{experiment} will discuss the design
+process for our experiment, and the various engineering challenges that we have
+had to overcome. Finally I will present the outlook for the remainder of the
+project, including some \cm{stretch goals??}
