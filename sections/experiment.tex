@@ -1,109 +1,121 @@
+\cm{TODO: Section intro}
+
 \subsection{Microwaves on a chip}
+
+A key aspect of chip design is incorporating a mechanism for coherent quantum
+control of the trapped molecules. As discussed in the previous section~\cm{TODO
+check I have done this} control of rotational states of the molecule is possible
+by application of microwave fields, with strong coupling between the molecules
+and fields, as well as long coherence times of the states.\cite{Blackmore_2018}
+Furthermore, microwave engineering is already a well-understood field, and as
+will be discussed can be readily incorportated into the chip design. \cm{Wording
+here is clunky in last sentence}
+
+In this subsection I will introduce the coplanar waveguide (CPW) as the
+prefered method of bringing microwaves onto the chip. I will present how they
+can be used to create a microwave resonator and their limitations due to
+attenuation.
 
 \subsubsection{The coplanar waveguide}
 
 The coplaner waveguide (CPW) was originally proposed by Cheng P.~Wen in
-1969~\cite{1127105}. CPWs are formed from a conductor layer on some substrate,
-with two parralel channels of conuctor carved out in order to create a centre
+1969~\cite{1127105}. CPWs are formed from a conductor layer on some dielectric
+substrate, with two channels of conuctor carved out in order to create a centre
 conductor strip, with the other conucting regions forming a surrouding ground
-plane. A segment of a CPW is illustrated in Fig.~\ref{fig:CPWxsec}. The
-CPW's geometry is defined by the centre conductor width ($S=2a$) and the channel
-width ($W=b-a$). In all cases that will be discussed herein, we will assume that
-the height of the substrate ($h1$) far exceeds the other distances, that is $h_1
-\gg S$, whilst $S \sim W$.
-
+plane.
+%
+A segment of a CPW is illustrated in Fig.~\ref{experiment:fig:CPWxsec}. The
+CPW's geometry is defined by the centre conductor width ($S$) and the channel
+width ($W$). 
 \begin{figure}
   \includegraphics{./figs/2019-01-18_stripline_xsection.png}
-  \caption{Cross section of a CPW. Taken from Simons~\cite{Simons2004}}
-  \label{fig:CPWxsec}
+  \caption{
+    Cross section of a coplanar waveguide segment, showing the characteristic
+    features of a centre conductor of width $S$, which is isolated from the
+    ground plane by a distance of width $W$. Note the similarity to a coaxial
+    cable, where the centre conductor takes the place of the central pin and the
+    ground plane the shielding. This figure is reporoduced from
+    Simons~\cite{Simons2004}}
+  \label{experiment:fig:CPWxsec}
 \end{figure}
+
+This design is such that it can be microfabricated as part of the chip.  This
+provides benefits over, for example, propogating the microwaves through free
+space, because the chip can be designed to maximise the overlap between the
+region of trapping, and the region in which the microwaves are at a high
+intensity.~\cm{TODO: cite} The microwave instensity in and arround a typical CPW
+is illustrated in \myfigref{experiment:fig:CPWfield}. Furthermore, the
+integration of the microwaves onto the chip improves scalability and robustness
+of the system.
+
+\begin{figure}
+  \cm{TODO: find this fig.}
+  \caption{
+    The \cm{relative} electric field strength within the vicinity of a CPW.
+    \cm{Note that if we can get the molecules close enough this will be great.}
+  }
+  \label{experiment:fig:CPWfield}
+\end{figure}
+
+As with any waveguide, it is important to impedance match a CPW so that as to
+minimise reflections at an interface (for example between CPWs on different
+substrates, or beween a CPW and a coaxial cable).~\cite{Jackson1975} In the
+remainder of this subsubsection I will outline the basic mathematical
+description of a CPW. For our purposes it will be sufficient to consider the
+case where the height of the substrate ($h1$) far exceeds the other distances,
+that is $h_1 \gg S$, whilst $S \sim W$. The conductor is assumed to be perfect,
+and the dielectric has relative permittivity $\epsilon_\mathrm{r1}$.
 
 It is common to define the planar geometry in terms of the
 ratio~\cite{1127105, Simons2004}
 \begin{equation}
-  k_0 = \frac{S}{S+2W} = \frac{a}{b}.
+  k_0 = \frac{S}{S+2W} = \sqrt{1-{k'_0}^2}
   \label{eqn:k0def}
 \end{equation}
-For this and all other $k_i$ we have the corresponding value
+where the second equality defines $k'$.
+%
+Wen demonstrated~\cite{1127105} that a conformal mapping can be used to describe
+a CPW as a transmission line~\cite{Jackson1975} in terms of elliptic integrals
+of the first kind $K(k)$. The capacitance of a the dielectric region of the CPW
+is given by
 \begin{equation}
-  k'_i = \sqrt{1-k^2_i}.
+  C_\mathrm{CPW} = 2\epsilon_0(\epsilon_\mathrm{r1}-1)\frac{K(k_0)}{K(k'_0)}
 \end{equation}
-Wen demonstrates~\cite{1127105} that by a conformal mapping of the CPW geometry
-we can describe waveguide in terms of elliptic integrals of the first kind
-$K(k)$. In the limiting case of large $h_1$, we have that
+and the capacitance of the air region is
 \begin{equation}
-  \frac{K(k'_0)}{K(k_0)} = k_0.
-  \label{eqn:k0rat}
+  C_\mathrm{air} = 4\epsilon_0 \frac{K(k_0)}{K(k'_0)}.
 \end{equation}
-
-The capacitance of a CPW can then be found by considering the contribution due
-to the propgation through the air and through the substrate. Wen gives the
-total capacitance as~\cite{Simons2004}
-\begin{equation}
-  C = 4\epsilon_0\epsilon_\mathrm{eff} k_0^{-1}
-\end{equation}
-where
-\begin{equation}
-  \epsilon_\mathrm{eff} = \frac{1 + \epsilon_\mathrm{r1}}{2}.
-  \label{eqn:epsilon_eff_approx}
-\end{equation}
-However, this is an approximation of the more accurate
-formula~\cite{Simons2004}
-\begin{equation}
-  \epsilon_\mathrm{eff} = 1 + q(\epsilon_\mathrm{r1} - 1)
-  \label{eqn:epsilon_eff}
-\end{equation}
-where $q$ is a filling factor, describing the proportion of the wave that
-travels inside the dielectric vs. inside the air. Note that we obtain
-eqn~\ref{eqn:epsilon_eff_approx} from eqn~\ref{eqn:epsilon_eff} by assuming $q =
-1/2$.
-
-The filling factor can be found by the aforementioned conformal mapping
-technique to be~\cite{Simons2004}
-\begin{equation}
-  q = \frac{1}{2}\frac{K(k_1)}{K(k'_1)}\frac{K(k'_0)}{K(k_0)}.
-  \label{eqn:fillfact}
-\end{equation}
-Here we have introduced
-\begin{equation*}
-  k_1 = \frac{\sinh (\pi S/ 4h_1)}{\sinh [\pi (S+2W)/4h_1]}
-\end{equation*}
-whose dependence clearly vanishes in the large $h_1$ limit. We can
-computationally show that
-\begin{equation}
-  R = \lim_{h_1 \to \infty} \frac{K(k_1)}{K(k'_1)} \approx 0.563.
-  \label{eqn:kratlim}
-\end{equation}
-Now, using eqns~\ref{eqn:k0def} and \ref{eqn:kratlim} we can re-write the
-filling factor as
-\begin{equation}
-  q = \frac{R}{2}k_0.
-\end{equation}
-
-\cm{Is this definitely true? If so, need to make the last line of this para more
-clear.}
-We will typically have $S\sim W$, therefore the $q=1/2$ approximation will  not
-usually be correct to an order of magnitude. It is better to take $q\sim
-\frac{1}{2} \times \frac{1}{2} \times \frac{1}{3} = \frac{1}{12}$.
-%We must have $k_0 < 1$ which makes the $q=1/2$ assumption pretty poor.
-
-We can now consider the impedance of the CPW~\cite{Simons2004}
+We can use this to find the effective permittivity 
 \begin{align}
-  %L &= \frac{\mu_0}{4} k_0\\
-  Z &= \frac{1}{C v_\mathrm{ph}} \\
-    &= \frac{1}{4}\sqrt{\frac{\mu_0}{\epsilon_0 \epsilon_\mathrm{eff}}}k_0 \\
-    &\approx \frac{30\pi}{\sqrt{\epsilon_\mathrm{eff}}}k_0 \, \mathrm{[Ohms]}.
+  \epsilon_\mathrm{eff} &= \frac{C_\mathrm{CPW}}{C_\mathrm{air}} \\
+    &= \frac{1+ \epsilon_\mathrm{r1}}{2} \\
 \end{align}
-In order to impedance match our CPW (at the standard value $Z=\SI{50}{\ohm}$) we
-can choose the permittivity of our substrate (to the extent that we have choice
-of substrate, as discussed below) and the waveguide geometry via choice of $S$
-and $W$.
+the phase velocity (using $c$ as the speed of light)
+\begin{align}
+  v_\mathrm{ph} &= \frac{c}{\sqrt{\epsilon_\mathrm{eff}}} \\
+    &= \frac{c}{\sqrt{(1 + \epsilon_\mathrm{r1})/2}}
+\end{align}
+and ultimately the impedance of the CPW
+\begin{align}
+  Z_0 &= \frac{1}{C_\mathrm{CPW} v_\mathrm{ph}} \\
+    &= \frac{30}{\sqrt{(\epsilon_\mathrm{r1}+1)/2}} \frac{K(k_0)}{K(k'_0)}.
+\end{align}
+\cm{Check this eqn. where does the 30 come from?}
+Note that the impedance of the waveguide has dependence only on the geometry in
+the form of the ratio $k_0$, and the relative permittivity of the
+substrate.~\cite{Simons2004} This means that as long as $k_0$ is held constant,
+the CPW can be tapered to change the size of the centre conductor, and hence
+control the region the field occupies (c.f. \myfigref{experiment:fig:CPWfield}).
+A typical CPW taper is illustrated in
+\myfigref{experiment:fig:CPWtaper}.~\cm{TODO: find a nice mw/ CPW cite for this}
 
-% Note that Simons goes into great detail about the various different
-% conductor-surrounded CPWs here, but we don't need to worry about those so
-% much. See page 47 of my notebook (2019-01-17) and mathematica notebook
-% 2019-01-18_* for information on how some of these terms can be neglected. We
-% can just use OG CPW's results
+\begin{figure}
+  \cm{TODO: find this fig.}
+  \caption{
+    \cm{A CPW taper example}
+  }
+  \label{experiment:fig:CPWtaper}
+\end{figure}
 
 \subsubsection{CPW Resonators}
 
