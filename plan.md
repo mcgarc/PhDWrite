@@ -4,9 +4,7 @@
 
 1. Introduction
   * Opening spiel: context and justification
-  * Producing cold atoms (important for context of atom trap literature review below)
-  * Producing cold molecules
-  * Further discussion of the need for chip traps
+  * Laser cooling of molecules (w/ some intro about atoms)
   * Structure of the report
 
 2. Atomic and molecular chip traps
@@ -27,7 +25,8 @@
   * Chips with multiple layers
   * Integrating trapping wires with a CPW
   * Design for a molecular chip trap
-  * Loading scheme
+  * Experimental design (with Kyle's CAD stuff)
+  * Loading scheme (graphs with currents, fields, etc)
 
 4. Outlook
   (Likely quite a short section on what we actually plan to do with the chips we
