@@ -119,76 +119,60 @@ A typical CPW taper is illustrated in
 
 \subsubsection{CPW Resonators}
 
-Andr\'e et al.'s \cm{Punctuation here?} original proposal suggested that a
-single photon inside a CPW resonator cavity could be coupled to a (cloud of)
-trapped molecule(s). In this section we will briefly outline the behaviour of a
-CPW resonator, and in the following sections we will outline whether this is
-feasible. % It isn't.
+Andre\'e et al.~\cite{Andre2006} proposed a molecule chip where the trap was
+embedded in a resonator formed from a CPW. In this subsubsection I will present
+the theory of CPW microwave resonators, with a view to determine whether or not
+such an architecture is feasible.
 
 It is common to describe resonators in terms of a quality
-factor~\cite{Jackson1975, 1125652}
+factor defined as~\cite{Jackson1975, 1125652} \cm{Need better cites here, how
+about my old waves textbook?}
 \begin{equation}
-  Q = \omega \frac{\text{Energy stored }}{\text{Power loss}}.
+  Q = 2\pi \frac{\text{Energy stored }}{\text{Energy loss}} =
+  2\pi\frac{U_\mathrm{max}}{U_\mathrm{lost}}.
+  \label{experiment:mw:eqn:Qdef}
 \end{equation}
-For our purposes we consider the enrgy stored to be the energy that we keep in
-the waveguide after traversing the resonatr's length $L$. Taking this to be the
-energy contributed by the electric field, this is
+This can be found by considering the energy stored in the electric component of
+the microwave field. The maximum energy for a field of amplitude $E_0$ stored in
+the field volume $V$ is
 \begin{equation}
-  \frac{\epsilon_0}{2} V \lvert A(L) \rvert^2
+  U_\mathrm{max} = \frac{\epsilon_0E_0^2}{2}V.
+  \label{experiment:mw:eqn:Umax}
 \end{equation}
-where $A(x)$ is the amplitude of the field at position $x$, and $V$ is the field
-volume.  The power loss is then all the dissipated power, which comes from
-considering the energy flow as per a Poynting vector~\cite{Jackson1975},
+Determining the power lost in one cycle requires us to introduce the complex
+propogation constant $\gamma = \alpha + i\beta$, where $\alpha$ is the
+attenuation constant and $\beta = 2\pi / \lambda$ is the wavenumber. Propogation
+through a waveguide induces evolution described by~\cm{TODO: good cite for this
++ Simons}
 \begin{equation}
-  \frac{\epsilon_0 c}{2L}V \left[ \lvert A(0) \rvert^2 - \lvert A(L) \rvert^2
-  \right] c/L.
+  E(z) = E(0)e^{-\gamma z}.
+  \label{experiment:mw:eqn:Eloss}.
 \end{equation}
+Taking the absolute value, it is clear that $\beta$ represents the evolving
+phase of the wave and $\alpha$ represents attentuation, the nature of which will
+be discussed in the next section.
 
-The loss in a waveguide is described in terms of a complex propogation
-constant~\cite{Collin2007} $\gamma$ such that the amplitude of the signal
-satisfies
+Dissipated energy over a round trip for cavity of length $L$ is given by
 \begin{equation}
-  A(x) = A(0)e^{-\gamma x}.
+  U_\mathrm{lost} = \left(U(z=0) - U(z=2L)\right)
 \end{equation}
-In order to describe the attenuation, look at the magnitude of this equation,
-writing $\gamma = \alpha +i\beta$,
-\begin{equation}
-  \lvert\frac{A(x)}{A(0)}\rvert = e^{-\alpha x}
-\end{equation}
-where $\alpha$ is called the attenuation constant. Taking logs it is clear that
-\begin{equation}
-  \alpha = \frac{1}{x}\log\lvert\frac{A(0)}{A(x)}\rvert\,\si{\neper}
-\end{equation}
-where we have used the `Neper'~(\si{\neper}) \cm{TODO: cite} as the natural unit
-to desribe loss. We will normally set $x$ to 
-\SI{1}{\meter} or one wavelength $\lambda$ so that loss is expressed in
-$\si{\neper \per \meter}/\mathrm{length}$ or $\si{\neper}/\lambda$.
-%\footnote{
-%The phase constant is the imaginary part of the propogation constant:
-%\begin{equation}
-%  \beta = \frac{2\pi}{\lambda}.
-%\end{equation}}
-%
-%
-%The Neper corresponds to approximately \SI{8.7}{\dB}, as can be seen readily by
-%comparing the loss formula in dB (which is log-base ten, with a factor of ten
-%and based on power, not amplitude)
-%\begin{align*}
-%  \alpha' &= \frac{1}{x}20\log_{10}\lvert \frac{A(0)}{A(x)} \rvert \si{\dB}\\
-%          &= \frac{20}{x}\log_{10}(e^{\alpha x}) \si{\dB} \\
-%          &= 20 \log_{10}(e) \alpha \si{\dB} \\
-%          &\approx 8.7 \left(\frac{\si{\dB}}{\si{\neper}}\right) \alpha.
-%\end{align*}
+where once again, the energy is that of the electric field.
+\begin{align}
+  U_\mathrm{lost} &= \frac{\epsilon_0 V}{2}\left( \left|E(z=0)\right|^2 -
+  \left|E(z=2L)\right|^2 \right) \\
+    &= \frac{\epsilon_0 E_0^2 V}{2}\left(1 - e^{-4\alpha L}\right)
+  \label{experiment:mw:eqn:Ulost}
+\end{align}
+where in the second equailty we have introduced the loss defined by
+\myeqref{experiment:mw:eqn:Eloss} and set $E(z=0)=E_0$.
 
-We therefore have quality factor
+Substituting
+\myeqrefs~\ref{experiment:mw:eqn:Umax}~and~\ref{experiment:mw:eqn:Ulost}~into~\ref{experiment:mw:eqn:Qdef},
+and setting the round trip length such that $2L=\lambda$, we have the quality
+factor for a typical cavity
 \begin{equation}
-  Q = \frac{\beta L}{e^{2\alpha L} -1}
+  Q = \frac{2\pi}{1 - e^{-2 \alpha \lambda}}.
 \end{equation}
-For a resonator of length $L = \lambda/2$, this yields
-\begin{equation}
-  Q = \frac{\pi}{e^{\alpha \lambda} - 1}.
-\end{equation}
-
 
 \subsubsection{Microwave loss modes}
 
