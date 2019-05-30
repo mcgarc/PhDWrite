@@ -105,7 +105,11 @@ used commonly in microwave engineering~\cm{TODO: Cite}}
 \end{align}
 Note that the impedance of the waveguide has dependence only on the geometry in
 the form of the ratio $k_0$, and the relative permittivity of the
-substrate.~\cite{Simons2004} This means that as long as $k_0$ is held constant,
+substrate.~\cite{Simons2004} This means that for any substrate we choose the
+value of $k_0$ can be chosen to fix the impedance at the standard $Z_0 =
+\SI{50}{\ohm}$.
+
+This means that as long as $k_0$ is held constant,
 the CPW can be tapered to change the size of the centre conductor, and hence
 control the region the field occupies (c.f. \myfigref{experiment:fig:CPWfield}).
 A typical CPW taper is illustrated in
@@ -184,43 +188,34 @@ that we will consider implementing at this stage.
 \subsubsection{Microwave loss modes}
 
 To understand whether we can achieve high enough quality factors to implement a
-resonator, we must consider all modes of loss from the system. For the initial
-investigation, we will consider a simple and common example system, where a gold
+resonator, we must consider all modes of loss from the system. For this initial
+discussion , we will consider a simple and common example system, where a gold
 CPW is fabricated on a high resistivity silicon substrate (HiRes Si). \cm{TODO:
-cite}
+cite} We will then extend this to other potential substrates.
 
 We can anticipate three main sources of loss: those from the dielectric, the
-conductor and radiative losses. \cite{Simons2004} The total loss is described
-by the summation of each of the contributing terms:
+conductor and radiative losses. The total loss is described by the summation of
+each of the contributing terms:
 \begin{equation}
   \alpha = \alpha_d + \alpha_c + \alpha_r,
 \end{equation}
-which are for dielectric, conductor and radiation losses respectively.
+which are for dielectric, conductor and radiation losses
+respectively.~\cite{Simons2004}
 
 \subsubsection*{Dielectric losses}
 
 Collins~\cite{Collin2007} tells us that the dielectric loss is given by
 \begin{equation}
   \alpha_d =
-  \frac{\pi}{\lambda_0}\frac{\epsilon_\mathrm{r1}}{\sqrt{\epsilon_\mathrm{eff}}}
-  q \tan \delta_e
+  \frac{\omega_0}{4c}\frac{\epsilon_\mathrm{r1}}{\sqrt{\epsilon_\mathrm{eff}}}
+  \tan \delta_e
 \end{equation}
-where $\lambda_0$ is the wavelength in free space, $\tan \delta_e$ is the
-dielectric loss tangent of the substrate, and $q$ is the filling factor from
-eqn~\ref{eqn:fillfact}.
-
-As per the above, $k_0$ is effectively fixed by our impedance matching, so the
-dielectric loss will be entirely a function of the properties of the material,
-going linearly with $\tan\delta_e$. For an order of magnitude comparison, we can
-use the above approxiamtion $q=1/12$, and consdier our target frequency
-$f\approx\SI{40}{\giga\hertz}$ for
-\begin{equation}
-  \alpha_d \sim 30\sqrt{2\epsilon_\mathrm{r1}}\tan\delta_e
-  \,[\si{\neper\per\meter}].
-\end{equation}
-
-For a typical substrate we will expect $\tan\delta_e\leq10^{-3}$ and
+where  $\tan \delta_e$ is the dielectric loss tangent of the substrate, for
+which we typically expect
+$\tan\delta_e\leq10^{-3}$ and
 $\epsilon_\mathrm{r1} \sim 10$ so the limit on the dielectric loss component is
+\cm{Need to mention $\omega_0/2\pi = \SI{40}{\giga\hertz}$ somewhere, and CHECK
+THIS IS CORRECT for both alpha and Q}
 \begin{equation}
   \alpha_d \leq \SI{0.1}{\neper\per\meter},
 \end{equation}
@@ -229,100 +224,48 @@ or as a Q-factor
   Q_d \geq 4000.
 \end{equation}
 
-Compare to the results of  Cao et al.~\cite{L.Cao2013}, who
-investigated loss in CPWs and other wavguides up to the \si{\tera\hertz}
-r\'egime. The measurement of dielectic loss for a $Z=\SI{100}{\ohm}$ shows the
-expected linear dependence of dielectric loss on frequency, and has value under
-our predicted bound at \SI{40}{\giga\hertz}. The results of their relevant
-numerical analysis are reproduced in Fig.~\ref{fig:CaoFig9}.
-
-% TODO I'm not sure it's actually worth having this fig...
-\begin{figure}
-  \ph{Cao Fig. 9 to go here}
-  \caption{Here we reproduce numerical results from Cao et al.~\cite{L.Cao2013}
-  who evaluate dielectric loss of various wvaguides up to the \si{\tera\hertz}
-  r\'egime. Their CPW geometry is not in the same high $h$ limit, and produces
-  $Z_0 = \SI{50}{\ohm}$, however the losses they achieve are similar to our
-  predictions.
-  }
-  \label{fig:CaoFig9}
-\end{figure}
-
 It may be possible to achieve lower losses at lower temperature, as the
 tangential dielectric loss has been shown to decrease by around an order of
-magnitude at around \SI{4}{\kelvin}. \cite{1717770}
+magnitude at around \SI{4}{\kelvin}.~\cite{1717770} However experimental
+limitations prevent us from implementing cooling of the chip.
 
 \subsubsection*{Conductor losses}
 
-Conductor losses are given by the following set of equations\cite{Simons2004}
-\begin{equation}
-  \alpha_c = \frac{R_c +R_g}{2Z_0}
-\end{equation}
-where $R_c$ describes the series resistance of the centre strip
+\cm{TODO: this whole para needs a cite}
+Defining the conductor thickness as $t$, we can describe the conductor losses in
+terms of the series resistance of the centre conductor
 \begin{equation}
   R_c = \frac{R_s}{4 S(1-k_0^2)K^2(k_0)}\left[ \pi + \log\left(\frac{4\pi
   S}{t}\right) - k_0\log\left(\frac{1+k_0}{1-k_0}\right) \right],
 \end{equation}
-and $R_g$ is the corresponding series resistance of the ground place
+and the corresponding series resistance of the ground plane
 \begin{equation}
   R_s = \frac{k_0 R_s}{4S(1-k_0^2)K^2(k_0)}\left[\pi +
   \log\left(\frac{4\pi(S+2W)}{t}\right) -
-  \frac{1}{k_0}\log\left(\frac{1+k_0}{1-k_0}\right)\right]
+  \frac{1}{k_0}\log\left(\frac{1+k_0}{1-k_0}\right)\right].
 \end{equation}
-(note that we cannot take a $t\to 0$ as this would physically equate to there
-being no conductor and hence no circuit). The skin effect surface is
+The conductor attentuation constant is
 \begin{equation}
-  R_s = \frac{1}{\delta\sigma}
+  \alpha_c = \frac{R_c +R_g}{2Z_0}.
 \end{equation}
-with $\sigma$ being the conductivity of the conductor, and
-\begin{equation}
-  \delta = \sqrt{\frac{2}{\omega\mu_0\mu_r\sigma}}
-\end{equation}
-being the skin depth at the target frequncy.
 
-% TODO
-% A few more bits here:
-%  When is Rs valid? (Relation of t and skin-depth (delta))
-%  Actual dependencies worth nothing? a propto sqrt(f) , sim. for sigma?
-
-
-As above, we will normally fix $k_0$ so as to choose the waveguide's impedance
-($Z_0$). Consider an example case of gold conductor on a silicon substrate. As
-per CPW\cite{1127105}  we will have $\epsilon_\mathrm{r1} \approx 10$ so require $k_0
-\approx 1/3$ to achieve impedance matching at $Z_0 = \SI{50}{\ohm}$. The only
-free parameters are now the conductor thickness $t$, and the size of the centre
-width conductor $S$. This is illustrated in Fig.~\ref{fig:conductorQ}.
+Consider an example case of gold conductor on a silicon substrate. As per
+Wen~\cite{1127105}  we will have $\epsilon_\mathrm{r1} \approx 10$ so require
+$k_0 \approx 1/3$ to achieve impedance matching at $Z_0 = \SI{50}{\ohm}$. The
+only free parameters are now the conductor thickness $t$, and the size of the
+centre width conductor $S$. This is illustrated in Fig.~\ref{fig:conductorQ}.
 
 \begin{figure}
-  \includegraphics[width=\textwidth]{./figs/conductor_Q.pdf}
+  \cm{This fig. needs to be re-drawn with fixed maths, or maybe even just
+  replaced with a table}
+  %\includegraphics[width=\textwidth]{./figs/conductor_Q.pdf}
   \caption{Quality factor due to conductor losses for a CPW of fixed impedance
   $Z_0=\SI{50}{\ohm}$ for varying centre conductor width ($S$) with conducotr
   thickness as a parameter.}
   \label{fig:conductorQ}
 \end{figure}
 
-Typically we will expect a thickness of no more than a few hundred nanometres
-\cm{more with electroplating! need to check all my numbers},
-and the centre conductor to have a width of only a few microns. Setting
-$t=\SI{100}{\nano\metre}$ and $S=\SI{1}{\micro\metre}$ we will have
-\begin{equation}
-  \alpha_c \approx \SI{600}{\neper \per \meter}.
-\end{equation}
-% sigma Au source: https://hypertextbook.com/facts/2004/JennelleBaptiste.shtml
-This completely dominates the dielectric loss, and is far larger than we can
-stand. At lower temperature (a few Kelvin), the conductivity of gold will
-increase by a factor of 100 which would improve the loss to
-% TODO Would probably be good to have an actual cite here.
-\begin{equation}
-  \alpha_c \approx \SI{60}{\neper \per \meter}.
-\end{equation}
-
-%This corresponds to $Q\sim5$. It appears the conductor losses are going
-%to be the dominant source of decay in our waveguide. Other successful CPWs and
-%CPW resonators at such high frequencies have used a significantly larger
-%conductor areas~\cite{1127105, doi:10.1063/1.3010859} or have had control of
-%substrate thickness~\cite{L.Cao2013} so that impedance does not only depend on
-%$k_0$ but also on $h$.
+\cm{TODO: summary of expected results for the $Q_c$.}
 
 \subsubsection*{Radiative losses}
 
@@ -414,8 +357,10 @@ Also of importance from these results is that the losses are very high on the
   around a thin region, so we can still pump in a lot of power that we know will
   be dissipated and then drive transitions in trapped molecules directly.}
 
-\subsection{Multi-layer chip}
+\subsection{Chips with multiple layers}
 
-\subsection{Trapping wire design}
+  \subsection{Design for a molecular chip trap}
 
-\subsection{Design for a molecule chip trap}
+\subsection{Experimental design}
+
+  \subsection{Loading scheme}
