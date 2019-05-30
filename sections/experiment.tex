@@ -95,12 +95,14 @@ the phase velocity (using $c$ as the speed of light)
   v_\mathrm{ph} &= \frac{c}{\sqrt{\epsilon_\mathrm{eff}}} \\
     &= \frac{c}{\sqrt{(1 + \epsilon_\mathrm{r1})/2}}
 \end{align}
-and ultimately the impedance of the CPW
+and ultimately the impedance of the CPW\footnote{This result makes use of the
+approximation $\sqrt{\mu_0/\epsilon_0}\approx120\pi\mathrm{[Ohms]}$, which is
+used commonly in microwave engineering~\cm{TODO: Cite}}
 \begin{align}
   Z_0 &= \frac{1}{C_\mathrm{CPW} v_\mathrm{ph}} \\
-    &= \frac{30}{\sqrt{(\epsilon_\mathrm{r1}+1)/2}} \frac{K(k_0)}{K(k'_0)}.
+    &= \frac{30 \pi}{\sqrt{(\epsilon_\mathrm{r1}+1)/2}} \frac{K(k_0)}{K(k'_0)}
+    \mathrm{[Ohms]}
 \end{align}
-\cm{Check this eqn. where does the 30 come from?}
 Note that the impedance of the waveguide has dependence only on the geometry in
 the form of the ratio $k_0$, and the relative permittivity of the
 substrate.~\cite{Simons2004} This means that as long as $k_0$ is held constant,
@@ -121,58 +123,63 @@ A typical CPW taper is illustrated in
 
 Andre\'e et al.~\cite{Andre2006} proposed a molecule chip where the trap was
 embedded in a resonator formed from a CPW. In this subsubsection I will present
-the theory of CPW microwave resonators, with a view to determine whether or not
-such an architecture is feasible.
+the implementation and theory of CPW microwave resonators, with a view to
+determine whether or not such an architecture is feasible.
 
-It is common to describe resonators in terms of a quality
-factor defined as~\cite{Jackson1975, 1125652} \cm{Need better cites here, how
-about my old waves textbook?}
+A microwave resonator can be formed from a section of CPW that is
+capacitively coupled~\cm{TODO: cite} to another driving segment. The properties
+of such a resonstor are deterimined by the geometry, including its length and
+the nature of the capacitor structures, which can be made up of gaps, or
+overlapping fingers. An example of such a resonator is shown in
+\myfigref{experiment:fig:resonator}.~\cite{doi:10.1063/1.3010859} \cm{also cite
+some textbook on resonators more generally?}
+
+\begin{figure}
+  \cm{TODO: Gopel fig. 2}
+  \caption{
+    \cm{A CPW resonator, note the presence of tapers as per the prev. fig.}
+  }
+  \label{experiment:fig:resonator}
+\end{figure}
+
+A CPW resonator of length $L$ has fundamental angular frequency
 \begin{equation}
-  Q = 2\pi \frac{\text{Energy stored }}{\text{Energy loss}} =
-  2\pi\frac{U_\mathrm{max}}{U_\mathrm{lost}}.
+  \omega_0 = \frac{\pi v_\mathrm{ph}}{L} = \frac{\pi
+  c}{\sqrt{\epsilon_\text{eff}} L}
+\end{equation}
+
+To determine the feasibility of implementing such a resonator, the quality
+factor should be considered. By definition the quality factor of a perfect
+damped resonator is propotional to the ratio of energy stored and energy lost
+per cycle, that is~\cm{cite some standard textbook}
+\begin{equation}
+  Q = 2\pi\frac{U_\mathrm{max}}{U_\mathrm{lost}}.
   \label{experiment:mw:eqn:Qdef}
 \end{equation}
-This can be found by considering the energy stored in the electric component of
-the microwave field. The maximum energy for a field of amplitude $E_0$ stored in
-the field volume $V$ is
+It can readily be shown that the quality factor can be expressed in terms of the
+attenuation constant $\alpha$ and the resonant frequency $\omega_0$, so that
 \begin{equation}
-  U_\mathrm{max} = \frac{\epsilon_0E_0^2}{2}V.
-  \label{experiment:mw:eqn:Umax}
+  Q = \frac{\omega_0}{2c\alpha}.
+  \label{experiment:mw:eqn:Qalpha}
 \end{equation}
-Determining the power lost in one cycle requires us to introduce the complex
-propogation constant $\gamma = \alpha + i\beta$, where $\alpha$ is the
-attenuation constant and $\beta = 2\pi / \lambda$ is the wavenumber. Propogation
-through a waveguide induces evolution described by~\cm{TODO: good cite for this
-+ Simons}
-\begin{equation}
-  E(z) = E(0)e^{-\gamma z}.
+It is desirable for the quality factor to be $Q=1/2$, for which value the
+resonator is said to be critically damped.
+
+The attentuation constant is defined as the real part of the propogation
+constant $\gamma = \alpha + i\beta$, where $\beta = 2\pi / \lambda$ is the
+wavenumber.  Propogation through a waveguide induces
+evolution described by\begin{equation}
+  (z) = E(0)e^{-\gamma z}.
   \label{experiment:mw:eqn:Eloss}.
 \end{equation}
-Taking the absolute value, it is clear that $\beta$ represents the evolving
-phase of the wave and $\alpha$ represents attentuation, the nature of which will
-be discussed in the next section.
+The nature of this attenuation constant will be discussed in the following
+section.
 
-Dissipated energy over a round trip for cavity of length $L$ is given by
-\begin{equation}
-  U_\mathrm{lost} = \left(U(z=0) - U(z=2L)\right)
-\end{equation}
-where once again, the energy is that of the electric field.
-\begin{align}
-  U_\mathrm{lost} &= \frac{\epsilon_0 V}{2}\left( \left|E(z=0)\right|^2 -
-  \left|E(z=2L)\right|^2 \right) \\
-    &= \frac{\epsilon_0 E_0^2 V}{2}\left(1 - e^{-4\alpha L}\right)
-  \label{experiment:mw:eqn:Ulost}
-\end{align}
-where in the second equailty we have introduced the loss defined by
-\myeqref{experiment:mw:eqn:Eloss} and set $E(z=0)=E_0$.
-
-Substituting
-\myeqrefs~\ref{experiment:mw:eqn:Umax}~and~\ref{experiment:mw:eqn:Ulost}~into~\ref{experiment:mw:eqn:Qdef},
-and setting the round trip length such that $2L=\lambda$, we have the quality
-factor for a typical cavity
-\begin{equation}
-  Q = \frac{2\pi}{1 - e^{-2 \alpha \lambda}}.
-\end{equation}
+In reality, the quality factor has some dependence on the capacitive coupling
+into the resonator.~\cite{doi:10.1063/1.3010859} Broadly speaking, a higher
+coupling capacitance corresponds to a wider resonance peak, however as we shall
+show in the next section, this is not the limiting factor of any CPW resonator
+that we will consider implementing at this stage.
 
 \subsubsection{Microwave loss modes}
 
