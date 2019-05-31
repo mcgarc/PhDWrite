@@ -30,79 +30,75 @@ molecules below the Doppler limit~\cite{Truppe2017}, coherently control the
 states of such molecules~\cite{PhysRevLett.120.163201} and load molecules into a
 tweezer array.~\cite{Anderegg2019}
 
+\cm{TODO: redo this}
 The groundwork has been laid to produce a molecular chip trap. In the following
-subsections I will discuss further the field of ultra-cooling of atoms and
-molecules, and the need for a molecule chip. The rest of the report will focus
-on chip trapping, the design of our molecule chip and the outlook for the
-remainder of the project.
+subsections I will discuss further the field of ultra-cooling of atoms molecules, and
+the need for a molecule chip. The rest of the report will focus on chip
+trapping, the design of our molecule chip and the outlook for the remainder of
+the project.
 
-%%\cm{
-%%  The original proposal for a microfabricated molecule chip trap by Andr\'e et
-%%al.~\cite{Andre2006} suggested that an integrated coplanar waveguide (CPW) could
-%%be used to drive microwave transitions in trapped molecules. In this document,
-%%we will review the feasibility of this proposal for a simple single-layer chip.
-%%}
-%%
-%%It has been proposed~\cite{Andre2006} that a microfabricated chip trap could be
-%%used to constrain the movement of cold molecules in proximity to a microwave
-%%resonator, allowing direct manipulation of the molecule's rotational energy
-%%structure. Recent work into cooling molecules below the Doppler
-%%limit~\cite{Truppe2017} suggests that such a ``molecule chip'' is now realisable.
-%%Such a chip would be similar to existing atomic
-%%counterparts~\cite{RevModPhys.79.235, 2011Ac}, forming a robust environment for
-%%investigation of quantum effects. Applications are proposed in a variety of
-%%quantum settings, including quantum information~\cite{Folman2000} and
-%%atomic clocks~\cite{RAMIREZMARTINEZ2011247}. Chips are also candidates for
-%%building hybrid systems~\cite{Nirrengarten2006}.
-
-%A chip trap uses currents (voltages) on the surface of an integrated circuit to
-%form a magnetic (electric) field above its surface that can be used to constrain
-%the movement of particles in its vicinity. Such devices have been used in
-%experiments on atoms, showing promise of providing a compact and robust
-%environment for investigating quantum effects\cite{RevModPhys.79.235, 2011Ac}.
-%Applications have been proposed in a variety of quantum settings , especially with technologies such as
-%superconducting qubits\cite{Wallraff2004} whose features of high controllability
-%but short decoherence times balance with the atomic system's properties of low
-%controllability and long coherence times.
-%
-%An analogous device using molecules instead of atoms, the molecule chip, was
-%originally proposed in 2006 by Andr\'e et al. \cite{Andre2006}. The molecule
-%chip would operate using electric dipole transitions between the rotational
-%energy levels of the molecule, as opposed to atom chips, which rely on magnetic
-%dipole transitions between hyperfine sub-levels\cite{2011Ac}. This offers an
-%increase in the coupling strength of several orders of magnitude, which could
-%result in a significant increase in system controllability and coherence times.
-%
-%Cold molecule technologies have traditionally been much more challenging to
-%develop than their equivalents in cold atoms due to the more complex energy
-%structure typical of molecules\cite{Andre2006}, but recent developments in cold molecule
-%sources\cite{Truppe2017} suggest that the creation of a molecule chip is now
-%achievable.
-%
-%In this report, we will present the progress of an ongoing project to design and
-%build a molecule chip based on the proposal of Andr\'e et al.\cite{Andre2006}
-%and loaded from  the cold molecule source described by Truppe et
-%al.\cite{Truppe2017}. We will begin by presenting a review of Andr\'e et al.'s
-%proposal, and then move on to describe chip trapping in more detail. Different
-%trap types will be discussed, before we cover our proposal and explore how it
-%could be used as a molecule trap.
-
-\subsection{Laser cooling of molecules}
+\subsection{Laser cooling of atoms and molecules}
 \label{intro:lasercool}
 
-\cm{
-%
-Start with atoms, then move on to molecules
-%
-Note that every one \cm{check this is the case} of the above loading methods for
-chips begins with an atomic MOT. Whilst there do exist atom~\cite{Dekker2000},
-and even molecule chips~\cite{Bethlem2000. Meek2008} that don't rely on a MOT,
-it seems that having a molecular MOT will vastly increase the loading schemes
-available to use. At the time of Andr\'e's proposal~\cite{Andre2006}, this had
-not been achieved, but today molecular MOTs, and even sub-Doppler cooling of
-molecules has been achieved, as we will discuss below.
-%
-}
+A brief discussion of laser cooling is presented here. More detailed discussion
+can be found in references~\cite{Metcalf1999,RevModPhys.70.721,McCarron_2018}.
+
+The basic principle of laser cooling of atoms is to deflect atoms from their
+trajectory by transfer of momentum from the laser light (radiation
+pressure).~\cite{RevModPhys.70.721} Consider an atom with velocity $v$, and a
+pre-chosen cooling transition between two internal states.  When such an atom
+encounters a counter-propogating resonant photon absorption can take place,
+reducing the atom's momentum. The atom can re-emit the photon in any direction,
+but on average the resulting atom will be slowed from before the encounter.
+
+Of course, the assumption of a two-level system is a vast simplification.  A key
+example is sodium, where the hyperfine transition $3S_{1/2}\, (F=2) \rightarrow
+3P_{3/2}\, (F'=3)$ transition was used to demonstrate this technique. However,
+since the excited states of sodium have decay channels into $F=1$, it is
+possible for atoms to fall into this state and fall out of resonance with the
+cooling transition.  This can be overcome by introducing repumping light to
+transfer atoms in dark states back into light states.~\cite{RevModPhys.70.721}
+
+Most atom sources produce a beam, with typical velocities of a few
+\SI{100}{\metre\per\second}.~\cite{Metcalf1999,} In order to induce resonant
+transitions, the Doppler shift of the light as seen by the atoms must be
+accounted for by detuning the cooling light. As the atoms are slowed they will
+move out of resonance with the transition.~\cite{RevModPhys.70.721} This can be
+overcome by introducing chriped light~\cite{Prodan1984} or varying the
+transition frequency by control of an external splitting
+field~\cite{PhysRevLett.48.596}.
+
+An optical molasses can be formed from a pair of counter-propogating laser
+beams, both red-detuned from the cooling transition. If the atom moves towards
+either beam it will move into resonace and experience a pressure back towards
+the trap centre.~\cite{} A set of three perpendicular optical molasses can
+cool an atom in each direction, reducing the temperature but not providing any
+trapping force. This technique is known as Doppler cooling~\cite{}. Further
+cooling can be achieved in an optical molasses by choosing the polarization of
+the light such that there is a polarization gradient. This sub-Doppler cooling
+allows atoms to be cooled to the lowest limit, the recoil temperature of the
+atoms (typically a few \si{\micro\kelvin}).~\cm{TODO: CITE AND CHECK ACCURACTY}
+
+Trapping can be achieved (for example) by optically pumping the atoms into a
+weak-field seeking state and aplying a magnetic field to form either a
+quadrupole~\cite{} or Ioffe-Pritchard~\cite{PhysRevLett.51.1336} trap. A
+quadrupole trap combined with an optical molasses forms a magneto-optical trap
+(MOT)~\cite{PhysRevLett.59.2631}. The MOT has become a fundamental component of
+many cold atom experiments.
+
+\cm{Other things, state control, dipole traps, evaporative cooling, tweezers, chips?}
+
+The techniques of laser slowing atoms are readily applied to molecules, however
+their rich energy structure introduces additional complications, meaning that
+there are a restricted number of molecules which are receptive to direct laser
+cooling~\cite{DiRosa2004}.
+
+As well as directly laser cooling molecules, work has been conducted into
+producing cold \cm{$RbCs$} molecules from pre-cooled molecules. Atoms trapped in
+an optical lattice can be combined by Feshbach
+resonance~\cite{PhysRevA.85.032506, PhysRevA.89.033604} and then transfered into
+their ro-vibrational ground state by stimulated Raman adiabatic passage
+(STIRAP).~\cite{PhysRevLett.113.255301, RevModPhys.70.1003}.
 
 \subsection{Structure of this report}
 
