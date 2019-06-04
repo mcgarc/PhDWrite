@@ -72,7 +72,7 @@ ratio~\cite{1127105, Simons2004}
   k_0 = \frac{S}{S+2W} = \sqrt{1-{k'_0}^2}
   \label{eqn:k0def}
 \end{equation}
-where the second equality defines $k'$.
+where the second equality defines $k'_0$.
 %
 Wen demonstrated~\cite{1127105} that a conformal mapping can be used to describe
 a CPW as a transmission line~\cite{Jackson1975} in terms of elliptic integrals
@@ -130,11 +130,11 @@ embedded in a resonator formed from a CPW. In this subsubsection I will present
 the implementation and theory of CPW microwave resonators, with a view to
 determine whether or not such an architecture is feasible.
 
-A microwave resonator can be formed from a section of CPW that is
-capacitively coupled~\cm{TODO: cite} to another driving segment. The properties
-of such a resonstor are deterimined by the geometry, including its length and
-the nature of the capacitor structures, which can be made up of gaps, or
-overlapping fingers. An example of such a resonator is shown in
+A microwave resonator can be formed from a section of CPW that is capacitively
+coupled to another driving segment.~\cite{Day2003} The properties of such a
+resonstor are deterimined by the geometry, including its length and the nature
+of the capacitor structures, which can be made up of gaps, or overlapping
+fingers. An example of such a resonator is shown in
 \myfigref{experiment:fig:resonator}.~\cite{doi:10.1063/1.3010859} \cm{also cite
 some textbook on resonators more generally?}
 
@@ -161,24 +161,19 @@ per cycle, that is~\cm{cite some standard textbook}
   \label{experiment:mw:eqn:Qdef}
 \end{equation}
 It can readily be shown that the quality factor can be expressed in terms of the
-attenuation constant $\alpha$ and the resonant frequency $\omega_0$, so that
+attenuation constant $\alpha$ (defined below) and the resonant frequency
+$\omega_0$, so that~\cite{Simons2004}
+% Simons pg. 409-410
 \begin{equation}
   Q = \frac{\omega_0}{2c\alpha}.
   \label{experiment:mw:eqn:Qalpha}
 \end{equation}
-It is desirable for the quality factor to be $Q=1/2$, for which value the
-resonator is said to be critically damped.
+It is desirable to maximise $Q$ (minimise damping). It has been shown that CPWs
+with $Q$ on the order of $1000$ can be fabricated~\cm{Need a few decent cites
+here}. Below we will discuss whether this can be achieved for a multi-layer,
+non-superconducting chip.
 
-The attentuation constant is defined as the real part of the propogation
-constant $\gamma = \alpha + i\beta$, where $\beta = 2\pi / \lambda$ is the
-wavenumber.  Propogation through a waveguide induces
-evolution described by\begin{equation}
-  (z) = E(0)e^{-\gamma z}.
-  \label{experiment:mw:eqn:Eloss}.
-\end{equation}
-The nature of this attenuation constant will be discussed in the following
-section.
-
+% Talk about "insertion loss" which is in Simon's 12. (pg. 410??)
 In reality, the quality factor has some dependence on the capacitive coupling
 into the resonator.~\cite{doi:10.1063/1.3010859} Broadly speaking, a higher
 coupling capacitance corresponds to a wider resonance peak, however as we shall
@@ -187,53 +182,81 @@ that we will consider implementing at this stage.
 
 \subsubsection{Microwave loss modes}
 
-To understand whether we can achieve high enough quality factors to implement a
-resonator, we must consider all modes of loss from the system. For this initial
-discussion , we will consider a simple and common example system, where a gold
-CPW is fabricated on a high resistivity silicon substrate (HiRes Si). \cm{TODO:
-cite} We will then extend this to other potential substrates.
+\cm{Need cites in this subsubsection}
 
-We can anticipate three main sources of loss: those from the dielectric, the
-conductor and radiative losses. The total loss is described by the summation of
-each of the contributing terms:
+The attentuation constant is defined as the real part of the propogation
+constant $\gamma = \alpha + i\beta$, where $\beta = 2\pi / \lambda$ is the wave
+number.  Propogation through a waveguide induces evolution described by
 \begin{equation}
-  \alpha = \alpha_d + \alpha_c + \alpha_r,
+  \widetilde{E}(z) = \widetilde{E}(0)e^{-\gamma z}.
+  \label{experiment:mw:eqn:Eloss}.
 \end{equation}
-which are for dielectric, conductor and radiation losses
-respectively.~\cite{Simons2004}
+Taking the absolute value, the amplitude falls off as
+\begin{equation}
+  E(z) = E(0)e^{-\alpha z}
+\end{equation}
+where the attenuation is given by the sum of attenuation from three loss modes:
+dielectric loss ($\alpha_d$), conductor loss ($\alpha_c$) and radiation loss
+($\alpha_r$). The propagation constant can be written as
+\begin{equation}
+  \alpha = \alpha_d + \alpha_c + \alpha_r.
+\end{equation}
+
+It is instructive to consider the quality factor of a resonator for one loss
+mechanism, ignoring the effect of the others. These are given as
+\begin{equation}
+  Q_i = \frac{\omega_0}{2c\alpha_i}
+\end{equation}
+with the total quality factor being
+\begin{equation}
+  Q = \left(\sum Q_i^{-1} \right)^{-1}.
+\end{equation}
+
+In the following \cm{subsub?}sections, we will discuss the quality factor from
+each loss mode and determine the value of $Q$ that we expect to be able to
+achieve. These propagation constants can be determined by use of the conformal
+mapping technique as discussed in references~\cite{1127105}
+and~\cite{Collin2007}.
 
 \subsubsection*{Dielectric losses}
 
-Collins~\cite{Collin2007} tells us that the dielectric loss is given by
+Dielectric losses can be described in terms of the dielectric loss tangent of
+the substrate ($\tan \delta_e$) ~\cite{Collin2007}
 \begin{equation}
   \alpha_d =
   \frac{\omega_0}{4c}\frac{\epsilon_\mathrm{r1}}{\sqrt{\epsilon_\mathrm{eff}}}
-  \tan \delta_e
+  \tan \delta_e.
 \end{equation}
-where  $\tan \delta_e$ is the dielectric loss tangent of the substrate, for
-which we typically expect
-$\tan\delta_e\leq10^{-3}$ and
+A typical microwave substrate is chosen to minimise these dielectric losses. As
+such we would expect $\tan\delta_e\leq10^{-3}$ and
 $\epsilon_\mathrm{r1} \sim 10$ so the limit on the dielectric loss component is
-\cm{Need to mention $\omega_0/2\pi = \SI{40}{\giga\hertz}$ somewhere, and CHECK
-THIS IS CORRECT for both alpha and Q}
+%
+\cm{Need to mention $\omega_0/2\pi = \SI{40}{\giga\hertz}$}
+%
 \begin{equation}
-  \alpha_d \leq \SI{0.1}{\neper\per\meter},
+  \alpha_d \leq \SI{0.9}{\neper\per\meter},
 \end{equation}
 or as a Q-factor
 \begin{equation}
-  Q_d \geq 4000.
+  Q_d \geq 460.
 \end{equation}
 
-It may be possible to achieve lower losses at lower temperature, as the
-tangential dielectric loss has been shown to decrease by around an order of
-magnitude at around \SI{4}{\kelvin}.~\cite{1717770} However experimental
-limitations prevent us from implementing cooling of the chip.
+Higher $Q$ is achievable depending on the substrate that is chosen. For example,
+aluminium nitride~\cite{mw101} \cm{Probably need to double check this cite
+appears sensibly} ($\epsilon_\mathrm{eff}=5$, $\tan\delta_e = 5\times10^{-4}$)
+or high-resistivity silicon (HiRes Si)~\cite{1717770}
+($\epsilon_\mathrm{eff}=5$, $\tan\delta_e =2\times10^{-4}$) are both good
+choices in the high-frequency r\'egime.  Dielectric quality is usually higher
+below room temperature, but experimental limitations prevent us from cooling the
+chip at this stage.
+% https://www.microwaves101.com/encyclopedias/aluminum-nitride
+% https://www.microwaves101.com/encyclopedias/hard-substrate-materials
 
 \subsubsection*{Conductor losses}
 
-\cm{TODO: this whole para needs a cite}
-Defining the conductor thickness as $t$, we can describe the conductor losses in
-terms of the series resistance of the centre conductor
+Conductor losses arise due to dissipation in the centre conductor and ground
+plane of the CPW.~\cite{Simons2004} We define the height of these structures to
+be $t$, so that the series resistance of the centre conductor is
 \begin{equation}
   R_c = \frac{R_s}{4 S(1-k_0^2)K^2(k_0)}\left[ \pi + \log\left(\frac{4\pi
   S}{t}\right) - k_0\log\left(\frac{1+k_0}{1-k_0}\right) \right],
@@ -244,38 +267,52 @@ and the corresponding series resistance of the ground plane
   \log\left(\frac{4\pi(S+2W)}{t}\right) -
   \frac{1}{k_0}\log\left(\frac{1+k_0}{1-k_0}\right)\right].
 \end{equation}
-The conductor attentuation constant is
+The conductor attenuation constant is
 \begin{equation}
   \alpha_c = \frac{R_c +R_g}{2Z_0}.
 \end{equation}
 
-Consider an example case of gold conductor on a silicon substrate. As per
-Wen~\cite{1127105}  we will have $\epsilon_\mathrm{r1} \approx 10$ so require
-$k_0 \approx 1/3$ to achieve impedance matching at $Z_0 = \SI{50}{\ohm}$. The
-only free parameters are now the conductor thickness $t$, and the size of the
-centre width conductor $S$. This is illustrated in Fig.~\ref{fig:conductorQ}.
+Consider an example case of gold conductor on HiRes Si substrate. Gold has
+resistivity $\rho_\mathrm{Au} = \SI{2.4E-8}{\ohm\metre}$ at room temperature,
+and as above, we will have $\epsilon_\mathrm{r1} \approx 10$. This requires $k_0
+\approx 1/3$ to achieve impedance matching at $Z_0 = \SI{50}{\ohm}$. The only
+free parameters are the conductor thickness $t$, and the size of the centre
+width conductor $S$, both of which must be maximised to reduce loss. Typical
+values for the smallest CPWs will be $S\sim\SI{1}{\micro\metre}$, where
+this heigh can be achieved by electroplating (see section \cm{??}). Typical
+conductor losses are therefore expected to be off order
+\begin{equation}
+  \alpha_c \sim \SI{400}{\neper\per\metre}
+\end{equation}
+or as a quality factor
+\begin{equation}
+  Q_c \sim 1.
+\end{equation}
 
-\begin{figure}
-  \cm{This fig. needs to be re-drawn with fixed maths, or maybe even just
-  replaced with a table}
-  %\includegraphics[width=\textwidth]{./figs/conductor_Q.pdf}
-  \caption{Quality factor due to conductor losses for a CPW of fixed impedance
-  $Z_0=\SI{50}{\ohm}$ for varying centre conductor width ($S$) with conducotr
-  thickness as a parameter.}
-  \label{fig:conductorQ}
-\end{figure}
-
-\cm{TODO: summary of expected results for the $Q_c$.}
+Conductor losses for gold CPWs are large, but it is possible to use
+superconductors to produce resonators with $Q$ on the order of
+$1000$.~\cite{Booth1999, Wallraff2004} However as discussed above, cooling of
+the chip is not currently possible due to experimental restrictions, and hence
+we are not able to make use of superconductors to reach these high quality
+factors.
 
 \subsubsection*{Radiative losses}
 
-The losses due to radiation are of similar order to the dielectric losse. Cao et
+\cm{Rewrite this: losses were reported by \cite{81658} and they are
+significantly smaller than the conductor losses so don't worry about it.}
+
+The losses due to radiation are of similar order to the dielectric losses. Cao et
 al.~\cite{L.Cao2013} report a loss of $\alpha_r = \SI{0.43}{\decibel \per \milli
 \meter}$ at $f=\SI{1}{\tera\hertz}$. It is known that~\cite{81658} $\alpha
 \propto f^3$; which means we can expect $\alpha_r \sim 10^{-2}$ \cm{units?} at
 our frequencies.
 
 \subsubsection*{Comparison of loss mechanisms}
+
+\cm{Rewrite: we're basically completely screwed and can't make a resonator
+without superconductors. This also means we can't integrate an electrostatic
+trap as Andre planned but we didn't want to do that anyway. We can also still
+make a waveguide and put mws down it, so can achieve state control.}
 
 Clearly the conductor losses will be the dominant form of signal attenuation. We
 have assumed a gold conductor, and even at low temperatures we anticipate loss
@@ -292,75 +329,16 @@ using the CPW to directly drive microwave transitions in trapped molecules, as
 we will still be able to pass signal through the waveguide without the need to
 construct a waveguide.
 
-% Incorporate both the below as subsections into new section, something like
-% outlook? / what we would like to do after this maybe if possible
-
-\subsubsection{Losses for various dielectric substrates}
-
-It has been assumed until this point that the substrate we will be using is
-silicon, however for the purposes of a molecule chip, that may not be the case.
-It may be advantageous to fabricate the CPW on an insulating layer, such that
-DC trapping wires can be positioned directly beneath the CPW, such that the trap
-centre is in the region where the microwave field is strongest.
-
-There are various possible methods of fabricating such a device, one that was
-shown to be succesful by B\"ohi et al.~\cite{Boehi2009} is to spin coat
-polyimide onto a silicon chip with trapping wires, before using photolithography
-to lay down the CPW. It may also be possible to use other materials as the
-insulating layer, such as aluminium nitride, which is well-known to be a good
-substrate for microwave components \cm{TODO: cite} or silicon nitride, which is
-commonly used as an insulating layer in microfabrication. \cm{TODO: cite
-conversation with VJ?}.
-
-A first estimate towards the feasibility of realising a CPW resonator on such a
-substrate is to estimate the losses that will be achieved for a single-layer CPW
-structure, with $h_1 \gg S$. Applying the formulae for loss as discussed in the
-previous section, we can find the various loss modes for the materials of
-interest. The results of these equations are presented in
-table~\ref{table:losses}.
-
-\begin{table}[h]
-  %\begin{tabularx}{\textwidth}{lp{0.25\linewidth}p{0.1\linewidth}p{0.1\linewidth}}
-  \begin{tabularx}{\textwidth}{lXXX}
-    Substrate &
-    Conductor loss -- $S=\SI{10}{\micro\meter}$ (\si{\neper \per \milli \meter})
-    & Conductor loss -- $S=\SI{1}{\micro\meter}$ (\si{\neper \per \milli \meter})
-    & Dielectric loss ($10^{-4}\si{\neper \per \milli \meter}$) \\
-    \hline
-    HiRes Si & 0.19 & 1.36 & 6.9 \\
-    Polyimide & 0.07 & 0.46 & 46 \\
-    Aluminium nitride & 0.05 & 0.41 & 3.8
-  \end{tabularx}
-    \caption{
-      \cm{Is it OK for me to have these cites here (and only here?)} The sources
-      of loss modes for HiRes Si~\cite{1717770, 517417},
-      polyimide~\cite{5734805}  and aluminium nitride~\cite{1666171} \cm{find
-      bettter cite here}, for CPWs which are impedance matched at \SI{50}{\ohm}.
-      Note that conductor loss varies across substrates due to the change of
-      $k_0$ that is required to impedance match, and that dielectric loss is
-      independent of the change in $S$. \cm{What is the wire height?}}
-    \label{table:losses}
-\end{table}
-
-From these results, we see that in all cases the conductor losses dominate.  It
-  is prudent at this point to note that conductor losses can be significantly
-  reduced by using superconducting wires to carry currents, as has been achieved
-  for atom chips\cite{PhysRevLett.97.200405, Hattermann2017}. This would also
-  allow higher current densities and hence deeper traps, however it was decided
-  that it would not be feasible to cool the chip to the required temperatures in
-  this experiment.
-
-Also of importance from these results is that the losses are very high on the
-  length scale of a resonator. \cm{L is about a cm, so we can get values for Q
-  factor, which we will find are not critically damped, so we can't have a
-  resonator. However, point out that despite this we can still use a taper
-  around a thin region, so we can still pump in a lot of power that we know will
-  be dissipated and then drive transitions in trapped molecules directly.}
-
 \subsection{Chips with multiple layers}
 
-  \subsection{Design for a molecular chip trap}
+% Talk about CPW on polyimide
+
+\cm{Something like: We need to have the CPW and the trapping wires on the same
+chip. The only feasible way of doing this is to stack them on top of each other,
+as was done by these people.}
+
+\subsection{Design for a molecular chip trap}
 
 \subsection{Experimental design}
 
-  \subsection{Loading scheme}
+\subsection{Loading scheme}
