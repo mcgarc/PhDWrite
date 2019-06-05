@@ -6,16 +6,19 @@ As discussed in the previous section, it is highly beneficial to be able to
 incorporate microwave waveguides onto the chip surface. The structure most
 commonly used for this application is the coplanar waveguide (CPW)~\cite{},
 which was was originally proposed by Cheng P.~Wen in 1969.~\cite{1127105} CPWs
-are formed from a conductor layer on some dielectric substrate, with two
-channels of conuctor carved out in order to create a centre conductor strip,
-with the other conucting regions forming a surrouding ground plane.
+are formed from a conductor layer on a dielectric substrate, with two channels
+of conuctor carved out in order to create a centre conductor strip, and the
+other conucting regions forming a surrouding ground plane.  A segment of a CPW
+is illustrated in Fig.~\ref{experiment:fig:CPWxsec}.
 
-A segment of a CPW is illustrated in Fig.~\ref{experiment:fig:CPWxsec}. The
-CPW's geometry is defined by the centre conductor width ($S$) and the channel
-width ($W$). The geometry of the CPW determines the region the microwave field
-occupies, as illustrated in \myfigref{experiment:fig:CPWfield}. The CPW can
-therefore be used to maximise overlap between the microwave field and the
-trapped molecules.
+The CPW's geometry is defined by the centre conductor width ($S$) and the
+channel width ($W$). The geometry of the CPW determines the region the microwave
+field occupies, as illustrated in \myfigref{experiment:fig:CPWfield}. The CPW
+can therefore be designed to maximise overlap between the microwave field and
+the trapped molecules. As a rough approximation the molecules should be trapped
+at a distance $h\sim S$ above the centre of the CPW to achieve a good
+overlap.~\cite{Boehi2009} \cm{Combine this and other Munich thesis into one
+ref?}
 
 \begin{figure}
   \includegraphics{./figs/2019-01-18_stripline_xsection.png}
@@ -39,15 +42,12 @@ trapped molecules.
   \label{experiment:fig:CPWfield}
 \end{figure}
 
-As with any waveguide, impedance matching a CPW at the interfaces between
-sections (for example between CPWs on different substrates, which can be joined
-by a wire bond~\cite{rohtua}) will minimise reflections.~\cite{Jackson1975} We
-also aim to understand attenuation in the waveguide, with the goal of
-fabricating a microwave resonator as described in Andr\'e et
-al.~\cite{Andre2006}
-
-In the remainder of this subsection I will outline the basic mathematical
-description of a CPW. For our purposes it will be sufficient to consider the
+We must ensure that coupling between CPW microwaves and trapped molecules is
+achievable. In this section we will focus on ensuring that the microwaves will
+be able to propogate along the waveguide. This will rely on impedance matching
+at CPW interfaces and satisfactory levels of attenuation on the
+chip.~\cite{Jackson1975, Simons2004}. We will now outline the basic mathematical
+description of a CPW.  For our purposes it will be sufficient to consider the
 case where the height of the substrate ($h1$) far exceeds the other distances,
 that is $h_1 \gg S$, whilst $S \sim W$. The conductor is assumed to be perfect,
 and the dielectric has relative permittivity $\epsilon_\mathrm{r1}$.
@@ -97,11 +97,11 @@ substrate.~\cite{Simons2004} This means that for any substrate we choose the
 value of $k_0$ can be chosen to fix the impedance at the standard $Z_0 =
 \SI{50}{\ohm}$.
 
-This means that as long as $k_0$ is held constant,
-the CPW can be tapered to change the size of the centre conductor, and hence
-control the region the field occupies (c.f. \myfigref{experiment:fig:CPWfield}).
-A typical CPW taper is illustrated in
-\myfigref{experiment:fig:CPWtaper}.~\cm{TODO: find a nice mw/ CPW cite for this}
+Therefore as long as $k_0$ is held constant the CPW can be tapered to change the
+size of the centre conductor, and hence control the region the field occupies
+(c.f. \myfigref{experiment:fig:CPWfield}).  A typical CPW taper is illustrated
+in \myfigref{experiment:fig:CPWtaper}.~\cm{TODO: find a nice mw/ CPW cite for
+this}
 
 \begin{figure}
   \cm{TODO: find this fig.}
@@ -113,7 +113,7 @@ A typical CPW taper is illustrated in
 
 \subsubsection{CPW Resonators}
 
-Andre\'e et al.~\cite{Andre2006} proposed a molecule chip where the trap was
+Andr\'e et al.~\cite{Andre2006} proposed a molecule chip where the trap was
 embedded in a resonator formed from a CPW. In this subsubsection I will present
 the implementation and theory of CPW microwave resonators, with a view to
 determine whether or not such an architecture is feasible.
@@ -157,16 +157,8 @@ $\omega_0$, so that~\cite{Simons2004}
   \label{experiment:mw:eqn:Qalpha}
 \end{equation}
 It is desirable to maximise $Q$ (minimise damping). It has been shown that CPWs
-with $Q$ on the order of $1000$ can be fabricated~\cm{Need a few decent cites
-here}. Below we will discuss whether this can be achieved for a multi-layer,
-non-superconducting chip.
-
-% Talk about "insertion loss" which is in Simon's 12. (pg. 410??)
-In reality, the quality factor has some dependence on the capacitive coupling
-into the resonator.~\cite{doi:10.1063/1.3010859} Broadly speaking, a higher
-coupling capacitance corresponds to a wider resonance peak, however as we shall
-show in the next section, this is not the limiting factor of any CPW resonator
-that we will consider implementing at this stage.
+with $Q$ on the order of $1000$ can be fabricated.~\cm{Need a few decent cites
+here} Below we will discuss whether this can be achieved in our case.
 
 \subsubsection{Microwave loss modes}
 
@@ -200,16 +192,17 @@ with the total quality factor being
   Q = \left(\sum Q_i^{-1} \right)^{-1}.
 \end{equation}
 
-In the following \cm{subsub?}sections, we will discuss the quality factor from
-each loss mode and determine the value of $Q$ that we expect to be able to
-achieve. These propagation constants can be determined by use of the conformal
-mapping technique as discussed in references~\cite{1127105}
-and~\cite{Collin2007}.
+% Talk about "insertion loss" which is in Simon's 12. (pg. 410??)
+Note that we will not consider the dependence of the quality factor the
+capacitive coupling into the resonator (insertion loss).~\cite{Simons2004,
+doi:10.1063/1.3010859} Broadly speaking, a higher coupling capacitance
+corresponds to a wider resonance peak, however in our case this effect is
+dominated by other forms of loss.
 
 \subsubsection*{Dielectric losses}
 
-Dielectric losses can be described in terms of the dielectric loss tangent of
-the substrate ($\tan \delta_e$) ~\cite{Collin2007}
+Dielectric losses vary linearly with $\tan \delta_e$, the dielectric loss
+tangent of the substrate~\cite{Collin2007}
 \begin{equation}
   \alpha_d =
   \frac{\omega_0}{4c}\frac{\epsilon_\mathrm{r1}}{\sqrt{\epsilon_\mathrm{eff}}}
@@ -268,7 +261,7 @@ free parameters are the conductor thickness $t$, and the size of the centre
 width conductor $S$, both of which must be maximised to reduce loss. Typical
 values for the smallest CPWs will be $S\sim\SI{1}{\micro\metre}$, where
 this heigh can be achieved by electroplating (see section \cm{??}). Typical
-conductor losses are therefore expected to be off order
+conductor losses are therefore expected to be of order
 \begin{equation}
   \alpha_c \sim \SI{400}{\neper\per\metre}
 \end{equation}
@@ -324,14 +317,13 @@ trapped on the chip.~\cite{Treutlein2008}
 One of the later goals of the project will be to characterise microwave losses
 on the chip and compare these with those expected from theory.
 
-An important consequence of being unable to implement a microwave resonator is
-that it becomes impossible to implement the electrostatic trap proposed by
-Andr\'e et al.~\cite{Andre2006} as this relied on the ability to introduce a
-bias voltage on the centre conductor of the resonator in order to form the trap.
-\cm{Need a fig. maybe reference above if it's included there?} It is possible to
-bias the centre conductor (as detailed in
-reference~\cite{doi:10.1063/1.3573824}) but it is not possible to do the same
-for a waveguide.
+A consequence of being unable to implement a microwave resonator is that it
+becomes impossible to implement the electrostatic trap proposed by Andr\'e et
+al.~\cite{Andre2006} as this relied on the ability to introduce a bias voltage
+on the centre conductor of the resonator in order to form the trap.  \cm{Need a
+fig. maybe reference above if it's included there?} It is possible to bias the
+centre conductor (as detailed in reference~\cite{doi:10.1063/1.3573824}) but it
+is not possible to do the same for a waveguide.
 
 \subsection{Chips with multiple layers}
 
@@ -345,7 +337,7 @@ As the microwave attenuation prevents implementation of a resonator (and hence
 implementation of an electrostatic trap integrated with the waveguide) another
 solution for trapping and control of the microwaves must be found. Since
 magnetic trapping of atoms above a chip has been extensively researched (see
-section~\ref{litrev}, we have chosen this mechanism for trapping of molecules
+section~\ref{litrev}), we have chosen this mechanism for trapping of molecules
 above the chip. \cm{Need to say that macroscopic magnetic trapping of CaF is a
 thing.}
 
@@ -362,13 +354,49 @@ The resin used by Treutlein and B\"ohi~\cite{Treutlein2008, rohtua} was
 polyimide, which has the benefit of being highly resistant to cleaning
 techniques commonly used in photolithography, including pirranah clean. The
 polyimide is also effective as a microwave substrate~\cite{Simons2004,
-B\"Boehi2009} ($\epsilon_\mathrm{r1} = 3.3$, $\tan\delta_e = 0.016$) with
+Boehi2009} ($\epsilon_\mathrm{r1} = 3.3$, $\tan\delta_e = 0.016$) with
 conductor losses still dominating dielectric.
-
-% Thermal effects should be discussed in litrev
 
 \subsection{Design for a molecular chip trap}
 
-\subsection{Experimental design}
+We have designed various multiple-layer chips for prototyping. A series of
+Z-traps are to be used for loading molecules from an external trap (see
+section~\ref{experiment:loading}) and a CPW for control of the molecules' states
+is incorporated on an upper layer.  The chip design is shown in
+\myfigref{experiment:fig:chipdesign}.
+
+\begin{figure}[ht]
+  \includegraphics[width=\textwidth]{./figs/z_trap_fanouts_inset_scale.png}
+  \caption{
+    A design of a molecule chip, with six overlayed Z-trapping wires and one
+    dimple wire (gold) on the lower layer, and a CPW (insulating section in
+    blue) on the upper layer.  The lower layer is to be fabricated by
+    photolithography and electroplating, then spin coated with polyimide so that
+    the second layer can ebe fabricated above. The Z-traps have varying lengths
+    and thicknesses to allow higher current in larger traps, with compression as
+    molecules are transferred into smaller traps. The CPW is tapered down to
+    localise the microwave field around the smallest traps. Inset: a zoomed view
+    of the trapping region.
+  }
+  \label{experiment:fig:chipdesign}
+\end{figure}
+
+\cm{difference between designs: CPWs}
+
+\cm{Table of max trap depths and paragraph spiel.}
+
+\cm{How many molecules can we have in the traps and what temperatures?}
+
+The chip is to be mounted on a heavily modified vacuum flange, shown in
+\myfigref{experiment:fig:flange}. This flange will incorporate feedthroughs for
+the trapping currents and microwaves, as well as a large U-wire, which will be
+used as an intermediate trap in the loading procedure (detailed below). Currents
+will be brought in through a nineteen-pin feedthrough \cm{need part details,
+5amps < limit from wire thickness...} to power the bias coils and on-chip trapping
+wires. These currents will feed onto a holding-chip, which will then connect to
+the science-chip via wirebonds. Seperate feedthroughs for the microwaves
+(\cm{details}) and U-wire (\cm{details}) feed onto CPWs on the holding-chip and
+the U-wire respectively.
 
 \subsection{Loading scheme}
+\label{experiment:loading}
