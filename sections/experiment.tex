@@ -2,31 +2,21 @@
 
 \subsection{Microwaves on a chip}
 
-A key aspect of chip design is incorporating a mechanism for coherent quantum
-control of the trapped molecules. As discussed in the previous section~\cm{TODO
-check I have done this} control of rotational states of the molecule is possible
-by application of microwave fields, with strong coupling between the molecules
-and fields, as well as long coherence times of the states.\cite{Blackmore_2018}
-Furthermore, microwave engineering is already a well-understood field, and as
-will be discussed can be readily incorportated into the chip design. \cm{Wording
-here is clunky in last sentence}
+As discussed in the previous section, it is highly beneficial to be able to
+incorporate microwave waveguides onto the chip surface. The structure most
+commonly used for this application is the coplanar waveguide (CPW)~\cite{},
+which was was originally proposed by Cheng P.~Wen in 1969.~\cite{1127105} CPWs
+are formed from a conductor layer on some dielectric substrate, with two
+channels of conuctor carved out in order to create a centre conductor strip,
+with the other conucting regions forming a surrouding ground plane.
 
-In this subsection I will introduce the coplanar waveguide (CPW) as the
-prefered method of bringing microwaves onto the chip. I will present how they
-can be used to create a microwave resonator and their limitations due to
-attenuation.
-
-\subsubsection{The coplanar waveguide}
-
-The coplaner waveguide (CPW) was originally proposed by Cheng P.~Wen in
-1969~\cite{1127105}. CPWs are formed from a conductor layer on some dielectric
-substrate, with two channels of conuctor carved out in order to create a centre
-conductor strip, with the other conucting regions forming a surrouding ground
-plane.
-%
 A segment of a CPW is illustrated in Fig.~\ref{experiment:fig:CPWxsec}. The
 CPW's geometry is defined by the centre conductor width ($S$) and the channel
-width ($W$). 
+width ($W$). The geometry of the CPW determines the region the microwave field
+occupies, as illustrated in \myfigref{experiment:fig:CPWfield}. The CPW can
+therefore be used to maximise overlap between the microwave field and the
+trapped molecules.
+
 \begin{figure}
   \includegraphics{./figs/2019-01-18_stripline_xsection.png}
   \caption{
@@ -35,18 +25,10 @@ width ($W$).
     ground plane by a distance of width $W$. Note the similarity to a coaxial
     cable, where the centre conductor takes the place of the central pin and the
     ground plane the shielding. This figure is reporoduced from
-    Simons~\cite{Simons2004}}
+    reference~\cite{Simons2004}}.
   \label{experiment:fig:CPWxsec}
 \end{figure}
 
-This design is such that it can be microfabricated as part of the chip.  This
-provides benefits over, for example, propogating the microwaves through free
-space, because the chip can be designed to maximise the overlap between the
-region of trapping, and the region in which the microwaves are at a high
-intensity.~\cm{TODO: cite} The microwave instensity in and arround a typical CPW
-is illustrated in \myfigref{experiment:fig:CPWfield}. Furthermore, the
-integration of the microwaves onto the chip improves scalability and robustness
-of the system.
 
 \begin{figure}
   \cm{TODO: find this fig.}
@@ -57,14 +39,20 @@ of the system.
   \label{experiment:fig:CPWfield}
 \end{figure}
 
-As with any waveguide, it is important to impedance match a CPW so that as to
-minimise reflections at an interface (for example between CPWs on different
-substrates, or beween a CPW and a coaxial cable).~\cite{Jackson1975} In the
-remainder of this subsubsection I will outline the basic mathematical
+As with any waveguide, impedance matching a CPW at the interfaces between
+sections (for example between CPWs on different substrates, which can be joined
+by a wire bond~\cite{rohtua}) will minimise reflections.~\cite{Jackson1975} We
+also aim to understand attenuation in the waveguide, with the goal of
+fabricating a microwave resonator as described in Andr\'e et
+al.~\cite{Andre2006}
+
+In the remainder of this subsection I will outline the basic mathematical
 description of a CPW. For our purposes it will be sufficient to consider the
 case where the height of the substrate ($h1$) far exceeds the other distances,
 that is $h_1 \gg S$, whilst $S \sim W$. The conductor is assumed to be perfect,
 and the dielectric has relative permittivity $\epsilon_\mathrm{r1}$.
+
+\subsubsection{CPW Impedance}
 
 It is common to define the planar geometry in terms of the
 ratio~\cite{1127105, Simons2004}
@@ -298,36 +286,52 @@ factors.
 
 \subsubsection*{Radiative losses}
 
-\cm{Rewrite this: losses were reported by \cite{81658} and they are
-significantly smaller than the conductor losses so don't worry about it.}
-
-The losses due to radiation are of similar order to the dielectric losses. Cao et
-al.~\cite{L.Cao2013} report a loss of $\alpha_r = \SI{0.43}{\decibel \per \milli
-\meter}$ at $f=\SI{1}{\tera\hertz}$. It is known that~\cite{81658} $\alpha
-\propto f^3$; which means we can expect $\alpha_r \sim 10^{-2}$ \cm{units?} at
-our frequencies.
+The radiation losses of a CPW have been calculated and measured by Frankel et
+al.~\cite{Frankel1991}, who show that
+\begin{equation}
+  \alpha_r = \frac{\pi^2 \omega_0^3}{2^7}\left(\frac{\left(1 -
+  \frac{\epsilon_\mathrm{eff}}{\epsilon_\mathrm{r1}}\right)^2}{\sqrt{\frac{\epsilon_\mathrm{eff}}{\epsilon_\mathrm{r1}}}}\right)
+  \frac{(S+2W)^2\epsilon_\mathrm{r1}^{3/2}}{c^3 K(k'_0)K(k_0)}.
+\end{equation}.
+Inserting typical values, we retrieve
+\begin{equation}
+  \alpha_r \sim \SI{0.4}{\neper\per\metre}
+\end{equation}
+corresponding to a minimum quality factor
+\begin{equation}
+  Q_r \geq 1000
+\end{equation}
+which agrees with the measurements made by Frankel et al. which were for CPWs of
+similar geometry and frequency domain to our intended usage.
 
 \subsubsection*{Comparison of loss mechanisms}
 
-\cm{Rewrite: we're basically completely screwed and can't make a resonator
-without superconductors. This also means we can't integrate an electrostatic
-trap as Andre planned but we didn't want to do that anyway. We can also still
-make a waveguide and put mws down it, so can achieve state control.}
-
-Clearly the conductor losses will be the dominant form of signal attenuation. We
-have assumed a gold conductor, and even at low temperatures we anticipate loss
-from the conductor of order $\alpha_c \sim 100 \alpha_d \sim
-\SI{10}{\neper\meter}$. This is fairly significant, and may prevent us from
-implementing CPW resonators with $S\sim\si{\micro\meter}$. This will be
-investigated in section~\ref{sec:resonators}. Note that existing
-CPW resonators on gold have had much larger centre conductor widths, and hence
-much lower conductor losses~\cite{1127105}. One possible solution may be to use
-superconducting materials to build the CPW.
+It is clear that without use of superconductors, the conductor loss will far
+dominate the other sources, with an overall quality factor $Q\sim1$. Typical
+resonators will operate with much higher $Q$~\cite{}, so it will not be possible
+to implement a resonator.
 
 That said, it should be noted that the high loss should not prevent us from
 using the CPW to directly drive microwave transitions in trapped molecules, as
 we will still be able to pass signal through the waveguide without the need to
-construct a waveguide.
+construct a waveguide. With loss of $\alpha \approx \alpha_r$, and waveguides of
+lengths on the scale of a few centimetre, we can expect a total loss of around
+$\SI{400}{\neper\per\metre} \times \SI{0.01}{\metre} = \SI{35}{\decibel}$. This
+should be sufficiently small that microwaves will be able to reach molecules
+trapped on the chip.~\cite{Treutlein2008}
+%
+% THESIS: Expand on this
+One of the later goals of the project will be to characterise microwave losses
+on the chip and compare these with those expected from theory.
+
+An important consequence of being unable to implement a microwave resonator is
+that it becomes impossible to implement the electrostatic trap proposed by
+Andr\'e et al.~\cite{Andre2006} as this relied on the ability to introduce a
+bias voltage on the centre conductor of the resonator in order to form the trap.
+\cm{Need a fig. maybe reference above if it's included there?} It is possible to
+bias the centre conductor (as detailed in
+reference~\cite{doi:10.1063/1.3573824}) but it is not possible to do the same
+for a waveguide.
 
 \subsection{Chips with multiple layers}
 
@@ -336,6 +340,32 @@ construct a waveguide.
 \cm{Something like: We need to have the CPW and the trapping wires on the same
 chip. The only feasible way of doing this is to stack them on top of each other,
 as was done by these people.}
+
+As the microwave attenuation prevents implementation of a resonator (and hence
+implementation of an electrostatic trap integrated with the waveguide) another
+solution for trapping and control of the microwaves must be found. Since
+magnetic trapping of atoms above a chip has been extensively researched (see
+section~\ref{litrev}, we have chosen this mechanism for trapping of molecules
+above the chip. \cm{Need to say that macroscopic magnetic trapping of CaF is a
+thing.}
+
+Combining the CPW with the trapping wires on a single layer was extensively
+explored, however no geometry was found that would allow for satisfactory
+overlap between the microwave field and the molecules. It was determined that a
+multi-layer chip should be used, similar to those designed
+by Treutlein~\cite{Treutlein2008} and B\"ohi~\cite{rohuta} and discussed in
+section ~\ref{litrev:control}. \cm{TODO} A layer of insulating resin can be
+spin-coated on top of the trapping wire layer, forming a substrate for the CPW.
+Trapping magnetic fields will be used to trap directly above the CPW.
+
+The resin used by Treutlein and B\"ohi~\cite{Treutlein2008, rohtua} was
+polyimide, which has the benefit of being highly resistant to cleaning
+techniques commonly used in photolithography, including pirranah clean. The
+polyimide is also effective as a microwave substrate~\cite{Simons2004,
+B\"Boehi2009} ($\epsilon_\mathrm{r1} = 3.3$, $\tan\delta_e = 0.016$) with
+conductor losses still dominating dielectric.
+
+% Thermal effects should be discussed in litrev
 
 \subsection{Design for a molecular chip trap}
 
