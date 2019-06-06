@@ -196,6 +196,15 @@ Frequencies for the other trap types should be calculated numerically\cm{TODO:
 should I reference my MRes?}, but the above figures are presented as a
 representative example of what can be expected from a wire trap.
 
+\cm{
+Make sure we discuss VdW and Casmir-Poldar (sp?) shift, basically just
+reproduce the start of Ed's notebook.
+}
+
+The trap depth is well-approximated by the energy associated with the bias
+field. For a trap at height \SI{10}{\micro}{\metre} this gives a typical trap
+depth on the order of a few tens of milli-Kelvin.~\cite{2011Ac}
+
 \subsection{Loading wire traps}
 
 Reichel et al.~\cite{Reichel1999} were one of the first to demonstrate
@@ -270,37 +279,40 @@ research.
 \subsection{Molecule chips}
 \label{litrev:molculechips}
 
+\cm{Early mol chips and Andre proposal}
+
 \subsection{Coherent quantum control of atoms and molecules}
 \label{litrev:control}
 
-% Start with macroscopic, build up to atom chips w/ CPWs
+Coherent control of atomic and molecular states has been achieved in macroscopic
+traps~\cm{should cite some atom and mol papers here for optical and mw control
+in macro}, and is an essential tool for quantum technologies. For example, the
+ability to address a single atom in an optical lattice can be used to simulate
+other quantum systems such as a Mott insulator.~\cite{Weitenberg2011} Coherent
+control of atoms on a chip has also been achieved. Of most relevance to this
+report is the experiment by B\"ohi et al.~\cite{Boehi2009} who observed Ramsey
+fringes on the hyperfine levels of \cm{87Rb} using microwaves carried across the
+surface of a chip. Coherent control achieved in this manner is innately robust
+and scalable; and therefore highly desirable for applications in quantum
+technologies.~\cite{}
 
-% Make sure we discuss VdW and Casmir-Poldar (sp?) shift, basically just
-% reproduce the start of Ed's notebook.
-\cm{
-A key aspect of chip design is incorporating a mechanism for coherent quantum
-control of the trapped molecules. As discussed in the previous section~\cm{TODO
-check I have done this} control of rotational states of the molecule is possible
-by application of microwave fields, with strong coupling between the molecules
-and fields, as well as long coherence times of the states.\cite{Blackmore_2018}
-%
-In this subsection I will introduce the coplanar waveguide (CPW) as the
-prefered method of bringing microwaves onto the chip. I will present how they
-can be used to create a microwave resonator and their limitations due to
-attenuation.
-%
-This design is such that it can be microfabricated as part of the chip.  This
-provides benefits over, for example, propogating the microwaves through free
-space, because the chip can be designed to maximise the overlap between the
-region of trapping, and the region in which the microwaves are at a high
-intensity.~\cm{TODO: cite} 
-%
-Furthermore, the integration
-of the microwaves onto the chip improves scalability and robustness of the
-system.
-%
-}
+For molecules, it is possible to use microwaves to control the rotational
+states~\cite{}, which do not exist in atoms. This results in a coupling between
+the microwaves and the particles, which is orders of magnitude stronger for
+molecules. The Andr\'e proposal~\cite{Andre2006} suggests that this could be
+exploited to allow long-range coupling between individually trapped molecules,
+or sideband cooling into the trap ground state.
 
-% Photolith
-% Electroplating
-% Multilayers
+Recently, magnetically insensetive transitions have been discovered in \cm{CaF}.
+~\cite{PhysRevLett.120.163201, Blackmore_2018, } \cm{need one more cite for
+Luke's new paper (unpublished???)} One transition between the \cm{insert states}
+has been found at \cm{frequency} and another between \cm{other states} at
+\cm{40GHz}. The \cm{20GHz} transition is shown to be \cm{quite insensetive} and
+the \cm{40GHz} to be \cm{VERY insensetive}, leading to fidelities over
+\cm{length of time}.
+
+This makes the \cm{40GHz} transition in \cm{CaF} a promising candidate for
+quantum control in a magnetic chip trap. The need for an electrostatic trap is
+removed by the magnetically insensitive transitions and the existing atom chip
+technologies such as those created by B\"ohi et al.~\cite{Boehi2009} provide a
+blueprint for implementation.
