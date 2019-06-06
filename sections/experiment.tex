@@ -1,4 +1,13 @@
-\cm{TODO: Section intro}
+\cm{
+  \begin{itemize}
+    \item Build on IID
+    \item Introduce existing experiment apparatus
+    \item Talk about the microwave stuff a bit more
+    \item Emphaise magnetically insensetive transitions as justification for
+      magnetic trapping
+      \item Briefly talk about difficulties of working at 40GHz
+  \end{itemize}
+}
 
 \subsection{Microwaves on a chip}
 
@@ -357,6 +366,13 @@ polyimide is also effective as a microwave substrate~\cite{Simons2004,
 Boehi2009} ($\epsilon_\mathrm{r1} = 3.3$, $\tan\delta_e = 0.016$) with
 conductor losses still dominating dielectric.
 
+\subsection{Fabrication}
+
+
+% Photolith
+% Electroplating
+% Multilayers
+
 \subsection{Design for a molecular chip trap}
 
 We have designed various multiple-layer chips for prototyping. A series of
@@ -365,8 +381,8 @@ section~\ref{experiment:loading}) and a CPW for control of the molecules' states
 is incorporated on an upper layer.  The chip design is shown in
 \myfigref{experiment:fig:chipdesign}.
 
-\begin{figure}[ht]
-  \includegraphics[width=\textwidth]{./figs/z_trap_fanouts_inset_scale.png}
+\begin{figure}[tph]
+  \includegraphics[width=0.8\textwidth]{./figs/z_trap_fanouts_inset_scale.png}
   \caption{
     A design of a molecule chip, with six overlayed Z-trapping wires and one
     dimple wire (gold) on the lower layer, and a CPW (insulating section in
@@ -382,6 +398,37 @@ is incorporated on an upper layer.  The chip design is shown in
 \end{figure}
 
 \cm{difference between designs: CPWs}
+A standard \cm{four inch} wafer has space for \cm{twelve} chips (each one being
+a square with sides of length \SI{2}{\centi\metre}). In the prototype wafer
+design, each one has the same set of trapping wires as depicted in
+\myfigref{experiment:fig:chipdesign}, but the CPW designs vary. The parameters
+changed are the minimum width of the centre conductor (\SI{10}{\micro\metre},
+\SI{20}{\micro\metre}, \SI{50}{\micro\metre}); the taper length
+(\SI{1}{\milli\metre}, \SI{3}{\milli\metre}); and the orientation of the CPW
+track near the molecules (perpendicular or parallel to the trap axis). The full
+wafer is shown in \myfigref{experiment:waferdesign}.
+
+The goal of this prototype is to characterise the CPWs to check that the
+predicted values are met. In particular, we are interested in how the material
+under the polyimide (HiRes Si substrate and trapping wires) will affect the
+microwave field. We will also be able to test the trapping wires and the
+behaviour of the chip in vacuum. We are optimistic that these prototypes could
+ultimately be used for trapping of molecules.
+
+\begin{figure}[tph]
+  \includegraphics[width=0.8\textwidth]{./figs/wafer.png}
+  \caption{
+    The prototype wafer design, combining all variations of the centre conductor
+    width, taper lengths and CPW orientations (details in the main text). A
+    \cm{four inch} HiRes Si wafer will be used as a substrate. Lower level
+    features (yellow) will be fabricated by photolithography followed by
+    electroplating. The higher level features (blue) will be fabricated on an
+    intermediary layer of polyimide. Note the chip outlines are marked with
+    grey, and the alignment features in each corner of the chip to be fabricated
+    on the lower layer.
+  }
+  \label{experiment:fig:chipdesign}
+\end{figure}
 
 \cm{Table of max trap depths and paragraph spiel.}
 
@@ -391,12 +438,27 @@ The chip is to be mounted on a heavily modified vacuum flange, shown in
 \myfigref{experiment:fig:flange}. This flange will incorporate feedthroughs for
 the trapping currents and microwaves, as well as a large U-wire, which will be
 used as an intermediate trap in the loading procedure (detailed below). Currents
-will be brought in through a nineteen-pin feedthrough \cm{need part details,
-5amps < limit from wire thickness...} to power the bias coils and on-chip trapping
-wires. These currents will feed onto a holding-chip, which will then connect to
-the science-chip via wirebonds. Seperate feedthroughs for the microwaves
-(\cm{details}) and U-wire (\cm{details}) feed onto CPWs on the holding-chip and
+will be brought in through a nineteen-pin feedthrough  to power the bias coils
+and on-chip trapping wires. These currents will feed onto a holding-chip, which
+will then connect to the science-chip via wirebonds. Seperate feedthroughs for
+the microwaves and U-wire (\cm{details}) feed onto CPWs on the holding-chip and
 the U-wire respectively.
+
+\begin{figure}[ht]
+  \includegraphics[width=0.8\textwidth]{./figs/FlangeAssemblyForPresentationTopRight.png}
+  \caption{
+    Flange assembly for mounting a molecule chip. The \cm{science chip} will be
+    mounted in the centre of the holding-chip and wire-bonds will allow current
+    to pass between the two. Current will be passed to the holding-chip via the
+    19-pin feedthrough. There are also high frequency microwave feedthroughs so
+    that microwaves can be passed to a CPW on the holding-chip, and again onto
+    the science chip. Two bias coils will be mounted on the flange, with the
+    other required coils attached to the chamber (not pictured). The
+    intermediary U-trap is positioned directly beneath the science chip and is
+    powered by separate current feedthroughs.
+  }
+  \label{experiment:fig:flange}
+\end{figure}
 
 \subsection{Loading scheme}
 \label{experiment:loading}
