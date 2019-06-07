@@ -279,31 +279,37 @@ research.
 \subsection{Molecule chips}
 \label{litrev:molculechips}
 
- \cm{PSD of beam? Why did Mike say this was no good for us?}
- Molecule chips that have been previously implemented rely on quite different
- loading schemes to those discussed for atom chips. In 2008 Meek et
- al.~\cite{Meek2008} have loaded \cm{CO} molecules directly from a supersonic
- beam, with on-chip slowing performed by a Stark decelerator integrated into the
- chip.  \cm{talk a bit about what happened in this experiment -- molecules fly
- over the surface}
+\cm{PSD of beam? Why did Mike say this was no good for us?}
+
+Molecule chips that have been previously implemented rely on quite different
+loading schemes to those discussed for atom chips. In 2008 Meek et
+al.~\cite{Meek2008} have loaded \cm{CO} molecules directly from a supersonic
+beam, with on-chip slowing performed by a Stark decelerator integrated into the
+chip.
 
 Fabrication of a chip-based Stark decelerators using photolithographic
 techniques is significantly less involved than construction of a macroscopic
 decelerator, providing excellent scalability; Meek et al. used over 1200
 electrodes, as opposed to the 63 stages used in an equivalent macroscopic
-experiment~\cite{Bethlem1999}. This eventually allowed slowing of molecules to a
-standstill 
+experiment~\cite{Bethlem1999}. Varying the electric field above the surface of
+the chip was employed to slow of molecules from a \SI{312}{\metre\per\second}
+beam to a standstill, constrained in \SI{20}{\micro\metre} diameter tubes,
+\SI{25}{\micro\metre} above the chip surface.~\cite{Meek2009}
+\cm{Is this wording with `tubes' clear?}
 
 On-chip control of the molecules was demonstrated by the same group, using
-microwaves propagating through free space.~\cite{doi:10.1002/cphc.201001007}
-\cm{summarise results}
+microwaves propagating through free space~\cite{doi:10.1002/cphc.201001007} and
+separately with infrared light~\cite{doi:10.1080/00268976.2012.683885}.  \cm{CO}
+molecules in the $J=1$ rotational state were rotationally excited into the $J=2$
+state on the chip, then accelerated off chip for state-selective detection.
+On-chip imaging has since been achieved, but has not been fully integrated with
+the chip, still requiring external optics.~\cite{Marx2013}
 
-These chips still lacked the ability to measure the molecules in situ, with
-molecules being accelerated off the chip for measurement. Whilst being a clear
-demonstration of the potential of molecule chips, the lack of on-chip
-measurement and control mean that these chips are inherently not scalable.
-Furthermore, the trapping volumes were still fairly large, around
-\SI{0.25}{\milli\metre\cubed}. \cm{Why do we want a small trapping volume?}
+Whilst being a clear demonstration of the potential of
+molecule chips, the lack of on-chip measurement and integrated control mean that
+these chips are inherently not scalable.  Furthermore, the trapping volumes were
+still fairly large, around \SI{0.25}{\milli\metre\cubed}. \cm{Why do we want a
+small trapping volume?}
 
 \cm{Why is Stark loading no good for us?}
 \cm{relate to PSD of Stark chips above}
@@ -313,13 +319,22 @@ phase-space densities~\cite{Truppe2017}, which could be used for loading a
 different design of chip such as that proposed by Andr\'e et
 al.~\cite{Andre2006}
 
-The Andr\'e proposal
-\cm{Need to cite again}
+\cm{Need to cite again?}
 \cm{ensure this is the first time I refer to it like this}
-\cm{TBC}
+The Andr\'e proposal outlines an electrostatic trap for molecules embedded in a
+microwave resonator to form a cavity-QED system. The high coupling between the
+molecule and cavity photons could be used for forming a qubit and sideband
+cooling into the ground state of the trap. The microwave guide can be used for
+quantum control, and on-chip measurement by applying an off-resonant microwave
+pulse. This design promises a robust trap with potential for integration with
+other chip-based qubits (either other trapped molecules or different quantum
+architectures).
 
 \subsection{Coherent quantum control of atoms and molecules}
 \label{litrev:control}
+
+\cm{Move this subsection up? Need to think about structure and maybe some
+rephrasing to make it work.}
 
 Coherent control of atomic and molecular states has been achieved in macroscopic
 traps~\cm{should cite some atom and mol papers here for optical and mw control
@@ -340,12 +355,12 @@ molecules. The Andr\'e proposal~\cite{Andre2006} suggests that this could be
 exploited to allow long-range coupling between individually trapped molecules,
 or sideband cooling into the trap ground state.
 
-Recently, magnetically insensetive transitions have been discovered in \cm{CaF}.
-~\cite{PhysRevLett.120.163201, Blackmore_2018, } \cm{need one more cite for
-Luke's new paper (unpublished???)} One transition between the \cm{insert states}
-has been found at \cm{frequency} and another between \cm{other states} at
-\cm{40GHz}. The \cm{20GHz} transition is shown to be \cm{quite insensetive} and
-the \cm{40GHz} to be \cm{VERY insensetive}, leading to fidelities over
+Recently, magnetically insensitive transitions have been discovered in
+\cm{CaF}.~\cite{PhysRevLett.120.163201, Blackmore_2018, } \cm{need one more cite
+for Luke's new paper (unpublished???)} One transition between the \cm{insert
+states} has been found at \cm{frequency} and another between \cm{other states}
+at \cm{40GHz}. The \cm{20GHz} transition is shown to be \cm{quite insensitive}
+and the \cm{40GHz} to be \cm{VERY insensitive}, leading to fidelities over
 \cm{length of time}.
 
 This makes the \cm{40GHz} transition in \cm{CaF} a promising candidate for
