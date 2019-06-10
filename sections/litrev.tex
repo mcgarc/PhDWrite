@@ -1,28 +1,25 @@
-% Take-away points:
-%   Magnetic trap
-%   How to get CPW on (Bohi)
-%   MTT + big U to load is viable
-%   Required PSD???
+\cm{
+ Take-away points:
+   Magnetic trap
+   How to get CPW on (Bohi)
+   MTT + big U to load is viable
+   Required PSD???
+ }
 
-At the time of the original molecule chip proposal~\cite{Andre2006}, to see atom
-chips had been loaded using a magneto-optical trap (MOT) as a
+At the time of the original molecule chip proposal~\cite{Andre2006}, atom chips
+had been loaded using a magneto-optical trap (MOT) as a
 source~\cite{Reichel1999, Ott2001}, however a molecule MOT had not yet been
 built, and there was no credible source of loading a chip of this
-type.\footnote{\cm{Flyover chips had been created, maybe something about PSD
-meant a beam wouldn't work? expand in body}}
-%
-Today we have access to molecules cooled below the Doppler
-temperature~\cite{Truppe2017}, with potential for further sympathetic cooling
-with rubidium~\cm{how to cite this?}. Further technologies for loading a
-molecule chip, such a optical tweezers~\cite{Liueaar7797} have also been
-demonstrated.
+type.\footnote{Stark declerator molecule chips would be developed shortly
+after~\cite{Meek1699}, but Andr\'e et al. presented no method of loading their
+chip design with the required phase space density.}  
 
+As discussed above, the field of cold molecules has now developed significantly.
 These developments have made the implementation of a molecule chip feasible. In
-this section, we will review the state of the field, including work on atom
+this section, we will review the state of chip trapping, including work on atom
 chips and these supporting technologies.
 
 \subsection{Wire traps}
-\cm{need to say something somewhere about how magnetic trapping works}
 
 In developing the molecule chip, we have been able to draw upon the
 well-developed field of atom chips to inform our design choices. Let us consider
@@ -31,11 +28,12 @@ trap, manipulation of trapped atoms or molecules.
 
 The Andr\'e proposal~\cite{Andre2006} suggests the use of an electrostatic trap
 to contain the molecules, however this is not the only option available. In
-fact, magnetic trapping of atoms is much more widely explored.~\cite{2011Ac}.
-\cm{more cites here!} In addition, we will see in section~\cm{reference CPW
-discussion}% TODO
-that the electrostatic trap is not achievable in our intended design. As such we
-will focus in this section on magnetostatic trapping of atoms above a chip.
+fact, magnetic trapping of atoms is much more widely explored.~\cite{2011Ac},
+and the discovery of magnetically insensitive transitions in \CaF makes this a
+promising choice for a molecule chip. In addition, we will see in
+section~\ref{experiment:mw:resonator} that the electrostatic trap is not
+achievable due to experimental constraints. As such we will focus in this
+section on magnetostatic trapping of atoms above a chip.
 
 The basic principle of a magnetic wire trap is explained in Reichel et
 al.~\cite{Reichel1999}. As illustrated in \myfigref{litrev:fig:reicheltrap} a
@@ -48,6 +46,10 @@ of the field at that point~\cite{Jackson1975}
   B = \frac{\mu_0 I}{2\pi h}.
   \label{litrev:eqn:bias}
 \end{equation}
+%
+As with other magnetic traps, atoms (or molecules) can be optically pumped into
+weak-field seeking states such that they favourably occupy the region surround
+the trap minimum.~\cite{Metcalf1999}
 
 \begin{figure}
   \includegraphics[width=0.75\textwidth]{./figs/litrev/reicheltrap.pdf}
@@ -112,10 +114,10 @@ a Z-trap (Ioffe-Pritchard) or U-trap (quadrupole), both also shown in
     A top-down view of the wires forming an H, U and Z trap. The H trap has
     three independent currents, $I_0$, $I_1$ and $I_2$; usually the magnitudes
     of $I_1$ and $I_2$ will be the same, however their relative signs can be
-    chosen to form either a quardupole ($I_1 = -I_2$) or Ioffe-Pritchard ($I_1 =
+    chosen to form either a quadrupole ($I_1 = -I_2$) or Ioffe-Pritchard ($I_1 =
     I_2$) trap. Note that these cases correspond to the U and Z wires
     approximating the currents through the H wire respectively. The bias fields
-    requisit for trapping are not shown.
+    requisite for trapping are not shown.
   }
   \label{litrev:fig:trapvariations}
 \end{figure}
@@ -158,10 +160,12 @@ where $\widetilde{B}_i$ represents the bias field applied in the $i$ direction.
 The trap frequencies are given by
 \begin{equation}
   \omega_x = \sqrt{\frac{\mu_m}{m}B''}
+  \label{litrev:eqn:axisfreq}
 \end{equation}
 and
 \begin{equation}
   \omega_\perp = \sqrt{\frac{\mu_m {B'}^2}{m B_0}}
+  \label{litrev:eqn:transfreq}
 \end{equation}
 where $\mu_m$ is the magnetic moment of the trapped particle, and we have taken
 $x$ to be the axial direction (aligned with $I_0$).~\cite{2011Ac}
@@ -169,47 +173,47 @@ Taking the dimple to be a representative trap type, we can estimate the expected
 frequencies that we would expect to achieve based on the current and trapping
 height.
 
-\cm{ Need to review these two paragraphs. Perhaps I can just pull the numbers
-from literature or straight out of the experiment section. }
+\thesis{I probably want to go through this in a lot more detail including the
+maths. This is all in the notebook that Ed Hinds gave me to start with.} A
+typical final\footnote{Greater intermediary trapping heights are used as part of
+the loading procedure.} trapping height will be around \SI{10}{\micro\metre}.
+This allows on-chip microwave fields to interact with trapped atoms without
+introducing any energy shifts   or significant attractive force acting on the
+molecule from the Casimir effect or Van der Waals force.\footnote{Trapping
+beneath this height could allow investigation of these effects on a quantum
+scale and is in itself a goal of atom chip
+trapping.~\cite{PhysRevA.56.R3350}}~\cite{2011Ac}
 
+\thesis{Probably want to expand this similar to for height}
 The current that can be achieved in the chip will be limited by thermal
-properties of the final chip design.  We will see in section \cm{TODO: ref} that
-we plan to follow a multi-layer design similar to that found in B\"ohi et
-al.~\cite{Boehi2009}, who report~\cite{rohtula} a maximum current density in the
-trapping wires of \SI{5.5e10}{\ampere\per\metre\squared}. Trapping wire sizes
-will have an area of order $\SI{1}{\micro\metre} \times \SI{1}{\micro\metre}$,
-resulting in a total current \SI{55}{\milli\ampere}.
-
-In section \ref{litrev:manipulation} we will discuss how the interaction between
-the molecules and microwave fields from an integrated CPW \cm{TODO: Is this
-introduced yet?} make $h \sim \SI{10}{\micro\metre}$ a desirable trapping
-height. Using \myeqref{litrev:eqn:axisfreq} and \myeqref{litrev:eqn:transfreq}
-we can therfore anticipate trapping frequencies of
+properties of the final chip design as will be discussed in
+section~\ref{experiment:multilayer}. Typical achievable currents are estimated
+to be around \SI{60}{\milli\ampere}. 
+Using \myeqref{litrev:eqn:transfreq} and
+\myeqref{litrev:eqn:axisfreq} we can therefore anticipate trapping frequencies
+for \CaF of
 %
 \begin{align}
-  \omega_x &= \SI{555555}{\radian \per \second} \\
-  \omega_\perp &= \SI{555555}{\radian \per \second}.
+  \omega_x &= \SI{5e4}{\radian \per \second} \\
+  \omega_\perp &= \SI{1e5}{\radian \per \second}.
 \end{align}
-\cm{TODO: figure these out}
 %
-Frequencies for the other trap types should be calculated numerically\cm{TODO:
-should I reference my MRes?}, but the above figures are presented as a
-representative example of what can be expected from a wire trap.
-
-\cm{
-Make sure we discuss VdW and Casmir-Poldar (sp?) shift, basically just
-reproduce the start of Ed's notebook.
-}
+Where we have assumed a minimum value of $B_0 = \SI{1}{\gauss}$ has been chosen.
+These figures are in line with what we would normally expect from a wire
+trap.~\cite{2011Ac}
+Frequencies for the other trap types can be calculated numerically, but the
+above figures are presented as a representative example of what can be expected
+from a wire trap.
 
 The trap depth is well-approximated by the energy associated with the bias
 field. For a trap at height \SI{10}{\micro\metre} this gives a typical trap
-depth on the order of a few tens of milli-Kelvin.~\cite{2011Ac}
+depth on the order of a few tens of millikelvin.~\cite{2011Ac}
 
 \subsection{Loading wire traps}
 
 Reichel et al.~\cite{Reichel1999} were one of the first to demonstrate
 mirror-MOT loading, where the surface of the chip is used as the mirror to from
-a MOT close to the surface. The mirror-MOT held $5\times10^6$ \cm{87\^Rb} atoms,
+a MOT close to the surface. The mirror-MOT held $5\times10^6$ \esRb atoms,
 and was formed of four laser beams, with two reflected off the chip, making the
 six beams in total that are required for trapping. The magnetic field is
 generated by coils in anti-Helmholtz configuration, which are switched off in
@@ -242,10 +246,10 @@ another common step in the loading procedure~\cite{Folman2000,2011Ac,
 RevModPhys.79.235} and can also be used to transport atoms above the
 surface~\cite{Reichel1999, Schwindt2005}. Bringing the trap centre close to the
 surface also compresses the atom cloud, and since the compressing force is
-conservative~\cm{TODO: cite}, this leads to adiabatic heating of the cloud.
+conservative~\cite{Metcalf1999}, this leads to adiabatic heating of the cloud.
 Conservation of phase space density suggests that the final temperature will be
 given by~\cite{Metcalf1999}
-\cm{TODO: check this cite is legit}
+\thesis{Check this cite is legit}
 %
 \begin{equation}
    T_1 = T_0\left(\frac{V_0}{V_1}\right)^\frac{2}{3}.
@@ -269,7 +273,7 @@ reproducible MOT for loading.
 Direct loading of a chip with an optical tweezer is also a possibility for
 transferring molecules directly onto a chip~\cite{Liueaar7797}, with Bernon et
 al.~\cite{Bernon2013} having demonstrated the technique with atoms. In this
-experiment, an optical tweezer transport a cloud of $5\times10^6$ \cm{87\^Rb}
+experiment, an optical tweezer transport a cloud of $5\times10^6$ \esRb
 atoms from a MOT onto a chip trap \SI{40}{\milli\metre} away. This has the
 benefit of insignificant losses and heating. This is a very attractive option
 for loading, but molecular optical tweezers are still in their
@@ -279,11 +283,10 @@ research.
 \subsection{Molecule chips}
 \label{litrev:molculechips}
 
-\cm{PSD of beam? Why did Mike say this was no good for us?}
 
 Molecule chips that have been previously implemented rely on quite different
 loading schemes to those discussed for atom chips. In 2008 Meek et
-al.~\cite{Meek2008} have loaded \cm{CO} molecules directly from a supersonic
+al.~\cite{Meek2008} have loaded \CO molecules directly from a supersonic
 beam, with on-chip slowing performed by a Stark decelerator integrated into the
 chip.
 
@@ -293,13 +296,12 @@ decelerator, providing excellent scalability; Meek et al. used over 1200
 electrodes, as opposed to the 63 stages used in an equivalent macroscopic
 experiment~\cite{Bethlem1999}. Varying the electric field above the surface of
 the chip was employed to slow of molecules from a \SI{312}{\metre\per\second}
-beam to a standstill, constrained in \SI{20}{\micro\metre} diameter tubes,
-\SI{25}{\micro\metre} above the chip surface.~\cite{Meek2009}
-\cm{Is this wording with `tubes' clear?}
+beam to a standstill, constrained in the shape of \SI{20}{\micro\metre} diameter
+tubes, \SI{25}{\micro\metre} above the chip surface.~\cite{Meek2009}
 
 On-chip control of the molecules was demonstrated by the same group, using
 microwaves propagating through free space~\cite{doi:10.1002/cphc.201001007} and
-separately with infrared light~\cite{doi:10.1080/00268976.2012.683885}.  \cm{CO}
+separately with infrared light~\cite{doi:10.1080/00268976.2012.683885}.  \CO
 molecules in the $J=1$ rotational state were rotationally excited into the $J=2$
 state on the chip, then accelerated off chip for state-selective detection.
 On-chip imaging has since been achieved, but has not been fully integrated with
@@ -311,8 +313,7 @@ these chips are inherently not scalable.  Furthermore, the trapping volumes were
 still fairly large, around \SI{0.25}{\milli\metre\cubed}. \cm{Why do we want a
 small trapping volume?}
 
-\cm{Why is Stark loading no good for us?}
-\cm{relate to PSD of Stark chips above}
+\cm{PSD of beam? Why did Mike say this was no good for us?}
 The use of on-chip decelerators was motivated by a lack of laser-cooled
 molecules, however this has now been achieved, producing sources of high
 phase-space densities~\cite{Truppe2017}, which could be used for loading a
@@ -320,7 +321,6 @@ different design of chip such as that proposed by Andr\'e et
 al.~\cite{Andre2006}
 
 \cm{Need to cite again?}
-\cm{ensure this is the first time I refer to it like this}
 The Andr\'e proposal outlines an electrostatic trap for molecules embedded in a
 microwave resonator to form a cavity-QED system. The high coupling between the
 molecule and cavity photons could be used for forming a qubit and sideband
@@ -333,37 +333,36 @@ architectures).
 \subsection{Quantum control on macroscopic and microscopic scales}
 \label{litrev:control}
 
-\cm{Move this subsection up? Need to think about structure and maybe some
-rephrasing to make it work.}
+\thesis{May want to think about moving this subsection to help with flow.}
 
 Coherent control of atomic and molecular states has been achieved in macroscopic
-traps~\cm{should cite some atom and mol papers here for optical and mw control
-in macro}, and is an essential tool for quantum technologies. For example, the
+traps~\cite{Gross995, Blackmore_2018}, and is an essential tool for quantum technologies. For example, the
 ability to address a single atom in an optical lattice can be used to simulate
 other quantum systems such as a Mott insulator.~\cite{Weitenberg2011} Coherent
 control of atoms on a chip has also been achieved. Of most relevance to this
 report is the experiment by B\"ohi et al.~\cite{Boehi2009} who observed Ramsey
-fringes on the hyperfine levels of \cm{87Rb} using microwaves carried across the
+fringes on the hyperfine levels of \esRb using microwaves carried across the
 surface of a chip. Coherent control achieved in this manner is innately robust
 and scalable; and therefore highly desirable for applications in quantum
-technologies.~\cite{}
+technologies.
 
 For molecules, it is possible to use microwaves to control the rotational
-states~\cite{}, which do not exist in atoms. This results in a coupling between
-the microwaves and the particles, which is orders of magnitude stronger for
-molecules. The Andr\'e proposal~\cite{Andre2006} suggests that this could be
-exploited to allow long-range coupling between individually trapped molecules,
-or sideband cooling into the trap ground state.
+states~\cite{Blackmore_2018}, which do not exist in atoms. This results in a
+coupling between the microwaves and the particles, which is orders of magnitude
+stronger for molecules. The Andr\'e proposal~\cite{Andre2006} suggests that this
+could be exploited to allow long-range coupling between individually trapped
+molecules, or sideband cooling into the trap ground state.
 
+\cm{Missing some info in this para}
 Recently, magnetically insensitive transitions have been discovered in
-\cm{CaF}.~\cite{PhysRevLett.120.163201, Blackmore_2018, } \cm{need one more cite
-for Luke's new paper (unpublished???)} One transition between the \cm{insert
-states} has been found at \cm{frequency} and another between \cm{other states}
-at \cm{40GHz}. The \cm{20GHz} transition is shown to be \cm{quite insensitive}
-and the \cm{40GHz} to be \cm{VERY insensitive}, leading to fidelities over
-\cm{length of time}.
+\CaF.~\cite{PhysRevLett.120.163201, Blackmore_2018, } \cm{40GHz mw cite here
+too} One transition between the \ph{insert
+states} has been found at \ph{frequency} and another between \ph{other states}
+at \ph{40GHz}. The \ph{20GHz} transition is shown to be \ph{quite insensitive}
+and the \ph{40GHz} to be \ph{VERY insensitive}, leading to fidelities over
+\ph{length of time}.
 
-This makes the \cm{40GHz} transition in \cm{CaF} a promising candidate for
+This makes the \ph{40GHz} transition in \CaF a promising candidate for
 quantum control in a magnetic chip trap. The need for an electrostatic trap is
 removed by the magnetically insensitive transitions and the existing atom chip
 technologies such as those created by B\"ohi et al.~\cite{Boehi2009} provide a
