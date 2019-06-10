@@ -4,7 +4,7 @@ measurement~\cite{Campbell90}, simulation~\cite{Gross995} and testing of
 fundamental physics~\cite{DeMille990}. However, one of the
 main disadcantages when compared to, for example,
 superconductor~\cite{Wallraff2004} or
-optical~\cite{https://arxiv.org/abs/1707.02925} systems is the lack of
+optical~\cite{Browne2017}systems is the lack of
 scalaibility and miniaturization.~\cite{nielsenandchuang}
 
 In 1995, Weinstein and Libbrecht proposed an experiment for
@@ -58,7 +58,7 @@ The basic principle of laser cooling of atoms is to deflect atoms from their
 trajectory by transfer of momentum from the laser light (radiation
 pressure).~\cite{RevModPhys.70.721} Consider a moving atom with a
 pre-chosen cooling transition between two internal states.  When such an atom
-encounters a counter-propogating resonant photon absorption can take place,
+encounters a counter-propagating resonant photon absorption can take place,
 reducing the atom's momentum. The atom can re-emit the photon in any direction,
 but on average the resulting atom will be slower than before the encounter.
 This process is known as Doppler cooling, as the light must be detuned from
@@ -77,22 +77,25 @@ Most atom sources produce a beam, with typical velocities of a few
 \SI{100}{\metre\per\second}.~\cite{Metcalf1999,}  As the atoms are slowed, the
 Doppler shift they experience will change, and hence they will move out of
 resonance with the transition.~\cite{RevModPhys.70.721} This can be overcome by
-introducing chriped light~\cite{Prodan1984} or varying the transition frequency
-by control of an external splitting field~\cite{PhysRevLett.48.596}.
+introducing chirped light~\cite{Prodan1984} or varying the transition frequency
+by control of an external splitting field~\cite{PhysRevLett.48.596}. Alternative
+approaches change the resonant frequency by introducing a varying electric field
+(Stark decelerator)~\cite{Bethlem1999} or magnetic field (Zeeman
+decelerator)~\cite{PhysRevLett.48.596}.
 
-An optical molasses can be formed from a pair of counter-propogating laser
+An optical molasses can be formed from a pair of counter-propagating laser
 beams, both red-detuned from the cooling transition. If the atom moves towards
-either beam it will move into resonace and experience a pressure back towards
+either beam it will move into resonance and experience a pressure back towards
 the trap centre. A set of three perpendicular optical molasses can cool an atom
 in each direction, reducing the temperature but not providing any trapping
 force~\cite{Metcalf1999} . Further cooling can be achieved in an optical
 molasses by choosing the polarization of the light such that there is a
 polarization gradient. This sub-Doppler cooling allows atoms to be cooled to the
 lowest limit, the recoil temperature of the atoms (typically a few
-\cm{\si{\micro\kelvin}}).~\cite{Dalibard:89}
+microkelvin).~\cite{Dalibard:89}
 
 Trapping can be achieved (for example) by optically pumping the atoms into a
-weak-field seeking state and aplying a magnetic field to form either a
+weak-field seeking state and applying a magnetic field to form either a
 quadrupole~\cite{PhysRevLett.54.2596} or
 Ioffe-Pritchard~\cite{PhysRevLett.51.1336} trap. Magnetically trapped atoms can
 be further cooled by evaporation, which can ultimately be used to form a
@@ -117,47 +120,41 @@ molecules means that they interact more strongly with electric fields than
 atoms, making an optical lattice of molecules, or a molecule on a chip, a good
 candidate for scalable quantum simulation or computing~\cite{Micheli2006,
 Andre2006}. Collisions between cold molecules could allow investigation of the
-nature of quantum chemistry~\cite{Krems2008}, and cooled \cm{YbF} is being
+nature of quantum chemistry~\cite{Krems2008}, and cooled \YbF is being
 developed to precisely measure the electron electric dipole moment as a means of
 testing fundamental theories of physics~\cite{Lim2018}.
 
 The tools developed for creation of cold atoms can be
-directly applied to producing cold molecules. A MOT of \cm{$Rb85?$} and
-\cm{$Cs133?$} can be used to form \cm{$RbCs$} via an interspecies Feshbach
-resonance~\cite{PhysRevA.85.032506, PhysRevA.89.033604} and then transfered into
+directly applied to producing cold molecules. A MOT of \esRb and
+\ootCs can be used to form \RbCs via an interspecies Feshbach
+resonance~\cite{PhysRevA.85.032506, PhysRevA.89.033604} and then transferred into
 the ro-vibrational ground state by stimulated Raman adiabatic passage
 (STIRAP).~\cite{PhysRevLett.113.255301, RevModPhys.70.1003}.
 
 Alternatively, direct cooling of molecules can be performed, with notable
-achivements for diatomic molecules.~\cite{Shuman2010} Beams of \cm{SrF} and
-\cm{CaF} have been slowed with chirped light~\cite{PhysRevLett.108.103002,
+achievements for diatomic molecules.~\cite{Shuman2010} Beams of \SrF and
+\CaF have been slowed with chirped light~\cite{PhysRevLett.108.103002,
 Truppe2017a} and held in a MOT~\cite{Barry2014, Williams2017}. Sub-Doppler
 cooling~\cite{Truppe2017} and coherent control of the rotational
 state~\cite{PhysRevLett.120.163201,Blackmore_2018} have been demonstrated for
-\cm{CaF}. Early experiments with optical tweezers have also been
+\CaF. Early experiments with optical tweezers have also been
 performed~\cite{Anderegg2019}.
 
-\cm{Should also mention Stark decelerators to prep for molecule chips.
-Mentioning Zeeman decelerators would also be nice for completeness.}
+\thesis{Will need to re-visit these last two paras as these experiments will
+have progressed.}
 
-\cm{
-Ongoing experiments with CaF will investigate the potential for sympathetic
-cooling with Rb atoms, and further explore the fidelity of qubits based on
-microwave transitions in the molecule. These experiments will pave the way for a
-chip, by providing the phase space density for efficient loading and
-computational basis for an on-chip qubit respectively.~\cm{How to cite this
-incomplete work? QSUM?}
-%
-%
-In this report, we will discuss the 
-}
+Ongoing experiments with \CaF aim to achieve an increased phase space density by
+sympathetic cooling with \esRb in a dipole trap.~\cm{Cite ongoing work} Recent
+work has also discovered two vibrational transitions which are highly
+insensitive to a magnetic field, making them ideal candidates for a qubit
+transition in a molecule chip.~\cm{Cite unpublished work?}
 
 \subsection{Structure of this report}
 
 In this document, I will outline the ongoing progress in the design and
-implementation of a molecular chip trap. In section \ref{litrev} I will present
+implementation of a molecular chip trap. In section~\ref{litrev} I will present
 the existing research that has been undertaken in the fields of atomic and
-molecular chip traps. Next, section \ref{experiment} will discuss the design
+molecular chip traps. Next, section~\ref{experiment} will discuss the design
 process for our experiment, and the various engineering challenges that we have
 had to overcome. Finally I will present the outlook for the remainder of the
-project, including some \cm{stretch goals??}
+project, and potential applications of molecule chip traps.
