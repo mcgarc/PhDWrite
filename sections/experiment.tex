@@ -425,6 +425,39 @@ changed are the minimum width of the centre conductor (\SI{10}{\micro\metre},
 track near the molecules (perpendicular or parallel to the trap axis). The full
 wafer is shown in \myfigref{experiment:waferdesign}.
 
+The trapping wire design is a series of seven Z-wire traps. Each one is designed
+with large fan-outs to aid in conduction of heat and maximise the achievable
+current density. A section of polyimide will be scratched of to reveal these so
+that they can be wire-bonded to the holding chip (see below). The outer traps
+are to be used for trapping at greater heights, meaning they need not be as
+narrow as the inner traps. Increasing the wire width means that a greater
+current can be achieved in the outer traps, which is useful for forming deep
+traps at heights of several hundred micrometres. The specifications of the traps
+are shown in \mytabref{experiment:table:traps}.
+
+\begin{table}
+  \centering
+  \begin{tabular*}{0.7\textwidth}{| @{\extracolsep{\fill} }c c l|}
+   \hline
+    Axial length & Width &  Notes \\
+    (\si{\milli\metre}) & (\si{\micro\metre}) & \\
+    \hline
+    30& 60 & Loaded from intermediate U-trap\\
+    20& 50 & \\
+    10& 40 & \\
+    6 & 30 & \\
+    3 & 20 & \\
+    1 & 10 & \\
+    0 & 10 & Dimple trap\\
+ \hline
+\end{tabular*}
+  \caption{The axial lengths and widths of Z-traps on traps on the
+  science chip. All wires are fabricated by photolithography followed by
+  electroplating, for a height of \SI{1}{\micro\metre}.
+  }
+  \label{experiment:table:traps}
+\end{table}
+
 The goal of this prototype is to characterise the CPWs to check that the
 predicted values are met. In particular, we are interested in how the material
 under the polyimide (HiRes Si substrate and trapping wires) will affect the
@@ -447,9 +480,7 @@ ultimately be used for trapping of molecules.
   \label{experiment:fig:chipdesign}
 \end{figure}
 
-\cm{Table of max trap depths and paragraph spiel.}
-
-\cm{How many molecules can we have in the traps and what temperatures?}
+\thesis{How many molecules can we have in the traps and what temperatures?}
 
 The science chip is to be mounted on a heavily modified vacuum flange, shown in
 \myfigref{experiment:fig:flange}. This flange will incorporate feedthroughs for
@@ -474,7 +505,7 @@ holding chip and the U-wire respectively.
     intermediary U-trap is positioned directly beneath the science chip and is
     powered by separate current feedthroughs. The flange will be mounted with
     the chip facing down, so that molecules can be dropped and imaged as they
-    fall. This CAD design was undertaken by Kyle Jarvies.
+    fall. This CAD was undertaken by Kyle Jarvis.
   }
   \label{experiment:fig:flange}
 \end{figure}
@@ -501,13 +532,15 @@ that described in reference~\cite{Truppe2017}. In the MOT chamber it is planned
 to construct a dipole trap, which will be used to increase phase space density
 of the molecule cloud
 
+\thesis{Need to figure out specific numbers for phase space density we can
+achieve and those required for loading. Include losses and heating from loading
+in this calculation.}
+
 Our source of \CaF{} molecules is a MOT similar to that discussed in
 reference~\cite{Truppe2017}. The MOT planned to be used for this experiment is
 to be used for separate experiments investigating sympathetic cooling between
 \esRb{} atoms and \CaF{} in a dipole trap. This is expected to produce a \CaF{}
-cloud with phase space density of order \cm{What?}. This cloud will be suitable
-for loading onto the chip. \cm{need to have set this up above. How much do we
-expect to lose in loading?}
+cloud suitable for loading onto the chip.
 
 The cloud will then be transferred into a magnetic transport trap (MTT) formed of
 a pair of anti-Helmholtz coils external to the chambers. The dipole trap will be
@@ -528,7 +561,7 @@ tweezer experiment are shown in \myfigref{experiment:fig:MTTsetup}.
     will move with the coils on a translation stage, allowing the transfer of
     molecules trapped in the MOT chamber into the tweezer chamber. The chip
     chamber will be positioned further downstream (left) of the tweezer chamber.
-    \cm{Image credit}
+    This CAD was undertaken by Kyle Jarvis.
   }
   \label{experiment:fig:MTTsetup}
 \end{figure}
@@ -549,9 +582,33 @@ of the changing field during a ramp is shown in
 ramp.}
 
 \begin{figure}[ht]
-  \includegraphics[width=0.8\textwidth]{./figs/existing_chambers.png}
+  \centering
+  \begin{subfigure}{0.6\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{./figs/ramps/x.pdf}
+    \caption{}
+  \end{subfigure}
+  \begin{subfigure}{0.6\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{./figs/ramps/y.pdf}
+    \caption{}
+  \end{subfigure}
+  \begin{subfigure}{0.6\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{./figs/ramps/z.pdf}
+    \caption{}
+  \end{subfigure}
   \caption{
-    \cm{Ramp}
+    An example of a bias field ramp between the Z1 and Z2 stages of the trapping
+    sequence (see \mytabref{experiment:table:loading}). In this stage the
+    \SI{3}{\milli\metre} trap is operated at a \SI{3}{\ampere} current. The bias
+    fields are linearly ramped from \cm{(Bx, By) =..} to \cm{Bx, By}, reducing the
+    trapping height from \SI{400}{\micro\metre} (solid) to
+    \SI{200}{\micro\metre} (dashed-dots). Two intermediary stages are shown at
+    30\% ramp (dashed) and 60\% ramp (dotted). The potential is transformed
+    whilst still forming a trap throughout. Subfigures (a), (b) and (c) show the
+    field through the trap centre in the $x$, $y$ and $z$ directions
+    respectively.
   }
   \label{experiment:fig:ramptraps}
 \end{figure}
@@ -563,26 +620,30 @@ adiabatic change of the potential.~\cite{Boehi2009} The proposed series of
 trapping stages for loading into the dimple is shown in
 \mytabref{experiment:table:loading}, along with required trapping currents and
 bias fields.
-%
-\cm{Need to get something in about the higher currents in thicker wires.}
 
 \thesis{Temperature/ compression? Proportion of molecules we expect to be able
 to keep?}
 
 \begin{table}
   \centering
-  \begin{tabular*}{0.8\textwidth}{| @{\extracolsep{\fill} }  c c c c c c c|}
+  \begin{tabular*}{0.8\textwidth}{| @{\extracolsep{\fill} }l | c c c c c c c|}
    \hline
-    Axis length  & $h_0$ & $I$  & Bx & By
-   & Depth  & $B_0$  \\
-    (\si{\centi\metre}) & (\si{\micro\metre}) & (\si{\ampere}) & G & G & 
+    Trap stage & Axis length  & $h_0$ & $I$  & Bx & By & Depth  & $B_0$  \\
+    & (\si{\milli\metre}) & (\si{\micro\metre}) & (\si{\ampere}) & G & G & 
     (\si{\milli\kelvin}) & (\si{\gauss}) \\
   \hline
-    3 & 200 & 3.3 & ?? & ?? & 2.2 & ?? \\
-  1 & 100 & 2.2 & ?? & ??& 1.9 & ?? \\
-  0.3 & 50 & 1.1 & ?? & ??& 2.9 & ?? \\
-  0.1 & 10 & 0.55 & ?? & ??& 7.3 & ?? \\
-  0 & ?? & ?? & ?? & ??& ?? & ?? \\
+    MTT& N/A & $10^4$  & & N/A & N/A & & 0 \\
+    inter-U1 & N/A & & & & & & \\
+    inter-U2 & N/A & 400 & & & & & \\
+    Z1 & 30 & 400 & 3.3 & ?? & ?? & 1.1 & ?? \\
+    Z2 & 30 & 200 & 3.3 & ?? & ?? & 2.2 & ?? \\
+    Z3 & 10 & 200 & 2.2 & ?? & ?? & 2.9 & ?? \\
+    Z4 & 10 & 100 & 2.2 & ?? & ??& 1.9 & ?? \\
+    Z5 & 3 & 1.1 & ?? & ?? & ?? &1.5 & ?? \\
+    Z6 & 3 & 50 & 1.1 & ?? & ??& 2.9 & ?? \\
+    Z7 & 1 & 50 & 1.1 & ?? & ?? & 1.5 & ?? \\
+    Z8 & 1 & 10 & 0.55 & ?? & ?? & 7.3 & ?? \\
+    dimple & 0 & 10 & ?? & ?? & ??& ?? & ?? \\
  \hline
 \end{tabular*}
   \caption{\cm{Add MTT, U and dimple.} In this table we present a series of trapping stages in the loading
