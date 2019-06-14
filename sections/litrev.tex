@@ -29,13 +29,13 @@ trap, manipulation of trapped atoms or molecules.
 
 The Andr\'e proposal~\cite{Andre2006} suggests the use of an electrostatic trap
 to contain the molecules, however this is not the only option available. In
-fact, magnetic trapping of atoms is much more widely explored.~\cite{2011Ac},
+fact, magnetic trapping of atoms is much more widely explored~\cite{2011Ac},
 and the discovery of magnetically insensitive transitions in \CaF{} makes this a
 promising choice for a molecule chip. As such we will focus in this section on
 magnetostatic trapping of atoms above a chip.
 
 The basic principle of a magnetic wire trap is explained in Reichel et
-al.~\cite{Reichel1999}. As illustrated in \myfigref{litrev:fig:reicheltrap} a
+al.~\cite{Reichel1999} As illustrated in \myfigref{litrev:fig:reicheltrap} a
 bias field that is applied to the electric field of a straight, current-carrying
 wire will create a zero. The field magnitude that must be applied to create the
 zero at a height $h$ for a wire carrying current $I$ is given by the magnitude
@@ -87,7 +87,9 @@ $I_2$ it is possible to form either a Ioffe-Pritchard (currents parallel) or a
 quadrupole trap (currents anti-parallel). Approximations of these shapes can be
 formed by bending a single wire to create the axial confinement, forming either
 a Z-trap (Ioffe-Pritchard) or U-trap (quadrupole), both also shown in
-\myfigref{litrev:fig:trapvariations}.
+\myfigref{litrev:fig:trapvariations}. \thesis{I should really show the fields
+that are generated, as well as the bias fields required, a coordinate system and
+follow up on expected Majorana losses properly below.}
 
 \begin{figure}
   \centering
@@ -153,6 +155,7 @@ respectively. The field at the trap centre is
 %
 \begin{equation}
   B_0 = \widetilde{B}_x + \frac{\mu_0 I_1}{2\pi h}
+  \label{litrev:eqn:bias}
 \end{equation}
 %
 where $\widetilde{B}_i$ represents the bias field applied in the $i$ direction.
@@ -166,11 +169,11 @@ and
   \omega_\perp = \sqrt{\frac{\mu_m {B'}^2}{m B_0}}
   \label{litrev:eqn:transfreq}
 \end{equation}
-where $\mu_m$ is the magnetic moment of the trapped particle, and we have taken
-$x$ to be the axial direction (aligned with $I_0$).~\cite{2011Ac}
-Taking the dimple to be a representative trap type, we can estimate the expected
-frequencies that we would expect to achieve based on the current and trapping
-height.
+where $\mu_m$ is the magnetic moment of the trapped particle (for our \CaF{}
+transitions $\mu_m \approx \mu_B$, the Bohr magneton), and we have taken $x$ to
+be the axial direction (aligned with $I_0$).~\cite{2011Ac} Taking the dimple to
+be a representative trap type, we can estimate the expected frequencies that we
+would expect to achieve based on the current and trapping height.
 
 \thesis{I probably want to go through this in a lot more detail including the
 maths. This is all in the notebook that Ed Hinds gave me to start with.} A
@@ -228,7 +231,7 @@ the trapping is purely magnetic, and transfer to the trapping
 wires on the chip. An adiabatic change of the bias fields can then be used to
 draw the atoms closer to the surface~\cite{Reichel1999, Folman2000}. This
 principle can be exemplified by the straight wire trap, with
-\myeqref{litlitrev:eqn:bias} showing that trapping closer to the wire requires a
+\myeqref{litrev:eqn:bias} showing that trapping closer to the wire requires a
 higher bias field (or a lower current).
 
 This principle can be extended to more complex trap types and varying the
@@ -248,7 +251,8 @@ surface also compresses the atom cloud, and since the compressing force is
 conservative~\cite{Metcalf1999}, this leads to adiabatic heating of the cloud.
 Conservation of phase space density suggests that the final temperature will be
 given by~\cite{Metcalf1999}
-\thesis{Check this cite is legit}
+\thesis{Check this cite is legit, and also follow up with this later. What are
+trap temperatures going to be due to compression, etc.}
 %
 \begin{equation}
    T_1 = T_0\left(\frac{V_0}{V_1}\right)^\frac{2}{3}.
@@ -388,7 +392,7 @@ cooling into the trap ground state.
 released.}
 %
 Recently, magnetically insensitive transitions have been discovered in
-\CaF{}.~\cite{PhysRevLett.120.163201, Blackmore_201, }  One transition between
+\CaF{}.~\cite{Williams2018, Blackmore_2018}  One transition between
 the $\ket{N=0, F=1, M_F=1}$ and $\ket{1,2,2}$ states has been found at
 \SI{20.5}{\giga\hertz} and another between $\ket{1,2,2}$ and $\ket{2,3,3}$ at
 \SI{41}{\giga\hertz} . The \SI{20.5}{\giga\hertz} transition has been shown to
