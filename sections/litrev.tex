@@ -321,17 +321,18 @@ the chip, still requiring external optics.~\cite{Marx2013}
 Whilst being a clear demonstration of the potential of
 molecule chips, the lack of on-chip measurement and integrated control mean that
 these chips are inherently not scalable.  Furthermore, the trapping volumes were
-still fairly large, around \SI{0.25}{\milli\metre\cubed}. \cm{Why do we want a
-small trapping volume?}
+still fairly large, around \SI{0.25}{\milli\metre\cubed}. 
+%
+\thesis{Why do we want a small trap volume?}
 
-\cm{PSD of beam? Why did Mike say this was no good for us?}
+\thesis{PSD of beam? Why did Mike say this was no good for us?}
+%
 The use of on-chip decelerators was motivated by a lack of laser-cooled
 molecules, however this has now been achieved, producing sources of high
 phase-space densities~\cite{Truppe2017}, which could be used for loading a
 different design of chip such as that proposed by Andr\'e et
 al.~\cite{Andre2006}
 
-\cm{Need to cite again?}
 The Andr\'e proposal outlines an electrostatic trap for molecules embedded in a
 microwave resonator to form a cavity-QED system. The high coupling between the
 molecule and cavity photons could be used for forming a qubit and sideband
@@ -374,7 +375,8 @@ have a lifetime long enough to sustain the interaction between the field and the
 molecules during any pulse. This has been achieved in atoms for quality factor
 $Q\sim2200$.~\cite{Hattermann2017}
 
-\cm{Is ``qubits'' the right thing to refer to here?}
+\thesis{Is ``qubits'' the right thing to refer to here?}
+%
 For molecules, it is possible to use microwaves to control the rotational
 states~\cite{Blackmore_2018}, which do not exist in atoms. This results in a
 coupling between the microwaves and the particles, which is orders of magnitude
@@ -382,17 +384,23 @@ stronger for molecules. The Andr\'e proposal~\cite{Andre2006} suggests that this
 could be exploited to allow long-range coupling to other qubits, or sideband
 cooling into the trap ground state.
 
-\cm{Missing some info in this para}
+\thesis{This paragraph will need updating with cites for the 40GHz paper when
+released.}
+%
 Recently, magnetically insensitive transitions have been discovered in
-\CaF{}.~\cite{PhysRevLett.120.163201, Blackmore_2018, } \cm{40GHz mw cite here
-too} One transition between the \ph{insert
-states} has been found at \ph{frequency} and another between \ph{other states}
-at \ph{40GHz}. The \ph{20GHz} transition is shown to be \ph{quite insensitive}
-and the \ph{40GHz} to be \ph{VERY insensitive}, leading to fidelities over
-\ph{length of time}.
+\CaF{}.~\cite{PhysRevLett.120.163201, Blackmore_201, }  One transition between
+the $\ket{N=0, F=1, M_F=1}$ and $\ket{1,2,2}$ states has been found at
+\SI{20.5}{\giga\hertz} and another between $\ket{1,2,2}$ and $\ket{2,3,3}$ at
+\SI{41}{\giga\hertz} . The \SI{20.5}{\giga\hertz} transition has been shown to
+be highly insensitive to the magnetic field ($\dd f / \dd B =
+-\SI{105(4)}{\hertz\per\gauss}$). This makes it a promising target for a qubit
+transition, as long coherence times of up to \SI{0.61(3)}{\milli\second} have
+been observed~\cite{Blackmore_2018}. In as yet unpublished work, the
+higher-frequnecy transition has been shown to be even more insensitive ($\dd f /
+\dd B = -\SI{4.6(1)}{\hertz\per\gauss}$). 
 
-This makes the \ph{40GHz} transition in \CaF{} a promising candidate for
-quantum control in a magnetic chip trap. The need for an electrostatic trap is
-removed by the magnetically insensitive transitions and the existing atom chip
-technologies such as those created by B\"ohi et al.~\cite{Boehi2009} provide a
-blueprint for implementation.
+This makes the $\ket{1,2,2} \leftrightarrow \ket{2,3,3}$  transition in \CaF{} a
+promising candidate for quantum control in a magnetic chip trap. The need for an
+electrostatic trap is removed by the magnetically insensitive transitions and
+the existing atom chip technologies such as those created by B\"ohi et
+al.~\cite{Boehi2009} provide a blueprint for implementation.
