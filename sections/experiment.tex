@@ -193,6 +193,10 @@ Hattermann2017} Below we will discuss whether this can be achieved in our case.
 
 \subsubsection{Microwave loss modes}
 
+\cm{Mike: This section is very useful. I would find even more useful if you had
+included graphs to show how the various loss modes depend on the key parameters
+(frequency, conductor width/thickness etc).}
+
 The attenuation constant is defined as the real part of the propagation
 constant $\gamma = \alpha + i\beta$, where $\beta = 2\pi / \lambda$ is the wave
 number.~\cite{Simons2004} Propagation through a waveguide induces evolution
@@ -255,7 +259,7 @@ $\epsilon_\mathrm{r1} \sim 10$ so the limit on the dielectric loss component is
 \begin{equation}
   \alpha_d \leq \SI{0.9}{\neper\per\meter}
 \end{equation}
-for the \SI{41}{\giga\hertz} transition in \CaF{}. Or as a Q-factor
+for the \SI{41}{\giga\hertz} transition in \CaF{}. As a Q-factor, that is
 \begin{equation}
   Q_d \geq 460.
 \end{equation}
@@ -294,11 +298,14 @@ Consider an example case of gold conductor on HiRes Si substrate. Gold has
 resistivity $\rho_\mathrm{Au} = \SI{2.4E-8}{\ohm\metre}$ at room temperature,
 and as above, we will have $\epsilon_\mathrm{r1} \approx 10$. This requires $k_0
 \approx 1/3$ to achieve impedance matching at $Z_0 = \SI{50}{\ohm}$. The only
-free parameters are the conductor thickness $t$, and the size of the centre
-width conductor $S$, both of which must be maximised to reduce loss. Typical
-values for the smallest CPWs will be $S\sim\SI{1}{\micro\metre}$, where
-this height can be achieved by electroplating (see below). Typical
-conductor losses are therefore expected to be of order
+free parameters are the conductor thickness $t$, and the width of the centre
+conductor $S$, both of which must be maximised to reduce loss. Typical values
+for the smallest CPWs will be $S\sim\SI{1}{\micro\metre}$ \cm{Mike: surely 10um
+is the smallest we are fabricating? Cameron: maybe need different values for
+different x-sections (or widths with set height?) see above comment from Mike
+about more plots}}, with a height of approximately \SI{6}{\micro\metre}
+(discussed further below). Typical conductor losses are therefore expected to be
+of order
 \begin{equation}
   \alpha_c \sim \SI{400}{\neper\per\metre}
 \end{equation}
@@ -323,7 +330,8 @@ al.~\cite{Frankel1991}, who show that
   \frac{\epsilon_\mathrm{eff}}{\epsilon_\mathrm{r1}}\right)^2}{\sqrt{\frac{\epsilon_\mathrm{eff}}{\epsilon_\mathrm{r1}}}}\right)
   \frac{(S+2W)^2\epsilon_\mathrm{r1}^{3/2}}{c^3 K(k'_0)K(k_0)}.
 \end{equation}.
-Inserting typical values, we retrieve
+Inserting typical values, we retrieve \cm{Mike: too vague, need frequency for
+example as it goes like $f^3$...}
 \begin{equation}
   \alpha_r \sim \SI{0.4}{\neper\per\metre}
 \end{equation}
@@ -341,13 +349,12 @@ dominate the other sources, with an overall quality factor $Q\sim1$. Typical
 resonators will operate with much higher $Q$~\cite{Hattermann2017}, so it will
 not be possible to implement a resonator.
 
-
 \cm{Alex: should re-calculate for the actual loss over the length of small
 waveguide we are using and include that.}
 That said, it should be noted that the high loss should not prevent us from
 using the CPW to directly drive microwave transitions in trapped molecules, as
 we will still be able to pass signal through the waveguide without the need to
-construct a resonator. With loss of $\alpha \approx \alpha_r$, and waveguides of
+construct a resonator. With loss of $\alpha \approx \alpha_c$, and waveguides of
 lengths on the scale of a few centimeter, we can expect a total loss of around
 $\SI{400}{\neper\per\metre} \times \SI{0.01}{\metre} = \SI{35}{\decibel}$. This
 should be sufficiently small that microwaves will be able to reach molecules
@@ -370,6 +377,19 @@ for a waveguide.
 
 \subsection{Chips with multiple layers}
 \label{experiment:multilayer}
+
+\cm{Mike:This bit doesn't make sense to me. The logic here seems to imply that
+the  electrostatic trap relies on a resonator but the magnetic trap doesn't.
+Which isn't true!  We chose the magnetic trap because we think it will give us
+longer coherence times. \\
+%
+Cameron: I think my reasoning here glossed over the details from the COMSOL
+models Kyle made for brining the bias onto the chip. I thought our conclusion
+was that the electrostatic trap required a resonator to bring the bias in, but
+maybe I am wrong? Mike has probably forgotten this, and a new reader wouldn't
+know it to start with, so I need to figure out how best to explain myself. Maybe
+forget the bias stuff and just argue that magentically insensetive transitions
+lead to long coherence times, which is what we want.}
 
 As the microwave attenuation prevents implementation of a resonator (and hence
 implementation of an electrostatic trap integrated with the waveguide) another
@@ -397,7 +417,8 @@ discontinuities in the waveguide.
 
 Polyimide is used as the resin as it is highly resistant to cleaning techniques
 commonly used in photolithography, including piranha clean.  It is also
-effective as a microwave substrate~\cite{Simons2004}
+effective as a microwave substrate~\cite{Simons2004} \cm{Mike seems concerned
+about this being high}
 ($\epsilon_\mathrm{r1} = 3.3$, $\tan\delta_e = 0.016$) with conductor losses
 still dominating those caused by the dielectric.
 
@@ -521,7 +542,7 @@ holding chip and the U-wire respectively.
     intermediary U-trap is positioned directly beneath the science chip and is
     powered by separate current feedthroughs. The flange will be mounted with
     the chip facing down, so that molecules can be dropped and imaged as they
-    fall. This CAD was undertaken by Kyle Jarvis.
+    fall. This CAD was undertaken by other members of the group.
   }
   \label{experiment:fig:flange}
 \end{figure}
@@ -628,7 +649,7 @@ of changing trapping height by ramping bias fields is shown in
 \end{figure}
 
 A ramp is performed by linearly changing the trapping currents (those in the
-Z-wires and bias coils). The time over which a ramp should ocurr is expected to
+Z-wires and bias coils). The time over which a ramp should occur is expected to
 be on the order of tens of microseconds, so that the molecules experience an
 adiabatic change of the potential.~\cite{Boehi2009} The proposed series of
 trapping stages for loading into the dimple is shown in

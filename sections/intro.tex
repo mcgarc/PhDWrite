@@ -1,11 +1,10 @@
-Cold atoms and molecules are a promising architecture for the implementation of
-new quantum technologies. They have been used for devices in fields of
-measurement~\cite{Campbell90}, simulation~\cite{Gross995} and testing of
-fundamental physics~\cite{DeMille990}. However, one of the
-main disadvantages when compared to, for example,
-superconductor~\cite{Wallraff2004} or
-pure optical~\cite{Browne2017} systems is the lack of
-scalability and miniaturization.~\cite{nielsenandchuang}
+Cold atoms and molecules systems are promising for the implementation of new
+quantum technologies. They have been used for devices in fields of
+measurement~\cite{PhysRevLett.120.103201}, simulation~\cite{Gross995} and testing of
+fundamental physics~\cite{DeMille990}. However, one of the main disadvantages
+when compared to, for example, superconductor~\cite{Wallraff2004} or pure
+optical~\cite{Browne2017} systems is the lack of scalability and
+miniaturization.~\cite{nielsenandchuang}
 
 In 1995, Weinstein and Libbrecht proposed an experiment for
 studying cold atoms in environments with extremely high magnetic
@@ -37,11 +36,12 @@ A proposal by Andr\'e et al. in 2006~\cite{Andre2006} suggested that integrating
 an electrostatic trap with a microwave field, both integrated on a chip would be
 a powerful architecture, owing to the high coupling between rotational states of
 the molecule and the microwave field (orders of magnitude greater than coupling
-between microwaves and the hyperfine structure of an atom). Photons coupled to
-trapped molcules could be used as flying qubits to couple into other trapped
-molecules, or qubits in other architectures.~\cite{PhysRevLett.92.063601}
+between microwaves and the hyperfine structure of an atom \cm{Mike: why?}).
+Photons coupled to trapped molecules could be used as flying qubits to couple
+into other trapped molecules, or qubits in other
+architectures.~\cite{PhysRevLett.92.063601}
 
-In the following subsection I will further discuss the field of ultra-cooling of
+In the following subsection I will further discuss the field of laser cooling of
 atoms and molecules. The rest of the report will focus on chip trapping, the
 design of our molecule chip for \CaF{} and the outlook for the remainder of the
 project.
@@ -60,31 +60,50 @@ encounters a counter-propagating resonant photon, absorption can take place,
 reducing the atom's momentum. The atom can re-emit the photon in any direction,
 but on average the resulting atom will be slower than before the encounter.
 This process is known as Doppler cooling, as the light must be detuned from
-resonance to account for Doppler shift experienced by the moving
+resonance to account for the Doppler shift experienced by the moving
 molecule.~\cite{Metcalf1999}
 
 Of course, the assumption of a two-level system is a vast simplification.  A key
-example is sodium, where the hyperfine transition $3S_{1/2}\, (F=2) \rightarrow
-3P_{3/2}\, (F'=3)$ was used to demonstrate this technique. However, since the
-excited states of sodium have decay channels into $F=1$, it is possible for
-atoms to fall into this state and out of resonance with the cooling transition.
-This can be overcome by introducing repumping light to transfer atoms in dark
-states back into bright states.~\cite{RevModPhys.70.721}
+example is sodium, where the transition $3S_{1/2}\, (F=2) \rightarrow 3P_{3/2}\,
+(F'=3)$ was used to demonstrate this technique. However, since the excited
+states of sodium have decay channels into $F=1$, it is possible for atoms to
+fall into this state and out of resonance with the cooling
+transition.\footnote{To be precise, $F'=3$ has no decay channels to $F=1$, but
+off-resonant excitation into $F'=2$ can result in the population of dark states
+by the decay $F'=2 \rightarrow F=1$.} This can be overcome by introducing
+repumping light to transfer atoms in dark states back into bright
+states.~\cite{RevModPhys.70.721}
 
 Most atom sources produce a beam, with typical velocities of a few
-\SI{100}{\metre\per\second}.~\cite{Metcalf1999,}  As the atoms are slowed, the
+\SI{100}{\metre\per\second}.~\cite{Metcalf1999}  As the atoms are slowed, the
 Doppler shift they experience will change, and hence they will move out of
 resonance with the transition.~\cite{RevModPhys.70.721} This can be overcome by
 introducing chirped light~\cite{Prodan1984} or varying the transition frequency
-by control of an external splitting field~\cite{PhysRevLett.48.596}. Alternative
+by control of an external magnetic field~\cite{PhysRevLett.48.596}.
+
+\cm{Mike:  \\
+%
+``Alternative
 approaches change the resonant frequency by introducing a varying electric field
 (Stark decelerator)~\cite{Bethlem1999} or magnetic field (Zeeman
-decelerator)~\cite{PhysRevLett.48.596}.
+decelerator)~\cite{PhysRevLett.48.596}.'' \\
+%
+This is not correct, there is no laser cooling/ slowing in Stark decelerator.
+Electric field is used to remove the energy, not keep atoms resonant. Also
+Zeeman mentioned in alst sentence. \\
+%
+Cameron: I should try and introduce the STark decelerator properly (separate
+para (here?)), and name the Zeeman slower above.
+}
+Zeeman 
 
+\cm{Confused tense below.}
 An optical molasses can be formed from a pair of counter-propagating laser
 beams, both red-detuned from the cooling transition. If the atom moves towards
-either beam it will move into resonance and experience a pressure back towards
-the trap centre. A set of three perpendicular optical molasses can cool an atom
+either beam it will move into resonance and its velocity in that direction
+is (on average) reduced by photon scattering. \cm{I don't think this is entirely
+clear, but better than before when I implied molasses were a trap...}
+A set of three perpendicular optical molasses can cool an atom
 in each direction, reducing the temperature but not providing any trapping
 force~\cite{Metcalf1999} . Further cooling can be achieved in an optical
 molasses by choosing the polarization of the light such that there is a
@@ -111,12 +130,12 @@ field which we cannot explore in any level of detail here. Of particular note to
 us are experiments involving dipole trapping~\cite{PhysRevA.47.R4567}, such as
 those in an optical lattice~\cite{Bakr2009} or tweezer~\cite{Ashkin:86}. Control
 of the atomic states in a lattice has been used to perform quantum
-simulation~\cite{Gross995} and to precisely measure the
-second~\cite{Campbell90}.
+simulation~\cite{Gross995} and to precisely realise the
+second~\cite{PhysRevLett.120.103201}.
 
 The rich energy structure of molecules, having rotational and vibrational
 degrees of freedom, makes cooling procedures more involved~\cite{Tarbutt2018},
-but there are numerous properties of molecules that could be expolited in a
+but there are numerous properties of molecules that could be exploited in a
 range of applications. The large electric dipole moment of some diatomic
 molecules means that they interact more strongly with electric fields than
 atoms, making an optical lattice of molecules, or a molecule on a chip, a good
@@ -127,7 +146,7 @@ developed to precisely measure the electron electric dipole moment as a means of
 testing fundamental theories of physics~\cite{Lim2018}.
 
 The tools developed for creation of cold atoms can be directly applied to
-producing cold molecules. A MOT of \esRb{} and \ootCs{} can be used to form
+producing cold molecules. A MOT of \esRb{} and \ottCs{} can be used to form
 \RbCs{} via an interspecies Feshbach resonance~\cite{PhysRevA.85.032506,
 PhysRevA.89.033604} and then transferred into the ro-vibrational ground state by
 stimulated Raman adiabatic passage.~\cite{PhysRevLett.113.255301,
