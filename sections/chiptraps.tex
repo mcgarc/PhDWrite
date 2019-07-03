@@ -20,7 +20,7 @@ this section, we will review the state of chip trapping, including work on atom
 chips and these supporting technologies.
 
 \subsection{Wire traps}
-\label{litrev:wiretraps}
+\label{chiptraps:wiretraps}
 
 In developing the molecule chip, we have been able to draw upon the
 well-developed field of atom chips to inform our design choices. Let us consider
@@ -35,7 +35,7 @@ promising choice for a molecule chip. As such we will focus in this section on
 magnetostatic trapping of atoms above a chip.
 
 The basic principle of a magnetic wire trap is explained in Reichel et
-al.~\cite{Reichel1999} As illustrated in \myfigref{litrev:fig:reicheltrap} a
+al.~\cite{Reichel1999} As illustrated in \myfigref{chiptraps:fig:reicheltrap} a
 field zero can be created from the magnetic field of a straight wire, carrying
 current $I$, and an external bias field. This is a two-dimensional trap
 \cm{2D?}, with a zero running parallel to the wire. The bias field's direction
@@ -52,13 +52,13 @@ weak-field seeking states such that they favourably occupy the region surround
 the trap minimum.~\cite{Metcalf1999}
 
 \begin{figure}
-  \includegraphics[width=0.75\textwidth]{./figs/litrev/reicheltrap.pdf}
+  \includegraphics[width=0.75\textwidth]{./figs/chiptraps/reicheltrap.pdf}
   \caption{The combination of the magnetic field due to a straight wire and a
   constant bias are shown to produce a zero, forming a two-dimensional trap for
   weak field seekers. This is the basic principle underlying all magnetic wire
   traps. Reproduced from Reichel et al.~\cite{Reichel1999}
   }
-  \label{litrev:fig:reicheltrap}
+  \label{chiptraps:fig:reicheltrap}
 \end{figure}
 
 \cm{I should have described QP/IP difference above}
@@ -67,29 +67,29 @@ To achieve a three-dimensional trap, we can overlay an additional wire,
 carrying a smaller current than the first such that there is now some component
 of magnetic field along the axis of the original trap. Applying a bias along
 this axial direction will re-introduce a field minimum, forming a three-dimensional
-\emph{dimple trap} shown in \myfigref{litrev:fig:dimpletrap}.~\cite{2011Ac}
+\emph{dimple trap} shown in \myfigref{chiptraps:fig:dimpletrap}.~\cite{2011Ac}
 Since the trap centre is now in general a field minimum rather than a
 zero, it is a Ioffe-Pritchard trap, which is not susceptible to Majorana
 losses~\cite{PhysRevLett.51.1336}. \cm{better to say spin flip??}
 
 \begin{figure}
-  \includegraphics[width=0.75\textwidth]{./figs/litrev/dimpletrap.png}
+  \includegraphics[width=0.75\textwidth]{./figs/chiptraps/dimpletrap.png}
   \caption{The field of a straight wire trap (current $I_0$ is perturbed by a
   second wire carrying a current $I_1 \ll I_0 $ and accompanying bias
   ($B_{b,x}$). The resulting field forms a three-dimensional dimple trap.
   }
-  \label{litrev:fig:dimpletrap}
+  \label{chiptraps:fig:dimpletrap}
 \end{figure}
 
 Other variations on the wire trap are possible. Running two perturbing wires
 across one axis (with currents $I_1$ and $I_2$) will form an H-trap, shown in
-\myfigref{litrev:fig:trapvariations}. Here the minimum will exist between the
+\myfigref{chiptraps:fig:trapvariations}. Here the minimum will exist between the
 two perturbing wires. Note that depending on the relative signs of $I_1$ and
 $I_2$ it is possible to form either a Ioffe-Pritchard (currents parallel) or a
 quadrupole trap (currents anti-parallel). Approximations of these shapes can be
 formed by bending a single wire to create the axial confinement, forming either
 a Z-trap (Ioffe-Pritchard) or U-trap (quadrupole), both also shown in
-\myfigref{litrev:fig:trapvariations}. \thesis{I should really show the fields
+\myfigref{chiptraps:fig:trapvariations}. \thesis{I should really show the fields
 that are generated, as well as the bias fields required, a coordinate system and
 follow up on expected Majorana losses properly below.}
 
@@ -122,7 +122,7 @@ follow up on expected Majorana losses properly below.}
     approximating the currents through the H wire respectively. The bias fields
     requisite for trapping are not shown.
   }
-  \label{litrev:fig:trapvariations}
+  \label{chiptraps:fig:trapvariations}
 \end{figure}
 
 % Maths for the traps, freq. grad. etc.
@@ -158,19 +158,19 @@ respectively. The field at the trap centre is
 %
 \begin{equation}
   B_0 = \widetilde{B}_x + \frac{\mu_0 I_1}{2\pi h}
-  \label{litrev:eqn:bias}
+  \label{chiptraps:eqn:bias}
 \end{equation}
 %
 where $\widetilde{B}_i$ represents the bias field applied in the $i$ direction.
 The trap frequencies are given by
 \begin{equation}
   \omega_x = \sqrt{\frac{\mu_m}{m}B''}
-  \label{litrev:eqn:axisfreq}
+  \label{chiptraps:eqn:axisfreq}
 \end{equation}
 and
 \begin{equation}
   \omega_\perp = \sqrt{\frac{\mu_m {B'}^2}{m B_0}}
-  \label{litrev:eqn:transfreq}
+  \label{chiptraps:eqn:transfreq}
 \end{equation}
 where $\mu_m$ is the magnetic moment of the trapped particle (for our \CaF{}
 transitions $\mu_m \approx \mu_B$, the Bohr magneton), and we have taken $x$ to
@@ -194,8 +194,8 @@ The current that can be achieved in the chip will be limited by thermal
 properties of the final chip design as will be discussed in
 section~\ref{experiment:multilayer}. Typical achievable currents are estimated
 to be around \SI{60}{\milli\ampere}. 
-Using \myeqref{litrev:eqn:transfreq} and
-\myeqref{litrev:eqn:axisfreq} we can therefore anticipate trapping frequencies
+Using \myeqref{chiptraps:eqn:transfreq} and
+\myeqref{chiptraps:eqn:axisfreq} we can therefore anticipate trapping frequencies
 for \CaF{} of
 %
 \begin{align}
@@ -234,7 +234,7 @@ the trapping is purely magnetic, and transfer to the trapping
 wires on the chip. An adiabatic change of the bias fields can then be used to
 draw the atoms closer to the surface~\cite{Reichel1999, Folman2000}. This
 principle can be exemplified by the straight wire trap, with
-\myeqref{litrev:eqn:bias} showing that trapping closer to the wire requires a
+\myeqref{chiptraps:eqn:bias} showing that trapping closer to the wire requires a
 higher bias field (or a lower current).
 
 This principle can be extended to more complex trap types and varying the
@@ -301,7 +301,7 @@ then be used to build up the wires before cleaning off the mould and etching off
 the seed layer.~\cite{4797887}
 
 \subsection{Molecule chips}
-\label{litrev:molculechips}
+\label{chiptraps:molculechips}
 
 
 Molecule chips that have been previously implemented rely on quite different
@@ -356,7 +356,7 @@ other chip-based qubits (either other trapped molecules or different quantum
 architectures).
 
 \subsection{Quantum control on macroscopic and microscopic scales}
-\label{litrev:control}
+\label{chiptraps:control}
 
 \thesis{May want to think about moving this subsection to help with flow.}
 
