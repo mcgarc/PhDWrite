@@ -36,10 +36,12 @@ magnetostatic trapping of atoms above a chip.
 
 The basic principle of a magnetic wire trap is explained in Reichel et
 al.~\cite{Reichel1999} As illustrated in \myfigref{litrev:fig:reicheltrap} a
-bias field that is applied to the electric field of a straight, current-carrying
-wire will create a zero. The field magnitude that must be applied to create the
-zero at a height $h$ for a wire carrying current $I$ is given by the magnitude
-of the field at that point~\cite{Jackson1975}
+field zero can be created from the magnetic field of a straight wire, carrying
+current $I$, and an external bias field. This is a two-dimensional trap
+\cm{2D?}, with a zero running parallel to the wire. The bias field's direction
+must oppose the direction of the wire field. To form the zero at some height $h$
+above the wire the bias field must completely cancel the wire field at that
+point, so that \cm{Need to check B or B-tilde..}
 %
 \begin{equation}
   B = \frac{\mu_0 I}{2\pi h}.
@@ -59,15 +61,16 @@ the trap minimum.~\cite{Metcalf1999}
   \label{litrev:fig:reicheltrap}
 \end{figure}
 
+\cm{I should have described QP/IP difference above}
 Such a field will form a two-dimensional trap for weak-field seeking particles.
 To achieve a three-dimensional trap, we can overlay an additional wire,
 carrying a smaller current than the first such that there is now some component
 of magnetic field along the axis of the original trap. Applying a bias along
 this axial direction will re-introduce a field minimum, forming a three-dimensional
 \emph{dimple trap} shown in \myfigref{litrev:fig:dimpletrap}.~\cite{2011Ac}
-Since the trap centre is now in general a field minimum minimum rather than a
+Since the trap centre is now in general a field minimum rather than a
 zero, it is a Ioffe-Pritchard trap, which is not susceptible to Majorana
-losses~\cite{PhysRevLett.51.1336}.
+losses~\cite{PhysRevLett.51.1336}. \cm{better to say spin flip??}
 
 \begin{figure}
   \includegraphics[width=0.75\textwidth]{./figs/litrev/dimpletrap.png}
@@ -139,6 +142,7 @@ terms of the usual Ioffe-Pritchard equation~\cite{Foot2005}
 where we have chosen the origin to be the trap centre (not to be confused with
 the centre of the dimple wires). In this case, the field gradient and curvature
 are
+\cm{Alex: no $I_2$ dependence}
 %
 \begin{equation}
   B' = \frac{\mu_0 I_0}{2\pi h^2}
@@ -179,7 +183,7 @@ maths. This is all in the notebook that Ed Hinds gave me to start with.} A
 typical final\footnote{Greater intermediary trapping heights are used as part of
 the loading procedure.} trapping height will be around \SI{10}{\micro\metre}.
 This allows on-chip microwave fields to interact with trapped atoms without
-introducing any energy shifts   or significant attractive force acting on the
+introducing any energy shifts  or significant attractive force acting on the
 molecule from the Casimir effect or Van der Waals force.\footnote{Trapping
 beneath this height could allow investigation of these effects on a quantum
 scale and is in itself a goal of atom chip
@@ -234,13 +238,12 @@ principle can be exemplified by the straight wire trap, with
 higher bias field (or a lower current).
 
 This principle can be extended to more complex trap types and varying the
-currents through the trapping wires trapping.~\cite{Folman2000} It is also
-possible to construct a series of wire traps in close proximity, whose currents
-can then be independently controlled such that the trap centre is moved between
-them. This allows the use of higher currents through wide wires when the cloud
-is far from the surface, but a smaller wire must be used when the atoms are
-close to it, so that the approximation of an infinitesimally small wire remains
-accurate.
+currents through the trapping wires.~\cite{Folman2000} It is also possible to
+construct a series of wire traps in close proximity, whose currents can then be
+independently controlled such that the trap centre is moved between them. This
+allows the use of higher currents through wide wires when the cloud is far from
+the surface, but a smaller wire must be used when the atoms are close to it, so
+that the approximation of an infinitesimally small wire remains accurate.
 
 This adiabatic change of currents (through various wires) and bias fields is
 another common step in the loading procedure~\cite{Folman2000,2011Ac,
@@ -257,6 +260,9 @@ trap temperatures going to be due to compression, etc.}
    T_1 = T_0\left(\frac{V_0}{V_1}\right)^\frac{2}{3}.
 \end{equation}
 
+\cm{Alex highlighted the "increasing number or atoms" think I need to figure out
+something more specific to say about evaporative cooling and phase space
+acceptance (expand the latter above?)}
 After compression, the likelihood of collisions between the atoms is increased,
 which results in the loss of large numbers of atoms due to inelastic collisions.
 The solution to this, as presented by B\"ohi et al.~\cite{Boehi2009} is to
@@ -275,7 +281,7 @@ reproducible MOT for loading.
 Direct loading of a chip with an optical tweezer is also a possibility for
 transferring molecules directly onto a chip~\cite{Liueaar7797}, with Bernon et
 al.~\cite{Bernon2013} having demonstrated the technique with atoms. In this
-experiment, an optical tweezer transport a cloud of $5\times10^6$ \esRb{}
+experiment, an optical tweezer transported a cloud of $5\times10^6$ \esRb{}
 atoms from a MOT onto a chip trap \SI{40}{\milli\metre} away. This has the
 benefit of insignificant losses and heating. This is a very attractive option
 for loading, but molecular optical tweezers are still in their
@@ -336,6 +342,10 @@ phase-space densities~\cite{Truppe2017}, which could be used for loading a
 different design of chip such as that proposed by Andr\'e et
 al.~\cite{Andre2006}
 
+\cm{Alex: explain further how coupling can create qubit and do sideband
+cooling.}
+%Sideband cooling I think is more to do with increased coupling than whatever
+%nonsense I came up with in viva. So can't do in free space for some reason...
 The Andr\'e proposal outlines an electrostatic trap for molecules embedded in a
 microwave resonator to form a cavity-QED system. The high coupling between the
 molecule and cavity photons could be used for forming a qubit and sideband
@@ -365,6 +375,7 @@ the experiment by B\"ohi et al.~\cite{Boehi2009} who observed Ramsey fringes on
 the hyperfine levels of \esRb{} using microwaves carried across the surface of a
 chip. Coherent control achieved in this manner is innately robust and scalable;
 and therefore highly desirable for applications in quantum technologies.
+\cm{Alex: why is it innately robust and scalable?}
 
 \thesis{Need more legit version of this paragraph. For one thing I should be
 able to calculate the lifetime (and hence Q factor) that I need.}

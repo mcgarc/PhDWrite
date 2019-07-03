@@ -131,7 +131,7 @@ seen in in \myfigref{experiment:fig:resonator}.~\cite{Simons2004}
 \label{experiment:mw:resonator}
 
 Andr\'e et al.~\cite{Andre2006} proposed a molecule chip where the trap was
-embedded in a resonator formed from a CPW. In this subsubsection I will present
+embedded in a resonator formed from a CPW. Here I will present
 the implementation and theory of CPW microwave resonators, with a view to
 determine whether or not such an architecture is feasible.
 
@@ -145,6 +145,9 @@ fingers. An example of such a resonator is shown in
 \begin{figure}
   \includegraphics[width=0.8\textwidth]{./figs/gopl_cpw.png}
   \caption{
+    \thesis{Aim to use one of my own CPWs here. Might be hard as I probably
+    won't have all the different coupling methods, so maybe alter this figure,
+    if that is allowed??}
     A CPW resonator is shown (D) along with various capacitor structures: 8
     finger capacitor (E), two finger capacitor (H) and gap capacitors (I and K).
     The capacitors isolate a segment of the central conductor to form the
@@ -152,6 +155,7 @@ fingers. An example of such a resonator is shown in
     into a shorter region without adversely affecting
     transmission.~\cite{Simons2004} A taper can be seen at each end of the
     resonator, with $k_0$ and hence $Z_0$ conserved.
+    \cm{Metion bend loss, to be expanded in body text.}
     This figure is reproduced from reference~\cite{doi:10.1063/1.3010859}.
   }
   \label{experiment:fig:resonator}
@@ -175,10 +179,14 @@ It can readily be shown that the quality factor can be expressed in terms of the
 attenuation constant $\alpha$ (defined below) and the resonant frequency
 $\omega_0$, so that~\cite{Simons2004}
 % Simons pg. 409-410
+%
 \begin{equation}
   Q = \frac{\omega_0}{2c\alpha}.
   \label{experiment:mw:eqn:Qalpha}
 \end{equation}
+%
+\cm{Alex: Limit? I would have thought only need Q up to Q of a rotational
+transition, what is that?}
 It is desirable to maximise $Q$ (minimise damping). It has been shown that CPWs
 with $Q$ on the order of $1000$ can be fabricated.~\cite{doi:10.1063/1.3010859,
 Hattermann2017} Below we will discuss whether this can be achieved in our case.
@@ -192,7 +200,7 @@ described by
 %
 \begin{equation}
   \widetilde{E}(z) = \widetilde{E}(0)e^{-\gamma z}.
-  \label{experiment:mw:eqn:Eloss}.
+  \label{experiment:mw:eqn:Eloss}
 \end{equation}
 %
 Taking the absolute value, the amplitude falls off as
@@ -201,6 +209,9 @@ Taking the absolute value, the amplitude falls off as
   E(z) = E(0)e^{-\alpha z}
 \end{equation}
 %
+\cm{Alex asked if $\alpha_r$ includes input/output coupling. I think this is the
+same as insertion loss and I have a target to talk more about that above, but
+maybe reinforce here?}
 where the attenuation is given by the sum of attenuation from three loss modes:
 dielectric loss ($\alpha_d$), conductor loss ($\alpha_c$) and radiation loss
 ($\alpha_r$). The propagation constant can be written as
@@ -220,12 +231,14 @@ with the total quality factor being
   Q = \left(\sum Q_i^{-1} \right)^{-1}.
 \end{equation}
 
-% Talk about "insertion loss" which is in Simon's 12. (pg. 410??)
+\cm{Talk about "insertion loss" which is in Simon's 12. (pg. 410??)}
 Note that we will not consider the dependence of the quality factor the
 capacitive coupling into the resonator (insertion loss).~\cite{Simons2004,
 doi:10.1063/1.3010859} Broadly speaking, a higher coupling capacitance
 corresponds to a wider resonance peak, however in our case this effect is
 dominated by other forms of loss.
+
+\cm{Alex: also need to mention bending losses}
 
 \subsubsection*{Dielectric losses}
 
@@ -251,7 +264,7 @@ Higher $Q$ is achievable depending on the substrate that is chosen. For example,
 aluminium nitride~\cite{mw101}  ($\epsilon_\mathrm{eff}=5$, $\tan\delta_e =
 5\times10^{-4}$) or high-resistivity silicon (HiRes Si)~\cite{1717770}
 ($\epsilon_\mathrm{eff}=5$, $\tan\delta_e =2\times10^{-4}$) are both good
-choices in the high-frequency r\'egime.  Dielectric quality is usually higher
+choices in the high-frequency regime.  Dielectric quality is usually higher
 below room temperature, but experimental limitations prevent us from cooling the
 chip at this stage.
 % https://www.microwaves101.com/encyclopedias/aluminum-nitride
@@ -328,11 +341,14 @@ dominate the other sources, with an overall quality factor $Q\sim1$. Typical
 resonators will operate with much higher $Q$~\cite{Hattermann2017}, so it will
 not be possible to implement a resonator.
 
+
+\cm{Alex: should re-calculate for the actual loss over the length of small
+waveguide we are using and include that.}
 That said, it should be noted that the high loss should not prevent us from
 using the CPW to directly drive microwave transitions in trapped molecules, as
 we will still be able to pass signal through the waveguide without the need to
-construct a waveguide. With loss of $\alpha \approx \alpha_r$, and waveguides of
-lengths on the scale of a few centimetre, we can expect a total loss of around
+construct a resonator. With loss of $\alpha \approx \alpha_r$, and waveguides of
+lengths on the scale of a few centimeter, we can expect a total loss of around
 $\SI{400}{\neper\per\metre} \times \SI{0.01}{\metre} = \SI{35}{\decibel}$. This
 should be sufficiently small that microwaves will be able to reach molecules
 trapped on the chip.~\cite{Treutlein2008}
@@ -385,6 +401,7 @@ effective as a microwave substrate~\cite{Simons2004}
 ($\epsilon_\mathrm{r1} = 3.3$, $\tan\delta_e = 0.016$) with conductor losses
 still dominating those caused by the dielectric.
 
+\cm{Alex: were these the limits or the max they used?}
 Using a multi-layer chip introduces thermal constraints on the currents that can
 flow through the trapping wires. Current densities achieved by Treutlein and
 B\"ohi were \SI{2.8E10}{\ampere\per\metre\squared} in the upper layer and
