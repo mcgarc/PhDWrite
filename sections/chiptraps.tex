@@ -7,25 +7,26 @@
  }
 
 At the time of the original molecule chip proposal~\cite{Andre2006}, atom chips
-had been loaded using a magneto-optical trap (MOT) as a
-source~\cite{Reichel1999, Ott2001}, however a molecule MOT had not yet been
-built, and there was no credible source of loading a chip of this
-type.\footnote{Stark declerator molecule chips would be developed shortly
-after~\cite{Meek2009}, but Andr\'e et al. presented no method of loading their
-chip design with the required phase space density.}  
+had been loaded using a MOT as a source~\cite{Reichel1999, Ott2001}, however a
+molecule MOT had not yet been \cm{built (better word choice?)}, and there was no
+credible source of loading a chip of this type.\footnote{Stark declerator
+molecule chips would be developed shortly after~\cite{Meek2009}, but Andr\'e et
+al. presented no method of loading their chip design with the required phase
+space density.}  
 
 As discussed above, the field of cold molecules has now developed significantly.
-These developments have made the implementation of a molecule chip feasible. In
+These developments have made the implementation of a molecule chip \cm{feasible
+(better word choice?)}. In
 this section, we will review the state of chip trapping, including work on atom
 chips and these supporting technologies.
-
-\subsection{Wire traps}
-\label{chiptraps:wiretraps}
 
 In developing the molecule chip, we have been able to draw upon the
 well-developed field of atom chips to inform our design choices. Let us consider
 three different aspects of chip design: trapping on the chip, loading into this
 trap, manipulation of trapped atoms or molecules.
+\cm{Here I define three key features, I should endeavour to address each of
+them. Perhaps as separate (sub)sections. I may even want to introduce this more
+explicity/ formally further above.}
 
 The Andr\'e proposal~\cite{Andre2006} suggests the use of an electrostatic trap
 to contain the molecules, however this is not the only option available. In
@@ -33,6 +34,19 @@ fact, magnetic trapping of atoms is much more widely explored~\cite{2011Ac},
 and the discovery of magnetically insensitive transitions in \CaF{} makes this a
 promising choice for a molecule chip. As such we will focus in this section on
 magnetostatic trapping of atoms above a chip.
+
+\subsection{Magnetic trapping}
+\label{chiptraps:magentic}
+
+\cm{TODO: theory of macroscopic, then feed into miiatrurising and hence the next
+section}
+
+\cm{Talk about IP s . QP and spin flip, including further discussion about
+theory of spin flip (majorana) losses and how much we can get away with (to be
+expanded on further below for Z wire/ dimple traps where we get really small.}
+
+\subsection{Wire traps}
+\label{chiptraps:wiretraps}
 
 The basic principle of a magnetic wire trap is explained in Reichel et
 al.~\cite{Reichel1999} As illustrated in \myfigref{chiptraps:fig:reicheltrap} a
@@ -69,8 +83,7 @@ of magnetic field along the axis of the original trap. Applying a bias along
 this axial direction will re-introduce a field minimum, forming a three-dimensional
 \emph{dimple trap} shown in \myfigref{chiptraps:fig:dimpletrap}.~\cite{2011Ac}
 Since the trap centre is now in general a field minimum rather than a
-zero, it is a Ioffe-Pritchard trap, which is not susceptible to Majorana
-losses~\cite{PhysRevLett.51.1336}. \cm{better to say spin flip??}
+zero, it is a Ioffe-Pritchard trap.
 
 \begin{figure}
   \includegraphics[width=0.75\textwidth]{./figs/chiptraps/dimpletrap.png}
@@ -80,6 +93,93 @@ losses~\cite{PhysRevLett.51.1336}. \cm{better to say spin flip??}
   }
   \label{chiptraps:fig:dimpletrap}
 \end{figure}
+
+
+% Maths for the traps, freq. grad. etc.
+The trapping field of the dimple trap close to the centre can be described in
+terms of the usual Ioffe-Pritchard equation~\cite{Foot2005}
+%
+\begin{equation}
+  \mathbf{B} = B_0 \begin{bmatrix} 1 \\ 0 \\0 \end{bmatrix}
+               + B' \begin{bmatrix} 0 \\ -y \\ z \end{bmatrix}
+               + \frac{B''}{2} \begin{bmatrix} 
+                  x^2 - \frac{1}{2}(y^2 + z^2) \\
+                  -xy \\
+                  -xz
+               \end{bmatrix},
+\end{equation}
+%
+where we have chosen the origin to be the trap centre (not to be confused with
+the centre of the dimple wires). In this case, the field gradient and curvature
+are
+%
+\begin{equation}
+  B' = \frac{\mu_0 I_0}{2\pi h^2}
+\end{equation}
+%
+and
+%
+\begin{equation}
+  B'' = \frac{\mu_0 I_1}{\pi h^3}
+\end{equation}
+%
+respectively. The field at the trap centre is
+%
+\begin{equation}
+  B_0 = \widetilde{B}_x + \frac{\mu_0 I_1}{2\pi h}
+  \label{chiptraps:eqn:bias}
+\end{equation}
+%
+where $\widetilde{B}_i$ represents the bias field applied in the $i$ direction.
+The trap frequencies are given by
+\begin{equation}
+  \omega_x = \sqrt{\frac{\mu_m}{m}B''}
+  \label{chiptraps:eqn:axisfreq}
+\end{equation}
+and
+\begin{equation}
+  \omega_\perp = \sqrt{\frac{\mu_m {B'}^2}{m B_0}}
+  \label{chiptraps:eqn:transfreq}
+\end{equation}
+where $\mu_m$ is the magnetic moment of the trapped particle (for our \CaF{}
+transitions $\mu_m \approx \mu_B$, the Bohr magneton), and we have taken $x$ to
+be the axial direction (aligned with $I_0$).~\cite{2011Ac} We can estimate the
+expected frequencies that we would expect to achieve based on the current and
+trapping height.
+
+\thesis{I probably want to go through this in a lot more detail including the
+maths. This is all in the notebook that Ed Hinds gave me to start with.} A
+typical final\footnote{Greater intermediary trapping heights are used as part of
+the loading procedure.} trapping height will be around \SI{10}{\micro\metre}.
+This allows on-chip microwave fields to interact with trapped atoms without
+introducing any energy shifts  or significant attractive force acting on the
+molecule from the Casimir effect or Van der Waals force.\footnote{Trapping
+beneath this height could allow investigation of these effects on a quantum
+scale and is in itself a goal of atom chip
+trapping.~\cite{PhysRevA.56.R3350}}~\cite{2011Ac}
+
+\thesis{Probably want to expand this similar to for height}
+The current that can be achieved in the chip will be limited by thermal
+properties of the final chip design as will be discussed in
+section~\ref{experiment:multilayer}. Typical achievable currents are estimated
+to be around \SI{60}{\milli\ampere}. 
+Using \myeqref{chiptraps:eqn:transfreq} and
+\myeqref{chiptraps:eqn:axisfreq} we can therefore anticipate trapping frequencies
+for \CaF{} of
+%
+\begin{align}
+  \omega_x &= \SI{5e4}{\radian \per \second} \\
+  \omega_\perp &= \SI{1e5}{\radian \per \second}.
+\end{align}
+%
+\cm{Need to check reasonable value for $B_0$}
+Where we have assumed a minimum value of $B_0 = \SI{1}{\gauss}$ has been chosen.
+These figures are in line with what we would normally expect from a wire
+trap.~\cite{2011Ac}
+
+The trap depth is well-approximated by the energy associated with the bias
+field. For a trap at height \SI{10}{\micro\metre} this gives a typical trap
+depth on the order of a few tens of millikelvin.~\cite{2011Ac}
 
 Other variations on the wire trap are possible. Running two perturbing wires
 across one axis (with currents $I_1$ and $I_2$) will form an H-trap, shown in
@@ -125,100 +225,19 @@ follow up on expected Majorana losses properly below.}
   \label{chiptraps:fig:trapvariations}
 \end{figure}
 
-% Maths for the traps, freq. grad. etc.
-The trapping field of the dimple trap close to the centre can be described in
-terms of the usual Ioffe-Pritchard equation~\cite{Foot2005}
-%
-\begin{equation}
-  \mathbf{B} = B_0 \begin{bmatrix} 1 \\ 0 \\0 \end{bmatrix}
-               + B' \begin{bmatrix} 0 \\ -y \\ z \end{bmatrix}
-               + \frac{B''}{2} \begin{bmatrix} 
-                  x^2 - \frac{1}{2}(y^2 + z^2) \\
-                  -xy \\
-                  -xz
-               \end{bmatrix},
-\end{equation}
-%
-where we have chosen the origin to be the trap centre (not to be confused with
-the centre of the dimple wires). In this case, the field gradient and curvature
-are
-\cm{Alex: no $I_2$ dependence}
-%
-\begin{equation}
-  B' = \frac{\mu_0 I_0}{2\pi h^2}
-\end{equation}
-%
-and
-%
-\begin{equation}
-  B'' = \frac{\mu_0 I_1}{\pi h^3}
-\end{equation}
-%
-respectively. The field at the trap centre is
-%
-\begin{equation}
-  B_0 = \widetilde{B}_x + \frac{\mu_0 I_1}{2\pi h}
-  \label{chiptraps:eqn:bias}
-\end{equation}
-%
-where $\widetilde{B}_i$ represents the bias field applied in the $i$ direction.
-The trap frequencies are given by
-\begin{equation}
-  \omega_x = \sqrt{\frac{\mu_m}{m}B''}
-  \label{chiptraps:eqn:axisfreq}
-\end{equation}
-and
-\begin{equation}
-  \omega_\perp = \sqrt{\frac{\mu_m {B'}^2}{m B_0}}
-  \label{chiptraps:eqn:transfreq}
-\end{equation}
-where $\mu_m$ is the magnetic moment of the trapped particle (for our \CaF{}
-transitions $\mu_m \approx \mu_B$, the Bohr magneton), and we have taken $x$ to
-be the axial direction (aligned with $I_0$).~\cite{2011Ac} Taking the dimple to
-be a representative trap type, we can estimate the expected frequencies that we
-would expect to achieve based on the current and trapping height.
-
-\thesis{I probably want to go through this in a lot more detail including the
-maths. This is all in the notebook that Ed Hinds gave me to start with.} A
-typical final\footnote{Greater intermediary trapping heights are used as part of
-the loading procedure.} trapping height will be around \SI{10}{\micro\metre}.
-This allows on-chip microwave fields to interact with trapped atoms without
-introducing any energy shifts  or significant attractive force acting on the
-molecule from the Casimir effect or Van der Waals force.\footnote{Trapping
-beneath this height could allow investigation of these effects on a quantum
-scale and is in itself a goal of atom chip
-trapping.~\cite{PhysRevA.56.R3350}}~\cite{2011Ac}
-
-\thesis{Probably want to expand this similar to for height}
-The current that can be achieved in the chip will be limited by thermal
-properties of the final chip design as will be discussed in
-section~\ref{experiment:multilayer}. Typical achievable currents are estimated
-to be around \SI{60}{\milli\ampere}. 
-Using \myeqref{chiptraps:eqn:transfreq} and
-\myeqref{chiptraps:eqn:axisfreq} we can therefore anticipate trapping frequencies
-for \CaF{} of
-%
-\begin{align}
-  \omega_x &= \SI{5e4}{\radian \per \second} \\
-  \omega_\perp &= \SI{1e5}{\radian \per \second}.
-\end{align}
-%
-Where we have assumed a minimum value of $B_0 = \SI{1}{\gauss}$ has been chosen.
-These figures are in line with what we would normally expect from a wire
-trap.~\cite{2011Ac}
-Frequencies for the other trap types can be calculated numerically, but the
+\cm{
+``Frequencies for the other trap types can be calculated numerically, but the
 above figures are presented as a representative example of what can be expected
-from a wire trap.
-
-The trap depth is well-approximated by the energy associated with the bias
-field. For a trap at height \SI{10}{\micro\metre} this gives a typical trap
-depth on the order of a few tens of millikelvin.~\cite{2011Ac}
+from a wire trap.'' \\
+%
+Maybe I should actually do this and analyse these traps properly.
+}
 
 \subsection{Loading wire traps}
 
 Reichel et al.~\cite{Reichel1999} were one of the first to demonstrate
 mirror-MOT loading, where the surface of the chip is used as the mirror to from
-a MOT close to the surface. The mirror-MOT held $5\times10^6$ \esRb{} atoms,
+a MOT close to the surface. The \esRb{} mirror-MOT held $5\times10^6$ atoms,
 and was formed of four laser beams, with two reflected off the chip, making the
 six beams in total that are required for trapping. The magnetic field is
 generated by coils in anti-Helmholtz configuration, which are switched off in
@@ -227,11 +246,13 @@ aligned with the chip. This is a very common scheme to bring atoms close to the
 chip surface~\cite{Folman2000, PhysRevLett.97.200405, 2011Ac, Boehi2009},
 however it has also been shown~\cite{0256-307X-25-9-034} that it is possible to
 forego the coil MOT and load atoms directly from a MOT formed by a U-wire.
+\cm{Figure of our CaF MOT?}
 
 After establishing a mirror-MOT, Reichel et al. changed the bias field in order
-to bring the cloud closer to the surface. They then turn off the lasers so that
-the trapping is purely magnetic, and transfer to the trapping
-wires on the chip. An adiabatic change of the bias fields can then be used to
+to bring the cloud closer to the surface. They were then able to turn off the lasers
+to achieve purely magnetic trapping, and transfer to the trapping wires on the
+chip.
+An adiabatic change of the bias fields was then used to
 draw the atoms closer to the surface~\cite{Reichel1999, Folman2000}. This
 principle can be exemplified by the straight wire trap, with
 \myeqref{chiptraps:eqn:bias} showing that trapping closer to the wire requires a
@@ -259,10 +280,13 @@ trap temperatures going to be due to compression, etc.}
 \begin{equation}
    T_1 = T_0\left(\frac{V_0}{V_1}\right)^\frac{2}{3}.
 \end{equation}
+\cm{Expand, need to have already established what trapping volumes we can expect
+and $T_0$ so that we can give  a final temperature.}
 
 \cm{Alex highlighted the "increasing number or atoms" think I need to figure out
 something more specific to say about evaporative cooling and phase space
-acceptance (expand the latter above?)}
+acceptance (expand the latter above?) (Talk about how the remaining atoms are
+themalized so temp is reduced and differentiate forced evap cooling.)}
 After compression, the likelihood of collisions between the atoms is increased,
 which results in the loss of large numbers of atoms due to inelastic collisions.
 The solution to this, as presented by B\"ohi et al.~\cite{Boehi2009} is to
@@ -286,7 +310,7 @@ atoms from a MOT onto a chip trap \SI{40}{\milli\metre} away. This has the
 benefit of insignificant losses and heating. This is a very attractive option
 for loading, but molecular optical tweezers are still in their
 infancy~\cite{Anderegg2019}, so this is left as a possibility for future
-research.
+research. \thesis{Need to check this later.}
 
 \thesis{Should expand this paragraph into a whole section.}
 %
@@ -298,17 +322,17 @@ formation of traps high above the surface. In order to achieve the required
 heights, it is possible to first lay down a seed layer of gold and then create a
 mould made of photoresist in the shape of the desired wires. Electroplating can
 then be used to build up the wires before cleaning off the mould and etching off
-the seed layer.~\cite{4797887}
+the seed layer.~\cite{4797887} \thesis{Maybe I should point this at the
+fabrication section. DOn't know if I need a brief summary here...}
 
 \subsection{Molecule chips}
 \label{chiptraps:molculechips}
 
 
-Molecule chips that have been previously implemented rely on quite different
-loading schemes to those discussed for atom chips. In 2008 Meek et
-al.~\cite{Meek2008} have loaded \CO{} molecules directly from a supersonic
-beam, with on-chip slowing performed by a Stark decelerator integrated into the
-chip.
+Molecule chips that have been previously implemented utilise different loading
+schemes to those discussed for atom chips. In 2008 Meek et al.~\cite{Meek2008}
+have loaded \CO{} molecules directly from a supersonic beam, with on-chip
+slowing performed by a Stark decelerator integrated into the chip.
 
 Fabrication of a chip-based Stark decelerators using photolithographic
 techniques is significantly less involved than construction of a macroscopic
@@ -354,11 +378,13 @@ quantum control, and on-chip measurement by applying an off-resonant microwave
 pulse. This design promises a robust trap with potential for integration with
 other chip-based qubits (either other trapped molecules or different quantum
 architectures).
+\cm{what exactly is benefit of a resonator?}
 
 \subsection{Quantum control on macroscopic and microscopic scales}
 \label{chiptraps:control}
 
-\thesis{May want to think about moving this subsection to help with flow.}
+\thesis{May want to think about moving this subsection to help with flow. Also
+would be good to expand with some rigor/ theory.}
 
 \thesis{This next paragraph is very qualitative. I could expand it by
 introducing Jayne's Cummings and going through the maths, but this is only
@@ -380,10 +406,10 @@ and therefore highly desirable for applications in quantum technologies.
 \thesis{Need more legit version of this paragraph. For one thing I should be
 able to calculate the lifetime (and hence Q factor) that I need.}
 %
-In order to achieve strong coupling between the trapped atoms (molecules) and the
-microwaves there must be good overlap between the microwave field and the cloud.
-If the trapped particles experience different field intensity or polarization
-across the trap then this will affect the fidelity of any
+In order to achieve strong coupling between the trapped atoms (or molecules) and
+the microwaves there must be good overlap between the microwave field and the
+cloud.  If the trapped particles experience different field intensity or
+polarization across the trap then this will affect the fidelity of any
 operations.~\cite{Williams2018} If a microwave resonator is used then it must
 have a lifetime long enough to sustain the interaction between the field and the
 molecules during any pulse. This has been achieved in atoms for quality factor
@@ -399,7 +425,7 @@ could be exploited to allow long-range coupling to other qubits, or sideband
 cooling into the trap ground state.
 
 \thesis{This paragraph will need updating with cites for the 40GHz paper when
-released.}
+released. Should probably expand.}
 %
 Recently, magnetically insensitive transitions have been discovered in
 \CaF{}.~\cite{Williams2018, Blackmore_2018}  One transition between
