@@ -47,6 +47,8 @@ properly.
 \begin{figure}
   \includegraphics{./figs/2019-01-18_stripline_xsection.png}
   \caption{
+    \cm{TODO: Redrawa myself and fix the labels (don't need $h_1$, just $h$,
+    etc.}
     Cross section of a coplanar waveguide segment, showing the characteristic
     features of a centre conductor of width $S$, which is isolated from the
     ground plane by a distance of width $W$. Note the similarity to a coaxial
@@ -60,6 +62,9 @@ properly.
 \begin{figure}
   \includegraphics[width=0.5\textwidth]{./figs/simons_cpw_e_field.png}
   \caption{
+    \cm{Redraw, fix permittivity labesl. Also need to think about quantum
+    squeezing mode volume, as mentioned by Alex (somehow related to
+    $(\lambda/n)^3$}
     Electric field lines in the vicinity of a CPW are shown. The geometry of the 
     the CPW can be chosen to determine the intensity profile of the field. Ths
     figure is reproduced from reference~\cite{Simons2004}.
@@ -71,12 +76,14 @@ We must ensure that coupling between CPW microwaves and trapped molecules is
 achievable. In this section we will focus on ensuring that the microwaves will
 be able to propagate along the waveguide. This will rely on impedance matching
 at CPW interfaces and satisfactory levels of attenuation on the
-chip.~\cite{Jackson1975, Simons2004}. We will now outline the basic mathematical
-description of a CPW.  For our purposes it will be sufficient to consider the
-case where the height of the substrate ($h1$) far exceeds the other distances,
-that is $h_1 \gg S$, whilst $S \sim W$. The conductor is assumed to be perfect,
-and the dielectric has relative permittivity $\epsilon_\mathrm{r1}$.
+chip.~\cite{Jackson1975, Simons2004}.
 
+We will now outline the basic mathematical description of a CPW.  For our
+purposes it will be sufficient to consider the case where the height of the
+substrate ($h_1$) far exceeds the other distances, that is $h_1 \gg S$, whilst
+$S \sim W$. The dielectric has relative permittivity $\epsilon_\mathrm{r1}$.
+
+\cm{Throughout: need to figure out I vs we}
 \subsubsection{CPW Impedance}
 
 It is common to define the planar geometry in terms of the
@@ -87,10 +94,10 @@ ratio~\cite{1127105, Simons2004}
 \end{equation}
 where the second equality defines $k'_0$.
 %
-Wen demonstrated~\cite{1127105} that a conformal mapping can be used to describe
-a CPW as a transmission line~\cite{Jackson1975} in terms of elliptic integrals
-of the first kind $K(k)$. The capacitance of a the dielectric region of the CPW
-is given by
+Wen demonstrated~\cite{1127105} that a conformal mapping \cm{expand} can be used
+to describe a CPW as a transmission line~\cite{Jackson1975} in terms of elliptic
+integrals of the first kind $K(k)$. The capacitance of a the dielectric region
+of the CPW is given by
 \begin{equation}
   C_\mathrm{CPW} = 2\epsilon_0(\epsilon_\mathrm{r1}-1)\frac{K(k_0)}{K(k'_0)}
 \end{equation}
@@ -108,7 +115,8 @@ the phase velocity (using $c$ as the speed of light)
   v_\mathrm{ph} &= \frac{c}{\sqrt{\epsilon_\mathrm{eff}}} \\
     &= \frac{c}{\sqrt{(1 + \epsilon_\mathrm{r1})/2}}
 \end{align}
-and ultimately the impedance of the CPW\footnote{This result makes use of the
+\cm{check that [Ohm] notation is ok}
+and hence the impedance of the CPW\footnote{This result makes use of the
 approximation $\sqrt{\mu_0/\epsilon_0}\approx120\pi\mathrm{[Ohms]}$, which is
 used commonly in microwave engineering~\cite{Collin2007}}
 \begin{align}
@@ -130,10 +138,9 @@ seen in in \myfigref{experiment:fig:resonator}.~\cite{Simons2004}
 \subsubsection{CPW Resonators}
 \label{experiment:mw:resonator}
 
-Andr\'e et al.~\cite{Andre2006} proposed a molecule chip where the trap was
-embedded in a resonator formed from a CPW. Here I will present
-the implementation and theory of CPW microwave resonators, with a view to
-determine whether or not such an architecture is feasible.
+Here I will present the implementation and theory of CPW microwave resonators,
+with a view to determine whether implementation of the Andr\'e design is
+feasible.
 
 A microwave resonator can be formed from a section of CPW that is capacitively
 coupled to another driving segment.~\cite{Day2003} The properties of such a
@@ -148,6 +155,8 @@ fingers. An example of such a resonator is shown in
     \thesis{Aim to use one of my own CPWs here. Might be hard as I probably
     won't have all the different coupling methods, so maybe alter this figure,
     if that is allowed??}
+    \cm{Tight bend radisu here? I thought $\lambda/3$ was the limit but this
+    might be smaller?}
     A CPW resonator is shown (D) along with various capacitor structures: 8
     finger capacitor (E), two finger capacitor (H) and gap capacitors (I and K).
     The capacitors isolate a segment of the central conductor to form the
@@ -353,7 +362,7 @@ resonators will operate with much higher $Q$~\cite{Hattermann2017}, so it will
 not be possible to implement a resonator.
 
 \cm{Alex: should re-calculate for the actual loss over the length of small
-waveguide we are using and include that.}
+waveguide we are using and include that. Also use realistic $S$.}
 That said, it should be noted that the high loss should not prevent us from
 using the CPW to directly drive microwave transitions in trapped molecules, as
 we will still be able to pass signal through the waveguide without the need to
@@ -392,7 +401,8 @@ was that the electrostatic trap required a resonator to bring the bias in, but
 maybe I am wrong? Mike has probably forgotten this, and a new reader wouldn't
 know it to start with, so I need to figure out how best to explain myself. Maybe
 forget the bias stuff and just argue that magentically insensetive transitions
-lead to long coherence times, which is what we want.}
+lead to long coherence times, which is what we want.
+}
 
 As the microwave attenuation prevents implementation of a resonator (and hence
 implementation of an electrostatic trap integrated with the waveguide) another
@@ -428,8 +438,10 @@ still dominating those caused by the dielectric.
 \cm{Alex: were these the limits or the max they used?}
 Using a multi-layer chip introduces thermal constraints on the currents that can
 flow through the trapping wires. Current densities achieved by Treutlein and
-B\"ohi were \SI{2.8E10}{\ampere\per\metre\squared} in the upper layer and
+B\"ohi \cite{} were \SI{2.8E10}{\ampere\per\metre\squared} in the upper layer and
 \SI{5.5E10}{\ampere\per\metre\squared} in the lower layer.
+
+\thesis{Probably need to reqrite this section.}
 
 \subsection{Design for a molecular chip trap}
 
@@ -441,6 +453,8 @@ is incorporated on an upper layer. The chip with the trapping wires is shown in
 
 \begin{figure}[tph]
   \includegraphics[width=0.8\textwidth]{./figs/z_trap_fanouts_inset_scale.png}
+  \cm{Can't really see this inset, even when zoomed in. Need to redo this fig.
+  anyway though.}
   \caption{
     A design of a molecule chip, with six overlaid Z-trapping wires and one
     dimple wire (gold) on the lower layer, and a CPW (insulating section in
@@ -568,7 +582,8 @@ to do will be to ensure any papers published about this in meantime are cited
 accordingly.}
 
 \CaF{} molecules will be loaded onto the chip from a MOT similar to
-that described in reference~\cite{Truppe2017}. In the MOT chamber it is planned
+that described in reference~\cite{Truppe2017}. \cm{Is this OK? Maybe make a
+macro to deal with it...} In the MOT chamber it is planned
 to construct a dipole trap, which will be used to increase phase space density
 of the molecule cloud
 
@@ -582,6 +597,8 @@ to be used for separate experiments investigating sympathetic cooling between
 \esRb{} atoms and \CaF{} in a dipole trap. This is expected to produce a \CaF{}
 cloud suitable for loading onto the chip.
 
+\thesis{This (and probably the rest of this section) will need to be updated and
+the tense changed.}
 The cloud will then be transferred into a magnetic transport trap (MTT) formed of
 a pair of anti-Helmholtz coils external to the chambers. The dipole trap will be
 switched off and the current in the coils ramped up to form a quadrupole trap.
@@ -595,6 +612,7 @@ tweezer experiment are shown in \myfigref{experiment:fig:MTTsetup}.
 \begin{figure}[ht]
   \includegraphics[width=0.8\textwidth]{./figs/existing_chambers.png}
   \caption{
+    \cm{Need to do a proper CAD for my chamber.}
     The MOT and tweezer chambers for existing experiments. The magnetic
     transport trap (MTT) is used made up of a pair of transport coils arranged
     in anti-Helmholtz configuration. These generate a quadrupole field, which
