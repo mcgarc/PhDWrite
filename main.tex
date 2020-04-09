@@ -29,6 +29,7 @@
 %\usepackage{xcolor} % Uncomment if not using bibliography links
 
 % --- Common ---
+\usepackage[left=2cm, right=2cm, top=2cm, bottom=3cm]{geometry}
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{siunitx}
@@ -41,6 +42,7 @@
 \usepackage{xpatch} % To patch the TOC
 %\usepackage{caption} % Helps with subfigs
 \usepackage{subcaption} % For subfigures
+\usepackage{enumitem} % Originally to resume list
 
 % --- Bibliography Links ---
 \usepackage{hyperref}
@@ -57,7 +59,7 @@
 \usepackage{tikz}
 
 % --- Bib title (not line) ---
-\def\bibsection{\section*{\refname}}
+\def\bibsection{\chapter*{\refname}}
 
 % --- Macros ---
 %\newcommand{\diff}{\mathrm{d}} USE \dd (physics) instead
@@ -133,8 +135,8 @@
 \end{titlepage}
 
 % Abstract
-\section*{Abstract}
-\input{./sections/abs}
+\chapter*{Abstract}
+\input{./chapters/abs}
 \clearpage
 
 % TOC
@@ -150,18 +152,18 @@
 %                Body Start                %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Introduction}
-\input{sections/intro}
+\chapter{Introduction}
+\input{chapters/intro}
 
-\section{Atomic and molecular chip traps}
+\chapter{Atomic and molecular chip traps}
 \label{chiptraps}
-\input{sections/chiptraps}
+\input{chapters/chiptraps}
 
-\section{Experiment design}
+\chapter{Experiment design}
 \thesis{Hopefully can re-do/ expand this section for LSR. Maybe even turn this
 into design/ simulation and include my python work?}
 \label{experiment}
-\input{sections/experiment}
+\input{chapters/experiment}
 
 \chapter{Microfabrication} %(of science chip)
 \label{fab}
@@ -173,22 +175,22 @@ into design/ simulation and include my python work?}
 
 
 \thesis{
-\section{Trapping molecules on a chip}
-% For LSR
-\section{Coherent control of molecules on a chip}
-% Probably not until thesis
+\chapter{Trapping molecules on a chip}
+\chapter{Coherent control of molecules on a chip}
+% Probably not until thesis (maybe superseeded by earlier theory?)
 }
 
-\section{Outlook}
+\chapter{Outlook}
 \label{outlook}
-\input{sections/outlook}
+\input{chapters/outlook}
 
 \clearpage
 
-\section*{Acknowledgements}
-\input{./sections/acks}
+\chapter*{Acknowledgements}
+\thesis{This should go to the top}
+\input{./chapters/acks}
 
 \cm{Review references!! (esp. mw101 ref)}
-\bibliographystyle{apsrev4-1}
+\bibliographystyle{unsrt}
 \bibliography{bib}
 \end{document}
