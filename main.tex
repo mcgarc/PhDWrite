@@ -12,17 +12,18 @@
 %     texlive-science [siunitx]
 
 %\documentclass[a4paper]{article}
-\documentclass[
- aps,
- %prb,
- a4paper,
- showpacs,
- superscriptaddress,
- notitlepage,
- %longbibliography,
- nofootinbib,
- preprint % gives 12pt font
-]{revtex4-1}
+\documentclass[a4paper, 12pt, twoside]{report}
+%\documentclass[
+% aps,
+% %prb,
+% a4paper,
+% showpacs,
+% superscriptaddress,
+% notitlepage,
+% %longbibliography,
+% nofootinbib,
+% preprint % gives 12pt font
+%]{revtex4-1}
 
 % --- Macro dependencies ---
 %\usepackage{xcolor} % Uncomment if not using bibliography links
@@ -44,12 +45,12 @@
 % --- Bibliography Links ---
 \usepackage{hyperref}
 \usepackage[dvipsnames]{xcolor}
-\hypersetup{
-	colorlinks=true,
-  linkcolor=Blue,
-	citecolor=Blue,
-	urlcolor=Blue
-}
+%\hypersetup{
+%	colorlinks=true,
+%  linkcolor=blue,
+%	citecolor=blue,
+%	urlcolor=blue
+%}
 
 % --- Tikz ---
 % Have to load tikz after xcolor
@@ -69,7 +70,7 @@
 \newcommand{\myeqref}[1]{eqn~\eqref{#1}}
 \newcommand{\mytabref}[1]{table~\ref{#1}}
 \newcommand{\myeqrefs}{eqns}
-\newcommand{\myfigref}[1]{Fig.~\ref{#1}}
+\newcommand{\myfigref}[1]{Fig.\ref{#1}}
 
 % Chemicals
 \newcommand{\CaF}{CaF}
@@ -103,23 +104,6 @@
     {}
 \makeatother
 
-% --- Left-align captions ---
-\makeatletter
-\renewcommand\@makecaption[2]{%
-  \par
-  \vskip\abovecaptionskip
-  \begingroup
-   \small\rmfamily
-    \begingroup
-     \samepage
-     \flushing
-     \let\footnote\@footnotemark@gobble
-     \@make@capt@title{#1}{#2}\par
-    \endgroup
-  \endgroup
-  \vskip\belowcaptionskip
-}
-\makeatother
 
 % Uncomment and fill if using article
 %\title{Early stage assessment: molecule chip}
