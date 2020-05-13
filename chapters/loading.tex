@@ -1,0 +1,85 @@
+We have established that our chip experiment will rely on a loading procedure
+from a magnetostatic trap onto the chip. This is not dissimilar to existing
+procedures where atoms and molecules can be loaded from beams into magnetic
+traps~\cite{}, storage rings~\cite{} or MOTs~\cite{}. However unlike
+experiments performed with atoms, where the number of particles is very high
+(\cm{$N=??$}~\cite{}) \CaF experiments typically involve only a few thousand
+particles \cite{}. It is therefore important that losses during the loading
+procedure are minimised.
+
+The chip will incorporate a series of wire traps, which will allow granular
+control of the potential through the ramping of currents in each wire. This is
+a common technique often employed in atom chips.~\cite{} We also include an
+intermediary loading stage between the anti-Helmhotlz coils and the chip: a
+large U-wire trap integrated into the \cm{subchip (housing??)}. This will
+ensure alignment between the macroscopic and microscopic traps.
+
+Designing the trapping wires on the chip will allow us to ensure a low-loss
+% In this cite, is it better to cite his textbook chapter of a paper? Maybe the 
+% Lichtenberg book?
+loading procedure by phase-matching each stage.~\cite{Crompvoets2005} That is
+as we transfer molecules from one trap (be it macroscopic or microscopic) to
+the next, that the potentials are suitably overlapped so that the majority of
+the cloud remains trapped throughout.
+
+In this chapter, I will further explain the principes of phase matching, and
+how the chip has been designed to allow this. I will also present simulations
+used to model traps, determining their phase-space acceptance and emmittance.
+The final design of the chip trap will be presented.
+
+\section{Theory of phase-matching}
+
+\section{Simulating molecules}
+
+\section{Designing the chip trap and its loading scheme}
+
+\section{Summary}
+
+
+\cm{The first step towards minimising losses} is to ensure good phase matching
+between loading stages.
+
+
+\cm{To minimise losses} the chip must be designed to ensure that at each stage
+of loading good phase matching is achieved. T
+
+
+
+
+
+Loading and guiding of chip traps is commonly achieved by adiabatically
+altering the trapping potential.~\cite{} Chip designs often incorporate
+multiple trapping wires
+
+% TODO Do I actually discuss this
+As discussed in chapter~\ref{chiptraps}, it is possible to load atoms into
+chip traps and then guide them by adiabatically altering the trapping
+potential. \cm{Do I need a citation here?} This control is possible by
+incorporating multiple trapping wires (or in the case of electrostatic traps,
+trapping electrodes) whose currents (voltages) can be \cm{adiabatically}
+varied. Bias fields can also be used to control the trapping potential.
+
+A simple example of this is controlling the trapping height above a 2D wire
+trap. The trap height is given by \cm{reference equation above?}
+%
+\begin{equation}
+z_0 = \frac{\mu_0I}{2\pi \tilde{B}}.
+\end{equation}
+%
+Increasing the bias field $\tilde{B}$ will therefore decrease the trap height.
+To achieve an adiabatic change, the timescale of the change in $\tilde{B}$ must
+be grater than the trapping timescale, that is $\tau_\text{ramp} \gg
+\tau_\text{trap}$. The trap timescale is related to the trapping frequency
+given by \cm{some equation}, $\tau_\text{trap} = 2\pi / \omega_\text{trap}$. So
+we have
+%
+\cm{I think I just want $\omega_\text{trap} = \omega_\text{Lamour} = m_F g
+\mu_B B / \hbar$, because any atoms moving on a faster timescale cannot remain
+trapped (their state changes faster than the trap??)
+}
+%
+For a typical microfabricated wire trap operating at \SI{1}{\ampere} and trapping
+at a height $z_0 = \SI{1}{\milli\meter}$, a ramp to $z_1 =
+\SI{10}{\micro\meter}$ will take a time on the order of \cm{TODO}.
+
+
