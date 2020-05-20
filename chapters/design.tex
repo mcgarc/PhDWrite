@@ -29,7 +29,60 @@ The final design of the chip trap will be presented.
 
 \section{Theory of phase-matching}
 
+\cm{
+\begin{itemize}
+    \item Phase space as a concept
+    \item Liouville theorem (metion conservative potential assumption)
+    \item Phase-matching
+    \item Adiabatic (?) manipulation of potentials to achieve phase-matching
+    \item Limitations: need for cooling/ damping to increase PSD
+\end{itemize}
+}
+
 \section{Simulating molecules}
+
+The molecule cloud was simulated by numerically solving Hamilton's equations
+for the classical motion in the magnetic potential of the trap. The Hamiltonian
+for a single molecule at time $t$ is
+%
+\begin{equation}
+  H(t, \mathbf{r}, \mathbf{p}) = \frac{\mathbf{p}^2}{2m} + V(t, \mathbf{r}).
+\end{equation}
+Where the particle has magnetic moment $\mu$, position $\mathbf{r}$ and
+momentum $\mathbf{p}$.
+
+The potential $V(t, \mathbf{r}) = \mu B(t, \mathbf{r})$ can be calculated by
+considering the traps to be formed of segments of straight wires, each
+producing a magnetic field $B_\text{seg}^{(i)}$, and the bias field
+$\mathbf{B}_\text{bias}(t)$. The total field is the sum of each of these
+segments (with segments that are sufficiently far from the trap centre
+neglected) and the bias. The potential is therefore
+%
+\begin{equation}
+  V(t, \mathrm{r}) = \mu B (t, \mathrm{r}) = \mu \left| \sum_i
+  B_\text{seg}^{(i)}(t, \mathbf{r}) +
+  \mathbf{B}_\text{bias}(t)\right|.
+\end{equation}
+
+The field due to a segment of straight wire with length carrying current $I(t)$
+\cm{can be written in an analytical form} by integration of the Bio-Savart Law.
+This field can be expressed in terms of the angle between the ends of the wire
+at $\mathbf{r}$, as is shown in \myfigref{TODO}. The field
+is given by~\cite{Griffiths2017}
+%
+\begin{equation}
+  B_\text{seg}(t, \mathbf{r}) = \frac{\mu_0 I(t)}{4\pi
+  s_\text{seg}(\mathbf{r})} (\sin(\theta_2)  - \sin(\theta_1))
+\end{equation}
+here $s_\text{seg}(\mathbf{r})$ is the shortest distance between the segment
+and $\mathrm{r}$.
+
+By specifying the shape of the segments, the current profiles and the bias
+fields, the potential can be calculated at all times. Hamilton's equations, see
+equation \cm{above}, can then be solved by \cm{method} to give the path of a
+particle. In all \CaF experiments undertaken up to the time of writing, the
+phase space density is small enough that collisions can be neglected, and an
+ensemble can be simulated by integrating each particle's motion independently.
 
 \section{Designing the chip trap and its loading scheme}
 
