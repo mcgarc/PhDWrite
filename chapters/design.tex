@@ -84,55 +84,55 @@ particle. In all \CaF experiments undertaken up to the time of writing, the
 phase space density is small enough that collisions can be neglected, and an
 ensemble can be simulated by integrating each particle's motion independently.
 
-\section{Designing the chip trap and its loading scheme}
+\section{Designing the chip trap}
+
+\cm{
+
+Introduce prototype design
+
+\begin{itemize}
+    \item Overlaid Z traps
+    \item Current limited by central section, but hope that the wider sections
+      will allow good conduction of heat and higher current density (?) than
+      reported by Treutlein
+    \item Other benefits, e.g. trap centres stack on top of each other, same
+      net current at all time. A very simple design
+    \item PSA simulation
+    \item Why this design doesn't work: can't get enough current for good
+      overlap
+    \item Is gradually decreasing the length of the axis even really necessary?
+\end{itemize}
+
+Introduce version two
+
+\begin{itemize}
+    \item Wider Z on chip for up to 30A
+    \item Why this current? (Original justification was to match the y
+      direction bias field but we need to adiabatically change the other bias
+      fields, but I think that this is equivalent to having the same depth as
+      the lower U)
+    \item Show better phase matching U to Z
+    \item Show phase matching to the thin Z wires, justify the currents here
+      (probably that width of wire must be small compared to height)
+\end{itemize}
+
+Show phase matching between Z traps once we are on the thin wires (and dimple
+trap). At thsi point, current is the same so lower traps will always be deeper
+(unless we choose to lower the current I guess, if so then we always have the
+same depth??)
+
+}
+
+\section{Desiging the loading scheme}
+
+\cm{
+
+adiabatic vs. sudden changes (justify with simulation?)
+
+Walk through the loading scheme
+
+Should I show a simulation of the full loading procedure?
+
+}
 
 \section{Summary}
-
-
-\cm{The first step towards minimising losses} is to ensure good phase matching
-between loading stages.
-
-
-\cm{To minimise losses} the chip must be designed to ensure that at each stage
-of loading good phase matching is achieved. T
-
-
-
-
-
-Loading and guiding of chip traps is commonly achieved by adiabatically
-altering the trapping potential.~\cite{} Chip designs often incorporate
-multiple trapping wires
-
-% TODO Do I actually discuss this
-As discussed in chapter~\ref{chiptraps}, it is possible to load atoms into
-chip traps and then guide them by adiabatically altering the trapping
-potential. \cm{Do I need a citation here?} This control is possible by
-incorporating multiple trapping wires (or in the case of electrostatic traps,
-trapping electrodes) whose currents (voltages) can be \cm{adiabatically}
-varied. Bias fields can also be used to control the trapping potential.
-
-A simple example of this is controlling the trapping height above a 2D wire
-trap. The trap height is given by \cm{reference equation above?}
-%
-\begin{equation}
-z_0 = \frac{\mu_0I}{2\pi \tilde{B}}.
-\end{equation}
-%
-Increasing the bias field $\tilde{B}$ will therefore decrease the trap height.
-To achieve an adiabatic change, the timescale of the change in $\tilde{B}$ must
-be grater than the trapping timescale, that is $\tau_\text{ramp} \gg
-\tau_\text{trap}$. The trap timescale is related to the trapping frequency
-given by \cm{some equation}, $\tau_\text{trap} = 2\pi / \omega_\text{trap}$. So
-we have
-%
-\cm{I think I just want $\omega_\text{trap} = \omega_\text{Lamour} = m_F g
-\mu_B B / \hbar$, because any atoms moving on a faster timescale cannot remain
-trapped (their state changes faster than the trap??)
-}
-%
-For a typical microfabricated wire trap operating at \SI{1}{\ampere} and trapping
-at a height $z_0 = \SI{1}{\milli\meter}$, a ramp to $z_1 =
-\SI{10}{\micro\meter}$ will take a time on the order of \cm{TODO}.
-
-
