@@ -1,23 +1,35 @@
 We have not yet produced a final chip trap, however we have made good progress
-in production of a number of prototypes. In this chapter I will outline the
+in production of a number of prototypes of the trapping wire layer \cm{using
+our first design shown in Figure ??}. In this chapter I will outline the
 planned fabrication process, reporting on which steps have been undertaken thus
 far, and the difficulties which we have yet to overcome.
 
 \section{Overview of the fabrication procedure}
 
-Trapping wires on the chip are as small as \SI{3}{\micro\meter} in width. Such
-small features can be produced using standard photolithography
-techniques.~\cite{} However, the current desired for trapping requires that
-these wires have a cross-section on the order of \ph{???} and therefore must
-have a height on the order of \SI{100}{\micro\meter}. Such heights are not
-achieveable with photolithography, so we employ a hybrid approach of using
-photolithography and electroplating, which allows us to achieve the required
-height.
+% TODO I grabbed this Madou2002 citation from Treutlein, but I should ensure
+% that it is legit
+Our trap has been designed so that the size of the wires is small compared to
+the size and height of the trapped cloud. As such trapping wires on the chip
+are as small as \SI{3}{\micro\meter} in width. Such small features can be
+produced using standard photolithography techniques.~\cite{Madou2002} However,
+the maximum height of features produced in these procedures is usually of the
+order \SI{100}{\nano\meter}.
 
-Our fabrication process starts from a \ph{4 inch silicon wafer of some
-sort}, on which we can fabricate twelve \ph{2cm by 2cm} chips. We have been
-able to produce prototype chips for trapping only (i.e. without microwave
-guides). This process can be briefly summarised as follows:
+We must ensure that the wires are capable of carrying the currents that are
+outlined in chapter~\ref{design}.  Other experiments with two-layer atom chips
+have reported a current density of \cm{??} in the trapping wires. For our wires
+this would require a minimum height of \cm{??} to carry our trapping
+currents, much higher than can be achieved with photolithography techniques.
+
+Hence, we have begun our protoypting using a combination of microfabrication
+techniques and electroplating, the former to produce the footprint of the
+trapping wires and the latter to build up to a height suitable for our
+purposes. This is a common technique for constructing atom chips and is
+described in~\cite{2011Ac, Lev2003}.
+
+The fabrication process starts with a \ph{4 inch silicon wafer of some sort},
+on which we can fabricate twelve \ph{2cm by 2cm} chips. This process can be
+briefly summarised as follows:
 \begin{enumerate}
 \item Lay down thin (\SI{60}{\nano\meter}) seed layer of gold for each chip.
 \item Spin coat a thick (\SI{6}{\micro\meter}) layer of photoresist.
@@ -48,9 +60,12 @@ fabrication, but we anticipate that they will be as follows:
     \item Perform standard photolithography to lay down microwave guides on the
       chip.
 \end{enumerate}
-These steps are discussed further in \ph{section ref}.
+These steps are discussed further in section~\ref{fab:planned}.
 
 \section{Fabrication of a trapping chip}
 
+\cm{remember to include profilometer stuff}
+
 \section{Planned fabrication of microwave layer}
+\label{fab:planned}
 
