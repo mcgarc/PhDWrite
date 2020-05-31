@@ -4,6 +4,10 @@ our first design shown in Figure ??}. In this chapter I will outline the
 planned fabrication process, reporting on which steps have been undertaken thus
 far, and the difficulties which we have yet to overcome.
 
+The microfabrication techniques described below were undertaken at the London
+Centre for Nanotechnology (LCN). I would like to thank their technicians and
+staff, whose input and assistance has been invaluable to this project.
+
 \section{Overview of the fabrication procedure}
 
 % TODO I grabbed this Madou2002 citation from Treutlein, but I should ensure
@@ -62,9 +66,108 @@ fabrication, but we anticipate that they will be as follows:
 \end{enumerate}
 These steps are discussed further in section~\ref{fab:planned}.
 
-\section{Fabrication of a trapping chip}
+In this chapter I will first outline the main fabrication methods that we have
+relied on. I will then describe our particular fabrication procedure up to the
+point that we have achieved. I will then discuss the planned next steps for
+creating a two-layer chip with microwave guides.
+
+\section{Methods}
+
+\cm{Spin coating section? (commented)
+
+%\subsection{Spin coating}
+
+%Spin coating is a procedure for distributing a uniform layer of liquid such as
+%photoresist  across a sample. It is typically followed by baking to
+%\ph{solidify} the layer. We use spin coating to apply layers of photoresist to
+%our wafers and intend to use it to deposit polyimide
+
+\subsection{Lithography}
+
+Lithography is the process of projecting the image of a design onto the surface
+of the surface of the substrate. The usual procedure is to coat the substrate
+in a positive (negative) \cm{check sign} photoresist, which can be exposed to
+ultraviolet light. Exposed regions of the photoresist will react with the
+light. The photoresist can be developed causing the (un)exposed regions to lift
+off while the rest of the photoresist remains attached to the wafer.
+
+A substrate can therefore be \cm{patterned} by controlling the region of
+exposure. This is commonly done by using a mask to project a desired shadow
+during exposure~\cite{}, however we have used a Heidelberg direct
+writer~\cite{} to perform photolithography.
+
+The direct writer operates by scanning a \ph{UV laser} over the surface of the
+substrate, and printing an uploaded pattern.
+
+\cm{Need things like, power, PR thickness, exposure time, number of writes,
+resolution, etc...}
+
+\subsection{Evaporation}
+
+Layers of metal can be applied to the wafer through evaporation. The substrate
+is placed into a belljar \cm{can we be specific about type of belljar here?}
+with the target side facing an evaporation target, in our case gold or
+\cm{chromium} with the latter used as an adhesion layer for the former. The
+belljar is pumped down to vacuum of pressure below \ph{??}. A current is then
+passed through the target to \cm{induce} evaporation of the metal onto the
+substrate. A shutter is used to block deposition onto the substrate until the
+desired current has been reached.
+
+It is common to combine this techinque with lithography. A layer of photoresist
+between evaporated metals and the substrate surface can be lifted off to reveal
+the desired pattern in metal on the substrate. \cm{Expand??} This process is
+depicted in \myfigref{fab:fig:photolith}
+
+\begin{figure}
+  %\includegraphics{./figs/2019-01-18_stripline_xsection.png}
+  \caption{\cm{Show a photolith process as in body text}}
+  \label{fab:fig:photolith}
+\end{figure}
+
+\cm{Should I have a picture of the belljar?}
+
+The \ph{belljar} incorporates a \ph{measuring device} which reports the rate of
+deposition and automatically shuts off deposition once the desired thickness
+has been reached by closing the shutter. \cm{What determines/ limits the deposition
+rates? What happends when we have too much current?}
+
+The deposition rate of gold is typically \ph{??}.~\cite{} As discussed above 
+a thickness of \ph{5um} is required for the chip's trapping wires. Achieving
+this with evaporation would take \ph{a long time}. \ph{Other techniques like
+sputtering are also no good.}
+
+\subsection{Electroplating}
+
+To achieve the desired wire heights we have used electroplating. \cm{etc...}
+
+\subsection{Chemical etching}
+
+\section{Fabrication procedure}
 
 \cm{remember to include profilometer stuff}
+
+\subsection{Creating the seed layer}
+
+Fabrication of such a chip begins with a \ph{4 inch silicon wafer}. The wafer
+is cleaned first with acetone, then isopropyl alcohol and deionised water. The
+wafer is then cleaned with an oxygen plasma and undergoes a dehydration bake.
+This ensures that the wafer is clean and \ph{free of any absorbed water} that
+might interfere with the later steps.
+
+The first task is to lay down a seed layer of gold, which we can electroplate
+the wires onto. This is achieved by evaporation of gold onto the wafer.
+However, for a later step in which we will dice the wafer into individual
+chips, we require that there are tracks of bare silicon for
+dicing.\footnote{The \ph{dicing saw} is capable of cutting through metal, but
+there is a high chance that this procedure will fail, so it is more reliable to
+leave tracks for dicing.}
+
+\cm{Need more details on what spin coating is}
+We therefore begin by spin coating the wafer with a \ph{thin, how thin?} layer
+of \ph{SR????} photo-resist. This is a standard procedure devised by LCN staff.
+\cm{Better way to say this??} We expose the photoresist using the 
+
+\ph{Spin coat and expose track lines}
 
 \section{Planned fabrication of microwave layer}
 \label{fab:planned}
