@@ -85,11 +85,11 @@ creating a two-layer chip with microwave guides.
 \subsection{Lithography}
 
 Lithography is the process of projecting the image of a design onto the surface
-of the surface of the substrate. The usual procedure is to coat the substrate
-in a positive (negative) \cm{check sign} photoresist, which can be exposed to
-ultraviolet light. Exposed regions of the photoresist will react with the
-light. The photoresist can be developed causing the (un)exposed regions to lift
-off while the rest of the photoresist remains attached to the wafer.
+of the substrate. The usual procedure is to coat the substrate in a positive
+(negative) \cm{check sign} photoresist, which can be exposed to ultraviolet
+light. Exposed regions of the photoresist will react with the light. The
+photoresist can be developed causing the (un)exposed regions to lift off while
+the rest of the photoresist remains attached to the wafer.
 
 A substrate can therefore be \cm{patterned} by controlling the region of
 exposure. This is commonly done by using a mask to project a desired shadow
@@ -164,16 +164,21 @@ the solution. The procedure for electroplating a desired pattern is commonly
 used for fabrication of atom chips~\cite{}. A thin seed layer of gold is
 deposited on the surface and a \cm{`mould'} of photoresist is used to give form
 to the wires during electroplating. This is described further in
-section~\ref{fab:procedure}.
+section~\ref{fab:procedure}. \cm{Or maybe it is shown in fig??}
 
-\subsection{Chemical etching}
+\subsection{Profiling}
+
+\ph{Explanation of Dektak stylus profilometer (Bruker)}
 
 \section{Fabrication procedure}
 \label{fab:procedure}
 
-\cm{remember to include profilometer stuff}
 
-\subsection{Creating the seed layer}
+\cm{remember to include profilometer stuff}
+I will now describe how the above methods have been used to fabricate our
+prototype trapping chip.
+
+\subsection{Preparation for electroplating}
 
 Fabrication of such a chip begins with a \ph{4 inch silicon wafer}. The wafer
 is cleaned first with acetone, then isopropyl alcohol and deionised water. The
@@ -181,20 +186,59 @@ wafer is then cleaned with an oxygen plasma and undergoes a dehydration bake.
 This ensures that the wafer is clean and \ph{free of any absorbed water} that
 might interfere with the later steps.
 
-The first task is to lay down a seed layer of gold, which we can electroplate
-the wires onto. This is achieved by evaporation of gold onto the wafer.
-However, for a later step in which we will dice the wafer into individual
-chips, we require that there are tracks of bare silicon for
-dicing.\footnote{The \ph{dicing saw} is capable of cutting through metal, but
-there is a high chance that this procedure will fail, so it is more reliable to
-leave tracks for dicing.}
+The wafer is then spin coated with a thin (\ph{??nm}) layer of \ph{Dupont S1805
+photoresist}. This is placed into the Heidelberg direct writer for exposure, to
+create the pattern shown in \ph{fig??}. This pattern is a simple grid of
+\ph{2cm by 2cm} squares which will later be diced to become individual chips.
+It is important that the chips are separated at this stage so that tracks of
+bare silicon are exposed for dicing.
 
-\cm{Need more details on what spin coating is}
-We therefore begin by spin coating the wafer with a \ph{thin, how thin?} layer
-of \ph{SR????} photo-resist. This is a standard procedure devised by LCN staff.
-\cm{Better way to say this??} We expose the photoresist using the 
+We use evaporation to deposit a \ph{15nm} thick layer of chromium onto the
+wafer. This is an adhesion layer for the \ph{50nm} gold layer which is
+deposited next. This gold layer will act as the seed layer for electroplating.
+\cm{Depicted in some cartoon.}
 
-\ph{Spin coat and expose track lines}
+The next stage is to create the photoresist mould for electroplating. A thick
+(\ph{5um??}) layer of \ph{Dupont S???? photoresist} is spin coated on to the
+wafer and exposed \ph{to produce the pattern shown in fig???}. Once diced, each
+individual chip will be able to be connected to the anode, and good electrical
+contact will be \ph{formed} between the exposed gold and the solution. The gold
+will be depositied inside the mould to form wires.
+
+At this point in the procedure it is useful to ensure that the creation of
+the mould has been succesful. This can be achieved by characterisation of the
+mould with the \ph{stylus profilometer}. \cm{Here I can present results of a
+typical good mould on the profilometer...}
+
+The wafer is then diced and the individual chips are ready to be electroplated.
+
+\begin{figure}
+\vspace{2cm}
+\centering
+\begin{tabular}{cc}
+  \begin{overpic}[width=0.4\textwidth]{figs/fab/cartoon/a.pdf}
+    \put(1,30){(a)}
+  \end{overpic} &
+  \begin{overpic}[width=0.4\textwidth]{figs/fab/cartoon/b.pdf}
+    \put(1,30){(b)}
+  \end{overpic} \\[1cm]
+  \begin{overpic}[width=0.4\textwidth]{figs/fab/cartoon/c.pdf}
+    \put(1,30){(c)}
+  \end{overpic} &
+  \begin{overpic}[width=0.4\textwidth]{figs/fab/cartoon/d.pdf}
+    \put(1,30){(d)}
+  \end{overpic}
+\end{tabular}
+  \caption{Prepartion of chips for electroplating. The bare wafer (black) is
+  shown in (a). The chromium adhesion layer (grey) is applied by evaporation
+  (b), followed by the thicker gold seed layer (yellow, c). Finally the
+  photoresist mould for the wires (purple) is produced by lithography (d).}
+\end{figure}
+
+\subsection{Electroplating}
+
+\subsection{Cleaning and etching}
+
 
 \section{Planned fabrication of microwave layer}
 \label{fab:planned}
