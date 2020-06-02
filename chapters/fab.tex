@@ -33,7 +33,7 @@ described in~\cite{2011Ac, Lev2003}.
 
 The fabrication process starts with a \ph{4 inch silicon wafer of some sort},
 on which we can fabricate twelve \ph{2cm by 2cm} chips. This process can be
-briefly summarised as follows:
+briefly summarised:
 \begin{enumerate}
 \item Lay down thin (\SI{60}{\nano\meter}) seed layer of gold for each chip.
 \item Spin coat a thick (\SI{6}{\micro\meter}) layer of photoresist.
@@ -58,7 +58,7 @@ the microwave fields and the molecule trapping region. Our design achieves this
 by positioning the microwave guides on a second layer, directly above the
 trapping wires. \cm{Need to ensure the design is already fully described so
 this is coherent.} We have not yet attempted the following stages of
-fabrication, but we anticipate that they will be as follows:
+fabrication, but we anticipate that they will be:
 \begin{enumerate}[resume]
     \item Spin coat chip with an insulating layer of polyimide.
     \item Perform standard photolithography to lay down microwave guides on the
@@ -66,22 +66,24 @@ fabrication, but we anticipate that they will be as follows:
 \end{enumerate}
 These steps are discussed further in section~\ref{fab:planned}.
 
-This chapter is structured as follows: I will first give an abstract outline of
-the fabrication methods that are used multiple times throughout the procedure
-\cm{should I list? (spin coating, lithography and evaporation)}. I will then
-describe the details of the fabrication that we have undertaken so far. Finally
-I will present our plan for creating a two-layer chip with microwave guides.
+In the rest of this chapter I will describe the three key fabrication stages:
+preparation of chips for electroplating, electroplating and the planned
+fabrication of the microwave layer.
 
-\section{Common fabrication methods}
+\section{Preparation for electroplating}
+\label{fab:prep}
 
-\cm{Spin coating section? (commented)}
+I will begin this section with an overview of each of the key methods that we
+use (subsections \ref{fab:prep:spincoat}--\ref{fab:prep:profiling}) and then
+explain the perparation in detail (subsection \ref{fab:prep:procedure}).
 
-%\subsection{Spin coating}
+\subsection{Spin coating}
+\label{fab:prep:spincoat}
 
-%Spin coating is a procedure for distributing a uniform layer of liquid such as
-%photoresist  across a sample. It is typically followed by baking to
-%\ph{solidify} the layer. We use spin coating to apply layers of photoresist to
-%our wafers and intend to use it to deposit polyimide
+Spin coating is a procedure for distributing a uniform layer of liquid such as
+photoresist  across a sample. It is typically followed by baking to
+\ph{solidify} the layer. We use spin coating to apply layers of photoresist to
+our wafers and intend to use it to deposit polyimide
 
 \subsection{Lithography}
 
@@ -137,50 +139,17 @@ a thickness of \ph{5um} is required for the chip's trapping wires. Achieving
 this with evaporation would take \ph{a long time}. \ph{Other techniques like
 sputtering are also no good.}
 
-\subsection{Electroplating}
-
-In electroplating a target is attached to an \cm{anode} and submerged in a
-\ph{solution of some sort} along with a cathode. Current is then passed between
-the anode and the cathode, causing \cm{ions in the solution} to be deposited on
-the sample. \cm{Need a cartoon to show this process and a good citation or
-two.}
-
-\cm{Need MUCH MORE technical detail: equations for deposition rate, that sort
-of thing.}
-
-In our case we have electroplated gold onto gold targets. The solution used was
-\ph{this thing, with this rate and etc.}. The solution which was heated at
-\ph{65C} in a water bath. It was found that best electroplating results were
-achieved when the solution was agitated by bubbling throughout the process.
-\cm{Is this right or was stirring better?}.  The results of our electroplating
-process are discussed in section~\ref{fab:procedure}.
-
-This process deposits additional gold on top of gold at rates of \ph{rage of
-sensible deposition rates}. Hence it is possible to reach the desired thickness
-of our wires in a few minutes.
-
-The downside to electroplating is that gold will be deposited indistinguishably
-onto all surfaces which are in good electrical contact with the \cm{anode} and
-the solution. The procedure for electroplating a desired pattern is commonly
-used for fabrication of atom chips~\cite{}. A thin seed layer of gold is
-deposited on the surface and a \cm{`mould'} of photoresist is used to give form
-to the wires during electroplating. This is described further in
-section~\ref{fab:procedure}. \cm{Or maybe it is shown in fig??}
 
 \subsection{Profiling}
+\label{fab:prep:profiling}
 
 \ph{Explanation of Dektak stylus profilometer (Bruker)}
 
-\section{Fabrication procedure}
-\label{fab:procedure}
+\subsection{Preparation procedure}
+\label{fab:prep:procedure}
 
-
-
-\cm{remember to include profilometer stuff}
 I will now describe how the above methods have been used to fabricate our
 prototype trapping chip.
-
-\subsection{Preparation for electroplating}
 
 Fabrication of such a chip begins with a \ph{4 inch silicon wafer}. The wafer
 is cleaned first with acetone, then isopropyl alcohol and deionised water. The
@@ -240,9 +209,10 @@ The wafer is then diced and the individual chips are ready to be electroplated.
   \label{fab:fig:prep}
 \end{figure}
 
-\subsection{Electroplating}
+\section{Electroplating}
 
 \begin{figure}
+\vspace{.5cm}
 \centering
 \begin{tabular}{cccc}
   \begin{overpic}[width=0.22\textwidth]{figs/fab/cartoon/eplate.pdf}
@@ -251,16 +221,46 @@ The wafer is then diced and the individual chips are ready to be electroplated.
   \end{overpic}&
   \ph{Picture of the aparatus (b).}
 \end{tabular}
-  \caption{The electroplating procedure. Subfigure (a) shows a chip (c.f.
-  ~\myfigref{fab:fig:prep}) is submerged in a gold electrolyte (light blue)
-  along with an electrode (grey mesh). The solution is held at \ph{temp} and
-  aggitated by a stirrer and bubbler. Subfigure (b) shows a photograph of our
-  apparatus. A beaker containing the electrolyte is placed in a water bath for
-  heating during the procedure.}
+  \caption{The electroplating procedure. Subfigure (a) shows a chip (c.f.\
+  \myfigref{fab:fig:prep}) is submerged in a gold electrolyte (light blue)
+  along with an electrode (grey mesh). These are connected to a current supply
+  to enable current flow and deposition of gold ions (yellow circle).  is
+  depicted. The solution is held at \ph{temp} and aggitated by a stirrer and
+  bubbler. Subfigure (b) shows a photograph of our apparatus. A beaker
+  containing the electrolyte is placed in a water bath for heating during the
+  procedure.}
   \label{fab:fig:eplate}
 \end{figure}
 
-\subsection{Cleaning and etching}
+In electroplating a target is attached to an anode and submerged in a
+\ph{solution of some sort} along with a cathode. Current is then passed between
+the anode and the cathode, causing \cm{ions in the solution} to be deposited on
+the sample. \cm{Need a cartoon to show this process and a good citation or
+two.}
+
+\cm{Need MUCH MORE technical detail: equations for deposition rate, that sort
+of thing.}
+
+In our case we have electroplated gold onto gold targets. The solution used was
+\ph{this thing, with this rate and etc.}. The solution which was heated at
+\ph{65C} in a water bath. It was found that best electroplating results were
+achieved when the solution was agitated by bubbling throughout the process.
+\cm{Is this right or was stirring better?}.  The results of our electroplating
+process are discussed in section~\ref{fab:procedure}.
+
+This process deposits additional gold on top of gold at rates of \ph{rage of
+sensible deposition rates}. Hence it is possible to reach the desired thickness
+of our wires in a few minutes.
+
+The downside to electroplating is that gold will be deposited indistinguishably
+onto all surfaces which are in good electrical contact with the \cm{anode} and
+the solution. The procedure for electroplating a desired pattern is commonly
+used for fabrication of atom chips~\cite{}. A thin seed layer of gold is
+deposited on the surface and a \cm{`mould'} of photoresist is used to give form
+to the wires during electroplating. This is described further in
+section~\ref{fab:procedure}. \cm{Or maybe it is shown in fig??}
+
+\section{Cleaning and etching}
 
 \begin{figure}[h]
 \vspace{2cm}
