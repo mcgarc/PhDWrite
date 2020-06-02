@@ -4,9 +4,10 @@ our first design shown in Figure ??}. In this chapter I will outline the
 planned fabrication process, reporting on which steps have been undertaken thus
 far, and the difficulties which we have yet to overcome.
 
-The microfabrication techniques described below were undertaken at the London
-Centre for Nanotechnology (LCN). I would like to thank their technicians and
-staff, whose input and assistance has been invaluable to this project.
+All the microfabrication techniques described below except for the
+electroplating were undertaken at the London Centre for Nanotechnology (LCN). I
+would like to thank their technicians and staff, whose input and assistance has
+been invaluable to this project. \cm{move thanks to acks I think...}
 
 \section{Overview of the fabrication procedure}
 
@@ -26,10 +27,11 @@ this would require a minimum height of \cm{??} to carry our trapping
 currents, much higher than can be achieved with photolithography techniques.
 
 Hence, we have begun our protoypting using a combination of microfabrication
-techniques and electroplating, the former to produce the footprint of the
-trapping wires and the latter to build up to a height suitable for our
-purposes. This is a common technique for constructing atom chips and is
-described in~\cite{2011Ac, Lev2003}.
+techniques and electroplating known as through-mask
+electroplating.~\cite{Ruythooren_2000}. Here we use lithography to produce the
+footprint of the trapping wires and then electroplate to build up to a height
+suitable for our purposes. This is a common technique for constructing atom
+chips and is described in~\cite{2011Ac, Lev2003, KOUKHARENKO2004600}.
 
 The fabrication process starts with a \ph{4 inch silicon wafer of some sort},
 on which we can fabricate twelve \ph{2cm by 2cm} chips. This process can be
@@ -232,33 +234,48 @@ The wafer is then diced and the individual chips are ready to be electroplated.
   \label{fab:fig:eplate}
 \end{figure}
 
-In electroplating a target is attached to an anode and submerged in a
-\ph{solution of some sort} along with a cathode. Current is then passed between
-the anode and the cathode, causing \cm{ions in the solution} to be deposited on
-the sample. \cm{Need a cartoon to show this process and a good citation or
-two.}
 
-\cm{Need MUCH MORE technical detail: equations for deposition rate, that sort
-of thing.}
+In electroplating a conductive target is connected to a circuit as an anode and
+placed into an electrolytic solution along with a cathode. Current passed
+through the solution causes ions in the solution to be deposited onto the
+target. This is illustrated in \cm{\myfigref{fab:fig:eplate}
+(a)}. An overview of electroplating can be found in \cm{Ref.\
+~\cite{Schlesinger2011}} and a discussion of its use in microfabrication,
+including the through-mask method employed here, can be found in \cm{Ref.\
+~\cite{Ruythooren_2000}}.
 
-In our case we have electroplated gold onto gold targets. The solution used was
-\ph{this thing, with this rate and etc.}. The solution which was heated at
-\ph{65C} in a water bath. It was found that best electroplating results were
-achieved when the solution was agitated by bubbling throughout the process.
-\cm{Is this right or was stirring better?}.  The results of our electroplating
-process are discussed in section~\ref{fab:procedure}.
-
+The height $h$ acheived in a deposition of duration $t$ is given by the Faraday
+equation~\cite{Schlesinger2011}
+%
+\begin{equation}
+  h = \left(\frac{???}{???}\right)t
+\end{equation}
+%
+where \cm{$F=???$} is the Faraday constant, \ph{other params (including
+relevant values for gold}.
+%
+\begin{equation}
+  \text{Input here the numerical equation for the height per areaa}
+\end{equation}.
+%
+\cm{Reword:
 This process deposits additional gold on top of gold at rates of \ph{rage of
 sensible deposition rates}. Hence it is possible to reach the desired thickness
 of our wires in a few minutes.
+}
 
-The downside to electroplating is that gold will be deposited indistinguishably
-onto all surfaces which are in good electrical contact with the \cm{anode} and
-the solution. The procedure for electroplating a desired pattern is commonly
-used for fabrication of atom chips~\cite{}. A thin seed layer of gold is
-deposited on the surface and a \cm{`mould'} of photoresist is used to give form
-to the wires during electroplating. This is described further in
-section~\ref{fab:procedure}. \cm{Or maybe it is shown in fig??}
+Our apparatus for the electroplating step is shown in
+\cm{\myfigref{fab:fig:eplate}~(b)}. \cm{And then explain the aparratus...}
+
+
+
+
+%In our case we have electroplated gold onto gold targets. The solution used was
+%\ph{this thing, with this rate and etc.}. The solution which was heated at
+%\ph{65C} in a water bath. It was found that best electroplating results were
+%achieved when the solution was agitated by bubbling throughout the process.
+%\cm{Is this right or was stirring better?}.  The results of our electroplating
+%process are discussed in section~\ref{fab:procedure}.
 
 \section{Cleaning and etching}
 
