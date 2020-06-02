@@ -66,12 +66,13 @@ fabrication, but we anticipate that they will be as follows:
 \end{enumerate}
 These steps are discussed further in section~\ref{fab:planned}.
 
-In this chapter I will first outline the main fabrication methods that we have
-relied on. I will then describe our particular fabrication procedure up to the
-point that we have achieved. I will then discuss the planned next steps for
-creating a two-layer chip with microwave guides.
+This chapter is structured as follows: I will first give an abstract outline of
+the fabrication methods that are used multiple times throughout the procedure
+\cm{should I list? (spin coating, lithography and evaporation)}. I will then
+describe the details of the fabrication that we have undertaken so far. Finally
+I will present our plan for creating a two-layer chip with microwave guides.
 
-\section{Methods}
+\section{Common fabrication methods}
 
 \cm{Spin coating section? (commented)}
 
@@ -174,6 +175,7 @@ section~\ref{fab:procedure}. \cm{Or maybe it is shown in fig??}
 \label{fab:procedure}
 
 
+
 \cm{remember to include profilometer stuff}
 I will now describe how the above methods have been used to fabricate our
 prototype trapping chip.
@@ -212,32 +214,77 @@ typical good mould on the profilometer...}
 
 The wafer is then diced and the individual chips are ready to be electroplated.
 
-\begin{figure}
+\begin{figure}[h]
 \vspace{2cm}
 \centering
-\begin{tabular}{cc}
-  \begin{overpic}[width=0.4\textwidth]{figs/fab/cartoon/a.pdf}
-    \put(1,30){(a)}
+\begin{tabular}{cccc}
+  \begin{overpic}[width=0.22\textwidth]{figs/fab/cartoon/a.pdf}
+    \put(0,40){(a)}
   \end{overpic} &
-  \begin{overpic}[width=0.4\textwidth]{figs/fab/cartoon/b.pdf}
-    \put(1,30){(b)}
-  \end{overpic} \\[1cm]
-  \begin{overpic}[width=0.4\textwidth]{figs/fab/cartoon/c.pdf}
-    \put(1,30){(c)}
+  \begin{overpic}[width=0.22\textwidth]{figs/fab/cartoon/b.pdf}
+    \put(0,40){(b)}
   \end{overpic} &
-  \begin{overpic}[width=0.4\textwidth]{figs/fab/cartoon/d.pdf}
-    \put(1,30){(d)}
+  \begin{overpic}[width=0.22\textwidth]{figs/fab/cartoon/c.pdf}
+    \put(0,40){(c)}
+  \end{overpic} &
+  \begin{overpic}[width=0.22\textwidth]{figs/fab/cartoon/d.pdf}
+    \put(0,40){(d)}
   \end{overpic}
 \end{tabular}
+%\setlength{\tabcolsep}{\oldtabcolsep}
   \caption{Prepartion of chips for electroplating. The bare wafer (black) is
   shown in (a). The chromium adhesion layer (grey) is applied by evaporation
   (b), followed by the thicker gold seed layer (yellow, c). Finally the
-  photoresist mould for the wires (purple) is produced by lithography (d).}
+  photoresist \cm{what kind?} mould for the wires (purple) is produced by
+  lithography (d).}
+  \label{fab:fig:prep}
 \end{figure}
 
 \subsection{Electroplating}
 
+\begin{figure}
+\centering
+\begin{tabular}{cccc}
+  \begin{overpic}[width=0.22\textwidth]{figs/fab/cartoon/eplate.pdf}
+    \put(-10,100){(a)}
+    \put(28.3,92.5){$I$}
+  \end{overpic}&
+  \ph{Picture of the aparatus (b).}
+\end{tabular}
+  \caption{The electroplating procedure. Subfigure (a) shows a chip (c.f.
+  ~\myfigref{fab:fig:prep}) is submerged in a gold electrolyte (light blue)
+  along with an electrode (grey mesh). The solution is held at \ph{temp} and
+  aggitated by a stirrer and bubbler. Subfigure (b) shows a photograph of our
+  apparatus. A beaker containing the electrolyte is placed in a water bath for
+  heating during the procedure.}
+  \label{fab:fig:eplate}
+\end{figure}
+
 \subsection{Cleaning and etching}
+
+\begin{figure}[h]
+\vspace{2cm}
+\centering
+\begin{tabular}{cccc}
+  \begin{overpic}[width=0.22\textwidth]{figs/fab/cartoon/e.pdf}
+    \put(0,40){(a)}
+  \end{overpic} &
+  \begin{overpic}[width=0.22\textwidth]{figs/fab/cartoon/f.pdf}
+    \put(0,40){(b)}
+  \end{overpic} &
+  \begin{overpic}[width=0.22\textwidth]{figs/fab/cartoon/g.pdf}
+    \put(0,40){(c)}
+  \end{overpic} &
+  \begin{overpic}[width=0.22\textwidth]{figs/fab/cartoon/h.pdf}
+    \put(0,40){(d)}
+  \end{overpic}
+\end{tabular}
+  \caption{Cleaning and etching of the chips following electroplating. The
+  electroplated chip (a) is cleaned to remove the photoresist layer (b). A gold
+  etch (c) is performed, followed by a chromium etch (d) to produce
+  electrically isolated wires. Colours are as in \myfigref{fab:fig:prep}.}
+  \label{fab:fig:etch}
+\end{figure}
 
 
 \section{Planned fabrication of microwave layer}
