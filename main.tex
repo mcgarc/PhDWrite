@@ -44,6 +44,7 @@
 \usepackage{subcaption} % For subfigures
 \usepackage{enumitem} % Originally to resume list
 \usepackage{overpic} % Superimpose text on images
+\usepackage{datetime} % For custom dates
 
 % --- Bibliography Links ---
 \usepackage{hyperref}
@@ -74,6 +75,10 @@
 \newcommand{\mytabref}[1]{table~\ref{#1}}
 \newcommand{\myeqrefs}{eqns}
 \newcommand{\myfigref}[1]{Fig.\ref{#1}}
+\usepackage{datetime}
+
+% Date with just the month and year (use `\monthyeardate\today`)
+\newdateformat{monthyeardate}{\monthname[\THEMONTH] \THEYEAR}
 
 % Chemicals
 \newcommand{\CaF}{CaF}
@@ -123,16 +128,38 @@
 
 \pagenumbering{gobble}
 \begin{titlepage}
+
+  \begin{figure}
+    \includegraphics[width=70mm]{./figs/imperial.pdf}
+  \end{figure}
+
   \begin{center}
     \vspace*{1cm}
-      \textbf{Design for a molecular chip trap} \\
-    \vspace{1.5cm}
-      \textbf{Cameron McGarry} \\
-    \vspace{0.5cm}
-       Supervisors: Mike Tarbutt and Ben Sauer \\
-    \vspace{0.5cm}
-       {Imperial College London, Department of Physics} \\
+    %\rule{\linewidth}{0.5mm} \\[0.4cm]
+    % Thesis: 
+    %   (A) chip trap for CaF molecules
+    %   Trapping of CaF molecules in a microfabricated magnetic trap
+    %   (Something with microwaves?? -- unlikely I will get here anyway...)
+    {\huge \bfseries Design and fabrication of a chip trap for \CaF{} molecules}\\
+    \rule{\linewidth}{0.5mm} \\[1.0cm]
+    by \\[0.5cm]
+    {\Large \textbf{Cameron McGarry}} \\[0.5cm]
+    \thesis{
+    A thesis submitted to \\[0.5cm]
+    \textsc{\Large Imperial College London}\\[0.5cm] 
+    \textsc{\large Department of Physics}\\[0.5cm] 
+    in partial fulfillment of the requirements for the degree of doctor of
+    philosophy. \\[0.5cm]
+  }
+    Supervised by Mike Tarbutt and Ben Sauer \\[0.5cm]
+    \makeatletter
+    \monthyeardate\today
+    \makeatother
+
   \end{center}
+
+
+
 \end{titlepage}
 
 % Abstract
