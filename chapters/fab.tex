@@ -7,7 +7,8 @@ far, and the difficulties which we have yet to overcome.
 All the microfabrication techniques described below except for the
 electroplating were undertaken at the London Centre for Nanotechnology (LCN). I
 would like to thank their technicians and staff, whose input and assistance has
-been invaluable to this project. \cm{move thanks to acks I think...}
+been invaluable to this project. \cm{move thanks to acks I think...} \cm{The
+process is largely based on that discussed in \inlineref{Treutlein2008}.}
 
 \section{Overview of the fabrication procedure}
 
@@ -244,24 +245,32 @@ discussion of its use in microfabrication, including the through-mask method
 employed here, can be found in \cm{\inlineref{Ruythooren_2000}}.
 
 The height $h$ acheived in a deposition of duration $t$ is given by the Faraday
-equation~\cite{Schlesinger2011}
+equation~\cite{Ruythooren_2000}
 %
 \begin{equation}
-  h = \left(\frac{???}{???}\right)t
+  h = \left(\frac{\alpha I M}{nFA\rho}\right)t
 \end{equation}
 %
-where \cm{$F=???$} is the Faraday constant, \ph{other params (including
-relevant values for gold}.
+where $I$ is the current, $F=\SI{96.5}{\kilo\ampere\second\per\mole}$ is the
+Faraday constant, and other parameters with values specific to our gold
+deposition are: $\alpha\sim0.9$, the current efficieny; $M =
+\SI{197}{\gram\per\mole}$ the molar mass;
+$\rho=\SI{19.32}{\gram\per\centi\meter\cubed}$, the density of the deposited
+metal; $n=1$, the charge on the deposited ions in units of electron charge; and
+$A\sim\SI{1}{\centi\meter\squared}$ is the area for plating.
+
+We therefore have a relationship between the current, the target height and the
+time,
 %
 \begin{equation}
-  \text{Input here the numerical equation for the height per areaa}
-\end{equation}.
+  h = \left(\SI[per-mode=fraction]{9.5e-11}{\meter\cubed\per\ampere\second}
+  \right) \times\frac{It}{A}.
+\end{equation}
 %
-\cm{Reword:
-This process deposits additional gold on top of gold at rates of \ph{rage of
-sensible deposition rates}. Hence it is possible to reach the desired thickness
-of our wires in a few minutes.
-}
+For our electrolytic solution, we have used Metakem Goldbath-SF~\cite{}, which
+is rated for currents between \SI{1}{\milli\ampere}--\SI{15}{\milli\ampere}.
+This suggests that we will be able to achieve a few microns of thickenss within
+a few minutes of electrocoating.
 
 Our apparatus for the electroplating step is shown in
 \cm{\myfigref{fab:fig:eplate}~(b)}. \cm{And then explain the aparratus...}
