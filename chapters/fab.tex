@@ -263,18 +263,37 @@ We therefore have a relationship between the current, the target height and the
 time,
 %
 \begin{equation}
-  h = \left(\SI[per-mode=fraction]{9.5e-11}{\meter\cubed\per\ampere\second}
-  \right) \times\frac{It}{A}.
+  h \approx \left(
+  \SI[per-mode=fraction]{1e-10}{\meter\cubed\per\ampere\per\second} \right)
+  \times\frac{It}{A}.
 \end{equation}
 %
 For our electrolytic solution, we have used Metakem Goldbath-SF~\cite{}, which
-is rated for currents between \SI{1}{\milli\ampere}--\SI{15}{\milli\ampere}.
-This suggests that we will be able to achieve a few microns of thickenss within
-a few minutes of electrocoating.
+is rated for currents between \SIrange{1}{15}{\milli\ampere}. This suggests
+that we will be able to achieve a few microns of thickenss within a few minutes
+of electrocoating. However we do not know the exact value of the current
+efficiency for our experiment, so our coating time and operating current have
+been determined experimentally.
+
+Metakem Goldbath-SF is chosen because it produces very pure (99.99\%) deposits,
+and will not react with our photoresist. The effectiveness of this product has
+been demonstrated for a similar design in \inlineref{Treutlein2008}.
 
 Our apparatus for the electroplating step is shown in
-\cm{\myfigref{fab:fig:eplate}~(b)}. \cm{And then explain the aparratus...}
+\cm{\myfigref{fab:fig:eplate}~(b)}. The electrolytic solution is placed in a
+beaker, which itself is placed in a water bath held at \ph{58C}. The bath is
+heated using a \ph{heating stir plate}. Some time is allowed for themalisation
+and then the target chip and the cathode are placed in the solution. The chip
+is held in position by a stiff insulated wire, which also carries current to
+the plating contact pad (see \cm{some figure of the design}). The insulation on
+the wire prevents an increase in the plating area. The cathode is a grid of
+platinised titanium which has been cut to the size of our beaker. This was also
+purchased from Metakem.
 
+A bubbler is placed to aggitate the solution near to the chip surface. This in
+combination with gentle stirring ensures good circulation of the solution and
+hence prevents localised depletion of the ions near to the chip
+surface.~\cite{Schlesinger2011}
 
 
 
