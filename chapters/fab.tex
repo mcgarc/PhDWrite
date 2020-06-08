@@ -77,11 +77,11 @@ fabrication of the microwave layer.
 \label{fab:prep}
 
 I will begin this section with an overview of each of the key methods that we
-use (subsections \ref{fab:prep:spincoat}--\ref{fab:prep:profiling}) and then
-explain the perparation in detail (subsection \ref{fab:prep:procedure}).
+use (subsections \ref{fab:spin}--\ref{fab:profile}) and then explain the
+perparation in detail (subsection \ref{fab:preppro}).
 
 \subsection{Spin coating}
-\label{fab:prep:spincoat}
+\label{fab:spin}
 
 Spin coating is a procedure for distributing a uniform layer of liquid such as
 photoresist  across a sample. It is typically followed by baking to
@@ -91,46 +91,114 @@ our wafers and intend to use it to deposit polyimide
 \subsection{Lithography}
 
 Lithography is the process of projecting the image of a design onto the surface
-of the substrate. The usual procedure is to coat the substrate in a positive
-(negative) \cm{check sign} photoresist, which can be exposed to ultraviolet
-light. Exposed regions of the photoresist will react with the light. The
-photoresist can be developed causing the (un)exposed regions to lift off while
-the rest of the photoresist remains attached to the wafer.
+of the substrate. The usual procedure is to coat the substrate in a
+photoresist, which can be exposed to ultraviolet light. Exposed regions of the
+photoresist will react with the light. The photoresist can be developed causing
+these regions to lift off while the rest of the photoresist remains attached to
+the wafer.\footnote{This describes the procedure for a positive photoresist.
+For negative photoresists the unexposed regions are removed on development, but
+these are not used in this work.} In this section I will present the standard
+procedure for patterning metal onto a substrate with lithography.
 
 A substrate can therefore be \cm{patterned} by controlling the region of
 exposure. This is commonly done by using a mask to project a desired shadow
-during exposure~\cite{}, however we have used a Heidelberg direct
-writer~\cite{} to perform photolithography.
+during exposure~\cite{}, however we have used a Heidelberg direct writer
+\cm{and model number!}~\cite{} to perform photolithography.
 
-The direct writer operates by scanning a \ph{UV laser} over the surface of the
-substrate, and printing an uploaded pattern.
+An exposure pattern is uploaded to the direct writer. An ultraviolet laser is
+then raster scanned across the surface to be patterned. The laser is switched
+on in the regions where exposure is desired. This process is depicted for a
+positive photoresist in \myfigref{fab:fig:methods}{a}.  The \cm{refer to
+model no./ equipment name} is capable of producing features of up to \cm{size}.
+Patterning of our wafer takes approximately one hour.
 
-\cm{Need things like, power, PR thickness, exposure time, number of writes,
-resolution, etc...}
-
-\subsection{Evaporation}
-
-Layers of metal can be applied to the wafer through evaporation. The substrate
-is placed into a belljar \cm{can we be specific about type of belljar here?}
-with the target side facing an evaporation target, in our case gold or
-\cm{chromium} with the latter used as an adhesion layer for the former. The
-belljar is pumped down to vacuum of pressure below \ph{??}. A current is then
-passed through the target to \cm{induce} evaporation of the metal onto the
-substrate. A shutter is used to block deposition onto the substrate until the
-desired current has been reached.
-
-It is common to combine this techinque with lithography. A layer of photoresist
-between evaporated metals and the substrate surface can be lifted off to reveal
-the desired pattern in metal on the substrate. \cm{Expand??} This process is
-depicted in \myfigref{fab:fig:photolith}
-
-\begin{figure}
-  %\includegraphics{./figs/2019-01-18_stripline_xsection.png}
-  \caption{\cm{Show a photolith process as in body text}}
-  \label{fab:fig:photolith}
+\begin{figure}[h]
+\vspace{0.8cm}
+\centering
+  \begin{overpic}[width=0.8\textwidth]{figs/fab/cartoon/lith.pdf}
+    \put(10,-5){(a)}
+    \put(35,-5){(b)}
+    \put(61,-5){(c)}
+    \put(86,-5){(d)}
+    \put(-1,6){$h$}
+    \put(23.2,-0.4){$x$}
+  \end{overpic}
+  \vspace{10mm}
+  \caption{Deposition process of gold onto silicon. A top-down view of the
+  target is shown in the top row, with a cross section along the dashed line
+  shown in the middle row. The bottom row shows a profile of the target (as
+  discussed in section~\ref{fab:profile}). Column (a) shows positive
+  photoresist (purple) with the exposed region highlighted (light blue). The
+  raster scan of the \cm{direct writer} across the substrate is highlighted in
+  the top view.  In column (b) the resist is developed and the bare silicon
+  exposed. In column (c) gold (yellow) is deposited across the target, e.g. by
+  evaporation (as discussed in section~\ref{fab:evap}). In column (d) liftoff
+  is performed, removing the remaining photoresist and gold deposited on top of
+  it. This leaves only the desired pattern on the silicon.  The relative
+  heights of the materials are exaggerated for the purposes of illustration.
+  }
+  \label{fab:fig:methods}
 \end{figure}
 
-\cm{Should I have a picture of the belljar?}
+The laser intensity, exposure time and number of scans are dependent on the
+type of photoresist used and its thickness. Two positive photoresists are used
+in this fabrication procedure to produce thin and thick layers. The details of
+both of these are discussed further in section~\ref{fab:preppro}.
+
+\cm{Rehydration step?}
+Following patterning of the photoresist the sample is placed in a \cm{developing
+solution}. This removes the exposed photoresist, exposing the silicon for
+deposition. This is shown in \mysubfigref{fab:fig:methods}{b}. Development at
+room temperature can take several hours, but robust samples such as the ones
+described herein can be placed in a heating sonicator and developed in a few
+minutes.
+
+The next stage is usually to deposit metal onto the sample (shown in
+\mysubfigref{fab:fig:methods}{c}). We will describe how we do this with
+evaporation in the next section. After this unwanted metal can be removed by
+lifting off the remaining photoresist. 
+
+In the next section we will describe how metal can be deposited onto the sample
+by evaporation (shown in \mysubfigref{fab:fig:methods}{c}). After this the
+unwanted metal is removed along with the remaining photoresist in what is known
+as the `lift-off' process. Photoresist remover is applied to the solution for
+approximately one minute (depending on the exact photoresist and remover used).
+This leaves only the intended pattern of metal on the substrate, as in
+\mysubfigref{fab:fig:methods}{d}.
+
+Variations on this photolithography method can be used to achieve different
+results. A simple example would be deposition of two metals onto the surface.
+We will see in section~\ref{fab:preppro} that chromium can be used as an
+adhesion layer for gold. We will also show how a thick photoresist mould can be
+used to create tall features by electroplating. \ph{Further discussion can be
+found in \inlineref{??}.}
+
+\subsection{Evaporation}
+\label{fab:evap}
+
+This section details the evaporation procedure. In the previous section we used
+the example of direct deposition of gold on to silicon (see
+\mysubfigref{fab:fig:methods}{c}). In reality a thin adhesion layer of chromium
+is required for good results.~\cite{}
+
+We performed evaporation using a \ph{tech name of A306 belljar},
+pictured in \myfigref{fab:fig:belljar}.
+The substrate is placed inside the belljar with the target side facing a sample
+of the metal to be evaporated. Multiple metals can be placed on a carousell to
+allow a different metal to be used for subsequent depositions.
+
+\begin{figure}
+  \centering
+  \ph{Picutre of belljar}
+  \caption{\ph{caption}}
+  \label{fab:fig:belljar}
+\end{figure}
+
+
+The belljar is pumped down to vacuum of pressure below \ph{??}. A current is
+then passed through the target to \cm{induce} evaporation of the metal onto the
+substrate. A shutter is used to block deposition onto the substrate until the
+desired current has been reached.
 
 The \ph{belljar} incorporates a \ph{measuring device} which reports the rate of
 deposition and automatically shuts off deposition once the desired thickness
@@ -142,14 +210,13 @@ a thickness of \ph{5um} is required for the chip's trapping wires. Achieving
 this with evaporation would take \ph{a long time}. \ph{Other techniques like
 sputtering are also no good.}
 
-
 \subsection{Profiling}
-\label{fab:prep:profiling}
+\label{fab:profile}
 
 \ph{Explanation of Dektak stylus profilometer (Bruker)}
 
 \subsection{Preparation procedure}
-\label{fab:prep:procedure}
+\label{fab:preppro}
 
 I will now describe how the above methods have been used to fabricate our
 prototype trapping chip.
@@ -187,7 +254,7 @@ typical good mould on the profilometer...}
 The wafer is then diced and the individual chips are ready to be electroplated.
 
 \begin{figure}[h]
-\vspace{2cm}
+\vspace{0.8cm}
 \centering
 \begin{tabular}{cccc}
   \begin{overpic}[width=0.22\textwidth]{figs/fab/cartoon/a.pdf}
@@ -203,19 +270,26 @@ The wafer is then diced and the individual chips are ready to be electroplated.
     \put(0,40){(d)}
   \end{overpic}
 \end{tabular}
-%\setlength{\tabcolsep}{\oldtabcolsep}
-  \caption{Prepartion of chips for electroplating. The bare wafer (black) is
-  shown in (a). The chromium adhesion layer (grey) is applied by evaporation
-  (b), followed by the thicker gold seed layer (yellow, c). Finally the
-  photoresist \cm{what kind?} mould for the wires (purple) is produced by
-  lithography (d).}
+  \caption{Cross section of the preparation of chips for electroplating. The
+  bare wafer (black) is shown in (a). The chromium adhesion layer (grey) is
+  applied by evaporation (b), followed by the thicker gold seed layer (yellow,
+  c).  Finally the photoresist \cm{what kind?} mould for the wires (purple) is
+  produced by lithography (d).}
   \label{fab:fig:prep}
 \end{figure}
 
 \section{Electroplating}
 
+In electroplating a conductive target is connected to a circuit as an anode and
+placed into an electrolytic solution along with a cathode. Current passed
+through the solution causes ions in the solution to be deposited onto the
+target. This is illustrated in \mysubfigref{fab:fig:eplate}{a}. An overview
+of electroplating can be found in \cm{\inlineref{Schlesinger2011}} and a
+discussion of its use in microfabrication, including the through-mask method
+employed here, can be found in \cm{\inlineref{Ruythooren_2000}}.
+
 \begin{figure}
-\vspace{.5cm}
+\vspace{0.8cm}
 \centering
 \begin{tabular}{cccc}
   \begin{overpic}[width=0.22\textwidth]{figs/fab/cartoon/eplate.pdf}
@@ -234,15 +308,6 @@ The wafer is then diced and the individual chips are ready to be electroplated.
   procedure.}
   \label{fab:fig:eplate}
 \end{figure}
-
-
-In electroplating a conductive target is connected to a circuit as an anode and
-placed into an electrolytic solution along with a cathode. Current passed
-through the solution causes ions in the solution to be deposited onto the
-target. This is illustrated in \cm{\myfigref{fab:fig:eplate} (a)}. An overview
-of electroplating can be found in \cm{\inlineref{Schlesinger2011}} and a
-discussion of its use in microfabrication, including the through-mask method
-employed here, can be found in \cm{\inlineref{Ruythooren_2000}}.
 
 The height $h$ acheived in a deposition of duration $t$ is given by the Faraday
 equation~\cite{Ruythooren_2000}
@@ -280,7 +345,7 @@ and will not react with our photoresist. The effectiveness of this product has
 been demonstrated for a similar design in \inlineref{Treutlein2008}.
 
 Our apparatus for the electroplating step is shown in
-\cm{\myfigref{fab:fig:eplate}~(b)}. The electrolytic solution is placed in a
+\mysubfigref{fab:fig:eplate}{b}. The electrolytic solution is placed in a
 beaker, which itself is placed in a water bath held at \ph{58C}. The bath is
 heated using a \ph{heating stir plate}. Some time is allowed for themalisation
 and then the target chip and the cathode are placed in the solution. The chip
@@ -290,24 +355,41 @@ the wire prevents an increase in the plating area. The cathode is a grid of
 platinised titanium which has been cut to the size of our beaker. This was also
 purchased from Metakem.
 
-A bubbler is placed to aggitate the solution near to the chip surface. This in
+A bubbler is placed to agitate the solution near to the chip surface. This in
 combination with gentle stirring ensures good circulation of the solution and
 hence prevents localised depletion of the ions near to the chip
-surface.~\cite{Schlesinger2011}
+surface.~\cite{Schlesinger2011} \cm{also site conversation with S Etienne?}
 
+After electroplating the chips are rinsed with \cm{DI} water, dried and stored
+for transport to the LCN cleanroom for the final fabrication steps.
 
+We determined experimentally that electroplating at
+\cm{$I=\SI{15}{\milli\ampere}$?} for duration \cm{$t=\SI{400}{\second}$?}
+reliably produced wires of height \cm{h=??} above the seed layer. This can be
+confirmed by profiling the surface as described in
+section~\ref{fab:profile}, and can be undertaken before and after the
+removal of the photoresist mould. The profile of a successfully electroplated
+chip is shown in \myfigref{fab:fig:eplateprofile}.
 
-%In our case we have electroplated gold onto gold targets. The solution used was
-%\ph{this thing, with this rate and etc.}. The solution which was heated at
-%\ph{65C} in a water bath. It was found that best electroplating results were
-%achieved when the solution was agitated by bubbling throughout the process.
-%\cm{Is this right or was stirring better?}.  The results of our electroplating
-%process are discussed in section~\ref{fab:procedure}.
+\begin{figure}
+\centering
+  \ph{This should be two 1d profile graphs, one with PR and one without. Also
+  might need a diagram showing where the profile is taken on the surface}
+  \caption{\ph{the profile of a chip, so many wires are visible, indication of
+  where this is on the chip is essential. Assert that this is typical.}}
+  \label{fab:fig:eplateprofile}
+\end{figure}
 
-\section{Cleaning and etching}
+\section{Photoresist liftoff and etching}
+
+After electroplating the photoresist mould is removed with Microposit Remover
+1165 as described in section~\ref{fab:preppro}. The chip is now as
+pictured in \myfigref{fab:fig:etch}{b}, with wires formed to the desired
+heights but all connected electrically through the seed layer. The next step is
+to etch the seed layer and the adhesion layer so that the wires are separated.
 
 \begin{figure}[h]
-\vspace{2cm}
+\vspace{0.8cm}
 \centering
 \begin{tabular}{cccc}
   \begin{overpic}[width=0.22\textwidth]{figs/fab/cartoon/e.pdf}
@@ -323,14 +405,115 @@ surface.~\cite{Schlesinger2011}
     \put(0,40){(d)}
   \end{overpic}
 \end{tabular}
-  \caption{Cleaning and etching of the chips following electroplating. The
-  electroplated chip (a) is cleaned to remove the photoresist layer (b). A gold
-  etch (c) is performed, followed by a chromium etch (d) to produce
-  electrically isolated wires. Colours are as in \myfigref{fab:fig:prep}.}
+  \caption{Cross section of the cleaning and etching of the chips following
+  electroplating.  The electroplated chip (a) is cleaned to remove the
+  photoresist layer (b). A gold etch (c) is performed, followed by a chromium
+  etch (d) to produce electrically isolated wires. Colours are as in
+  \myfigref{fab:fig:prep}.}
   \label{fab:fig:etch}
 \end{figure}
 
+The gold etch is performed by placing the chip into a beaker of \ph{Iodine
+something chemical}, which has an etching rate of \ph{xx}. This means that an
+etch of \ph{\SI{10}{\second}???} will remove the seed layer. After this the
+chip is immediately transferred to a beaker of \ph{DI water} and then rinsed. Since
+the seed layer thickness is significantly smaller than the dimensions of the
+wire, the cross-sectional area will not be significantly altered in this time.
+This can be confirmed with profiling (see below). At this stage the chip is as
+picture in \myfigref{fab:fig:etch}{c}.
+
+\cm{Paragraphs too similar?}
+%
+This does not completely isolate the wires however, as they are still connected
+through the chromium adhesion layer. Hence a chromium etch is carried out using
+\ph{some chemical}. The etching rate is \ph{some value} so \ph{some time} will
+remove the adhesion layer. The process is the same as for the gold etch: the
+chip is submerged in a beaker of the etchant and after the pre-determined
+exposure time it is transferred to \ph{DI water} and then rinsed. The chip is
+then as pictured in \myfigref{fab:fig:etch}{d} and is ready to trap
+particles.
+
+To ensure that the etch has been successful, stylus profiling is once again
+performed. We ensure that the wires are of a sufficient height and width to
+achieve the required currents as detailed \ph{in some section}. Visual
+inspection under an optical microscope is also useful to ensure that the
+silicon has been completely exposed. A multimeter is used to confirm that there
+are no breaks in the wires.
+
+An example of a prototype \cm{of design 1} is shown in
+\myfigref{fab:fig:prototype}, along with a stylus profile of the surface. Note
+that one of the wires in this prototype has come detached from the substrate.
+This may be due to mishandling of the chip during the etch.
+
+\begin{figure}
+\centering
+  \ph{Image of the good chip, including the broken wire (highlight) and a
+  profile.}
+  \caption{\ph{Chip prototype of design 1.}}
+  \label{fab:fig:protoype}
+\end{figure}
 
 \section{Planned fabrication of microwave layer}
 \label{fab:planned}
 
+In chapter~\ref{intro} \cm{ensure this is done (both LSR and \thesis{thesis})}
+we described how a molecule chip could allow strong coupling between \CaF{}
+molecules and a microwave field, however for this to be possible there must be
+good overlap between the microwave field and the trapped
+molecules.~\cite{Andre2006} \cm{better cite needed maybe?}
+
+This overlap has previously been achieved for atoms in a magnetic
+trap.~\cite{Treutlein2008} An insulating layer is spin-coated onto the trapping
+wires so that a CPW \cm{ensure defined above} can be fabricated by
+photolithography. The trap centre can be positioned in the region where the
+microwave field is strongest. This has potential to allow coherent control of
+the molecules and potentially even sideband cooling into the motional ground
+state.~\cite{Andre2006} This is discussed further in section~\ref{outlook}.
+\thesis{more discussion elsewhere?}
+
+We will develop our fabrication procedure further so that we can produce such a
+chip. The first stage will be to spin coat the insulating layer on top of an
+etched chip, as shown in \myfigref{fab:fig:cpw}{a}. Again taking our lead
+from \inlineref{Treutlein2008}, we will use polyimide. Polyimide is chosen due
+to its low dielectric loss tangent ($\tan\delta_e = 0.016$) which will minimise
+conductor losses in the waveguide.  \footnote{Although a suitable dielectric is
+important to minimise conductor losses in a CPW, this chip will operate at room
+temperature and so radiation losses will dominate. This was discussed in detail
+in the early stage assessment and will not be repeated here.}~\cite{Collin2007,
+Simons2004}
+%
+\thesis{This \emph{will} be repeated in the thesis so I can link this better.}
+
+When spin coating the polyimide it is essential that \cm{we get good
+planarisation...}
+
+\begin{figure}[h]
+\vspace{0.8cm}
+\centering
+\begin{tabular}{cc}
+  \begin{overpic}[width=0.22\textwidth]{figs/fab/cartoon/i.pdf}
+    \put(0,40){(a)}
+  \end{overpic} &
+  \begin{overpic}[width=0.22\textwidth]{figs/fab/cartoon/j.pdf}
+    \put(0,40){(b)}
+  \end{overpic}
+\end{tabular}
+  \caption{Cross section of the fabrication of a two-layer chip. A layer of
+  polyimide (teal) \cm{capitalise?} is applied to the chip. This insulating
+  layer is shown in (a). Note that in this simplified illustration
+  planarisation effects are ignored, and the surface may not be completely
+  even. This is discussed further in the body text. \cm{And maybe in a figure?}
+  The CPW wires can be fabricated on top of the polyimide (b). The fabrication
+  is discussed further in the main text. \cm{main or body? both used in this
+  caption}.}
+  \label{fab:fig:cpw}
+\end{figure}
+
+After the application of a planarised polyimide layer it will be possible to
+fabricate microwave guides on the surface by lithography. The end result is
+shown in \myfigref{fab:fig:cpw}{b}. We will undertake
+further work to determine the required height of the CPW features and where
+they must be positioned relative to the wires to achieve the strongest
+coupling.
+%
+\cm{Can I really not do better than this?}
