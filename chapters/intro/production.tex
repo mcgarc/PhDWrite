@@ -1,59 +1,4 @@
-Cold atoms and molecules systems are promising for the implementation of new
-quantum technologies. They have been used for devices in fields of
-measurement~\cite{PhysRevLett.120.103201}, simulation~\cite{Gross995} and testing of
-fundamental physics~\cite{DeMille990}. However, one of the main disadvantages
-when compared to, for example, superconductor~\cite{Wallraff2004} or pure
-optical~\cite{Browne2017} systems is the lack of scalability and
-miniaturization.~\cite{nielsenandchuang}
-
-In 1995, Weinstein and Libbrecht proposed an experiment for
-studying cold atoms in environments with extremely high magnetic
-gradients.~\cite{PhysRevA.52.4004} These gradients can be obtained by using
-microfabricated wires in combination with a biasing field to form a trap above
-a surface. Not only does this lead to an interesting environment for studying
-new physics, but it introduces miniaturization into the cold-atom
-toolkit.~\cite{2011Ac} There is also potential for integration of atomic or
-molecular systems on a chip with other chip-based quantum
-systems.~\cite{2011Ac, Kubo2011}
-
-The first atomic chip trap was demonstrated four years later by Reichel et
-al.~\cite{Reichel1999}. Their chip trap was shown to be a robust environment for
-atomic experiments. The field of atom chips has since expanded~\cite{2011Ac},
-with use as an architecture for creation of Bose-Einstein condensates being of
-particular interest to many physicists.~\cite{Ott2001}
-
-Although laser cooling of atoms has been commonplace since the late
-20\textsuperscript{th} century, cooling of molecules has taken longer to develop
-due to their more complex internal energy structure. However, this same rich
-energy structure and other features of the molecules could be exploited to
-produce new interesting technologies.~\cite{Tarbutt2018} We are now able to
-produce \CaF{} molecules cooled below the Doppler limit~\cite{Truppe2017},
-coherently control the states of such molecules~\cite{Williams2018}
-and load molecules into a tweezer array.~\cite{Anderegg2019} These developments
-open the door to the realization of a molecule chip.
-
-A proposal by Andr\'e et al. in 2006~\cite{Andre2006} suggested integrating an
-electrostatic trap with a microwave resonator on a chip. A single trapped
-molecule would experience a strong coupling between its rotational states and
-photons in the resonator, which could be used for long-range coupling of
-molecular qubits, coherent control and measurement. Coupling to other quantum
-architectures via flying photon qubits may also be
-possible.~\cite{PhysRevLett.92.063601}
-
-% I would like to find a citation for this, but Mike has previously said (lit
-% review email) that it isn't necessary.
-Microwave transitions in atoms could have been suggested, however these are
-magnetic dipole transitions between hyperfine states. The coupling from an
-electric dipole transition between rotational states of a molecule is orders of
-magnitude stronger. 
-
-In the following subsection I will further discuss the field of laser cooling of
-atoms and molecules. The rest of the report will focus on chip trapping, the
-design of our molecule chip for \CaF{} and the outlook for the remainder of the
-project.
-
-\subsection{Laser cooling of atoms and molecules}
-\label{intro:lasercool}
+\subsection{Laser cooling of atoms}
 
 A brief discussion of laser cooling is presented here. More detailed discussion
 can be found in references~\cite{Metcalf1999,RevModPhys.70.721,McCarron_2018}.
@@ -118,6 +63,8 @@ of the atomic states in a lattice has been used to precisely realise the
 second~\cite{PhysRevLett.120.103201} and to perform quantum
 simulation~\cite{Gross995}.
 
+\subsection{Laser cooling of molecules}
+
 The rich energy structure of molecules, having rotational and vibrational
 degrees of freedom, makes cooling procedures more involved~\cite{Tarbutt2018,
 1367-2630-17-1-015007}, but there are numerous properties of molecules that
@@ -164,15 +111,3 @@ sympathetic cooling with \esRb{} in a dipole trap.~ Recent
 work has also discovered two vibrational transitions which are highly
 insensitive to a magnetic field, making them ideal candidates for a qubit
 transition in a molecule chip.
-
-\subsection{Structure of this report}
-
-\thesis{Redo this}
-
-In this document, I will outline the ongoing progress in the design and
-implementation of a molecular chip trap. In section~\ref{chiptraps} I will present
-the existing research that has been undertaken in the fields of atomic and
-molecular chip traps. Next, section~\ref{experiment} will discuss the design
-process for our experiment, and the various engineering challenges that we have
-had to overcome. Finally I will present the outlook for the remainder of the
-project, and potential applications of molecule chip traps.
