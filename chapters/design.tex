@@ -1,3 +1,26 @@
+\cm{Need to ensure I cover this in the LSR intro}
+As discussed above \thesis{TODO} the cold \CaF{} molecules for our experiment
+are produced by the MOT and blue-detuned molasses described in
+\inlineref{Truppe2017}. The molecules have a phase space density of
+$\rho=\SI{3.4(9)e-12}{}$, with temperature $T=\SI{52(2)}{\micro\kelvin}$ and
+direct space density $n=\SI{1.1(3)E5}{\per\centi\meter\cubed}$. These molecules
+will then be transported by a pair of anti-Helmhotlz coils mounted on a
+\ph{track} over a distance of approximately \SI{1}{\meter} to the chip chamber.
+The chip is to be mounted such that its centre is \ph{\SI{3}{\milli\meter}}
+above the transport axis, as shown in \ph{TODO: fig!}.
+
+\cm{Switching between actigve and passive voice is bad}
+This chapter will describe how we have designed the science chip to facilitate
+the loading of molecules from the transport coils into a tightly-confined chip
+trap. First I will outline the theory of phase-matching, that is optimising the
+shape of the potentials to avoid unnecessary loss during loading. Then I will
+present the chip design and the loading procedure. \cm{Might want to break this
+down a bit...}
+
+
+\section{Theory of phase-matching}
+
+\cm{TODO: edit para}
 We have established that our chip experiment will rely on a loading procedure
 from a magnetostatic trap onto the chip. This is not dissimilar to existing
 procedures where atoms and molecules can be loaded from beams into magnetic
@@ -6,28 +29,6 @@ experiments performed with atoms, where the number of particles is very high
 (\cm{$N=??$}~\cite{}) \CaF experiments typically involve only a few thousand
 particles \cite{}. It is therefore important that losses during the loading
 procedure are minimised.
-
-The chip will incorporate a series of wire traps, which will allow granular
-control of the potential through the ramping of currents in each wire. This is
-a common technique often employed in atom chips.~\cite{} We also include an
-intermediary loading stage between the anti-Helmhotlz coils and the chip: a
-large U-wire trap integrated into the \cm{subchip (housing??)}. This will
-ensure alignment between the macroscopic and microscopic traps.
-
-Designing the trapping wires on the chip will allow us to ensure a low-loss
-% In this cite, is it better to cite his textbook chapter of a paper? Maybe the 
-% Lichtenberg book?
-loading procedure by phase-matching each stage.~\cite{Crompvoets2005} That is
-as we transfer molecules from one trap (be it macroscopic or microscopic) to
-the next, that the potentials are suitably overlapped so that the majority of
-the cloud remains trapped throughout.
-
-In this chapter, I will further explain the principes of phase matching, and
-how the chip has been designed to allow this. I will also present simulations
-used to model traps, determining their phase-space acceptance and emmittance.
-The final design of the chip trap will be presented.
-
-\section{Theory of phase-matching}
 
 \cm{
 \begin{itemize}
@@ -39,7 +40,57 @@ The final design of the chip trap will be presented.
 \end{itemize}
 }
 
+
+\section{Trap design}
+
+To achieve good phase-matching, our chip will host a series of wire traps,
+which will allow granular control of the potential through the ramping of
+currents in each wire and variation of the bias field. This is a common
+technique often employed in atom chips.~\cite{} We also include an intermediary
+loading stage between the anti-Helmhotlz coils and the chip: a large U-wire
+trap integrated into the \cm{subchip (housing??)}. This will ensure alignment
+between the macroscopic and microscopic traps.
+
+Designing the trapping wires on the chip will allow us to ensure a low-loss
+% In this cite, is it better to cite his textbook chapter of a paper? Maybe the 
+% Lichtenberg book? \cm{Probably some completely different cite to be honest.}
+loading procedure by phase-matching each stage.~\cite{Crompvoets2005} That is
+as we transfer molecules from one trap (be it macroscopic or microscopic) to
+the next, that the potentials are suitably overlapped so that the majority of
+the cloud remains trapped throughout.
+
+\subsection{From transport coils to a U wire}
+
+\thesis{Update this, probably with my data}
+Early experiments conducted by other members of the Centre for Cold Matter have
+shown that rubidium atoms can be transported in the same manner without
+experiencing any significant heating. This is in agreement with similar
+experiments in the literature.~\cite{} In addition we may be able to re-apply
+blue-detuned molasses to the molecules after transport to re-cool the molecules
+to \SI{50}{\micro\kelvin}. We have assumed a worst-case scenario of operating
+with a cloud that has heated during transport to \SI{100}{\micro\kelvin}.
+
+
+\subsection{From a U wire to the science chip}
+
+\ph{TODO, inc. simulating a phase space acceptance to justify just looking at
+the potentials}
+
+
+\subsection{Compression on the science chip}
+
+\ph{TODO, inc. simulating an adiabatic compression}
+
+Show phase matching between Z traps once we are on the thin wires (and dimple
+trap). At thsi point, current is the same so lower traps will always be deeper
+(unless we choose to lower the current I guess, if so then we always have the
+same depth??)
+
+
+
 \section{Simulating molecules}
+
+\cm{This is basically a methods section, not sure where to put it...}
 
 The molecule cloud was simulated by numerically solving Hamilton's equations
 for the classical motion in the magnetic potential of the trap. The Hamiltonian
@@ -84,55 +135,7 @@ particle. In all \CaF experiments undertaken up to the time of writing, the
 phase space density is small enough that collisions can be neglected, and an
 ensemble can be simulated by integrating each particle's motion independently.
 
-\section{Designing the chip trap}
-
-\cm{
-%
-Introduce prototype design
-%
-\begin{itemize}
-    \item Overlaid Z traps
-    \item Current limited by central section, but hope that the wider sections
-      will allow good conduction of heat and higher current density (?) than
-      reported by Treutlein
-    \item Other benefits, e.g. trap centres stack on top of each other, same
-      net current at all time. A very simple design
-    \item PSA simulation
-    \item Why this design doesn't work: can't get enough current for good
-      overlap
-    \item Is gradually decreasing the length of the axis even really necessary?
-\end{itemize}
-%
-Introduce version two
-%
-\begin{itemize}
-    \item Wider Z on chip for up to 30A
-    \item Why this current? (Original justification was to match the y
-      direction bias field but we need to adiabatically change the other bias
-      fields, but I think that this is equivalent to having the same depth as
-      the lower U)
-    \item Show better phase matching U to Z
-    \item Show phase matching to the thin Z wires, justify the currents here
-      (probably that width of wire must be small compared to height)
-\end{itemize}
-%
-Show phase matching between Z traps once we are on the thin wires (and dimple
-trap). At thsi point, current is the same so lower traps will always be deeper
-(unless we choose to lower the current I guess, if so then we always have the
-same depth??)
-%
-}
-
-\section{Desiging the loading scheme}
-
-\cm{
-%
-adiabatic vs. sudden changes (justify with simulation?)
-%
-Walk through the loading scheme
-%
-Should I show a simulation of the full loading procedure?
-%
-}
 
 \section{Summary}
+
+\ph{TODO, probably just an overview of the final loading procedure}
