@@ -1,4 +1,6 @@
 \cm{Need to ensure I cover this in the LSR intro}
+\thesis{These first two paragraphs would probably be better off in the intro,
+with an explanation of the transport procedure in the `outline' section.}
 As discussed above \thesis{TODO} the cold \CaF{} molecules for our experiment
 are produced by the MOT and blue-detuned molasses described in
 \inlineref{Truppe2017}. The molecules have a phase space density of
@@ -9,14 +11,31 @@ will then be transported by a pair of anti-Helmhotlz coils mounted on a
 The chip is to be mounted such that its centre is \ph{\SI{3}{\milli\meter}}
 above the transport axis, as shown in \ph{TODO: fig!}.
 
-\cm{Switching between actigve and passive voice is bad}
-This chapter will describe how we have designed the science chip to facilitate
-the loading of molecules from the transport coils into a tightly-confined chip
-trap. First I will outline the theory of phase-matching, that is optimising the
-shape of the potentials to avoid unnecessary loss during loading. Then I will
-present the chip design and the loading procedure. \cm{Might want to break this
-down a bit...}
+Early experiments conducted by other members of the Centre for Cold Matter have
+shown that rubidium atoms can be transported in the same manner without
+experiencing any significant heating. This is in agreement with similar
+experiments in the literature.~\cite{} In addition we may be able to re-apply
+blue-detuned molasses to the molecules after transport to re-cool the molecules
+to \SI{50}{\micro\kelvin}. We have assumed a worst-case scenario of operating
+with a cloud that has heated during transport to \SI{100}{\micro\kelvin}.
 
+The challenge for us is to load as much of this molecular cloud as possible
+into the \cm{microscopic trapping stages above the chip}. We will achieve this
+first by loading the cloud into a macroscopic wire trap that is aligned with
+the chip. We will then transfer the molecules onto the chip, where a series of
+wire traps will be used to manipulate the cloud into the desired position
+while minimising losses.
+
+This minimisation of losses is achieved by phase-matching (also referred to as
+mode-matching) the traps as they hand over to each other. The principles of
+phase-matching are described in detail below, but the basic premise is that the
+shapes of the potentials should overlap as much as possible between each trap.
+The shape of the potentials is largely determined by the shapes of the wires,
+and so the design of the chip is motivated by the loading procedure.
+
+In this chapter I will first explain the theory of phase-matching. I will then
+present the design for our chip experiment and show how the phase-matching at
+each stage will enable efficient loading of our final trap.
 
 \section{Theory of phase-matching}
 
@@ -40,44 +59,126 @@ procedure are minimised.
 \end{itemize}
 }
 
+\section{Chip design and loading scheme}
 
-\section{Trap design}
+The arrangement of the trapping wires on our chip is shown in
+\myfigref{design:fig:chip}. It has \ph{no. of wires} wires, each with a height
+of \SI{5}{\micro\meter}. The widths of the wires are shown in table
+\mytableref{design:table:wires}, along with the maximum achievable current. The
+currents are calculated assuming a current density of
+$j=\SI{6e10}{\ampere\per\meter\squared}$, which is what has been measured for a
+similar multi-layer chip described in \inlineref{Treutlein2008}.
 
-To achieve good phase-matching, our chip will host a series of wire traps,
-which will allow granular control of the potential through the ramping of
-currents in each wire and variation of the bias field. This is a common
-technique often employed in atom chips.~\cite{} We also include an intermediary
-loading stage between the anti-Helmhotlz coils and the chip: a large U-wire
-trap integrated into the \cm{subchip (housing??)}. This will ensure alignment
-between the macroscopic and microscopic traps.
+\begin{figure}[h]
+\vspace{0.8cm}
+\centering
+  \ph{pseudo-cartoon of chip design}
+  \caption{\ph{todo}}
+  \label{design:fig:chip}
+\end{figure}
 
-Designing the trapping wires on the chip will allow us to ensure a low-loss
-% In this cite, is it better to cite his textbook chapter of a paper? Maybe the 
-% Lichtenberg book? \cm{Probably some completely different cite to be honest.}
-loading procedure by phase-matching each stage.~\cite{Crompvoets2005} That is
-as we transfer molecules from one trap (be it macroscopic or microscopic) to
-the next, that the potentials are suitably overlapped so that the majority of
-the cloud remains trapped throughout.
+The flange-assembley \ph{see some fig} has also been designed to include a
+large U-wire positioned below the chip. This U-wire is capable of maintaining
+much larger currents than the chip wires, and will be used as an alignment
+stage between the transport coils and the chip trap.
 
-\subsection{From transport coils to a U wire}
+\subsection{Initial cloud alignment}
 
-\thesis{Update this, probably with my data}
-Early experiments conducted by other members of the Centre for Cold Matter have
-shown that rubidium atoms can be transported in the same manner without
-experiencing any significant heating. This is in agreement with similar
-experiments in the literature.~\cite{} In addition we may be able to re-apply
-blue-detuned molasses to the molecules after transport to re-cool the molecules
-to \SI{50}{\micro\kelvin}. We have assumed a worst-case scenario of operating
-with a cloud that has heated during transport to \SI{100}{\micro\kelvin}.
+The transport coils will bring the cloud of cold molecules from the MOT chamber
+into the chip chamber. As per the above, we anticipate very little heating to
+occur during this process, but we will assume a factor of two increase to the
+temperature in the worst-case.
 
+The first transfer will be from the transport coils to the U trap. The current
+in the transport coils will be adiabtically ramped down while the currents in
+the U trap and in the bias coils are ramped up. The U-trap operates at
+\SI{100}{\ampere} and is \SI{7}{\milli\meter} beneath the cloud centre. The
+bias field required to create the trap is $\tilde{B} \approx (0, 22,
+14)\,\si{\gauss}$. The current and field ramps are depicted in \ph{some
+figure}.
 
-\subsection{From a U wire to the science chip}
+The potential of the transport coils and U-potential are shown in
+\myfigref{design:fig:Upot} real space and as a contour-plot in phase space. 
+We have assummed that the cloud will be at a temperature of
+\SI{100}{\micro\kelvin}, so we can expect the cloud to occupy the entire phase
+space volume contained within the \SI{100}{\micro\kelvin} surface of the
+potential. In \myfigref{design:fig:Umatch} these surfaces are shown for both
+traps by contours in the $(q_i, p_i)$ planes for $i\in\{x, y, z\}$. 
 
-\ph{TODO, inc. simulating a phase space acceptance to justify just looking at
-the potentials}
+\begin{figure}[h]
+\centering
+  \ph{This fig needs to show the U and MTT potentials with the acceptance and
+  the 100uK surface highlighted.}
+  \caption{\ph{todo}}
+  \label{design:fig:chip}
+\end{figure}
 
+To verify the acceptance of the U trap we have simulated the motion of
+particles in the U-potential. The initial positions and velocities of
+\ph{$N=?$} particles were uniformly distributed within the region $x \in \{\}$,
+\ph{etc.} \ph{$T\in\{??\}$}. This completely covers the supposed acceptance from
+the trap potential. The motion of the particles was then simulated as described
+in section~\ref{design:sim}. \ph{I hope that... the particles that were trapped
+were those whose initial positions were inside of the sepatrix.} The results of
+this simulation are shown in \myfigref{design:fig:Usim}.
 
-\subsection{Compression on the science chip}
+\begin{figure}[h]
+\centering
+  \ph{This should show a better version of my initial-final PSA diagrams for
+  the U trap as a proof of concept.}
+  \caption{\ph{todo}}
+  \label{design:fig:Usim}
+\end{figure}
+
+\cm{Clumsy wording here}.
+It might seem that the phase-matching of these potentials is sufficient for us
+to choose a simple ramp of currents and parameters between these two, but we
+have to be aware of the path that we take between the two stages. First, the
+change should be adiabatic\footnote{An instantaneous change may well
+suffice~\cite{} but our coils cannot be reliably ramped on a sufficiently short
+timescale.} and second, the molecules must remain trapped around the same point
+during the change.
+
+For the transfer from the transport trap to the U-trap a na\"ive choice might
+be to perform a linear ramp of currents and fields such as is depicted in
+\myfigref{design:fab:badramp} \cm{subfig?}. If we were to do this, then a large
+number of particles would be lost due to a second local minimum that
+is introduced by the presence of the bias field at the same time as the
+anti-Helmholtz coil. Particles trapped in this second minimum can be carried
+away from the trap centre and lost. This process is shown in
+\myfigref{design:fab:badramp}.
+
+\begin{figure}[h]
+\centering
+  \ph{Three subfigs: the graph of the ramp params through time, the hole in the
+  y potential evolving in time, a shapshot of the particles in (y, ydot) plane
+  evolving through time. See notepad.}
+  \caption{\ph{todo}}
+  \label{design:fig:badramp}
+\end{figure}
+
+In this case there are numerous ways to avoid the particle loss. We have
+elected to delay the increase in the $z$ bias field. \ph{Expand and point to
+fig. which should be similar to the last one...}
+
+\ph{Wrap up about how we have achieved alignment with the chip because we are
+now in the U. I might need to make some more points about how this is robust
+wrt the position of the MTT.}
+
+% Something like this?
+\cm{ I think I need to give better explanation about the parameter ramps, I
+chuck this language around without explaining or defining it.}
+\ph{
+The above discussion serves as an example of how to design a ramp from one trap to
+the other. It transpires that the remaining transfers are more simple and a
+linear ramp of the parameters is sufficient.}
+
+%TODO
+% I Think we can just present the rest of the ramp at this stage and assert
+% that everything is OK. Nobody wants to read about 5 different handovers. That
+% said I should actually check that all this is OK.
+
+\subsection{Trapping on the science chip}
 
 \ph{TODO, inc. simulating an adiabatic compression}
 
@@ -89,6 +190,7 @@ same depth??)
 
 
 \section{Simulating molecules}
+\label{design:sim}
 
 \cm{This is basically a methods section, not sure where to put it...}
 
