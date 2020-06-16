@@ -79,115 +79,86 @@ similar multi-layer chip described in \inlineref{Treutlein2008}.
 
 The flange-assembley \ph{see some fig} has also been designed to include a
 large U-wire positioned below the chip. This U-wire is capable of maintaining
-much larger currents than the chip wires, and will be used as an alignment
-stage between the transport coils and the chip trap.
+much larger currents than the chip wires. It was orginally intended for
+aligning the cloud with the chip, but it has been decided that this step is no
+longer necessary. The U may be useful for later experiments if we wish to trap
+atoms far from the surface or form a quadrupole trap.
 
-\subsection{Initial cloud alignment}
+\section{Vacuum system}
 
-The transport coils will bring the cloud of cold molecules from the MOT chamber
-into the chip chamber. As per the above, we anticipate very little heating to
-occur during this process, but we will assume a factor of two increase to the
-temperature in the worst-case.
+\ph{Need to introduce the MOT chamber and Chip chamber (remember the tweezer
+cahmber in the middle), the flange setup and the translation stage.}
 
-The first transfer will be from the transport coils to the U trap. The current
-in the transport coils will be adiabtically ramped down while the currents in
-the U trap and in the bias coils are ramped up. The U-trap operates at
-\SI{100}{\ampere} and is \SI{7}{\milli\meter} beneath the cloud centre. The
-bias field required to create the trap is $\tilde{B} \approx (0, 22,
-14)\,\si{\gauss}$. The current and field ramps are depicted in \ph{some
-figure}.
+\section{Science chip design}
 
-The potential of the transport coils and U-potential are shown in
-\myfigref{design:fig:Upot} real space and as a contour-plot in phase space. 
-We have assummed that the cloud will be at a temperature of
-\SI{100}{\micro\kelvin}, so we can expect the cloud to occupy the entire phase
-space volume contained within the \SI{100}{\micro\kelvin} surface of the
-potential. In \myfigref{design:fig:Umatch} these surfaces are shown for both
-traps by contours in the $(q_i, p_i)$ planes for $i\in\{x, y, z\}$. 
+\section{Loading the chip}
 
-\begin{figure}[h]
-\centering
-  \ph{This fig needs to show the U and MTT potentials with the acceptance and
-  the 100uK surface highlighted.}
-  \caption{\ph{todo}}
-  \label{design:fig:chip}
-\end{figure}
+\subsection{\CaF{} source}
 
-To verify the acceptance of the U trap we have simulated the motion of
-particles in the U-potential. The initial positions and velocities of
-\ph{$N=?$} particles were uniformly distributed within the region $x \in \{\}$,
-\ph{etc.} \ph{$T\in\{??\}$}. This completely covers the supposed acceptance from
-the trap potential. The motion of the particles was then simulated as described
-in section~\ref{design:sim}. \ph{I hope that... the particles that were trapped
-were those whose initial positions were inside of the sepatrix.} The results of
-this simulation are shown in \myfigref{design:fig:Usim}.
+A \CaF{} MOT will produced in the MOT chamber and cooled with the blue-molasses
+described in \inlineref{Truppe2017}. The transport coils will then be turned
+on, trapping the cloud of ultra-cold molecules. The translation stage will be
+activated and the cloud dragged into the chip chamber.  As per the above, we
+anticipate very little heating to occur during this process, but maximisation
+of the phase-space density is crucial to loading the chip trap due to the small
+trapping region.
+
+\cm{Need to significantly expand on this. Might get away with a footnote saying
+we don't know how to do this for the LSR...}
+For this reason the translation coils will be switched off and the
+blue-molasses reapplied in the chip chamber. Due to the restriction of
+optical-access the molasses can only be applied in two-dimensions. The molasses
+is applied for \SI{5}{\milli\second}, so the molecules will fall by
+approximately \SI{100}{\micro\meter} under gravity.
+
+The large z-wire ($\mathrm{Z0_i}$) will then be switched on, along with the
+bias fields. This will trap the molecule cloud approximately
+\SI{3}{\milli\meter} above the chip surface. The trapping potential is shown
+along with the expected particle distribution in \myfigref{design:fig:bigz}.
 
 \begin{figure}[h]
 \centering
-  \ph{This should show a better version of my initial-final PSA diagrams for
-  the U trap as a proof of concept.}
+  \ph{This figure is 6 subplots for x, y, z potentnial cut-throughs and phase
+  space plots of the molecules in the big z after loading.}
   \caption{\ph{todo}}
-  \label{design:fig:Usim}
+  \label{design:fig:bigz}
 \end{figure}
 
-\cm{Clumsy wording here}.
-It might seem that the phase-matching of these potentials is sufficient for us
-to choose a simple ramp of currents and parameters between these two, but we
-have to be aware of the path that we take between the two stages. First, the
-change should be adiabatic\footnote{An instantaneous change may well
-suffice~\cite{} but our coils cannot be reliably ramped on a sufficiently short
-timescale.} and second, the molecules must remain trapped around the same point
-during the change.
+Once trapped on the chip we will adiabatically alter the potentials to bring
+the cloud closer to the chip and to reduce the trap length in the $x$ direction
+\cm{hyphen here?}. To do this we can first increase the bias field (thereby
+reducing the trapping distance from the chip and compressing the trap) and then
+handover to a new, smaller trap. These two processes will be repeatedly applied
+until the molecules are trapped in the smallest wire trap \cm{should have a
+name/label}.
 
-For the transfer from the transport trap to the U-trap a na\"ive choice might
-be to perform a linear ramp of currents and fields such as is depicted in
-\myfigref{design:fab:badramp} \cm{subfig?}. If we were to do this, then a large
-number of particles would be lost due to a second local minimum that
-is introduced by the presence of the bias field at the same time as the
-anti-Helmholtz coil. Particles trapped in this second minimum can be carried
-away from the trap centre and lost. This process is shown in
-\myfigref{design:fab:badramp}.
+\subsection{Trap compression}
 
-\begin{figure}[h]
-\centering
-  \ph{Three subfigs: the graph of the ramp params through time, the hole in the
-  y potential evolving in time, a shapshot of the particles in (y, ydot) plane
-  evolving through time. See notepad.}
-  \caption{\ph{todo}}
-  \label{design:fig:badramp}
-\end{figure}
-
-In this case there are numerous ways to avoid the particle loss. We have
-elected to delay the increase in the $z$ bias field. \ph{Expand and point to
-fig. which should be similar to the last one...}
-
-\ph{Wrap up about how we have achieved alignment with the chip because we are
-now in the U. I might need to make some more points about how this is robust
-wrt the position of the MTT.}
-
-% Something like this?
-\cm{ I think I need to give better explanation about the parameter ramps, I
-chuck this language around without explaining or defining it.}
-\ph{
-The above discussion serves as an example of how to design a ramp from one trap to
-the other. It transpires that the remaining transfers are more simple and a
-linear ramp of the parameters is sufficient.}
-
-%TODO
-% I Think we can just present the rest of the ramp at this stage and assert
-% that everything is OK. Nobody wants to read about 5 different handovers. That
-% said I should actually check that all this is OK.
-
-\subsection{Trapping on the science chip}
-
-\ph{TODO, inc. simulating an adiabatic compression}
-
-Show phase matching between Z traps once we are on the thin wires (and dimple
-trap). At thsi point, current is the same so lower traps will always be deeper
-(unless we choose to lower the current I guess, if so then we always have the
-same depth??)
+Increasing the bias field will decrease the distance between the centre of the
+trap and the chip surface, as per equation \ph{B = I/r equation ref}. We will
+perform this process adiabatically to preserve phase-space density of the
+trapped molecules. Here we will present an example of compression in the trap
+formed by the $\mathrm{Z0}$ wire.
 
 
+\subsection{Trap handover}
+
+\cm{clumsy wording here}
+Following the transition into trap $\mathrm{Z0_f}$ the next step is to handover
+to a smaller wire. This serves two purposes: reducing the cloud size in the $x$
+direction and moving to a more narrow wire. The latter step is important
+because we aim for the trapping current to have a cross-section that is small
+compared to the scale of the cloud and the \cm{trapping height}. Wider wires
+are required for traps that operate at higher currents (\ph{see section ??}).
+% Don't want to mix terms, I am avoiding calling it a trapping height at the
+% moment
+
+This subsection details the handover from trap $\mathrm{Z0_f}$ to trap
+$\mathrm{Z1_i}$, and serves as an example of how these handovers can be
+performed.
+
+
+\subsection{Summary of the loading procedure}
 
 \section{Simulating molecules}
 \label{design:sim}
