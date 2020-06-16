@@ -69,24 +69,44 @@ fabrication, but we anticipate that they will be:
 \end{enumerate}
 These steps are discussed further in section~\ref{fab:planned}.
 
-In the rest of this chapter I will describe the three key fabrication stages:
-preparation of chips for electroplating, electroplating and the planned
-fabrication of the microwave layer.
+In the rest of this chapter I will describe the key microfabrication methods
+and the three fabrication stages: preparation of chips for electroplating,
+electroplating and the planned fabrication of the microwave layer.
 
-\section{Preparation for electroplating}
-\label{fab:prep}
+\section{Microfabrication methods}
 
-I will begin this section with an overview of each of the key methods that we
-use (subsections \ref{fab:spin}--\ref{fab:profile}) and then explain the
-perparation in detail (subsection \ref{fab:preppro}).
+We use several fabrication techniques multiple times throughout the process.
+Here I give an overview of some of them.
 
 \subsection{Spin coating}
 \label{fab:spin}
 
+\cm{This chapter needs citations!!}
+
 Spin coating is a procedure for distributing a uniform layer of liquid such as
-photoresist  across a sample. It is typically followed by baking to
+photoresist  across a substrate. It is typically followed by baking to
 \ph{solidify} the layer. We use spin coating to apply layers of photoresist to
-our wafers and intend to use it to deposit polyimide
+our wafers and intend to use it to deposit polyimide.
+
+The substrate is mounted on a spin-coater such as the one shown in \ph{some
+figure}. The liquid is applied to the centre of the substrate and then the
+spin-coater rotates the sample at a low rotational speed to spread the
+liquid, it is then ramped to several thousand revolutions per minute.
+This uniformly distributes the liquid across the substrate.
+
+The thickness of the coating is dependent on the properties of the liquid
+\cm{the viscosity? Do I need to give an equation here so I can talk about
+polyimide later?} and the rotational speed of the substrate during coating.
+The maximum speed and the profile of the ramp can be used to control the
+resulting thickness.
+
+We use spin-coating to apply photoresists. These processes are described in
+further detail in section~\ref{fab:prep}. We also intend to use spin-coating
+to apply the insulating layer of polyimide to each chip. Applying the
+polyimide is a more involved process because it has to cover large
+(\SI{5}{\micro\meter} high) features. In this case multiple coatings are
+applied to ensure a smooth surface. This is discussed further in
+section~\ref{fab:planned}.
 
 \subsection{Lithography}
 
@@ -143,7 +163,7 @@ Patterning of our wafer takes approximately one hour.
 The laser intensity, exposure time and number of scans are dependent on the
 type of photoresist used and its thickness. Two positive photoresists are used
 in this fabrication procedure to produce thin and thick layers. The details of
-both of these are discussed further in section~\ref{fab:preppro}.
+both of these are discussed further in section~\ref{fab:prep}.
 
 \cm{Rehydration step?}
 Following patterning of the photoresist the sample is placed in a \cm{developing
@@ -168,7 +188,7 @@ This leaves only the intended pattern of metal on the substrate, as in
 
 Variations on this photolithography method can be used to achieve different
 results. A simple example would be deposition of two metals onto the surface.
-We will see in section~\ref{fab:preppro} that chromium can be used as an
+We will see in section~\ref{fab:prep} that chromium can be used as an
 adhesion layer for gold. We will also show how a thick photoresist mould can be
 used to create tall features by electroplating. \ph{Further discussion can be
 found in \inlineref{??}.}
@@ -215,17 +235,30 @@ sputtering are also no good.}
 
 \ph{Explanation of Dektak stylus profilometer (Bruker)}
 
-\subsection{Preparation procedure}
-\label{fab:preppro}
+The \ph{Bruker Dektak stylus profilometer} is used to characterise features on
+the substrate. A \ph{size} gold stylus is positioned onto the surface and
+dragged across. As the stylus comes into contact with features its height will
+change, allowing a profile of the surface to be measured.~\cite{} An example of
+the profile of a substrate is given for different stages of the lithography
+process in \myfigref{fab:fig:methods}.
 
-I will now describe how the above methods have been used to fabricate our
-prototype trapping chip.
+The stylus profilometer is a versatile tool, capable of measuring changes in
+height between \ph{??} with precsion \ph{??} \cm{there's probably a better
+way to say this..} The profilometer can perform raster scans of the wafer to
+build up a three-dimensional view of the substrate.
 
-Fabrication of such a chip begins with a \ph{4 inch silicon wafer}. The wafer
-is cleaned first with acetone, then isopropyl alcohol and deionised water. The
-wafer is then cleaned with an oxygen plasma and undergoes a dehydration bake.
-This ensures that the wafer is clean and \ph{free of any absorbed water} that
-might interfere with the later steps.
+\section{Preparation for electroplating}
+\label{fab:prep}
+
+In this section I will describe the first stage of fabrication, which takes us
+up to the electroplating stage. These steps (except for the dicing) have been
+performed in a cleanroon.
+
+Fabrication begins with a \ph{4 inch silicon wafer}. The wafer is cleaned first
+with acetone, then isopropyl alcohol and deionised water. The wafer is then
+cleaned with an oxygen plasma and undergoes a dehydration bake.  This ensures
+that the wafer is clean and \ph{free of any absorbed water} that might
+interfere with the later steps.
 
 The wafer is then spin coated with a thin (\ph{??nm}) layer of \ph{Dupont S1805
 photoresist}. This is placed into the Heidelberg direct writer for exposure, to
@@ -383,10 +416,10 @@ chip is shown in \myfigref{fab:fig:eplateprofile}.
 \section{Photoresist liftoff and etching}
 
 After electroplating the photoresist mould is removed with Microposit Remover
-1165 as described in section~\ref{fab:preppro}. The chip is now as
-pictured in \myfigref{fab:fig:etch}{b}, with wires formed to the desired
-heights but all connected electrically through the seed layer. The next step is
-to etch the seed layer and the adhesion layer so that the wires are separated.
+1165 as described in section~\ref{fab:prep}. The chip is now as pictured in
+\myfigref{fab:fig:etch}{b}, with wires formed to the desired heights but all
+connected electrically through the seed layer. The next step is to etch the
+seed layer and the adhesion layer so that the wires are separated.
 
 \begin{figure}[h]
 \vspace{0.8cm}
