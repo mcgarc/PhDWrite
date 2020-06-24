@@ -1,41 +1,27 @@
 \cm{Need to ensure I cover this in the LSR intro}
 \thesis{These first two paragraphs would probably be better off in the intro,
 with an explanation of the transport procedure in the `outline' section.}
-As discussed above \thesis{TODO} the cold \CaF{} molecules for our experiment
-are produced by the MOT and blue-detuned molasses described in
-\inlineref{Truppe2017}. The molecules have a phase space density of
-$\rho=\SI{3.4(9)e-12}{}$, with temperature $T=\SI{52(2)}{\micro\kelvin}$ and
-direct space density $n=\SI{1.1(3)E5}{\per\centi\meter\cubed}$. These molecules
-will then be transported by a pair of anti-Helmhotlz coils mounted on a
-\ph{track} over a distance of approximately \SI{1}{\meter} to the chip chamber.
-The chip is to be mounted such that its centre is \ph{\SI{3}{\milli\meter}}
-above the transport axis, as shown in \ph{TODO: fig!}.
 
-Early experiments conducted by other members of the Centre for Cold Matter have
-shown that rubidium atoms can be transported in the same manner without
-experiencing any significant heating. This is in agreement with similar
-experiments in the literature.~\cite{} In addition we may be able to re-apply
-blue-detuned molasses to the molecules after transport to re-cool the molecules
-to \SI{50}{\micro\kelvin}. We have assumed a worst-case scenario of operating
-with a cloud that has heated during transport to \SI{100}{\micro\kelvin}.
+Investigation of novel phenomena, such as the strong-coupling of microwaves to
+molecules, will be undertaken in a \ph{dimple trap} as desribed above. However
+for this to be done we must be sure that we are able to populate this trap with
+cold molecules. This must be done whilst minimising losses and heating of the
+cloud.
 
-The challenge for us is to load as much of this molecular cloud as possible
-into the \cm{microscopic trapping stages above the chip}. We will achieve this
-first by loading the cloud into a macroscopic wire trap that is aligned with
-the chip. We will then transfer the molecules onto the chip, where a series of
-wire traps will be used to manipulate the cloud into the desired position
-while minimising losses.
+As such, the science chip is not as simple as a single trap on a substrate, but
+consists of a series of wire traps, whose currents and bias fields can be
+adiabatiacally altered to efficiently load the chip. The design of the science
+chip and this loading procedure therefore go hand in hand.
 
-This minimisation of losses is achieved by phase-matching (also referred to as
-mode-matching) the traps as they hand over to each other. The principles of
-phase-matching are described in detail below, but the basic premise is that the
-shapes of the potentials should overlap as much as possible between each trap.
-The shape of the potentials is largely determined by the shapes of the wires,
-and so the design of the chip is motivated by the loading procedure.
+In this chapter I will present the science chip design and the loading scheme.
+I will justify our design choices by presenting simulations and analysis of the
+potentials. 
 
+\thesis{
 In this chapter I will first explain the theory of phase-matching. I will then
 present the design for our chip experiment and show how the phase-matching at
 each stage will enable efficient loading of our final trap.
+}
 
 \section{Theory of phase-matching}
 
@@ -59,7 +45,37 @@ procedure are minimised.
 \end{itemize}
 }
 
-\section{Chip design and loading scheme}
+\section{Vacuum system}
+
+\ph{Need to introduce the MOT chamber and Chip chamber (remember the tweezer
+cahmber in the middle), the flange setup and the translation stage.}
+
+As discussed above \thesis{TODO} the cold \CaF{} molecules for our experiment
+are produced by the MOT and blue-detuned molasses described in
+\inlineref{Truppe2017}. The molecules have a phase space density of
+$\rho=\SI{3.4(9)e-12}{}$, with temperature $T=\SI{52(2)}{\micro\kelvin}$ and
+direct space density $n=\SI{1.1(3)E5}{\per\centi\meter\cubed}$. These molecules
+will then be transported by a pair of anti-Helmhotlz coils mounted on a
+\ph{track} over a distance of approximately \SI{1}{\meter} to the chip chamber.
+The chip is to be mounted such that its centre is \ph{\SI{3}{\milli\meter}}
+above the transport axis, as shown in \ph{TODO: fig!}.
+
+Early experiments conducted by other members of the Centre for Cold Matter have
+shown that rubidium atoms can be transported in the same manner without
+experiencing any significant heating. This is in agreement with similar
+experiments in the literature.~\cite{} In addition we may be able to re-apply
+blue-detuned molasses to the molecules after transport to re-cool the molecules
+to \SI{50}{\micro\kelvin}. We have assumed a worst-case scenario of operating
+with a cloud that has heated during transport to \SI{100}{\micro\kelvin}.
+
+\ph{The chip is to be mounted on a flange-assembly...}
+
+The transport trap will align the molecule cloud with the chip trap, with the
+cloud centre approximately \SI{3}{\milli\meter} above the surface. From here
+the molecules can be loaded onto the chip trap by adiabatically altering the
+trapping potential. This process is outline in \ph{table}. 
+
+\section{Science chip design}
 
 The arrangement of the trapping wires on our chip is shown in
 \myfigref{design:fig:chip}. It has \ph{no. of wires} wires, each with a height
@@ -84,64 +100,193 @@ aligning the cloud with the chip, but it has been decided that this step is no
 longer necessary. The U may be useful for later experiments if we wish to trap
 atoms far from the surface or form a quadrupole trap.
 
-\section{Vacuum system}
 
-\ph{Need to introduce the MOT chamber and Chip chamber (remember the tweezer
-cahmber in the middle), the flange setup and the translation stage.}
+\section{Simulating the loading ramps}
+\label{design:sim}
 
-\section{Science chip design}
+To ensure that the chip design will allow for robust loading, the loading
+process has been simulated up to the $\mathrm{Z0_f}$ trap. This demonstrates
+the two main types of transitions in the loading process: handovers between
+traps, and compression within a single trap.
 
-\section{Loading the chip}
+The results of the simulation and the parameters of the ramps are outlined in
+\myfigref{design:fig:simparams}. This can be considered in four parts, first
+from $t = 0$ to $t=\SI{100}{\milli\second}$ there is a settling period where
+the molecules are held in the transport trap. Then there are three
+\SI{100}{\milli\second} ramps, each of which is followed by a
+\SI{100}{\milli\second} stabilisation period. These three ramps describe the
+handover from the transport trap to the U, the U to $\mathrm{Z0_i}$, and the
+compression of $\mathrm{Z0_i}$ to $\mathrm{Z0_F}$. They are described in detail
+in the following subsections.
 
-\subsection{\CaF{} source}
-
-A \CaF{} MOT will produced in the MOT chamber and cooled with the blue-molasses
-described in \inlineref{Truppe2017}. The transport coils will then be turned
-on, trapping the cloud of ultra-cold molecules. The translation stage will be
-activated and the cloud dragged into the chip chamber.  As per the above, we
-anticipate very little heating to occur during this process, but maximisation
-of the phase-space density is crucial to loading the chip trap due to the small
-trapping region.
-
-\cm{Need to significantly expand on this. Might get away with a footnote saying
-we don't know how to do this for the LSR...}
-For this reason the translation coils will be switched off and the
-blue-molasses reapplied in the chip chamber. Due to the restriction of
-optical-access the molasses can only be applied in two-dimensions. The molasses
-is applied for \SI{5}{\milli\second}, so the molecules will fall by
-approximately \SI{100}{\micro\meter} under gravity.
-
-The large z-wire ($\mathrm{Z0_i}$) will then be switched on, along with the
-bias fields. This will trap the molecule cloud approximately
-\SI{3}{\milli\meter} above the chip surface. The trapping potential is shown
-along with the expected particle distribution in \myfigref{design:fig:bigz}.
-
-\begin{figure}[h]
+\begin{figure}[tbh]
 \centering
-  \ph{This figure is 6 subplots for x, y, z potentnial cut-throughs and phase
-  space plots of the molecules in the big z after loading.}
-  \caption{\ph{todo}}
-  \label{design:fig:bigz}
+  \begin{overpic}[page=1]{figs/sims/mtt_u_z_params.pdf}
+    \put(32.5,55){(a)}
+    \put(45.5,55){(b)}
+    \put(63,55){(c)}
+    \put(80.5,55){(d)}
+  \end{overpic}
+  \caption{
+    The simulation parameters are shown for loading from the transport trap
+    into trap $\mathrm{Z0_f}$. The simulation begins with a stabilisation
+    period (a), in which the molecules are held in the transport trap for \SI{100}{\milli\second}. In period (b) the transport
+    trap is ramped off and the U is ramped on. There is some heating of
+    molecules as they leave the trap, and a \cm{ammount} reduction in phase
+    space density. The transfer to $\mathrm{Z0_i}$ occurs in period (c), where
+    more loss occurs due to the trap depth being reduced in the $x$
+    direction. Finally in (d) the trap is compressed to $\mathrm{Z0_f}$, when
+    the molecules are brought from \SI{3}{\milli\meter} to \SI{1}{\milli\meter}
+    of the chip surface. The solid lines show the simulation results when
+    collisions with the chip surface are ignored, and the dashed line shows
+    results when collision with the surface results in loss of the molecule.
+  }
+  \label{design:fig:simparams}
 \end{figure}
+
+\cm{Combine math and sim methods into one section abvoe this one?}
+The simulation methods are described in section~\ref{design:simmethods}. This
+includes the initialisation procedure which happens before $t=0$. We simulated
+$N=1000$ particles, but it is common for a few to be lost during the
+initialisation process, hence the starting number for this simulation is
+$N(t=0)=999$.
+
+\subsection{Handover to the U trap}
+
+\cm{Follman paper says that a big U is helpful for alignment with coils!}
+
+The first step is to transfer the molecules from the transport coils to the U
+wire. This U wire has the largest axial length, and so will be the easiest trap
+the transport coils to. The U-wire is also capable of carrying more current
+than any of the other wires, which is essential as it is positioned further
+from the molecule cloud beneath \cm{above?} the chip.
+
+Between $t=\SI{200}{\milli\second}$ and $t=\SI{300}{\milli\second}$ the current
+in the transport coils is adiabtically ramped down while the currents in
+the U trap and in the bias coils are ramped up. The molecules are then held
+until $t=\SI{400}{\milli\second}$ to ensure that they remain trapped after the
+ramp. The simulation parameters are shown in
+\mysubfigref{design:fig:simparams}{b}.
+
+\cm{Perhaps a detailed plot of the temp and PSD would also be useful?}
+
+The particle loss during the ramp is approximately 10\% of the total. There is
+also some heating, which decreases the phase space density of the cloud. The
+cause of this can be seen in \myfigref{design:fig:trans_U}, which shows the
+phase-space positions of the molecules at various times throughout the ramp,
+and the trapping potential at those times.
+
+\begin{figure}[p]
+\centering
+  %\setlength\extrarowheight{-3pt}
+  \begin{tabular}{c}
+    \includegraphics[page=1]{figs/sims/mtt_u_x.pdf} \\
+    \includegraphics[page=1,trim=0 0 0 15, clip]{figs/sims/mtt_u_y.pdf} \\
+    \includegraphics[page=1,trim=0 0 0 15, clip]{figs/sims/mtt_u_z.pdf}
+  \end{tabular}
+  \caption{
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+    Lorem Ipsum has been the industry's standard dummy text ever since the
+    1500s, when an unknown printer took a galley of type and scrambled it to
+    make a type specimen book. It has survived not only five centuries, but
+    also the leap into electronic typesetting, remaining essentially unchanged.
+    It was popularised in the 1960s with the release of Letraset sheets
+    containing Lorem Ipsum passages, and more recently with desktop publishing
+    software like Aldus PageMaker including versions of Lorem Ipsum.
+  }
+  \label{design:fig:trans_U}
+\end{figure}
+
+At \cm{$t=??$} there is a noticeable decrease in the trapping depth in the $y$
+direction. This is the cause of the particle leak, and occurs due to the 
+due to the superposition of the two fields causing an overall decrease in the
+trap depth in the $x$ and $y$ directions. This only occurs for a brief period
+during the ramp (between \cm{$t=\SI{10000}{\milli\second}$ and
+$t=\SI{129412}{\milli\second}$}). 
+
+In addition to the loss during the ramp, we observe a steady loss between
+$t=\SI{200}{\milli\second}$ and $t=\SI{300}{\milli\second}$, but only when the
+simulation accounts for collision with the chip surface. This loss due to
+collision occurs in the U wire because of its position beneath the chip. This
+means that the trap is not sufficiently deep to hold our molecules for an
+extended period. However the holding time in this simulation is only for
+illustration, and the prolonged trapping in the U trap will not be part of the
+final experiment. Hence these losses can be ignored.
+
+\subsection{Handover to $\mathrm{Z0_i}$}
+\label{design:sim:U_to_Z0i}
+
+
+The U to $\mathrm{Z0_i}$ handover occurs in our simulation from
+$t=\SI{300}{\milli\second}$ to $t=\SI{400}{\milli\second}$, shown in
+\mysubfigref{design:fig:simparams}{c}, \cm{with a detailed view in fig?? .}
+The phase space positions of the molecules and the potentials are shown in
+\myfigref{design:fig:U_Z0i}.
+
+\begin{figure}[p]
+\centering
+  %\setlength\extrarowheight{-3pt}
+  \begin{tabular}{c}
+    \includegraphics[page=1]{figs/sims/u_Z0i_x.pdf} \\
+    \includegraphics[page=1,trim=0 0 0 15, clip]{figs/sims/u_Z0i_y.pdf} \\
+    \includegraphics[page=1,trim=0 0 0 15, clip]{figs/sims/u_Z0i_z.pdf}
+  \end{tabular}
+  \caption{
+    \ph{TODO}
+  }
+  \label{design:fig:U_Z0i}
+\end{figure}
+
+In the ramp between the transport trap and the U trap, we saw that a hole was
+introduced in the trapping potential due to interference between the two
+trapping fields. We will see a similar effect when transferring from the U trap
+to trap $\mathrm{Z0_i}$.  This time the reduction in depth appears in the $x$
+direction, and is due to the current in the U and Z wires opposing each other
+on the positive $x$ side. This can be seen in \myfigref{design:fig:U_Z0i} at
+$t=\SI{375}{\milli\second}$.
+
+In \myfigref{design:fig:simparams} we see that the loss is again about 10\% of
+the particles, however there is no significant change in the phase space
+density. The acceptance of trap $\mathrm{Z0_i}$ is smaller than the emittance
+of the U, so this is to be expected.
+
+\subsection{Compression to $\mathrm{Z0_f}$}
+
+In the final stage of the simulation we look at a compression stage. The
+trapping potential is adiabatically altered to bring the field minimum closer
+to the chip surface. This is achieved by increasing the bias field, but since
+this also increases the trap depth the cloud is simultaneously compressed as it
+is heated. Since the phase space density is conserved, the particles heat up in
+the trap. This phenomenom is made clear in \mysubfigref{design:fig:simparams}.
+
+The trajectories and potentials are shown in \myfigref{design:fig:Z0i_Z0f}.
+Here the compression in number density and expansion in velocity space is clear
+by the changing cloud shape over time. The cloud also clearly follows the
+potential minimum without losses.
+
+\begin{figure}[p]
+\centering
+  \begin{tabular}{c}
+    \includegraphics[page=1]{figs/sims/Z0i_Z0f_x.pdf} \\
+    \includegraphics[page=1,trim=0 0 0 15, clip]{figs/sims/Z0i_Z0f_y.pdf} \\
+    \includegraphics[page=1,trim=0 0 0 15, clip]{figs/sims/Z0i_Z0f_z.pdf}
+  \end{tabular}
+  \caption{\ph{todo}}
+  \label{design:fig:Z0i_Z0f}
+\end{figure}
+
+
+
+\subsection{Further loading into the dimple trap}
 
 Once trapped on the chip we will adiabatically alter the potentials to bring
 the cloud closer to the chip and to reduce the trap length in the $x$ direction
-\cm{hyphen here?}. To do this we can first increase the bias field (thereby
-reducing the trapping distance from the chip and compressing the trap) and then
-handover to a new, smaller trap. These two processes will be repeatedly applied
-until the molecules are trapped in the smallest wire trap \cm{should have a
-name/label}.
-
-\subsection{Trap compression}
-
-Increasing the bias field will decrease the distance between the centre of the
-trap and the chip surface, as per equation \ph{B = I/r equation ref}. We will
-perform this process adiabatically to preserve phase-space density of the
-trapped molecules. Here we will present an example of compression in the trap
-formed by the $\mathrm{Z0}$ wire.
-
-
-\subsection{Trap handover}
+\cm{hyphen here?}.  Increasing the bias field will decrease the distance
+between the centre of the trap and the chip surface, as per equation \ph{B =
+I/r equation ref}. We will perform this process adiabatically to preserve
+phase-space density of the trapped molecules. The simulation follows from the
+transfer into trap $\mathrm{Z0_i}$ as described in
+section~\ref{design:sim:U_to_Z0i}.
 
 \cm{clumsy wording here}
 Following the transition into trap $\mathrm{Z0_f}$ the next step is to handover
@@ -153,15 +298,25 @@ are required for traps that operate at higher currents (\ph{see section ??}).
 % Don't want to mix terms, I am avoiding calling it a trapping height at the
 % moment
 
-This subsection details the handover from trap $\mathrm{Z0_f}$ to trap
-$\mathrm{Z1_i}$, and serves as an example of how these handovers can be
-performed.
+Transfer between Z traps has been shown to be a robust process that can be
+underatken with minimal losses.~\cite{} However it is important to ensure that
+across each step the phase space emittance of one trap overlaps with the phase
+space acceptance of the next. It is sufficient to show that the sepatrix for
+the first trap encloses the one it will hand over to.
 
+\subsection{Direct loading into $\mathrm{Z0_i}$}
 
-\subsection{Summary of the loading procedure}
+Let us consider whether we can forgo the U trap entirely and load directly from
+the transport trap into $\mathrm{Z0_i}$.
 
-\section{Simulating molecules}
-\label{design:sim}
+\ph{Do particle loss and PSD plots for direct loading to Z0i and going via the
+U WITH the surface losses on for both. Put this here and talk about it.}
+
+Following trapping in $\mathrm{Z0_i}$, the loading procedure would continue
+with compression into $\mathrm{Z0_f}$ and onwards as was discussed above.
+
+\section{Simulation methods}
+\label{design:simmethods}
 
 \cm{This is basically a methods section, not sure where to put it...}
 
@@ -207,6 +362,8 @@ equation \cm{above}, can then be solved by \cm{method} to give the path of a
 particle. In all \CaF experiments undertaken up to the time of writing, the
 phase space density is small enough that collisions can be neglected, and an
 ensemble can be simulated by integrating each particle's motion independently.
+
+\subsection{Cloud initialisation}
 
 
 \section{Summary}
