@@ -185,14 +185,20 @@ and the trapping potential at those times.
     \includegraphics[page=1,trim=0 0 0 15, clip]{figs/sims/mtt_u_z.pdf}
   \end{tabular}
   \caption{
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-    Lorem Ipsum has been the industry's standard dummy text ever since the
-    1500s, when an unknown printer took a galley of type and scrambled it to
-    make a type specimen book. It has survived not only five centuries, but
-    also the leap into electronic typesetting, remaining essentially unchanged.
-    It was popularised in the 1960s with the release of Letraset sheets
-    containing Lorem Ipsum passages, and more recently with desktop publishing
-    software like Aldus PageMaker including versions of Lorem Ipsum.
+    For each dimension, a cut-through of the potential and a plot of
+    phase-space positions of the particles is shown. Each column shows a
+    different time during the ramp from the transport trap into the U trap. The
+    cut-throughs pass through $\mathbf{t}_0 = (0, 0, \SI{3}{\milli\meter})$. In
+    the $x$ direction, it is possible to see decompression and recompression as
+    the potential varies from $t=\SI{125}{\milli\second}$ to
+    $t=\SI{200}{\milli\second}$. In the $y$ direction, the depth is lowered due
+    to the superposition of the trapping fields, leading to a significant loss.
+    This is partially visible at $t=\SI{175}{\milli\second}$, where we can see
+    the drop in the potential and particles with $y<0$, $v_y<0$ escaping the
+    trap. In the $z$ direction, some hotter molecules escape as the U trap
+    reaches its final depth at $t=\SI{200}{\milli\second}$. Note that this loss
+    has ended after the settling time, which can be seen in
+    \myfigref{design:fig:U_Z0i}.
   }
   \label{design:fig:trans_U}
 \end{figure}
@@ -232,7 +238,13 @@ The phase space positions of the molecules and the potentials are shown in
     \includegraphics[page=1,trim=0 0 0 15, clip]{figs/sims/u_Z0i_z.pdf}
   \end{tabular}
   \caption{
-    \ph{TODO}
+    The same simulation results are displayed as in
+    \myfigref{design:fig:U_Z0i}, this time for the handover to $\mathrm{Z0_i}$.
+    The superposition of the U and Z traps causes a reduction of the trap depth
+    in the $x$ direction, as seen at time $t=\SI{375}{\milli\second}$.
+    Molecules can be seen coming into contact with the chip surface when held
+    in the U trap, but after transfer to the Z trap, which is located on the
+    chip surface, the cloud is strongly repelled from the surface.
   }
   \label{design:fig:U_Z0i}
 \end{figure}
@@ -251,6 +263,7 @@ density. The acceptance of trap $\mathrm{Z0_i}$ is smaller than the emittance
 of the U, so this is to be expected.
 
 \subsection{Compression to $\mathrm{Z0_f}$}
+
 
 In the final stage of the simulation we look at a compression stage. The
 trapping potential is adiabatically altered to bring the field minimum closer
@@ -279,44 +292,38 @@ potential minimum without losses.
 
 \subsection{Further loading into the dimple trap}
 
-Once trapped on the chip we will adiabatically alter the potentials to bring
-the cloud closer to the chip and to reduce the trap length in the $x$ direction
-\cm{hyphen here?}.  Increasing the bias field will decrease the distance
-between the centre of the trap and the chip surface, as per equation \ph{B =
-I/r equation ref}. We will perform this process adiabatically to preserve
-phase-space density of the trapped molecules. The simulation follows from the
-transfer into trap $\mathrm{Z0_i}$ as described in
-section~\ref{design:sim:U_to_Z0i}.
+Once trapped in $\mathrm{Z0_f}$, the remaining loading stages are simply
+repeated handovers to the smaller wires, with a compression stage carried out
+on each wire to bring the molecules closer to the surface. This is a
+well-understood and robust procedure that has been used before to load atom
+chips with minimal losses.~\cite{} \cm{Cite Treutlein2008 and others??}
 
-\cm{clumsy wording here}
-Following the transition into trap $\mathrm{Z0_f}$ the next step is to handover
-to a smaller wire. This serves two purposes: reducing the cloud size in the $x$
-direction and moving to a more narrow wire. The latter step is important
-because we aim for the trapping current to have a cross-section that is small
-compared to the scale of the cloud and the \cm{trapping height}. Wider wires
-are required for traps that operate at higher currents (\ph{see section ??}).
-% Don't want to mix terms, I am avoiding calling it a trapping height at the
-% moment
+However, it is important to ensure that across each handover step, the phase
+space emittance of one trap overlaps with the phase space acceptance of the
+next.
 
-Transfer between Z traps has been shown to be a robust process that can be
-underatken with minimal losses.~\cite{} However it is important to ensure that
-across each step the phase space emittance of one trap overlaps with the phase
-space acceptance of the next. It is sufficient to show that the sepatrix for
-the first trap encloses the one it will hand over to.
 
 \subsection{Direct loading into $\mathrm{Z0_i}$}
 
-Let us consider whether we can forgo the U trap entirely and load directly from
-the transport trap into $\mathrm{Z0_i}$.
+The U trap stage has been included to allow for easy alignment of the transport
+coils and the chip trap. If this was not a requirement then it might appear
+desirable to load directly into the Z traps. This would have the advantage of
+removing the small collision losses discussed in
+section~\ref{design:sim:trans_U}, as well as the losses incurred when handing
+over from the U to $\mathrm{Z0_i}$ described in
+section~\ref{design:sim:U_to_Z0i}.
 
-\ph{Do particle loss and PSD plots for direct loading to Z0i and going via the
-U WITH the surface losses on for both. Put this here and talk about it.}
+However, it transpires that loading directly into the $\mathrm{Z0_i}$ trap
+results in more particle loss than the procedure described above. This has been
+simulated, and the results...
 
-Following trapping in $\mathrm{Z0_i}$, the loading procedure would continue
-with compression into $\mathrm{Z0_f}$ and onwards as was discussed above.
+\ph{Finish this off and add the graph, but need to wait for dt-4 sim to
+finish.}
 
 \section{Simulation methods}
 \label{design:simmethods}
+
+\thesis{When can we ignore VdW forces?}
 
 \cm{This is basically a methods section, not sure where to put it...}
 
