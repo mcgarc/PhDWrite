@@ -152,6 +152,7 @@ initialisation process, hence the starting number for this simulation is
 $N(t=0)=999$.
 
 \subsection{Handover to the U trap}
+\label{design:sim:trans_U}
 
 \cm{Follman paper says that a big U is helpful for alignment with coils!}
 
@@ -290,7 +291,7 @@ potential minimum without losses.
 
 
 
-\subsection{Further loading into the dimple trap}
+\subsection{Transfer between Z traps}
 
 Once trapped in $\mathrm{Z0_f}$, the remaining loading stages are simply
 repeated handovers to the smaller wires, with a compression stage carried out
@@ -298,9 +299,65 @@ on each wire to bring the molecules closer to the surface. This is a
 well-understood and robust procedure that has been used before to load atom
 chips with minimal losses.~\cite{} \cm{Cite Treutlein2008 and others??}
 
-However, it is important to ensure that across each handover step, the phase
-space emittance of one trap overlaps with the phase space acceptance of the
-next.
+That said, since our experiment will operate with a significantly lower phase
+space density than previous experiments with atoms, it is important to ensure
+that our loading procedure will not suffer from any unnecessary losses.
+
+Figure~\ref{design:fig:phasematchinggrid} shows the acceptance of each of the
+remaining traps, starting with $\mathrm{Z0_f}$ in row (a). The region of the
+trap that we expect to be occupied (as determined by the simulation above) is
+marked with a dashed line. This cloud of molecules will be adiabatically
+transferred into $\mathrm{Z1_i}$.
+
+Since the process is adiabatic, we can anticipate that there will be no
+reduction in phase space density. The cloud of molecules will be transferred to
+$\mathrm{Z1_i}$ with negligible heating. However, the total acceptance of the
+trap is greater than the expected phase space volume of the cloud, so there
+will be particle loss due to spillover.
+
+This is to be anticipated: phase space density cannot increase, and obviously
+the acceptance of the smallest trap will be smaller than the intitial cloud in
+the transport trap. So the final number of particles will be less \cm{fewer?}
+than we started with. It doesn't matter at which point the loss occurs, so long
+as there is no increase to the phase space density.
+
+Next, $\mathrm{Z1_i}$ is adiabatically compressed to $\mathrm{Z1_f}$, with the
+molecules held \cm{\SI{100}{\micro\meter}} from the surface. Again, this
+compression is adiabatic, so we expect no change in the phase space density.
+Compression increases the trap acceptance, so there is also no loss of
+particles. This is further supported by the simulated compression of
+$\mathrm{Z0_i}$ to $\mathrm{Z0_f}$ discussed above. The acceptance of
+$\mathrm{Z1_I}$ is shown in \mysubfigref{design:fig:phasematchinggrid}{b}, with
+the expected occupation shown by the dashed line.
+
+Finally, $\mathrm{Z2}$ is loaded and compressed in exactly the same way as
+$\mathrm{Z1}$. The adiabatic handover from $\mathrm{Z1_f}$ to $\mathrm{Z2_i}$
+is the final cause of particle loss (due to spillover). Then the trap is
+compressed to hold the particles \SI{10}{\micro\meter} from the surface, as
+shown in \mysubfigref{design:fig:phasematchinggrid}{c}.
+
+
+\begin{figure}[htb]
+\centering
+  \begin{overpic}[page=1]{figs/sims/phase_matching_grid.pdf}
+    \put(0,68){(a)}
+    \put(0,44.5){(b)}
+    \put(0,21){(c)}
+  \end{overpic}
+  \caption{
+    The acceptance (solid) and expected occupation (dashed) of each Z wire
+    trap.  Row (a) shows $\mathrm{Z0_f}$, with occupation determined by the
+    above simulation. Molecules will be adiabatically transferred to
+    $\mathrm{Z1_i}$, which will be fully occupied. Some particles will be lost
+    due to the decrease in trapping volume \cm{Is this defed?} but this is to
+    be expected, and phase space density should not increase. In (b) we have
+    the acceptance and occupation of $\mathrm{Z1_f}$ following adiabaitc
+    compression.  Particles will be adiabatically transferred into
+    $\mathrm{Z2_i}$, resulting in similar losses to the previous step.  Row (c)
+    shows the final acceptance and occupation of $\mathrm{Z2_f}$.
+  }
+  \label{design:fig:phasematchinggrid}
+\end{figure}
 
 
 \subsection{Direct loading into $\mathrm{Z0_i}$}
@@ -313,12 +370,29 @@ section~\ref{design:sim:trans_U}, as well as the losses incurred when handing
 over from the U to $\mathrm{Z0_i}$ described in
 section~\ref{design:sim:U_to_Z0i}.
 
-However, it transpires that loading directly into the $\mathrm{Z0_i}$ trap
-results in more particle loss than the procedure described above. This has been
-simulated, and the results...
+Results of a simulation of transfer from the transport coils to $\mathrm{Z0_i}$
+are shown in \myfigref{design:fig:directzramp}.  Approximately 40\% of
+particles were lost, as opposed to approximately 20\% of particles lost in the
+transfer via the U described above.  However, it appears that the phase space
+density does not decrease as was seen before. The phase space density
+calculated here is mainly for diagnosis (see section~\ref{design:simmethods}),
+but this suggests that direct loading into $\mathrm{Z0_i}$ fromt the transport
+coils may be worth investigating if we are able to reliably achieve good
+alignment of the transport coils. 
 
-\ph{Finish this off and add the graph, but need to wait for dt-4 sim to
-finish.}
+\begin{figure}[htb]
+\centering
+  \includegraphics[page=1]{figs/sims/mtt_z_params.pdf}
+  \caption{
+    Simulation parameters for direct loading of trap $\mathrm{Z0_i}$ from the
+    transport coils. Currents and fields are linearly ramped to and from the
+    same values for these traps as were used in the loading via the U trap
+    (described above). The ramp occurs between $t=\SI{100}{\milli\second}$ and
+    $t=\SI{200}{\milli\second}$. There is more particle loss, but the phase
+    space density does not decrease by the same amount.
+  }
+  \label{design:fig:directzramp}
+\end{figure}
 
 \section{Simulation methods}
 \label{design:simmethods}
