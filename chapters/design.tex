@@ -23,27 +23,6 @@ present the design for our chip experiment and show how the phase-matching at
 each stage will enable efficient loading of our final trap.
 }
 
-\section{Theory of phase-matching}
-
-\cm{TODO: edit para}
-We have established that our chip experiment will rely on a loading procedure
-from a magnetostatic trap onto the chip. This is not dissimilar to existing
-procedures where atoms and molecules can be loaded from beams into magnetic
-traps~\cite{}, storage rings~\cite{} or MOTs~\cite{}. However unlike
-experiments performed with atoms, where the number of particles is very high
-(\cm{$N=??$}~\cite{}) \CaF experiments typically involve only a few thousand
-particles \cite{}. It is therefore important that losses during the loading
-procedure are minimised.
-
-\cm{
-\begin{itemize}
-    \item Phase space as a concept
-    \item Liouville theorem (metion conservative potential assumption)
-    \item Phase-matching
-    \item Adiabatic (?) manipulation of potentials to achieve phase-matching
-    \item Limitations: need for cooling/ damping to increase PSD
-\end{itemize}
-}
 
 \section{Vacuum system}
 
@@ -100,6 +79,169 @@ aligning the cloud with the chip, but it has been decided that this step is no
 longer necessary. The U may be useful for later experiments if we wish to trap
 atoms far from the surface or form a quadrupole trap.
 
+\section{Motion of molecules in a potential}
+
+\thesis{When can we ignore VdW forces?}
+
+In section ~\ref{design:sim} we will use simulation and visual analysis of the
+trapping potentials to show that our chip design and loading procedure are
+suitable for transfering molecules into the chip trap. Before we do this it is
+important to review the physics behind the motion of the molecules in the
+potentials, which we shall do in this section. We will also briefly describe
+the simulation methods.
+
+\subsection{Hamiltonian mechanics}
+
+We can assume that the molecules motion in the trap is classical. They move in
+the potential $V(t, \mathrm{q}) = \mu B(t, \mathrm{q})$, where $\mu$ is the
+\cm{magnetic dipole moment} of the molecule.  The motion of any one particle is
+described by Hamilton's equations,~\cite{Lichtenberg1969}
+%
+\begin{align}
+  \label{design:eq:hamilton}
+  \dot{\mathbf{q}} =  \frac{\partial H}{\partial \mathbf{p}} &&
+  \dot{\mathbf{p}} = -\frac{\partial H}{\partial \mathbf{q}},
+\end{align}
+%
+where $H$ is the classical Hamiltonian of the system
+\begin{equation}
+  %
+  H(t, \mathbf{q}, \mathbf{p}) = \frac{\mathbf{p}^2}{2m} + V(t, \mathbf{q}).
+\end{equation}
+For now we neglect the time dependence of the potential, so that $V(t,
+\mathrm{q}) = V(\mathrm{q})$ is conservative, and we assume that all particles
+are trapped.
+
+Solving Hamilton's equations tells us the position and momentum of a single
+particle. Taken together, these two vectors describe a point in a six
+dimensional \emph{phase space} of position and momentum. The ensemble of
+trapped molecules, each one starting at a different point in phase space, can
+be treated by considering the motion of the molecules at its boundary.~\cite{}
+
+It turns out that the volume occupied by the ensemble is a conserved quantity.
+This is Liouville's theorem, it can be proved by considering the change in the
+volume near some infinitesimal element of the boundary which we label $\dd
+\mathrm{S}$. At that point on the surface, the velocity of nearby particles is
+taken to be $\mathbf{v}$, so the change in volume is
+%
+\begin{equation}
+  \dd V = \mathbf{v} \cdot \dd \mathbf{S}.
+\end{equation}
+%
+Hence the overall change in velocity is
+%
+\begin{equation}
+  \frac{\dd V}{\dd t} = \int_S \mathbf{v} \cdot \dd \mathbf{S} = \int_V \nabla 
+  \cdot \mathbf{v} \dd V
+\end{equation}
+where the second equality makes use of the divergence theorem.
+
+Now consider the integrand, which we rewrite in terms of $\mathbf{q}$ and
+$\mathbf{p}$, so
+%
+\begin{align}
+  \nabla \cdot \mathbf{v} &= \left(\frac{\partial}{\partial \mathbf{q}},
+  \frac{\partial}{\partial \mathbf{p}}\right) \cdot \left(\dot{\mathbf{q}},
+  \dot{\mathbf{p}}\right) \\
+  &= \frac{\partial \dot{\mathbf{q}}}{\partial \mathbf{q}} +
+  \frac{\partial \dot{\mathbf{p}}}{\partial \mathbf{p}} \\
+  & = \frac{\partial^2 H}{\partial \mathbf{q} \partial \mathbf{p}}
+  - \frac{\partial^2 H}{\partial \mathbf{p} \partial \mathbf{q}} \\
+  & = 0.
+\end{align}
+In the the third line, we have subsituted Hamilton's equations
+(\myeqref{design:eq:hamilton}).  So it is clear that the volume is constant in
+time,
+%
+\begin{equation}
+  \frac{\dd V}{\dd t} = 0.
+\end{equation}
+
+Now consider the phase space density of the trap. This is defined as the
+unitless quantity~\cite{}
+%
+% We can also write $\rho = n \lambda_dB^3$, where n is spartial number
+% density, and lambda_dB is the thermal deBroglie wavelength of the cloud
+\begin{equation}
+  \rho = \left(\frac{h}{\sqrt{\pi}}\right)^3 \frac{N}{V}.
+\end{equation}
+%
+Since $V$ is conserved, so is the phase space density. However, we have made
+some assumptions that should be addressed.
+
+First, the motion of the particles is classical, but losses can still occur
+through quantum effects such as a spin-flip loss~\cite{}. Such an event would
+mean that $N$ would be reduced even though $V$ remained constant, so the phase
+space density would decrease. Furthermore, we neglected any change in the
+potential.  Changing the potential such that the depth is reduced can allow
+fast-moving (hot) particles to escape. This also reduces $N$ and hence $\rho$
+(though we do not include escaped particles in the calculation of $V$ so this
+is unchanged).
+
+This motivates us to introduce the concept of the \emph{acceptance} of a trap.
+This is the phase space volume of the potential within which all particles are
+trapped. Particles outside of the acceptance are either positioned outside the
+trap or are positioned inside the trap but have enough energy to escape it. The
+boundary of the acceptance is rather ominously called the \emph{separatrix}. An
+example is shown in \myfigref{design:fig:acceptance}.
+
+\begin{figure}[tbh]
+\centering
+  \ph{Example of acceptance of a trap, include simulation?}
+  \caption{\cm{TODO}}
+  \label{design:fig:acceptance}
+\end{figure}
+
+It should be noted that the Liouville theorem also holds for a time-dependent
+Hamiltonian. We will see below that the trapping potential will be changed
+adiabatically, and make use of the fact that phase space density is conserved
+through this process.
+
+\subsection{Simulating the motion}
+\label{design:motion:simmethods}
+
+The molecule cloud was simulated by numerically solving Hamilton's equations
+for the classical motion in the magnetic potential of the trap. The Hamiltonian
+for a single molecule at time $t$ is
+%
+Where the particle has magnetic moment $\mu$, position $\mathbf{r}$ and
+momentum $\mathbf{p}$.
+
+The potential $V(t, \mathbf{r}) = \mu B(t, \mathbf{r})$ can be calculated by
+considering the traps to be formed of segments of straight wires, each
+producing a magnetic field $B_\text{seg}^{(i)}$, and the bias field
+$\mathbf{B}_\text{bias}(t)$. The total field is the sum of each of these
+segments (with segments that are sufficiently far from the trap centre
+neglected) and the bias. The potential is therefore
+%
+\begin{equation}
+  V(t, \mathrm{r}) = \mu B (t, \mathrm{r}) = \mu \left| \sum_i
+  B_\text{seg}^{(i)}(t, \mathbf{r}) +
+  \mathbf{B}_\text{bias}(t)\right|.
+\end{equation}
+
+The field due to a segment of straight wire with length carrying current $I(t)$
+\cm{can be written in an analytical form} by integration of the Bio-Savart Law.
+This field can be expressed in terms of the angle between the ends of the wire
+at $\mathbf{r}$, as is shown in \myfigref{TODO}. The field
+is given by~\cite{Griffiths2017}
+%
+\begin{equation}
+  B_\text{seg}(t, \mathbf{r}) = \frac{\mu_0 I(t)}{4\pi
+  s_\text{seg}(\mathbf{r})} (\sin(\theta_2)  - \sin(\theta_1))
+\end{equation}
+here $s_\text{seg}(\mathbf{r})$ is the shortest distance between the segment
+and $\mathrm{r}$.
+
+By specifying the shape of the segments, the current profiles and the bias
+fields, the potential can be calculated at all times. Hamilton's equations, see
+equation \cm{above}, can then be solved by \cm{method} to give the path of a
+particle. In all \CaF experiments undertaken up to the time of writing, the
+phase space density is small enough that collisions can be neglected, and an
+ensemble can be simulated by integrating each particle's motion independently.
+
+\subsection{Cloud initialisation}
+
 
 \section{Simulating the loading ramps}
 \label{design:sim}
@@ -145,7 +287,7 @@ in the following subsections.
 \end{figure}
 
 \cm{Combine math and sim methods into one section abvoe this one?}
-The simulation methods are described in section~\ref{design:simmethods}. This
+The simulation methods are described in section~\ref{design:motion:simmethods}. This
 includes the initialisation procedure which happens before $t=0$. We simulated
 $N=1000$ particles, but it is common for a few to be lost during the
 initialisation process, hence the starting number for this simulation is
@@ -375,7 +517,7 @@ are shown in \myfigref{design:fig:directzramp}.  Approximately 40\% of
 particles were lost, as opposed to approximately 20\% of particles lost in the
 transfer via the U described above.  However, it appears that the phase space
 density does not decrease as was seen before. The phase space density
-calculated here is mainly for diagnosis (see section~\ref{design:simmethods}),
+calculated here is mainly for diagnosis (see section~\ref{design:motion:simmethods}),
 but this suggests that direct loading into $\mathrm{Z0_i}$ fromt the transport
 coils may be worth investigating if we are able to reliably achieve good
 alignment of the transport coils. 
@@ -394,57 +536,6 @@ alignment of the transport coils.
   \label{design:fig:directzramp}
 \end{figure}
 
-\section{Simulation methods}
-\label{design:simmethods}
-
-\thesis{When can we ignore VdW forces?}
-
-\cm{This is basically a methods section, not sure where to put it...}
-
-The molecule cloud was simulated by numerically solving Hamilton's equations
-for the classical motion in the magnetic potential of the trap. The Hamiltonian
-for a single molecule at time $t$ is
-%
-\begin{equation}
-  H(t, \mathbf{r}, \mathbf{p}) = \frac{\mathbf{p}^2}{2m} + V(t, \mathbf{r}).
-\end{equation}
-Where the particle has magnetic moment $\mu$, position $\mathbf{r}$ and
-momentum $\mathbf{p}$.
-
-The potential $V(t, \mathbf{r}) = \mu B(t, \mathbf{r})$ can be calculated by
-considering the traps to be formed of segments of straight wires, each
-producing a magnetic field $B_\text{seg}^{(i)}$, and the bias field
-$\mathbf{B}_\text{bias}(t)$. The total field is the sum of each of these
-segments (with segments that are sufficiently far from the trap centre
-neglected) and the bias. The potential is therefore
-%
-\begin{equation}
-  V(t, \mathrm{r}) = \mu B (t, \mathrm{r}) = \mu \left| \sum_i
-  B_\text{seg}^{(i)}(t, \mathbf{r}) +
-  \mathbf{B}_\text{bias}(t)\right|.
-\end{equation}
-
-The field due to a segment of straight wire with length carrying current $I(t)$
-\cm{can be written in an analytical form} by integration of the Bio-Savart Law.
-This field can be expressed in terms of the angle between the ends of the wire
-at $\mathbf{r}$, as is shown in \myfigref{TODO}. The field
-is given by~\cite{Griffiths2017}
-%
-\begin{equation}
-  B_\text{seg}(t, \mathbf{r}) = \frac{\mu_0 I(t)}{4\pi
-  s_\text{seg}(\mathbf{r})} (\sin(\theta_2)  - \sin(\theta_1))
-\end{equation}
-here $s_\text{seg}(\mathbf{r})$ is the shortest distance between the segment
-and $\mathrm{r}$.
-
-By specifying the shape of the segments, the current profiles and the bias
-fields, the potential can be calculated at all times. Hamilton's equations, see
-equation \cm{above}, can then be solved by \cm{method} to give the path of a
-particle. In all \CaF experiments undertaken up to the time of writing, the
-phase space density is small enough that collisions can be neglected, and an
-ensemble can be simulated by integrating each particle's motion independently.
-
-\subsection{Cloud initialisation}
 
 
 \section{Summary}
