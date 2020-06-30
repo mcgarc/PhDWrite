@@ -81,8 +81,6 @@ atoms far from the surface or form a quadrupole trap.
 
 \section{Motion of molecules in a potential}
 
-\thesis{When can we ignore VdW forces?}
-
 In section ~\ref{design:sim} we will use simulation and visual analysis of the
 trapping potentials to show that our chip design and loading procedure are
 suitable for transfering molecules into the chip trap. Before we do this it is
@@ -93,7 +91,7 @@ the simulation methods.
 \subsection{Hamiltonian mechanics}
 
 We can assume that the molecules motion in the trap is classical. They move in
-the potential $V(t, \mathrm{q}) = \mu B(t, \mathrm{q})$, where $\mu$ is the
+the potential $V(t, \mathbf{q}) = \mu B(t, \mathbf{q})$, where $\mu$ is the
 \cm{magnetic dipole moment} of the molecule.  The motion of any one particle is
 described by Hamilton's equations,~\cite{Lichtenberg1969}
 %
@@ -122,7 +120,7 @@ It turns out that the volume occupied by the ensemble is a conserved quantity.
 This is Liouville's theorem, it can be proved by considering the change in the
 volume near some infinitesimal element of the boundary which we label $\dd
 \mathrm{S}$. At that point on the surface, the velocity of nearby particles is
-taken to be $\mathbf{v}$, so the change in volume is
+taken to be $\mathbf{v}$, so the change in volume at an instant in time is
 %
 \begin{equation}
   \dd V = \mathbf{v} \cdot \dd \mathbf{S}.
@@ -157,7 +155,7 @@ time,
   \frac{\dd V}{\dd t} = 0.
 \end{equation}
 
-Now consider the phase space density of the trap. This is defined as the
+Now consider the phase space density of the trap. This is can be defined as the
 unitless quantity~\cite{}
 %
 % We can also write $\rho = n \lambda_dB^3$, where n is spartial number
@@ -192,58 +190,110 @@ example is shown in \myfigref{design:fig:acceptance}.
   \label{design:fig:acceptance}
 \end{figure}
 
+When particles are loaded into a trap, they must be inside its acceptance to
+remain trapped. It is common to consider this in terms of a four-dimensional
+(two spatial, two momenta) trap for a beam of particles~\cite{}. In this case
+the change in the potential is instantaneous, so it is obvious which particles
+are trapped and which are not \cm{(as in the simulation part of the example
+above?)}. In our case the loading is achieved by a series of adiabatic ramps,
+so the particles which are outside of the phase space acceptance of the trap
+are not instantaneously lost, and can be retained as long as this does not
+result in an increase in phase space density.~\cite{} \cm{Big citation needed
+on this one!} This will be heavily exploited when transferring between Z wire
+traps as in section~\ref{design:transferbetweenzs}.
+
 It should be noted that the Liouville theorem also holds for a time-dependent
-Hamiltonian. We will see below that the trapping potential will be changed
+Hamiltonian.~\cite{} We will see below that the trapping potential will be changed
 adiabatically, and make use of the fact that phase space density is conserved
 through this process.
 
 \subsection{Simulating the motion}
 \label{design:motion:simmethods}
 
-The molecule cloud was simulated by numerically solving Hamilton's equations
-for the classical motion in the magnetic potential of the trap. The Hamiltonian
-for a single molecule at time $t$ is
-%
-Where the particle has magnetic moment $\mu$, position $\mathbf{r}$ and
-momentum $\mathbf{p}$.
+\thesis{When can we ignore VdW forces?}
 
-The potential $V(t, \mathbf{r}) = \mu B(t, \mathbf{r})$ can be calculated by
-considering the traps to be formed of segments of straight wires, each
-producing a magnetic field $B_\text{seg}^{(i)}$, and the bias field
-$\mathbf{B}_\text{bias}(t)$. The total field is the sum of each of these
-segments (with segments that are sufficiently far from the trap centre
-neglected) and the bias. The potential is therefore
+Since the system is Hamiltonian, the particle motion can be simulated by
+numerically solving \myeqref{design:eq:hamilton}. This was done on Imperial
+College London's high performance computing services~\cite{ICRCS} using
+Python~\cite{} and the symplectic euler method provided by the Desolver
+package~\cite{}. Symplectic methods are powerful ways to numerically integrate
+Hamiltonian systems whilst conserving energy and momentum.~\cite{} A timestep of $\dd t
+= \SI{1E-4}{\second}$ was sufficient to achieve this for our potentials.
+
+Magnetic potentials were calculated by considering the traps to be formed of
+segments of straight wires, each producing a magnetic field
+$B_\text{seg}^{(i)}$, and the bias field $\mathbf{B}_\text{bias}(t)$. The total
+field is the sum of each of these segments (with segments that are sufficiently
+far from the trap centre neglected) and the bias. The potential is therefore
 %
-\begin{equation}
-  V(t, \mathrm{r}) = \mu B (t, \mathrm{r}) = \mu \left| \sum_i
-  B_\text{seg}^{(i)}(t, \mathbf{r}) +
-  \mathbf{B}_\text{bias}(t)\right|.
+\begin{equation} V(t, \mathbf{q}) = \mu B (t, \mathbf{q}) = \mu \left| \sum_i
+B_\text{seg}^{(i)}(t, \mathbf{q}) + \mathbf{B}_\text{bias}(t)\right|.
 \end{equation}
 
 The field due to a segment of straight wire with length carrying current $I(t)$
 \cm{can be written in an analytical form} by integration of the Bio-Savart Law.
 This field can be expressed in terms of the angle between the ends of the wire
-at $\mathbf{r}$, as is shown in \myfigref{TODO}. The field
+at $\mathbf{q}$, as is shown in \myfigref{TODO}. The field
 is given by~\cite{Griffiths2017}
 %
 \begin{equation}
-  B_\text{seg}(t, \mathbf{r}) = \frac{\mu_0 I(t)}{4\pi
-  s_\text{seg}(\mathbf{r})} (\sin(\theta_2)  - \sin(\theta_1))
+  B_\text{seg}(t, \mathbf{q}) = \frac{\mu_0 I(t)}{4\pi
+  s_\text{seg}(\mathbf{q})} (\sin(\theta_2)  - \sin(\theta_1))
 \end{equation}
-here $s_\text{seg}(\mathbf{r})$ is the shortest distance between the segment
-and $\mathrm{r}$.
+here $s_\text{seg}(\mathbf{q})$ is the shortest distance between the segment
+and $\mathbf{q}$.
 
-By specifying the shape of the segments, the current profiles and the bias
-fields, the potential can be calculated at all times. Hamilton's equations, see
-equation \cm{above}, can then be solved by \cm{method} to give the path of a
-particle. In all \CaF experiments undertaken up to the time of writing, the
-phase space density is small enough that collisions can be neglected, and an
-ensemble can be simulated by integrating each particle's motion independently.
+This is everything that is needed to simulate a wire trap, or the handover
+between two traps (by including the wire segments of both traps in the field
+calculation). The transport trap is very deep, so is well approximated by a
+perfect quadrupole potential.
 
-\subsection{Cloud initialisation}
+Molecule trajectories are calculated up to a pre-determined end time, or until
+they are determined to be lost. In the following simulations a molecule is lost
+when it's displacement from the origin in any cardinal direction is greater
+than \SI{10}{\milli\meter}.
+
+\subsection{Example simulation: U trap acceptance}
+
+To illustrate both the simulation methods and the example of phase space
+acceptance given in section~\ref{}, we present an example simulation where
+a uniform distribution of molecules is spread over the acceptance of the U trap
+used in our experiment. We expect that the molecules inside the acceptance
+remain trapped for arbitrarty long time, and those outside are lost.
 
 
-\section{Simulating the loading ramps}
+
+
+\cm{COE, PSD}
+
+\subsection{Simulation initialisation}
+
+For other simulations it is useful to initialise the simulation to replicate
+the conditions in the transport trap just as we would have at the beginning of
+the loading procedure.
+
+This can be done by initialising a cloud of $N$ molecules whose positions are
+normally distributed in all three spatial dimensions with a standard deviation
+of \SI{1}{\milli\meter}. Similarly the velocity components are normally
+distributed with a standard deviation of \SI{84}{\milli\meter\per\second}
+(corresponding to a temperature of \SI{50}{\micro\kelvin}). This is what we
+would expect for the cloud after leaving the molasses.
+
+The cloud is immediately placed in a quadrupole trap with gradient
+\SI{10}{\gauss\per\centi\meter}. They are held for \SI{50}{\milli\second}
+before the gradient is ramped up over \SI{100}{\milli\second} to the actual
+transport gradient of \SI{61}{\gauss\per\centi\meter}. This causes the
+molecules to compress as they would when initially loaded into the transport
+coils in the MOT chamber.
+
+For the purposes of these simulations, the effects of heating in loading are
+ignored. The molecules are therefore held for a further \SI{50}{\milli\second}
+until $t=0$. It is possible for a very small number of particles to stray too
+far from the centre of the trap during initialisation, at which point they are
+considered to be lost. There may therefore be a difference between the number
+of particles that are initialised and the number present at $t=0$.
+
+\section{Modelling the loading procedure}
 \label{design:sim}
 
 To ensure that the chip design will allow for robust loading, the loading
@@ -365,7 +415,6 @@ final experiment. Hence these losses can be ignored.
 \subsection{Handover to $\mathrm{Z0_i}$}
 \label{design:sim:U_to_Z0i}
 
-
 The U to $\mathrm{Z0_i}$ handover occurs in our simulation from
 $t=\SI{300}{\milli\second}$ to $t=\SI{400}{\milli\second}$, shown in
 \mysubfigref{design:fig:simparams}{c}, \cm{with a detailed view in fig?? .}
@@ -407,7 +456,6 @@ of the U, so this is to be expected.
 
 \subsection{Compression to $\mathrm{Z0_f}$}
 
-
 In the final stage of the simulation we look at a compression stage. The
 trapping potential is adiabatically altered to bring the field minimum closer
 to the chip surface. This is achieved by increasing the bias field, but since
@@ -431,9 +479,8 @@ potential minimum without losses.
   \label{design:fig:Z0i_Z0f}
 \end{figure}
 
-
-
 \subsection{Transfer between Z traps}
+\label{design:transferbetweenzs}
 
 Once trapped in $\mathrm{Z0_f}$, the remaining loading stages are simply
 repeated handovers to the smaller wires, with a compression stage carried out
@@ -522,7 +569,7 @@ but this suggests that direct loading into $\mathrm{Z0_i}$ fromt the transport
 coils may be worth investigating if we are able to reliably achieve good
 alignment of the transport coils. 
 
-\begin{figure}[htb]
+\begin{figure}[tbh]
 \centering
   \includegraphics[page=1]{figs/sims/mtt_z_params.pdf}
   \caption{
