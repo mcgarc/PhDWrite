@@ -29,6 +29,8 @@ each stage will enable efficient loading of our final trap.
 \ph{Need to introduce the MOT chamber and Chip chamber (remember the tweezer
 cahmber in the middle), the flange setup and the translation stage.}
 
+\cm{Ott et al paper for transfer coil (?)}
+
 As discussed above \thesis{TODO} the cold \CaF{} molecules for our experiment
 are produced by the MOT and blue-detuned molasses described in
 \inlineref{Truppe2017}. The molecules have a phase space density of
@@ -55,6 +57,8 @@ the molecules can be loaded onto the chip trap by adiabatically altering the
 trapping potential. This process is outline in \ph{table}. 
 
 \section{Science chip design}
+
+\cm{Follman paper says that a big U is helpful for alignment with coils!}
 
 The arrangement of the trapping wires on our chip is shown in
 \myfigref{design:fig:chip}. It has \ph{no. of wires} wires, each with a height
@@ -92,7 +96,7 @@ the simulation methods.
 
 We can assume that the molecules motion in the trap is classical. They move in
 the potential $V(t, \mathbf{q}) = \mu B(t, \mathbf{q})$, where $\mu$ is the
-\cm{magnetic dipole moment} of the molecule.  The motion of any one particle is
+magnetic dipole moment of the molecule.  The motion of any one particle is
 described by Hamilton's equations,~\cite{Lichtenberg1969}
 %
 \begin{align}
@@ -114,13 +118,15 @@ Solving Hamilton's equations tells us the position and momentum of a single
 particle. Taken together, these two vectors describe a point in a six
 dimensional \emph{phase space} of position and momentum. The ensemble of
 trapped molecules, each one starting at a different point in phase space, can
-be treated by considering the motion of the molecules at its boundary.~\cite{}
+be treated by considering the motion of the molecules at its
+boundary.~\cite{Hand1998}
 
 It turns out that the volume occupied by the ensemble is a conserved quantity.
-This is Liouville's theorem, it can be proved by considering the change in the
-volume near some infinitesimal element of the boundary which we label $\dd
-\mathrm{S}$. At that point on the surface, the velocity of nearby particles is
-taken to be $\mathbf{v}$, so the change in volume at an instant in time is
+This is Liouville's theorem~\cite{Landau1982}, it can be proved by considering
+the change in the volume near some infinitesimal element of the boundary which
+we label $\dd \mathrm{S}$. At that point on the surface, the velocity of nearby
+particles is taken to be $\mathbf{v}$, so the change in volume at an instant in
+time is~\cite{Hand1998}
 %
 \begin{equation}
   \dd V = \mathbf{v} \cdot \dd \mathbf{S}.
@@ -156,7 +162,7 @@ time,
 \end{equation}
 
 Now consider the phase space density of the trap. This is can be defined as the
-unitless quantity~\cite{}
+unitless quantity~\cite{PhysRevA.52.1423}
 %
 % We can also write $\rho = n \lambda_dB^3$, where n is spartial number
 % density, and lambda_dB is the thermal deBroglie wavelength of the cloud
@@ -168,20 +174,21 @@ Since $V$ is conserved, so is the phase space density. However, we have made
 some assumptions that should be addressed.
 
 First, the motion of the particles is classical, but losses can still occur
-through quantum effects such as a spin-flip loss~\cite{}. Such an event would
-mean that $N$ would be reduced even though $V$ remained constant, so the phase
-space density would decrease. Furthermore, we neglected any change in the
-potential.  Changing the potential such that the depth is reduced can allow
-fast-moving (hot) particles to escape. This also reduces $N$ and hence $\rho$
-(though we do not include escaped particles in the calculation of $V$ so this
-is unchanged).
+through quantum effects such as a spin-flip loss~\cite{PhysRevLett.51.1336}.
+Such an event would mean that $N$ would be reduced even though $V$ remained
+constant, so the phase space density would decrease. Furthermore, we neglected
+any change in the potential.  Changing the potential such that the depth is
+reduced can allow fast-moving (hot) particles to escape. This also reduces $N$
+and hence $\rho$ (though we do not include escaped particles in the calculation
+of $V$ so this is unchanged).
 
 This motivates us to introduce the concept of the \emph{acceptance} of a trap.
 This is the phase space volume of the potential within which all particles are
 trapped. Particles outside of the acceptance are either positioned outside the
 trap or are positioned inside the trap but have enough energy to escape it. The
 boundary of the acceptance is rather ominously called the \emph{separatrix}. An
-example is shown in \myfigref{design:fig:acceptance}.
+example is shown in \myfigref{design:fig:acceptance}.~\cite{Lichtenberg1969,
+HanHand1998}
 
 \begin{figure}[tbh]
 \centering
@@ -192,18 +199,20 @@ example is shown in \myfigref{design:fig:acceptance}.
 
 When particles are loaded into a trap, they must be inside its acceptance to
 remain trapped. It is common to consider this in terms of a four-dimensional
-(two spatial, two momenta) trap for a beam of particles~\cite{}. In this case
-the change in the potential is instantaneous, so it is obvious which particles
-are trapped and which are not \cm{(as in the simulation part of the example
-above?)}. In our case the loading is achieved by a series of adiabatic ramps,
-so the particles which are outside of the phase space acceptance of the trap
-are not instantaneously lost, and can be retained as long as this does not
-result in an increase in phase space density.~\cite{} \cm{Big citation needed
-on this one!} This will be heavily exploited when transferring between Z wire
-traps as in section~\ref{design:transferbetweenzs}.
+(two spatial, two momenta) trap for a beam of particles~\cite{Crompvoets2005}.
+In this case the change in the potential is instantaneous, so it is obvious
+which particles are trapped and which are not (as in
+\cm{\myfigref{design:fig:acceptance}}). In our case the loading is achieved by
+a series of adiabatic ramps, so the particles which are outside of the phase
+space acceptance of the trap are not instantaneously lost, and can be retained
+as long as this does not result in an increase in phase space density.~\cite{}
+\cm{Big citation needed on this one!} This will be heavily exploited when
+transferring between Z wire traps as in section~\ref{design:transferbetweenzs}.
 
 It should be noted that the Liouville theorem also holds for a time-dependent
-Hamiltonian.~\cite{} We will see below that the trapping potential will be changed
+Hamiltonian.\footnote{The proof given above does not require $H$ to be time
+independent, although for the sake of our discussion it was helpful for us to
+assume that it was.} We will see below that the trapping potential will be changed
 adiabatically, and make use of the fact that phase space density is conserved
 through this process.
 
@@ -215,10 +224,11 @@ through this process.
 Since the system is Hamiltonian, the particle motion can be simulated by
 numerically solving \myeqref{design:eq:hamilton}. This was done on Imperial
 College London's high performance computing services~\cite{ICRCS} using
-Python~\cite{} and the symplectic euler method provided by the Desolver
-package~\cite{}. Symplectic methods are powerful ways to numerically integrate
-Hamiltonian systems whilst conserving energy and momentum.~\cite{} A timestep of $\dd t
-= \SI{1E-4}{\second}$ was sufficient to achieve this for our potentials.
+Python~\cite{python} and the symplectic euler method provided by the Desolver
+package~\cite{desolver}. Symplectic methods are powerful ways to numerically
+integrate Hamiltonian systems whilst conserving energy and
+momentum.~\cite{Hairer2015} A timestep of $\dd t = \SI{1E-4}{\second}$ was
+sufficient to achieve this for our potentials.
 
 Magnetic potentials were calculated by considering the traps to be formed of
 segments of straight wires, each producing a magnetic field
@@ -231,17 +241,46 @@ B_\text{seg}^{(i)}(t, \mathbf{q}) + \mathbf{B}_\text{bias}(t)\right|.
 \end{equation}
 
 The field due to a segment of straight wire with length carrying current $I(t)$
-\cm{can be written in an analytical form} by integration of the Bio-Savart Law.
+can be found analytically by integration of the Bio-Savart Law.
 This field can be expressed in terms of the angle between the ends of the wire
-at $\mathbf{q}$, as is shown in \myfigref{TODO}. The field
+at $\mathbf{q}$, as is shown in \myfigref{design:fig:wiresegment}. The field
 is given by~\cite{Griffiths2017}
 %
 \begin{equation}
   B_\text{seg}(t, \mathbf{q}) = \frac{\mu_0 I(t)}{4\pi
   s_\text{seg}(\mathbf{q})} (\sin(\theta_2)  - \sin(\theta_1))
+\label{design:eq:segmentfield}
 \end{equation}
 here $s_\text{seg}(\mathbf{q})$ is the shortest distance between the segment
 and $\mathbf{q}$.
+
+\begin{figure}[h]
+\centering
+  \begin{tikzpicture}
+    % Def coords
+    \coordinate (L) at (-3, 0);
+    \coordinate (R) at (3, 0);
+    \coordinate (Q) at (1, 4);
+    % Draw lines
+    \draw[line width=0.75mm, ->] (L) -- (R);
+    \draw (L) -- (Q);
+    \draw (R) -- (Q);
+    \draw[densely dotted] (Q) -- (1, 0);
+    % Draw angels
+    \draw pic[draw,angle radius=1cm,"$\theta_1$" shift={(7mm,2mm)}] {angle=R--L--Q};
+    \draw pic[draw,angle radius=1cm,"$\theta_2$" shift={(-7mm,2mm)}] {angle=Q--R--L};
+    % Label
+    \node[shift={(4mm,0)}] at (Q) {$\mathbf{q}$};
+    \node[shift={(2mm, 0)}] at (R) {$I$};
+    \node at (0.3, 1.8) {$s_\text{seg}(\mathbf{q})$};
+  \end{tikzpicture}
+  \caption{Geometry of a wire segment (bold) carrying current $I$, whose field
+  can be calculated using \myeqref{design:eq:segmentfield}. The dottend line
+  shows $s_\text{seg}(\mathbf{q})$, the shortest distance from the point at
+  which the field is calculated ($\mathbf{q}$) to the segment.
+  }
+  \label{design:fig:wiresegment}
+\end{figure}
 
 This is everything that is needed to simulate a wire trap, or the handover
 between two traps (by including the wire segments of both traps in the field
@@ -253,13 +292,14 @@ they are determined to be lost. In the following simulations a molecule is lost
 when it's displacement from the origin in any cardinal direction is greater
 than \SI{10}{\milli\meter}.
 
-\subsection{Example simulation: U trap acceptance}
+\subsection{Example simulation: Z trap acceptance}
 
 To illustrate both the simulation methods and the example of phase space
-acceptance given in section~\ref{}, we present an example simulation where
-a uniform distribution of molecules is spread over the acceptance of the U trap
-used in our experiment. We expect that the molecules inside the acceptance
-remain trapped for arbitrarty long time, and those outside are lost.
+acceptance given in section~\ref{design:motion:simmethods}, we present an
+example simulation where a uniform distribution of molecules is spread over the
+acceptance of the $\mathrm{Z0_i}$ trap used in our experiment. We expect that
+the molecules inside the acceptance remain trapped for arbitrarty long time,
+and those outside are lost.
 
 
 
@@ -311,7 +351,7 @@ handover from the transport trap to the U, the U to $\mathrm{Z0_i}$, and the
 compression of $\mathrm{Z0_i}$ to $\mathrm{Z0_F}$. They are described in detail
 in the following subsections.
 
-\begin{figure}[tbh]
+\begin{figure}[htb]
 \centering
   \begin{overpic}[page=1]{figs/sims/mtt_u_z_params.pdf}
     \put(32.5,55){(a)}
@@ -324,7 +364,7 @@ in the following subsections.
     into trap $\mathrm{Z0_f}$. The simulation begins with a stabilisation
     period (a), in which the molecules are held in the transport trap for \SI{100}{\milli\second}. In period (b) the transport
     trap is ramped off and the U is ramped on. There is some heating of
-    molecules as they leave the trap, and a \cm{ammount} reduction in phase
+    molecules as they leave the trap, and a reduction in phase
     space density. The transfer to $\mathrm{Z0_i}$ occurs in period (c), where
     more loss occurs due to the trap depth being reduced in the $x$
     direction. Finally in (d) the trap is compressed to $\mathrm{Z0_f}$, when
@@ -336,7 +376,6 @@ in the following subsections.
   \label{design:fig:simparams}
 \end{figure}
 
-\cm{Combine math and sim methods into one section abvoe this one?}
 The simulation methods are described in section~\ref{design:motion:simmethods}. This
 includes the initialisation procedure which happens before $t=0$. We simulated
 $N=1000$ particles, but it is common for a few to be lost during the
@@ -346,13 +385,15 @@ $N(t=0)=999$.
 \subsection{Handover to the U trap}
 \label{design:sim:trans_U}
 
-\cm{Follman paper says that a big U is helpful for alignment with coils!}
 
+\thesis{Ensure language is consistent when talking about chip, so is the U
+above or below?}
+%
 The first step is to transfer the molecules from the transport coils to the U
 wire. This U wire has the largest axial length, and so will be the easiest trap
 the transport coils to. The U-wire is also capable of carrying more current
 than any of the other wires, which is essential as it is positioned further
-from the molecule cloud beneath \cm{above?} the chip.
+from the molecule cloud, beneath the chip.
 
 Between $t=\SI{200}{\milli\second}$ and $t=\SI{300}{\milli\second}$ the current
 in the transport coils is adiabtically ramped down while the currents in
@@ -360,8 +401,6 @@ the U trap and in the bias coils are ramped up. The molecules are then held
 until $t=\SI{400}{\milli\second}$ to ensure that they remain trapped after the
 ramp. The simulation parameters are shown in
 \mysubfigref{design:fig:simparams}{b}.
-
-\cm{Perhaps a detailed plot of the temp and PSD would also be useful?}
 
 The particle loss during the ramp is approximately 10\% of the total. There is
 also some heating, which decreases the phase space density of the cloud. The
@@ -396,12 +435,11 @@ and the trapping potential at those times.
   \label{design:fig:trans_U}
 \end{figure}
 
-At \cm{$t=??$} there is a noticeable decrease in the trapping depth in the $y$
-direction. This is the cause of the particle leak, and occurs due to the 
-due to the superposition of the two fields causing an overall decrease in the
-trap depth in the $x$ and $y$ directions. This only occurs for a brief period
-during the ramp (between \cm{$t=\SI{10000}{\milli\second}$ and
-$t=\SI{129412}{\milli\second}$}). 
+At $t=\SI{175}{\milli\second}$ there is a noticeable decrease in the trapping
+depth in the $y$ direction. This is the cause of the particle leak, and occurs
+due to the due to the superposition of the two fields causing an overall
+decrease in the trap depth in the $x$ and $y$ directions. This only occurs for
+a brief period during the ramp (lasting approximately \SI{40}{\milli\second}). 
 
 In addition to the loss during the ramp, we observe a steady loss between
 $t=\SI{200}{\milli\second}$ and $t=\SI{300}{\milli\second}$, but only when the
@@ -417,9 +455,8 @@ final experiment. Hence these losses can be ignored.
 
 The U to $\mathrm{Z0_i}$ handover occurs in our simulation from
 $t=\SI{300}{\milli\second}$ to $t=\SI{400}{\milli\second}$, shown in
-\mysubfigref{design:fig:simparams}{c}, \cm{with a detailed view in fig?? .}
-The phase space positions of the molecules and the potentials are shown in
-\myfigref{design:fig:U_Z0i}.
+\mysubfigref{design:fig:simparams}{c}.  The phase space positions of the
+molecules and the potentials are shown in \myfigref{design:fig:U_Z0i}.
 
 \begin{figure}[p]
 \centering
@@ -431,7 +468,7 @@ The phase space positions of the molecules and the potentials are shown in
   \end{tabular}
   \caption{
     The same simulation results are displayed as in
-    \myfigref{design:fig:U_Z0i}, this time for the handover to $\mathrm{Z0_i}$.
+    \myfigref{design:fig:trans_U}, this time for the handover to $\mathrm{Z0_i}$.
     The superposition of the U and Z traps causes a reduction of the trap depth
     in the $x$ direction, as seen at time $t=\SI{375}{\milli\second}$.
     Molecules can be seen coming into contact with the chip surface when held
@@ -475,7 +512,13 @@ potential minimum without losses.
     \includegraphics[page=1,trim=0 0 0 15, clip]{figs/sims/Z0i_Z0f_y.pdf} \\
     \includegraphics[page=1,trim=0 0 0 15, clip]{figs/sims/Z0i_Z0f_z.pdf}
   \end{tabular}
-  \caption{\ph{todo}}
+  \caption{Presentation of the loading simulation is continued from
+  \myfigref{design:fig:trans_U} and \myfigref{design:fig:U_Z0i}. Here we see
+  the compression from $\mathrm{Z0_i}$ to $\mathrm{Z0_f}$. The compression in
+  the spartial dimensions causes heating, which can be seen as a spread in the
+  velocity directions. This is in line with what is expected from Liouville's
+  theorem.
+  }
   \label{design:fig:Z0i_Z0f}
 \end{figure}
 
@@ -486,17 +529,19 @@ Once trapped in $\mathrm{Z0_f}$, the remaining loading stages are simply
 repeated handovers to the smaller wires, with a compression stage carried out
 on each wire to bring the molecules closer to the surface. This is a
 well-understood and robust procedure that has been used before to load atom
-chips with minimal losses.~\cite{} \cm{Cite Treutlein2008 and others??}
+chips with minimal losses.~\cite{Reichel2002}
 
 That said, since our experiment will operate with a significantly lower phase
 space density than previous experiments with atoms, it is important to ensure
-that our loading procedure will not suffer from any unnecessary losses.
+that our loading procedure will not suffer from any unnecessary losses. These
+compressed traps contain hotter molecules, requiring a smaller timestep for
+simulation. It is therefore easier to directly examine the acceptance of each
+trap.
 
-Figure~\ref{design:fig:phasematchinggrid} shows the acceptance of each of the
-remaining traps, starting with $\mathrm{Z0_f}$ in row (a). The region of the
-trap that we expect to be occupied (as determined by the simulation above) is
-marked with a dashed line. This cloud of molecules will be adiabatically
-transferred into $\mathrm{Z1_i}$.
+These are shown in \myfigref{design:fig:phasematchinggrid}, starting with
+$\mathrm{Z0_f}$ in row (a). The region of the trap that we expect to be
+occupied (as determined by the simulation above) is marked with a dashed line.
+This cloud of molecules will be adiabatically transferred into $\mathrm{Z1_i}$.
 
 Since the process is adiabatic, we can anticipate that there will be no
 reduction in phase space density. The cloud of molecules will be transferred to
@@ -506,12 +551,12 @@ will be particle loss due to spillover.
 
 This is to be anticipated: phase space density cannot increase, and obviously
 the acceptance of the smallest trap will be smaller than the intitial cloud in
-the transport trap. So the final number of particles will be less \cm{fewer?}
-than we started with. It doesn't matter at which point the loss occurs, so long
-as there is no increase to the phase space density.
+the transport trap. So the final number of particles will be lower than we
+started with. It doesn't matter at which point the loss occurs, so long as
+there is no increase to the phase space density.
 
 Next, $\mathrm{Z1_i}$ is adiabatically compressed to $\mathrm{Z1_f}$, with the
-molecules held \cm{\SI{100}{\micro\meter}} from the surface. Again, this
+molecules held \SI{100}{\micro\meter} from the surface. Again, this
 compression is adiabatic, so we expect no change in the phase space density.
 Compression increases the trap acceptance, so there is also no loss of
 particles. This is further supported by the simulated compression of
@@ -538,12 +583,12 @@ shown in \mysubfigref{design:fig:phasematchinggrid}{c}.
     trap.  Row (a) shows $\mathrm{Z0_f}$, with occupation determined by the
     above simulation. Molecules will be adiabatically transferred to
     $\mathrm{Z1_i}$, which will be fully occupied. Some particles will be lost
-    due to the decrease in trapping volume \cm{Is this defed?} but this is to
-    be expected, and phase space density should not increase. In (b) we have
-    the acceptance and occupation of $\mathrm{Z1_f}$ following adiabaitc
-    compression.  Particles will be adiabatically transferred into
-    $\mathrm{Z2_i}$, resulting in similar losses to the previous step.  Row (c)
-    shows the final acceptance and occupation of $\mathrm{Z2_f}$.
+    due to the decrease in acceptance but this is to be expected, and phase
+    space density should not increase. In (b) we have the acceptance and
+    occupation of $\mathrm{Z1_f}$ following adiabaitc compression.  Particles
+    will be adiabatically transferred into $\mathrm{Z2_i}$, resulting in
+    similar losses to the previous step.  Row (c) shows the final acceptance
+    and occupation of $\mathrm{Z2_f}$.
   }
   \label{design:fig:phasematchinggrid}
 \end{figure}
