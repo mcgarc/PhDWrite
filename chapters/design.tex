@@ -1,45 +1,22 @@
-\cm{Need to ensure I cover this in the LSR intro}
-\thesis{These first two paragraphs would probably be better off in the intro,
-with an explanation of the transport procedure in the `outline' section.}
+This chapter begins with an overview of the chip experiment design from
+molecule source to the final chip trap. I will then give an overview of how we
+can calculate and simulate the trajectories of trapped \CaF{} molecules. This
+will be used to simulate and visually analyse the loading scheme for the chip.
 
-Investigation of novel phenomena, such as the strong-coupling of microwaves to
-molecules, will be undertaken in a \ph{dimple trap} as desribed above. However
-for this to be done we must be sure that we are able to populate this trap with
-cold molecules. This must be done whilst minimising losses and heating of the
-cloud.
+\section{Experiment overview}
 
-As such, the science chip is not as simple as a single trap on a substrate, but
-consists of a series of wire traps, whose currents and bias fields can be
-adiabatiacally altered to efficiently load the chip. The design of the science
-chip and this loading procedure therefore go hand in hand.
+The design of our experiment is largely motivated by the existing apparatus.
+The ultracold molecule source described in \inlineref{Truppe2017} has been
+adapted to allow for additional experiments to be carried out either in the
+same chamber, or in neighbouring chambers. In the latter case, molecules are
+transported between chambers by magnetic transport, such as is described
+in~\cite{}. Early experiments have shown that \Rb{} atoms can be transferred
+with minimal losses and heating.
 
-In this chapter I will present the science chip design and the loading scheme.
-I will justify our design choices by presenting simulations and analysis of the
-potentials. 
-
-\thesis{
-In this chapter I will first explain the theory of phase-matching. I will then
-present the design for our chip experiment and show how the phase-matching at
-each stage will enable efficient loading of our final trap.
-}
-
-
-\section{Vacuum system}
-
-\ph{Need to introduce the MOT chamber and Chip chamber (remember the tweezer
-cahmber in the middle), the flange setup and the translation stage.}
-
-\cm{Ott et al paper for transfer coil (?)}
-
-As discussed above \thesis{TODO} the cold \CaF{} molecules for our experiment
-are produced by the MOT and blue-detuned molasses described in
-\inlineref{Truppe2017}. The molecules have a phase space density of
-$\rho=\SI{3.4(9)e-12}{}$, with temperature $T=\SI{52(2)}{\micro\kelvin}$ and
-direct space density $n=\SI{1.1(3)E5}{\per\centi\meter\cubed}$. These molecules
-will then be transported by a pair of anti-Helmhotlz coils mounted on a
-\ph{track} over a distance of approximately \SI{1}{\meter} to the chip chamber.
-The chip is to be mounted such that its centre is \ph{\SI{3}{\milli\meter}}
-above the transport axis, as shown in \ph{TODO: fig!}.
+Currently, there are two experiment chambers, the MOT chamber (where the
+molasses is applied) and a second chamber for a tweezer experiment. Our chip
+chamber will be the third chamber, and will be positioned downstream of the
+tweezer chamber as pictured in \myfigref{design:fig:vacuumsystem}.
 
 \begin{figure}[htb]
   \centering
@@ -59,50 +36,40 @@ above the transport axis, as shown in \ph{TODO: fig!}.
     most downstream chamber. The molecule cloud is brought into place directly
     beneath the chip flange (gold).
   }
-  \label{design:vacuumsystem}
+  \label{design:fig:vacuumsystem}
 \end{figure}
 
-Early experiments conducted by other members of the Centre for Cold Matter have
-shown that rubidium atoms can be transported in the same manner without
-experiencing any significant heating. This is in agreement with similar
-experiments in the literature.~\cite{} In addition we may be able to re-apply
-blue-detuned molasses to the molecules after transport to re-cool the molecules
-to \SI{50}{\micro\kelvin}. We have assumed a worst-case scenario of operating
-with a cloud that has heated during transport to \SI{100}{\micro\kelvin}.
+Since the molecules are to be brought into the chamber by the transport coils,
+they will then be magnetically transferred onto the chip trap. This requires us
+to design the chip such that loading can occur with the minimisation of loss
+and heating as the magnetic potentials are varied. The main tools we use for
+this are a large U wire positioned away from the chip surface. This can carry a
+larger current than any wires on the chip, and so is suitable to create a deep
+trap which will prove useful for alignment of the transport
+coils.~\cite{Ott2001}
 
-\ph{The chip is to be mounted on a flange-assembly...}
+This U wire is embedded in the chip flange, shown in
+\mysubfigref{design:fig:chipexperiment}{a}. It hosts the U wire, and the subchip, a PCB
+into which a groove is milled for the chip to sit. This is shown in
+\mysubfigref{design:fig:chipexperiment}{b} This will serve as power and
+eventually microwave delivery to the chip. The flange also incorporates a large
+copper heatsink.
 
-The transport trap will align the molecule cloud with the chip trap, with the
-cloud centre approximately \SI{3}{\milli\meter} above the surface. From here
-the molecules can be loaded onto the chip trap by adiabatically altering the
-trapping potential. This process is outline in \ph{table}. 
-
-\section{Science chip design}
-
-\cm{Follman paper says that a big U is helpful for alignment with coils!}
-
-The arrangement of the trapping wires on our chip is shown in
-\myfigref{design:fig:chip}. It has \ph{no. of wires} wires, each with a height
-of \SI{5}{\micro\meter}. The widths of the wires are shown in table
-\mytableref{design:table:wires}, along with the maximum achievable current. The
-currents are calculated assuming a current density of
-$j=\SI{6e10}{\ampere\per\meter\squared}$, which is what has been measured for a
-similar multi-layer chip described in \inlineref{Treutlein2008}.
-
-\begin{figure}[h]
-\vspace{0.8cm}
-\centering
-  \ph{pseudo-cartoon of chip design}
-  \caption{\ph{todo}}
-  \label{design:fig:chip}
+\begin{figure}
+  \centering
+  \ph{chip flange render, subchip view, chip wire layout cartoon}
+  \caption{\ph{TODO}}
+  \label{design:fig:chipexperiment}
 \end{figure}
 
-The flange-assembley \ph{see some fig} has also been designed to include a
-large U-wire positioned below the chip. This U-wire is capable of maintaining
-much larger currents than the chip wires. It was orginally intended for
-aligning the cloud with the chip, but it has been decided that this step is no
-longer necessary. The U may be useful for later experiments if we wish to trap
-atoms far from the surface or form a quadrupole trap.
+Once loaded into the U, the molecules will be transferred between a series of
+carefully designed traps microfabricated on the chip. The wire layout is shown
+in \mysubfigref{design:fig:chipexperiment}{c} and more details along with the
+loading ramps are outlined in table \mytableref{design:table:wires}.
+
+In the rest of this chapter, I will present the analysis that has lead us to
+this design for our experiment and show that it will be capable of robust
+loading of \CaF{} molecules.
 
 \section{Motion of molecules in a potential}
 
