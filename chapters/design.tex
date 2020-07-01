@@ -41,6 +41,26 @@ will then be transported by a pair of anti-Helmhotlz coils mounted on a
 The chip is to be mounted such that its centre is \ph{\SI{3}{\milli\meter}}
 above the transport axis, as shown in \ph{TODO: fig!}.
 
+\begin{figure}[htb]
+  \centering
+  \begin{overpic}[width=0.7\textwidth]{figs/vacuum_setup.pdf}
+    \put(1,-5){Chip chamber}
+    \put(34,-5){Tweezer chamber}
+    \put(73,-5){MOT chamber}
+  \end{overpic}
+  \vspace{1cm}
+  \caption{The chip chamber is loaded with \CaF{} molecules from the MOT
+  chamber, where they can be cooled to \SI{50}{\micro\kelvin} with blue-detuned
+  molasses.~\cite{Truppe2017} This in turn is loaded by a buffer gas source that is laser-slowed
+  to below the MOT capture velocity~\cite{Truppe2017a} (not pictured). The
+  transfer of the cloud (blue circle) from the MOT chamber to the chip chamber
+  is achieved with a pair of anti-helmholtz coils mounted on a transport stage.
+  This forms a deep quadrupole trap which can be translated to bring the
+  molecules under the chip flange (gold) via the Tweezer chamber.
+  }
+  \label{design:vacuumsystem}
+\end{figure}
+
 Early experiments conducted by other members of the Centre for Cold Matter have
 shown that rubidium atoms can be transported in the same manner without
 experiencing any significant heating. This is in agreement with similar
@@ -190,13 +210,6 @@ boundary of the acceptance is rather ominously called the \emph{separatrix}. An
 example is shown in \myfigref{design:fig:acceptance}.~\cite{Lichtenberg1969,
 HanHand1998}
 
-\begin{figure}[tbh]
-\centering
-  \ph{Example of acceptance of a trap, include simulation?}
-  \caption{\cm{TODO}}
-  \label{design:fig:acceptance}
-\end{figure}
-
 When particles are loaded into a trap, they must be inside its acceptance to
 remain trapped. It is common to consider this in terms of a four-dimensional
 (two spatial, two momenta) trap for a beam of particles~\cite{Crompvoets2005}.
@@ -304,8 +317,40 @@ acceptance of the $\mathrm{Z0_i}$ trap used in our experiment. We expect that
 the molecules inside the acceptance remain trapped for arbitrarty long time,
 and those outside are lost.
 
+This is indeed what we see in \myfigref{design:fig:acceptance}. The results of
+the simulation are shown in a trio of plots, each one showing a projection of
+phase space into the $(q_i, v_i)$ plane. Here $i\in\{x, y, z\}$ and we have
+changed from using $\mathbf{p}$ to $\mathbf{v} = \mathbf{p} / m$, since the
+mass is always constant. 
 
+We simulated $10^6$ \CaF{} molecules, which are initialised with position and
+velocity distributed uniformly inside the gold rectangle. The trajectories are
+then integrated for the first \SI{300}{\milli\second} of the motion. The
+starting position of those molecules who remained trapped are then plotted.
 
+The acceptance is also shown. It is found by considering the energy at all
+points in the phase space plane. The highest energy that forms a closed contour
+is the acceptance of the trap. The energy is different in every plane (the $x$
+direction is a weaker trapping direction).
+
+There are 393 particles that remain trapped throughout the simulation. Of those
+that are trapped, the vast majority fall within the calculated acceptance.
+However in some edge cases it appears that the particles are outside. This is
+due to the acceptance shown being a contour on a cut-through of the potential.
+The true acceptance is a hypersurface that cannot be displayed here.
+
+\begin{figure}
+  \centering
+  \includegraphics[page=1]{figs/sims/example_acceptance.pdf}
+  \caption{Example simulation showing the acceptance of the $\mathrm{Z0_i}$.
+  The region marked by the gold rectangles is populated with $10^5$ particles.
+  The starting positions of the 393 particles that are trapped are marked with a pink dot.
+  The acceptance is approximated by a contour of the trapping potential, shown
+  here in black. Trapping is weaker in the $x$ direction than the other
+  directions, so this contour has a lower value. The majority of the trapped
+  particles start within this approximation of the acceptance.}
+  \label{design:fig:acceptance}
+\end{figure}
 
 \cm{COE, PSD}
 
@@ -582,16 +627,17 @@ shown in \mysubfigref{design:fig:phasematchinggrid}{c}.
     \put(0,21){(c)}
   \end{overpic}
   \caption{
-    The acceptance (solid) and expected occupation (dashed) of each Z wire
-    trap.  Row (a) shows $\mathrm{Z0_f}$, with occupation determined by the
-    above simulation. Molecules will be adiabatically transferred to
-    $\mathrm{Z1_i}$, which will be fully occupied. Some particles will be lost
-    due to the decrease in acceptance but this is to be expected, and phase
-    space density should not increase. In (b) we have the acceptance and
-    occupation of $\mathrm{Z1_f}$ following adiabaitc compression.  Particles
-    will be adiabatically transferred into $\mathrm{Z2_i}$, resulting in
-    similar losses to the previous step.  Row (c) shows the final acceptance
-    and occupation of $\mathrm{Z2_f}$.
+    A low bound of the acceptance (solid) and expected occupation (dashed) of
+    each Z wire trap. This is calculated by finding the acceptance in the weak
+    ($x$) trapping direction. Row (a) shows $\mathrm{Z0_f}$, with occupation
+    determined by the above simulation. Molecules will be adiabatically
+    transferred to $\mathrm{Z1_i}$, which will be fully occupied. Some
+    particles will be lost due to the decrease in acceptance but this is to be
+    expected, and phase space density should not increase. In (b) we have the
+    acceptance and occupation of $\mathrm{Z1_f}$ following adiabaitc
+    compression.  Particles will be adiabatically transferred into
+    $\mathrm{Z2_i}$, resulting in similar losses to the previous step.  Row (c)
+    shows the final acceptance and occupation of $\mathrm{Z2_f}$.
   }
   \label{design:fig:phasematchinggrid}
 \end{figure}
