@@ -53,7 +53,8 @@ This U wire is embedded in the chip flange, shown in
 into which a groove is milled for the chip to sit. This is shown in
 \mysubfigref{design:fig:chipexperiment}{b} This will serve as power and
 eventually microwave delivery to the chip. The flange also incorporates a large
-copper heatsink.
+copper heatsink. It will be mounted so that the chip faces the floor, allowing
+us to trap and then drop the molecules for absorption imaging.~\cite{}
 
 \begin{figure}
   \centering
@@ -65,7 +66,35 @@ copper heatsink.
 Once loaded into the U, the molecules will be transferred between a series of
 carefully designed traps microfabricated on the chip. The wire layout is shown
 in \mysubfigref{design:fig:chipexperiment}{c} and more details along with the
-loading ramps are outlined in table \mytableref{design:table:wires}.
+heights are outlined in table \mytableref{design:table:wires}. We have assumed
+that the wires will be able to carry a maximum current density of
+\SI{6E10}{\ampere\per\meter\squared}, as was found for a similar chip design in
+\inlineref{Treutlein2008}.
+
+\begin{table}
+  \centering
+\begin{tabular}{lrrrrr}
+  Name & Width (\si{\micro\meter})& Height (\si{\micro\meter})& $I_\text{max}$ & Trap height (\si{\micro\meter}) \\
+ \hline
+  U & N/A& N/A& 100 & 3000\\
+  $\mathrm{Z0}$ & 1000&  5& 30& $3000\rightarrow1000$ \\
+  $\mathrm{Z1}$ & 10&  5& 3& $1000\rightarrow100$ \\
+  $\mathrm{Z2}$ & 1&  5& 0.3& $100\rightarrow10$ \\
+ \hline
+\end{tabular}
+  \caption{Details on the wire dimensions, maximum current, and desired
+  trapping heights. The wire design is shown in
+  \mysubfigref{design:fig:chipexperiment}{c}. Note that the U wire current is
+  limited by vacuum feedthroughs and not by the wire dimensions or cooling.
+  }
+  \label{design:table:wires}
+\end{table}
+
+Each Z trap will begin trapping at one height before the magnetic field is
+increased to allow for trapping closer to the surface (as per \ph{equation}).
+To distinguish between the two trap stages for each wire, we label them
+$\mathrm{ZX_i}$ for the initial (higher) trap and $\mathrm{ZX_f}$ for the final
+(lower) trap.
 
 In the rest of this chapter, I will present the analysis that has lead us to
 this design for our experiment and show that it will be capable of robust
