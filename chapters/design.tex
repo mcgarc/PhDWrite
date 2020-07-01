@@ -240,8 +240,8 @@ College London's high performance computing services~\cite{ICRCS} using
 Python~\cite{python} and the symplectic euler method provided by the Desolver
 package~\cite{desolver}. Symplectic methods are powerful ways to numerically
 integrate Hamiltonian systems whilst conserving energy and
-momentum.~\cite{Hairer2015} A timestep of $\dd t = \SI{1E-4}{\second}$ was
-sufficient to achieve this for our potentials.
+momentum.~\cite{Hairer2015, doi:10.1119/1.2034523} A timestep of $\dd t =
+\SI{1E-4}{\second}$ was sufficient to achieve this for our potentials.
 
 Magnetic potentials were calculated by considering the traps to be formed of
 segments of straight wires, each producing a magnetic field
@@ -333,7 +333,7 @@ points in the phase space plane. The highest energy that forms a closed contour
 is the acceptance of the trap. The energy is different in every plane (the $x$
 direction is a weaker trapping direction).
 
-There are 393 particles that remain trapped throughout the simulation. Of those
+There are 443 particles that remain trapped throughout the simulation. Of those
 that are trapped, the vast majority fall within the calculated acceptance.
 However in some edge cases it appears that the particles are outside. This is
 due to the acceptance shown being a contour on a cut-through of the potential.
@@ -344,7 +344,7 @@ The true acceptance is a hypersurface that cannot be displayed here.
   \includegraphics[page=1]{figs/sims/example_acceptance.pdf}
   \caption{Example simulation showing the acceptance of the $\mathrm{Z0_i}$.
   The region marked by the gold rectangles is populated with $10^5$ particles.
-  The starting positions of the 393 particles that are trapped are marked with a pink dot.
+  The starting positions of the 443 particles that are trapped are marked with a pink dot.
   The acceptance is approximated by a contour of the trapping potential, shown
   here in black. Trapping is weaker in the $x$ direction than the other
   directions, so this contour has a lower value. The majority of the trapped
@@ -352,7 +352,29 @@ The true acceptance is a hypersurface that cannot be displayed here.
   \label{design:fig:acceptance}
 \end{figure}
 
-\cm{COE, PSD}
+As well as demonstrating that the simulation is able to reproduce the expected
+results from a simple phase space acceptance problem, we can use it to check
+that the two most important constants of the motion are indeed conserved,
+namely energy and phase space density. We expect that they will be, since the
+problem is framed in terms of Hamiltonian dynamics and a symplectic solver has
+been chosen.
+
+Since particles which are lost cease to be simulated, we examine only the phase
+space density and energy of the succesfully trapped particles. These are shown
+in \myfigref{design:fig:conservation}. There are fluctuations in both
+values, but this is to be expected.~\cite{doi:10.1119/1.2034523} Since the
+fluctuations are small, and there is no overall trend we can assume that the
+simulation does indeed conserve these quantities.
+
+\begin{figure}
+  \centering
+  \includegraphics[page=1]{figs/sims/example_conservation.pdf}
+  \caption{Conservation of energy and phase space density in our simulation.
+  Energy is the total energy of the trapped particles, but is given in units of
+  \si{\milli\kelvin} for convenience.
+  }
+  \label{design:fig:conservation}
+\end{figure}
 
 \subsection{Simulation initialisation}
 
