@@ -258,6 +258,7 @@ and $\mathbf{q}$.
 \centering
   \begin{tikzpicture}
     % Def coords
+    \coordinate (O) at (0, 0);
     \coordinate (L) at (-3, 0);
     \coordinate (R) at (3, 0);
     \coordinate (Q) at (1, 4);
@@ -265,14 +266,16 @@ and $\mathbf{q}$.
     \draw[line width=0.75mm, ->] (L) -- (R);
     \draw (L) -- (Q);
     \draw (R) -- (Q);
-    \draw[densely dotted] (Q) -- (1, 0);
+    \draw[<->, densely dotted,shorten >=.5mm,shorten <=.8mm] (Q) -- (1, 0);
+    % Draw dot at Q
+    \node at (Q)[circle,fill,inner sep=.5mm]{};
     % Draw angels
     \draw pic[draw,angle radius=1cm,"$\theta_1$" shift={(7mm,2mm)}] {angle=R--L--Q};
     \draw pic[draw,angle radius=1cm,"$\theta_2$" shift={(-7mm,2mm)}] {angle=Q--R--L};
     % Label
     \node[shift={(4mm,0)}] at (Q) {$\mathbf{q}$};
     \node[shift={(2mm, 0)}] at (R) {$I$};
-    \node at (0.3, 1.8) {$s_\text{seg}(\mathbf{q})$};
+    \node[fill=white] at (1., 1.8) {$s_\text{seg}(\mathbf{q})$};
   \end{tikzpicture}
   \caption{Geometry of a wire segment (bold) carrying current $I$, whose field
   can be calculated using \myeqref{design:eq:segmentfield}. The dottend line
