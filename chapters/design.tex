@@ -40,7 +40,8 @@ tweezer chamber as pictured in \myfigref{design:fig:vacuumsystem}.
 \end{figure}
 
 Since the molecules are to be brought into the chamber by the transport coils,
-they will then be magnetically transferred onto the chip trap. This requires us
+they will then be magnetically transferred onto the chip trap, which is
+\SI{3}{\milli\meter} from the centre of the cloud. This requires us
 to design the chip such that loading can occur with the minimisation of loss
 and heating as the magnetic potentials are varied. The main tools we use for
 this are a large U wire positioned away from the chip surface. This can carry a
@@ -75,14 +76,34 @@ us to trap and then drop the molecules for absorption imaging.~\cite{}
   \label{design:fig:chipexperiment}
 \end{figure}
 
-Once loaded into the U, the molecules will be transferred between a series of
-carefully designed traps microfabricated on the chip. The wire layout is shown
-in \mysubfigref{design:fig:chipexperiment}{c} and more details along with the
-heights are outlined in table \mytableref{design:table:wires}. We have assumed
-that the wires will be able to carry a maximum current density of
-\SI{6E10}{\ampere\per\meter\squared}, as was found for a similar chip design in
-\inlineref{Treutlein2008}.
+Once loaded into the U, the molecules will be transferred to the chip traps.
+Since the molecules are still \SI{3}{\milli\meter} away from the chip, a
+current of order \SI{10}{\ampere} is required to form a suitable trap. The wire
+traps must therefore have a sufficient cross section to carry this current.
+We will discuss in chpater~\ref{fab} that the maximum wire height achieveable
+is \SI{5}{\micro\meter}, and we expect that the wires will be able to carry a 
+a maximum current density of \SI{6E10}{\ampere\per\meter\squared}, as was found
+for a similar chip design in \inlineref{Treutlein2008}. The Z wire will
+therefore have a width $w\sim\SI{1}{\milli\meter}$.
 
+It is widely assumed in the literature and in this work that the trapping
+currents are carried by wires which are infinitesimally small compared to the
+length scale of the trap. We therefore suppose that the trapping height (the
+distance of the cloud centre from the chip) must be much larger than the wire
+width.
+
+It will therefore be useful to have a series of Z wires on our chip. They will
+be of decreasing widths, and hence capable of carrying lower currents, but also
+will localise the current more strongly so each one will allow trapping closer
+to the chip surface. Closer to the surface, we require less current for a
+sufficiently deep trap, so there is no problem with a reduced current.
+
+The wire layout is shown
+in \mysubfigref{design:fig:chipexperiment}{c} and more details along with the
+heights are outlined in table \mytableref{design:table:wires}. 
+
+\thesis{Add bias fields required to this table (as a ramp, like trap height)
+maybe just they y bias??}
 \begin{table}
   \centering
 \begin{tabular}{lrrrrr}
