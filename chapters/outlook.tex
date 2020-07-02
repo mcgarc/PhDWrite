@@ -1,18 +1,21 @@
-Above we have presented a plan for one possible implementation of a molecule
-chip. Going forward our intention is to fabricate the science chip using
-facilities at the London Centre for Nanotechnology and to assemble the supporting
-infrastructure, most notably the augmented flange shown in
-\myfigref{experiment:fig:flange}. The chip can then be tested under vacuum
-conditions, to ascertain if the desired currents are achievable, and whether
-the microwave guides operate as expected. \cm{Alex: how? (transmission
-tests...)}
+Above we have presented our design for the chip trap and our initial
+fabrication of prototypes. The next stage will be to complete fabrication of a
+chip with trapping wires, which can be used for initial testing under vacuum
+conditions. The entire chip chamber can be assembled in isolation from the rest
+of the molecule experiment. We will then be able to test the currents that can
+be acieved on the chip, and design the control system for the electronics.
 
-It is possible that changes will have to be made to the experiment, in which
-case these will be implemented and further chips fabricated. After the design
-has been finalised, we will attempt loading from the \CaF{} MOT by the loading
-scheme outlined above. We will attempt to ascertain if molecules are trapped by
-dropping them off the chip and attempting to directly image them by fluorescence
-imaging.
+In parallel we can begin to work on the rest of the fabrication process: first
+spin coating ployimide onto a chip protoytpe with good planarisation, and then 
+fabricating coplanar waveguides on this upper layer.
+
+We will then move on to testing the chip with \Rb{} atoms. These will behave
+much like the \CaF{} molecules, but with a much higher phase space density.
+This will allow us to implement and understand the loading technique before
+moving on to trapping \CaF{}. Depending on how succesful these remaining
+fabrication steps are, this could be performed with the complete chip or with a
+version that does not feature microwave guides. In the former case, microwave
+guides would be added at a later stage, after trapping of a cloud of molecules 
 
 Once molecules have been trapped on the chip, we will attempt to control them
 using the field from the CPW, using the same \SI{41}{\giga\hertz} microwave
@@ -26,9 +29,14 @@ adiabatic heating that will occur during chip trap compression. Another option
 is to design a chip with multiple traps, and see if they can be loaded and then
 coupled reliably.
 
-\cm{Alex: High $T_c$ superconductors?}
-Beyond this, if the chip can be cooled to a few kelvin, then it will be possible
-to implement a superconducting chip, which would be capable of carrying much
-higher trapping currents and hosting CPWs of high enough quality factor to
-implement a resonator. True cavity-QED experiments could then be performed,
-including investigation of hybrid quantum systems.
+There is also scope for more theoretical work. One example is the investigation
+of a chip that is integrated with an optical tweezer. This would provide
+stronger confinement than the magnetic traps, whilst still allowing us to
+strongly couple the molecule to microwave guides.
+
+Looking even further forward, it may be possible to add cooling apparatus to
+the experiment so that the chip can be fabricated using superconducting
+materials. Such a chip would be capable of higher trapping currents and hosting
+CPWs of high enough quality factor to implement a resonator. True cavity-QED
+experiments could then be performed, including investigation of hybrid quantum
+systems.
