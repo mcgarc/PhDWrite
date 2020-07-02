@@ -79,7 +79,7 @@
 \newcommand{\ph}[1]{\textcolor{purple}{#1}} % Placeholders
 \newcommand{\thesis}[1]{\textcolor{pink}{#1}} % Placeholders
 %\renewcommand{\cm}[1]{} % Uncomment to remove my comments
-%\renewcommand{\thesis}[1]{} % Uncomment to remove markers for thesis work
+\renewcommand{\thesis}[1]{} % Uncomment to remove markers for thesis work
 \newcommand{\incfig}[2]{\includegraphics[width=#1\textwidth]{#2}}
 \newcommand{\myeqref}[1]{eqn~\eqref{#1}}
 \newcommand{\mytabref}[1]{table~\ref{#1}}
@@ -160,19 +160,27 @@
 %                Body Start                %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\chapter*{Acknowledgements}
+\thesis{This should go to the top}
+\input{./chapters/acks}
 
 \chapter{Introduction}
 \label{intro}
+\thesis{
 \input{chapters/intro/main}
+}
+\input{chapters/intro/lsr}
 
 \chapter{Designing and simulating the trap}
 \label{design}
 \input{chapters/design}
 
+\thesis{
 \chapter{Microwaves on a chip}
 \thesis{Maybe this can be more like theory of molecule-microwave
 interaction, something that I can work on in the quarrantine?}
 \input{chapters/mws}
+}
 
 \chapter{Microfabrication}
 \label{fab}
@@ -190,11 +198,7 @@ interaction, something that I can work on in the quarrantine?}
 
 \clearpage
 
-\chapter*{Acknowledgements}
-\thesis{This should go to the top}
-\input{./chapters/acks}
 
-\cm{Review references!! (esp. mw101 ref)}
 \bibliographystyle{unsrt}
 \bibliography{bib}
 \end{document}
