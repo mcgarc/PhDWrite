@@ -5,10 +5,9 @@ planned fabrication process, reporting on which steps have been undertaken thus
 far, and the difficulties which we have yet to overcome.
 
 All the microfabrication techniques described below except for the
-electroplating were undertaken at the London Centre for Nanotechnology (LCN). I
-would like to thank their technicians and staff, whose input and assistance has
-been invaluable to this project. \cm{move thanks to acks I think...} \cm{The
-process is largely based on that discussed in \inlineref{Treutlein2008}.}
+electroplating were undertaken at the London Centre for Nanotechnology (LCN). 
+
+%\cm{The process is largely based on that discussed in \inlineref{Treutlein2008}.}
 
 \section{Overview of the fabrication procedure}
 
@@ -23,9 +22,10 @@ order \SI{100}{\nano\meter}.
 
 We must ensure that the wires are capable of carrying the currents that are
 outlined in chapter~\ref{design}.  Other experiments with two-layer atom chips
-have reported a current density of \cm{??} in the trapping wires. For our wires
-this would require a minimum height of \cm{??} to carry our trapping
-currents, much higher than can be achieved with photolithography techniques.
+have reported a current density of \SI{6E10}{\ampere\per\meter\squared} in the
+trapping wires. For our wires this would require a minimum height on the order
+of a micron to carry our trapping currents, much higher than can be achieved
+with photolithography techniques.
 
 Hence, we have begun our protoypting using a combination of microfabrication
 techniques and electroplating known as through-mask
@@ -34,9 +34,9 @@ footprint of the trapping wires and then electroplate to build up to a height
 suitable for our purposes. This is a common technique for constructing atom
 chips and is described in~\cite{2011Ac, Lev2003, KOUKHARENKO2004600}.
 
-The fabrication process starts with a \ph{4 inch silicon wafer of some sort},
-on which we can fabricate twelve \ph{2cm by 2cm} chips. This process can be
-briefly summarised:
+The fabrication process starts with a four inch silicon wafer on which we can
+fabricate twelve \SI{2}{\centi\meter} by \SI{2}{\centi\meter}  chips. This
+process can be briefly summarised:
 \begin{enumerate}
 \item Lay down thin (\SI{60}{\nano\meter}) seed layer of gold for each chip.
 \item Spin coat a thick (\SI{6}{\micro\meter}) layer of photoresist.
@@ -55,12 +55,11 @@ with the flying wire.)} This chip has two flaws: one broken wire
 to the chip edge. Both of these are typical problems that can arise, and are
 discussed further below.
 
-As dicussed \ph{above (where?)} a future aim of the molecule chip project is to
+As dicussed in chapter~\ref{intro} a future aim of the molecule chip project is to
 integrate microwave guides on the chip. These guides must allow good overlap of
 the microwave fields and the molecule trapping region. Our design achieves this
 by positioning the microwave guides on a second layer, directly above the
-trapping wires. \cm{Need to ensure the design is already fully described so
-this is coherent.} We have not yet attempted the following stages of
+trapping wires. We have not yet attempted the following stages of
 fabrication, but we anticipate that they will be:
 \begin{enumerate}[resume]
     \item Spin coat chip with an insulating layer of polyimide.
@@ -84,9 +83,9 @@ Here I give an overview of some of them.
 \cm{This chapter needs citations!!}
 
 Spin coating is a procedure for distributing a uniform layer of liquid such as
-photoresist  across a substrate. It is typically followed by baking to
-\ph{solidify} the layer. We use spin coating to apply layers of photoresist to
-our wafers and intend to use it to deposit polyimide.
+photoresist  across a substrate.~\cite{Cohen2011} It is typically followed by
+baking to solidify the layer. We use spin coating to apply layers of
+photoresist to our wafers and intend to use it to deposit polyimide.
 
 The substrate is mounted on a spin-coater such as the one shown in \ph{some
 figure}. The liquid is applied to the centre of the substrate and then the
@@ -95,7 +94,7 @@ liquid, it is then ramped to several thousand revolutions per minute.
 This uniformly distributes the liquid across the substrate.
 
 The thickness of the coating is dependent on the properties of the liquid
-\cm{the viscosity? Do I need to give an equation here so I can talk about
+\thesis{the viscosity? Do I need to give an equation here so I can talk about
 polyimide later?} and the rotational speed of the substrate during coating.
 The maximum speed and the profile of the ramp can be used to control the
 resulting thickness.
@@ -118,17 +117,18 @@ these regions to lift off while the rest of the photoresist remains attached to
 the wafer.\footnote{This describes the procedure for a positive photoresist.
 For negative photoresists the unexposed regions are removed on development, but
 these are not used in this work.} In this section I will present the standard
-procedure for patterning metal onto a substrate with lithography.
+procedure for patterning metal onto a substrate with
+lithography.~\cite{Madou2002}
 
-A substrate can therefore be \cm{patterned} by controlling the region of
+A substrate can therefore be patterned by controlling the region of
 exposure. This is commonly done by using a mask to project a desired shadow
-during exposure~\cite{}, however we have used a Heidelberg direct writer
-\cm{and model number!}~\cite{} to perform photolithography.
+during exposure~\cite{Madou2002}, however we have used a Heidelberg direct writer
+\thesis{and model number!}~\cite{} to perform photolithography.
 
 An exposure pattern is uploaded to the direct writer. An ultraviolet laser is
 then raster scanned across the surface to be patterned. The laser is switched
 on in the regions where exposure is desired. This process is depicted for a
-positive photoresist in \myfigref{fab:fig:methods}{a}.  The \cm{refer to
+positive photoresist in \myfigref{fab:fig:methods}{a}. The \cm{refer to
 model no./ equipment name} is capable of producing features of up to \cm{size}.
 Patterning of our wafer takes approximately one hour.
 
@@ -149,7 +149,7 @@ Patterning of our wafer takes approximately one hour.
   shown in the middle row. The bottom row shows a profile of the target (as
   discussed in section~\ref{fab:profile}). Column (a) shows positive
   photoresist (purple) with the exposed region highlighted (light blue). The
-  raster scan of the \cm{direct writer} across the substrate is highlighted in
+  raster scan of the direct writer laser across the substrate is highlighted in
   the top view.  In column (b) the resist is developed and the bare silicon
   exposed. In column (c) gold (yellow) is deposited across the target, e.g. by
   evaporation (as discussed in section~\ref{fab:evap}). In column (d) liftoff
@@ -163,11 +163,11 @@ Patterning of our wafer takes approximately one hour.
 The laser intensity, exposure time and number of scans are dependent on the
 type of photoresist used and its thickness. Two positive photoresists are used
 in this fabrication procedure to produce thin and thick layers. The details of
-both of these are discussed further in section~\ref{fab:prep}.
+both of these are discussed further in section~\ref{fab:prep}. Some
+photoresists require rehydration after exposure, which can take several hours.
 
-\cm{Rehydration step?}
-Following patterning of the photoresist the sample is placed in a \cm{developing
-solution}. This removes the exposed photoresist, exposing the silicon for
+Following patterning of the photoresist the sample is placed in a {developing
+solution. This removes the exposed photoresist, exposing the silicon for
 deposition. This is shown in \mysubfigref{fab:fig:methods}{b}. Development at
 room temperature can take several hours, but robust samples such as the ones
 described herein can be placed in a heating sonicator and developed in a few
@@ -199,7 +199,7 @@ found in \inlineref{??}.}
 This section details the evaporation procedure. In the previous section we used
 the example of direct deposition of gold on to silicon (see
 \mysubfigref{fab:fig:methods}{c}). In reality a thin adhesion layer of chromium
-is required for good results.~\cite{}
+is required for good results.~\cite{Madou2002}
 
 We performed evaporation using a \ph{tech name of A306 belljar},
 pictured in \myfigref{fab:fig:belljar}.
@@ -209,14 +209,13 @@ allow a different metal to be used for subsequent depositions.
 
 \begin{figure}
   \centering
-  \ph{Picutre of belljar}
+  \ph{Photo of belljar with evaporation cartoon(?)}
   \caption{\ph{caption}}
   \label{fab:fig:belljar}
 \end{figure}
 
-
 The belljar is pumped down to vacuum of pressure below \ph{??}. A current is
-then passed through the target to \cm{induce} evaporation of the metal onto the
+then passed through the target to induce evaporation of the metal onto the
 substrate. A shutter is used to block deposition onto the substrate until the
 desired current has been reached.
 
