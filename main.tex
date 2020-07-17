@@ -46,17 +46,8 @@
 \usepackage{overpic} % Superimpose text on images
 \usepackage{datetime} % For custom dates
 
-% --- Bibliography Links ---
-\usepackage{hyperref}
+% --- Custom colors --- 
 \usepackage[dvipsnames]{xcolor}
-%\hypersetup{
-%	colorlinks=true,
-%  linkcolor=blue,
-%	citecolor=blue,
-%	urlcolor=blue
-%}
-
-% Colors
 % Using custom color palette
 \definecolor{blue}{HTML}{699ABB}
 \definecolor{purple}{HTML}{994f95}
@@ -64,6 +55,20 @@
 \definecolor{gold}{HTML}{d2ab22}
 \definecolor{pink}{HTML}{D73665}
 \definecolor{deeppurple}{HTML}{312032}
+
+% --- Bibliography Links ---
+% Use the "colorlinks" option version for words highlighted rather than having
+% boxes. The "border" options in hypersetup correspond to colorlinks false.
+% OR use "hidelinks" option to make the links invisible.
+\usepackage{hyperref}
+\hypersetup{
+  %colorlinks=pink,
+  linkbordercolor=pink,
+	%citecolor=blue,
+  citebordercolor=blue,
+	%urlcolor=purple,
+  urlbordercolor=purple
+}
 
 % --- Tikz ---
 % Have to load tikz after xcolor
