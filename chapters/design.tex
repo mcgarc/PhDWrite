@@ -1,4 +1,4 @@
-This chapter begins with an overview of the chip experiment design from
+This chapter begins with an overview of the chip experiment design, from
 molecule source to the final chip trap. I will then give an overview of how we
 can calculate and simulate the trajectories of trapped \CaF{} molecules. This
 will be used to simulate and visually analyse the loading scheme for the chip.
@@ -11,18 +11,28 @@ changed since then.
 
 \section{Experiment overview}
 
+\thesis{Will likely need more dicussion of transport in the thesis. For one
+thing it seems like it does cause a bit of heating for tweezers at the moment.}
+%
 The design of our experiment is largely motivated by the existing apparatus.
 The ultracold molecule source described in \inlineref{Truppe2017} has been
 adapted to allow for additional experiments to be carried out either in the
 same chamber, or in neighbouring chambers. In the latter case, molecules are
 transported between chambers by magnetic transport, such as is described
-in~\cite{}. Early experiments have shown that \Rb{} atoms can be transferred
-with minimal losses and heating.
+in~\cite{Lewandowski2003}. Early experiments have shown that \Rb{} atoms can be
+transferred with minimal losses and heating.
 
-Currently, there are two experiment chambers, the MOT chamber (where the
-molasses is applied) and a second chamber for a tweezer experiment. Our chip
-chamber will be the third chamber, and will be positioned downstream of the
-tweezer chamber as pictured in \myfigref{design:fig:vacuumsystem}.
+Currently, there are two experiment chambers, the MOT chamber, where the
+molecule MOT is originally formed, and the blue-detuned molasses are applied.
+This chamber is also capable of hosting a \Rb{} MOT, which we will be able to
+use to test the chip trap. The second chamber is used for experiments with
+optical teezers and dipole traps. Our molecules will be transported through
+this chamber into the chip chamber for our experiment, as pictured in
+\myfigref{design:fig:vacuumsystem}.
+
+\cm{Need to fix this fig to put the chip on the right side of the chamber. But
+a top-down view of the whole experiment would probably be a better use of my
+time.}
 
 \begin{figure}[htb]
   \centering
@@ -45,23 +55,24 @@ tweezer chamber as pictured in \myfigref{design:fig:vacuumsystem}.
   \label{design:fig:vacuumsystem}
 \end{figure}
 
-Since the molecules are to be brought into the chamber by the transport coils,
-they will then be magnetically transferred onto the chip trap, which is
-\SI{3}{\milli\meter} from the centre of the cloud. This requires us
-to design the chip such that loading can occur with the minimisation of loss
-and heating as the magnetic potentials are varied. The main tools we use for
-this are a large U wire positioned away from the chip surface. This can carry a
-larger current than any wires on the chip, and so is suitable to create a deep
-trap which will prove useful for alignment of the transport
-coils.~\cite{Ott2001}
+The chip trap will be positioned inside this chamber, held in place by a flange
+assembly, with the chip surface \SI{4}{\milli\meter}
+%
+\cm{be exact here, think it is 3.8??}
+%
+away from the transport axis. The flange assembly consists of current
+feedthroughs and a PCB to deliver trapping currents to the chip, a large copper
+heatsink, and microwave feedthroughs. It will be mounted so that the chip
+faces the floor, allowing us to trap and then drop the molecules for absorption
+imaging.~\cite{}
 
-This U wire is embedded in the chip flange, shown in
-\mysubfigref{design:fig:chipexperiment}{a}. It hosts the U wire, and the subchip, a PCB
-into which a groove is milled for the chip to sit. This is shown in
-\mysubfigref{design:fig:chipexperiment}{b} This will serve as power and
-eventually microwave delivery to the chip. The flange also incorporates a large
-copper heatsink. It will be mounted so that the chip faces the floor, allowing
-us to trap and then drop the molecules for absorption imaging.~\cite{}
+Once the molecules are brought into the chamber by the transport coils, they
+will be magnetically transferred onto the chip trap. The transfer will use a
+number of magnetic traps, the first being a large U wire embedded in the flange
+assembly, and the rest  incorporated into the design of the chip itself (see
+\mysubfigref{design:fig:chipexperiment}{b}).  The U wire can carry a larger
+current than any wires on the chip, and so is suitable to create a deep trap
+which will prove useful for alignment of the transport coils.~\cite{Ott2001}
 
 \begin{figure}
   \centering
