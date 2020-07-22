@@ -155,7 +155,7 @@ important to review the physics behind the motion of the molecules in the
 potentials, which we shall do in this section. We will also briefly describe
 the simulation methods.
 
-\subsection{Hamiltonian mechanics}
+\subsection{Motion in the traps}
 
 We can assume that the molecules motion in the trap is classical. They move in
 the potential $V(t, \mathbf{q}) = \mu B(t, \mathbf{q})$, where $\mu$ is the
@@ -182,93 +182,66 @@ particle. Taken together, these two vectors describe a point in a six
 dimensional \emph{phase space} of position and momentum. The ensemble of
 trapped molecules, each one starting at a different point in phase space, can
 be treated by considering the motion of the molecules at its
-boundary.~\cite{Hand1998}
+boundary, and the \cm{hyphen?} six-dimensional phase space volume that this
+boundary encloses.~\cite{Hand1998}
 
-It turns out that the volume occupied by the ensemble is a conserved quantity.
-This is Liouville's theorem~\cite{Landau1982}, it can be proved by considering
-the change in the volume near some infinitesimal element of the boundary which
-we label $\dd \mathrm{S}$. At that point on the surface, the velocity of nearby
-particles is taken to be $\mathbf{v}$, so the change in volume at an instant in
-time is~\cite{Hand1998}
+It is helpful for us to write the phase space volume $V$ in terms of the
+spatial volume occupied by the ensemble ($V_\text{space}$) and its temperature.
+The length-scale for a monatomic gas of temperature $T$ is the thermal de
+Broglie wavelength~\cite{blundell2}
 %
 \begin{equation}
-  \dd V = \mathbf{v} \cdot \dd \mathbf{S}.
+  \lambda_\text{dB} = \frac{h}{\sqrt{2 \pi m k_B T}}.
 \end{equation}
-%
-Hence the overall change in velocity is
+And hence the phase space volume is 
 %
 \begin{equation}
-  \frac{\dd V}{\dd t} = \int_S \mathbf{v} \cdot \dd \mathbf{S} = \int_V \nabla 
-  \cdot \mathbf{v} \dd V
+  V = V_\text{space} \lambda_\text{dB}^3.
 \end{equation}
-where the second equality makes use of the divergence theorem.
-
-Now consider the integrand, which we rewrite in terms of $\mathbf{q}$ and
-$\mathbf{p}$, so
 %
-\begin{align}
-  \nabla \cdot \mathbf{v} &= \left(\frac{\partial}{\partial \mathbf{q}},
-  \frac{\partial}{\partial \mathbf{p}}\right) \cdot \left(\dot{\mathbf{q}},
-  \dot{\mathbf{p}}\right) \\
-  &= \frac{\partial \dot{\mathbf{q}}}{\partial \mathbf{q}} +
-  \frac{\partial \dot{\mathbf{p}}}{\partial \mathbf{p}} \\
-  & = \frac{\partial^2 H}{\partial \mathbf{q} \partial \mathbf{p}}
-  - \frac{\partial^2 H}{\partial \mathbf{p} \partial \mathbf{q}} \\
-  & = 0.
-\end{align}
-In the the third line, we have subsituted Hamilton's equations
-(\myeqref{design:eq:hamilton}).  So it is clear that the volume is constant in
-time,
+It is also useful to define a unitless phase space
+density~\cite{PhysRevA.52.1423}
 %
 \begin{equation}
-  \frac{\dd V}{\dd t} = 0.
-\end{equation}
-
-Now consider the phase space density of the trap. This is can be defined as the
-unitless quantity~\cite{PhysRevA.52.1423}
-%
-% We can also write $\rho = n \lambda_dB^3$, where n is spartial number
-% density, and lambda_dB is the thermal deBroglie wavelength of the cloud
-\begin{equation}
-  \rho = \left(\frac{h}{\sqrt{\pi}}\right)^3 \frac{N}{V}.
+  \rho = \frac{N \lambda_\text{dB}^3}{V_\text{space}}.
 \end{equation}
 %
-Since $V$ is conserved, so is the phase space density. However, we have made
-some assumptions that should be addressed.
+For a given cloud with phase space density $\rho$ and a trap with volume
+$V_\text{trap}$,
+the maximum possible number of particles that can be trapped is $\rho
+V_\text{trap}$.
 
-First, the motion of the particles is classical, but losses can still occur
-through quantum effects such as a spin-flip loss~\cite{PhysRevLett.51.1336}.
-Such an event would mean that $N$ would be reduced even though $V$ remained
-constant, so the phase space density would decrease. Furthermore, we neglected
-any change in the potential.  Changing the potential such that the depth is
-reduced can allow fast-moving (hot) particles to escape. This also reduces $N$
-and hence $\rho$ (though we do not include escaped particles in the calculation
-of $V$ so this is unchanged).
+Furthermore, Liouville's theorem~\cite{Landau1982, Hand1998} states that the
+phase space volume is a conserved quantity, as long as the trapping potential
+is consevative. This means that the phase space density of a trapped molecular
+cloud cannot be increased without application of some velocity-dependent
+damping, such as an optical molasses.~\cite{} The impact of this for the chip
+is that the phase space density of the cloud at the point of loading onto the
+chip determines the maximum number of molecules that can be trapped in the
+final trap.
+
+\ph{Do the calculation to find the max number of trapped particles.}
+%
+This upper bound for the number of trapped molecules is calculated with the
+assumption that all the trapping stages are deep enough to contain all the
+molecules that are within the trapping region. 
 
 This motivates us to introduce the concept of the \emph{acceptance} of a trap.
-This is the phase space volume of the potential within which all particles are
-trapped. Particles outside of the acceptance are either positioned outside the
-trap or are positioned inside the trap but have enough energy to escape it. The
-boundary of the acceptance is rather ominously called the \emph{separatrix}. An
-example is shown in \myfigref{design:fig:acceptance}.~\cite{Lichtenberg1969,
-HanHand1998}
+This is the phase space volume within which all particles are trapped.
+Particles outside of the acceptance are either positioned outside the trap or
+are positioned inside the trap but have enough energy to escape it. The
+boundary of the acceptance is called the \emph{separatrix}. An example is shown
+in \myfigref{design:fig:acceptance}.~\cite{Lichtenberg1969, HanHand1998}
+\cm{This isn't really good enough. I need a cartoon of this phenomenom}.
 
-When particles are loaded into a trap, they must be inside its acceptance to
-remain trapped. It is common to consider this in terms of a four-dimensional
-(two spatial, two momenta) trap for a beam of particles~\cite{Crompvoets2005}.
-In this case the change in the potential is instantaneous, so it is obvious
-which particles are trapped and which are not (as in
-\cm{\myfigref{design:fig:acceptance}}). In our case the loading is achieved by
-a series of adiabatic ramps, so the particles which are outside of the phase
-space acceptance of the trap are not instantaneously lost, and can be retained
-as long as this does not result in an increase in phase space density.~\cite{}
-\cm{Big citation needed on this one!} This will be heavily exploited when
-transferring between Z wire traps as in section~\ref{design:transferbetweenzs}.
+An adiabatic change to the potential will not affect the phase space density of
+any trapped particles.~\cite{Hand1998, Lichtenberg1969} Hence a cloud of
+trapped particles can be translated, for example in the transport coils, or
+towards the surface of the chip as will be discussed in
+section~\ref{design:sim}
 
 It should be noted that the Liouville theorem also holds for a time-dependent
-Hamiltonian.\footnote{The proof given above does not require $H$ to be time
-independent, although for the sake of our discussion it was helpful for us to
-assume that it was.} We will see below that the trapping potential will be changed
+Hamiltonian. We will see below that the trapping potential will be changed
 adiabatically, and make use of the fact that phase space density is conserved
 through this process.
 
