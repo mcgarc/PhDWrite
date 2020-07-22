@@ -684,40 +684,6 @@ shown in \mysubfigref{design:fig:phasematchinggrid}{c}.
 \end{figure}
 
 
-\subsection{Direct loading into $\mathrm{Z0_i}$}
-
-The U trap stage has been included to allow for easy alignment of the transport
-coils and the chip trap. If this was not a requirement then it might appear
-desirable to load directly into the Z traps. This would have the advantage of
-removing the small collision losses discussed in
-section~\ref{design:sim:trans_U}, as well as the losses incurred when handing
-over from the U to $\mathrm{Z0_i}$ described in
-section~\ref{design:sim:U_to_Z0i}.
-
-Results of a simulation of transfer from the transport coils to $\mathrm{Z0_i}$
-are shown in \myfigref{design:fig:directzramp}.  Approximately 40\% of
-particles were lost, as opposed to approximately 20\% of particles lost in the
-transfer via the U described above.  However, it appears that the phase space
-density does not decrease as was seen before. The phase space density
-calculated here is mainly for diagnosis (see section~\ref{design:motion:simmethods}),
-but this suggests that direct loading into $\mathrm{Z0_i}$ fromt the transport
-coils may be worth investigating if we are able to reliably achieve good
-alignment of the transport coils. 
-
-\begin{figure}[tbh]
-\centering
-  \includegraphics[page=1]{figs/sims/mtt_z_params.pdf}
-  \caption{
-    Simulation parameters for direct loading of trap $\mathrm{Z0_i}$ from the
-    transport coils. Currents and fields are linearly ramped to and from the
-    same values for these traps as were used in the loading via the U trap
-    (described above). The ramp occurs between $t=\SI{100}{\milli\second}$ and
-    $t=\SI{200}{\milli\second}$. There is more particle loss, but the phase
-    space density does not decrease by the same amount.
-  }
-  \label{design:fig:directzramp}
-\end{figure}
-
 \section{Summary}
 
 In this chapter I have presented the design of the chip experiment, starting
