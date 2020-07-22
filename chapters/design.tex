@@ -70,9 +70,15 @@ Once the molecules are brought into the chamber by the transport coils, they
 will be magnetically transferred onto the chip trap. The transfer will use a
 number of magnetic traps, the first being a large U wire embedded in the flange
 assembly, and the rest  incorporated into the design of the chip itself (see
-\mysubfigref{design:fig:chipexperiment}{b}).  The U wire can carry a larger
+\mysubfigref{design:fig:chipexperiment}{b}).
+
+The U wire can carry a larger
 current than any wires on the chip, and so is suitable to create a deep trap
 which will prove useful for alignment of the transport coils.~\cite{Ott2001}
+Its current is limited to \SI{100}{\ampere} by the vacuum feedthroughs. Since
+the U is embedded in the flange, it is further away from the molecules cloud
+than the wires on the chip. Since \ph{trap depth goes like some equation above,
+this limits the depth of the trap.}
 
 \begin{figure}
   \centering
@@ -109,7 +115,7 @@ length scale of the trap. We therefore suppose that the trapping height (the
 distance of the cloud centre from the chip) must be much larger than the wire
 width.
 
-It will therefore be useful to have a series of Z wires on our chip. They will
+Hence it will be useful to have a series of Z wires on our chip. They will
 be of decreasing widths, and hence capable of carrying lower currents, but also
 will localise the current more strongly so each one will allow trapping closer
 to the chip surface. Closer to the surface, we require less current for a
@@ -120,16 +126,16 @@ in \mysubfigref{design:fig:chipexperiment}{c} and more details along with the
 heights are outlined in table \mytableref{design:table:wires}. 
 
 \thesis{Add bias fields required to this table (as a ramp, like trap height)
-maybe just they y bias??}
+maybe just they y bias?? Also CONFIRM THE AXIS LENGTHS.}
 \begin{table}
   \centering
 \begin{tabular}{lrrrrr}
-  Name & Width (\si{\micro\meter})& Height (\si{\micro\meter})& $I_\text{max}$ & Trap height (\si{\micro\meter}) \\
+  Name & Axis length (\si{\milli\meter}) & Width (\si{\micro\meter})& Height (\si{\micro\meter})& $I_\text{max}$ & Trap height (\si{\micro\meter}) \\
  \hline
-  U & N/A& N/A& 100 & 3000\\
-  $\mathrm{Z0}$ & 1000&  5& 30& $3000\rightarrow1000$ \\
-  $\mathrm{Z1}$ & 10&  5& 3& $1000\rightarrow100$ \\
-  $\mathrm{Z2}$ & 1&  5& 0.3& $100\rightarrow10$ \\
+  U & 16 & N/A& N/A& 100 & 3000\\
+  $\mathrm{Z0}$ & 12 & 1000&  5& 30& $3000\rightarrow1000$ \\
+  $\mathrm{Z1}$ &  6 & 10&  5& 3& $1000\rightarrow100$ \\
+  $\mathrm{Z2}$ &  3 & 1&  5& 0.3& $100\rightarrow10$ \\
  \hline
 \end{tabular}
   \caption{Details on the wire dimensions, maximum current, and desired
@@ -144,7 +150,8 @@ Each Z trap will begin trapping at one height before the magnetic field is
 increased to allow for trapping closer to the surface (as per \ph{equation}).
 To distinguish between the two trap stages for each wire, we label them
 $\mathrm{ZX_i}$ for the initial (higher) trap and $\mathrm{ZX_f}$ for the final
-(lower) trap.
+(lower) trap, with $\mathrm{ZX}$ corresponding to the wire labels in
+\mytableref{design:table:wires}.
 
 We aim to eventually incorporate microwave guides onto the chip. This can be
 accomplished by adding an insulating layer on top of the wires, on to which we
@@ -153,9 +160,9 @@ been designed to allow delivery of microwaves to the chip. \thesis{Direct to
 microwaves on a chip chapter.} This was discussed in detail in the early stage
 assessment and will not be repeated here.
 
-In the rest of this chapter, I will present the analysis that has lead us to
-this design for our experiment and show that it will be capable of robust
-loading of \CaF{} molecules.
+In the rest of this chapter, I will demonstrate through simulation and analysis
+of the trapping potentials that this design will be capable of loading trapped
+\CaF{} molecules.
 
 \section{Motion of molecules in a potential}
 
