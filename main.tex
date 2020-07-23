@@ -60,14 +60,14 @@
 % Use the "colorlinks" option version for words highlighted rather than having
 % boxes. The "border" options in hypersetup correspond to colorlinks false.
 % OR use "hidelinks" option to make the links invisible.
-\usepackage{hyperref}
+\usepackage[colorlinks]{hyperref}
 \hypersetup{
-  %colorlinks=pink,
-  linkbordercolor=pink,
-	%citecolor=blue,
-  citebordercolor=blue,
-	%urlcolor=purple,
-  urlbordercolor=purple
+  linkcolor=pink,
+  %linkbordercolor=pink,
+	citecolor=blue,
+  %citebordercolor=blue,
+	urlcolor=purple,
+  %urlbordercolor=purple
 }
 
 % --- Tikz ---
@@ -93,6 +93,7 @@
 \newcommand{\mytableref}[1]{Table~\ref{#1}}
 \newcommand{\mysubfigref}[2]{Fig.~\ref{#1}~(#2)}
 \newcommand{\inlineref}[1]{Ref.~\cite{#1}}
+\newcommand{\inlinerefs}[1]{Ref.s~\cite{#1}}
 \usepackage{datetime}
 
 % Date with just the month and year (use `\monthyeardate\today`)
