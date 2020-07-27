@@ -30,7 +30,7 @@ optical teezers and dipole traps. Our molecules will be transported through
 this chamber into the chip chamber for our experiment, as pictured in
 \myfigref{design:fig:vacuumsystem}.
 
-\cm{Need to fix this fig to put the chip on the right side of the chamber. But
+\thesis{Need to fix this fig to put the chip on the right side of the chamber. But
 a top-down view of the whole experiment would probably be a better use of my
 time.}
 
@@ -58,7 +58,7 @@ time.}
 The chip trap will be positioned inside this chamber, held in place by a flange
 assembly, with the chip surface \SI{4}{\milli\meter}
 %
-\cm{be exact here, think it is 3.8??}
+\thesis{be exact here, think it is 3.8??}
 %
 away from the transport axis. The flange assembly consists of current
 feedthroughs and a PCB to deliver trapping currents to the chip, a large copper
@@ -77,21 +77,23 @@ current than any wires on the chip, and so is suitable to create a deep trap
 which will prove useful for alignment of the transport coils.~\cite{Ott2001}
 Its current is limited to \SI{100}{\ampere} by the vacuum feedthroughs. Since
 the U is embedded in the flange, it is further away from the molecules cloud
-than the wires on the chip. Since \ph{trap depth goes like some equation above,
-this limits the depth of the trap.}
+than the wires on the chip. Since trap depth is related to the current (see
+equations ~\ref{intro:eq:trapbias} and~\ref{intro:eq:trapdepth}, this is what
+limits the depth of the trap.
 
 \begin{figure}
+    \begin{subfigure}{.3\textwidth}
   \centering
-    \begin{subfigure}{.3\textwidth}
-      \includegraphics[width=.8\linewidth]{figs/FlangeAssemblyForPresentationTopRight.png}
+      \includegraphics[height=.6\textwidth]{figs/FlangeAssemblyForPresentationTopRight.png}
       \caption{}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
- % \ph{chip flange render, subchip view, chip wire layout cartoon}
-      \ph{Drawing of subchip}
+  \centering
+      \includegraphics[height=.6\textwidth]{figs/fab/subchip1_cropped3.pdf}
       \caption{}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
+  \centering
       \ph{Cartoon/ schematic of chip layout}
       \caption{}
     \end{subfigure}
@@ -147,11 +149,11 @@ maybe just they y bias?? Also CONFIRM THE AXIS LENGTHS.}
 \end{table}
 
 Each Z trap will begin trapping at one height before the magnetic field is
-increased to allow for trapping closer to the surface (as per \ph{equation}).
-To distinguish between the two trap stages for each wire, we label them
-$\mathrm{ZX_i}$ for the initial (higher) trap and $\mathrm{ZX_f}$ for the final
-(lower) trap, with $\mathrm{ZX}$ corresponding to the wire labels in
-\mytableref{design:table:wires}.
+increased to allow for trapping closer to the surface (as per
+\myeqref{intro:eq:trapbias}).  To distinguish between the two trap stages for
+each wire, we label them $\mathrm{ZX_i}$ for the initial (higher) trap and
+$\mathrm{ZX_f}$ for the final (lower) trap, with $\mathrm{ZX}$ corresponding to
+the wire labels in \mytableref{design:table:wires}.
 
 We aim to eventually incorporate microwave guides onto the chip. This can be
 accomplished by adding an insulating layer on top of the wires, on to which we
@@ -200,7 +202,7 @@ particle. Taken together, these two vectors describe a point in a six
 dimensional \emph{phase space} of position and momentum. The ensemble of
 trapped molecules, each one starting at a different point in phase space, can
 be treated by considering the motion of the molecules at its
-boundary, and the \cm{hyphen?} six-dimensional phase space volume that this
+boundary, and the \thesis{hyphen?} six-dimensional phase space volume that this
 boundary encloses.~\cite{Hand1998}
 
 It is helpful for us to write the phase space volume $V$ in terms of the
@@ -209,7 +211,7 @@ The length-scale for a monatomic gas of temperature $T$ is the thermal de
 Broglie wavelength~\cite{blundell2}
 %
 \begin{equation}
-  \lambda_\text{dB} = \frac{h}{\sqrt{2 \pi m k_B T}}.
+  \lambda_\text{dB}(T) = \frac{h}{\sqrt{2 \pi m k_B T}}.
 \end{equation}
 And hence the phase space volume is 
 %
@@ -224,10 +226,10 @@ density~\cite{PhysRevA.52.1423}
   \rho = \frac{N \lambda_\text{dB}^3}{V_\text{space}}.
 \end{equation}
 %
-For a given cloud with phase space density $\rho$ and a trap with volume
-$V_\text{trap}$,
+For a given cloud with phase space density $\rho$, trap with volume
+$V_\text{trap}$ and depth $T_\text{depth}$,
 the maximum possible number of particles that can be trapped is $\rho
-V_\text{trap}$.
+V_\text{trap}/\lambda_\text{dB}(T_\text{depth})$.
 
 Furthermore, Liouville's theorem~\cite{Landau1982, Hand1998} states that the
 phase space volume is a conserved quantity, as long as the trapping potential
@@ -239,12 +241,18 @@ chip determines the maximum number of molecules that can be trapped in the
 final trap.
 
 
-\ph{Do the calculation to find the max number of trapped particles.}
+If we do not introduce any further cooling steps, then the number of molecules
+we are able to trap in the final trap will be
 %
 \begin{equation}
-  \ph{N_final = ??}
+  N_\text{final} = \frac{\rho_\text{\CaF{}} V_\text{trap} h^3}{(2 \pi m_\text{CaF} k_B
+  T_\text{depth})^\frac{3}{2}} = \ph{??}
   \label{design:eq:psd_N}
 \end{equation}
+%
+where $\rho_\text{\CaF{}} = $ is the phase space density of the \CaF{} cloud
+after cooling in the blue-detuned molasses~\cite{Truppe2017},
+$V_\text{trap}\sim(\SI{10}{\micro\meter})^3$ and $T_\text{trap}=\ph{??}$.
 %
 This upper bound for the number of trapped molecules is calculated with the
 assumption that all the trapping stages are deep enough to contain all the
@@ -256,7 +264,7 @@ Particles outside of the acceptance are either positioned outside the trap or
 are positioned inside the trap but have enough energy to escape it. The
 boundary of the acceptance is called the \emph{separatrix}. An example is shown
 in \myfigref{design:fig:acceptance}.~\cite{Lichtenberg1969, HanHand1998}
-\cm{This isn't really good enough. I need a cartoon of this phenomenom}.
+\thesis{This isn't really good enough. I need a cartoon of this phenomenom}.
 
 An adiabatic change to the potential will not affect the phase space density of
 any trapped particles.~\cite{Hand1998, Lichtenberg1969} Hence a cloud of
