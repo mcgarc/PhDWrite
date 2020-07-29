@@ -94,10 +94,20 @@ limits the depth of the trap.
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
   \centering
-      \ph{Cartoon/ schematic of chip layout}
+  \begin{overpic}[height=.6\textwidth,page=1]{figs/chip_des.pdf}
+    \put(23,64){ \scalebox{.2}{\SI{100}{\micro\meter}}}
+  \end{overpic}
       \caption{}
     \end{subfigure}
-  \caption{\ph{TODO}}
+  \caption{
+    Details of the experiment aparatus. The chip flange (a) hosts the subchip
+    (detailed in b) and chip (detailed in c) and provides power to the chip via
+    feedthroughs. The subchip is a printed circuit board which will carry power
+    to the chip. A hole will be milled so that the chip can be glued in place,
+    flush with the surface. Electrical contact will be made by wirebonds. The
+    subchip hosts three Z wires detailed in \mytableref{design:table:wires}.
+    The inset in (c) shows the relative positioning of the wires.
+  }
   \label{design:fig:chipexperiment}
 \end{figure}
 
