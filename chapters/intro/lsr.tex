@@ -1,20 +1,18 @@
-\cm{ws}
-Cold atoms and molecules systems are promising for the implementation of new
-quantum technologies. They have been used for devices in fields of
-measurement~\cite{PhysRevLett.120.103201}, simulation~\cite{Gross995} and
-testing of fundamental physics~\cite{DeMille990}.
-
-Experiments using microscopic traps built on chips have proven to be a robust
+Cold atomic and molecular systems are promising architectures for the
+implementation of new quantum technologies. They have been used for devices in
+fields of measurement~\cite{PhysRevLett.120.103201}, simulation~\cite{Gross995}
+and testing of fundamental physics~\cite{DeMille990}.  In particular,
+experiments using microscopic traps built on chips have proven to be a robust
 way of studying high-density clouds of atoms~\cite{Reichel1999, Ott2001} which
 can be shown to interact with the surface~\cite{} or couple to electromagnetic
 fields also carried on the chip surface.~\cite{Treutlein2008, Hinds??}
 
-\cm{ws}
 A proposal by Andr\'e et al. in 2006~\cite{Andre2006} suggested integrating an
-electrostatic trap with a microwave resonator on a chip. A single trapped
-molecule would experience a strong coupling between its rotational states and
-photons in the resonator, which could be used for long-range coupling of
-molecular qubits, coherent control and measurement. Coupling to other quantum
+electrostatic trap with a microwave resonator on a chip. The trap could be used
+to confine a single molecule in the strong field region of the mircorwace
+field, allowing strong coupling between its rotational states and photons in
+the resonator. This could be exploited for long-range coupling of molecular
+qubits, coherent control and measurement. Coupling to other quantum
 architectures via flying photon qubits may also be
 possible.~\cite{PhysRevLett.92.063601}
 
@@ -22,34 +20,29 @@ Recent developments in the field of ultracold molecules suggest that calcium
 monofluoride would be an interesting case study for a molecular chip trap,
 analogous to the atomic ones which have already been developed. \CaF{} has been
 directly laser-cooled to \SI{50}{\micro\kelvin} ~\cite{}, is capable of being
-trapped magnetically, with cohrence times as long as \ph{??}~\cite{}. It also
-has a rotational transition suitable for coupling to microwaves, as suggested
-in the Andr\'e proposal.
+trapped magnetically, with cohrence times between rotational states
+being as long as
+\SI{0.61}{\milli\second}~\cite{Blackmore_2018}. 
 
-In the centre for cold matter, we have been working on developing such a
-device. In an earlier report, I described a prototype chip design, including
-posible methods for loading from our source of ultracold molecules, and how
-microwave guides could be integrated with the trapping wires.
+In the centre for cold matter, we have been working on developing a chip trap
+for \CaF{}, using magnetic traps instead of the electrostatic ones as in the
+Andr\'e proposal. In an earlier report, I described a prototype chip design,
+including posible methods for loading from our source of ultracold molecules,
+and how microwave guides could be integrated with the trapping wires.
 
-This document reports on the progress into the development of a chip trap for
-\CaF{} molecules. This introduction will provide a brief overview of the work that
-was already presented in the early stage assessment, including the basic
-operating principles of a chip trap.
-
-This document reports on the progress of this project.  In chapter~\ref{design}
-I will report on the outcome of simulations that have helped to further refine
-the design for the chip trap, in chapter~\ref{fab} I will describe the
-fabrication methods that have been used to build a prototype chip. Finally in
-chapter~\ref{outlook} I will discuss further development of the project.
-
-
+This document reports on the progress of this project since submission of the
+that report.  In chapter~\ref{design} I will report on the outcome of
+simulations that have helped to further refine the design for the chip trap, in
+chapter~\ref{fab} I will describe the fabrication methods that have been used
+to build a prototype chip. Finally in chapter~\ref{outlook} I will discuss the
+outlook for the remainder of the project and beyond.
 
 \subsection*{Magnetic chip traps}
 
 For the sake of completeness, the remainder of this chapter provides a brief
 overview of the operating principles of a magnetic chip trap. This restates the
-more complete discussion that was presented in the early stage assessment. More
-details can be found in \inlineref{2011Ac}, for example.
+more complete discussion that was presented in the earlier report. More details
+can be found in, for example, \inlineref{2011Ac}.
 
 The basic principle of a magnetic wire trap is to superimpose the magnetic
 field of a wire with a homogenous bias field, creating a minimum. This is
@@ -57,14 +50,14 @@ illustrated in \myfigref{chiptraps:fig:reicheltrap}, where a two dimensional
 trap is formed from a straight wire carrying current $I$, at a height $h$ from
 the trap. 
 The bias field's direction must oppose the
-direction of the wire field. We can immediately obsever from basic
-electromagnetism that the bias field relates to the current and the height as
+direction of the wire field. We can immediately observe from basic
+electromagnetism that the bias field relates to the current and the height
+as~\cite{Reichel1999}
 %
 \begin{equation}
   \tilde{B} = \frac{\mu_0 I}{2\pi h}.
   \label{into:eq:trapbias}
 \end{equation}
-
 
 As with other magnetic traps, atoms (or molecules) can be optically pumped into
 weak-field seeking states such that they favourably occupy the region surround
@@ -88,7 +81,7 @@ strength of the bias field and the magnetic moment of the particle ($\mu$),
 \end{figure}
 
 There are numerous ways to introduce confinement in the axial direction. We
-will be primarily conerned with the Z-trap and the U-trap. In these variations,
+will be primarily concerned with the Z-trap and the U-trap. In these variations,
 a bent wire is used instead of a straight one, as is shown in
 \myfigref{intro:fig:reichel_UZ}. The magnetic field then provides some confinement in the
 axial direction, although the depth is not as strong as it is in the other
@@ -104,7 +97,17 @@ the axial-length.
   The trapping field of a U and a Z trap are shown in the left and right
   columns respectively. Bending a straight wire as in row (a) introduces weak
   confinement along the axis of the trap.  The $x$ and $z$ components of the
-  field along the trap axis are shown in rows (b) and (c) respectively.
+  field along the trap axis are shown in rows (b) and (c) respectively. This
+  figure is reproduced from \inlineref{2011Ac}. 
   }
   \label{intro:fig:reichel_UZ}
 \end{figure}
+
+As discussed above, atom chips have been used in numerous experiments, for
+example as clocks~\cite{RAMIREZMARTINEZ2011247} or for robust production of Bose-Einstein
+condensates~\cite{Ott2001}. Atom chips have also been used to bring magnetically
+trapped atoms into with microwave fields in on-chip wave
+guides~\cite{Treutlein2008}, in close analogy with what we aim to accomplish
+for molecules. The recent improvements in cold molecular science discussed
+above mean that realisation of a molecule chip is now within the realms of
+possibility.
