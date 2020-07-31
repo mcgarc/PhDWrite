@@ -273,14 +273,22 @@ If we do not introduce any further cooling steps, then the number of molecules
 we are able to trap in the final trap will be
 %
 \begin{equation}
-  N_\text{final} = \frac{\rho_\text{\CaF{}} V_\text{trap} h^3}{(2 \pi m_\text{CaF} k_B
-  T_\text{depth})^\frac{3}{2}} = \ph{??}
+  N_\text{final} = \frac{\rho_\text{\CaF{}}
+  \lambda_\text{trap}^3}{V_\text{trap}} = \frac{\rho_\text{\CaF{}} V_\text{trap}(2 \pi m_\text{CaF} k_B
+  T_\text{depth})^\frac{3}{2}}{h^3}
   \label{design:eq:psd_N}
 \end{equation}
 %
-where $\rho_\text{\CaF{}} = $ is the phase space density of the \CaF{} cloud
+where $\rho_\text{\CaF{}} = 3.4\times10^{-12}$ is the phase space density of the \CaF{} cloud
 after cooling in the blue-detuned molasses~\cite{Truppe2017},
-$V_\text{trap}\sim(\SI{10}{\micro\meter})^3$ and $T_\text{trap}=\ph{??}$.
+$V_\text{trap}\sim(\SI{10}{\micro\meter})^3$ and
+$T_\text{trap}=\SI{4}{\kelvin}$. The trap depth used here is for the smallest
+trap operating at \SI{3}{\ampere}, and can be calculated using
+equation~\ref{intro:eq:trapdepth}. We therfore have
+%
+\begin{equation}
+  N_\text{final} \sim 3000.
+\end{equation}
 %
 This upper bound for the number of trapped molecules is calculated with the
 assumption that all the trapping stages are deep enough to contain all the
@@ -313,8 +321,8 @@ in \myfigref{design:fig:psaeg}~\cite{Lichtenberg1969, Hand1998}.
 \thesis{I should discuss filamentation in more detail}
 
 An adiabatic change to the potential will not affect the phase space density of
-any particles that remain trapped throughout the change.~\cite{Hand1998,
-Lichtenberg1969} Hence a cloud of trapped particles can be translated, for
+any particles that remain trapped throughout the change~\cite{Hand1998,
+Lichtenberg1969}. Hence a cloud of trapped particles can be translated, for
 example in the transport coils, or towards the surface of the chip as will be
 discussed in section~\ref{design:sim}.
 
@@ -333,8 +341,8 @@ The particle motion can be simulated by numerically solving
 performance computing services~\cite{ICRCS} using Python~\cite{python} and the
 symplectic Euler method provided by the Desolver package~\cite{desolver}.
 Symplectic methods are powerful tools for numerically solving Hamiltonian
-systems whilst conserving energy and momentum.~\cite{Hairer2015,
-doi:10.1119/1.2034523} A time step of $\dd t = \SI{1E-4}{\second}$ was
+systems whilst conserving energy and momentum \cite{Hairer2015,
+doi:10.1119/1.2034523}. A time step of $\dd t = \SI{1E-4}{\second}$ was
 sufficient to achieve this for our potentials.
 
 Magnetic potentials were calculated by considering the traps to be formed of
@@ -457,7 +465,7 @@ results from a simple phase space acceptance problem, we can use it to check
 that constants of the motion are indeed conserved. This is shown to be the case
 in \myfigref{design:fig:conservation}.  The fluctuations in the values are a
 side effect of the symplectic method, but there is no overall trend for the
-constants to increase or decrease.  \cite{doi:10.1119/1.2034523} The phase
+constants to increase or decrease \cite{doi:10.1119/1.2034523}. The phase
 space density is significantly lower due to the nmber of simulated particles
 being smaller than we would expect in reality, and the phase space volume of
 the initial cloud being significantly larger.
