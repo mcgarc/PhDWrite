@@ -90,24 +90,29 @@ than the wires on the chip. Since trap depth is related to the current (see
 equations ~\ref{intro:eq:trapbias} and~\ref{intro:eq:trapdepth}, this is what
 limits the depth of the trap.
 
-\begin{figure}
-    \begin{subfigure}{.3\textwidth}
+\begin{figure}[ht]
   \centering
-      \includegraphics[height=.6\textwidth]{figs/FlangeAssemblyForPresentationTopRight.png}
-      \caption{}
-    \end{subfigure}
-    \begin{subfigure}{.3\textwidth}
-  \centering
-      \includegraphics[height=.6\textwidth]{figs/fab/subchip1_cropped3.pdf}
-      \caption{}
-    \end{subfigure}
-    \begin{subfigure}{.3\textwidth}
-  \centering
-  \begin{overpic}[height=.6\textwidth,page=1]{figs/chip_des.pdf}
-    \put(23,64){ \scalebox{.2}{\SI{100}{\micro\meter}}}
+  \parbox{\textwidth}{
+    \parbox{.5\textwidth}{%
+\centering
+      \subcaptionbox{}{
+\includegraphics[width=0.4\textwidth]{figs/FlangeAssemblyForPresentationTopRight.png}
+}
+      \vskip3em
+      \subcaptionbox{}{
+\centering
+\includegraphics[height=0.2\textwidth]{figs/fab/subchip1_cropped3.pdf}
+}  
+    }
+    \hskip1em
+    \parbox{.5\textwidth}{%
+      \subcaptionbox{}{
+  \begin{overpic}[width=\hsize,page=1]{figs/chip_des.pdf}
+    \put(26,64){{\tiny\SI{100}{\micro\meter}}}
   \end{overpic}
-      \caption{}
-    \end{subfigure}
+}
+    }
+  }
   \caption{
     Details of the experiment aparatus. The chip flange (a) hosts the subchip
     (detailed in b) and chip (detailed in c) and provides power to the chip via
