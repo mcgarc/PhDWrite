@@ -5,17 +5,25 @@ outline the planned fabrication process, reporting on which steps have been
 undertaken thus far, and the difficulties which we have yet to overcome.
 
 \begin{figure}[h]
-\vspace{0.8cm}
-\centering
-  \includegraphics[width=0.5\textwidth]{figs/wafer.png}
+    \begin{subfigure}{.5\textwidth}
+  \centering
+      \includegraphics[width=0.5\textwidth]{figs/wafer.png}
+      \caption{}
+    \end{subfigure}
+    \begin{subfigure}{.5\textwidth}
+  \centering
+      \includegraphics[width=0.5\textwidth]{figs/z_trap_fanouts_inset_scale.png}
+      \caption{}
+    \end{subfigure}
   \caption{
     Prototype design of a chip that has been used for fabrication. This design
-    was originally presented in the ESA, but the wire layout has been refined as
-    discussed in chapter~\ref{design}. This design consists of twelve chips on
-    a \SI{4}{\inch} wafer. Grey squares represent the seed layer of gold for
-    through-mask electroplating. The gold represents the trapping wires. The
-    blue represents where microwave guides will be positioned in relation to
-    the trapping wires.
+    was originally presented in the ESA, but the wire layout has been refined
+    as discussed in chapter~\ref{design}. This design consists of twelve chips
+    on a \SI{4}{\inch} wafer, shown in (a). Grey squares represent the seed
+    layer of gold for through-mask electroplating. The gold represents the
+    trapping wires. The blue represents where microwave guides will be
+    positioned in relation to the trapping wires. Detailed view can be seen in
+    (b) and the inset.
   }
   \label{fab:fig:design1}
 \end{figure}
@@ -257,7 +265,7 @@ until the desired current has been reached.
 The Edwards belljar evaporator incorporates a FTM7 deposition monitor, which
 reports the rate of deposition and automatically shuts off deposition once the
 desired thickness has been reached by closing the shutter. \thesis{What
-determines/ limits the deposition rates? What happends when we have too much
+determines/ limits the deposition rates? What happens when we have too much
 current?}
 
 The deposition rate of gold is typically \SI{0.2}{\nano\meter\per\second}.
@@ -267,13 +275,13 @@ The deposition rate of gold is typically \SI{0.2}{\nano\meter\per\second}.
 As discussed above a thickness of \SI{5}{\micro\meter} is desirable for the
 chip's trapping wires. Achieving this with evaporation would take over an hour,
 and it would not be possible to load the evaporator with enough gold to last
-this long. This is why we must use electroplating to achive the desired
+this long. This is why we must use electroplating to achieve the desired
 thickness.
 
 \subsection{Profiling}
 \label{fab:profile}
 
-The Bruker Dektak stylus profiler is used to characterise features on the
+The Bruker DektakXT stylus profiler is used to characterise features on the
 substrate. A gold stylus is positioned onto the surface and dragged across. As
 the stylus comes into contact with features its height will change, allowing a
 profile of the surface to be measured. An example of the profile of a substrate
@@ -519,7 +527,7 @@ immediately transferred to a beaker of deionised water and then rinsed. Since
 the seed layer thickness is significantly smaller than the dimensions of the
 wire, the cross-sectional area will not be significantly altered in this time.
 This can be confirmed with profiling (see below). At this stage the chip is as
-picture in \myfigref{fab:fig:etch}{c}.
+picture in \mysubfigref{fab:fig:etch}{c}.
 
 \thesis{Need to find out what the Cr etchant is called}
 %
@@ -527,7 +535,7 @@ To complete the separation of the wires, the chromium layer must also be etched
 in the same way. The process is the same as for the gold etch: the chip is
 submerged in a beaker of the etchant and after the pre-determined exposure time
 it is transferred to deionised water and then rinsed. This stage of the
-fabrication is represented in \myfigref{fab:fig:etch}{d}. 
+fabrication is represented in \mysubfigref{fab:fig:etch}{d}. 
 
 To ensure that the etches have been successful, stylus profiling is once again
 performed, results are shown in \myfigref{fab:fig:endprofile}. We ensure that
