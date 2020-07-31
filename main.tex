@@ -56,6 +56,36 @@
 \definecolor{pink}{HTML}{D73665}
 \definecolor{deeppurple}{HTML}{312032}
 
+% --- Bibliography ---
+% Uses biblatex with biber. Don't include url, doi, isbn because we will use
+% magic to insert the url as a hyperlink in the title ourselves
+
+% Ubuntu: requires texlive-bibtex-extra
+\usepackage[backend=biber,
+						url=false,
+						doi=false,
+						isbn=false,
+						eprint=false,
+						giveninits=true
+						]{biblatex}
+
+% This is the macro to do this. see SE:
+% https://tex.stackexchange.com/quACestions/23832/biblatex-make-title-hyperlink-to-doi-url-if-available
+% and 
+% https://tex.stackexchange.com/questions/48400/ACbiblatex-make-title-hyperlink-to-dois-url-or-isbn
+\newbibmacro{string+doi}[1]{%
+  \iffieldundef{doi}{#1}{\href{http://dx.doi.org/\thefield{doi}}{#1}}}
+\DeclareFieldFormat{title}{\usebibmacro{string+doi}{\mkbibemph{#1}}}
+\DeclareFieldFormat[article]{title}{\usebibmacro{string+doi}{\mkbibquote{#1}}}
+
+% Manually remove notes
+\AtEveryBibitem{%
+  \clearfield{note}%
+	}
+
+% Bib file
+\addbibresource{bib.bib}
+
 % --- Bibliography Links ---
 % Use the "colorlinks" option version for words highlighted rather than having
 % boxes. The "border" options in hypersetup correspond to colorlinks false.
@@ -69,6 +99,8 @@
 	urlcolor=purple,
   %urlbordercolor=purple
 }
+% And this macro adds urls to titles in bib
+
 
 % --- Tikz ---
 % Have to load tikz after xcolor
@@ -205,6 +237,5 @@ interaction, something that I can work on in the quarrantine?}
 \clearpage
 
 
-\bibliographystyle{ieeetr}
-\bibliography{bib}
+\printbibliography
 \end{document}
