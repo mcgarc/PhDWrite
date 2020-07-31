@@ -9,3 +9,5 @@
 figs/
 *.out
 *.html
+*.bcf
+*.run.xml
