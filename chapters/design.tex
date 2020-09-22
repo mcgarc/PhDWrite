@@ -76,16 +76,18 @@ the molecules through a series of magnetic traps of decreasing size until
 they are in the smallest trap. The design of these traps and the loading
 procedure are the main subjects of this chapter.
 
-The first stage of the transfer will is
-g a large U wire embedded in the flange
+The first stage of the transfer is a large U wire embedded in the flange
 assembly, and the rest  incorporated into the design of the chip itself (see
 \mysubfigref{design:fig:chipexperiment}{b}).
-
+\cm{Mike doesn't understand how the U wire will help align with the transport
+coils. Perhaps this could be explained better than just waving away with a
+citation.}
 The U wire can carry a larger
 current than any wires on the chip, and so is suitable to create a deep trap
-which will prove useful for alignment of the transport coils~\cite{Ott2001}.
+which will prove useful for alignment with the transport coils~\cite{Ott2001}.
 Its current is limited to \SI{100}{\ampere} by the vacuum feedthroughs. Since
-the U is embedded in the flange, it is further away from the molecules cloud
+the U is embedded in the flange \mt{To me, the flange means the vacuum flange.
+But that's not where the U is.}, it is further away from the molecules cloud
 than the wires on the chip. Since trap depth is related to the current (see
 equations ~\ref{intro:eq:trapbias} and~\ref{intro:eq:trapdepth}, this is what
 limits the depth of the trap.
@@ -114,13 +116,21 @@ limits the depth of the trap.
     }
   }
   \caption{
-    Details of the experiment aparatus. The chip flange (a) hosts the subchip
-    (detailed in b) and chip (detailed in c) and provides power to the chip via
+    Details of the experiment aparatus. The chip flange (a) \mt{too small and
+    needs labelling} hosts the subchip
+    (detailed in b \mt{make larger and label} \cm{this fig also looks weird in
+    evince?}) and chip (detailed in c) and provides power to the chip via
     feedthroughs. The subchip is a printed circuit board which will carry power
     to the chip. A hole will be milled so that the chip can be glued in place,
     flush with the surface. Electrical contact will be made by wirebonds. The
     subchip hosts three Z wires detailed in \mytableref{design:table:wires}.
     The inset in (c) shows the relative positioning of the wires.
+%
+    \mt{Figure could be improved to highlight more of the important details,
+    e.g. where is the U, how are the microwaves and dc currents brought in etc.
+    One helpful thing would be to make (a) large and add labelling to it so
+    that readers can understand what they're looking at. Another helpful thing
+    would be to show what's underneath the chip carrier.}
   }
   \label{design:fig:chipexperiment}
 \end{figure}
@@ -149,7 +159,7 @@ width at all times.
 The axial length  of the wires also decreases to gradually reduce the size of
 the trapped cloud in the $x$ direction. The wire layout is shown in
 \mysubfigref{design:fig:chipexperiment}{c} and more details along with the
-heights are outlined in table \mytableref{design:table:wires}. All wires have
+heights are outlined in \mytableref{design:table:wires}. All wires have
 been designed to carry twice the current that is required in the loading
 scheme.
 
@@ -178,7 +188,7 @@ maybe just they y bias?? Also CONFIRM THE AXIS LENGTHS.}
   \label{design:table:wires}
 \end{table}
 
-Each Z trap will begin trapping at one height before the magnetic field is
+Each Z trap will begin trapping at one height before the bias field is
 increased to allow for trapping closer to the surface (as per
 \myeqref{intro:eq:trapbias}).  To distinguish between the two trap stages for
 each wire, we label them $\mathrm{ZX_i}$ for the initial (higher) trap and
@@ -241,23 +251,25 @@ Broglie wavelength~\cite{blundell2}
 \begin{equation}
   \lambda_\text{dB}(T) = \frac{h}{\sqrt{2 \pi m k_B T}}.
 \end{equation}
-And hence the phase space volume is 
+And hence the unitless phase space volume is \cm{Think I need to figure out
+what the deal is with the unit. Mike seems to think there should be a $h^3$ in
+here, but I think for there to be no units this is better.}
 %
 \begin{equation}
-  V = V_\text{space} \lambda_\text{dB}^3.
+  V = V_\text{space} / \lambda_\text{dB}^3.
 \end{equation}
 %
 It is also useful to define a unitless phase space
 density~\cite{PhysRevA.52.1423}
 %
 \begin{equation}
-  \rho = \frac{N \lambda_\text{dB}^3}{V_\text{space}}.
+  \rho = \frac{N}{V} = \frac{N \lambda_\text{dB}^3}{V_\text{space}}.
 \end{equation}
 %
 For a given cloud with phase space density $\rho$, trap with volume
 $V_\text{trap}$ and depth $T_\text{depth}$,
 the maximum possible number of particles that can be trapped is $\rho
-V_\text{trap}/\lambda_\text{dB}(T_\text{depth})$.
+V_\text{trap}/\lambda_\text{dB}^3(T_\text{depth})$.
 
 Furthermore, Liouville's theorem~\cite{Landau1982, Hand1998} states that the
 phase space volume is a conserved quantity, as long as the trapping potential
@@ -273,9 +285,9 @@ If we do not introduce any further cooling steps, then the number of molecules
 we are able to trap in the final trap will be
 %
 \begin{equation}
-  N_\text{final} = \frac{\rho_\text{\CaF{}}
-  \lambda_\text{trap}^3}{V_\text{trap}} = \frac{\rho_\text{\CaF{}} V_\text{trap}(2 \pi m_\text{CaF} k_B
-  T_\text{depth})^\frac{3}{2}}{h^3}
+  N_\text{final} = \frac{\rho_\text{\CaF{}}V_\text{trap}}
+  {\lambda_\text{trap}^3} = \frac{\rho_\text{\CaF{}} V_\text{trap}(2 \pi m_\text{CaF} k_B
+  T_\text{trap})^\frac{3}{2}}{h^3}
   \label{design:eq:psd_N}
 \end{equation}
 %
@@ -293,6 +305,13 @@ equation~\ref{intro:eq:trapdepth}. We therfore have
 This upper bound for the number of trapped molecules is calculated with the
 assumption that all the trapping stages are deep enough to contain all the
 molecules that are within the trapping region. 
+%
+\cm{As Mike points out, this is clearly not correct. I have also used the phase
+space density for the 50uK experiment, so probably off by a factor of
+$10^{3/2}$ (need to check that also...) Alex also pointed out that it is hard
+to calculate this because not all the constants are available/ obvious, e.g.
+the mass. So just need to make this paragraph a lot more clear and put some
+care into it.}
 
 This motivates us to introduce the concept of the acceptance of a trap.
 This is the phase space volume within which all particles are trapped.
@@ -347,13 +366,13 @@ sufficient to achieve this for our potentials.
 
 Magnetic potentials were calculated by considering the traps to be formed of
 segments of straight wires, each producing a magnetic field
-$B_\text{seg}^{(i)}$, and the bias field $\mathbf{B}_\text{bias}(t)$. The total
+$\mathbf{B}_\text{seg}^{(i)}$, and the bias field $\mathbf{B}_\text{bias}(t)$. The total
 field is the sum of contributions from the set of all segments (S), and the
 bias. The potential is therefore
 %
 \begin{equation} V(t, \mathbf{q}) = \mu B (t, \mathbf{q}) = \mu \left|
   \sum_{i\in S}
-B_\text{seg}^{(i)}(t, \mathbf{q}) + \mathbf{B}_\text{bias}(t)\right|.
+  \mathbf{B}_\text{seg}^{(i)}(t, \mathbf{q}) + \mathbf{B}_\text{bias}(t)\right|.
 \end{equation}
 
 The field due to a segment of straight wire with length carrying current $I(t)$
@@ -363,12 +382,15 @@ at $\mathbf{q}$, as is shown in \myfigref{design:fig:wiresegment}. The field
 is given by~\cite{Griffiths2017}
 %
 \begin{equation}
-  B_\text{seg}(t, \mathbf{q}) = \frac{\mu_0 I(t)}{4\pi
-  s_\text{seg}(\mathbf{q})} (\sin(\theta_2)  - \sin(\theta_1))
+  \mathbf{B}_\text{seg}(t, \mathbf{q}) = \frac{\mu_0 I(t)}{4\pi
+  s_\text{seg}(\mathbf{q})} (\sin(\theta_2)  -
+  \sin(\theta_1))\mathbf{\mathbf{\phi}}
 \label{design:eq:segmentfield}
 \end{equation}
 here $s_\text{seg}(\mathbf{q})$ is the shortest distance between the segment
-and $\mathbf{q}$.
+and $\mathbf{q}$, and $\hat{\mathbf{\phi}}$ is the unit vector pointing
+perpendicular to $\mathbf{q}$ and the wire segment. \cm{Should take more care
+indefining this unit vector! (also formatting mathbf and hat?)}
 
 \begin{figure}[h]
 \centering
@@ -435,14 +457,25 @@ points in the phase space plane. The highest energy that forms a closed contour
 is the acceptance of the trap. The energy is different in every plane (the $x$
 direction is a weaker trapping direction).
 
+\cm{SUPER IMPORTANT! Is it $10^5$ or $10^6$??}
+
 \thesis{This sounds like a pretty weak excuse. I better figure out what is
 actually going on here. Suspect I am underestimating the size of the
 acceptance.}
-There are 443 particles that remain trapped throughout the simulation. Of those
+There are 443 particles that remain trapped throughout the simulation. \mt{This
+result tells you the actual phase space acceptance of the trap - it will be
+443/10^{6} * initial phase space volume. It would be interesting to compare
+this to the phase space volume you calculate analytically.} Of those
 that are trapped, the vast majority fall within the calculated acceptance.
 However in some edge cases it appears that the particles are outside. This is
 due to the acceptance shown being a contour on a cut-through of the potential.
 The true acceptance is a hypersurface that cannot easily be displayed in print.
+\cm{I am kind of bullshitting here. Mike says the following, which seems more
+reasonable: I can see how this results in particles inside the separatrix being
+lost. But I can't see how it results in particles outside the separatrix not
+being lost. I think more likely is that particles slightly outside the
+separatrix are on metastable trajectories meaning they would be lost if you ran
+the simulation longer.}
 
 \thesis{Check that the separatrix is calculated sensibly, is it the same in
 every direction?}
@@ -475,7 +508,8 @@ the initial cloud being significantly larger.
   \includegraphics[page=1]{figs/sims/example_conservation.pdf}
   \caption{Conservation of energy and phase space density in our simulation.
   Energy is the total energy of the trapped particles, but is given in units of
-  \si{\milli\kelvin} for convenience.
+  \si{\milli\kelvin} for convenience. \cm{Needs to be more clear that this is
+  total energy (all particles). Mike was unclear on this.}
   }
   \label{design:fig:conservation}
 \end{figure}
@@ -500,7 +534,10 @@ transport gradient of \SI{61}{\gauss\per\centi\meter}. This causes the
 molecules to compress as they would when initially loaded into the transport
 coils in the MOT chamber.
 
-For the purposes of these simulations, the effects of heating in loading are
+For the purposes of these simulations, the effects of heating in loading
+\mt{Not sure which effects you mean here.} \cm{think this is quite vague. we
+must get some heating by transporting them, I think that is what I want to
+refer to...} are
 ignored. The molecules are therefore held for a further \SI{50}{\milli\second}
 until $t=0$. It is possible for a very small number of particles to stray too
 far from the centre of the trap during initialisation, at which point they are
@@ -550,6 +587,11 @@ particle lost during initialisation.
     of the chip surface. The solid lines show the simulation results when
     collisions with the chip surface are ignored, and the dashed line shows
     results when collision with the surface results in loss of the molecule.
+    %
+   \mt{Would be useful to show some quantity that measures the size of the
+   cloud, along with all the other parameters, e.g. you could plot $\sigma_x 
+   \sigma_y  \sigma_z$ as a measure of the volume of the cloud. Then, I would
+   expect to see the volume go down in places where the temperature goes up.}
   }
   \label{design:fig:simparams}
 \end{figure}
@@ -721,7 +763,7 @@ This cloud of molecules will be adiabatically transferred into $\mathrm{Z1_i}$.
 Since the process is adiabatic, we can anticipate that there will be no
 reduction in phase space density. The cloud of molecules will be transferred to
 $\mathrm{Z1_i}$ with negligible heating. However, the total acceptance of the
-trap is greater than the expected phase space volume of the cloud, so there
+trap is less than the expected phase space volume of the cloud, so there
 will be particle loss due to spillover.
 
 This was anticipated in section~\ref{design:motion}: phase space density cannot
