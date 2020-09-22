@@ -12,7 +12,7 @@ surface interactions here.}
 
 A proposal by Andr\'e et al. in 2006~\cite{Andre2006} suggested integrating an
 electrostatic trap with a microwave resonator on a chip. The trap could be used
-to confine a single molecule in the strong field region of the mircorwace
+to confine a single molecule in the strong field region of the mircrowace
 field, allowing strong coupling between its rotational states and photons in
 the resonator.
 
@@ -22,12 +22,15 @@ qubits, coherent control and measurement. Coupling to other quantum
 architectures via flying photon qubits may also be
 possible~\cite{PhysRevLett.92.063601}.
 Microwaves couple to rotational levels of a diatomic molecule
-significantly more strongly than they do to the magnetic levels of atoms.
+significantly more strongly \mt{could be more quantitative here,
+caluclate $\mu_e*E / (\mu_B * B)$ (comparing electic and magnetic dipole
+moments)}
+than they do to the magnetic levels of atoms.
 Recent developments in the field of ultracold molecules suggest that calcium
 monofluoride would be an interesting case study for a molecular chip trap,
 analogous to the atomic ones which have already been developed. \CaF{} has been
-directly laser-cooled to \SI{50}{\micro\kelvin} ~\cite{Truppe2017}, is capable of being
-trapped magnetically, with cohrence times between rotational states
+directly laser-cooled to \SI{5}{\micro\kelvin} ~\cite{PhysRevLett.123.033202}, is capable of being
+trapped magnetically, with coherence times between rotational states
 being as long as
 \SI{0.61}{\milli\second}~\cite{Blackmore_2018}. 
 
@@ -67,7 +70,7 @@ as~\cite{Reichel1999}
 \end{equation}
 
 As with other magnetic traps, atoms (or molecules) can be optically pumped into
-weak-field seeking states such that they favourably occupy the region surround
+weak-field seeking states such that they surround
 the trap minimum~\cite{Metcalf1999}. The depth of the trap is determined by the
 strength of the bias field and the magnetic moment of the particle ($\mu$),
 %
@@ -91,11 +94,15 @@ There are numerous ways to introduce confinement in the axial direction. We
 will be primarily concerned with the Z-trap and the U-trap. In these variations,
 a bent wire is used instead of a straight one, as is shown in
 \myfigref{intro:fig:reichel_UZ}. The magnetic field then provides some confinement in the
-axial direction, although the depth is not as strong as it is in the other
+axial direction, although the trap is not as deep as it is in the other
 directions. Note that the U trap forms a quadrupole trap (where the minimum
 field is zero) and the Z trap forms a Ioffe-Pritchard trap (where the field
 minimum is non-zero)~\cite{2011Ac}. We refer to the length of the centre section as
 the axial-length.
+
+\mt{
+  To my mind, a quadrupole trap means more than just having a field minimum. It describes the shape of the trap. |B| should be linear in the displacement for it to be a quadrupole trap. It might be that that a trap with a zero of field always has that shape, but that isn't obvious to me. 
+}
 
 \begin{figure}
   \centering
@@ -113,6 +120,6 @@ the axial-length.
 As discussed above, atom chips have been used in numerous experiments, for
 example as clocks~\cite{RAMIREZMARTINEZ2011247} or for robust production of
 Bose-Einstein condensates~\cite{Ott2001}. Atom chips have also been used to
-bring magnetically trapped atoms into with microwave fields in on-chip wave
-guides~\cite{Treutlein2008}, in close analogy with what we aim to accomplish
-for molecules. 
+bring magnetically trapped atoms into close proximity with microwave fields in
+on-chip wave guides~\cite{Treutlein2008}, in close analogy with what we aim to
+accomplish for molecules. 
