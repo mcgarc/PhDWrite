@@ -446,7 +446,9 @@ results of the simulation are shown in a trio of plots, each one showing a
 projection of phase space into the $(q_i, v_i)$ plane. Here $i\in\{x, y, z\}$
 and we have converted from units of momentum to velocity for convenience. 
 
-We simulated $10^6$ \CaF{} molecules, which are initialised with position and
+\cm{There was some confusion in the LSR because I said $10^6$ here, but I
+checked and it was $10^5$.}
+We simulated $10^5$ \CaF{} molecules, which are initialised with position and
 velocity drawn from a uniform distribution inside the range indicated by the
 gold rectangle in \myfigref{design:fig:acceptance}. The trajectories are then
 integrated for the first \SI{300}{\milli\second} of the motion. The starting
@@ -456,8 +458,6 @@ The separatrix is also shown. It is found by considering the energy at all
 points in the phase space plane. The highest energy that forms a closed contour
 is the acceptance of the trap. The energy is different in every plane (the $x$
 direction is a weaker trapping direction).
-
-\cm{SUPER IMPORTANT! Is it $10^5$ or $10^6$??}
 
 \thesis{This sounds like a pretty weak excuse. I better figure out what is
 actually going on here. Suspect I am underestimating the size of the
