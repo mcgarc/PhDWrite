@@ -114,10 +114,9 @@
 %\newcommand{\diff}{\mathrm{d}} USE \dd (physics) instead
 \newcommand{\cm}[1]{\textcolor{blue}{#1}} % For my comments
 \newcommand{\mt}[1]{\textcolor{pink}{#1}} % For my comments
-\newcommand{\thesis}[1]{} % TODO Scrub thesis comments and remove this line
 \newcommand{\ph}[1]{\textcolor{purple}{#1}} % Placeholders
 %\renewcommand{\cm}[1]{} % Uncomment to remove my comments
-%\renewcommand{\mt}[1]{} % Uncomment to remove markers for thesis work
+%\renewcommand{\mt}[1]{} % Uncomment to remove markers for Mike's comments 
 \newcommand{\incfig}[2]{\includegraphics[width=#1\textwidth]{#2}}
 \newcommand{\myeqref}[1]{eqn~\eqref{#1}}
 \newcommand{\mytabref}[1]{table~\ref{#1}}
@@ -186,6 +185,13 @@
 \input{./chapters/abs}
 \clearpage
 
+\chapter*{Declaration}
+\input{./chapters/dec}
+\clearpage
+
+\chapter*{Acknowledgements}
+\input{./chapters/acks}
+
 % TOC
 \tableofcontents
 \clearpage
@@ -199,37 +205,31 @@
 %                Body Start                %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\chapter*{Acknowledgements}
-\thesis{This should go to the top}
-\input{./chapters/acks}
 
 \chapter{Introduction}
 \label{intro}
-\thesis{
 \input{chapters/intro/main}
-}
-\input{chapters/intro/lsr}
 
 \chapter{Designing and simulating the trap}
 \label{design}
 \input{chapters/design}
 
-\thesis{
 \chapter{Microwaves on a chip}
-\thesis{Maybe this can be more like theory of molecule-microwave
+\cm{Maybe this can be more like theory of molecule-microwave
 interaction, something that I can work on in the quarrantine?}
 \input{chapters/mws}
-}
 
 \chapter{Microfabrication}
 \label{fab}
 \input{chapters/fab}
 
-\thesis{
 \chapter{Trapping molecules on a chip}
+
 \chapter{Coherent control of molecules on a chip}
-% Maybe superseeded by earlier theory?
-}
+% This might be superceeded by the earlier theory in mw on chip chapter, or it
+% could be more detailed outlook
+
+% Other theory I could do: tweezer trap near CPW, mirror MOT, cooling on chip?
 
 \chapter{Outlook}
 \label{outlook}

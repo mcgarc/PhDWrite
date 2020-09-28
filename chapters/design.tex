@@ -3,7 +3,7 @@ molecule source to the final chip trap. I will then give an overview of how we
 can calculate and simulate the trajectories of trapped \CaF{} molecules. This
 will be used to simulate and analyse the loading scheme for the chip.
 
-\thesis{Need to direct to microwaves ch rather than do this...}
+\cm{Need to direct to microwaves ch rather than do this...}
 This chapter deals mainly with the trapping aspect of the experiment and not
 the microwaves. The implementation of microwave guides on the
 chip was discussed in the early stage assessment, and has not significantly
@@ -11,7 +11,7 @@ changed since then.
 
 \section{Experiment overview}
 
-\thesis{Will likely need more discussion of transport in the thesis. For one
+\cm{Will likely need more discussion of transport in the thesis. For one
 thing it seems like it does cause a bit of heating for tweezers at the moment.}
 %
 The design of our experiment is largely motivated by the existing apparatus.
@@ -24,7 +24,7 @@ transport stage, similar to those described
 in~\cite{Lewandowski2003}. Early experiments have shown that \Rb{} atoms can be
 transferred with minimal losses and heating.
 
-\thesis{This para is rubbish, but I cba to fix it rn}
+\cm{This para is rubbish, but I cba to fix it rn}
 %
 Currently, there are two experiment chambers, the MOT chamber, where the
 molecule MOT is originally formed, and the blue-detuned molasses are applied.
@@ -34,7 +34,7 @@ optical tweezers and dipole traps. Our molecules will be transported through
 this chamber into the chip chamber for our experiment, as pictured in
 \myfigref{design:fig:vacuumsystem}.
 
-\thesis{Need to fix this fig to put the chip on the right side of the chamber. But
+\cm{Need to fix this fig to put the chip on the right side of the chamber. But
 a top-down view of the whole experiment would probably be a better use of my
 time.}
 
@@ -47,6 +47,7 @@ time.}
   \end{overpic}
   \vspace{1cm}
   \caption{
+    \cm{Maybe redo this figure with more detail.}
     The main vacuum chambers are shown. The experiment begins with a buffer gas
     source of \CaF{} molecules (not pictured). This produces a beam of
     molecules which is laser-slowed for capture in the MOT chamber. Here
@@ -62,7 +63,7 @@ time.}
 The chip trap will be positioned inside this chamber, held in place by a flange
 assembly, with the chip surface \SI{4}{\milli\meter}
 %
-\thesis{be exact here, think it is 3.8??}
+\cm{be exact here, think it is 3.8??}
 %
 away from the transport axis. The flange assembly consists of current
 feedthroughs and a PCB to deliver trapping currents to the chip, a large copper
@@ -141,7 +142,7 @@ section to carry the trapping current. In the case of the first Z wire,
 the molecules are still \SI{3}{\milli\meter} away from the chip, a
 current of order \SI{10}{\ampere} is required to form a suitable trap
 %
-\thesis{need to figure out what the actual depth is}.
+\cm{need to figure out what the actual depth is}.
 %
 We will discuss in chapter~\ref{fab} that the maximum wire height
 achievable is \SI{5}{\micro\meter}, and we expect that the wires will be able
@@ -163,7 +164,7 @@ heights are outlined in \mytableref{design:table:wires}. All wires have
 been designed to carry twice the current that is required in the loading
 scheme.
 
-\thesis{Add bias fields required to this table (as a ramp, like trap height)
+\cm{Add bias fields required to this table (as a ramp, like trap height)
 maybe just they y bias?? Also CONFIRM THE AXIS LENGTHS.}
 %
 \begin{table}
@@ -198,7 +199,7 @@ the wire labels in \mytableref{design:table:wires}.
 We aim to eventually incorporate microwave guides onto the chip. This can be
 accomplished by adding an insulating layer on top of the wires, on to which we
 can fabricate coplanar waveguides~\cite{1127105}. The flange and subchip have
-been designed to allow delivery of microwaves to the chip. \thesis{Direct to
+been designed to allow delivery of microwaves to the chip. \cm{Direct to
 microwaves on a chip chapter.} This was discussed in detail in the early stage
 assessment and will not be repeated here.
 
@@ -240,7 +241,7 @@ particle. Taken together, these two vectors describe a point in a six
 dimensional \emph{phase space} of position and momentum. The ensemble of
 trapped molecules, each one starting at a different point in phase space, can
 be treated by considering the motion of the molecules at its
-boundary, and the \thesis{hyphen?} six-dimensional phase space volume that this
+boundary, and the \cm{hyphen?} six-dimensional phase space volume that this
 boundary encloses~\cite{Hand1998}.
 
 It is helpful for us to write the phase space volume $V$ in terms of the
@@ -320,7 +321,7 @@ are positioned inside the trap but have enough energy to escape it. The
 boundary of the acceptance is called the separatrix. An example is shown
 in \myfigref{design:fig:psaeg}~\cite{Lichtenberg1969, Hand1998}.
 
-\thesis{Try to recreate this fig myself with my code!}
+\cm{Try to recreate this fig myself with my code!}
 %
 \begin{figure}
   \centering
@@ -337,7 +338,7 @@ in \myfigref{design:fig:psaeg}~\cite{Lichtenberg1969, Hand1998}.
   \label{design:fig:psaeg}
 \end{figure}
 
-\thesis{I should discuss filamentation in more detail}
+\cm{I should discuss filamentation in more detail}
 
 An adiabatic change to the potential will not affect the phase space density of
 any particles that remain trapped throughout the change~\cite{Hand1998,
@@ -353,7 +354,7 @@ through this process.
 \subsection{Simulating the motion}
 \label{design:motion:simmethods}
 
-\thesis{When can we ignore VdW forces?}
+\cm{When can we ignore VdW forces?}
 
 The particle motion can be simulated by numerically solving
 \myeqref{design:eq:hamilton}. This was done on Imperial College London's high
@@ -459,12 +460,12 @@ points in the phase space plane. The highest energy that forms a closed contour
 is the acceptance of the trap. The energy is different in every plane (the $x$
 direction is a weaker trapping direction).
 
-\thesis{This sounds like a pretty weak excuse. I better figure out what is
+\cm{This sounds like a pretty weak excuse. I better figure out what is
 actually going on here. Suspect I am underestimating the size of the
 acceptance.}
 There are 443 particles that remain trapped throughout the simulation. \mt{This
 result tells you the actual phase space acceptance of the trap - it will be
-443/10^{6} * initial phase space volume. It would be interesting to compare
+$443/10^{6}\times$ initial phase space volume. It would be interesting to compare
 this to the phase space volume you calculate analytically.} Of those
 that are trapped, the vast majority fall within the calculated acceptance.
 However in some edge cases it appears that the particles are outside. This is
@@ -477,7 +478,7 @@ being lost. I think more likely is that particles slightly outside the
 separatrix are on metastable trajectories meaning they would be lost if you ran
 the simulation longer.}
 
-\thesis{Check that the separatrix is calculated sensibly, is it the same in
+\cm{Check that the separatrix is calculated sensibly, is it the same in
 every direction?}
 %
 \begin{figure}
@@ -600,7 +601,7 @@ particle lost during initialisation.
 \label{design:sim:trans_U}
 
 
-\thesis{Ensure language is consistent when talking about chip, so is the U
+\cm{Ensure language is consistent when talking about chip, so is the U
 above or below?}
 %
 The first step is to transfer the molecules from the transport coils to the U
@@ -720,7 +721,7 @@ Here the compression in number density and expansion in velocity space is clear
 by the changing cloud shape over time. The cloud also clearly follows the
 potential minimum without losses.
 
-\thesis{In these figures state the trapping heights $z_0$}
+\cm{In these figures state the trapping heights $z_0$}
 %
 \begin{figure}[p]
 \centering
