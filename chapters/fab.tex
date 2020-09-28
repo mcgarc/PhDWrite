@@ -16,6 +16,7 @@ undertaken thus far, and the difficulties which we have yet to overcome.
       \caption{}
     \end{subfigure}
   \caption{
+    \mt{Make this larger for better use of space}
     Prototype design of a chip that has been used for fabrication. This design
     was originally presented in the ESA, but the wire layout has been refined
     as discussed in chapter~\ref{design}. This design consists of twelve chips
@@ -59,7 +60,8 @@ anode for electroplating, and the photoresist layer prevents deposition onto
 areas that it covers. This allows thick wires to be deposited into the mould.
 After electroplating the seed layer can be etched away.  This is a common
 technique for constructing atom chips and is described in \inlinerefs{2011Ac,
-Lev2003, KOUKHARENKO2004600}.
+Lev2003, KOUKHARENKO2004600}. \mt{Mike highlighted this, I don't think the
+inlinerefs command is sensible.}
 
 The fabrication process starts with a four inch silicon wafer on which we can
 fabricate twelve \SI{2}{\centi\meter} by \SI{2}{\centi\meter}  chips. This
@@ -72,6 +74,7 @@ in the desired shape of the wires.
 \item Dice the wafer to produce individual chips.
 \item Electroplate the chip, such that wires are formed in the mould to the
 desired height.
+\item Remove the photoresist mould.
 \item Chemically etch the chip so as to remove the seed layer and
   electrically isolate the wires from each other.
 \end{enumerate}
@@ -152,20 +155,23 @@ these are not used in this work.} In this section I will present the standard
 procedure for patterning metal onto a substrate with
 lithography~\cite{Madou2002}.
 
-A substrate can therefore be patterned by controlling the region of
-exposure. This is commonly done by using a mask to project a desired shadow
-during exposure~\cite{Madou2002}, however we have used a Heidelberg DWL 66, a
-direct writer,
-to perform photolithography.
-%
-\thesis{Need a heidelberg cite.}
-
-An exposure pattern is uploaded to the direct writer. An ultraviolet laser is
-then raster scanned across the surface to be patterned. The laser is switched
-on in the regions where exposure is desired. This process is depicted for a
-positive photoresist in \myfigref{fab:fig:methods}{a}. The Heidelberg DWL 66 is
-capable of producing features down to \SI{300}{\nano\meter} in size.
-Patterning of our wafer typically takes less than one hour.
+A substrate can therefore be patterned by controlling the region of exposure.
+This is commonly done by using a mask to project a desired shadow during
+exposure~\cite{Madou2002}, however we have used a Heidelberg DWL 66, a direct
+writer, to perform photolithography.  \cm{Need a heidelberg cite.} An exposure
+pattern is uploaded to the direct writer. An ultraviolet laser is then raster
+scanned across the surface to be patterned. The laser is switched on in the
+regions where exposure is desired. This process is depicted for a positive
+photoresist in \myfigref{fab:fig:methods}{a}. The Heidelberg DWL 66 is capable
+of producing features down to \SI{300}{\nano\meter} in size.  Patterning of our
+wafer typically takes less than one hour.  Different exposure energies are
+required depending on the type of photoresist and its thickness. All our
+exposures use one scan across the chip, so the total exposure energy is a
+function only of the laser intensity.  \cm{Is it definitely only one scan?} Two
+positive photoresists are used in this fabrication procedure to produce thin
+and thick layers. The details of both of these are discussed further in
+section~\ref{fab:prep}. Some photoresists require rehydration after exposure,
+which can take several hours.
 
 \begin{figure}[h]
 \vspace{0.8cm}
@@ -195,16 +201,6 @@ Patterning of our wafer typically takes less than one hour.
   \label{fab:fig:methods}
 \end{figure}
 
-Different exposure energies are required depending on the type of photoresist
-and its thickness. All our exposures use one scan across the chip, so the total
-exposure energy is a function only of the laser intensity.
-%
-\thesis{Is it definitely only one scan?}
-%
-Two positive photoresists are used in this fabrication procedure to produce
-thin and thick layers. The details of both of these are discussed further in
-section~\ref{fab:prep}. Some photoresists require rehydration after exposure,
-which can take several hours.
 
 Following patterning of the photoresist, the sample is placed in a developing
 solution. This removes the exposed photoresist, exposing the silicon for
@@ -212,11 +208,6 @@ deposition. This is shown in \mysubfigref{fab:fig:methods}{b}. Development at
 room temperature can take several hours, but robust samples such as the ones
 described herein can be placed in a heating sonicator and developed in a few
 minutes.
-
-The next stage is usually to deposit metal onto the sample (shown in
-\mysubfigref{fab:fig:methods}{c}). We will describe how we do this with
-evaporation in the next section. After this unwanted metal can be removed by
-lifting off the remaining photoresist. 
 
 In the next section we will describe how metal can be deposited onto the sample
 by evaporation (shown in \mysubfigref{fab:fig:methods}{c}). After this the
@@ -553,6 +544,8 @@ exposed. A multimeter is used to confirm that there are no breaks in the wires.
   \includegraphics[width=0.8\textwidth]{figs/fab/wire_profile.pdf}
   \caption{A profile of trapping wires after etching, showing wires
   electroplated up to a height of approximately \SI{3}{\micro\meter}.
+  \cm{Mike says I need to make a better version of this figure. This is on my
+  todos, but I really want to do it for the new chip design.}
   }
   \label{fab:fig:endprofile}
 \end{figure}
@@ -570,7 +563,8 @@ molecules~\cite{Andre2006}.
 
 This overlap has previously been achieved for atoms in a magnetic
 trap~\cite{Treutlein2008}. An insulating layer is spin-coated onto the trapping
-wires so that a CPW can be fabricated by
+wires so that a CPW \cm{In final version I need to check that first use of
+abbreviation is explained.} can be fabricated by
 photolithography. The trap centre can be positioned in the region where the
 microwave field is strongest. This has potential to allow coherent control of
 the molecules and potentially even sideband cooling into the motional ground
