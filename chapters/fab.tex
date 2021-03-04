@@ -1,33 +1,9 @@
-We have not yet produced a final chip trap, however we have made good progress
-in production of a number of prototypes of the trapping wire layer using a
-prototype design shown in \myfigref{fab:fig:design1}. In this chapter I will
-outline the planned fabrication process, reporting on which steps have been
-undertaken thus far, and the difficulties which we have yet to overcome.
-
-\begin{figure}[h]
-    \begin{subfigure}{.5\textwidth}
-  \centering
-      \includegraphics[width=0.5\textwidth]{figs/wafer.png}
-      \caption{}
-    \end{subfigure}
-    \begin{subfigure}{.5\textwidth}
-  \centering
-      \includegraphics[width=0.5\textwidth]{figs/z_trap_fanouts_inset_scale.png}
-      \caption{}
-    \end{subfigure}
-  \caption{
-    \mt{Make this larger for better use of space}
-    Prototype design of a chip that has been used for fabrication. This design
-    was originally presented in the ESA, but the wire layout has been refined
-    as discussed in chapter~\ref{design}. This design consists of twelve chips
-    on a \SI{4}{\inch} wafer, shown in (a). Grey squares represent the seed
-    layer of gold for through-mask electroplating. The gold represents the
-    trapping wires. The blue represents where microwave guides will be
-    positioned in relation to the trapping wires. Detailed view can be seen in
-    (b) and the inset.
-  }
-  \label{fab:fig:design1}
-\end{figure}
+Fabrication of a chip has been an iterative process, where we have
+simultaneously improved upon both the chip's design and our fabrication
+techniques.
+In this chapter I will present the progress that we have made in
+learning how to build a chip trap, and how we plan to integrate a microwave
+guide in future experiments. 
 
 All the microfabrication techniques described below except for the
 electroplating were undertaken at the London Centre for Nanotechnology (LCN). 
@@ -43,6 +19,7 @@ produced using standard photolithography techniques~\cite{Madou2002}. However,
 the maximum height of features produced in these procedures is usually of the
 order \SI{100}{\nano\meter}.
 
+% TODO Need to cite this $j$ number
 We must ensure that the wires are capable of carrying the currents that are
 outlined in chapter~\ref{design}.  Other experiments with two-layer atom chips
 have reported a current density of $j=\SI{6E10}{\ampere\per\meter\squared}$ in
@@ -52,42 +29,73 @@ the trapping wires. For our wires this would require a minimum height of $h
 \SI{1}{\micro\meter}$  to carry our trapping currents.This is much higher than
 can be achieved with photolithography techniques.
 
-Hence, we have begun our prototyping using a combination of microfabrication
-techniques and electroplating known as through-mask
-electroplating~\cite{Ruythooren_2000}.. This is where photolithography is used
-to produce a mould on top of a thin seed layer of metal. The metal forms the
-anode for electroplating, and the photoresist layer prevents deposition onto
-areas that it covers. This allows thick wires to be deposited into the mould.
-After electroplating the seed layer can be etched away.  This is a common
+To achieve the required height, we have used through-mask
+electroplating~\cite{Ruythooren_2000}. First a substate is coated with a thin
+seed layer of gold, then photolithography is used to produce a thick (several
+mircron high) mould. The mould covers regions where no further deposition is
+required. The substrate can then be electroplated, with the seed layer acting
+as the anode, allowing thick wires to be deposited into the mould.
+After electroplating the seed layer can be etched away. This is a common
 technique for constructing atom chips and is described in \inlinerefs{2011Ac,
-Lev2003, KOUKHARENKO2004600}. \mt{Mike highlighted this, I don't think the
-inlinerefs command is sensible.}
+Lev2003, KOUKHARENKO2004600}.
 
-The fabrication process starts with a four inch silicon wafer on which we can
-fabricate twelve \SI{2}{\centi\meter} by \SI{2}{\centi\meter}  chips. This
-process can be briefly summarised:
+The fabrication process for our final chip begins with a four inch silicon
+wafer, which we dice into individual \SI{20}{\milli\meter} by
+\SI{20}{\milli\meter} dies. The remaining process can be briefly summarised:
+\cm{Is there a better way to link this list to the following sections?}
 \begin{enumerate}
-\item Lay down thin (\SI{60}{\nano\meter}) seed layer of gold for each chip.
+\item Lay down thin (\SI{60}{\nano\meter}) seed layer of chromium and gold.
 \item Spin coat a thick (\SI{6}{\micro\meter}) layer of photoresist.
 \item Expose and develop the thick photoresist so as to create a ``mould''
 in the desired shape of the wires.
-\item Dice the wafer to produce individual chips.
 \item Electroplate the chip, such that wires are formed in the mould to the
 desired height.
 \item Remove the photoresist mould.
 \item Chemically etch the chip so as to remove the seed layer and
-  electrically isolate the wires from each other.
+  electrically isolate the wires.
 \end{enumerate}
-%
-\cm{I think this can turn into "electrically isolate for the final design}
+This process is illustrated in \myfigref{fab:fig:process}
 
-\cm{
-An example of such a chip is shown in \ph{\myfigref{TODO}. (Picture of the chip
-with the flying wire.)} This chip has two flaws: one broken wire
-\ph{(highlighted in the figure)} and imperfect alignment of the trapping wires
-to the chip edge. Both of these are typical problems that can arise, and are
-discussed further below.
-}
+\begin{figure}[h]
+\vspace{0.8cm}
+\centering
+\begin{tabular}{cccc}
+  %\begin{overpic}[width=0.22\textwidth]{figs/fab/cartoon/01_barewafer.pdf}
+  %  \put(0,40){(a)}
+  %\end{overpic} &
+  \begin{overpic}[width=0.22\textwidth]{figs/fab/cartoon/03_wafercrauwarrows.pdf}
+    \put(0,40){(1)}
+  \end{overpic} &
+  \begin{overpic}[width=0.22\textwidth]{figs/fab/cartoon/03.5_waferpr.pdf}
+    \put(0,40){(2)}
+  \end{overpic} &
+  \begin{overpic}[width=0.22\textwidth]{figs/fab/cartoon/04_wafermould.pdf}
+    \put(0,40){(3)}
+  \end{overpic} \\[2cm]
+  \begin{overpic}[width=0.22\textwidth]{figs/fab/cartoon/e.pdf}
+    \put(0,40){(4)}
+  \end{overpic} &
+  \begin{overpic}[width=0.22\textwidth]{figs/fab/cartoon/f.pdf}
+    \put(0,40){(5)}
+  \end{overpic} &
+  %\begin{overpic}[width=0.22\textwidth]{figs/fab/cartoon/g.pdf}
+  %  \put(0,40){(g)}
+  %\end{overpic} &
+  \begin{overpic}[width=0.22\textwidth]{figs/fab/cartoon/h.pdf}
+    \put(0,40){(6)}
+  \end{overpic}
+\end{tabular}
+  \caption{
+    Illustration of the fabrication process. We begin with in (1) with a
+    silicon die (black), on which we deposit chromium adhesion layer (grey) and
+    a seed layer of gold (yellow). In (2) the entire die is spin coated in
+    photoresist (purple). The mould is formed by photolithography techniques
+    (3) and then electroplating is used to form tall wires (4). The photoresist
+    is removed (5), and then a gold etch followed by a chrome etch (6) are used
+    to electronically isolate the features.
+  }
+  \label{fab:fig:process}
+\end{figure}
 
 As discussed in chapter~\ref{intro}, a future aim of the molecule chip project is to
 integrate microwave guides on the chip. These guides must allow good overlap of
@@ -102,156 +110,40 @@ fabrication, but we anticipate that they will be:
 \end{enumerate}
 These steps are discussed further in section~\ref{fab:planned}.
 
-In the rest of this chapter I will describe the key microfabrication methods
-and the three fabrication stages: preparation of chips for electroplating,
-electroplating and the planned fabrication of the microwave layer.
+In the rest of this chapter I will describe the above process in detail,
+including the various pitfalls that we found as we itterated towards a complete
+\cm{trapping chip}.
 
-\section{Microfabrication methods}
+\section{Metal evaporation of seed layer}
 
-We use several fabrication techniques multiple times throughout the process.
-Here I give an overview of some of them.
-
-\subsection{Spin coating}
-\label{fab:spin}
-
-Spin coating is a procedure for distributing a uniform layer of liquid such as
-photoresist  across a substrate~\cite{Cohen2011}. It is typically followed by
-baking to solidify the layer. We use spin coating to apply layers of
-photoresist to our wafers and intend to use it to deposit polyimide.
-
-The substrate is mounted on a spin-coater
-%
-\cm{such as the one shown in \ph{some figure}}
-%
-and the liquid is applied to the centre of the substrate by a pipette. The
-spin-coater then rotates the sample at a low rotational speed to spread the
-liquid, it is then ramped to several thousand revolutions per minute.
-This uniformly distributes the liquid across the substrate.
-
-The thickness of the coating is dependent on the properties of the liquid
-\cm{the viscosity? Do I need to give an equation here so I can talk about
-polyimide later?} and the rotational speed of the substrate during coating.
-The maximum speed and the profile of the ramp can be used to control the
-resulting thickness.
-
-We use spin-coating to apply photoresists. These processes are described in
-further detail in section~\ref{fab:prep}. We also intend to use spin-coating
-to apply the insulating layer of polyimide to each chip. Applying the
-polyimide is a more involved process because it has to cover large
-(\SI{5}{\micro\meter} high) features. In this case multiple coatings are
-applied to ensure a smooth surface. \cm{This is discussed further in
-section~\ref{fab:planned}.}
-
-\subsection{Lithography}
-
-Lithography is the process of projecting the image of a design onto the surface
-of the substrate. The usual procedure is to coat the substrate in a
-photoresist, which can be exposed to ultraviolet light. Exposed regions of the
-photoresist will react with the light. The photoresist can be developed causing
-these regions to lift off while the rest of the photoresist remains attached to
-the wafer.\footnote{This describes the procedure for a positive photoresist.
-For negative photoresists the unexposed regions are removed on development, but
-these are not used in this work.} In this section I will present the standard
-procedure for patterning metal onto a substrate with
-lithography~\cite{Madou2002}.
-
-A substrate can therefore be patterned by controlling the region of exposure.
-This is commonly done by using a mask to project a desired shadow during
-exposure~\cite{Madou2002}, however we have used a Heidelberg DWL 66, a direct
-writer, to perform photolithography.  \cm{Need a heidelberg cite.} An exposure
-pattern is uploaded to the direct writer. An ultraviolet laser is then raster
-scanned across the surface to be patterned. The laser is switched on in the
-regions where exposure is desired. This process is depicted for a positive
-photoresist in \myfigref{fab:fig:methods}{a}. The Heidelberg DWL 66 is capable
-of producing features down to \SI{300}{\nano\meter} in size.  Patterning of our
-wafer typically takes less than one hour.  Different exposure energies are
-required depending on the type of photoresist and its thickness. All our
-exposures use one scan across the chip, so the total exposure energy is a
-function only of the laser intensity.  \cm{Is it definitely only one scan?} Two
-positive photoresists are used in this fabrication procedure to produce thin
-and thick layers. The details of both of these are discussed further in
-section~\ref{fab:prep}. Some photoresists require rehydration after exposure,
-which can take several hours.
-
-\begin{figure}[h]
-\vspace{0.8cm}
-\centering
-  \begin{overpic}[width=0.8\textwidth]{figs/fab/cartoon/lith.pdf}
-    \put(10,-5){(a)}
-    \put(35,-5){(b)}
-    \put(61,-5){(c)}
-    \put(86,-5){(d)}
-    \put(-1,6){$h$}
-    \put(23.2,-0.4){$x$}
-  \end{overpic}
-  \vspace{10mm}
-  \caption{Deposition process of gold onto silicon. A top-down view of the
-  target is shown in the top row, with a cross section along the dashed line
-  shown in the middle row. The bottom row shows a profile of the target (as
-  discussed in section~\ref{fab:profile}). Column (a) shows positive
-  photoresist (purple) with the exposed region highlighted (light blue). The
-  raster scan of the direct writer laser across the substrate is highlighted in
-  the top view.  In column (b) the resist is developed and the bare silicon
-  exposed. In column (c) gold (yellow) is deposited across the target, e.g. by
-  evaporation (as discussed in section~\ref{fab:evap}). In column (d) liftoff
-  is performed, removing the remaining photoresist and gold deposited on top of
-  it. This leaves only the desired pattern on the silicon.  The relative
-  heights of the materials are exaggerated for the purposes of illustration.
-  }
-  \label{fab:fig:methods}
-\end{figure}
-
-
-Following patterning of the photoresist, the sample is placed in a developing
-solution. This removes the exposed photoresist, exposing the silicon for
-deposition. This is shown in \mysubfigref{fab:fig:methods}{b}. Development at
-room temperature can take several hours, but robust samples such as the ones
-described herein can be placed in a heating sonicator and developed in a few
+Before any fabrication, the die must be cleaned and dehydrated to ensure that
+there will be good adhesion to the substrate. A solvent clean with acetone and
+isopropyl alchol will remove any organic compounds \cm{check this}. The die is
+then rinsed with deionised water and dehydrated in an oxygen plasma for ten
 minutes.
 
-In the next section we will describe how metal can be deposited onto the sample
-by evaporation (shown in \mysubfigref{fab:fig:methods}{c}). After this the
-unwanted metal is removed along with the remaining photoresist in what is known
-as the `lift-off' process. Photoresist remover is applied to the solution for
-approximately one minute (depending on the exact photoresist and remover used).
-This leaves only the intended pattern of metal on the substrate, as in
-\mysubfigref{fab:fig:methods}{d}.
+The die is then ready for metalization, which here is done by metal
+evaporation. To further improve adhesion between the gold and silicon, a thin
+($<10\si{\micro\meter}$) intermediary chrome layer is deposited first, followed
+by \SI{50}{\micro\meter} of gold.
 
-Variations on this photolithography method can be used to achieve different
-results. A simple example would be deposition of two metals onto the surface.
-We will see in section~\ref{fab:prep} that chromium can be used as an
-adhesion layer for gold. We will also show how a thick photoresist mould can be
-used to create tall features by electroplating.
+We performed evaporation using an Edwards A306 bell jar evaporator. Typically
+we \cm{metalize} four dies at a time. They are loaded into the belljar, along
+with gold and chrome, using a boat and rod respectively.  we deposit gold onto
+four dies at a time. The dies are positioned with the polished side facing down
+towards the metal. This arrangement is shown in \myfigref{fab:fig:belljar}.
 
-\subsection{Evaporation}
-\label{fab:evap}
-
-This section details the evaporation procedure. In the previous section we used
-the example of direct deposition of gold on to silicon (see
-\mysubfigref{fab:fig:methods}{c}). In reality a thin adhesion layer of chromium
-is required for good results~\cite{Madou2002}.
-
-We performed evaporation using an Edwards A306 bell jar evaporator.  The
-substrate is placed inside the belljar with the target side facing a sample of
-the metal to be evaporated. The belljar is then pumped down by a scroll and
-turbo to pressures below $10^{-6}\si{\milli\bar}$ for evaporation. Multiple
-metals can be placed on a carousel to allow a different metal to be used for
-subsequent depositions.
-
-\cm{
-%
 \begin{figure}
   \centering
-  \ph{Photo of bell jar with evaporation cartoon(?)}
+  \ph{Photo of bell jar with evaporation and layout cartoon}
   \caption{\ph{caption}}
   \label{fab:fig:belljar}
 \end{figure}
-%
-}
 
-A current is then passed through the target to induce evaporation of the metal
-onto the substrate. A shutter is used to block deposition onto the substrate
-until the desired current has been reached.
+The belljar is pumped down to pressures below $10^{-6}\si{\milli\bar}$ over a
+few hours. The metal for deposition can be selected from a carousel, and heated
+by electric current inducing evaporation.  A shutter is used to block
+deposition onto the substrate until the desired current has been reached.
 
 The Edwards bell jar evaporator incorporates a FTM7 deposition monitor, which
 reports the rate of deposition and automatically shuts off deposition once the
@@ -269,117 +161,160 @@ and it would not be possible to load the evaporator with enough gold to last
 this long. This is why we must use electroplating to achieve the desired
 thickness.
 
-\subsection{Profiling}
-\label{fab:profile}
+\section{Spin coating of photoresist}
+\label{fab:spin}
 
-The Bruker DektakXT stylus profiler is used to characterise features on the
-substrate. A gold stylus is positioned onto the surface and dragged across. As
-the stylus comes into contact with features its height will change, allowing a
-profile of the surface to be measured. An example of the profile of a substrate
-is given for different stages of the lithography process in
-\myfigref{fab:fig:methods}. The Bruker Dektak allows profiling over a wide
-range of feature sizes, from \SI{1}{\nano\meter} to \SI{1}{\milli\meter}, and
-so is well suited to profiling our chips.
-%
-\cm{Figure out how to cite this}.
+Spin coating is a procedure for distributing a uniform layer of liquid such as
+photoresist  across a substrate~\cite{Cohen2011}. It is typically followed by
+baking to solidify the layer. We use spin coating to apply SPR220-7 \cite{}
+photoresist, which will form the mould for the wires.
 
-\cm{Maybe some raster scans?}
+The die is mounted in the \cm{spin coater details}, and \cm{how much? I can
+check pippete...} of SPR220-7 is applied. The die undergoes a
+\cm{\SI{2}{\second} ramp to \SI{500}{\rpm} where it is held before a ?second
+ramp to \SI{4000}{\rpm} and held for \SI{30}{\second}.} This results in a
+nominal \SI{6}{\micro\meter} high coating of photoresist \cm{according to LCN,
+but we haven't actually varified this}.
+SPR220-7 requires a post-application bake, first at \SI{90}{\celsius} for two
+minutes, then immediately afterwards at \SI{120}{\celsius}.
 
-\section{Preparation for electroplating}
-\label{fab:prep}
+Spin coating the photoresist results in a bead at the edge of the die. This
+thick region of photoresist may not receive sufficient exposure to fully
+develop later. This can cause defects in features near the edge. It is
+possible to remove the bead by inserting an intial exposure and development
+step before the lithography discussed in the next section. However, since the
+only features that are covered by the bead are the robust wire bond pads, this
+is deemed unnecessary for our purposes. \cm{Defects due to the presence of a
+bead can be seen in \myfigref{}.}
 
-In this section I will describe the first stage of fabrication, which takes us
-up to the electroplating stage. These steps (except for the dicing) have been
-performed in a cleanroom.
+\section{Lithography of the wire mould}
 
-Fabrication begins with a \SI{4}{\inch} silicon wafer. The wafer is cleaned first
-with acetone, then isopropyl alcohol and deionised water. The wafer is then
-cleaned with an oxygen plasma and undergoes a dehydration bake.  This ensures
-that the wafer is clean and free of any absorbed water that might
-interfere with the later steps.
+Lithography is the process of projecting the image of a design onto the surface
+of the substrate. The usual procedure is to coat the substrate in a
+photoresist, which can be exposed to ultraviolet light. In our case, SPR220-7
+is a positive photoresist, meaning that exposed regions of the
+photoresist can be removed from the wafer by submersion in a suitable
+photoresist developer. Here, \cm{find name!} was used. 
 
-The wafer is then spin coated with a thin ($\sim\SI{500}{\nano\meter}$) layer
-of Dupont S1805 photoresist. This is followed by baking on a hotplate at
-\SI{115}{\celsius} for one minute, and developing in Microposit MF319
-developer, with gentle agitation for one minute (or as required).
+The common and, perhaps, traditional way to perform photolithography is to use
+a \cm{mercury} lamp and a chrome-on-glass mask to cast light onto the
+substrate, with the mask casting a shadow so as to illuminate only the desired
+region~\cite{Madou2002}. This was the method that we began using at the start of the
+project, however we found that it was easier to achieve reliable results by
+using the the Heidlberg DWL 66, a direct writer~\cite{}. 
 
-The wafer is then placed into the Heidelberg direct writer for exposure, to
-create the pattern of seed layers shown in \myfigref{fab:fig:design1} (grey
-squares). This pattern is a simple grid of \SI{2}{\centi\meter} by
-\SI{2}{\centi\meter} squares which will later be diced to become individual
-chips.  It is important that the chips are separated at this stage so that
-tracks of bare silicon are exposed for dicing. The required exposure energy is
-\SI{20}{\milli\joule\per\centi\meter\squared}.
+Instead of using a mask to cast a shadow, the direct writer uses a tightly
+focused ultraviolet laser, whose beam is raster scanned across the surface. The
+beam is then switched on and off so as to produce the pattern that is required.
+This process is depicted for a in \myfigref{fab:fig:methods}. The Heidelberg
+DWL 66 is capable of producing features down to \SI{300}{\nano\meter} in size.
+For SPR220-7 an exposure energy of \cm{??} is required, which is administered
+over three passes of the laser at \cm{intensity}. The whole scan for one die
+takes around twenty minutes.
 
-We use evaporation to deposit a \SI{15}{\nano\meter} thick layer of chromium onto the
-wafer. This is an adhesion layer for the \SI{50}{\nano\meter} gold layer which is
-deposited next. This gold layer will act as the seed layer for electroplating.
-The chromium and gold layer deposition steps are shown in
-\mysubfigref{fab:fig:prep}{b} and (c) respectively. The photoresist (not
-pictured) is then removed using Microposit 1165 remover.
+Since designs can be directly uploaded to the direct writer, there is no need
+to wait for a third party to construct a mask.  Hence the direct writer allows
+rapid prototyping. It also has the benefit of making alignment easier, since
+this can be performed automatically by the computer, and any issues with
+mask-die contact are avoided entirely.
 
-The next stage is to create the photoresist mould for electroplating. A thick
-(\SI{6}{\micro\meter}) layer of Dupont SPR220-7 photoresist is spin coated on to the
-wafer. The wafer is then baked at \SI{90}{\celsius} for two minutes, then
-immediately afterwards at \SI{120}{\celsius} for three minutes. The sample can
-then be exposed to produce the wire pattern shown in
-\myfigref{fab:fig:design1} (gold wire layout), with an exposure
-energy of \SI{140}{\milli\joule\per\centi\meter\squared}.
-
-After exposure, the sample must undergo rehydration for at least 45 minutes,
-although overnight is preferable. A post-exposure bake at the same temperatures
-and times as the pre-exposure bake is required, before the final step of
-developing in Microposit MF319.
-
-At this stage, the wafer holds twelve chips, with electroplating moulds to
-produce the trapping wires shown in \myfigref{fab:fig:design1}. The moulds,
-formed of thick photoresist are positioned above a seed layer of gold, as
-depicted in \mysubfigref{fab:fig:prep}{d}. These twelve chips can be divided
-into separate pieces for electroplating and ultimately for use in the
-experiment. This is done using a Disco DAD3220 dicing saw.
-
-At this point in the procedure it is useful to ensure that the creation of
-the mould has been successful. This can be achieved by characterisation of the
-mould with the stylus profilometer.
-%
-\cm{Profilometer results pls}
-
-The wafer is then diced and the individual chips are ready to be electroplated.
 
 \begin{figure}[h]
 \vspace{0.8cm}
 \centering
-\begin{tabular}{cccc}
-  \begin{overpic}[width=0.22\textwidth]{figs/fab/cartoon/a.pdf}
-    \put(0,40){(a)}
-  \end{overpic} &
-  \begin{overpic}[width=0.22\textwidth]{figs/fab/cartoon/b.pdf}
-    \put(0,40){(b)}
-  \end{overpic} &
-  \begin{overpic}[width=0.22\textwidth]{figs/fab/cartoon/c.pdf}
-    \put(0,40){(c)}
-  \end{overpic} &
-  \begin{overpic}[width=0.22\textwidth]{figs/fab/cartoon/d.pdf}
-    \put(0,40){(d)}
+  \begin{overpic}[width=0.8\textwidth]{figs/fab/cartoon/throughmask.pdf}
+    \put(10,-5){(a)}
+    \put(35,-5){(b)}
+    \put(61,-5){(c)}
+    \put(86,-5){(d)}
+    \put(-1,6){$h$}
+    \put(23.2,-0.4){$x$}
   \end{overpic}
-\end{tabular}
-  \caption{Cross section of the preparation of chips for electroplating. The
-  bare wafer (black) is shown in (a). The chromium adhesion layer (grey) is
-  applied by evaporation (b), followed by the thicker gold seed layer (yellow,
-  c). Finally the thick SPR220-7 photoresist mould for the wires (purple) is
-  produced by lithography (d). The photoresist mould pictured here is
-  not to be confused with the thin S18105 photoresist pattern used to create
-  the seed layer patches.}
-  \label{fab:fig:prep}
+  \vspace{10mm}
+  \caption{An illustration of how lithography is used to produce tall wires in
+  through-mask electroplating. The top row shows a top-down view of the die,
+  with a cross section along the dashed line shown in the middle row. The
+  bottom row shows a profile of the target (as discussed in
+  section~\ref{fab:inspmould}). Column (a) shows photoresist (purple) above the
+  seed layer (\cm{colours as in \myfigref{}}) with the exposed region
+  highlighted (light blue). The raster scan of the direct writer laser across
+  the substrate is highlighted in the top view.  In column (b) the resist is
+  developed and the seed layer is exposed. In column (c) gold is deposited via
+  electroplating (as discussed in section~\ref{fab:eplate}) to just below the
+  height of the mould. In column (d) the photoresist is removed, leaving the
+  tall wires (highlighted with black outline) and seed layers, the latter of
+  which will be removed by etching.
+  }
+  \label{fab:fig:tmep}
 \end{figure}
 
-\section{Electroplating}
 
-In electroplating a conductive target is connected to a circuit as an anode and
-placed into an electrolytic solution along with a cathode. Current passed
-through the solution causes ions in the solution to be deposited onto the
-target. This is illustrated in \mysubfigref{fab:fig:etch}{a}. An overview
-of electroplating can be found in \inlineref{Schlesinger2011}.
+This photoresist requires a rehydration step after exposure, so it is left at
+ambient temperature overnight before it is developed with  \cm{what? for how
+long?}. \cm{Reference first side-on fig.}
+
+
+\subsection{Inspecting the photoresist mould}
+\label{fab:inspmould}
+
+\cm{Profiling, with examples and contact testing of the wire bond pads to
+ensure no residue PR}
+
+So far we have discussed the process up to the point that we have a photoresist
+mould on top of the gold seed layer. The next step is to electroplate so as to
+form the tall wires. However it is useful to first examine the mould so that we
+can ensure any electroplating target is likely to produce a suitable chip.
+
+The die can be imaged with a microscope for inspection of features. This is
+useful to give an overview of key areas, and can be used to identify any
+regions with potential defects. When these are identified it is often useful to
+be able to examine the contours of the region.
+
+This can be achieved with a stylus profilometer, such as the Bruker DektakXT
+which was used here. A stylus profilometer operates by positioning a gold
+stylus onto the surface of the die and dragging it in one direction. As
+the stylus comes into contact with features its height will change, allowing a
+profile of the surface to be measured. Profiling of a surface is illustrated
+in the lowest row of \myfigref{fab:fig:tmep}
+
+% TODO
+% A typical example...
+
+% Some common problems...
+
+% Show the one that I developed again to make sure the mould was celar (this
+% was a lettered chip)
+
+%An example of the profile of a substrate
+%is given for different stages of the lithography process in
+%\myfigref{fab:fig:methods}. The Bruker Dektak allows profiling over a wide
+%range of feature sizes, from \SI{1}{\nano\meter} to \SI{1}{\milli\meter}, and
+%so is well suited to profiling our chips.
+%%
+%\cm{Figure out how to cite this}.
+%
+%\cm{Maybe some raster scans?}
+%
+%\cm{Profilometer results pls}
+%
+%The wafer is then diced and the individual chips are ready to be electroplated.
+
+
+\section{Electroplating the tall wires}
+
+Now the chip is returned to the Blacket Laboratory for electroplating.
+Electroplating does not take place in cleanroom conditions, but it is important
+that the dies are treated with great care during transport, and kept sealed
+until electroplating can begin. We found that the dies were surprisingly
+robust, and were able to be kept for several weeks between exposure and
+electroplating.
+
+In electroplating a conductive target (here, the die) is connected to an
+electric circuit as an anode and placed into an electrolytic solution along
+with a cathode. Current passed through the solution causes ions in the solution
+to be deposited onto the target. This is illustrated in
+\mysubfigref{fab:fig:etch}{a}. An overview of electroplating can be found in
+\inlineref{Schlesinger2011}.
 %
 \cm{This ref again, check it is ok!}
 
@@ -388,9 +323,9 @@ into the regions that are not covered by the photoresist mould, as shown in
 \myfigref{fab:fig:eplate}. This method allows us to produce wires up to the
 thickness of the photoresist height. Above this the wires will begin to
 ``mushroom,'' spreading out across the top of the photoresist and losing their
-shape. Since we are able to produce a photoresist layer of \SI{6}{\micro\meter}
-in height, the desired wire thickness of \SI{5}{\micro\meter} is
-possible~\cite{Ruythooren_2000}..
+shape. As per the discussion in \cm{ref chapter}, we require a minimum wire
+height of \cm{\SI{5}{\micro\meter}}. We will see below that we have been able
+to reliably produce wires up to a height of \SI{6}{\micro\meter}.
 
 \cm{include photo of apparatus}
 %
@@ -399,7 +334,7 @@ possible~\cite{Ruythooren_2000}..
 \centering
   \begin{overpic}[width=0.22\textwidth]{figs/fab/cartoon/eplate.pdf}
     \put(-10,100){(a)}
-    \put(28.3,92.5){$I$}
+    \put(28.7,91.2){$I$}
   \end{overpic}
   \caption{
     A chip (c.f.\myfigref{fab:fig:prep}) is submerged in a gold electrolyte
@@ -438,37 +373,54 @@ time,
   \times\frac{It}{A}.
 \end{equation}
 %
-For our electrolytic solution, we have used Metakem Goldbath-SF, which
-is rated for currents between \SIrange{1}{15}{\milli\ampere}. This suggests
-that we will be able to achieve a few microns of thickness within a few minutes
-of electrocoating. However we do not know the exact value of the current
-efficiency for our experiment, so our coating time and operating current have
-been determined experimentally.
-%
-\cm{Should cite metakem}
-
+\cm{Ensure I am not word stealing here...}
+For our electrolytic solution, we have used Metakem Goldbath-SF.
 Metakem Goldbath-SF is chosen because it produces very pure (99.99\%) deposits,
 and will not react with our photoresist. The effectiveness of this product has
 been demonstrated for a similar design in \inlineref{Treutlein2008}.
+%
+\cm{Should cite metakem}
+
+Goldbath-SF is suitable for use with current densities in the range
+\SIrange{1}{15}{\milli\ampere\per\centi\meter\squared}. Final chip design has a
+plating surface area of $S\approx85\si{\milli\meter\squared}$. There is also an
+additional contribution to surface area from the clip with which we hold the
+die in place during plating. We do therefore do not know the plating area
+exactly, but we ensure that the entire clip in the solution every time to
+ensure the results are reproducable. We can also estimate the minimum plating
+time for wire heights of \SI{3}{\micro\meter}, which we expect to be
+\cm{TODO}.
+
+% Can we figure out the chip area from the offset of different plating times?
 
 Our apparatus for the electroplating step is shown in
-\mysubfigref{fab:fig:eplate}{b}. The electrolytic solution is placed in a
-beaker, which itself is placed in a water bath held at \SI{58}{\celsius}. The
+\mysubfigref{fab:fig:eplate}. The electrolytic solution is placed in a
+beaker, which itself is placed in a water bath held at \SI{60}{\celsius}. The
 bath is heated using a hotplate with magnetic stirrer. Some time is allowed for
-thermalisation and then the target chip and the cathode are placed in the
-solution. The chip is held in position by a stiff insulated wire, which also
-carries current to the seed layer. The insulation on the wire prevents an
-increase in the plating area.  The cathode is a grid of platinised titanium
-which has been cut to the size of our beaker. This was also purchased from
-Metakem.
+thermalisation, during which it is imporant that the goldbath is covered to
+prevent loss by evaporation.
+
+When the goldbath has reached \SI{60}{\celsius} the target chip and the cathode
+are submerged. The chip is held in position by a stiff insulated wire, which
+also carries current to the seed layer. A multimeter can be used to ensure that
+there is good electrical contact from the wire to the holder. The wire is
+insulated, and we use the smallest clip possible so as to minimise gold plating
+to the chip.  The cathode is a grid of platinised titanium which has been cut
+to the size of our beaker.  This was also purchased from Metakem.
+
+% Change this to show that electroplating without the aggitation didn't work
+% The whole of the next three paragraphs needs to be turned into more of the
+% narative of how we learned to electroplate. Including profiling results
 
 A bubbler is placed to agitate the solution near to the chip surface. This in
 combination with gentle stirring ensures good circulation of the solution and
 hence prevents localised depletion of the ions near to the chip
 surface~\cite{Schlesinger2011} \cm{also cite conversation with S Etienne?}.
 
-After electroplating the chips are rinsed with deionised water, dried and stored
-for transport to the LCN cleanroom for the final fabrication steps.
+After electroplating, dies are rinsed with deionised water, and the photoresist
+is removed overnight with \cm{Dupont 1165 photoresist remover}.  Dies are then
+dried and stored for transport to the LCN cleanroom for the inspection and
+final fabrication steps.
 
 We determined experimentally that electroplating at $\SI{15}{\milli\ampere}$
 for duration $\SI{400}{\second}$ reliably produced wires of height
@@ -478,7 +430,34 @@ before and after the removal of the photoresist mould.
 %
 \cm{Profile}
 
+\subsection{Troubleshooting}
+
+Building and running an electroplating setup was by far the most challenging
+stage of the fabrication process. It is therefore worth noting some of the
+complications that we experienced and how they were overcome.
+
+% Doesn't work without aggitation
+
+% Poor plating if the chip doesn't face the cathode (is this definitely a
+% thing? I think I need a photo to be able to talk about this) plates only at
+% edges
+
+% Comparison between wires is hard, hence the new characterisation features
+
+% Using a large crocodile clip seems to cause localised depletion (need to
+% confirm this)
+
+% Trying to remove with IPA and acetone instead of PR remover can cause debris
+
+% Shadowing, as in Treutlein, with profiles and pictures
+
+% Inconsistent heights when changing to fresh solution in order to resolve the
+% shadowing (maybe a change in the efficency alpha between solutions??) I can
+% show some plots for this too
+
 \section{Photoresist liftoff and etching}
+
+\cm{probably separate thes into two}
 
 After electroplating the photoresist mould is removed with Microposit Remover
 1165 as described in section~\ref{fab:prep}. The chip is now as pictured in
@@ -490,18 +469,6 @@ seed layer and the adhesion layer so that the wires are separated.
 \vspace{0.8cm}
 \centering
 \begin{tabular}{cccc}
-  \begin{overpic}[width=0.22\textwidth]{figs/fab/cartoon/e.pdf}
-    \put(0,40){(a)}
-  \end{overpic} &
-  \begin{overpic}[width=0.22\textwidth]{figs/fab/cartoon/f.pdf}
-    \put(0,40){(b)}
-  \end{overpic} &
-  \begin{overpic}[width=0.22\textwidth]{figs/fab/cartoon/g.pdf}
-    \put(0,40){(c)}
-  \end{overpic} &
-  \begin{overpic}[width=0.22\textwidth]{figs/fab/cartoon/h.pdf}
-    \put(0,40){(d)}
-  \end{overpic}
 \end{tabular}
   \caption{Cross section of the cleaning and etching of the chips following
   electroplating.  The electroplated chip (a) is cleaned to remove the
@@ -549,6 +516,14 @@ exposed. A multimeter is used to confirm that there are no breaks in the wires.
   }
   \label{fab:fig:endprofile}
 \end{figure}
+
+\section{Scaling fabrication}
+
+In future design iterations it may be useful to scale the fabrication process
+up by fabricating on the wafer scale rather than the scale of an individual
+die. An entire wafer can be metallised, be spin coated and exposed to
+produce the photoresist mask. Electroplating on the wafer scale may prove to be
+more complicated than our comparatively small targets, but \cm{...}
 
 \section{Planned fabrication of microwave layer}
 \label{fab:planned}
