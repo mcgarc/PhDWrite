@@ -462,40 +462,97 @@ that we experienced and how they were overcome.
 
 % See OneNote 27 Nov 2019
 Our first attempt at electroplating was with the \cm{single-axis design shown
-in some figure above}. Here we did not aggitate the electroplating solution. We
-were succesful in laying down the larger features such as the wire bond pads,
-but sub $~100\si{\micro\meter}$ features could not be seen after removing the
-photoresist mould.
+in some figure above}. Here we manually agitated the electroplating solution
+during plating. We were succesful in laying down the larger features such as
+the wire bond pads, but sub $~100\si{\micro\meter}$ features could not be seen
+after removing the photoresist mould. The results are shown in
+\mysubfigref{fab:fig:aggandcorr}{a}
 
 We attempted to improve the adhesion with manual aggitation, and using a
 bubbler, but eventually found that we achieved the best results with a
 combination of gentle stirring and bubbling of the goldbath. Electroplating
 results from our first attempt are compared to those with different amounts of
-aggitation in \myfigref{fab:fig:eplate:agg}.
+aggitation in \myfigref{fab:fig:aggandcorr}.
 
+% TODO Add a scale to these figs.
 \begin{figure}
   \centering
-  \ph{Eplate with no aggitation, manual aggitation, stirrer, stirrer and
-  bubbler}
-  \caption{}
-  \label{fab:fig:eplate:agg}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{figs/fab/eplatetroubleshoot/aggandcorr/manualagg.png}
+    \caption{}
+  \end{subfigure}
+  \hspace{1cm}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figs/fab/eplatetroubleshoot/aggandcorr/corrosion.png}
+    \caption{}
+  \end{subfigure}
+
+  \begin{subfigure}[b]{0.22\textwidth}
+    \centering
+    \ph{Equalivalent to a for good chip}
+    \caption{}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.22\textwidth}
+    \centering
+    \ph{Equalivalent to b for good chip}
+    \caption{}
+  \end{subfigure}
+  \caption{
+    The effects of insufficient aggitation (a) and removal of the photoresist
+    with solvents (b) can be compared to later results, where the solution is
+    well aggitated during electroplating (c) and the photoresist is removed
+    with \cm{1165 remover}. The dies shown in (a) and (b) are different dies
+    from the same batch. Subfigures (c) and (d) both show the same die, which
+    was produced after the cause of both problems was identified. All three
+    dies here have been electroplated at \SI{10}{\milli\ampere} for
+    \SI{200}{\milli\second}.
+  }
+  \label{fab:fig:aggandcorr}
 \end{figure}
 
 Also in our first batch, we attempted to remove the mould with acetone. This
 appears to react with either remnants of the goldbath, or the photoresist
 itself and results in debris that we were unable to remove. This is shown in
-\cm{some fig.} and does not occur when the photoresist remover is used.
+\mysubfigref{fab:fig:aggandcorr}{b}, and does not occur when the photoresist
+remover is used.
 
 Originally we had planned to connect the chip to the current source by clipping
 to the wire bond pad, however this can cause damage to the pad and prevents
 electroplating under the clip. This was solved by altering the design to
 include a separate pad for connecting the chip during electroplating. The
-damage done to the wirebondpad can be seen in \cm{fig from OneNote 21Feb},
-which shows the first design iteration with the plating connector pad. This pad
-was too small to achieve good connection and was made larger in later designs.
+damage done to the wirebondpad can be seen in
+\mysubfigref{fab:fig:1stgoodplate}{a},
+which shows the first design iteration with the plating connector pad.
+%This pad was too small to achieve good connection and was made larger in later designs.
 On this iteration we were able to electroplate wires with good adhesion across
-the chip as shown in \cm{figure that is probably the same as above with
-profiles and microscope images.}
+the chip as shown in \mysubfigref{fab:fig:1stgoodplate}{b}.
+
+\begin{figure}
+  \centering
+  \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figs/fab/eplatetroubleshoot/2020-02-20.jpg}
+    \caption{}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \ph{Profile of this chip (must have files, data on onenote)}
+    \caption{}
+  \end{subfigure}
+  \caption{
+    One of the first dies whith successful electroplating across the entire
+    substrate. On the top of the die in (a) we can see the dedicated wire bond
+    pad (which was not used in this case, as this version was too small for
+    good contact with the clip). Damaged caused by attaching the clip to the
+    the wire bond pad can be seen on the left of the chip. The gold seed layer
+    has been etched, some debris is present on the chip, the cause of which is
+    discussed in section~\ref{fab:etch}. Subfigure (b) shows the profile of the
+    wires taken with the DektakXT profilometer. This die was plated at
+    \SI{15}{\milli\ampere} for \SI{400}{\second}.
+  }
+  \label{fab:fig:1stgoodplate}
+\end{figure}
 
 After this succesful plating the chip was redesigned to \cm{the new design}.
 This incorporated new calibration features designed to allow us to evaluate the
@@ -503,12 +560,15 @@ success of the various fabrication steps, but especially the electroplating.
 \cm{These can are somehow highlighted in a figure in a preceeding chapter.}
 
 Originally plating this \cm{new design} seemed succesful, however we found that
-the larger wires were not unifromly plated, with some areas near the edge
+the larger wires were not uniformly plated, with some areas near the edge
 seemingly shadowed by the mould as shown in \cm{fig. showing
 shadowing}. This phenomenom was also noted in \inlineref{Treutlein2008}, where
 it is suggested that the only solution is to change to new goldbath. Indeed
 doing this and following the same procedure produced results without this
 shadowing effect, see \cm{figure without shadowing}.
+%
+% Could note that this is likely due to aging, as we started to see the effect
+% after coming back from covid.
 
 Although the shadowing was successful, we noted that the height of the wires
 was very different between the two solutions for the same plating time and
@@ -536,10 +596,23 @@ remove, shown in \myfigref{fab:fig:etchres}. This was resolved by also cleaning
 for ten minutes in an oxygen plasma, suggesting that this debris may have been
 caused by residual photoresist.
 
+% TODO Need a scale on these figures
+% TODO Should I highlight and say something about the deformity due to the bead
+% too?
 \begin{figure}
-\centering
-  %\includegraphics[width=0.8\textwidth]{figs/fab/wire_profile.pdf}
-  \caption{\cm{Chips D and E residue pictures}}
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{figs/fab/etch/etchdebris.jpg}
+    \caption{}
+  \end{subfigure}
+  \hspace{1cm}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figs/fab/etch/etchdebris_scope.png}
+    \caption{}
+  \end{subfigure}
+  \caption{Residue left on the die after etching. It was found that this can be
+  avoided by cleaning with an oxygen plasma for ten minutes prior to etching.}
   \label{fab:fig:etchres}
 \end{figure}
 
