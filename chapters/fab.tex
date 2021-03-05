@@ -232,8 +232,6 @@ rapid prototyping. It also has the benefit of making alignment easier, since
 this can be performed automatically by the computer, and any issues with
 mask-die contact are avoided entirely.
 
-
-
 This photoresist requires a rehydration step after exposure, so it is left at
 ambient temperature overnight before it is developed with  \cm{what? for how
 long?}. This produces the wafer with mould as depicted in
@@ -378,6 +376,7 @@ equation~\cite{Ruythooren_2000}
 %
 \begin{equation}
   h = \left(\frac{\alpha I M}{nFA\rho}\right)t
+  \label{fab:eqn:faraday}
 \end{equation}
 %
 where $I$ is the current, $F=\SI{96.5}{\kilo\ampere\second\per\mole}$ is the
@@ -457,28 +456,70 @@ before and after the removal of the photoresist mould.
 
 \subsection{Troubleshooting}
 
-Building and running an electroplating setup was by far the most challenging
-stage of the fabrication process. It is therefore worth noting some of the
-complications that we experienced and how they were overcome.
+Electroplating the dies was by far the most challenging stage of the
+fabrication process.  It is therefore worth noting some of the complications
+that we experienced and how they were overcome.
 
-% Doesn't work without aggitation
+% See OneNote 27 Nov 2019
+Our first attempt at electroplating was with the \cm{single-axis design shown
+in some figure above}. Here we did not aggitate the electroplating solution. We
+were succesful in laying down the larger features such as the wire bond pads,
+but sub $~100\si{\micro\meter}$ features could not be seen after removing the
+photoresist mould.
 
-% Poor plating if the chip doesn't face the cathode (is this definitely a
-% thing? I think I need a photo to be able to talk about this) plates only at
-% edges
+We attempted to improve the adhesion with manual aggitation, and using a
+bubbler, but eventually found that we achieved the best results with a
+combination of gentle stirring and bubbling of the goldbath. Electroplating
+results from our first attempt are compared to those with different amounts of
+aggitation in \myfigref{fab:fig:eplate:agg}.
 
-% Comparison between wires is hard, hence the new characterisation features
+\begin{figure}
+  \centering
+  \ph{Eplate with no aggitation, manual aggitation, stirrer, stirrer and
+  bubbler}
+  \caption{}
+  \label{fab:fig:eplate:agg}
+\end{figure}
 
-% Using a large crocodile clip seems to cause localised depletion (need to
-% confirm this)
+Also in our first batch, we attempted to remove the mould with acetone. This
+appears to react with either remnants of the goldbath, or the photoresist
+itself and results in debris that we were unable to remove. This is shown in
+\cm{some fig.} and does not occur when the photoresist remover is used.
 
-% Trying to remove with IPA and acetone instead of PR remover can cause debris
+Originally we had planned to connect the chip to the current source by clipping
+to the wire bond pad, however this can cause damage to the pad and prevents
+electroplating under the clip. This was solved by altering the design to
+include a separate pad for connecting the chip during electroplating. The
+damage done to the wirebondpad can be seen in \cm{fig from OneNote 21Feb},
+which shows the first design iteration with the plating connector pad. This pad
+was too small to achieve good connection and was made larger in later designs.
+On this iteration we were able to electroplate wires with good adhesion across
+the chip as shown in \cm{figure that is probably the same as above with
+profiles and microscope images.}
 
-% Shadowing, as in Treutlein, with profiles and pictures
+After this succesful plating the chip was redesigned to \cm{the new design}.
+This incorporated new calibration features designed to allow us to evaluate the
+success of the various fabrication steps, but especially the electroplating.
+\cm{These can are somehow highlighted in a figure in a preceeding chapter.}
 
-% Inconsistent heights when changing to fresh solution in order to resolve the
-% shadowing (maybe a change in the efficency alpha between solutions??) I can
-% show some plots for this too
+Originally plating this \cm{new design} seemed succesful, however we found that
+the larger wires were not unifromly plated, with some areas near the edge
+seemingly shadowed by the mould as shown in \cm{fig. showing
+shadowing}. This phenomenom was also noted in \inlineref{Treutlein2008}, where
+it is suggested that the only solution is to change to new goldbath. Indeed
+doing this and following the same procedure produced results without this
+shadowing effect, see \cm{figure without shadowing}.
+
+Although the shadowing was successful, we noted that the height of the wires
+was very different between the two solutions for the same plating time and
+currents. Dies \cm{C, D and E?} were all plated for \cm{Time and current}, but
+\cm{C?} was plated with older solution yielding shadowing and \cm{D and E} were
+plated with new solution without shadowing. The wires in \cm{C?} are \cm{3?}
+times higher than those of \cm{D and E?} suggesting that the plating efficency
+$\alpha$ varies between solutions. Plating of \cm{F} for \cm{twice as long as D
+and E} produced wires of \cm{twice the height}, suggesting that the process is
+consistent with \myeqref{fab:eqn:faraday}. The results from this plating are
+examined in \cm{need a figure for this!}
 
 \section{Etching}
 
