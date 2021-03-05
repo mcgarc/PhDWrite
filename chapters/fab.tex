@@ -207,13 +207,6 @@ bead can be seen in \myfigref{}.}
 
 \section{Lithography of the wire mould}
 
-Lithography is the process of projecting the image of a design onto the surface
-of the substrate. The usual procedure is to coat the substrate in a
-photoresist, which can be exposed to ultraviolet light. In our case, SPR220-7
-is a positive photoresist, meaning that exposed regions of the
-photoresist can be removed from the wafer by submersion in a suitable
-photoresist developer. Here, \cm{find name!} was used. 
-
 The common and, perhaps, traditional way to perform photolithography is to use
 a \cm{mercury} lamp and a chrome-on-glass mask to cast light onto the
 substrate, with the mask casting a shadow so as to illuminate only the desired
@@ -226,9 +219,12 @@ focused ultraviolet laser, whose beam is raster scanned across the surface. The
 beam is then switched on and off so as to produce the pattern that is required.
 This process is depicted for a in \myfigref{fab:fig:methods}. The Heidelberg
 DWL 66 is capable of producing features down to \SI{300}{\nano\meter} in size.
-For SPR220-7 an exposure energy of \cm{??} is required, which is administered
-over three passes of the laser at \cm{intensity}. The whole scan for one die
-takes around twenty minutes.
+We use the photoresist \cm{Dupont} SPR220-7, which is a positive photoresist,
+meaning that areas exposed to the light are those which will be removed on
+developing. For \cm{Dupont} SPR220-7 an exposure energy of \cm{??} is required,
+which is administered over three passes of the laser at \cm{intensity}. The
+whole scan for one die takes around twenty minutes. This is illustrated in
+\mysubfigref{fab:fig:tmep}{a}.
 
 Since designs can be directly uploaded to the direct writer, there is no need
 to wait for a third party to construct a mask.  Hence the direct writer allows
@@ -236,6 +232,12 @@ rapid prototyping. It also has the benefit of making alignment easier, since
 this can be performed automatically by the computer, and any issues with
 mask-die contact are avoided entirely.
 
+
+
+This photoresist requires a rehydration step after exposure, so it is left at
+ambient temperature overnight before it is developed with  \cm{what? for how
+long?}. This produces the wafer with mould as depicted in
+\myfigref{fab:fig:tmep}{b}.
 
 \begin{figure}[h]
 \vspace{0.8cm}
@@ -265,11 +267,6 @@ mask-die contact are avoided entirely.
   }
   \label{fab:fig:tmep}
 \end{figure}
-
-
-This photoresist requires a rehydration step after exposure, so it is left at
-ambient temperature overnight before it is developed with  \cm{what? for how
-long?}. \cm{Reference first side-on fig.}
 
 
 \section{Inspecting the photoresist mould}
@@ -331,8 +328,9 @@ In electroplating a conductive target (here, the die) is connected to an
 electric circuit as an anode and placed into an electrolytic solution along
 with a cathode. Current passed through the solution causes ions in the solution
 to be deposited onto the target. This is illustrated in
-\mysubfigref{fab:fig:etch}{a}. An overview of electroplating can be found in
-\inlineref{Schlesinger2011}.
+\mysubfigref{fab:fig:etch}{a}, and the results of the process are shown
+schematically in \mysubfigref{fab:fig:tmep}{c}. An overview of electroplating
+can be found in \inlineref{Schlesinger2011}.
 %
 \cm{This ref again, check it is ok!}
 
@@ -444,7 +442,8 @@ hence prevents localised depletion of the ions near to the chip
 surface~\cite{Schlesinger2011} \cm{also cite conversation with S Etienne?}.
 
 After electroplating, dies are rinsed with deionised water, and the photoresist
-is removed overnight with \cm{Dupont 1165 photoresist remover}.  Dies are then
+is removed overnight with \cm{Dupont 1165 photoresist remover}, as illustrated
+in \mysubfigref{fab:fig:tmep}{d}. Dies are then
 dried and stored for transport to the LCN cleanroom for the inspection and
 final fabrication steps.
 
