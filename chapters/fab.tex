@@ -219,6 +219,13 @@ focused ultraviolet laser, whose beam is raster scanned across the surface. The
 beam is then switched on and off so as to produce the pattern that is required.
 This process is depicted for a in \myfigref{fab:fig:methods}. The Heidelberg
 DWL 66 is capable of producing features down to \SI{300}{\nano\meter} in size.
+
+Since designs can be directly uploaded to the direct writer, there is no need
+to wait for a third party to construct a mask.  Hence the direct writer allows
+rapid prototyping. It also has the benefit of making alignment easier, since
+this can be performed automatically by the computer, and any issues with
+mask-die contact are avoided entirely. 
+
 We use the photoresist \cm{Dupont} SPR220-7, which is a positive photoresist,
 meaning that areas exposed to the light are those which will be removed on
 developing. For \cm{Dupont} SPR220-7 an exposure energy of \cm{??} is required,
@@ -226,15 +233,9 @@ which is administered over three passes of the laser at \cm{intensity}. The
 whole scan for one die takes around twenty minutes. This is illustrated in
 \mysubfigref{fab:fig:tmep}{a}.
 
-Since designs can be directly uploaded to the direct writer, there is no need
-to wait for a third party to construct a mask.  Hence the direct writer allows
-rapid prototyping. It also has the benefit of making alignment easier, since
-this can be performed automatically by the computer, and any issues with
-mask-die contact are avoided entirely.
-
-This photoresist requires a rehydration step after exposure, so it is left at
-ambient temperature overnight before it is developed with  \cm{what? for how
-long?}. This produces the wafer with mould as depicted in
+Following exposure a rehydration step is required. The die is left at
+ambient temperature overnight before it is developed with \cm{what? for how
+long?}. This produces the die with mould as depicted in
 \myfigref{fab:fig:tmep}{b}.
 
 \begin{figure}[h]
@@ -266,9 +267,7 @@ long?}. This produces the wafer with mould as depicted in
   \label{fab:fig:tmep}
 \end{figure}
 
-
-\section{Inspecting the photoresist mould}
-\label{fab:inspmould}
+\subsection{Inspecting the mould}
 
 \cm{Profiling, with examples and contact testing of the wire bond pads to
 ensure no residue PR}
@@ -288,29 +287,43 @@ which was used here. A stylus profilometer operates by positioning a gold
 stylus onto the surface of the die and dragging it in one direction. As
 the stylus comes into contact with features its height will change, allowing a
 profile of the surface to be measured. Profiling of a surface is illustrated
-in the lowest row of \myfigref{fab:fig:tmep}
+in the lowest row of \myfigref{fab:fig:tmep} and is also useful for examining
+the features after plating.
 
-% TODO
-% A typical example...
+The profilometer available at LCN is fitted with a gold stylus of radius
+\SI{5}{\micro\meter}. This limits the resolution of the profile, for example in
+the case of a \SI{5}{\micro\meter} wide trench the tip of the stylus will not
+be able to reach the bottom, and so the profilometer will measure the trench as
+being below its actual depth. This effect is demonstrated for \ph{the lines
+characterisation feature} in \myfigref{fab:fig:exampleprofile}
 
-% Some common problems...
+\begin{figure}[h]
+  \ph{Example profile of mould, where we see that the resolution is limited.}
+  \caption{TODO}
+  \label{fab:fig:exampleprofile}
+\end{figure}
 
-% Show the one that I developed again to make sure the mould was celar (this
-% was a lettered chip)
+\subsection{Troubleshooting}
 
-%An example of the profile of a substrate
-%is given for different stages of the lithography process in
-%\myfigref{fab:fig:methods}. The Bruker Dektak allows profiling over a wide
-%range of feature sizes, from \SI{1}{\nano\meter} to \SI{1}{\milli\meter}, and
-%so is well suited to profiling our chips.
-%%
-%\cm{Figure out how to cite this}.
-%
-%\cm{Maybe some raster scans?}
-%
-%\cm{Profilometer results pls}
-%
-%The wafer is then diced and the individual chips are ready to be electroplated.
+A common problem that we faced early in development was underexposing the
+photoresist. This meant that some features were entirely missing from the mould,
+and others were incomplete, with photoresist remaining at the bottom of the
+mould after developing. This blocks the current during electroplating, and
+prevents the formation of wires. This can be seen with the microscope, and is
+confirmed when electroplating dies where the underdevelopment is present
+\ph{(see next section)}. However it is not possible to profile these with the
+stylus profilometer, since the small features where this occur are smaller than
+the resolution of the device \ph{(see above)}.
+
+\begin{figure}[h]
+  \ph{Comparision of a good and bad mould}
+  \caption{TODO}
+  \label{fab:fig:moulds}
+\end{figure}
+
+Even after proper exposure it is possible that the photoresist can be
+underdeveloped. This yields similar problems to underexposure, but can be
+easily resolved by returning the die to the developer. 
 
 
 \section{Electroplating the tall wires}
@@ -322,7 +335,7 @@ until electroplating can begin. We found that the dies were surprisingly
 robust, and were able to be kept for several weeks between exposure and
 electroplating.
 
-In electroplating a conductive target (here, the die) is connected to an
+In electroplating, a conductive target (here, the die) is connected to an
 electric circuit as an anode and placed into an electrolytic solution along
 with a cathode. Current passed through the solution causes ions in the solution
 to be deposited onto the target. This is illustrated in
@@ -341,8 +354,6 @@ shape. As per the discussion in \cm{ref chapter}, we require a minimum wire
 height of \cm{\SI{5}{\micro\meter}}. We will see below that we have been able
 to reliably produce wires up to a height of \SI{6}{\micro\meter}.
 
-\cm{include photo of apparatus}
-%
 \begin{figure}
 \vspace{0.8cm}
 \centering
@@ -458,51 +469,70 @@ before and after the removal of the photoresist mould.
 
 Electroplating the dies was by far the most challenging stage of the
 fabrication process.  It is therefore worth noting some of the complications
-that we experienced and how they were overcome.
+that we experienced and how they were overcome. 
 
 % See OneNote 27 Nov 2019
-Our first attempt at electroplating was with the \cm{single-axis design shown
-in some figure above}. Here we manually agitated the electroplating solution
-during plating. We were succesful in laying down the larger features such as
-the wire bond pads, but sub $~100\si{\micro\meter}$ features could not be seen
-after removing the photoresist mould. The results are shown in
-\mysubfigref{fab:fig:aggandcorr}{a}
+Our first attempt at electroplating was with the photoresist mould shown in
+\myfigref{fab:fig:moulds}, meaning that the full wires could not have been
+formed. These were nonetheless sutiable targets for practice. We manually
+agitated the electroplating solution during plating and were succesful in
+laying down the larger features such as the wire bond pads, but sub
+$\sim100\si{\micro\meter}$ features were not fabricated after removing the
+photoresist mould. This can be clearly seen when inspecting the region around
+the wire bond pads, as seen in \mysubfigref{fab:fig:aggandcorr}{a}.
 
 We attempted to improve the adhesion with manual aggitation, and using a
 bubbler, but eventually found that we achieved the best results with a
-combination of gentle stirring and bubbling of the goldbath. Electroplating
-results from our first attempt are compared to those with different amounts of
-aggitation in \myfigref{fab:fig:aggandcorr}.
+combination of gentle stirring and bubbling of the goldbath. This allowed us to
+fabricate features up to around the \ph{limit imposed by our poor mould, as
+described above}. However we found that our attempts to remove the photoresist
+with acetone were ineffective, and resulted in the debris visible in
+\mysubfigref{fab:fig:aggandcorr}{b}. It was resolved that this was unsuitable
+and \ph{microposit 1165 remover} must be used instead.
+
+For later attempts at electroplating we used a mould that had been exposed
+correctly, shown in \ph{figure}. Combined with proper aggitation of the
+solution and liftoff allowed fabrication of features to the
+$1\si{\micro\meter}$ scale, as can be seen in
+\mysubfigref{fab:fig:aggandcorr}{c} and (d). We can also see in these figures
+that the smallest wires (\SI{10}{\micro\meter} and \SI{3}{\micro\meter}) have
+been broken off from the surface of the die. This was due to sonicating the
+chip during photoresist removal. 
+
 
 % TODO Add a scale to these figs.
 \begin{figure}
   \centering
   \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{figs/fab/eplatetroubleshoot/aggandcorr/manualagg.png}
+    \includegraphics[width=\textwidth]{figs/fab/eplatetroubleshoot/aggandcorr/manualagg_flipped.png}
     \caption{}
   \end{subfigure}
   \hspace{1cm}
   \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{figs/fab/eplatetroubleshoot/aggandcorr/corrosion.png}
+    \includegraphics[width=\textwidth]{figs/fab/eplatetroubleshoot/aggandcorr/corrosion_flipped.png}
     \caption{}
   \end{subfigure}
 
-  \begin{subfigure}[b]{0.22\textwidth}
+  \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \ph{Equalivalent to a for good chip}
+    \includegraphics[width=\textwidth]{figs/fab/eplatetroubleshoot/aggandcorr/goodpads.png}
     \caption{}
   \end{subfigure}
-  \begin{subfigure}[b]{0.22\textwidth}
+  \hspace{1cm}
+  \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \ph{Equalivalent to b for good chip}
+  \begin{overpic}[width=\textwidth]{figs/fab/eplatetroubleshoot/aggandcorr/goodcentre_scale.png}
+    \put(69,18){\SI{50}{\micro\meter}}
+  \end{overpic}
     \caption{}
   \end{subfigure}
   \caption{
     The effects of insufficient aggitation (a) and removal of the photoresist
     with solvents (b) can be compared to later results, where the solution is
     well aggitated during electroplating (c) and the photoresist is removed
-    with \cm{1165 remover}. The dies shown in (a) and (b) are different dies
+    with \ph{1165 remover}. However the smallest wires were damaged by
+    sonicating. The dies shown in (a) and (b) are different dies
     from the same batch. Subfigures (c) and (d) both show the same die, which
     was produced after the cause of both problems was identified. All three
     dies here have been electroplated at \SI{10}{\milli\ampere} for
@@ -511,61 +541,19 @@ aggitation in \myfigref{fab:fig:aggandcorr}.
   \label{fab:fig:aggandcorr}
 \end{figure}
 
-Also in our first batch, we attempted to remove the mould with acetone. This
-appears to react with either remnants of the goldbath, or the photoresist
-itself and results in debris that we were unable to remove. This is shown in
-\mysubfigref{fab:fig:aggandcorr}{b}, and does not occur when the photoresist
-remover is used.
+To protect the fragile features we no longer sonicate the die during removal,
+and instead submerge the die in the remover overnight. This was done with
+\ph{the new design}, and we were able to electroplate features with a
+resolution of up to \SI{3}{\micro\meter}. See figure \ph{a figure showcasing a
+good chip with nice height including profiles}.
 
-Originally we had planned to connect the chip to the current source by clipping
-to the wire bond pad, however this can cause damage to the pad and prevents
-electroplating under the clip. This was solved by altering the design to
-include a separate pad for connecting the chip during electroplating. The
-damage done to the wirebondpad can be seen in
-\mysubfigref{fab:fig:1stgoodplate}{a},
-which shows the first design iteration with the plating connector pad.
-%This pad was too small to achieve good connection and was made larger in later designs.
-On this iteration we were able to electroplate wires with good adhesion across
-the chip as shown in \mysubfigref{fab:fig:1stgoodplate}{b}.
-
-\begin{figure}
-  \centering
-  \begin{subfigure}[b]{0.3\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{figs/fab/eplatetroubleshoot/2020-02-20.jpg}
-    \caption{}
-  \end{subfigure}
-  \begin{subfigure}[b]{0.45\textwidth}
-    \centering
-    \ph{Profile of this chip (must have files, data on onenote)}
-    \caption{}
-  \end{subfigure}
-  \caption{
-    One of the first dies whith successful electroplating across the entire
-    substrate. On the top of the die in (a) we can see the dedicated wire bond
-    pad (which was not used in this case, as this version was too small for
-    good contact with the clip). Damaged caused by attaching the clip to the
-    the wire bond pad can be seen on the left of the chip. The gold seed layer
-    has been etched, some debris is present on the chip, the cause of which is
-    discussed in section~\ref{fab:etch}. Subfigure (b) shows the profile of the
-    wires taken with the DektakXT profilometer. This die was plated at
-    \SI{15}{\milli\ampere} for \SI{400}{\second}.
-  }
-  \label{fab:fig:1stgoodplate}
-\end{figure}
-
-After this succesful plating the chip was redesigned to \cm{the new design}.
-This incorporated new calibration features designed to allow us to evaluate the
-success of the various fabrication steps, but especially the electroplating.
-\cm{These can are somehow highlighted in a figure in a preceeding chapter.}
-
-Originally plating this \cm{new design} seemed succesful, however we found that
-the larger wires were not uniformly plated, with some areas near the edge
-seemingly shadowed by the mould as shown in \cm{fig. showing
-shadowing}. This phenomenom was also noted in \inlineref{Treutlein2008}, where
-it is suggested that the only solution is to change to new goldbath. Indeed
-doing this and following the same procedure produced results without this
-shadowing effect, see \cm{figure without shadowing}.
+Note how the larger wires in \ph{above fig. again} were not uniformly plated,
+with some areas near the edge seemingly shadowed by the mould as shown in
+\cm{fig. showing shadowing}. This phenomenom was also noted in
+\inlineref{Treutlein2008}, where it is suggested that the only solution is to
+change to new goldbath. Indeed doing this and following the same procedure
+produced results without this shadowing effect, see \cm{figure without
+shadowing}.
 %
 % Could note that this is likely due to aging, as we started to see the effect
 % after coming back from covid.
@@ -733,10 +721,29 @@ coupling.
 
 \section{Connection to subchip}
 
+% Check when I introduce initials here, could be in ch 1 or smth
+To be used in the molecule experiment, the die must be mounted on the subchip
+descirbed in \ph{an earlier chapter}.
+
 \subsection{Gluing}
 
 % Epoxy process and testing
+First the die is glued into the mounting hole in the subchip with \ph{Epotex
+resin}, an epoxy resin which is suitable for use in ultrahigh vacuum systems.
+This is a two part resin, with parts A and B mixed in a five to one ratio by
+weight. The two parts are measured out with a mass balance, and then a tiny
+amount is applied to the subchip. Only enough resin is required that when the
+die is pressed onto the surface there will be a miniscus between the surfaces
+of the die and the subchip.
+
+Placing the die into the mounting hole, the gluing is followed by pressing in a
+vacuum bag. This presses the die into the resin and may help to prevent air
+pockets in the resin, which could leak into the vacuum later.
+
+Finally the entire assembly is baked at \SI{115}{\celsius} for an hour, then
+left to cool.
 
 \subsection{Wirebonding}
 
-% Wirebonding to Al subchip
+To form electrical connection between the subchip and the die, we wirebond
+between the two.
