@@ -470,26 +470,61 @@ for duration $\SI{400}{\second}$ reliably produced wires of height
 mould used to fabricate these wires.
 
 \begin{figure}[h]
-  \ph{Example profile of liens with mould}
-  \caption{TODO}
+  \centering
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figs/fab/wiremouldprofile/lines.pdf}
+    \vspace{1cm}
+    \caption{}
+  \end{subfigure}
+  \hspace{1cm}
+  \begin{subfigure}[b]{0.55\textwidth}
+  \begin{tikzpicture}
+    \begin{axis}[
+        enlargelimits=true,
+        xlabel=Scan distance (\si{\micro\meter}),
+        ylabel=Height (\si{\micro\meter}),
+        legend pos=outer north east,
+        width=0.9\textwidth,
+        height = 0.45\textwidth
+    ]
+    \addplot [
+      color=purple,
+      no marks,
+      style=very thick
+      ]
+    table
+    {figs/fab/wiremouldprofile/mould.dat};
+    \addlegendentry{Mould}
+    \addplot [
+      color=gold,
+      no marks,
+      style=very thick
+      ]
+    table
+    {figs/fab/wiremouldprofile/wire.dat};
+    \addlegendentry{Wires}
+    \end{axis}
+  \end{tikzpicture}
+    \caption{}
+  \end{subfigure}
+  \caption{Stylus profiling of the characterisation features. In (a) the lines
+  feature of the chip is shown \ph{(c.f. earlier chapter)}, with the grey
+  dashed line denoting the profile. Typical profiles are which is shown in (b),
+  for both the photoresist mould and the plated wires. Stylus size limits the
+  size of the trenches that can be fully profiled, and can make both trenches
+  and hills appear narrower and wider respectively.
+  }
   \label{fab:fig:chipprofile}
 \end{figure}
 
 Note that when examining the trenches of the mould with the profilometer, we
 must account fo the finite size of the stylus.
 The profilometer available at LCN is fitted with a gold stylus of radius
-\SI{5}{\micro\meter}. This limits the resolution of the profile, for example in
-the case of a \SI{5}{\micro\meter} wide trench the tip of the stylus will not
-be able to reach the bottom. This explains the shown in \mysubfigref{fab:fig:exampleprofile}{??}, and so the profilometer will measure the trench as
-being below its actual depth. This effect is demonstrated for \ph{the lines
-characterisation feature} in \myfigref{fab:fig:exampleprofile}.
-
-\begin{figure}[h]
-  \ph{Example profile of mould, where we see that the resolution is limited.
-  Also a cartoon of the stylus getting stuck}
-  \caption{TODO}
-  \label{fab:fig:exampleprofile}
-\end{figure}
+\SI{5}{\micro\meter}. This limits the resolution of the profile, hence why the
+trenches in \myfigref{fab:fig:chipprofile} become distorted at and below
+\SI{10}{\micro\meter}. This also means that the wires can appear to be slighly
+wider, and the trenches slightly narrower, accounting for the overlap in the
+figure.
 
 \subsection{Troubleshooting}
 
