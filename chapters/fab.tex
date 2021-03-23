@@ -184,17 +184,16 @@ thickness.
 
 Spin coating is a procedure for distributing a uniform layer of liquid such as
 photoresist  across a substrate~\cite{Cohen2011}. It is typically followed by
-baking to solidify the layer. We use spin coating to apply SPR220-7 \cite{}
-photoresist, which will form the mould for the wires.
+baking to solidify the layer. We use spin coating to apply Dupont SPR220-7
+\cite{} photoresist, which will form the mould for the wires.
 
-The die is mounted in the \cm{spin coater details}, and \cm{how much? I can
-check pippete...} of SPR220-7 is applied. The die undergoes a
-\cm{\SI{2}{\second} ramp to \SI{500}{\rpm} where it is held before a ?second
-ramp to \SI{4000}{\rpm} and held for \SI{30}{\second}.} This results in a
-nominal \SI{6}{\micro\meter} high coating of photoresist \cm{according to LCN,
-but we haven't actually varified this}.
-SPR220-7 requires a post-application bake, first at \SI{90}{\celsius} for two
-minutes, then immediately afterwards at \SI{120}{\celsius}.
+The die is mounted in a spin coater, and approximately \SI{1}{\milli\meter} of
+SPR220-7 is appled. The die undergoes a \cm{\SI{2}{\second} ramp to
+\SI{500}{\rpm} where it is held before a second ramp to \SI{4000}{\rpm} and
+held for \SI{30}{\second}.} This results in a nominal \SI{6}{\micro\meter} high
+coating of photoresist. SPR220-7 requires a post-application bake, first at
+\SI{90}{\celsius} for two minutes, then immediately afterwards at
+\SI{120}{\celsius}.
 
 Spin coating the photoresist results in a bead at the edge of the die. This
 thick region of photoresist may not receive sufficient exposure to fully
@@ -203,12 +202,14 @@ possible to remove the bead by inserting an intial exposure and development
 step before the lithography discussed in the next section. However, since the
 only features that are covered by the bead are the robust wire bond pads, this
 is deemed unnecessary for our purposes. \cm{Defects due to the presence of a
-bead can be seen in \myfigref{}.}
+bead can be seen in \myfigref{}.} Using too much photoresist during coating can
+produce an unduly thick bead, which can further interfere with photolithography
+steps.
 
 \section{Lithography of the wire mould}
 
 The common and, perhaps, traditional way to perform photolithography is to use
-a \cm{mercury} lamp and a chrome-on-glass mask to cast light onto the
+a mercury lamp and a chrome-on-glass mask to cast light onto the
 substrate, with the mask casting a shadow so as to illuminate only the desired
 region~\cite{Madou2002}. This was the method that we began using at the start of the
 project, however we found that it was easier to achieve reliable results by
@@ -226,17 +227,18 @@ rapid prototyping. It also has the benefit of making alignment easier, since
 this can be performed automatically by the computer, and any issues with
 mask-die contact are avoided entirely. 
 
-We use the photoresist \cm{Dupont} SPR220-7, which is a positive photoresist,
-meaning that areas exposed to the light are those which will be removed on
-developing. For \cm{Dupont} SPR220-7 an exposure energy of \cm{??} is required,
-which is administered over three passes of the laser at \cm{intensity}. The
-whole scan for one die takes around twenty minutes. This is illustrated in
-\mysubfigref{fab:fig:tmep}{a}.
+The SPR220-7 is a positive photoresist, meaning that areas exposed to the light
+are those which will be removed on developing. It has an exposure energy of
+\SI{140}{\milli\joule\per\square\centi\meter} is required, which is
+administered over three passes. The laser power is calibrated to achieve the
+correct exposure of the laser, operating at \SI{70}{\milli\watt}.  The . The
+whole scan for one die takes around twenty minutes. This process is illustrated
+in \mysubfigref{fab:fig:tmep}{a}.
 
-Following exposure a rehydration step is required. The die is left at
-ambient temperature overnight before it is developed with \cm{what? for how
-long?}. This produces the die with mould as depicted in
-\myfigref{fab:fig:tmep}{b}.
+Following exposure a rehydration step is required. The die is left at ambient
+temperature overnight before it is developed in Microposit MF-319 until it runs
+clear, and then for \SI{30}{\second} extra (usually about two minutes total).
+This produces the die with mould as depicted in \mysubfigref{fab:fig:tmep}{b}.
 
 \begin{figure}[h]
 \vspace{0.8cm}
@@ -250,58 +252,24 @@ long?}. This produces the die with mould as depicted in
     \put(23.2,-0.4){$x$}
   \end{overpic}
   \vspace{10mm}
-  \caption{An illustration of how lithography is used to produce tall wires in
-  through-mask electroplating. The top row shows a top-down view of the die,
-  with a cross section along the dashed line shown in the middle row. The
-  bottom row shows a profile of the target (as discussed in
-  section~\ref{fab:inspmould}). Column (a) shows photoresist (purple) above the
-  seed layer (\cm{colours as in \myfigref{}}) with the exposed region
-  highlighted (light blue). The raster scan of the direct writer laser across
-  the substrate is highlighted in the top view.  In column (b) the resist is
-  developed and the seed layer is exposed. In column (c) gold is deposited via
-  electroplating (as discussed in section~\ref{fab:eplate}) to just below the
-  height of the mould. In column (d) the photoresist is removed, leaving the
-  tall wires (highlighted with black outline) and seed layers, the latter of
-  which will be removed by etching.
+  \caption{
+    A photoresist mould is created for through-mask electroplating.The top row
+    shows a top-down view of the die, with a cross section along the dashed
+    line shown in the middle row. The bottom row shows a profile of the target
+    (as discussed in section~\ref{fab:inspwire}). Column (a) shows photoresist
+    (purple) above the seed layer (colours as in \myfigref{fab:fig:process})
+    with the exposed region highlighted (light blue). The raster scan of the
+    direct writer laser across the substrate is highlighted in the top view.
+    In column (b) the resist is developed and the seed layer is exposed. In
+    column (c) gold is deposited via electroplating (as discussed in
+    section~\ref{fab:eplate}) to just below the height of the mould. In column
+    (d) the photoresist is removed, leaving the tall wires (highlighted with
+    black outline) and seed layers, the latter of which will be removed by
+    etching.
   }
   \label{fab:fig:tmep}
 \end{figure}
 
-\subsection{Inspecting the mould}
-
-\cm{Profiling, with examples and contact testing of the wire bond pads to
-ensure no residue PR}
-
-So far we have discussed the process up to the point that we have a photoresist
-mould on top of the gold seed layer. The next step is to electroplate so as to
-form the tall wires. However it is useful to first examine the mould so that we
-can ensure any electroplating target is likely to produce a suitable chip.
-
-The die can be imaged with a microscope for inspection of features. This is
-useful to give an overview of key areas, and can be used to identify any
-regions with potential defects. When these are identified it is often useful to
-be able to examine the contours of the region.
-
-This can be achieved with a stylus profilometer, such as the Bruker DektakXT
-which was used here. A stylus profilometer operates by positioning a gold
-stylus onto the surface of the die and dragging it in one direction. As
-the stylus comes into contact with features its height will change, allowing a
-profile of the surface to be measured. Profiling of a surface is illustrated
-in the lowest row of \myfigref{fab:fig:tmep} and is also useful for examining
-the features after plating.
-
-The profilometer available at LCN is fitted with a gold stylus of radius
-\SI{5}{\micro\meter}. This limits the resolution of the profile, for example in
-the case of a \SI{5}{\micro\meter} wide trench the tip of the stylus will not
-be able to reach the bottom, and so the profilometer will measure the trench as
-being below its actual depth. This effect is demonstrated for \ph{the lines
-characterisation feature} in \myfigref{fab:fig:exampleprofile}
-
-\begin{figure}[h]
-  \ph{Example profile of mould, where we see that the resolution is limited.}
-  \caption{TODO}
-  \label{fab:fig:exampleprofile}
-\end{figure}
 
 \subsection{Troubleshooting}
 
@@ -310,14 +278,35 @@ photoresist. This meant that some features were entirely missing from the mould,
 and others were incomplete, with photoresist remaining at the bottom of the
 mould after developing. This blocks the current during electroplating, and
 prevents the formation of wires. This can be seen with the microscope, and is
-confirmed when electroplating dies where the underdevelopment is present
-\ph{(see next section)}. However it is not possible to profile these with the
-stylus profilometer, since the small features where this occur are smaller than
-the resolution of the device \ph{(see above)}.
+confirmed when electroplating dies where the underdevelopment is present.
 
 \begin{figure}[h]
-  \ph{Comparision of a good and bad mould}
-  \caption{TODO}
+\end{figure}
+\begin{figure}
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+  \begin{overpic}[width=\textwidth]{figs/fab/mould/wafer1_mould_scale.png}
+    \put(16,18){\SI{50}{\micro\meter}}
+  \end{overpic}
+    \caption{}
+  \end{subfigure}
+  \hspace{1cm}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+  \begin{overpic}[width=\textwidth]{figs/fab/mould/wafer2_mould_scale.png}
+    \put(15,18){\SI{50}{\micro\meter}}
+  \end{overpic}
+    \caption{}
+  \end{subfigure}
+  rcaption{
+    Photoresist moulds for \ph{design one} dies. In (a) we see the effects of
+    underexposure, features below $\sim20\si{\micro\meter}$ are completely
+    absent. The \SI{20}{\micro\meter} wire is present but has not been
+    completely developed. Subfigure (b) shows a well-exposed die of the same
+    design, with sharp features and clear trenches in which the wires can be
+    plated.
+  }
   \label{fab:fig:moulds}
 \end{figure}
 
@@ -419,7 +408,7 @@ Goldbath-SF is suitable for use with current densities in the range
 \SIrange{1}{15}{\milli\ampere\per\centi\meter\squared}. Final chip design has a
 plating surface area of $S\approx85\si{\milli\meter\squared}$. There is also an
 additional contribution to surface area from the clip with which we hold the
-die in place during plating. We do therefore do not know the plating area
+die in place during plating. We therefore do not know the plating area
 exactly, but we ensure that the entire clip in the solution every time to
 ensure the results are reproducable. We can also estimate the minimum plating
 time for wire heights of \SI{3}{\micro\meter}, which we expect to be
@@ -452,18 +441,55 @@ hence prevents localised depletion of the ions near to the chip
 surface~\cite{Schlesinger2011} \cm{also cite conversation with S Etienne?}.
 
 After electroplating, dies are rinsed with deionised water, and the photoresist
-is removed overnight with \cm{Dupont 1165 photoresist remover}, as illustrated
+is removed overnight with Dupont 1165 photoresist remover, as illustrated
 in \mysubfigref{fab:fig:tmep}{d}. Dies are then
 dried and stored for transport to the LCN cleanroom for the inspection and
 final fabrication steps.
 
+
+\subsection{Inspecting the wires}
+\label{fab:inspwire}
+
+After plating it is useful to inspect the dies uner a microscope. This can
+confirm that the wires have been \cm{created} successfully, and that the there
+is continuity along them, but it cannot tell us the height that was achieved
+during plating. To measure the plating height we use a a stylus profilometer,
+in this case the Bruker DektakXT.
+
+A stylus profilometer operates by positioning a gold stylus onto the surface of
+the die and dragging it in one direction. As the stylus comes into contact with
+features its height will change, allowing a profile of the surface to be
+measured. Profiling of a surface is illustrated in the lowest row of
+\myfigref{fab:fig:tmep} and is also useful for examining the features after
+plating.
+
 We determined experimentally that electroplating at $\SI{15}{\milli\ampere}$
 for duration $\SI{400}{\second}$ reliably produced wires of height
-\SI{5}{\micro\meter} above the seed layer. This can be confirmed by profiling
-the surface as described in section~\ref{fab:profile}, and can be undertaken
-before and after the removal of the photoresist mould. 
-%
-\cm{Profile}
+\SI{5}{\micro\meter} above the seed layer. A typical example is shown in
+\myfigref{fab:fig:chipprofile}, where we also show a profile of the photoresist
+mould used to fabricate these wires.
+
+\begin{figure}[h]
+  \ph{Example profile of liens with mould}
+  \caption{TODO}
+  \label{fab:fig:chipprofile}
+\end{figure}
+
+Note that when examining the trenches of the mould with the profilometer, we
+must account fo the finite size of the stylus.
+The profilometer available at LCN is fitted with a gold stylus of radius
+\SI{5}{\micro\meter}. This limits the resolution of the profile, for example in
+the case of a \SI{5}{\micro\meter} wide trench the tip of the stylus will not
+be able to reach the bottom. This explains the shown in \mysubfigref{fab:fig:exampleprofile}{??}, and so the profilometer will measure the trench as
+being below its actual depth. This effect is demonstrated for \ph{the lines
+characterisation feature} in \myfigref{fab:fig:exampleprofile}.
+
+\begin{figure}[h]
+  \ph{Example profile of mould, where we see that the resolution is limited.
+  Also a cartoon of the stylus getting stuck}
+  \caption{TODO}
+  \label{fab:fig:exampleprofile}
+\end{figure}
 
 \subsection{Troubleshooting}
 
