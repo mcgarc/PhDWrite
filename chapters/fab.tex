@@ -324,8 +324,8 @@ to reliably produce wires up to a height of \SI{6}{\micro\meter}.
 \centering
   \begin{subfigure}[b]{0.22\textwidth}
     \centering
-  \begin{overpic}[width=\textwidth]{figs/fab/cartoon/eplate.pdf}
-    \put(28.7,91.2){$I$}
+  \begin{overpic}[width=\textwidth]{figs/fab/cartoon/eplate_notext_02.pdf}
+    \put(28.8,91.2){$I$}
   \end{overpic}
     \caption{}
   \end{subfigure}
@@ -585,7 +585,7 @@ good chip with nice height including profiles}.
 
 Note how the larger wires in \ph{above fig. again} were not uniformly plated,
 with some areas near the edge seemingly shadowed by the mould as shown in
-\cm{fig. showing shadowing}. This phenomenom was also noted in
+\myfigref{fab:fig:shadow}. This phenomenom was also noted in
 \inlineref{Treutlein2008}, where it is suggested that the only solution is to
 change to new goldbath. Indeed doing this and following the same procedure
 produced results without this shadowing effect, see \cm{figure without
@@ -593,6 +593,46 @@ shadowing}.
 %
 % Could note that this is likely due to aging, as we started to see the effect
 % after coming back from covid.
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{overpic}[width=\textwidth]{figs/fab/shadowing/scan.png}
+    \put(78,11){\color{white} \SI{50}{\micro\meter}}
+  \end{overpic}
+    \vspace{0.7cm}
+    \caption{}
+  \end{subfigure}
+  %\hspace{1cm}
+  \begin{subfigure}[b]{0.55\textwidth}
+  \begin{tikzpicture}
+    \begin{axis}[
+        enlargelimits=true,
+        xlabel=Scan distance (\si{\micro\meter}),
+        ylabel=Height (\si{\micro\meter}),
+        width=0.9\textwidth,
+        height = 0.7\textwidth
+    ]
+    \addplot [
+      color=gold,
+      no marks,
+      style=very thick
+      ]
+    table
+    {figs/fab/shadowing/shadow.dat};
+    \end{axis}
+  \end{tikzpicture}
+    \caption{}
+  \end{subfigure}
+    \caption{
+      For large features ($>50\si{\micro\meter}$) we sometimes observe this
+      `shadowing' effect, shown here on the \SI{200}{\micro\meter} wire of
+      \ph{design 2}. this can be seen as a gradual gradient on the microscope
+      (a), and confirmed with stylus profiling (b). the profile is taken in the
+      direction and position of the white dotted line shown in (a). Changing to
+      fresh golbath solution resolves this problem.}
+  \label{fab:fig:chipprofile}
+\end{figure}
 
 Although the shadowing was successful, we noted that the height of the wires
 was very different between the two solutions for the same plating time and
