@@ -1,66 +1,72 @@
-This chapter begins with an overview of the chip experiment design, from
-molecule source to the final chip trap. I will then give an overview of how we
-can calculate and simulate the trajectories of trapped \CaF{} molecules. This
-will be used to simulate and analyse the loading scheme for the chip.
+This chapter will describe the design of the chip and the supporting
+infrastructure for integration into the existing \CaF{} experiment. Designing
+the chip has been an iterative process, which has been motivated by analysis of
+the trapping fields, trajectory simulations and constraints encountered in the
+fabrication process.
 
-\cm{Need to direct to microwaves ch rather than do this...}
-This chapter deals mainly with the trapping aspect of the experiment and not
-the microwaves. The implementation of microwave guides on the
-chip was discussed in the early stage assessment, and has not significantly
-changed since then.
+Here we will largely discuss the analysis of the trapping fields and the
+trajectory simulations. These two factors have been used to determine the major
+structure of the chip. Changes introduced due to fabrication limitations will
+be presented here, with details in chapter~\ref{fab}.
+
+\section{Initial design}
+
+The chip trap must integrate into the existing \CaF{} experiment, which has
+been described \ph{above and in \cite{Truppe2017}, as well as others}. We
+\ph{have recently developed (with cite ?)} an optical tweezer, which could be
+used for loading the chip as in \inlinerefs{??}, however this was not available
+at the start of the project. As such it was decided that the molecules would be
+transferred between magnetic traps onto the chip.
+
+It would be immensely difficult to bring the molecules from the transport trap
+directly onto a microscopic trap on the chip \cm{cite or further discussion?}.
+We therefore decided to use a series of ramps to transfer the molecules into
+the microscopic trap. For trapping further from the chip, where the molecule
+cloud will be brought in, a higher current is required and correspondingly a
+wider wire. It is undesirable to use a wide wire for the smallest traps, as we
+aim for the current to be localised on a length scale that is small compared to
+the cloud. \cm{cites?}
+
+Another difficulty is alignment of the macroscopic trap with the chip traps. To
+overcome this we have incorporated an intermediary trapping \cm{U-wire} trap,
+made out of thick copper and positioned directly beneath the chip. This trap
+will be aligned with the chip by virtue of the design, and the transport trap
+need only be aligned with the transport trap with the larger intermediary \cm{U
+trap}.
+
+% Overlapping wire traps to avoid shifting the trap centre
+
+% Back of the envelope calculations for wire heights, fields, relative trap
+% heights
+
+% Integration with microwave guides
+
+Using these principles, we created our initial design (hereafter referred to as
+`design 1') shown in \cm{figure TODO}. We hoped that this design would be close
+enough to the final design to allow us to begin honing our fabrication
+techniques. It was not clear if the fuse-like nature of this design would allow
+the high-current 
+
+\section{Supporting infrastructure}
+
+% Setup: we want to be able to do the stuff we discussed for intial chip design
+
+% Present idea of flange assembly, break down the parts
+%  - Large U
+%  - Subchip
+%  - Feedthroughs (chip, large current and mw)
+
+\section{A refined chip design}
+
+% Present design 2
+
+% Discussion of loading scheme, inc. simulations
 
 \section{Experiment overview}
 
-\cm{Check that this does not overlap too much with the intro}
+\cm{Needs to complement discussion in intro, don't want to refer back and
+forth.}
 
-\cm{Will likely need more discussion of transport in the thesis. For one
-thing it seems like it does cause a bit of heating for tweezers at the moment.}
-%
-The design of our experiment is largely motivated by the existing apparatus.
-The ultracold molecule source described in \inlineref{Truppe2017} has been
-adapted to allow for additional experiments to be carried out either in the
-same chamber, or in neighbouring chambers. In the latter case, molecules are
-transported between chambers by magnetic transport. This is achieved with coils
-forming a quadrupole trap mounted on a
-transport stage, similar to those described
-in~\cite{Lewandowski2003}. Early experiments have shown that \Rb{} atoms can be
-transferred with minimal losses and heating.
-
-\cm{This para is rubbish, but I cba to fix it rn}
-%
-Currently, there are two experiment chambers, the MOT chamber, where the
-molecule MOT is originally formed, and the blue-detuned molasses are applied.
-This chamber is also capable of hosting a \Rb{} MOT, which we will be able to
-use to test the chip trap. The second chamber is used for experiments with
-optical tweezers and dipole traps. Our molecules will be transported through
-this chamber into the chip chamber for our experiment, as pictured in
-\myfigref{design:fig:vacuumsystem}.
-
-\cm{Need to fix this fig to put the chip on the right side of the chamber. But
-a top-down view of the whole experiment would probably be a better use of my
-time.}
-
-\begin{figure}[htb]
-  \centering
-  \begin{overpic}[width=0.7\textwidth]{figs/vacuum_setup.pdf}
-    \put(1,-5){Chip chamber}
-    \put(34,-5){Tweezer chamber}
-    \put(73,-5){MOT chamber}
-  \end{overpic}
-  \vspace{1cm}
-  \caption{
-    \cm{Maybe redo this figure with more detail.}
-    The main vacuum chambers are shown. The experiment begins with a buffer gas
-    source of \CaF{} molecules (not pictured). This produces a beam of
-    molecules which is laser-slowed for capture in the MOT chamber. Here
-    blue-detuned molasses are used to cool the molecules to
-    \SI{50}{\milli\kelvin}. We can then use transport coils to transfer the
-    molecule cloud to the other chambers. Our experiment is conducted in the
-    most downstream chamber. The molecule cloud is brought into place directly
-    beneath the chip flange (gold).
-  }
-  \label{design:fig:vacuumsystem}
-\end{figure}
 
 The chip trap will be positioned inside this chamber, held in place by a flange
 assembly, with the chip surface \SI{4}{\milli\meter}
