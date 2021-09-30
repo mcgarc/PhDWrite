@@ -1,0 +1,122 @@
+\documentclass{article}
+
+\usepackage{siunitx}
+\usepackage{amsmath}
+\usepackage{braket}
+
+\title{Squeezed states on a molecule chip}
+
+\author{Cameron McGarry}
+
+\begin{document}
+
+\maketitle
+
+We aim to create squeezed spin states on a molecule chip. I think this is
+possible by employing a quantum non-demolition (QND) measurement on a two-level
+system in the magnetic trap. In this white paper I will explain in general how
+a QND measurement can be performed by coupling a spin-two system to a cavity,
+and how squeezed spin states can be created in such a system. I will then
+describe how this could be implemented on a chip trap with calcium monofluoride
+(CaF) molecules. Set $\hbar=1$ because this is theory and I am a very serious
+physicist.
+
+\section{System of many spins}
+
+% Need to explicitly say that |g> and |e> are eigenstates of sigma_z and s^2?
+In general we consider a two level system with ground and excited staes $\ket{g}$
+and $\ket{e}$ respectively, with a transition frequency $\omega_0$. For a
+system of $N$ such spins, the $i^\text{th}$ spin has a spin operator
+
+\begin{math}
+\mathbf{s}_i = \frac{1}{2}\begin{bmatrix} \sigma^i_x \\ \sigma^i_y \\sigma^i_z
+\end{bmatrix}
+\end{math}
+
+where $\sigma^i_j$ represents a Pauli matrix. The collective spin operator is
+then
+
+\begin{math}
+\mathbf{S} = \sum_{i=1}^N \mathbf{s}_i
+\end{math}
+
+having individual components
+
+\begin{math}
+S_j = \sum_{i=1}^N \frac{1}{2} \sigma_j^i.
+\end{math}
+
+In free space, the system of spins evolves according to the Hamiltonian
+
+\begin{math}
+H_0 = \frac{1}{2}\omega_0 S_z.
+\end{math}
+
+For our QND measurement we will couple the spins to a cavity, it will be
+instructive to explore the dynamics in the cavity in a general way. The
+resulting Hamiltonian is $H = H_0 + H_\text{cav} + H_\text{int}$ where
+
+\begin{math}
+H_\text{cav} = \omega a^\dagger a
+\end{math}
+
+describes the cavity photons, with frequency $\omega$ and annihilation
+operator $a$, and
+
+\begin{math}
+H_\text{int} = \Omega c^\dagger c S_z
+\end{math}
+
+% TODO Proper Ref. cite command here
+describes the interaction of the spins with the light. This interaction term is
+only valid for low photon number in the cavity, that is $\expectation{c^\dagger
+c} \lleq \(\Delta/g)^2$ as explained in reference~\cite{SchleierSmith2011}.
+
+In the case
+of a single spin, the coupling would be the vacuum Rabi frequency
+
+\begin{math}
+\Omega_i = 2g_i = \mathbf{d}. \mathbf{\mathcal{E}}
+\sqrt{\frac{\omega}{2\epsilon_0 V}}
+\end{math}
+
+where $\mathbf{d}$ is the dipole moment of the system, $\mathbf{\mathcal{E}}$
+is the electric field vector at the spin, $V$ is the cavity mode volume and
+$\epsilon_0$ is the permittivity of free space. For our collection of spins
+
+\section{Performing quantum non-demolition measurements}
+
+The idea of a QND measurement is, as the name suggests, to gain some knowledge
+of the state of the system without collapsing the superposition.
+
+\section{Squeezing with quantum non-demolition measurement}
+
+
+\section{Implementation on CaF chip}
+
+For our two-level
+system in CaF choose the states $\ket{g} = \ket{N=0, F=1, m_F=1}$ and $\ket{e}
+= \ket{1, 2, 2}$ for their long lifetime in a magnetic trap. The transition has
+frequency $\omega_0/2\pi = \SI{20.5}{\giga\hertz}$ \cite{Williams2018}.
+
+\section{Further thoughts: collective cavity cooling}
+
+% I don't think that it's sufficient to just have the sideband cooling scheme
+% described in the Andr\'e paper. We need to consider the effect of having a
+% collective of spins, as is described for atoms in chapter 8 of reference
+% \cite{SchleierSmith2011}
+
+\section{Further thoughts: collision squeezing}
+
+In addition to squeezing by QND measurement, atomic spin squeeze states have
+been generated due to inter-atomic collisions \cite{}. These collisions
+introduce a non-linear Hamiltonian term $H=\chi S_z^2$, which leads to a
+shearing of the coherent state around the Bloch sphere around the $S_z$ state
+\cite{}.
+
+With our knowledge of collisions between atoms and molecules (or molecules and
+molecules) might it be possible to generate squeezed states in atom-molecule
+clouds, or very dense clouds of molecules? The latter could perhaps be explored
+on the new CaF Bose-Einstein condensate apparatus.
+
+\end{document}
