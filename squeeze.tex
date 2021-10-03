@@ -3,6 +3,40 @@
 \usepackage{siunitx}
 \usepackage{amsmath}
 \usepackage{braket}
+\usepackage{graphicx}
+
+% --- Bibliography ---
+% Uses biblatex with biber. Don't include url, doi, isbn because we will use
+% magic to insert the url as a hyperlink in the title ourselves
+
+% Ubuntu: requires texlive-bibtex-extra
+\usepackage[backend=biber,
+						url=false,
+						doi=false,
+						isbn=false,
+						eprint=false,
+						giveninits=true,
+            sorting=none
+						]{biblatex}
+
+% This is the macro to do this. see SE:
+% https://tex.stackexchange.com/quACestions/23832/biblatex-make-title-hyperlink-to-doi-url-if-available
+% and 
+% https://tex.stackexchange.com/questions/48400/ACbiblatex-make-title-hyperlink-to-dois-url-or-isbn
+\newbibmacro{string+doi}[1]{%
+  \iffieldundef{doi}{#1}{\href{http://dx.doi.org/\thefield{doi}}{#1}}}
+\DeclareFieldFormat{title}{\usebibmacro{string+doi}{\mkbibemph{#1}}}
+\DeclareFieldFormat[article]{title}{\usebibmacro{string+doi}{\mkbibquote{#1}}}
+
+% Manually remove notes
+\AtEveryBibitem{%
+  \clearfield{note}%
+	}
+
+% Bib file
+\addbibresource{bib.bib}
+
+\usepackage[colorlinks]{hyperref}
 
 \title{Squeezed states on a molecule chip}
 
@@ -14,109 +48,347 @@
 
 We aim to create squeezed spin states on a molecule chip. I think this is
 possible by employing a quantum non-demolition (QND) measurement on a two-level
-system in the magnetic trap. In this white paper I will explain in general how
+system in the magnetic trap. In this document I will explain in general how
 a QND measurement can be performed by coupling a spin-two system to a cavity,
 and how squeezed spin states can be created in such a system. I will then
 describe how this could be implemented on a chip trap with calcium monofluoride
-(CaF) molecules. Set $\hbar=1$ because this is theory and I am a very serious
-physicist.
+(CaF) molecules.
 
-\section{System of many spins}
+\section{Cavity quantum electrodynamics}
 
-% Need to explicitly say that |g> and |e> are eigenstates of sigma_z and s^2?
-In general we consider a two level system with ground and excited staes $\ket{g}$
-and $\ket{e}$ respectively, with a transition frequency $\omega_0$. For a
-system of $N$ such spins, the $i^\text{th}$ spin has a spin operator
+\subsection{Single spin in a cavity}
 
-\begin{math}
-\mathbf{s}_i = \frac{1}{2}\begin{bmatrix} \sigma^i_x \\ \sigma^i_y \\sigma^i_z
+Consider a spin-half system with ground and excited states $\ket{g}$
+and $\ket{e}$ respectively, with a transition frequency $\omega_0$. These
+states are eigenstates of the spin operator $s_z = \sigma_z /2$ where
+$\sigma_j$ represents the $j^\text{th}$ Pauli matrix.
+
+When such a spin interacts with a mode of an optical cavity of frequency
+$\omega$, the behaivour is described by the familiar Jaynes-Cummings
+Hamiltonian~\cite{}
+%
+\begin{equation}
+  H_\text{JC} = \hbar\omega_c a^\dagger a + \hbar\frac{\omega_0}{2}\sigma_z +
+  \frac{\hbar\Omega}{2}(a^\dagger \sigma_- + a\sigma_+)
+  \label{JCH}
+\end{equation}
+%
+where $\omega_c$ is the resonant frequency of the cavity, $a$ ($a^\dagger$) is
+the annihilation (creation) operator of the photons, $\Omega = 2g$ is the Rabi
+frequency of the interaction, and $\sigma_\pm = \sigma_x \pm i\sigma_y$ are the
+raising and lowering operators of spin. The detuning of the cavity resonance
+from that of the spin is $\Delta = \omega_0 - \omega_c$.
+
+Light is coupled out of the cavity with some decay rate $\kappa = \omega/Q$,
+with $Q$ being the cavity's quality factor. The spin can decay into other modes
+at some decay rate $\gamma$. We assume that we are in the strong coupling
+r\'egime, so that such decays can be neglected. In this case $g \gg \kappa,
+\gamma$.~\cite{PhysRevA.69.062320} We shall also assume that we are in the
+dispersive r\'egime, that is our cavity light is far-detuned from the Rabi
+coupling frequency $g\ll|\Delta|$. Reference~\cite{PhysRevA.69.062320} tells us
+that we can gain insight into the dispersive behaivour by applying  a unitary
+transformation
+%
+\begin{equation} U = \exp \left[\frac{g}{\Delta}(a\sigma_+ -
+a^\dagger\sigma_-)\right] \end{equation}
+%
+up to second order in $g$.\footnote{This is quite an interesting reference as
+they do a lot of what we are interested in but with a Cooper pair box instead
+of CaF molecules (for experiment see reference \cite{Wallraff2004}). Note that
+this transformation to get the Hamiltonian is quite different from the
+adiabatic elimination used to reduce a three level system in
+Reference~\cite{SchleierSmith2011}.} From this we obtain
+%
+\begin{equation} H= UH_\text{JC}U^\dagger \approx \hbar \omega_c
+  a^\dagger a + \frac{\hbar}{2}\left(\Omega +
+  \frac{g^2}{\Delta}\right)\sigma_z + \frac{\hbar
+  g^2}{\Delta}\sigma_z a^\dagger a.  \end{equation}
+%
+These three terms describe the osciallation of light in the cavity, the energy
+of the spin (which undergoes the usual AC Stark shift) and the interaction of
+the photons with the spin. This last term is what will ultimately allow us to
+perform QND measurement, since it will enable exchange of information between
+the z-component of the spin with the photons.
+
+\subsection{Spin ensemble}
+
+We are interested in the case where there are $N$ spins in the
+cavity. Assume that the coupling between each spin and the resonator photons is
+the same (that is, the coupling is homogeneous), then the ensemble is described
+by the Tavis-Cummings Hamiltonian~\cite{}
+% CITE https://arxiv.org/pdf/1805.09828.pdf
+%
+\begin{equation}
+  H_\text{TC}=  \hbar \omega_c a^\dagger a + \sum_{i=1}^N\left[
+    \frac{\hbar\omega_0}{2}\sigma_z^i +\frac{\hbar\Omega}{2\sqrt{N}}(a^\dagger
+    \sigma^i_- + a\sigma^i_+)\right]
+\end{equation}
+%
+% TODO proper equation ref here
+in direct analogy to eqn~\ref{JCH}, and using $\sigma_j^i$ to refer to the
+$i^\text{th}$ spin's operators.
+
+Now define the spin operator for a single spin
+%
+\begin{equation}
+\mathbf{s}^i = \begin{bmatrix} \sigma^i_x \\ \sigma^i_y \\ \sigma^i_z
 \end{bmatrix}
-\end{math}
+\end{equation}
+%
+and the collective spin operator
+%
+\begin{equation}
+\mathbf{S} = \sum_{i=1}^N \mathbf{s}^i
+\end{equation}
+%
+with raising and lowering operators $S_\pm = S_x \pm iS_y =
+\sum_{i=1}^N\sigma_\pm^i/\sqrt{N}$.
+%
+We can now re-write the Hamiltonian for the ensemble as
+%
+\begin{equation}
+  H_\text{TC} = \hbar\omega_c a^\dagger a + \hbar\frac{\omega_0}{2}S_z +
+  \frac{\hbar\Omega}{2}(a^\dagger S_- + aS_+)
+\end{equation}
+%
+which I assert can now be transformed similarly to the single-spin case by the
+operator
+%
+\begin{equation}
+  U_\text{E} = \exp \left[\frac{g}{\Delta}(aS_+ - a^\dagger S_-)\right]\
+\end{equation}
+%
+for new Hamiltonian
+%
+\begin{equation}
+  H_\text{E}= U_\text{E}H_\text{TC}U_\text{E}^\dagger \approx 
+    \hbar \omega_c a^\dagger a + 
+    \frac{\hbar}{2}\left(\Omega + \frac{g^2}{\Delta}\right)S_z + 
+    \frac{\hbar g^2}{\Delta}S_z a^\dagger a.
+  \label{eqn:He}
+\end{equation}
 
-where $\sigma^i_j$ represents a Pauli matrix. The collective spin operator is
-then
+This assertion is valid since the mathematics of the transformation is exactly
+the same as for the single-spin case. The operator $\mathbf{S}$ has the same
+commutation relations as the analogous $\mathbf{s}^i$. Once again, the final
+term will allow the information transfer for our QND measurements.
 
-\begin{math}
-\mathbf{S} = \sum_{i=1}^N \mathbf{s}_i
-\end{math}
+\section{Entangling states with a QND measurement}
 
-having individual components
+Consider the spins represented on the Bloch sphere \cite{}. Here the state of the
+$i^\text{th}$ spin is written as
+%
+\begin{equation}
+  \ket{\psi}_i = \cos\left(\frac{\theta_i}{2}\right)\ket{e}_i +
+  e^{i\phi_i}\sin\left(\frac{\theta_i}{2}\right)\ket{g}_i.
+\end{equation}
+%
+The values of $\theta$ and $\phi$ uniquely define the points on a sphere of
+radius $1$, with $\ket{e}_i$ and $\ket{g}_i$ at the poles. The spin state of
+the entire system is then
+%
+\begin{equation}
+  \ket{\Psi} = \bigotimes_{i=1}^N \ket{\psi}_i.
+\end{equation}
+Such a state can also be
+represented on a sphere, as the sum of each vector $\ket{\psi_i}$ as shown in 
+% TODO proper fig. ref
+Fig.~\ref{CSSbloch}. In the case shown, all the spins are aligned ($\theta_i
+= \theta_j$ and $\phi_i = \phi_j$) we have a coherent spin state (CSS) and the
+sphere has radius $N$.
 
-\begin{math}
-S_j = \sum_{i=1}^N \frac{1}{2} \sigma_j^i.
-\end{math}
+\begin{figure}
+  \centering
+  \includegraphics[width=0.5\textwidth]{figs/squeeze/CSS_Bloch_Cox.png}
+  \caption{A coherent spin state as represented on the Bloch sphere,
+  reproduced from~\cite{Cox2016}}
+  \label{CSSbloch}
+\end{figure}
 
-In free space, the system of spins evolves according to the Hamiltonian
+For a CSS, there is some inherent uncertainty that arises in $\theta$ and
+$\phi$ from the projection of the measurement of each individual atom. When
+$\theta=\pi$ is this uncertainty is the standard quantum limit (SQL) and
+~\cite{Cox2016}
+% What is this uncertainty in cases off the equator?
+\begin{equation}
+  \Delta \theta = \Delta \phi = \frac{1}{\sqrt{N}}.
+\end{equation}
+%
+% cite Cox
+For the purposes of quatnum meterology, it can be useful to reduce the
+uncertainty in one of these directions. To borrow an example from
+reference~\cite{}, consider the case with N=4, and we have prepared the CSS
+%
+\begin{equation}
+  \ket{\Psi} = \bigotimes_{i=1}^4 \frac{\ket{e}_i + \ket{g}_i}{\sqrt{2}}.
+\end{equation}
+%
+If we were to perform a QND measurement, of the number of spins in each state
+(but gaining no knowledge of which spin was in which state)
+then we can produce an
+entangled state. For example if the measurement shows that there are two spins
+in each state we have
+%
+\begin{equation}
+\ket{\psi} = \frac{1}{\sqrt{6}}(\ket{eegg} + \ket{egeg} + \ket{egge} +
+\ket{geeg} + \ket{gege} + \ket{ggee})
+\end{equation}
+which is a maximally entangled state. For any result other than all spins in
+$\ket{e}$ or $\ket{g}$ the result is entangled. This particular state is a
+Dicke state, and would be represented by a ring around the equator of the Bloch
+sphere. However, creation of such a state is not normally achievable (as this
+would require highly accurate measurement of the occupation of the states) and
+instead a squeezed state with reduced uncertainty in one direction is produced,
+as shown in Fig.~\ref{squeezbloch}.
+%TODO Proper fig. ref
 
-\begin{math}
-H_0 = \frac{1}{2}\omega_0 S_z.
-\end{math}
+\begin{figure}
+  \centering
+  \includegraphics[width=0.5\textwidth]{figs/squeeze/squeezed_Bloch_Cox.png}
+  \caption{Comparison of a CSS and squeezed state as represented on the Bloch
+  sphere.Note the reduced uncertainty in the z direction.  Reproduced
+  from~\cite{Cox2016}}
+  \label{squeezebloch}
+\end{figure}
 
-For our QND measurement we will couple the spins to a cavity, it will be
-instructive to explore the dynamics in the cavity in a general way. The
-resulting Hamiltonian is $H = H_0 + H_\text{cav} + H_\text{int}$ where
+In the case of large $N$ the expected number of spins to measure in each state
+is $N/2$, but this is a probabilistic process, and as such the state resulting
+from the QND measurement is dependent on the measured value.
+% Cox gives some probabilistic idea of what theta normally is
 
-\begin{math}
-H_\text{cav} = \omega a^\dagger a
-\end{math}
 
-describes the cavity photons, with frequency $\omega$ and annihilation
-operator $a$, and
+% Cox also gives an equation for the proejction operator of the measurement,
+% but I think I should come back to that later.
+The state following the measurement are ``a bit difficult to write down''
+analytically~\cite{Cox2016}, but I will discuss the reduction in uncertainty
+further in the context of a potential experiment in the next section.
 
-\begin{math}
-H_\text{int} = \Omega c^\dagger c S_z
-\end{math}
+\section{Performing QND measurements}
 
-% TODO Proper Ref. cite command here
-describes the interaction of the spins with the light. This interaction term is
-only valid for low photon number in the cavity, that is $\expectation{c^\dagger
-c} \lleq \(\Delta/g)^2$ as explained in reference~\cite{SchleierSmith2011}.
+Having established that a QND measurement will allow us to create entangled
+and in particular squeezed states, we now consider how this can be performed
+for a spin ensemble in a cavity. Consider again the Hamiltonian of our system
+given in eqn~\ref{eqn:He}. We have already pointed out that the
+third term will allow for transfer of information about the $z$ spin into the
+cavity light, but notice also that every term commutes with $S_z$. This will
+ensure that performing the measurement will not change the $S_z$ state, but
+note that $S_x$ and $S_y$ are fair game~\cite{SchleierSmith2011}.
 
-In the case
-of a single spin, the coupling would be the vacuum Rabi frequency
+Rewriting
+%
+\begin{equation}
+  H_\text{E}= 
+    \hbar \left(\omega_c + \frac{g^2}{\Delta}S_z\right)a^\dagger a + 
+    \frac{\hbar}{2}\left(\Omega + \frac{g^2}{\Delta}\right)S_z
+\end{equation}
+%
+it is now clear that the transition frequency depends on the state of the
+$S_z$. The shift in frequency can be interpreted in a change of the cavity's
+refractive index. Hence the transmission peak of the cavity will be shifted
+from $\omega_c$ so that
+%
+\begin{equation}
+  \omega_c \rightarrow \omega_c + \frac{\hbar g}{\Delta}(N_e - N_g)
+\end{equation}
+%
+where $N_e$ ($N_g$) is the number of spins in the excited (ground) state. We
+can therefore perform a QND measurement for $\delta N = N_e - N_g$ by probing
+the cavity.
 
-\begin{math}
-\Omega_i = 2g_i = \mathbf{d}. \mathbf{\mathcal{E}}
-\sqrt{\frac{\omega}{2\epsilon_0 V}}
-\end{math}
+The linewidth of the transition peak is $\kappa$, so to resolve this shift we
+require $g^2/ \Delta \gg \kappa$ for the shift of the frequency to be larger
+than the transmission linewidth and hence resolvable. Alternatively, when the
+frequency of the probe is $\omega_r$, the information on $\delta N$ is encoded
+in the phase of the light, producing a shift $N\phi$ where
+%
+\begin{equation}
+  \phi = \arctan \left(\frac{2g^2}{\kappa \Delta}\right).
+\end{equation}
+%
+This can be used to perform QND measurements in the $g^2/ \Delta \ll
+\kappa$ limit~\cite{PhysRevA.69.062320}
+% But why not just "outsside the g^2 D \gg kappa" limit?
 
-where $\mathbf{d}$ is the dipole moment of the system, $\mathbf{\mathcal{E}}$
-is the electric field vector at the spin, $V$ is the cavity mode volume and
-$\epsilon_0$ is the permittivity of free space. For our collection of spins
-
-\section{Performing quantum non-demolition measurements}
-
-The idea of a QND measurement is, as the name suggests, to gain some knowledge
-of the state of the system without collapsing the superposition.
-
-\section{Squeezing with quantum non-demolition measurement}
-
+%The power of the probe must be low, such that we remain in the disperisive
+%r\'egime, i.e.\ $\braket{a^\dagger a} < \Delta^2/4g^2 = n_\text{crit}$.
 
 \section{Implementation on CaF chip}
 
-For our two-level
-system in CaF choose the states $\ket{g} = \ket{N=0, F=1, m_F=1}$ and $\ket{e}
-= \ket{1, 2, 2}$ for their long lifetime in a magnetic trap. The transition has
-frequency $\omega_0/2\pi = \SI{20.5}{\giga\hertz}$ \cite{Williams2018}.
+For our two-level system in CaF choose the states $\ket{g} = \ket{N=0, F=1,
+m_F=1}$ and $\ket{e} = \ket{1, 2, 2}$ for their long lifetime in a magnetic
+trap. The transition has frequency $\omega_0/2\pi = \SI{20.5}{\giga\hertz}$
+\cite{Williams2018}. The idea is to use a high $Q$ microwave cavity on the
+chip, with the molecules magnetically trapped near to an antinode to maximise
+the coupling. This is similar to the proposal made by Andr\'e et
+al.~\cite{Andre2006}, who also discuss the idea of using a cavity for QND
+measurement, although not specifically for the creation of entangled states.
 
-\section{Further thoughts: collective cavity cooling}
+The Rabi frequency is $\Omega = 2g = \mathbf{d}.\mathbf{E}/\hbar$ where $\mathbf{d}$
+is the dipole moment of the transition, and $\mathbf{E}$ is the electric field
+strength. However, this local electric field is a function of the geometry. We
+must calculate it by calculating the field from our particular resonator, and
+the molecule's relative position to it. Since this calculation is a little
+involved, let's just for now take the conservative coupling estimate from
+reference~\cite{Andre2006}, which is for a CaBr positioned
+\SI{1}{\micro\meter} from the resonator: $g/2\pi = \SI{40}{\kilo\hertz}$.
 
-% I don't think that it's sufficient to just have the sideband cooling scheme
-% described in the Andr\'e paper. We need to consider the effect of having a
-% collective of spins, as is described for atoms in chapter 8 of reference
-% \cite{SchleierSmith2011}
+A typical superconducting microwave cavity will have a quality factor
+$Q\sim10^6$. We can choose the cavity resonance to be similar to the
+tranisiton)frequency, so that the cavity loss rate is $\kappa/2\pi =
+\omega_0/(2\pi Q) \sim \SI{1}{\kilo\hertz}$. Note that this choice implicitly
+means that $\Delta$ is small compared to $\omega_0$. Hence in this r\'egime we
+have that $g^2/\Delta \gg \kappa$, and QND measurement can be performed
+by observing a shift of the transmission peak of the cavity.
 
-\section{Further thoughts: collision squeezing}
+Alternatively, the cavity resonance could be chosen to be far from the
+transition frequency. Such a choice would prevent enhanced spontaneous emission
+into the cavity, and prevent implementation of the sideband cooling scheme
+described in reference~\cite{Andre2006}. One idea in this case could be to
+investigate collective cavity cooling as an alternative in this
+case~\cite{SchleierSmith2011}.
 
-In addition to squeezing by QND measurement, atomic spin squeeze states have
-been generated due to inter-atomic collisions \cite{}. These collisions
-introduce a non-linear Hamiltonian term $H=\chi S_z^2$, which leads to a
-shearing of the coherent state around the Bloch sphere around the $S_z$ state
-\cite{}.
+The procedure to create entangled states on the chip would be as follows:
 
-With our knowledge of collisions between atoms and molecules (or molecules and
-molecules) might it be possible to generate squeezed states in atom-molecule
-clouds, or very dense clouds of molecules? The latter could perhaps be explored
-on the new CaF Bose-Einstein condensate apparatus.
+\begin{enumerate}
+  \item Load CaF molecules in $\ket{g}$ into the magnetic trap close to the
+    resonator
+  \item Use external microwaves (from e.g. a horn) to transfer the molecules
+    into CSS $(\ket{e} + \ket{g})/2$
+  \item Probe the cavity with frequencies around the transition frequency
+  \item Observe the transmission peak, use the offset from $\omega_0$ to
+    determine $N$
+  \item Use the measured value of $N$ to determine the amount of squeezing that
+    has been achieved
+\end{enumerate}
+
+\section{Conclusion}
+
+This document describes how spin squeezed states could be created in CaF
+molecules coupled to a microwave resonator on a chip. This is mainly based on
+the idea of how QND measurements can be performed in this architecture, as was
+presented by Andr\'e et al.~\cite{Andre2006}, but there remain a number of
+unanswered questions. For example, I have not addressed losses such as those
+that can occur from the enhanced stimulated emission into the cavity mode.
+There is also the question of the number of molecules that we would be required
+to trap to reliably produce such states.
+
+It would also be interesting to consider the nature of the spin states that
+could be produced. What is the maximum squeezing that could occur, and how
+exactly would the squeezed state relate to the measured value $M$?
+
+%\section{Further thoughts: collision squeezing}
+%
+%In addition to squeezing by QND measurement, atomic spin squeeze states have
+%been generated due to inter-atomic collisions \cite{}. These collisions
+%introduce a non-linear Hamiltonian term $H=\chi S_z^2$, which leads to a
+%shearing of the coherent state around the Bloch sphere around the $S_z$ state
+%\cite{}.
+%
+%With our knowledge of collisions between atoms and molecules (or molecules and
+%molecules) might it be possible to generate squeezed states in atom-molecule
+%clouds, or very dense clouds of molecules? The latter could perhaps be explored
+%on the new CaF Bose-Einstein condensate apparatus.
+
+\printbibliography
 
 \end{document}
