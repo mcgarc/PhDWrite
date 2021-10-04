@@ -116,7 +116,7 @@ the z-component of the spin with the photons.
 We are interested in the case where there are $N$ spins in the
 cavity. Assume that the coupling between each spin and the resonator photons is
 the same (that is, the coupling is homogeneous), then the ensemble is described
-by the Tavis-Cummings Hamiltonian~\cite{}
+by the Tavis-Cummings Hamiltonian~\cite{Kirton2019}
 % CITE https://arxiv.org/pdf/1805.09828.pdf
 %
 \begin{equation}
@@ -126,7 +126,7 @@ by the Tavis-Cummings Hamiltonian~\cite{}
 \end{equation}
 %
 % TODO proper equation ref here
-in direct analogy to eqn~\ref{JCH}, and using $\sigma_j^i$ to refer to the
+in direct analogy to eqn~\ref{JCH}, and using $\sigma_*^i$ to refer to the
 $i^\text{th}$ spin's operators.
 
 Now define the spin operator for a single spin
@@ -176,8 +176,8 @@ term will allow the information transfer for our QND measurements.
 
 \section{Entangling states with a QND measurement}
 
-Consider the spins represented on the Bloch sphere \cite{}. Here the state of the
-$i^\text{th}$ spin is written as
+Consider the spins represented on the Bloch sphere \cite{Cox2016}. Here the
+state of the $i^\text{th}$ spin is written as
 %
 \begin{equation}
   \ket{\psi}_i = \cos\left(\frac{\theta_i}{2}\right)\ket{e}_i +
@@ -200,9 +200,13 @@ sphere has radius $N$.
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.5\textwidth]{figs/squeeze/CSS_Bloch_Cox.png}
-  \caption{A coherent spin state as represented on the Bloch sphere,
-  reproduced from~\cite{Cox2016}}
+  \includegraphics[width=0.4\textwidth]{figs/squeeze/CSS_Bloch_Cox.png}
+  %
+  \includegraphics[width=0.5\textwidth]{figs/squeeze/squeezed_Bloch_Cox.png}
+  \caption{Left: A coherent spin state as represented on the Bloch sphere.
+  Right: Comparison of a CSS and squeezed state as represented on the Bloch
+  sphere. Note the reduced uncertainty in the z direction.
+  Both reproduced from~\cite{Cox2016}}
   \label{CSSbloch}
 \end{figure}
 
@@ -239,17 +243,9 @@ Dicke state, and would be represented by a ring around the equator of the Bloch
 sphere. However, creation of such a state is not normally achievable (as this
 would require highly accurate measurement of the occupation of the states) and
 instead a squeezed state with reduced uncertainty in one direction is produced,
-as shown in Fig.~\ref{squeezbloch}.
+as shown in Fig.~\ref{CSSbloch}.
 %TODO Proper fig. ref
 
-\begin{figure}
-  \centering
-  \includegraphics[width=0.5\textwidth]{figs/squeeze/squeezed_Bloch_Cox.png}
-  \caption{Comparison of a CSS and squeezed state as represented on the Bloch
-  sphere.Note the reduced uncertainty in the z direction.  Reproduced
-  from~\cite{Cox2016}}
-  \label{squeezebloch}
-\end{figure}
 
 In the case of large $N$ the expected number of spins to measure in each state
 is $N/2$, but this is a probabilistic process, and as such the state resulting
@@ -265,8 +261,8 @@ further in the context of a potential experiment in the next section.
 
 \section{Performing QND measurements}
 
-Having established that a QND measurement will allow us to create entangled
-and in particular squeezed states, we now consider how this can be performed
+Having established that a QND measurement will allow us to create entangled,
+and in particular, squeezed states we now consider how this can be performed
 for a spin ensemble in a cavity. Consider again the Hamiltonian of our system
 given in eqn~\ref{eqn:He}. We have already pointed out that the
 third term will allow for transfer of information about the $z$ spin into the
@@ -308,7 +304,7 @@ It can be shown that this shift is dependent on the number of photons in the
 cavity, in particular the shift begins to decrease above some critical number
 ofo photons $n_\text{crit} = \braket{a^\dagger a}_\text{crit} = \Delta^2/4g^2$.
 Hence the probe power should not exceed $P_\text{max} = n_\text{crit}\hbar
-\omega_c \kappa$.
+\omega_c \kappa$ \cite{PhysRevA.69.062320}.
 
 The linewidth of the transition peak is $\kappa$, so to resolve this shift we
 require $g^2/ \Delta \gg \kappa$ for the shift of the frequency to be larger
@@ -361,13 +357,12 @@ The procedure to create entangled states on the chip would be as follows:
   \item Load CaF molecules in $\ket{g}$ into the magnetic trap close to the
     resonator
   \item Use external microwaves (from e.g. a horn) to transfer the molecules
-    into CSS $(\ket{e} + \ket{g})/2$
+    into CSS $(\ket{e} + \ket{g})/\sqrt{2}$
   \item Bias the trap so as to achieve large molecule-cavity detuning
   \item Weakly probe the cavity to identify the transmission peak
-  \item Observe the transmission peak, use the offset from $\omega_0$ to
-    determine $N$
-  \item Use the measured value of $N$ to determine the amount of squeezing that
-    has been achieved
+  \item Determine $N$, which tells us something about the nature of the
+    squeezed state that has been produced
+  \item Un-bias the qubit for precision quantum measurement or other operation
 \end{enumerate}
 
 \section{Conclusion}
