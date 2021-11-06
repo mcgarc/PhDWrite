@@ -111,7 +111,7 @@ the photons with the spin. This last term is what will ultimately allow us to
 perform QND measurement, since it will enable exchange of information between
 the z-component of the spin with the photons.
 
-\subsection{Spin ensemble}
+\subsection{Spin ensemble Hamiltonian}
 
 We are interested in the case where there are $N$ spins in the
 cavity. Assume that the coupling between each spin and the resonator photons is
@@ -174,7 +174,7 @@ the same as for the single-spin case. The operator $\mathbf{S}$ has the same
 commutation relations as the analogous $\mathbf{s}^i$. Once again, the final
 term will allow the information transfer for our QND measurements.
 
-\section{Entangling states with a QND measurement}
+\subsection{Coherent spin states}
 
 Consider the spins represented on the Bloch sphere \cite{Cox2016}. Here the
 state of the $i^\text{th}$ spin is written as
@@ -210,6 +210,11 @@ sphere has radius $N$.
   \label{CSSbloch}
 \end{figure}
 
+% TODO: CSS written in z-basis, and especially the probability for the + state
+
+% TODO: Repalce this para with derivation of SQL for + state (and find out how
+% J_z variance corresponds to theta variance
+
 For a CSS, there is some inherent uncertainty that arises in $\theta$ and
 $\phi$ from the projection of the measurement of each individual atom. When
 $\theta=\pi$ is this uncertainty is the standard quantum limit (SQL) and
@@ -218,9 +223,33 @@ $\theta=\pi$ is this uncertainty is the standard quantum limit (SQL) and
 \begin{equation}
   \Delta \theta = \Delta \phi = \frac{1}{\sqrt{N}}.
 \end{equation}
-%
+
+\subsection{Quantum non-demoltion measurement of the spin state}
+
+% TODO: Entangling maths, right up to Homodyne measurement (and the
+% preliminaries of that)
+
+\section{Entangled states in the ensemble}
+
+% TODO: Spiel
+
+\subsection{Spin squeezing}
+
+% TODO: Better description of squeezing here
+
 For the purposes of quantum meterology, it can be useful to reduce the
-uncertainty in one of these directions. To borrow an example from
+uncertainty in one of these directions.
+% TODO: cite!
+
+\subsection{QND measurement to squeeze the ensemble}
+
+% TODO: Replace this example with a more abstract discussion of the squeezing
+% process, with more details on the measurement of the light and how this can
+% could create a max. entangled state with precise enough measurement, less
+% precision -> less squeezing
+
+
+To borrow an example from
 reference~\cite{Cox2016}, consider the case with N=4, and we have prepared the
 CSS
 %
@@ -259,6 +288,12 @@ The state following the measurement are ``a bit difficult to write down''
 analytically~\cite{Cox2016}, but I will discuss the reduction in uncertainty
 further in the context of a potential experiment in the next section.
 
+\subsection{Cat states}
+
+% TODO: What??
+
+% TODO: Re-gear this section to be more about the experiment, motivating what
+% we will need to do on the chip
 \section{Performing QND measurements}
 
 Having established that a QND measurement will allow us to create entangled,
@@ -325,6 +360,8 @@ but I think we are more interested in the transmission magnitude case anyway.}
 
 %The power of the probe must be low, such that we remain in the disperisive
 %r\'egime, i.e.\ $\braket{a^\dagger a} < \Delta^2/4g^2 = n_\text{crit}$.
+
+It is helpful to consider the 
 
 \section{Implementation on CaF chip}
 
