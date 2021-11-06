@@ -229,6 +229,56 @@ $\theta=\pi$ is this uncertainty is the standard quantum limit (SQL) and
 % TODO: Entangling maths, right up to Homodyne measurement (and the
 % preliminaries of that)
 
+% Consider some CSS, which we entangle with coherent light (definte this)
+% writing the state as...
+
+\begin{equation}
+  \ket{\Psi(0)} = \sum_{m=-S}^S a_m \ket{\alpha} \ket{S, m}
+\end{equation}
+
+$\ket{\Psi(T)} = \exp{-iHT/\hbar}\ket{\Psi(0)}$
+
+\begin{equation}
+  \ket{\Psi(T)} = \sum_{m=-S}^S a_m e^{-i\theta_T S_z
+  a^\dagger a} \ket{\alpha}\ket{S, m}
+\end{equation}
+
+With $\theta_T = \frac{g^2}{\Delta} T$
+
+Expand coherent state from definition
+
+\begin{equation}
+  \ket{\alpha} = \sum_{n=0}^\infty \frac{\alpha^n}{\sqrt{n!}} \ket{n}
+\end{equation}
+
+Sub in
+
+\begin{align}
+  \ket{\Psi(T)} &= \sum_{m=-S}^S \sum_{n=0}^\infty a_m
+  \frac{\alpha^n}{\sqrt{n!}} e^{-i\theta_T S_z a^\dagger a} \ket{n}
+  \ket{S, m} \\
+  &= \sum_{m=-S}^S \sum_{n=0}^\infty a_m
+  \frac{\alpha^n}{\sqrt{n!}} e^{-i\theta_T m n} \ket{n}
+  \ket{S, m} \\
+  &= \sum_{m=-S}^S a_m \left( \sum_{n=0}^\infty 
+  \frac{(\alpha e^{-i\theta_T m})^n}{\sqrt{n!}}\ket{n}\right) 
+  \ket{S, m} \\
+  &= \sum_{m=-S}^S a_m \ket{\alpha
+  e^{-i\theta_T m}}\ket{S, m}
+\end{align}
+
+It is now clear that the state of the system's $S_z$ state is entangled with
+the state of the photons. Measuring the phase of the light leaving the cavity
+(for example with a heterodyne detector) will therefore tell us something about
+the state of the ensemble. Notably, the information gained tells us only about
+the entire state of the ensemble, and not about any individual spins. Therfore
+the quantum coherence is conserved throughout this process.
+% TODO I'm not convinced by this assertion. CITE? Actually check... 
+In the case that the measurement is perfectly accurate, the final state of the
+% TODO fix abs
+system will be $\ket{S, m}$ with probability $P(m) = |a_m|^2$. This constitutes
+a QND measurement of the system. %TODO Check/ cite
+
 \section{Entangled states in the ensemble}
 
 % TODO: Spiel
@@ -247,6 +297,9 @@ uncertainty in one of these directions.
 % process, with more details on the measurement of the light and how this can
 % could create a max. entangled state with precise enough measurement, less
 % precision -> less squeezing
+
+% Consider the above case of QND measurement, with Psi(0) = +, in which case
+% P(m) is some Gaussian (for large N)...
 
 
 To borrow an example from
