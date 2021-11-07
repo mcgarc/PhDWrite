@@ -248,19 +248,19 @@ With $\theta_T = \frac{g^2}{\Delta} T$
 Expand coherent state from definition
 
 \begin{equation}
-  \ket{\alpha} = \sum_{n=0}^\infty \frac{\alpha^n}{\sqrt{n!}} \ket{n}
+  \ket{\alpha} = e^{-\frac{|\alpha|^2}{2}}\sum_{n=0}^\infty \frac{\alpha^n}{\sqrt{n!}} \ket{n}
 \end{equation}
 
 Sub in
 
 \begin{align}
-  \ket{\Psi(T)} &= \sum_{m=-S}^S \sum_{n=0}^\infty a_m
+  \ket{\Psi(T)} &= e^{-\frac{|\alpha|^2}{2}}\sum_{m=-S}^S \sum_{n=0}^\infty a_m
   \frac{\alpha^n}{\sqrt{n!}} e^{-i\theta_T S_z a^\dagger a} \ket{n}
   \ket{S, m} \\
-  &= \sum_{m=-S}^S \sum_{n=0}^\infty a_m
+  &= e^{-\frac{|\alpha|^2}{2}}\sum_{m=-S}^S \sum_{n=0}^\infty a_m
   \frac{\alpha^n}{\sqrt{n!}} e^{-i\theta_T m n} \ket{n}
   \ket{S, m} \\
-  &= \sum_{m=-S}^S a_m \left( \sum_{n=0}^\infty 
+  &= \sum_{m=-S}^S a_m \left( e^{-\frac{|\alpha|^2}{2}} \sum_{n=0}^\infty 
   \frac{(\alpha e^{-i\theta_T m})^n}{\sqrt{n!}}\ket{n}\right) 
   \ket{S, m} \\
   &= \sum_{m=-S}^S a_m \ket{\alpha
