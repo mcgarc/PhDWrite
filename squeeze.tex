@@ -4,6 +4,7 @@
 \usepackage{amsmath}
 \usepackage{braket}
 \usepackage{graphicx}
+\usepackage{amsfonts}
 
 % --- Bibliography ---
 % Uses biblatex with biber. Don't include url, doi, isbn because we will use
@@ -232,27 +233,51 @@ $\theta=\pi$ is this uncertainty is the standard quantum limit (SQL) and
 % Consider some CSS, which we entangle with coherent light (definte this)
 % writing the state as...
 
+A useful tool for quantum information processing is the quantum non-demolition
+(QND) measurement~\cite{}. Such a measurement allows the insepction of the
+state of a system (in this case the spin ensemble) while preserving some
+quantum coherence. QND measurements can be deployed not only for state readout,
+but for the preparation of non-classical states, as will be explained in the
+following sections. The QND method described here has been demonstrated to work
+in superconducting qubits~\cite{PhysRevA.69.062320} and expands on the proposal
+in \cite{Andre2006}.
+
+Consider the spin ensemble coupled to resonator photons as described above. Take
+the resonator photons to be in a canonical coherent state
+%
 \begin{equation}
-  \ket{\Psi(0)} = \sum_{m=-S}^S a_m \ket{\alpha} \ket{S, m}
+  \ket{\alpha} = e^{-\frac{|\alpha|^2}{2}}\sum_{n=0}^\infty \frac{\alpha^n}{\sqrt{n!}} \ket{n}
 \end{equation}
-
-$\ket{\Psi(T)} = \exp{-iHT/\hbar}\ket{\Psi(0)}$
-
+%
+with $\alpha\in\mathbb{C}$, and the pulse of light lasting time $t=T$. We write
+the state of the system at time $t=0$ as
+%
+\begin{equation}
+  \ket{\Psi(0)} = \sum_{m=-S}^S a_m \ket{\alpha} \ket{S, m}.
+\end{equation}
+%
+We take this state to evolve in a rotating reference frame, such that
+%
+\begin{equation}
+  \ket{\Psi(T)} = \exp\left(-iH_\text{int}T/\hbar\right)\ket{\Psi(0)}
+\end{equation}
+%
+where the interaction Hamiltonian is
+%
+\begin{equation}
+  H_\text{int} = \frac{g^2}{\Delta} S_z a^\dagger a.
+\end{equation}
+%
+After the pulse, we therefore have the state
+%
 \begin{equation}
   \ket{\Psi(T)} = \sum_{m=-S}^S a_m e^{-i\theta_T S_z
   a^\dagger a} \ket{\alpha}\ket{S, m}
 \end{equation}
-
-With $\theta_T = \frac{g^2}{\Delta} T$
-
-Expand coherent state from definition
-
-\begin{equation}
-  \ket{\alpha} = e^{-\frac{|\alpha|^2}{2}}\sum_{n=0}^\infty \frac{\alpha^n}{\sqrt{n!}} \ket{n}
-\end{equation}
-
-Sub in
-
+%
+with $\theta_T = \frac{g^2}{\Delta} T$. It is now straightforward to show that
+the state of the spin ensemble is entangled with the state of the light field,
+%
 \begin{align}
   \ket{\Psi(T)} &= e^{-\frac{|\alpha|^2}{2}}\sum_{m=-S}^S \sum_{n=0}^\infty a_m
   \frac{\alpha^n}{\sqrt{n!}} e^{-i\theta_T S_z a^\dagger a} \ket{n}
@@ -264,11 +289,10 @@ Sub in
   \frac{(\alpha e^{-i\theta_T m})^n}{\sqrt{n!}}\ket{n}\right) 
   \ket{S, m} \\
   &= \sum_{m=-S}^S a_m \ket{\alpha
-  e^{-i\theta_T m}}\ket{S, m}
+  e^{-i\theta_T m}}\ket{S, m}.
 \end{align}
 
-It is now clear that the state of the system's $S_z$ state is entangled with
-the state of the photons. Measuring the phase of the light leaving the cavity
+It is now clear measuring the phase of the light leaving the cavity
 (for example with a heterodyne detector) will therefore tell us something about
 the state of the ensemble. Notably, the information gained tells us only about
 the entire state of the ensemble, and not about any individual spins. Therfore
