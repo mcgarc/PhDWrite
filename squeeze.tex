@@ -5,6 +5,7 @@
 \usepackage{braket}
 \usepackage{graphicx}
 \usepackage{amsfonts}
+\usepackage{physics}
 
 % --- Bibliography ---
 % Uses biblatex with biber. Don't include url, doi, isbn because we will use
@@ -146,6 +147,7 @@ and the collective spin operator
 with raising and lowering operators $S_\pm = S_x \pm iS_y =
 \sum_{i=1}^N\sigma_\pm^i/\sqrt{N}$.
 %
+% TODO Hyphen here??
 We can now re-write the Hamiltonian for the ensemble as
 %
 \begin{equation}
@@ -177,53 +179,136 @@ term will allow the information transfer for our QND measurements.
 
 \subsection{Spin states of the ensemble}
 
+% TODO Better Bloch sphere cite
+% https://journals.aps.org/pra/pdf/10.1103/PhysRevA.47.3554
 Consider the spins represented on the Bloch sphere \cite{Cox2016}. Here the
 state of the $i^\text{th}$ spin is written as
 %
 \begin{equation}
   \ket{\psi}_i = \cos\left(\frac{\theta_i}{2}\right)\ket{e}_i +
   e^{i\phi_i}\sin\left(\frac{\theta_i}{2}\right)\ket{g}_i.
+  \label{eqn:blochspin}
 \end{equation}
 %
 The values of $\theta$ and $\phi$ uniquely define the points on a sphere of
 radius $1$, with $\ket{e}_i$ and $\ket{g}_i$ at the poles. The spin state of
-the entire system is then
+the ensemble is
 %
 \begin{equation}
   \ket{\Psi} = \bigotimes_{i=1}^N \ket{\psi}_i.
 \end{equation}
-Such a state can also be
-represented on a sphere, as the sum of each vector $\ket{\psi_i}$ as shown in 
+Such a state can also be represented on a sphere as the sum of all the
+individual spin vectors. In this case the radius of the sphere is variable. For
+the purposes of this discussion, we will limit ourselves to considering the
+case where the spins are in a coherent spin state (CSS), that is they are all
+aligned such that 
+
+% TODO CITE!
+We can limit ourselves to considering the case where spins are aligned,
+so that for all $i$, $\theta_i = \theta$ and $\phi_i = \phi$, in which case the
+sphere has radius $N$. Such a state is known as a coherent spin state (CSS) and
 % TODO proper fig. ref
-Fig.~\ref{CSSbloch}. In the case shown, all the spins are aligned ($\theta_i
-= \theta_j$ and $\phi_i = \phi_j$) we have a coherent spin state (CSS) and the
-sphere has radius $N$.
-
-\begin{figure}
-  \centering
-  \includegraphics[width=0.4\textwidth]{figs/squeeze/CSS_Bloch_Cox.png}
-  %
-  \includegraphics[width=0.5\textwidth]{figs/squeeze/squeezed_Bloch_Cox.png}
-  \caption{Left: A coherent spin state as represented on the Bloch sphere.
-  Right: Comparison of a CSS and squeezed state as represented on the Bloch
-  sphere. Note the reduced uncertainty in the z direction.
-  Both reproduced from~\cite{Cox2016}}
-  \label{CSSbloch}
-\end{figure}
-
-% TODO: CSS written in z-basis, and especially the probability for the + state
-
-% TODO: Repalce this para with derivation of SQL for + state (and find out how
-% J_z variance corresponds to theta variance
-
-For a CSS, there is some inherent uncertainty that arises in $\theta$ and
-$\phi$ from the projection of the measurement of each individual atom. When
-$\theta=\pi$ is this uncertainty is the standard quantum limit (SQL) and
-~\cite{Cox2016}
-% What is this uncertainty in cases off the equator?
+is illustrated in Fig.~\ref{CSSbloch}. The state can be written similarly to
+% TODO proper eqn. ref
+Eqn.~\ref{eqn:blochspin} as
+%
 \begin{equation}
-  \Delta \theta = \Delta \phi = \frac{1}{\sqrt{N}}.
+  \ket{\Psi} = \cos\left(\frac{\theta}{2}\right)\ket{e} +
+  e^{i\phi}\sin\left(\frac{\theta}{2}\right)\ket{g}
 \end{equation}
+%
+where $\ket{e} = \bigotimes_{i=1}^N\ket{e_i}$ and similarly for $\ket{g}$.
+However, it is often more useful to denote the state in terms of the
+eigenstates of the angular momentum operator. In particular, the eigenstate of
+% TODO Need to introduce the eigenstates above with spin operators?
+$S_z$, denoted $\ket{S, m}$ can be used to describe a CSS
+%
+\begin{equation}
+  \ket{\Psi} = \sum_{m=-S}^S a_m \ket{S, m}
+\end{equation}
+where $a_m$ are the probability amplitudes. Note that $\ket{e} = \ket{S, S}$
+and $\ket{g} = \ket{S, -S}$.
+
+Of particular interest to us will be the CSS aligned along the $x$ axis, so
+that $\theta = \pi$ and $\phi = 0$. We denote such a state as $\ket{+}$, since
+%
+\begin{equation}
+  \ket{+} = \bigotimes_{i=1}^N \ket{+}_i.
+\end{equation}
+%
+This state can be created by initialising the system with all states in the
+ground state $\ket{g}$ and then performing a roataional transormation
+% TODO: check pulse!
+($\pi/2$-pulse) on each spin.
+
+Direct measurement of any individual spin would yeild $\ket{e}_i$ or
+$\ket{g}_i$ with probability $p=1/2$. Hence measuring the eigenvalue of $S_z$
+will give a value $m$ with probabilty given by the binomial theorem~\cite{}
+%
+\begin{equation}
+  P(m) = \frac{1}{2^N} {N \choose m +N/2}
+\end{equation}
+%
+or for large $N$, the binomial is approximated by the Gaussian
+%
+\begin{equation}
+  P(m) \approx\frac{1}{\sqrt{2\pi \Delta_m^2}} e^{-m^2/(2\Delta_m^2)}.
+\end{equation}
+%
+% TODO Hyphen here?
+where the variance is $\Delta_m^2 = N/4$. We therefore re-write the probability
+amplitudes of $\ket{+}$ so that
+%
+\begin{equation}
+  \ket{+} = \sum_{m=-S}^S \sqrt{P(m)}\ket{S,m}.
+\end{equation}
+
+Note that such a state has expectation values $\langle S_z \rangle = 0$,
+$\langle S_z^2\rangle = \Delta_m^2$, and the uncertainty in $S_z$ is consistent
+with the usual formula $\Delta_m^2 = \langle S_z^2 \rangle - \langle
+S_z\rangle^2$. This uncertainty is the projection noise of a CSS, and it
+corresponsts to to an uncertainty in $\theta$
+%
+\footnote{This can be shown geometrically: drawing the Bloch sphere $\sin
+\theta \approx \tan \theta = m/S \approx \theta$. Differentiating both sides
+with respect to theta gives $\Delta m / \Delta \theta \approx 1/S$.
+}
+%
+\begin{equation}
+  \Delta\theta = \frac{1}{\sqrt{N}}
+\end{equation}
+which is known as the standard quantum limit (SQL). By symmety $\Delta \phi =
+\Delta \theta$.
+
+Note that these uncertainties hold only for $\ket{+}$ and other states where
+$\theta = \pi$ (states on the equator of the Bloch sphere). For example for
+$\ket{e}$ and $\ket{g}$, $\Delta \theta = 0$. %CITE Wineland 1993
+
+%Note that the expected value of $S_z$ is
+%%
+%\begin{align}
+%  \langle S_z \rangle &= \bra{+}S_z\ket{+} \\
+%  &= \sum_{m,n} \sqrt{P(m)P(n)}m\bra{n}\ket{m} \\
+%  &= \sum_m mP(m) \\
+%  &\approx \int_{-\infty}^\infty mP(m)\dd m \\
+%  &=0.
+%\end{align}
+%%
+%Here we use the fact that $N$ is large, to approximate the summation as an
+%integral, and note the final equality since the integrand is odd. Of course,
+%this result is intuitvely obvious.
+%
+%Similarly we have that
+%%
+%\begin{align}
+%  \langle S_z^2 \rangle &= \bra{+}S_z^2\ket{+} \\
+%  &\approx \int_{-\infty}^\infty m^2P(m) \dd m \\
+%  &=\frac{N}{4}, 
+%\end{align}
+%%
+%so the uncertainty in $m$ is...
+
+
 
 \subsection{Quantum non-demoltion measurement of the spin state}
 
@@ -352,6 +437,18 @@ instead a squeezed state with reduced uncertainty in one direction is produced,
 as shown in Fig.~\ref{CSSbloch}.
 %TODO Proper fig. ref
 
+\begin{figure}
+  \centering
+  \includegraphics[width=0.4\textwidth]{figs/squeeze/CSS_Bloch_Cox.png}
+  %
+  \includegraphics[width=0.5\textwidth]{figs/squeeze/squeezed_Bloch_Cox.png}
+  \caption{Left: A coherent spin state as represented on the Bloch sphere.
+  Right: Comparison of a CSS and squeezed state as represented on the Bloch
+  sphere. Note the reduced uncertainty in the z direction.
+  Both reproduced from~\cite{Cox2016}}
+  \label{CSSbloch}
+\end{figure}
+
 
 In the case of large $N$ the expected number of spins to measure in each state
 is $N/2$, but this is a probabilistic process, and as such the state resulting
@@ -414,7 +511,7 @@ the cavity.
 
 It can be shown that this shift is dependent on the number of photons in the
 cavity, in particular the shift begins to decrease above some critical number
-ofo photons $n_\text{crit} = \braket{a^\dagger a}_\text{crit} = \Delta^2/4g^2$.
+of photons $n_\text{crit} = \langle a^\dagger a\rangle_\text{crit} = \Delta^2/4g^2$.
 Hence the probe power should not exceed $P_\text{max} = n_\text{crit}\hbar
 \omega_c \kappa$ \cite{PhysRevA.69.062320}.
 
