@@ -253,7 +253,7 @@ with $\alpha\in\mathbb{C}$, and the pulse of light lasting time $t=T$. We write
 the state of the system at time $t=0$ as
 %
 \begin{equation}
-  \ket{\Psi(0)} = \sum_{m=-S}^S a_m \ket{\alpha} \ket{S, m}.
+  \ket{\Psi(0)} = \sum_{m=-S}^S a_m \ket{S, m}\ket{\alpha}.
 \end{equation}
 %
 We take this state to evolve in a rotating reference frame, such that
@@ -272,24 +272,23 @@ After the pulse, we therefore have the state
 %
 \begin{equation}
   \ket{\Psi(T)} = \sum_{m=-S}^S a_m e^{-i\theta_T S_z
-  a^\dagger a} \ket{\alpha}\ket{S, m}
+  a^\dagger a} \ket{S, m}\ket{\alpha}
 \end{equation}
 %
 with $\theta_T = \frac{g^2}{\Delta} T$. It is now straightforward to show that
 the state of the spin ensemble is entangled with the state of the light field,
+by writing $\ket{\alpha}$ in terms of the summation over Fock states
 %
 \begin{align}
   \ket{\Psi(T)} &= e^{-\frac{|\alpha|^2}{2}}\sum_{m=-S}^S \sum_{n=0}^\infty a_m
-  \frac{\alpha^n}{\sqrt{n!}} e^{-i\theta_T S_z a^\dagger a} \ket{n}
-  \ket{S, m} \\
+   \frac{\alpha^n}{\sqrt{n!}} e^{-i\theta_T S_z a^\dagger a} \ket{S, m} \ket{n}
+   \\
   &= e^{-\frac{|\alpha|^2}{2}}\sum_{m=-S}^S \sum_{n=0}^\infty a_m
-  \frac{\alpha^n}{\sqrt{n!}} e^{-i\theta_T m n} \ket{n}
-  \ket{S, m} \\
-  &= \sum_{m=-S}^S a_m \left( e^{-\frac{|\alpha|^2}{2}} \sum_{n=0}^\infty 
-  \frac{(\alpha e^{-i\theta_T m})^n}{\sqrt{n!}}\ket{n}\right) 
-  \ket{S, m} \\
-  &= \sum_{m=-S}^S a_m \ket{\alpha
-  e^{-i\theta_T m}}\ket{S, m}.
+  \frac{\alpha^n}{\sqrt{n!}} e^{-i\theta_T m n} \ket{S, m} \ket{n} \\
+  &= \sum_{m=-S}^S a_m \ket{S, m} \left( e^{-\frac{|\alpha|^2}{2}}
+  \sum_{n=0}^\infty \frac{(\alpha e^{-i\theta_T m})^n}{\sqrt{n!}}\ket{n}\right)
+  \\
+  &= \sum_{m=-S}^S a_m \ket{S, m}\ket{\alpha e^{-i\theta_T m}}.
 \end{align}
 
 It is now clear measuring the phase of the light leaving the cavity
