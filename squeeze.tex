@@ -285,9 +285,12 @@ with the usual formula $\Delta_m^2 = \langle S_z^2 \rangle - \langle
 S_z\rangle^2$. This uncertainty is the projection noise of a CSS, and it
 corresponsts to to an uncertainty in $\theta$
 %
-\footnote{This can be shown geometrically: drawing the Bloch sphere $\sin
-\theta \approx \tan \theta = m/S \approx \theta$. Differentiating both sides
-with respect to theta gives $\Delta m / \Delta \theta \approx 1/S$.
+\footnote{This can be shown geometrically: consider the anlge on the Bloch
+sphere between the x-axis and the arrow representing the CSS, call this
+$\theta'$ and assume it to be small. Then $\sin
+\theta' \approx \tan \theta' = m/S \approx \theta'$. Differentiating both sides
+with respect to theta gives $\Delta m / \Delta \theta \approx 1/S$, noting that
+$\Delta \theta' = \Delta \theta$.
 }
 %
 \begin{equation}
@@ -386,7 +389,7 @@ by writing $\ket{\alpha}$ in terms of the summation over Fock states
 \end{align}
 
 It is now clear measuring the phase of the light leaving the cavity
-(for example with a heterodyne detector) will therefore tell us something about
+(for example with a homodyne detector) will therefore tell us something about
 the state of the ensemble. Notably, the information gained tells us only about
 the entire state of the ensemble, and not about any individual spins. Therfore
 the quantum coherence is conserved throughout this process.
@@ -442,7 +445,7 @@ $N_e = \meas{m} + N/2$ spins in the excited state, and $N_g = N - N_e$ spins in
 the ground state.  We can write this in terms of the set $\Pi$  of permutations 
 of $N_e$ numbers chosen from $[1,N]\cap\mathbb{Z}$, which we
 \begin{equation}
-  \ket{\Psi_{\meas{m}}} = {N \choose N_e}^{-1}\sum_{\pi \in \Pi}
+  \ket{\Psi_{\meas{m}}} = {N \choose N_e}^{-\frac{1}{2}}\sum_{\pi \in \Pi}
   \bigotimes_{i=1}^{N_e} \sigma_x^{\pi_i} \ket{g}
 \end{equation}
 
@@ -451,7 +454,7 @@ reference~\cite{Cox2016}, consider the case with $N=4$, $\meas{m}=0$ so we have
 $N_e = N_g = 2$. Then the state is
 %
 \begin{equation}
-  \ket{\Psi_4} = \frac{1}{\sqrt{6}}(\ket{eegg} + \ket{egeg} + \ket{egge} +
+  \ket{\Psi_0} = \frac{1}{\sqrt{6}}(\ket{eegg} + \ket{egeg} + \ket{egge} +
   \ket{geeg} + \ket{gege} + \ket{ggee})
 \end{equation}
 %
