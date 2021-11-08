@@ -95,12 +95,14 @@ dispersive behaviour by applying  a unitary transformation
 \begin{equation} U = \exp \left[\frac{g}{\Delta}(a\sigma_+ -
 a^\dagger\sigma_-)\right] \end{equation}
 %
-up to second order in $g$.\footnote{This is quite an interesting reference as
-they do a lot of what we are interested in but with a Cooper pair box instead
-of CaF molecules (for experiment see reference \cite{Wallraff2004}). Note that
-this transformation to get the Hamiltonian is quite different from the
-adiabatic elimination used to reduce a three level system in
-Reference~\cite{SchleierSmith2011}.} From this we obtain
+up to second order in $g$.
+%\footnote{This is quite an interesting reference as
+%they do a lot of what we are interested in but with a Cooper pair box instead
+%of CaF molecules (for experiment see reference \cite{Wallraff2004}). Note that
+%this transformation to get the Hamiltonian is quite different from the
+%adiabatic elimination used to reduce a three level system in
+%Reference~\cite{SchleierSmith2011}.}
+From this we obtain
 %
 \begin{equation} H= UH_\text{JC}U^\dagger \approx \hbar \omega_c
   a^\dagger a + \frac{\hbar}{2}\left(\Omega +
@@ -141,14 +143,15 @@ Now define the spin operator for a single spin
 and the collective spin operator
 %
 \begin{equation}
-\mathbf{S} = \sum_{i=1}^N \mathbf{s}^i
+\mathbf{S} = \sum_{i=1}^N \mathbf{s}^i.
 \end{equation}
 %
-with raising and lowering operators $S_\pm = S_x \pm iS_y =
-\sum_{i=1}^N\sigma_\pm^i/\sqrt{N}$.
+We will usually be interested in the eigenstates of $S_z$ which we denote in
+the usual way as $\ket{S, m}$, with $S^2 \ket{S,m} = S(S+1)\ket{S, m}$ and $S_z
+\ket{S,m} = m\ket{S, m}$. The raising and lowering operators are $S_\pm = S_x
+\pm iS_y = \sum_{i=1}^N\sigma_\pm^i/\sqrt{N}$.
 %
-% TODO Hyphen here??
-We can now re-write the Hamiltonian for the ensemble as
+Now rewrite the Hamiltonian for the ensemble as
 %
 \begin{equation}
   H_\text{TC} = \hbar\omega_c a^\dagger a + \hbar\frac{\omega_0}{2}S_z +
@@ -217,7 +220,7 @@ Eqn.~\ref{eqn:blochspin} as
   e^{i\phi}\sin\left(\frac{\theta}{2}\right)\ket{g}
 \end{equation}
 %
-where $\ket{e} = \bigotimes_{i=1}^N\ket{e_i}$ and similarly for $\ket{g}$.
+where $\ket{e} = \bigotimes_{i=1}^N\ket{e}_i$ and similarly for $\ket{g}$.
 However, it is often more useful to denote the state in terms of the
 eigenstates of the angular momentum operator. In particular, the eigenstate of
 % TODO Need to introduce the eigenstates above with spin operators?
@@ -230,7 +233,7 @@ where $a_m$ are the probability amplitudes. Note that $\ket{e} = \ket{S, S}$
 and $\ket{g} = \ket{S, -S}$.
 
 Of particular interest to us will be the CSS aligned along the $x$ axis, so
-that $\theta = \pi$ and $\phi = 0$. We denote such a state as $\ket{+}$, since
+that $\theta = \pi/2$ and $\phi = 0$. We denote such a state as $\ket{+}$, since
 %
 \begin{equation}
   \ket{+} = \bigotimes_{i=1}^N \ket{+}_i.
@@ -255,8 +258,7 @@ or for large $N$, the binomial is approximated by the Gaussian
   P(m) \approx\frac{1}{\sqrt{2\pi \Delta_m^2}} e^{-m^2/(2\Delta_m^2)}.
 \end{equation}
 %
-% TODO Hyphen here?
-where the variance is $\Delta_m^2 = N/4$. We therefore re-write the probability
+where the variance is $\Delta_m^2 = N/4$. We therefore rewrite the probability
 amplitudes of $\ket{+}$ so that
 %
 \begin{equation}
@@ -308,15 +310,7 @@ $\ket{e}$ and $\ket{g}$, $\Delta \theta = 0$. %CITE Wineland 1993
 %%
 %so the uncertainty in $m$ is...
 
-
-
 \subsection{Quantum non-demoltion measurement of the spin state}
-
-% TODO: Entangling maths, right up to Homodyne measurement (and the
-% preliminaries of that)
-
-% Consider some CSS, which we entangle with coherent light (definte this)
-% writing the state as...
 
 A useful tool for quantum information processing is the quantum non-demolition
 (QND) measurement~\cite{}. Such a measurement allows the insepction of the
@@ -328,7 +322,7 @@ in superconducting qubits~\cite{PhysRevA.69.062320} and expands on the proposal
 in \cite{Andre2006}.
 
 Consider the spin ensemble coupled to resonator photons as described above. Take
-the resonator photons to be in a canonical coherent state
+the resonator photons to be in a canonical coherent state~\cite{}
 %
 \begin{equation}
   \ket{\alpha} = e^{-\frac{|\alpha|^2}{2}}\sum_{n=0}^\infty \frac{\alpha^n}{\sqrt{n!}} \ket{n}
@@ -388,6 +382,14 @@ In the case that the measurement is perfectly accurate, the final state of the
 system will be $\ket{S, m}$ with probability $P(m) = |a_m|^2$. This constitutes
 a QND measurement of the system. %TODO Check/ cite
 
+\subsection{Realistic measurement}
+
+% TODO
+
+Need to consider dephasing of spins, some spins collapsing on measurement
+(shrinking the Bloch sphere) and the uncertainty associated with the
+measurement.
+
 \section{Entangled states in the ensemble}
 
 % TODO: Spiel
@@ -397,7 +399,7 @@ a QND measurement of the system. %TODO Check/ cite
 % TODO: Better description of squeezing here
 
 For the purposes of quantum meterology, it can be useful to reduce the
-uncertainty in one of these directions.
+uncertainty in one of $\theta$ or $\phi$...
 % TODO: cite!
 
 \subsection{QND measurement to squeeze the ensemble}
