@@ -399,9 +399,53 @@ In the case that the measurement is perfectly accurate, the final state of the
 system will be $\ket{S, m}$ with probability $P(m) = |a_m|^2$. This constitutes
 a QND measurement of the system. %TODO Check/ cite
 
+\subsection{Homodyne measurement}
+
+% TODO Cite
+As mentioned above, the phase of the light can be determined by a homodyne
+measurement, as illustrated in Fig. \ref{fig:homodyne}.
+% TODO Homodyne figure
+The phase-shifted light transmitted through the cavity
+($\ket{\Psi_\text{out}}$)
+% TODO Need to account for transmission coefficient, mention this above?
+is then incident on one port (a) of a
+% balanced?
+beam splitter. On the other port (b) we have a strong local oscillator (LO) in a
+coherent state $\ket{\beta}$. The annihilation operators associated with the
+input ports are related to those of the output ports (c and d) by
+%
+\begin{equation}
+  \text{Matrix with c,d = M a, b}.
+\end{equation}
+%
+So we expect the difference in the photon numbers arriving at each detector to
+be
+%
+% TODO More lines here (this needs to be an align env?) also just check maths
+\begin{align}
+  \langle c^\dagger c - d^\dagger d\rangle &\propto \bra{\Psi_\text{out}}\bra{\beta}(a^\dagger
+  b^\dagger - ab)\ket{\beta}\ket{\Psi_\text{out}} \\
+  & = |\beta|\kappa_T \langle a^\dagger e^{-i\varphi} - a e^{i\varphi}\rangle.
+\end{align}
+%TODO define beta stuff
+%
+Hence measuring the intensity of each output of the beamsplitter can give us
+information on the phase of the light. In the case that we demand $\varphi =
+??$ we measure...
+
+% Where am I going with this? Need to check notes I guess
+
 \subsection{Realistic measurement}
 
 % TODO
+
+
+In pratice, it is not possible to perfectly determine the phase of the light,
+and hence measure $m$. There are two limiting effects to consider.
+
+The first is collapse of individual spins. In the 
+
+Second, consider the uncertainty associated with the homodyne measurement
 
 Need to consider dephasing of spins, some spins collapsing on measurement
 (shrinking the Bloch sphere) and the uncertainty associated with the
