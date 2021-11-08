@@ -7,6 +7,8 @@
 \usepackage{amsfonts}
 \usepackage{physics}
 
+\newcommand*\meas[1]{\overline{#1}}
+
 % --- Bibliography ---
 % Uses biblatex with biber. Don't include url, doi, isbn because we will use
 % magic to insert the url as a hyperlink in the title ourselves
@@ -232,6 +234,18 @@ $S_z$, denoted $\ket{S, m}$ can be used to describe a CSS
 where $a_m$ are the probability amplitudes. Note that $\ket{e} = \ket{S, S}$
 and $\ket{g} = \ket{S, -S}$.
 
+\begin{figure}
+  \centering
+  \includegraphics[width=0.4\textwidth]{figs/squeeze/CSS_Bloch_Cox.png}
+  %
+  \includegraphics[width=0.5\textwidth]{figs/squeeze/squeezed_Bloch_Cox.png}
+  \caption{Left: A coherent spin state as represented on the Bloch sphere.
+  Right: Comparison of a CSS and squeezed state as represented on the Bloch
+  sphere. Note the reduced uncertainty in the z direction.
+  Both reproduced from~\cite{Cox2016}}
+  \label{CSSbloch}
+\end{figure}
+
 Of particular interest to us will be the CSS aligned along the $x$ axis, so
 that $\theta = \pi/2$ and $\phi = 0$. We denote such a state as $\ket{+}$, since
 %
@@ -412,57 +426,54 @@ uncertainty in one of $\theta$ or $\phi$...
 % Consider the above case of QND measurement, with Psi(0) = +, in which case
 % P(m) is some Gaussian (for large N)...
 
+% TODO Need to have introudced and explained what I mean by perfect QND
+% measurment above.
+Consider a perfect QND measurement peformed on the state $\ket{\Psi(0)} =
+\ket{+}$. The end result will be a state
+%
+\begin{equation}
+  \ket{\Psi_{\meas{m}}} = \ket{S, \meas{m}}
+\end{equation}
+%
+where $\meas{m}$ is the eigenvalue of $S_z$ that was the outcome of our
+measurement, which was obtainted with probability $P(\meas{m})$.
+$\ket{\Psi_{\meas{m}}}$ is a Dicke state, the sum of all states with
+$N_e = \meas{m} + N/2$ spins in the excited state, and $N_g = N - N_e$ spins in
+the ground state.  We can write this in terms of the set $\Pi$  of permutations 
+of $N_e$ numbers chosen from $[1,N]\cap\mathbb{Z}$, which we
+\begin{equation}
+  \ket{\Psi_{\meas{m}}} = {N \choose N_e}^{-1}\sum_{\pi \in \Pi}
+  \bigotimes_{i=1}^{N_e} \sigma_x^{\pi_i} \ket{g}
+\end{equation}
 
 To borrow an example from
-reference~\cite{Cox2016}, consider the case with N=4, and we have prepared the
-CSS
+reference~\cite{Cox2016}, consider the case with $N=4$, $\meas{m}=0$ so we have
+$N_e = N_g = 2$. Then the state is
 %
 \begin{equation}
-  \ket{\Psi} = \bigotimes_{i=1}^4 \frac{\ket{e}_i + \ket{g}_i}{\sqrt{2}}.
+  \ket{\Psi_4} = \frac{1}{\sqrt{6}}(\ket{eegg} + \ket{egeg} + \ket{egge} +
+  \ket{geeg} + \ket{gege} + \ket{ggee})
 \end{equation}
 %
-If we were to perform a QND measurement, of the number of spins in each state
-(but gaining no knowledge of which spin was in which state) then we can produce
-an entangled state. For example if the measurement shows that there are two
-spins in each state we have
+which is a maximally entangled state, represented on the Bloch sphere as a ring
+around the equator.
 %
-\begin{equation}
-\ket{\psi} = \frac{1}{\sqrt{6}}(\ket{eegg} + \ket{egeg} + \ket{egge} +
-\ket{geeg} + \ket{gege} + \ket{ggee})
-\end{equation}
-which is a maximally entangled state. For any result other than all spins in
-$\ket{e}$ or $\ket{g}$ the result is entangled. This particular state is a
-Dicke state, and would be represented by a ring around the equator of the Bloch
-sphere. However, creation of such a state is not normally achievable (as this
-would require highly accurate measurement of the occupation of the states) and
-instead a squeezed state with reduced uncertainty in one direction is produced,
-as shown in Fig.~\ref{CSSbloch}.
-%TODO Proper fig. ref
+Clearly, such a state would have zero uncertainty in $S_z$, it is therefore
+%TODO emph?
+\emph{maximally squeezed}
+and also has infinite uncertainty in $S_x$.
 
-\begin{figure}
-  \centering
-  \includegraphics[width=0.4\textwidth]{figs/squeeze/CSS_Bloch_Cox.png}
-  %
-  \includegraphics[width=0.5\textwidth]{figs/squeeze/squeezed_Bloch_Cox.png}
-  \caption{Left: A coherent spin state as represented on the Bloch sphere.
-  Right: Comparison of a CSS and squeezed state as represented on the Bloch
-  sphere. Note the reduced uncertainty in the z direction.
-  Both reproduced from~\cite{Cox2016}}
-  \label{CSSbloch}
-\end{figure}
+With perfect measurement, it is therfore possible to generate a maximally
+squeezed state, simply by peforming QND measurement on  $\ket{+}$. The state
+that is produced will be entangled (unless $\meas{m} = \pm S$). We know the
+state we have produced by looking at the value of $\meas{m}$, but have no
+control over this outcome, for this reason the squeezing is referred to as
+% TODO when do I emph new words?
+\emph{conditional}.
+%
+We expect for large $N$ that $\meas{m}/N \ll 1$.
 
-
-In the case of large $N$ the expected number of spins to measure in each state
-is $N/2$, but this is a probabilistic process, and as such the state resulting
-from the QND measurement is dependent on the measured value.
-% Cox gives some probabilistic idea of what theta normally is
-
-
-% Cox also gives an equation for the proejction operator of the measurement,
-% but I think I should come back to that later.
-The state following the measurement are ``a bit difficult to write down''
-analytically~\cite{Cox2016}, but I will discuss the reduction in uncertainty
-further in the context of a potential experiment in the next section.
+% TODO Extend to not maximally squeezed states
 
 \subsection{Cat states}
 
