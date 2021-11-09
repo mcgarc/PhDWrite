@@ -6,6 +6,7 @@
 \usepackage{graphicx}
 \usepackage{amsfonts}
 \usepackage{physics}
+\usepackage{tikz}
 
 \newcommand*\meas[1]{\overline{#1}}
 
@@ -411,45 +412,78 @@ The phase-shifted light transmitted through the cavity
 is then incident on one port (a) of a
 % balanced?
 beam splitter. On the other port (b) we have a strong local oscillator (LO) in a
-coherent state $\ket{\beta}$. The annihilation operators associated with the
-input ports are related to those of the output ports (c and d) by
+coherent state $\ket{\beta}$. We assume the LO has large amplitude ($|\beta|
+\gg |\alpha|$) and has phase $-\varphi$, which we set relative to the phase of
+alpha, so that $\arg(\alpha)=0$.
+
+The annihilation operators associated with the
+input ports are related to those of the output ports (c and d) by the usual
+relation for a balanced beam splitter
 %
+% TODO CiteQuantom Optics Agarwal textbook (pg. 104 and 126)
 \begin{equation}
-  \text{Matrix with c,d = M a, b}.
+  \begin{pmatrix} c \\ d \end{pmatrix} = \frac{1}{\sqrt{2}}\begin{pmatrix}
+    1 & i \\ i & 1 
+  \end{pmatrix}  \begin{pmatrix} a \\ b \end{pmatrix}.
 \end{equation}
 %
-So we expect the difference in the photon numbers arriving at each detector to
-be
+The difference in the expected photon numbers arriving at each
+detector is
+% TODO need to use $a' = \sqrt{\kappa} a$ here. IO formalism for transmitted
+% light (I think...)
 %
-% TODO More lines here (this needs to be an align env?) also just check maths
 \begin{align}
-  \langle c^\dagger c - d^\dagger d\rangle &\propto \bra{\Psi_\text{out}}\bra{\beta}(a^\dagger
-  b^\dagger - ab)\ket{\beta}\ket{\Psi_\text{out}} \\
-  & = |\beta|\kappa_T \langle a^\dagger e^{-i\varphi} - a e^{i\varphi}\rangle.
+  \langle c^\dagger c - d^\dagger d\rangle &= i
+  \bra{\Psi_\text{out}}\bra{\beta}(a^\dagger b-
+  ab^\dagger)\ket{\beta}\ket{\Psi_\text{out}} \\
+  & = i|\beta|\kappa_T \bra{\Psi}(a^\dagger e^{i\varphi} - a
+  e^{-i\varphi})\ket{\Psi} \\
+  &= \sqrt{2}|\beta|\kappa_T\bra{\Psi}(X\sin\varphi +
+  Y\cos\varphi)\ket{\Psi}.
 \end{align}
-%TODO define beta stuff
 %
+The last equality introduces the canonical quadratures of the light field,
+corresponding to its real and imaginary parts. They are defined by
+%
+\begin{align}
+  X = \frac{a + a^\dagger}{\sqrt{2}} && Y = \frac{a - a^\dagger}{\sqrt{2}}.
+\end{align}
+
 Hence measuring the intensity of each output of the beamsplitter can give us
-information on the phase of the light. In the case that we demand $\varphi =
-??$ we measure...
+information on the phase of the light. We choose $\varphi = \pi/2$ so that the
+% TODO FOrgot how to do i.e. in latex
+measurement is of the $Y$ quadrature, i.e. we measure the imaginary part of
+$\alpha e^{-i\theta_Tm}$ for a result
+%
+\begin{equation}
+  \langle c^\dagger c - d^\dagger d\rangle = \sqrt{2}\kappa |\alpha||\beta|\left\langle\sin(\frac{g^2 T
+  m}{\Delta})\right\rangle.
+\end{equation}
+%
+For a short pulse of light, the interrogation time will be the lifetime of the
+photons in the cavity, $T = \kappa^{-1}$. In this r\'egime the small angle
+approximation can be made, and
+% TODO Can I justify this please? Could just sub in suitable values...
+%
+\begin{equation}
+  \langle c^\dagger c - d^\dagger d\rangle = \sqrt{2}|\alpha||\beta|
+  \frac{g^2}{\Delta}\langle m\rangle.
+\end{equation}
 
-% Where am I going with this? Need to check notes I guess
-
-\subsection{Realistic measurement}
+To resolve $m$ perfectly, the uncertainty in the measurement must be
+$\Delta_\eta \ll \sqrt{2}|\alpha||\beta|g^2/\Delta$. 
+%
+% TODO Analyse this result
+%
+% Make this sentence fit with other things
+The effects of having larger uncertainty are discussed in the next section.
 
 % TODO
-
-
-In pratice, it is not possible to perfectly determine the phase of the light,
-and hence measure $m$. There are two limiting effects to consider.
-
-The first is collapse of individual spins. In the 
-
-Second, consider the uncertainty associated with the homodyne measurement
-
+\emph{
 Need to consider dephasing of spins, some spins collapsing on measurement
 (shrinking the Bloch sphere) and the uncertainty associated with the
 measurement.
+}
 
 \section{Entangled states in the ensemble}
 
