@@ -186,9 +186,8 @@ term will allow the information transfer for our QND measurements.
 \subsection{Spin states of the ensemble}
 
 % TODO Better Bloch sphere cite
-% https://journals.aps.org/pra/pdf/10.1103/PhysRevA.47.3554
-Consider the spins represented on the Bloch sphere \cite{Cox2016}. Here the
-state of the $i^\text{th}$ spin is written as
+Consider the spins represented on the Bloch sphere \cite{PhysRevA.47.3554}.
+Here the state of the $i^\text{th}$ spin is written as
 %
 \begin{equation}
   \ket{\psi}_i = \cos\left(\frac{\theta_i}{2}\right)\ket{e}_i +
@@ -209,10 +208,10 @@ the purposes of this discussion, we will limit ourselves to considering the
 case where the spins are in a coherent spin state (CSS), that is they are all
 aligned such that 
 
-% TODO CITE!
 We can limit ourselves to considering the case where spins are aligned,
 so that for all $i$, $\theta_i = \theta$ and $\phi_i = \phi$, in which case the
-sphere has radius $N$. Such a state is known as a coherent spin state (CSS) and
+sphere has radius $N$. Such a state is known as a coherent spin state
+(CSS)~\cite{MA201189, Gazeau2009} and
 % TODO proper fig. ref
 is illustrated in Fig.~\ref{CSSbloch}. The state can be written similarly to
 % TODO proper eqn. ref
@@ -261,7 +260,8 @@ ground state $\ket{g}$ and then performing a roataional transormation
 
 Direct measurement of any individual spin would yeild $\ket{e}_i$ or
 $\ket{g}_i$ with probability $p=1/2$. Hence measuring the eigenvalue of $S_z$
-will give a value $m$ with probabilty given by the binomial theorem~\cite{}
+will give a value $m$ with probabilty given by the binomial
+theorem~\cite{Gazeau2009}
 %
 \begin{equation}
   P(m) = \frac{1}{2^N} {N \choose m +N/2}
@@ -302,7 +302,7 @@ which is known as the standard quantum limit (SQL). By symmety $\Delta \phi =
 
 Note that these uncertainties hold only for $\ket{+}$ and other states where
 $\theta = \pi$ (states on the equator of the Bloch sphere). For example for
-$\ket{e}$ and $\ket{g}$, $\Delta \theta = 0$. %CITE Wineland 1993
+$\ket{e}$ and $\ket{g}$, $\Delta \theta = 0$.~\cite{PhysRevA.47.3554}
 
 %Note that the expected value of $S_z$ is
 %%
@@ -340,14 +340,14 @@ in superconducting qubits~\cite{PhysRevA.69.062320} and expands on the proposal
 in \cite{Andre2006}.
 
 Consider the spin ensemble coupled to resonator photons as described above. Take
-the resonator photons to be in a canonical coherent state~\cite{}
+the resonator photons to be in a canonical coherent state~\cite{Gazeau2009}
 %
 \begin{equation}
   \ket{\alpha} = e^{-\frac{|\alpha|^2}{2}}\sum_{n=0}^\infty \frac{\alpha^n}{\sqrt{n!}} \ket{n}
 \end{equation}
 %
 with $\alpha\in\mathbb{C}$, and $\ket{n}$ here representing the $n^\text{th}$
-Fock state of the light~\cite{}. We say that the pulse of light lasting time
+Fock state of the light~\cite{agarwal2012}. We say that the pulse of light lasting time
 $t=T$ and  write the state of the system at time $t=0$ as
 %
 \begin{equation}
@@ -402,9 +402,9 @@ a QND measurement of the system. %TODO Check/ cite
 
 \subsection{Homodyne measurement}
 
-% TODO Cite
 As mentioned above, the phase of the light can be determined by a homodyne
-measurement, as illustrated in Fig. \ref{fig:homodyne}.
+measurement ~\cite{agarwal2012}, as illustrated in Fig.
+\ref{fig:homodyne}.
 % TODO Homodyne figure
 The phase-shifted light transmitted through the cavity
 ($\ket{\Psi_\text{out}}$)
@@ -418,9 +418,8 @@ alpha, so that $\arg(\alpha)=0$.
 
 The annihilation operators associated with the
 input ports are related to those of the output ports (c and d) by the usual
-relation for a balanced beam splitter
+relation for a balanced beam splitter~\cite{agarwal2012}
 %
-% TODO CiteQuantom Optics Agarwal textbook (pg. 104 and 126)
 \begin{equation}
   \begin{pmatrix} c \\ d \end{pmatrix} = \frac{1}{\sqrt{2}}\begin{pmatrix}
     1 & i \\ i & 1 
@@ -518,10 +517,11 @@ Consider a perfect QND measurement peformed on the state $\ket{\Psi(0)} =
 %
 where $\meas{m}$ is the eigenvalue of $S_z$ that was the outcome of our
 measurement, which was obtainted with probability $P(\meas{m})$.
-$\ket{\Psi_{\meas{m}}}$ is a Dicke state, the sum of all states with
-$N_e = \meas{m} + N/2$ spins in the excited state, and $N_g = N - N_e$ spins in
-the ground state.  We can write this in terms of the set $\Pi$ of combinations 
-of $N_e$ numbers chosen from $[1,N]\cap\mathbb{Z}$, which we
+$\ket{\Psi_{\meas{m}}}$ is a Dicke state~\cite{Baertschi2019}, the sum of all
+states with $N_e = \meas{m} + N/2$ spins in the excited state, and $N_g = N -
+N_e$ spins in the ground state.  We can write this in terms of the set $\Pi$ of
+combinations of $N_e$ numbers chosen from $[1,N]\cap\mathbb{Z}$, which we
+%
 \begin{equation}
   \ket{\Psi_{\meas{m}}} = {N \choose N_e}^{-\frac{1}{2}}\sum_{\pi \in \Pi}
   \bigotimes_{i=1}^{N_e} \sigma_x^{\pi_i} \ket{g}
@@ -552,7 +552,8 @@ control over this outcome, for this reason the squeezing is referred to as
 % TODO when do I emph new words?
 \emph{conditional}.
 %
-We expect for large $N$ that $\meas{m}/N \ll 1$.
+We expect for large $N$ that $|\meas{m}|/N \ll 1$, in other words the state
+will be
 
 % TODO Extend to not maximally squeezed states
 
