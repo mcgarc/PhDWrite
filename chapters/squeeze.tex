@@ -1,57 +1,3 @@
-\documentclass{article}
-
-\usepackage{siunitx}
-\usepackage{amsmath}
-\usepackage{braket}
-\usepackage{graphicx}
-\usepackage{amsfonts}
-\usepackage{physics}
-\usepackage{tikz}
-\usepackage[T1]{fontenc}
-
-\newcommand*\meas[1]{\overline{#1}}
-
-% --- Bibliography ---
-% Uses biblatex with biber. Don't include url, doi, isbn because we will use
-% magic to insert the url as a hyperlink in the title ourselves
-
-% Ubuntu: requires texlive-bibtex-extra
-\usepackage[backend=biber,
-						url=false,
-						doi=false,
-						isbn=false,
-						eprint=false,
-						giveninits=true,
-            sorting=none
-						]{biblatex}
-
-% This is the macro to do this. see SE:
-% https://tex.stackexchange.com/quACestions/23832/biblatex-make-title-hyperlink-to-doi-url-if-available
-% and 
-% https://tex.stackexchange.com/questions/48400/ACbiblatex-make-title-hyperlink-to-dois-url-or-isbn
-\newbibmacro{string+doi}[1]{%
-  \iffieldundef{doi}{#1}{\href{http://dx.doi.org/\thefield{doi}}{#1}}}
-\DeclareFieldFormat{title}{\usebibmacro{string+doi}{\mkbibemph{#1}}}
-\DeclareFieldFormat[article]{title}{\usebibmacro{string+doi}{\mkbibquote{#1}}}
-
-% Manually remove notes
-\AtEveryBibitem{%
-  \clearfield{note}%
-	}
-
-% Bib file
-\addbibresource{bib.bib}
-
-\usepackage[colorlinks]{hyperref}
-
-\title{Squeezed states on a molecule chip}
-
-\author{Cameron McGarry}
-
-\begin{document}
-
-\maketitle
-
 We aim to create squeezed spin states on a molecule chip. I think this is
 possible by employing a quantum non-demolition (QND) measurement on a two-level
 system in the magnetic trap. In this document I will explain in general how
@@ -802,7 +748,3 @@ such as an electric field.
 %molecules) might it be possible to generate squeezed states in atom-molecule
 %clouds, or very dense clouds of molecules? The latter could perhaps be explored
 %on the new CaF Bose-Einstein condensate apparatus.
-
-\printbibliography
-
-\end{document}

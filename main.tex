@@ -32,6 +32,7 @@
 \usepackage[left=2cm, right=2cm, top=2cm, bottom=3cm]{geometry}
 \usepackage{graphicx}
 \usepackage{amsmath}
+\usepackage{amsfonts}
 \usepackage{siunitx}
 \usepackage{setspace} % For line spacing
 \usepackage{braket}
@@ -167,6 +168,10 @@
     {}
 \makeatother
 
+% --- Other macros ---
+% Measured value
+\newcommand*\meas[1]{\overline{#1}}
+
 
 % Uncomment and fill if using article
 %\title{Early stage assessment: molecule chip}
@@ -231,14 +236,16 @@ interaction, something that I can work on in the quarrantine?}
 % This might be superceeded by the earlier theory in mw on chip chapter, or it
 % could be more detailed outlook
 
-% Other theory I could do: tweezer trap near CPW, mirror MOT, cooling on chip?
+\chapter{Proposal: creating non-classical spin states}
+\label{squeeze}
+\input{chapters/squeeze}
 
 \chapter{Outlook}
+% Other theory I could do: tweezer trap near CPW, mirror MOT, cooling on chip?
 \label{outlook}
 \input{chapters/outlook}
 
 \clearpage
-
 
 \printbibliography
 \end{document}
