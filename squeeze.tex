@@ -654,76 +654,80 @@ squeezing paramter to be.}
 $\cos(x) \approx 1 - x^2$ not $\sin(x)\approx x$, which means the sign of
 measured $\theta$ is hidden.}
 
-% TODO: Re-gear this section to be more about the experiment, motivating what
-% we will need to do on the chip
-\section{Performing QND measurements}
+% TODO: Re-gear the below section to be more about the experiment, motivating
+% what we will need to do on the chip
+% Roll it in with the next one too...
 
-Having established that a QND measurement will allow us to create entangled,
-and in particular, squeezed states we now consider how this can be performed
-for a spin ensemble in a cavity. Consider again the Hamiltonian of our system
-given in eqn~\ref{eqn:He}. We have already pointed out that the
-third term will allow for transfer of information about the $z$ spin into the
-cavity light, but notice also that every term commutes with $S_z$. This will
-ensure that performing the measurement will not change the $S_z$ state, but
-note that $S_x$ and $S_y$ are fair game~\cite{SchleierSmith2011}.
 
-Rewriting
+
+%\section{Performing QND measurements}
 %
-\begin{equation}
-  H_\text{E}= 
-    \hbar \left(\omega_c + \frac{g^2}{\Delta}S_z\right)a^\dagger a + 
-    \frac{\hbar}{2}\left(\Omega + \frac{g^2}{\Delta}\right)S_z
-\end{equation}
+%Having established that a QND measurement will allow us to create entangled,
+%and in particular, squeezed states we now consider how this can be performed
+%for a spin ensemble in a cavity. Consider again the Hamiltonian of our system
+%given in eqn~\ref{eqn:He}. We have already pointed out that the
+%third term will allow for transfer of information about the $z$ spin into the
+%cavity light, but notice also that every term commutes with $S_z$. This will
+%ensure that performing the measurement will not change the $S_z$ state, but
+%note that $S_x$ and $S_y$ are fair game~\cite{SchleierSmith2011}.
 %
-it is now clear that the transition frequency depends on the state of the
-$S_z$. The shift in frequency can be interpreted in a change of the cavity's
-refractive index. Hence the transmission peak of the cavity will be shifted
-from $\omega_c$ so that
+%Rewriting
+%%
+%\begin{equation}
+%  H_\text{E}= 
+%    \hbar \left(\omega_c + \frac{g^2}{\Delta}S_z\right)a^\dagger a + 
+%    \frac{\hbar}{2}\left(\Omega + \frac{g^2}{\Delta}\right)S_z
+%\end{equation}
+%%
+%it is now clear that the transition frequency depends on the state of the
+%$S_z$. The shift in frequency can be interpreted in a change of the cavity's
+%refractive index. Hence the transmission peak of the cavity will be shifted
+%from $\omega_c$ so that
+%%
+%\begin{equation}
+%  \omega_c \rightarrow \omega_c + \frac{\hbar g}{\Delta}(N_e - N_g)
+%\end{equation}
+%%
+%where $N_e$ ($N_g$) is the number of spins in the excited (ground) state. We
+%can therefore perform a QND measurement for $\delta N = N_e - N_g$ by probing
+%the cavity.
 %
-\begin{equation}
-  \omega_c \rightarrow \omega_c + \frac{\hbar g}{\Delta}(N_e - N_g)
-\end{equation}
+%\begin{figure}
+%  \centering
+%  \includegraphics[width=0.5\textwidth]{figs/squeeze/transmission_Blais.png}
+%  \caption{Transmission peak shift for a cavity with resonant frequency
+%  $\omega_c$ in excited ($\ket{\uparrow}$) and ground ($\ket{\downarrow}$)
+%  states.  Reproduced from~\cite{PhysRevA.69.062320}}
+%  \label{transmission}
+%\end{figure}
 %
-where $N_e$ ($N_g$) is the number of spins in the excited (ground) state. We
-can therefore perform a QND measurement for $\delta N = N_e - N_g$ by probing
-the cavity.
-
-\begin{figure}
-  \centering
-  \includegraphics[width=0.5\textwidth]{figs/squeeze/transmission_Blais.png}
-  \caption{Transmission peak shift for a cavity with resonant frequency
-  $\omega_c$ in excited ($\ket{\uparrow}$) and ground ($\ket{\downarrow}$)
-  states.  Reproduced from~\cite{PhysRevA.69.062320}}
-  \label{transmission}
-\end{figure}
-
-It can be shown that this shift is dependent on the number of photons in the
-cavity, in particular the shift begins to decrease above some critical number
-of photons $n_\text{crit} = \langle a^\dagger a\rangle_\text{crit} = \Delta^2/4g^2$.
-Hence the probe power should not exceed $P_\text{max} = n_\text{crit}\hbar
-\omega_c \kappa$ \cite{PhysRevA.69.062320}.
-
-The linewidth of the transition peak is $\kappa$, so to resolve this shift we
-require $g^2/ \Delta \gg \kappa$ for the shift of the frequency to be larger
-than the transmission linewidth and hence resolvable (see
-Fig.~\ref{transmission}). Alternatively, when the frequency of the probe is
-$\omega_c$, the information on $\delta N$ is encoded in the phase of the light,
-producing a shift $N\phi$ where
+%It can be shown that this shift is dependent on the number of photons in the
+%cavity, in particular the shift begins to decrease above some critical number
+%of photons $n_\text{crit} = \langle a^\dagger a\rangle_\text{crit} = \Delta^2/4g^2$.
+%Hence the probe power should not exceed $P_\text{max} = n_\text{crit}\hbar
+%\omega_c \kappa$ \cite{PhysRevA.69.062320}.
 %
-\begin{equation}
-  \phi = \arctan \left(\frac{2g^2}{\kappa \Delta}\right).
-\end{equation}
+%The linewidth of the transition peak is $\kappa$, so to resolve this shift we
+%require $g^2/ \Delta \gg \kappa$ for the shift of the frequency to be larger
+%than the transmission linewidth and hence resolvable (see
+%Fig.~\ref{transmission}). Alternatively, when the frequency of the probe is
+%$\omega_c$, the information on $\delta N$ is encoded in the phase of the light,
+%producing a shift $N\phi$ where
+%%
+%\begin{equation}
+%  \phi = \arctan \left(\frac{2g^2}{\kappa \Delta}\right).
+%\end{equation}
+%%
+%This can be used to perform QND measurements in the $g^2/ \Delta \ll
+%\kappa$ limit~\cite{PhysRevA.69.062320}.\footnote{I'm not sure how this is
+%compatible with the idea that we work in a dispersive limit ($\Delta \gg g$),
+%but I think we are more interested in the transmission magnitude case anyway.}
+%% But why not just "outsside the g^2 D \gg kappa" limit?
 %
-This can be used to perform QND measurements in the $g^2/ \Delta \ll
-\kappa$ limit~\cite{PhysRevA.69.062320}.\footnote{I'm not sure how this is
-compatible with the idea that we work in a dispersive limit ($\Delta \gg g$),
-but I think we are more interested in the transmission magnitude case anyway.}
-% But why not just "outsside the g^2 D \gg kappa" limit?
-
-%The power of the probe must be low, such that we remain in the disperisive
-%r\'egime, i.e.\ $\braket{a^\dagger a} < \Delta^2/4g^2 = n_\text{crit}$.
-
-It is helpful to consider the 
+%%The power of the probe must be low, such that we remain in the disperisive
+%%r\'egime, i.e.\ $\braket{a^\dagger a} < \Delta^2/4g^2 = n_\text{crit}$.
+%
+%It is helpful to consider the 
 
 \section{Implementation on CaF chip}
 
