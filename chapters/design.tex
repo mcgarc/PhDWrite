@@ -205,16 +205,9 @@ of the trapping potentials that this design will be capable of loading trapped
 \section{Motion of molecules in a potential}
 \label{design:motion}
 
-It is important to review the physics behind the motion of the molecules in the
-potentials, which we shall do in this section. We will also briefly describe
-the simulation methods.
-
-\subsection{Motion in the traps}
-\label{desgin:motion}
-
 We can assume that the motion of the molecules in the trap is classical. They
 move in the potential $V(t, \mathbf{q}) = \mu B(t, \mathbf{q})$, where $\mu$ is
-the magnetic dipole moment of the molecule.  The motion of any one particle is
+the magnetic dipole moment of the molecule \cm{in what state?}.  The motion of any one particle is
 described by Hamilton's equations,~\cite{Lichtenberg1969}
 %
 \begin{align}
@@ -236,7 +229,7 @@ particle. Taken together, these two vectors describe a point in a six
 dimensional \emph{phase space} of position and momentum. The ensemble of
 trapped molecules, each one starting at a different point in phase space, can
 be treated by considering the motion of the molecules at its
-boundary, and the \cm{hyphen?} six-dimensional phase space volume that this
+boundary, and the six-dimensional phase space volume that this
 boundary encloses~\cite{Hand1998}.
 
 It is helpful for us to write the phase space volume $V$ in terms of the
@@ -247,12 +240,11 @@ Broglie wavelength~\cite{blundell2}
 \begin{equation}
   \lambda_\text{dB}(T) = \frac{h}{\sqrt{2 \pi m k_B T}}.
 \end{equation}
-And hence the unitless phase space volume is \cm{Think I need to figure out
-what the deal is with the unit. Mike seems to think there should be a $h^3$ in
-here, but I think for there to be no units this is better.}
+%
+Hence the unitless phase space volume is
 %
 \begin{equation}
-  V = V_\text{space} / \lambda_\text{dB}^3.
+  V = V_\text{space} \lambda_\text{dB}^{-3}(T).
 \end{equation}
 %
 It is also useful to define a unitless phase space
@@ -271,11 +263,10 @@ Furthermore, Liouville's theorem~\cite{Landau1982, Hand1998} states that the
 phase space volume is a conserved quantity, as long as the trapping potential
 is consevative. This means that the phase space density of a trapped molecular
 cloud cannot be increased without application of some velocity-dependent
-damping, such as an optical molasses~\cite{Metcalf1999}. The impact of this for the chip
-is that the phase space density of the cloud at the point of loading onto the
-chip determines the maximum number of molecules that can be trapped in the
-final trap.
-
+damping, such as an optical molasses~\cite{Metcalf1999}. The impact of this for
+the chip is that the phase space density of the cloud at the point of loading
+onto the chip determines the maximum number of molecules that can be trapped in
+the final trap.
 
 If we do not introduce any further cooling steps, then the number of molecules
 we are able to trap in the final trap will be
@@ -287,53 +278,98 @@ we are able to trap in the final trap will be
   \label{design:eq:psd_N}
 \end{equation}
 %
-where $\rho_\text{\CaF{}} = 3.4\times10^{-12}$ is the phase space density of the \CaF{} cloud
-after cooling in the blue-detuned molasses~\cite{Truppe2017},
+where $\rho_\text{\CaF{}} = 3.4\times10^{-12}$ is the phase space density of
+the \CaF{} cloud after cooling in the blue-detuned molasses~\cite{Truppe2017},
 $V_\text{trap}\sim(\SI{10}{\micro\meter})^3$ and
-$T_\text{trap}=\SI{4}{\kelvin}$. The trap depth used here is for the smallest
-trap operating at \SI{3}{\ampere}, and can be calculated using
-equation~\ref{intro:eq:trapdepth}. We therfore have
+$T_\text{trap}=\SI{4}{\kelvin}$. The \CaF{} mass is
+$m_\text{\CaF{}}=\SI{9.79E-26}{\kilogram}$. The trap depth used here is for the
+smallest trap operating at \SI{3}{\ampere}, and can be calculated using
+equation~\ref{intro:eq:trapdepth}. We therefore have
 %
 \begin{equation}
-  N_\text{final} \sim 3000.
+  N_\text{final} \lesssim 2000
 \end{equation}
 %
-This upper bound for the number of trapped molecules is calculated with the
-assumption that all the trapping stages are deep enough to contain all the
-molecules that are within the trapping region. 
-%
-\cm{As Mike points out, this is clearly not correct. I have also used the phase
-space density for the 50uK experiment, so probably off by a factor of
-$10^{3/2}$ (need to check that also...) Alex also pointed out that it is hard
-to calculate this because not all the constants are available/ obvious, e.g.
-the mass. So just need to make this paragraph a lot more clear and put some
-care into it.}
+as an upper bound for the number of molecules trapped in the final trap. To
+reiterate, this assumes that the entire trap is full, and no excess molecules
+have been lost during loading. We will see below that this will not be the
+case. A more realistic number of molecules to be trapped can be found by using
+two key tools: analysis of the phase space acceptance of the traps, and direct
+trajectory simulation of the cloud.
 
-This motivates us to introduce the concept of the acceptance of a trap.
-This is the phase space volume within which all particles are trapped.
-Particles outside of the acceptance are either positioned outside the trap or
-are positioned inside the trap but have enough energy to escape it. The
-boundary of the acceptance is called the separatrix. An example is shown
-in \myfigref{design:fig:psaeg}~\cite{Lichtenberg1969, Hand1998}.
+\subsection{Phase space acceptance}
 
-\cm{Try to recreate this fig myself with my code!}
+\cm{Probably need to cite Hand 1998}
+
+
+For a particle to be trapped, it is obvious that it must exist within the
+spatial region of the trap, and it must not have sufficient energy to escape
+from that trap. In other words, the Hamiltonian of the patrilce $H(\mathbf{q},
+\mathbf{p})$ must be less than the trap depth $T_\text{depth}$. This relation
+defines a region of phase-space that we call the \emph{acceptance}. Any
+particles within this region will not have sufficient energy to escape, and so
+will remain trapped under classical motion unless externally influenced (so
+ignoring for example any collisions, decays, Majorana losses,
+etc.)~\cite{Lichtenberg1969}.
+
+As an example consdier the harmonic trap given by the potential found in
+\inlineref{Crompvoets2005}
 %
+\begin{equation}
+  V(x) = \begin{cases}
+    0 & |x| > x_0 \\
+    -\frac{1}{2}m\omega^2 x^2 & |x| \leq x_0.
+  \end{cases}
+\end{equation}
+%
+Here, any particle which starts with a position $-x_0 \leq x \leq x_0$ will be
+trapped, so long as its velocity is not sufficiently large that it will escape
+into the $|x|> x_0$ region.
+
+This is can be verified by simulation, as is shown in
+\mysubfigref{design:fig:psaeg}{a}, where the trap has been simulated for $m =
+\omega = 1$, $x_0 =$ \cm{?}. We initialise 3000 particles uniformly distributed
+with $|x| < 0.2$ and $|v_x|<2$ \cm{units!}, their trajectories are computed by
+the methods described in the next section. The boundary of the acceptance,
+called the \emph{separatrix} is shown in black. All particles that are
+intialised inside the acceptance remain trapped and evolve through time in the
+usual way for a harmonic potential. Particles initialised outside the
+acceptance are rejected and lost.
+
+\inlineref{Crompvoets2005} gives a further instructive example of an anharmonic
+one-dimensional potential,
+%
+\begin{equation}
+  V(x) = -V_0\cos(\omega x)
+\end{equation}
+%
+which is also presented in \myfigref{design:fig:psaeg}. As well as the same
+behaivour for acceptance as the harmonic potential, we see the
+\cm{filamentation... actaully explain this...}
+
+Finally, it is useful to consider the phase-space acceptance of a wire trap.
+For simplicity we begin by considering only the acceptance in the $z$ direction
+(perpendicular to the chip surface). Acceptance of a Z-wire with \cm{init and
+trap parameters}
+is shown in \mysubfigref{design:fig:psaeg}{c}. Here we can see the accepted
+molecules \cm{colour}, as well as those that are rejected \cm{colour} and
+metastable molecules \cm{colour}, which remain outside the acceptance but stay
+nearby the trap. \cm{TODO: expand}
+
 \begin{figure}
   \centering
-  \includegraphics[width=0.6\textwidth, page=1]{figs/psa_eg.png}
+  %\includegraphics[width=0.6\textwidth, page=1]{figs/psa_eg.png}
+  \cm{My PSA fig with (a) as harmonic, (b) anharmonic, (c) as Z trap. 3 rows
+  2 cols, with left col t 0 and right t end}
   \caption{
-    Phase space acceptance of a harmonic (left) and anharmonic (right) trap in
-    one dimension. The separatrix is shown in both cases. The initial particle
-    positions in phase space are shown in the top row, with the accepted
-    particles in black and the unaccepted particles in grey. In the anharmonic
-    case, the particles expand to fill the acceptance, increasing the effective
-    phase space density (a process called filamentation). This figure is
-    reproduced from \inlineref{Crompvoets2005}.
+    The phase-space acceptance is shown for a harmonic (a), anharmonic (b) and
+    Z-wire trap (c). The initialised particles are shown in the left-hand
+    panes. Accepted particles are shaded black, and those that are rejected are
+    shaded grey. In all cases \cm{sim parameters}. Subfigures (a) and (b)
+    are re-creations of the examples given by \inlineref{Crompvoets2005}.
   }
   \label{design:fig:psaeg}
 \end{figure}
-
-\cm{I should discuss filamentation in more detail}
 
 An adiabatic change to the potential will not affect the phase space density of
 any particles that remain trapped throughout the change~\cite{Hand1998,
