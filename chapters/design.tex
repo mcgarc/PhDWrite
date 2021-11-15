@@ -1,13 +1,16 @@
-This chapter begins with an overview of the chip experiment design, from
-molecule source to the final chip trap. I will then give an overview of how we
-can calculate and simulate the trajectories of trapped \CaF{} molecules. This
-will be used to simulate and analyse the loading scheme for the chip.
+The design of the \CaF{} chip experiment was largely motivated by the need to
+integrate with the existing apparatus described in \cite{}.
+% TODO or above?
+The natural way to do so was to extend the magnetic transport of the cold
+molecules to a third chamber, where they can be transferred into the
+microfabricated trap.
 
-\cm{Need to direct to microwaves ch rather than do this...}
-This chapter deals mainly with the trapping aspect of the experiment and not
-the microwaves. The implementation of microwave guides on the
-chip was discussed in the early stage assessment, and has not significantly
-changed since then.
+In this chapter I will present how we have designed the chip trap to allow for
+this transport and loading scheme, with the ability to introducuce microwave
+guides on a later iteration of the experiment. I will begin with an overview of
+the entire experimental apparatus, and then focus on the design of the chip
+traps, including present simulations of the loading procedure, which have
+helped to inform our design choices.
 
 \section{Experiment overview}
 
@@ -16,53 +19,30 @@ changed since then.
 \cm{Will likely need more discussion of transport in the thesis. For one
 thing it seems like it does cause a bit of heating for tweezers at the moment.}
 %
-The design of our experiment is largely motivated by the existing apparatus.
-The ultracold molecule source described in \inlineref{Truppe2017} has been
-adapted to allow for additional experiments to be carried out either in the
-same chamber, or in neighbouring chambers. In the latter case, molecules are
-transported between chambers by magnetic transport. This is achieved with coils
-forming a quadrupole trap mounted on a
-transport stage, similar to those described
-in~\cite{Lewandowski2003}. Early experiments have shown that \Rb{} atoms can be
-transferred with minimal losses and heating.
 
-\cm{This para is rubbish, but I cba to fix it rn}
+Our ultracold molecules are created using the methods described above and in
+\cm{REFERENCES}. In brief, molecules are created in the buffer gas source,
+laser slowed, and initially trapped in a MOT. This MOT is housed inside a
+vacuum chamber used for experiments where collisions of \CaF{} with \Rb{} atoms
+are observed ~\cite{}.  For our purposes, this collisions chamber is where the
+sub-Doppler cooling is carried out, producing a cloud of ultracold molecules.
+
+% TODO May need to say something about tranverse cooling and credit Caleb
+
+An additional chamber is connected to the collisions chamber, where we conduct
+experiments involving trapping \CaF{} in optical tweezers. Molecules can be
+transported into the tweezer chamber by transferring them into a magnetic
+transport trap (MTT), a quadrupole trap with coils mounted on a transport stage
+outside the vacuum chamber. This transport of the molecules will be discussed
+further below and in \cm{transport chapter}.
 %
-Currently, there are two experiment chambers, the MOT chamber, where the
-molecule MOT is originally formed, and the blue-detuned molasses are applied.
-This chamber is also capable of hosting a \Rb{} MOT, which we will be able to
-use to test the chip trap. The second chamber is used for experiments with
-optical tweezers and dipole traps. Our molecules will be transported through
-this chamber into the chip chamber for our experiment, as pictured in
-\myfigref{design:fig:vacuumsystem}.
+% TODO Can cite \cite{Lewandowski2003} here or later.
 
-\cm{Need to fix this fig to put the chip on the right side of the chamber. But
-a top-down view of the whole experiment would probably be a better use of my
-time.}
-
-\begin{figure}[htb]
-  \centering
-  \begin{overpic}[width=0.7\textwidth]{figs/vacuum_setup.pdf}
-    \put(1,-5){Chip chamber}
-    \put(34,-5){Tweezer chamber}
-    \put(73,-5){MOT chamber}
-  \end{overpic}
-  \vspace{1cm}
-  \caption{
-    \cm{Maybe redo this figure with more detail.}
-    The main vacuum chambers are shown. The experiment begins with a buffer gas
-    source of \CaF{} molecules (not pictured). This produces a beam of
-    molecules which is laser-slowed for capture in the MOT chamber. Here
-    blue-detuned molasses are used to cool the molecules to
-    \SI{50}{\milli\kelvin}. We can then use transport coils to transfer the
-    molecule cloud to the other chambers. Our experiment is conducted in the
-    most downstream chamber. The molecule cloud is brought into place directly
-    beneath the chip flange (gold).
-  }
-  \label{design:fig:vacuumsystem}
-\end{figure}
-
-The chip trap will be positioned inside this chamber, held in place by a flange
+The chip experiment will integrate into this setup as shown in
+\myfigref{design:fig:vacuumsystem}. A third chamber will be mounted
+further downstream of the transport stage, so that molecules can be brought
+straight through the tweezer chamber from the collisions chamber.
+The chip trap will be positioned chamber, held in place by a flange
 assembly, with the chip surface \SI{4}{\milli\meter}
 %
 \cm{be exact here, think it is 3.8??}
@@ -70,8 +50,34 @@ assembly, with the chip surface \SI{4}{\milli\meter}
 away from the transport axis. The flange assembly consists of current
 feedthroughs and a PCB to deliver trapping currents to the chip, a large copper
 heatsink, and microwave feedthroughs. It will be mounted so that the chip
-faces the floor, allowing us to trap and then drop the molecules for absorption
-imaging~\cite{Willliams2018}.
+faces the floor, allowing us to trap and then drop the molecules for imaging.
+
+\begin{figure}[htb]
+  \centering
+  \cm{Change to autocad drawing, include inset of flange inside the L}
+  \begin{overpic}[width=0.7\textwidth]{figs/vacuum_setup.pdf}
+    \put(1,-5){Chip chamber}
+    \put(34,-5){Tweezer chamber}
+    \put(73,-5){MOT chamber}
+  \end{overpic}
+  \vspace{1cm}
+  \caption{
+    A top-down view of the planned \CaF{} experiment is shown. Molecules are
+    created in the source chamber in a buffer-gas cell. They are then
+    laser-slowed by the methods described in~\cite{} and \cm{transverse
+    cooling}, then captured in the collisions chamber. Here we can cool the
+    molecules by the methods described in \cm{thoery ch} and perform
+    experiments in collisions as detailed in \cm{cite}. A magnetic transport
+    trap (MTT) can transfer a cloud of molecules to the neighbouring tweezer
+    chamber (for the optical tweezer experiment). The chip chamber will be
+    positioned after the tweezer chamber, and will receive molecules from the
+    MTT in the same way. Inset, details of the chip assembly. Current is
+    delievered to the microfabricated chip via an intermediary printed circuit
+    board (the sub-chip).
+  }
+  \label{design:fig:vacuumsystem}
+\end{figure}
+
 
 Once the molecules are brought into the chamber by the transport coils, they
 will be magnetically transferred onto the chip trap. The transfer will take
@@ -79,21 +85,16 @@ the molecules through a series of magnetic traps of decreasing size until
 they are in the smallest trap. The design of these traps and the loading
 procedure are the main subjects of this chapter.
 
-The first stage of the transfer is a large U wire embedded in the flange
-assembly, and the rest  incorporated into the design of the chip itself (see
-\mysubfigref{design:fig:chipexperiment}{b}).
-\cm{Mike doesn't understand how the U wire will help align with the transport
-coils. Perhaps this could be explained better than just waving away with a
-citation.}
-The U wire can carry a larger
-current than any wires on the chip, and so is suitable to create a deep trap
-which will prove useful for alignment with the transport coils~\cite{Ott2001}.
-Its current is limited to \SI{100}{\ampere} by the vacuum feedthroughs. Since
-the U is embedded in the flange \mt{To me, the flange means the vacuum flange.
-But that's not where the U is.}, it is further away from the molecules cloud
-than the wires on the chip. Since trap depth is related to the current (see
-equations ~\ref{intro:eq:trapbias} and~\ref{intro:eq:trapdepth}, this is what
-limits the depth of the trap.
+The first stage of the transfer is a large U wire embedded in the heatsink (see
+\myfigref{design:fig:chipexperiment}).  The idea is to use this as a deep,
+macroscopic trap that is well-aligned with the chip (by virtue of being built
+into the assembly) and can be easily aligned with the MTT, similarly to other
+experiments such as \inlineref{Ott2001}.  Since it is under the chip, it will
+of course be further from the molecule cloud than the other wires, hence more
+current will be required to create a deep trap (as per
+equations~\ref{intro:eq:trapbias} and~\ref{intro:eq:trapdepth}). The current is
+limited to \SI{100}{\ampere} by the vacuum feedthroughs, allowing for a
+\cm{trap that is what depth in mK??}
 
 \begin{figure}[ht]
   \centering
@@ -119,49 +120,41 @@ limits the depth of the trap.
     }
   }
   \caption{
-    Details of the experiment aparatus. The chip flange (a) \mt{too small and
-    needs labelling} hosts the subchip
-    (detailed in b \mt{make larger and label} \cm{this fig also looks weird in
-    evince?}) and chip (detailed in c) and provides power to the chip via
-    feedthroughs. The subchip is a printed circuit board which will carry power
-    to the chip. A hole will be milled so that the chip can be glued in place,
-    flush with the surface. Electrical contact will be made by wirebonds. The
-    subchip hosts three Z wires detailed in \mytableref{design:table:wires}.
-    The inset in (c) shows the relative positioning of the wires.
-%
-    \mt{Figure could be improved to highlight more of the important details,
-    e.g. where is the U, how are the microwaves and dc currents brought in etc.
-    One helpful thing would be to make (a) large and add labelling to it so
-    that readers can understand what they're looking at. Another helpful thing
-    would be to show what's underneath the chip carrier.}
+    \cm{Change this to a view of the (right) chip and exploded view of the
+    flange, so we can see the U wire, PCB (left)}
+    In (a) we have an exploded view of the chip flange assembly. Note the
+    copper heatsink into which the U-wire is embedded. On top of this we have
+    the subchip for power delivery to the chip. In (b) we have the chip design,
+    with the inset showing a zoomed-in view of the three central wires.
   }
   \label{design:fig:chipexperiment}
 \end{figure}
 
 Once loaded into the U, the molecules will be transferred through the Z wire
-traps on the chip. Each trap must be designed to have a sufficient cross
-section to carry the trapping current. In the case of the first Z wire,
-the molecules are still \SI{3}{\milli\meter} away from the chip, a
-current of order \SI{10}{\ampere} is required to form a suitable trap
+traps on the chip. The idea is that each Z-wire should be sufficiently large to
+maintain the currents required to form a trap at height $z$ below the trap,
+whilst having a width and height  $w, h \ll z$ so that that the current is
+highly localised compared to the cloud size.  This follows the widely-made
+assupmption in the literature that the trapping currents are carried by wires
+which are infinitesimally small compared to the length scale of the trap
+~\cite{}.
+
+In the case of the first Z wire, the molecules are still \SI{3}{\milli\meter}
+away from the chip, a current of order \SI{10}{\ampere} is required to form a
+suitable trap
 %
 \cm{need to figure out what the actual depth is}.
 %
-We will discuss in chapter~\ref{fab} that the maximum wire height
-achievable is \SI{5}{\micro\meter}, and we expect that the wires will be able
-to carry a maximum current density of \SI{6E10}{\ampere\per\meter\squared},
-as was found for a similar chip design in \inlineref{Treutlein2008}. The Z wire
-will therefore have a width $w=\SI{200}{\micro\meter}$. Other wire parameters
-are shown in \mytableref{design:table:wires}.
-
-It is widely assumed in the literature and in this work that the trapping
-currents are carried by wires which are infinitesimally small compared to the
-length scale of the trap. We therefore suppose that the trapping height (the
-distance of the cloud centre from the chip) must be much larger than the wire
-width at all times.
+We will discuss in chapter~\ref{fab} that the maximum wire height achievable is
+\SI{5}{\micro\meter}, and we expect that the wires will be able to carry a
+maximum current density of \SI{6E10}{\ampere\per\meter\squared}, as was found
+for a similar chip design in \inlineref{Treutlein2008}. The Z wire will
+therefore have a width $w=\SI{200}{\micro\meter}$. Other wire parameters are
+shown in \mytableref{design:table:wires}.
 
 The axial length  of the wires also decreases to gradually reduce the size of
 the trapped cloud in the $x$ direction. The wire layout is shown in
-\mysubfigref{design:fig:chipexperiment}{c} and more details along with the
+\myfigref{design:fig:chipexperiment} and more details along with the
 heights are outlined in \mytableref{design:table:wires}. All wires have
 been designed to carry twice the current that is required in the loading
 scheme.
