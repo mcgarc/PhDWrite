@@ -301,16 +301,15 @@ trajectory simulation of the cloud.
 
 \cm{Probably need to cite Hand 1998}
 
-
 For a particle to be trapped, it is obvious that it must exist within the
 spatial region of the trap, and it must not have sufficient energy to escape
-from that trap. In other words, the Hamiltonian of the patrilce $H(\mathbf{q},
-\mathbf{p})$ must be less than the trap depth $T_\text{depth}$. This relation
-defines a region of phase-space that we call the \emph{acceptance}. Any
-particles within this region will not have sufficient energy to escape, and so
-will remain trapped under classical motion unless externally influenced (so
-ignoring for example any collisions, decays, Majorana losses,
-etc.)~\cite{Lichtenberg1969}.
+from the trap's potential. In other words, the Hamiltonian of the particle
+$H(\mathbf{q}, \mathbf{p})$ must be less than the trap depth $T_\text{depth}$.
+This relation defines a region of phase-space that we call the
+\emph{acceptance}. Any particles within this region will not have sufficient
+energy to escape, and so will remain trapped under classical motion unless
+externally influenced (so ignoring for example any collisions, decays, Majorana
+losses, etc.)~\cite{Lichtenberg1969}.
 
 As an example consdier the harmonic trap given by the potential found in
 \inlineref{Crompvoets2005}
@@ -324,9 +323,23 @@ As an example consdier the harmonic trap given by the potential found in
 %
 Here, any particle which starts with a position $-x_0 \leq x \leq x_0$ will be
 trapped, so long as its velocity is not sufficiently large that it will escape
-into the $|x|> x_0$ region.
+into the $|x|> x_0$ region. To reach $x_0$ from an initial position
+$\tilde{x}$, the particle must have kinetic energy of at least
+%
+\begin{equation}
+  \frac{1}{2}m\tilde{v}^2 = \frac{1}{2}m\omega^2(x_0^2 - \tilde{x}^2)
+\end{equation}
+%
+where $\tilde{v}$ is the initial velocity. It is now clear that a particle is
+trapped on the condition that
+%
+\begin{equation}
+  \omega^{-2} \tilde{v}^2 + \tilde{x}^2 < x_0^2
+\end{equation}
+%
+which defines an ellipse in phase-space.
 
-This is can be verified by simulation, as is shown in
+This trapping region is can be verified by simulation, as is shown in
 \mysubfigref{design:fig:psaeg}{a}, where the trap has been simulated for $m =
 \omega = 1$, $x_0 =$ \cm{?}. We initialise 3000 particles uniformly distributed
 with $|x| < 0.2$ and $|v_x|<2$ \cm{units!}, their trajectories are computed by
