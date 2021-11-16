@@ -416,7 +416,9 @@ Symplectic methods are powerful tools for numerically solving Hamiltonian
 systems whilst conserving energy and momentum \cite{Hairer2015,
 doi:10.1119/1.2034523}. 
 
-The total potential is given by the sum of the magnetic and gravitational
+We are able to simulate any arbitarty potential, such as those already
+discussed in the previous section, but it is most useful to consider a more
+realistic potential given by the sum of the magnetic and gravitational
 potentials,
 %
 \begin{equation}
@@ -424,9 +426,9 @@ potentials,
 \end{equation}
 where $g=\SI{9.8}{\meter\per\second\squared}$ is the acceleration due to
 gravity, and $z_0$ is an arbitrary point chosen to be the zero of the
-gravitational potential (the actual value chosen does not matter as it
+gravitational potential. The actual value chosen does not matter as it
 constitutes only a linear shift in the entire potential, we normally present
-the potentials with $z_0$ chosen such that the trap minimum is at zero).
+the potentials with $z_0$ chosen such that the trap minimum is at zero.
 
 The magnetic potentials are calculated by considering the traps to be formed of
 segments of straight wires, each producing a magnetic field
