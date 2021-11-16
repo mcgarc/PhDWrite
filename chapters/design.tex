@@ -414,36 +414,44 @@ performance computing services~\cite{ICRCS} using Python~\cite{python} and the
 symplectic Euler method provided by the Desolver package~\cite{desolver}.
 Symplectic methods are powerful tools for numerically solving Hamiltonian
 systems whilst conserving energy and momentum \cite{Hairer2015,
-doi:10.1119/1.2034523}. A time step of $\dd t = \SI{1E-4}{\second}$ was
-sufficient to achieve this for our potentials.
+doi:10.1119/1.2034523}. 
 
-Magnetic potentials were calculated by considering the traps to be formed of
+The total potential is given by the sum of the magnetic and gravitational
+potentials,
+%
+\begin{equation}
+  V(t, \mathbf{q}) = V_\text{mag} + mg(z_0-z)
+\end{equation}
+where $g=\SI{9.8}{\meter\per\second\squared}$ is the acceleration due to
+gravity, and $z_0$ is an arbitrary point chosen to be the zero of the
+gravitational potential (the actual value chosen does not matter as it
+constitutes only a linear shift in the entire potential, we normally present
+the potentials with $z_0$ chosen such that the trap minimum is at zero).
+
+The magnetic potentials are calculated by considering the traps to be formed of
 segments of straight wires, each producing a magnetic field
 $\mathbf{B}_\text{seg}^{(i)}$, and the bias field $\mathbf{B}_\text{bias}(t)$. The total
 field is the sum of contributions from the set of all segments (S), and the
 bias. The potential is therefore
 %
-\begin{equation} V(t, \mathbf{q}) = \mu B (t, \mathbf{q}) = \mu \left|
+\begin{equation} V\text{mag}(t, \mathbf{q}) = \mu B (t, \mathbf{q}) = \mu \left|
   \sum_{i\in S}
-  \mathbf{B}_\text{seg}^{(i)}(t, \mathbf{q}) + \mathbf{B}_\text{bias}(t)\right|.
+  \mathbf{B}_\text{seg}^{(i)}(t, \mathbf{q}) +
+  \mathbf{B}_\text{bias}(t)\right|.
 \end{equation}
-
-The field due to a segment of straight wire with length carrying current $I(t)$
-can be found analytically by integration of the Bio-Savart Law.
-This field can be expressed in terms of the angle between the ends of the wire
-at $\mathbf{q}$, as is shown in \myfigref{design:fig:wiresegment}. The field
-is given by~\cite{Griffiths2017}
+%
+Where the field of each wire segment is~\cite{Griffiths2017}
 %
 \begin{equation}
   \mathbf{B}_\text{seg}(t, \mathbf{q}) = \frac{\mu_0 I(t)}{4\pi
   s_\text{seg}(\mathbf{q})} (\sin(\theta_2)  -
-  \sin(\theta_1))\mathbf{\mathbf{\phi}}
+  \sin(\theta_1))\hat{\mathbf{\phi}},
 \label{design:eq:segmentfield}
 \end{equation}
-here $s_\text{seg}(\mathbf{q})$ is the shortest distance between the segment
-and $\mathbf{q}$, and $\hat{\mathbf{\phi}}$ is the unit vector pointing
-perpendicular to $\mathbf{q}$ and the wire segment. \cm{Should take more care
-indefining this unit vector! (also formatting mathbf and hat?)}
+%
+$s_\text{seg}(\mathbf{q})$ being the shortest distance between the segment
+and the point $\mathbf{q}$, and $\hat{\mathbf{\phi}} =
+\mathbf{I}\times\mathbf{q}/(qI)$.
 
 \begin{figure}[h]
 \centering
@@ -452,12 +460,15 @@ indefining this unit vector! (also formatting mathbf and hat?)}
     \coordinate (O) at (0, 0);
     \coordinate (L) at (-3, 0);
     \coordinate (R) at (3, 0);
-    \coordinate (Q) at (1, 4);
+    \coordinate (Q) at (-4, 4);
     % Draw lines
     \draw[line width=0.75mm, ->] (L) -- (R);
     \draw (L) -- (Q);
     \draw (R) -- (Q);
-    \draw[<->, densely dotted,shorten >=.5mm,shorten <=.8mm] (Q) -- (1, 0);
+    \draw[<->, densely dotted,shorten >=.5mm,shorten <=.8mm] (Q) -- (-4, 0);
+    % Draw line parallel to wire
+    \draw[-, dashed] (-5, 0) -- (L);
+    \draw[-, dashed] (R) -- (5, 0);
     % Draw dot at Q
     \node at (Q)[circle,fill,inner sep=.5mm]{};
     % Draw angels
@@ -465,25 +476,27 @@ indefining this unit vector! (also formatting mathbf and hat?)}
     \draw pic[draw,angle radius=1cm,"$\theta_2$" shift={(-7mm,2mm)}] {angle=Q--R--L};
     % Label
     \node[shift={(4mm,0)}] at (Q) {$\mathbf{q}$};
-    \node[shift={(2mm, 0)}] at (R) {$I$};
-    \node[fill=white] at (1., 1.8) {$s_\text{seg}(\mathbf{q})$};
+    \node[shift={(2mm, 4mm)}] at (R) {$I$};
+    \node[fill=white] at (-5.0, 1.8) {$s_\text{seg}(\mathbf{q})$};
   \end{tikzpicture}
   \caption{Geometry of a wire segment (bold) carrying current $I$, whose field
-  can be calculated using \myeqref{design:eq:segmentfield}. The dottend line
+  can be calculated using \myeqref{design:eq:segmentfield}. The dotted line
   shows $s_\text{seg}(\mathbf{q})$, the shortest distance from the point at
-  which the field is calculated ($\mathbf{q}$) to the segment.
+  which the field is calculated ($\mathbf{q}$) to the line parallel with the
+  wire.
   }
   \label{design:fig:wiresegment}
 \end{figure}
 
-This is everything that is needed to simulate a wire trap, or the handover
-between two traps (by including the wire segments of both traps in the field
-calculation). The transport trap is assumed to be a perfect quadrupole.
-
-Molecule trajectories are calculated up to a pre-determined end time, or until
-they are determined to be lost. In the following simulations a molecule is lost
-when it's displacement from the origin in any cardinal direction is greater
-than \SI{10}{\milli\meter}.
+For our simulations it is sufficient to consider a U or Z trap made up of three
+wire segments, the central (axial) wire and the two long confining wires, which
+we consider to extend to infinity. We will also consider quadrupole traps
+generated by macroscopic coils to be ideal, with fields given by~\cite{}
+% TODO
+%
+\begin{equation}
+  \mathbf{B}(t, \mathbf{q}) =...
+\end{equation}
 
 \subsection{Example simulation: Z trap acceptance}
 
