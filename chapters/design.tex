@@ -595,6 +595,14 @@ one go, similar to before.}
 \centering
   \import{figs/simsThesis/}{mtt_u_summary.pgf}
   \caption{
+    The particle distribution in the MTT (blue) and after transfer to the U
+    trap (red) following the process described in the main text. The
+    phase-space distributions are shown in the $z$-$v_z$ plane in (a) and (b),
+    with histograms of the $z$ and $v_z$ projections in (c) and (e)
+    respectively. The potentials at the start and end of the transfer are shown
+    in (d). Subfigure (f) shows the temperature particle number varying
+    throughout the fields are varied in the times that are shaded grey (c.f.
+    \myfigref{design:fig:simparams}). \cm{Comment on the results.}
   }
   \label{design:fig:mttusum}
 \end{figure}
@@ -632,14 +640,14 @@ and the trapping potential at those times.
   \import{figs/simsThesis/}{mtt_u_detail_z.pgf}
   \end{tabular}
   \caption{
-    % TODO redo this
-    The same simulation results are displayed as in
-    \myfigref{design:fig:trans_U}, this time for the handover to $\mathrm{Z0_i}$.
-    The superposition of the U and Z traps causes a reduction of the trap depth
-    in the $x$ direction, as seen at time $t=\SI{375}{\milli\second}$.
-    Molecules can be seen coming into contact with the chip surface when held
-    in the U trap, but after transfer to the Z trap, which is located on the
-    chip surface, the cloud is strongly repelled from the surface.
+    Each pair of rows shows the phase-space plots for the MTT to U trap
+    handover simulation in the $q_i$-$v_i$ plane, along with the cut-through of
+    the potential through the trap centre along $q_i$ at various times. This
+    supplements the simulation summary shown in \myfigref{design:fig:mttusum}.
+    The superposition of the quadrupole and U-traps briefly causes a lowering
+    of the trapping potential, as can be seen at \cm{time??} in the $y$
+    direction. Such reductions are not accounted for when considering the
+    simple phase-space handovers discussed in the main text.
   }
   \label{design:fig:mttudetail}
 \end{figure}
@@ -666,6 +674,11 @@ final experiment. Hence these losses can be ignored.
 \centering
   \import{figs/simsThesis/}{u_z_summary.pgf}
   \caption{
+    The U trap to Z trap handover is summarised, with subfigures and colours as
+    in \mysubfigref{design:fig:mttusum}. Here we again see loss effects similar
+    to those seen for the MTT to U trap handover, with a decrease in trap depth
+    \cm{that may be} due to changing from a quadrupole trap to a
+    Ioffe-Pritchard trap.
   }
   \label{design:fig:uzsum}
 \end{figure}
