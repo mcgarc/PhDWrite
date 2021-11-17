@@ -508,8 +508,8 @@ that the distribution of our molecules matches that which we expect in the
 experiment. 
 
 We begin with a cloud of $N$ molecules whose positions are normally distributed
-in all three spatial dimensions with a standard deviation of $\simga_i$
-(typically $\simga_i = \SI{1}{\milli\meter}$. Similarly the velocity components
+in all three spatial dimensions with a standard deviation of $\sigma_i$
+(typically $\sigma_i = \SI{1}{\milli\meter}$. Similarly the velocity components
 are normally distributed with a standard deviation of $\sigma_{v_0}$ (typically
 \SI{84}{\milli\meter\per\second}, corresponding to a temperature of
 \SI{50}{\micro\kelvin}). 
@@ -561,103 +561,7 @@ account for the weirdness at the start of the width graph.}
 
 % Z transfer (c.f. rapid)
 
-\section{Compression in a Z-trap}
-
 \section{Trajectory simulation of the initial loading stages}
-
-\subsection{MTT - U transfer}
-
-\subsection{U - Z transfer}
-
-\subsection{Z compression}
-
-\section{Phase-space acceptance of remaining Z traps}
-
-\subsection{Example simulation: Z trap acceptance}
-
-To illustrate both the simulation methods and the example of phase space
-acceptance given in section~\ref{design:motion:simmethods}, we present an
-example simulation where a uniform distribution of molecules is spread over the
-acceptance of the $\mathrm{Z0_i}$ trap used in our experiment. We should expect
-that the molecules inside the acceptance remain trapped for arbitrarty long
-time, and those outside are lost.
-
-This is indeed what we see in \myfigref{design:fig:acceptance}, where the
-results of the simulation are shown in a trio of plots, each one showing a
-projection of phase space into the $(q_i, v_i)$ plane. Here $i\in\{x, y, z\}$
-and we have converted from units of momentum to velocity for convenience. 
-
-\cm{There was some confusion in the LSR because I said $10^6$ here, but I
-checked and it was $10^5$.}
-We simulated $10^5$ \CaF{} molecules, which are initialised with position and
-velocity drawn from a uniform distribution inside the range indicated by the
-gold rectangle in \myfigref{design:fig:acceptance}. The trajectories are then
-integrated for the first \SI{300}{\milli\second} of the motion. The starting
-position of those molecules who remained trapped are then plotted.
-
-The separatrix is also shown. It is found by considering the energy at all
-points in the phase space plane. The highest energy that forms a closed contour
-is the acceptance of the trap. The energy is different in every plane (the $x$
-direction is a weaker trapping direction).
-
-\cm{This sounds like a pretty weak excuse. I better figure out what is
-actually going on here. Suspect I am underestimating the size of the
-acceptance.}
-There are 443 particles that remain trapped throughout the simulation. \mt{This
-result tells you the actual phase space acceptance of the trap - it will be
-$443/10^{6}\times$ initial phase space volume. It would be interesting to compare
-this to the phase space volume you calculate analytically.} Of those
-that are trapped, the vast majority fall within the calculated acceptance.
-However in some edge cases it appears that the particles are outside. This is
-due to the acceptance shown being a contour on a cut-through of the potential.
-The true acceptance is a hypersurface that cannot easily be displayed in print.
-\cm{I am kind of bullshitting here. Mike says the following, which seems more
-reasonable: I can see how this results in particles inside the separatrix being
-lost. But I can't see how it results in particles outside the separatrix not
-being lost. I think more likely is that particles slightly outside the
-separatrix are on metastable trajectories meaning they would be lost if you ran
-the simulation longer.}
-
-\cm{Check that the separatrix is calculated sensibly, is it the same in
-every direction?}
-%
-\begin{figure}
-  \centering
-  \includegraphics[page=1]{figs/sims/example_acceptance.pdf}
-  \caption{Example simulation showing the acceptance of the $\mathrm{Z0_i}$.
-  The region marked by the gold rectangles is populated with $10^5$ particles.
-  The starting positions of the 443 particles that are trapped are marked with a pink dot.
-  The acceptance is approximated by a contour of the trapping potential, shown
-  here in black. Trapping is weaker in the $x$ direction than the other
-  directions, so this contour has a lower value. The majority of the trapped
-  particles start within this approximation of the acceptance.}
-  \label{design:fig:acceptance}
-\end{figure}
-
-As well as demonstrating that the simulation is able to reproduce the expected
-results from a simple phase space acceptance problem, we can use it to check
-that constants of the motion are indeed conserved. This is shown to be the case
-in \myfigref{design:fig:conservation}.  The fluctuations in the values are a
-side effect of the symplectic method, but there is no overall trend for the
-constants to increase or decrease \cite{doi:10.1119/1.2034523}. The phase
-space density is significantly lower due to the nmber of simulated particles
-being smaller than we would expect in reality, and the phase space volume of
-the initial cloud being significantly larger.
-
-\begin{figure}
-  \centering
-  \includegraphics[page=1]{figs/sims/example_conservation.pdf}
-  \caption{Conservation of energy and phase space density in our simulation.
-  Energy is the total energy of the trapped particles, but is given in units of
-  \si{\milli\kelvin} for convenience. \cm{Needs to be more clear that this is
-  total energy (all particles). Mike was unclear on this.}
-  }
-  \label{design:fig:conservation}
-\end{figure}
-
-
-\section{Modelling the loading procedure}
-\label{design:sim}
 
 To ensure that the chip design will allow for robust loading, the loading
 process has been simulated up to the $\mathrm{Z0_f}$ trap. This demonstrates
@@ -668,7 +572,9 @@ have been inserted between ramps to better illustrate the cause of particle
 loss.
 
 The results of the simulation and the parameters of the ramps are outlined in
-\myfigref{design:fig:simparams}. This can be considered in four parts, first
+\myfigref{design:fig:simparams}.
+%TODO Redo this old nonsense
+\cm{This can be considered in four parts, first
 from $t = 0$ to $t=\SI{100}{\milli\second}$ there is a settling period where
 the molecules are held in the transport trap. Then there are three
 \SI{100}{\milli\second} ramps, each of which is followed by a
@@ -676,40 +582,24 @@ the molecules are held in the transport trap. Then there are three
 handover from the transport trap to the U, the U to $\mathrm{Z0_i}$, and the
 compression of $\mathrm{Z0_i}$ to $\mathrm{Z0_F}$. They are described in detail
 in the following subsections. This simulation used $N=1000$ particles, with one
-particle lost during initialisation.
+particle lost during initialisation.}
+\cm{For this fig. I think I just want all the parameters, temp, ramps,etc in
+one go, similar to before.}
 
-\begin{figure}[htb]
+
+
+\subsection{MTT - U transfer}
+\label{design:sim:trans_U}
+
+\begin{figure}[p]
 \centering
-  \begin{overpic}[page=1]{figs/sims/mtt_u_z_params.pdf}
-    \put(32.5,55){(a)}
-    \put(45.5,55){(b)}
-    \put(63,55){(c)}
-    \put(80.5,55){(d)}
-  \end{overpic}
+  \import{figs/simsThesis/}{mtt_u_summary.pgf}
   \caption{
-    The simulation parameters are shown for loading from the transport trap
-    into trap $\mathrm{Z0_f}$. The simulation begins with a stabilisation
-    period (a), in which the molecules are held in the transport trap for \SI{100}{\milli\second}. In period (b) the transport
-    trap is ramped off and the U is ramped on. There is some heating of
-    molecules as they leave the trap, and a reduction in phase
-    space density. The transfer to $\mathrm{Z0_i}$ occurs in period (c), where
-    more loss occurs due to the trap depth being reduced in the $x$
-    direction. Finally in (d) the trap is compressed to $\mathrm{Z0_f}$, when
-    the molecules are brought from \SI{3}{\milli\meter} to \SI{1}{\milli\meter}
-    of the chip surface. The solid lines show the simulation results when
-    collisions with the chip surface are ignored, and the dashed line shows
-    results when collision with the surface results in loss of the molecule.
-    %
-   \mt{Would be useful to show some quantity that measures the size of the
-   cloud, along with all the other parameters, e.g. you could plot $\sigma_x 
-   \sigma_y  \sigma_z$ as a measure of the volume of the cloud. Then, I would
-   expect to see the volume go down in places where the temperature goes up.}
   }
-  \label{design:fig:simparams}
+  \label{design:fig:mttusum}
 \end{figure}
 
-\subsection{Handover to the U trap}
-\label{design:sim:trans_U}
+
 
 
 \cm{Ensure language is consistent when talking about chip, so is the U
@@ -736,29 +626,22 @@ and the trapping potential at those times.
 
 \begin{figure}[p]
 \centering
-  %\setlength\extrarowheight{-3pt}
   \begin{tabular}{c}
-    \includegraphics[page=1]{figs/sims/mtt_u_x.pdf} \\
-    \includegraphics[page=1,trim=0 0 0 15, clip]{figs/sims/mtt_u_y.pdf} \\
-    \includegraphics[page=1,trim=0 0 0 15, clip]{figs/sims/mtt_u_z.pdf}
+  \import{figs/simsThesis/}{mtt_u_detail_x.pgf} \\
+  \import{figs/simsThesis/}{mtt_u_detail_y.pgf} \\
+  \import{figs/simsThesis/}{mtt_u_detail_z.pgf}
   \end{tabular}
   \caption{
-    For each dimension, a cut-through of the potential and a plot of
-    phase-space positions of the particles is shown. Each column shows a
-    different time during the ramp from the transport trap into the U trap. The
-    cut-throughs pass through $\mathbf{t}_0 = (0, 0, \SI{3}{\milli\meter})$. In
-    the $x$ direction, it is possible to see decompression and recompression as
-    the potential varies from $t=\SI{125}{\milli\second}$ to
-    $t=\SI{200}{\milli\second}$. In the $y$ direction, the depth is lowered due
-    to the superposition of the trapping fields, leading to a significant loss.
-    This is partially visible at $t=\SI{175}{\milli\second}$, where we can see
-    the drop in the potential and particles with $y<0$, $v_y<0$ escaping the
-    trap. In the $z$ direction, some hotter molecules escape as the U trap
-    reaches its final depth at $t=\SI{200}{\milli\second}$. Note that this loss
-    has ended after the settling time, which can be seen in
-    \myfigref{design:fig:U_Z0i}.
+    % TODO redo this
+    The same simulation results are displayed as in
+    \myfigref{design:fig:trans_U}, this time for the handover to $\mathrm{Z0_i}$.
+    The superposition of the U and Z traps causes a reduction of the trap depth
+    in the $x$ direction, as seen at time $t=\SI{375}{\milli\second}$.
+    Molecules can be seen coming into contact with the chip surface when held
+    in the U trap, but after transfer to the Z trap, which is located on the
+    chip surface, the cloud is strongly repelled from the surface.
   }
-  \label{design:fig:trans_U}
+  \label{design:fig:mttudetail}
 \end{figure}
 
 At $t=\SI{175}{\milli\second}$ there is a noticeable decrease in the trapping
@@ -776,33 +659,21 @@ extended period. However the holding time in this simulation is only for
 illustration, and the prolonged trapping in the U trap will not be part of the
 final experiment. Hence these losses can be ignored.
 
-\subsection{Handover to $\mathrm{Z0_i}$}
+\subsection{U - Z transfer}
 \label{design:sim:U_to_Z0i}
+
+\begin{figure}[p]
+\centering
+  \import{figs/simsThesis/}{u_z_summary.pgf}
+  \caption{
+  }
+  \label{design:fig:uzsum}
+\end{figure}
 
 The U to $\mathrm{Z0_i}$ handover occurs in our simulation from
 $t=\SI{300}{\milli\second}$ to $t=\SI{400}{\milli\second}$, shown in
 \mysubfigref{design:fig:simparams}{c}.  The phase space positions of the
 molecules and the potentials are shown in \myfigref{design:fig:U_Z0i}.
-
-\begin{figure}[p]
-\centering
-  %\setlength\extrarowheight{-3pt}
-  \begin{tabular}{c}
-    \includegraphics[page=1]{figs/sims/u_Z0i_x.pdf} \\
-    \includegraphics[page=1,trim=0 0 0 15, clip]{figs/sims/u_Z0i_y.pdf} \\
-    \includegraphics[page=1,trim=0 0 0 15, clip]{figs/sims/u_Z0i_z.pdf}
-  \end{tabular}
-  \caption{
-    The same simulation results are displayed as in
-    \myfigref{design:fig:trans_U}, this time for the handover to $\mathrm{Z0_i}$.
-    The superposition of the U and Z traps causes a reduction of the trap depth
-    in the $x$ direction, as seen at time $t=\SI{375}{\milli\second}$.
-    Molecules can be seen coming into contact with the chip surface when held
-    in the U trap, but after transfer to the Z trap, which is located on the
-    chip surface, the cloud is strongly repelled from the surface.
-  }
-  \label{design:fig:U_Z0i}
-\end{figure}
 
 In the ramp between the transport trap and the U trap, we saw that a hole was
 introduced in the trapping potential due to interference between the two
@@ -817,7 +688,8 @@ the particles, however there is no significant change in the phase space
 density. The acceptance of trap $\mathrm{Z0_i}$ is smaller than the emittance
 of the U, so this is to be expected.
 
-\subsection{Compression to $\mathrm{Z0_f}$}
+\subsection{Z compression}
+
 
 In the final stage of the simulation we look at a compression stage. The
 trapping potential is adiabatically altered to bring the field minimum closer
@@ -832,27 +704,11 @@ Here the compression in number density and expansion in velocity space is clear
 by the changing cloud shape over time. The cloud also clearly follows the
 potential minimum without losses.
 
-\cm{In these figures state the trapping heights $z_0$}
-%
-\begin{figure}[p]
-\centering
-  \begin{tabular}{c}
-    \includegraphics[page=1]{figs/sims/Z0i_Z0f_x.pdf} \\
-    \includegraphics[page=1,trim=0 0 0 15, clip]{figs/sims/Z0i_Z0f_y.pdf} \\
-    \includegraphics[page=1,trim=0 0 0 15, clip]{figs/sims/Z0i_Z0f_z.pdf}
-  \end{tabular}
-  \caption{Presentation of the loading simulation is continued from
-  \myfigref{design:fig:trans_U} and \myfigref{design:fig:U_Z0i}. Here we see
-  the compression from $\mathrm{Z0_i}$ to $\mathrm{Z0_f}$. The compression in
-  the spatial dimensions causes heating, which can be seen as a spread in the
-  velocity directions. This is in line with what is expected from Liouville's
-  theorem.
-  }
-  \label{design:fig:Z0i_Z0f}
-\end{figure}
 
-\subsection{Transfer between Z traps}
+\section{Phase-space acceptance of remaining Z traps}
 \label{design:transferbetweenzs}
+
+\cm{Revisit this spiel.}
 
 Once trapped in $\mathrm{Z0_f}$, the remaining loading stages are simply
 repeated handovers to the smaller wires, with a compression stage carried out
