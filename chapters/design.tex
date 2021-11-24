@@ -369,17 +369,19 @@ molecules \cm{colour}, as well as those that are rejected \cm{colour} and
 metastable molecules \cm{colour}, which remain outside the acceptance but stay
 nearby the trap. \cm{TODO: expand}
 
-\begin{figure}
+\begin{figure}[htb]
   \centering
-  %\includegraphics[width=0.6\textwidth, page=1]{figs/psa_eg.png}
-  \cm{My PSA fig with (a) as harmonic, (b) anharmonic, (c) as Z trap. 3 rows
-  2 cols, with left col t 0 and right t end}
+  \import{figs/simsThesis/}{psa_1D.pgf}
   \caption{
-    The phase-space acceptance is shown for a harmonic (a), anharmonic (b) and
-    Z-wire trap (c). The initialised particles are shown in the left-hand
-    panes. Accepted particles are shaded black, and those that are rejected are
-    shaded grey. In all cases \cm{sim parameters}. Subfigures (a) and (b)
-    are re-creations of the examples given by \inlineref{Crompvoets2005}.
+    The phase-space acceptance for harmonic (a, d), anharmonic (b, e) and
+    Z-wire trap (c, e) are shown. The top row shows the initial positions of
+    the particles, those that are accepted by the trap are shaded blue,
+    particles that are lost are shaded red, and metastable particles in orange.
+    The energy contour of the trap depth is also shown. The end state of the
+    simulation is shown in the lower row. Note the filamentation effect in (e)
+    and (f), where the effective phase-space density of the particles increases
+    as they explore regions that are energetically accessible. The harmonic and
+    anharmonic examples are inspired by discussion in inlineref{Crompvoets2005}.
   }
   \label{design:fig:psaeg}
 \end{figure}
@@ -551,10 +553,27 @@ the behaivour of the cloud in the \SI{100}{\milli\second} hold time. Note that
 as the ramp time increases, the oscillation in cloud size, temperate and
 position decreases, as we have said we expect.
 
+\begin{figure}[p]
+\centering
+  \import{figs/simsThesis/}{adiabatic_3sim.pgf}
+  \caption{
+  }
+  \label{design:fig:adia3sim}
+\end{figure}
+
+
 The question then is at what point do we enter the adiabatic r\'egime? \cm{Some
 figure} shows the cloud width and temperature at the end of the simulation for
 varying $t_\text{ramp}$. After $t_\text{ramp}\sim\SI{50}{\milli\second}$ \cm{we
 are pretty adiabatic}.
+
+\begin{figure}[tbhp]
+\centering
+  \import{figs/simsThesis/}{adiabatic_varyramps.pgf}
+  \caption{
+  }
+  \label{design:fig:adiavary}
+\end{figure}
 
 \cm{In this figure, note that the rapid oscillations in x width probably
 account for the weirdness at the start of the width graph.}
