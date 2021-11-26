@@ -133,57 +133,53 @@ for a similar chip design in \inlineref{Treutlein2008}. The Z wire will
 therefore have a width $w=\SI{200}{\micro\meter}$. Other wire parameters are
 shown in \mytableref{design:table:wires}.
 
-The axial length  of the wires also decreases to gradually reduce the size of
-the trapped cloud in the $x$ direction. The wire layout is shown in
-\myfigref{design:fig:chipexperiment} and more details along with the
-heights are outlined in \mytableref{design:table:wires}. All wires have
-been designed to carry twice the current that is required in the loading
-scheme.
+The axial length of the wires also decreases to gradually reduce the size of
+the trapped cloud in the $x$ direction. An exaggerated schematic of the wire
+layout is shown in \myfigref{design:fig:chipexperiment} and further details are
+outlined in \mytableref{design:table:wires}. All wires have been designed to
+carry twice the current that is required in the loading scheme.
 
-\cm{Add bias fields required to this table (as a ramp, like trap height)
-maybe just they y bias?? Also CONFIRM THE AXIS LENGTHS.}
-%
+% TODO Maybe need more detail here
 \begin{table}
   \centering
 \begin{tabular}{lrrrrr}
-  Name & Axis length (\si{\milli\meter}) & Width (\si{\micro\meter})& Height
-  (\si{\micro\meter})& $I_\text{max}$ & Trap height (\si{\micro\meter}) \\
+  Name & Axis length (\si{\milli\meter}) & Width (\si{\micro\meter})& $I_\text{max}$ & Trap height (\si{\micro\meter}) \\
  \hline
-  U & 16 & N/A& N/A& 100 & 3000\\
-  $\mathrm{Z0}$ & 12 & 200&  5& 60& $3000\rightarrow1000$ \\
-  $\mathrm{Z1}$ &  6 & 20&  5& 6& $1000\rightarrow100$ \\
-  $\mathrm{Z2}$ &  3 & 2&  5& 0.6& $100\rightarrow10$ \\
+  U & 16 & N/A& 100 & 3000\\
+  $\mathrm{Z0}$ & 12 & 200& 60& $3000\rightarrow1000$ \\
+  $\mathrm{Z1}$ &  6 & 20& 6& $1000\rightarrow100$ \\
+  $\mathrm{Z2}$ &  2 & 2& 0.6& $100\rightarrow10$ \\
  \hline
 \end{tabular}
   \caption{Details on the wire dimensions, maximum current, and desired
   trapping heights. The wire design is shown in
   \mysubfigref{design:fig:chipexperiment}{c}. Note that the U wire current is
-  limited by vacuum feedthroughs and not by the wire dimensions or cooling.
-  The maximum currents have been designed for use at only 50\% of their
-  potential maximum ($I_\text{max}$).
+  limited by vacuum feedthroughs and not by the maximum current calculated by
+  the wire dimensions.  The maximum currents have been designed for use at only
+  50\% of their potential maximum ($I_\text{max}$).
   }
   \label{design:table:wires}
 \end{table}
 
 Each Z trap will begin trapping at one height before the bias field is
-increased to allow for trapping closer to the surface (as per
+increased to bring the trap centre closer to the surface (as per
 \myeqref{intro:eq:trapbias}).  To distinguish between the two trap stages for
 each wire, we label them $\mathrm{ZX_i}$ for the initial (higher) trap and
 $\mathrm{ZX_f}$ for the final (lower) trap, with $\mathrm{ZX}$ corresponding to
 the wire labels in \mytableref{design:table:wires}.
 
-We aim to eventually incorporate microwave guides onto the chip. This can be
+A future goal of the project is to incorporate microwave guides onto the chip. This can be
 accomplished by adding an insulating layer on top of the wires, on to which we
-can fabricate coplanar waveguides~\cite{1127105}. The flange and subchip have
-been designed to allow delivery of microwaves to the chip. \cm{Direct to
-microwaves on a chip chapter.} This was discussed in detail in the early stage
-assessment and will not be repeated here.
+can fabricate coplanar waveguides~\cite{1127105}. The flange has been designed
+with microwave feedthroughs, so that microwaves can be launched onto the
+subchip and carried to the chip via coplanar waveguides \cm{to be discussed in
+a later chapter}.
 
-In the rest of this chapter, I will demonstrate through simulation and analysis
-of the trapping potentials that this design will be capable of loading trapped
-\CaF{} molecules.
+Having broadly outlined the experiment, the rest of this chapter will justify
+the design of the trapping wires by means of simulation and analysis
+of the trapping potentials.
 
-\section{Motion of molecules in a potential}
+\section{Motion of molecules in a trap}
 \label{design:motion}
 
 We can assume that the motion of the molecules in the trap is classical. They
