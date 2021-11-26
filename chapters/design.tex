@@ -54,27 +54,24 @@ faces the floor, allowing us to trap and then drop the molecules for imaging.
 
 \begin{figure}[htb]
   \centering
-  \cm{Change to autocad drawing, include inset of flange inside the L}
-  \begin{overpic}[width=0.7\textwidth]{figs/vacuum_setup.pdf}
-    \put(1,-5){Chip chamber}
-    \put(34,-5){Tweezer chamber}
-    \put(73,-5){MOT chamber}
-  \end{overpic}
-  \vspace{1cm}
+  \includegraphics[width=0.7\textwidth]{figs/experiment_placeholder.png}
   \caption{
+    \cm{To be replaced with a proper CAD drawing of the experiment}
     A top-down view of the planned \CaF{} experiment is shown. Molecules are
     created in the source chamber in a buffer-gas cell. They are then
-    laser-slowed by the methods described in~\cite{} and \cm{transverse
-    cooling}, then captured in the collisions chamber. Here we can cool the
+    laser-slowed by the methods described in~\cite{} and undergo transverse
+    cooling, before being captured in the collisions chamber.
+    Here we can cool the
     molecules by the methods described in \cm{thoery ch} and perform
-    experiments in collisions as detailed in \cm{cite}. A magnetic transport
+    experiments in collisions as detailed in \cm{cite}. The magnetic transport
     trap (MTT) can transfer a cloud of molecules to the neighbouring tweezer
     chamber (for the optical tweezer experiment). The chip chamber will be
-    positioned after the tweezer chamber, and will receive molecules from the
-    MTT in the same way. Inset, details of the chip assembly. Current is
-    delievered to the microfabricated chip via an intermediary printed circuit
-    board (the sub-chip).
-  }
+    positioned next to the tweezer chamber, and will receive molecules from the
+    MTT in the same way. Inset, an exploded view of the flange assembly. The
+    chip is mounted on a PCB for current (and later microwave) delivery. This
+    is positioned above a large copper U-wire for intermediary trapping of
+    molecules. The U-wire is electrically isolated by alumininium nitride
+    plates.}
   \label{design:fig:vacuumsystem}
 \end{figure}
 
@@ -98,35 +95,27 @@ limited to \SI{100}{\ampere} by the vacuum feedthroughs, allowing for a
 
 \begin{figure}[ht]
   \centering
-  \parbox{\textwidth}{
-    \parbox{.5\textwidth}{%
-\centering
-      \subcaptionbox{}{
-\includegraphics[width=0.4\textwidth]{figs/FlangeAssemblyForPresentationTopRight.png}
-}
-      \vskip3em
-      \subcaptionbox{}{
-\centering
-\includegraphics[height=0.2\textwidth]{figs/fab/subchip1_cropped3.pdf}
-}  
-    }
-    \hskip1em
-    \parbox{.5\textwidth}{%
-      \subcaptionbox{}{
-  \begin{overpic}[width=\hsize,page=1]{figs/chip_des.pdf}
-    \put(26,64){{\tiny\SI{100}{\micro\meter}}}
-  \end{overpic}
-}
-    }
-  }
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{figs/chip_pic_crop.png}
+    \caption{}
+  \end{subfigure}
+  \hspace{1cm}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figs/chip_present2.pdf}
+    \caption{}
+  \end{subfigure}
   \caption{
-    \cm{Change this to a view of the (right) chip and exploded view of the
-    flange, so we can see the U wire, PCB (left)}
-    In (a) we have an exploded view of the chip flange assembly. Note the
-    copper heatsink into which the U-wire is embedded. On top of this we have
-    the subchip for power delivery to the chip. In (b) we have the chip design,
-    with the inset showing a zoomed-in view of the three central wires.
-  }
+    In (a) we have the chip assembly fully constructed, with a view of the
+    aluminium-core PCB (subchip) for current delivery. Note also the polyimide
+    bushings to electrically isolate the retaining screws from the surface. The
+    microwave feedthrougs remain disconnected. In (b) we show a schematic of
+    the chip features, with the scaling exaggerated for visibility. The three
+    overlapping Z-wires are shown. Toward the left is the electroplating
+    connection pad and various features used for characterisation, andn the small
+  wire there are several anchors to improve adhesion. All of these will be
+  discuseed further in chapter~\ref{fab}. The crest of Imperial College London
+is also included.}
   \label{design:fig:chipexperiment}
 \end{figure}
 
