@@ -502,7 +502,7 @@ time.
 \subsection{Simulation initialisation}
 
 For all the simulations described below, we begin with a cloud of molecules in
-a magnetic quadrupole trap. We use the following initialisation procedure s
+a magnetic quadrupole trap. We use the following initialisation procedure so
 that the distribution of our molecules matches that which we expect in the
 experiment. 
 
@@ -510,72 +510,84 @@ We begin with a cloud of $N$ molecules whose positions are normally distributed
 in all three spatial dimensions with a standard deviation of $\sigma_i$
 (typically $\sigma_i = \SI{1}{\milli\meter}$. Similarly the velocity components
 are normally distributed with a standard deviation of $\sigma_{v_0}$ (typically
-\SI{84}{\milli\meter\per\second}, corresponding to a temperature of
-\SI{50}{\micro\kelvin}). 
+\SI{40}{\milli\meter\per\second}, corresponding to a temperature of
+\SI{5}{\micro\kelvin}). 
 
-The cloud is immediately placed in a quadrupole trap with gradient
+The cloud is initialised in a quadrupole trap with gradient
 \SI{10}{\gauss\per\centi\meter}. They are held for \SI{50}{\milli\second}
-before the gradient is ramped up over \SI{100}{\milli\second} to the 
+before the gradient is linearly ramped over \SI{100}{\milli\second} to
 \SI{60}{\gauss\per\meter} (the gradient used in the MTT).
 The molecules are then held for a further \SI{50}{\milli\second}, as a
 stabilisation time.
 
-The increasing trap gradient causes the
-molecules to compress as they would when initially loaded into the transport
-coils in the MOT chamber, as can be seen in \myfigref{}.
-\cm{Need to show histograms in radial and axial, along with comparison to real
-data, which I should collect.}
+The increasing trap gradient causes the molecules to compress as they would
+when initially loaded into the transport coils in the MOT chamber.
+
+% TODO I anticipate needing to put some comparison to the real data here...
 
 \section{Adiabatic transfer between traps}
 
-% Simple QP ramp (varying time to find adiabatic regime)
+It should be obvious that if we start with molecules in one potential, then
+rapidly turn that one off and turn on another, this will cause heating and
+increasing its size.  However, if we ramp between the traps adiabatically, then
+we expect the effect to the cloud size to be minimal. In order to understand
+how best to load the chip trap, it is important that we understand the extent
+of heating in the case of rapid transfer, and the timescale of transfer
+required to be adiabatic.
 
-In fact, the simple potential of a quadrupole potential can be used to
-illustrate a point about transferring molecules between traps. It should be
-obvius that if we start with molecules in one potential, then rapidly turn that
-one off and turn on another, this will cause heating and increasing its size.
-However, if we ramp between the traps adiabatically, then we expect the effect
-to the cloud size to be minimal.
-
-In our example, we will consider two ideal quadrupoles with gradients of
-\SI{60}{\gauss\per\centi\meter} separated by \SI{3}{\milli\meter} in the $x$
-direction. We simulate 2000 \cm{?} molecules using the above-described
-initialisation procedure and \cm{sigma and temp values} and ramp between the
-potentials in a time $t_\text{ramp}$, which we vary between
-\SI{1}{\milli\second} and \SI{100}{\milli\second}. The molecules are then held
-for a further \SI{100}{\milli\second}. The state of the system at the end of
-the simulation is shown for $t_\text{ramp}\in \{\SI{1}{\milli\second},
-\SI{30}{\milli\second}, \SI{100}{\milli\second}\}$ in \cm{figure}, along with
-the behaivour of the cloud in the \SI{100}{\milli\second} hold time. Note that
-as the ramp time increases, the oscillation in cloud size, temperate and
-position decreases, as we have said we expect.
+We can investigate this with a simple example.  Consider two ideal quadrupoles
+with gradients of \SI{60}{\gauss\per\centi\meter} separated by
+\SI{3}{\milli\meter} in the $x$ direction. We simulate 2000 \CaF{} molecules
+using the above-described initialisation procedure, with initial $\sigma_i =
+\SI{2}{\milli\meter}$ in all directions, and initial temperature
+$T=\SI{50}{\micro\kelvin}$. We ramp linearly between the potentials in a time
+$t_\text{ramp}$, which we vary between \SI{1}{\milli\second} and
+\SI{100}{\milli\second}. The molecules are then held for a further
+\SI{100}{\milli\second}. The state of the system at the end of the simulation
+is shown for $t_\text{ramp}\in \{\SI{1}{\milli\second}, \SI{30}{\milli\second},
+\SI{100}{\milli\second}\}$ in \myfigref{design:fig:adia3sim}, along with the
+behaviour of the cloud in the \SI{100}{\milli\second} hold time. Note that as
+the ramp time increases, the oscillation in cloud size, temperate and position
+decreases, as we have said we expect.
 
 \begin{figure}[p]
 \centering
   \import{figs/simsThesis/}{adiabatic_3sim.pgf}
   \caption{
+    Exchange between two quadrupole traps, separated by \SI{3}{\milli\meter} at
+    different ramp times. The top row shows the $x$-projection of the
+    phase-space distributions of the particles at the start of the simulation
+    (grey) and after various ramp times (see legend) followed by a
+    \SI{100}{\milli\second} hold in the displaced trap. The mean position, size and
+    temperature of the cloud are shown throughout the hold time for each
+    simulation. Note that for the longer ramps we observe less heating,
+    oscillation and widening of the cloud.
   }
   \label{design:fig:adia3sim}
 \end{figure}
 
 
-The question then is at what point do we enter the adiabatic r\'egime? \cm{Some
-figure} shows the cloud width and temperature at the end of the simulation for
-varying $t_\text{ramp}$. After $t_\text{ramp}\sim\SI{50}{\milli\second}$ \cm{we
-are pretty adiabatic}.
+The question then is at what point do we enter the adiabatic r\'egime?
+\myfigref{design:fig:adiavary} shows the cloud width and temperature at the end
+of the simulation for varying $t_\text{ramp}$. After
+$t_\text{ramp}\sim\SI{50}{\milli\second}$ the reduction is minimal, and we are
+strongly in the adiabatic r\'egime.
 
 \begin{figure}[tbhp]
 \centering
   \import{figs/simsThesis/}{adiabatic_varyramps.pgf}
   \caption{
+    The final temperature and size of particle clouds transferred between
+    offset quadrupole traps at various ramp times. Note that the large
+    oscillations in width that occur for short ramp times (see
+    \myfigref{design:fig:adia3sim}) can result in the instantaneous width of
+    the cloud being small, such as in the shorter ramp times here.
   }
   \label{design:fig:adiavary}
 \end{figure}
 
-\cm{In this figure, note that the rapid oscillations in x width probably
-account for the weirdness at the start of the width graph.}
-
-% Z transfer (c.f. rapid)
+% TODO I do have some stuff about rapid vs. adiabatic transfer between z-traps,
+% but I think it is unnecessary.
 
 \section{Trajectory simulation of the initial loading stages}
 
