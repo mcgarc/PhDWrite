@@ -187,7 +187,7 @@ of the trapping potentials.
 We can assume that the motion of the molecules in the trap is classical. They
 move in the potential $V(t, \mathbf{q}) = \mu B(t, \mathbf{q})$, where
 $\mu\approx\mu_B$ is the magnetic dipole moment of the molecule in the
-\ket{1,0,-1} state.  The motion of any one particle is described by Hamilton's
+$\ket{1,0,-1}$ state.  The motion of any one particle is described by Hamilton's
 equations,~\cite{Lichtenberg1969}
 %
 \begin{align}
@@ -319,39 +319,48 @@ on the condition that
 %
 which defines an ellipse in phase-space.
 
-% TODO Pick up here and remember to figure out what the time is for this sim.
+% Note that in the simulation I have omega = 1, so taking omeaga -> 1000 means
+% that we end up with the nice circle with v in m/s. The consequence is that
+% the simulation ends up lasting 1.2ms rather than 1.2s
 
 This trapping region is can be verified by simulation, as is shown in
 \mysubfigref{design:fig:psaeg}{a}, where the trap has been simulated for $m =
-1$, $\omega = \SI{10^3}{\rad\per\second}$ and $l =\SI{1}{\milli\meter}$. We
-initialise 2000 particles uniformly distributed with $|z_0| <
-\SI{0.2}{\milli\meter}$ and $|v_0|< \SI{1.5}{\meter\per\second}$, their
-trajectories are computed by the methods described in the next section. The
-boundary of the acceptance, called the separatrix is shown in black. All
-particles that are intialised inside the acceptance remain trapped and evolve
-through time in the usual way for a harmonic potential. Particles initialised
-outside the acceptance are rejected and lost.
+1$, $\omega = \SI[parse-numbers=false]{10^3}{\radian\per\second}$ and $l
+=\SI{1}{\milli\meter}$. We initialise 2000 particles uniformly distributed with
+$|z_0| < \SI{0.2}{\milli\meter}$ and $|v_0|< \SI{1.5}{\meter\per\second}$,
+their trajectories are computed for \SI{1.2}{\milli\second} by the methods
+described in the next section. The boundary of the acceptance, called the
+separatrix is shown in black. All particles that are intialised inside the
+acceptance remain trapped and evolve through time in the usual way for a
+harmonic potential.  Particles initialised outside the acceptance are rejected
+and lost.
 
-\inlineref{Crompvoets2005} gives a further instructive example of an anharmonic
-one-dimensional potential,
+It is also instructive to consider anharmonic potentials, for example
 %
 \begin{equation}
-  V(x) = -V_0\cos(\omega x)
+  V(x) = -V_0\cos(\omega z)
 \end{equation}
 %
-which is also presented in \myfigref{design:fig:psaeg}. As well as the same
-behaivour for acceptance as the harmonic potential, we see the
-\cm{filamentation... actaully explain this...}
+which is also presented in \myfigref{design:fig:psaeg}, using the same
+parameters as for the previous potential. We again see that particles with
+sufficiently low energy in the trapping region remain trapped, however in this
+case the anharmonicity of the trap results in the particle cloud spiralling
+outwards, undergoing an effective increase in the phase-space density.
 
 Finally, it is useful to consider the phase-space acceptance of a wire trap.
 For simplicity we begin by considering only the acceptance in the $z$ direction
-(perpendicular to the chip surface). Acceptance of a Z-wire with \cm{init and
-trap parameters}
-is shown in \mysubfigref{design:fig:psaeg}{c}. Here we can see the accepted
-molecules \cm{colour}, as well as those that are rejected \cm{colour} and
-metastable molecules \cm{colour}, which remain outside the acceptance but stay
-nearby the trap. \cm{TODO: expand}
+(perpendicular to the chip surface). Acceptance of a Z-wire with an axis of
+\SI{20}{\milli\meter}, current of \SI{40}{\ampere} and a trapping height of
+\SI{3}{\milli\meter}. The particles are initialised such that they have no
+motion in the $x$ and $y$ directions, and the trajectories are simulated for
+\SI{200}{\milli\second}. The distributions as initialised and at the end of the
+simulations are shown in \myfigref{design:fig:psaeg}. The accepted
+molecules (blue) are once again those that start inside the sepatrix. There are
+also metastable molecules (orange) which remain outside the acceptance but stay
+nearby the trap. These are molecules with nearly sufficient energy to escape
+the trap, but may take some time to do so.
 
+% TODO This caption
 \begin{figure}[htb]
   \centering
   \import{figs/simsThesis/}{psa_1D.pgf}
@@ -364,10 +373,20 @@ nearby the trap. \cm{TODO: expand}
     simulation is shown in the lower row. Note the filamentation effect in (e)
     and (f), where the effective phase-space density of the particles increases
     as they explore regions that are energetically accessible. The harmonic and
-    anharmonic examples are inspired by discussion in inlineref{Crompvoets2005}.
+    anharmonic examples are inspired by discussion in
+    \inlineref{Crompvoets2005}.
   }
   \label{design:fig:psaeg}
 \end{figure}
+
+It is therefore clear that a particle that is stored in one trap can be moved
+into another if its position in phase space is inside the sepatrix of the new
+trap. It is therefore in our interest to design the trapping potentials such
+that the emission of one trap overlaps with the acceptance of the next one in
+the loading sequence. This is similar to the mode-matching of potentials
+described in, for example, \inlineref{2011Ac}. We will see below that the
+matching of trap acceptances does indeed allow for reliable loading of the
+traps
 
 An adiabatic change to the potential will not affect the phase-space density of
 any particles that remain trapped throughout the change~\cite{Hand1998,
@@ -379,14 +398,6 @@ It should be noted that the Liouville theorem also holds for a time-dependent
 Hamiltonian. We will see below that the trapping potential will be changed
 adiabatically, and make use of the fact that phase-space density is conserved
 through this process.
-
-Further, it is possible for us to design our trapping potentials such that the
-acceptance of one trap overlaps with the phase-space volume occupied by the
-molecules in another. This is similar to
-the mode-matching of
-potentials described in, for example, \inlineref{2011Ac}. We will see below
-that the matching of trap acceptances does indeed allow for reliable loading of
-the traps, \cm{even in the non-adiabatic r\'egime}.
 
 \subsection{Simulating the motion}
 \label{design:motion:simmethods}
