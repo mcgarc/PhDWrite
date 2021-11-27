@@ -15,7 +15,7 @@ discussed in the following chapter.
 \section{Experiment overview}
 
 Our ultracold molecules are created using the methods described above. Our
-apparatues, including the proposed chip chamber, are shown in
+apparatus, including the proposed chip chamber, are shown in
 \myfigref{design:fig:vacuumsystem}. A buffer-gas source is used to create
 \CaF{} molecules in the source chamber, with the beam being longitudinally and
 transversely slowed before it is captured in a MOT inside the collisions
@@ -31,8 +31,9 @@ chamber.
     laser-slowed by the methods described in~\cite{} and undergo transverse
     cooling, before being captured in the collisions chamber.
     Here we can cool the
-    molecules by the methods described in \cm{thoery ch} and perform
-    experiments in collisions as detailed in \cm{cite}. The magnetic transport
+    molecules by the methods described in \cm{theory ch} and perform
+    experiments in collisions as detailed in \cm{how to cite collisions
+    experiment?}. The magnetic transport
     trap (MTT) can transfer a cloud of molecules to the neighbouring tweezer
     chamber (for the optical tweezer experiment). The chip chamber will be
     positioned next to the tweezer chamber, and will receive molecules from the
@@ -63,7 +64,7 @@ will be held here mounted to a flange using the assembly shown in the inset of
 \mysubfigref{design:fig:chipexperiment}{a}.
 away from the transport axis. The flange assembly consists of current
 feedthroughs and a PCB to deliver trapping currents to the chip, a large copper
-heatsink, and microwave feedthroughs. It will be mounted so that the chip
+heat sink, and microwave feedthroughs. It will be mounted so that the chip
 faces the floor, allowing us to trap and then drop the molecules for imaging.
 
 \begin{figure}[ht]
@@ -82,17 +83,17 @@ faces the floor, allowing us to trap and then drop the molecules for imaging.
     In (a) we have the chip assembly fully constructed, with a view of the
     aluminium-core PCB (subchip) for current delivery. Note also the polyimide
     bushings to electrically isolate the retaining screws from the surface. The
-    microwave feedthrougs remain disconnected. In (b) we show a schematic of
+    microwave feedthroughs remain disconnected. In (b) we show a schematic of
     the chip features, with the scaling exaggerated for visibility. The three
     overlapping Z-wires are shown. Toward the left is the electroplating
-    connection pad and various features used for characterisation, andn the small
+    connection pad and various features used for characterisation, and the small
   wire there are several anchors to improve adhesion. All of these will be
-  discuseed further in chapter~\ref{fab}. The crest of Imperial College London
+  discussed further in chapter~\ref{fab}. The crest of Imperial College London
 is also included.}
   \label{design:fig:chipexperiment}
 \end{figure}
 
-Since the molecules will be brought into the chamber inside  amagnetic trap,
+Since the molecules will be brought into the chamber inside magnetic trap,
 the natural thing to do seems to be to continue to trap magnetically as we
 transfer them onto the chip. Not only does this take advantage of the known,
 long-lived \CaF{} states in the trap~\cite{Williams2018}, but it allows us to
@@ -102,13 +103,13 @@ molecules through a series of magnetic traps of decreasing size until they are
 in the smallest trap. The design of these traps and the loading
 procedure are the main subjects of this chapter.
 
-The first stage of the transfer is a large U wire embedded in the heatsink (see
-inset of \myfigref{design:fig:chipexperiment}).  The idea is to use this as a
-deep, macroscopic trap that is well-aligned with the chip (by virtue of being
-built into the assembly) and can be easily aligned with the MTT, similarly to
-other experiments such as \inlineref{Ott2001}.  Since it is under the chip, it
-will of course be further from the molecule cloud than the other wires, hence
-more current will be required to create a deep trap (as per
+The first stage of the transfer is a large U wire embedded in the heat sink
+(see inset of \myfigref{design:fig:chipexperiment}).  The idea is to use this
+as a deep, macroscopic trap that is well-aligned with the chip (by virtue of
+being built into the assembly) and can be easily aligned with the MTT,
+similarly to other experiments such as \inlineref{Ott2001}.  Since it is under
+the chip, it will of course be further from the molecule cloud than the other
+wires, hence more current will be required to create a deep trap (as per
 equations~\ref{intro:eq:trapbias} and~\ref{intro:eq:trapdepth}). The current is
 limited to \SI{100}{\ampere} by the vacuum feedthroughs, allowing for a trap of
 depth around \SI{2}{\milli\kelvin} by equation \cm{ref. earlier chapter}.
@@ -118,7 +119,7 @@ Z-wire traps on the chip. The idea is that each Z-wire should be sufficiently
 large to maintain the currents required to form a trap at height $z$ below the
 trap, whilst having a width and height  $w, h \ll z$ so that that the current
 is highly localised compared to the cloud size.  This follows the widely-made
-assupmption in the literature that the trapping currents are carried by wires
+assumption in the literature that the trapping currents are carried by wires
 which are infinitesimally small compared to the length scale of the trap
 ~\cite{2011Ac}.
 
@@ -291,7 +292,7 @@ energy to escape, and so will remain trapped under classical motion unless
 externally influenced (ignoring for example any collisions, decays, Majorana
 losses, etc.)~\cite{Lichtenberg1969}.
 
-As an example consdier the one-dimensional case of a harmonic trap found in 
+As an example consider the one-dimensional case of a harmonic trap found in 
 \inlineref{Crompvoets2005}
 %
 \begin{equation}
@@ -319,7 +320,7 @@ on the condition that
 %
 which defines an ellipse in phase-space.
 
-% Note that in the simulation I have omega = 1, so taking omeaga -> 1000 means
+% Note that in the simulation I have omega = 1, so taking omega -> 1000 means
 % that we end up with the nice circle with v in m/s. The consequence is that
 % the simulation ends up lasting 1.2ms rather than 1.2s
 
@@ -330,7 +331,7 @@ This trapping region is can be verified by simulation, as is shown in
 $|z_0| < \SI{0.2}{\milli\meter}$ and $|v_0|< \SI{1.5}{\meter\per\second}$,
 their trajectories are computed for \SI{1.2}{\milli\second} by the methods
 described in the next section. The boundary of the acceptance, called the
-separatrix is shown in black. All particles that are intialised inside the
+separatrix is shown in black. All particles that are initialised inside the
 acceptance remain trapped and evolve through time in the usual way for a
 harmonic potential.  Particles initialised outside the acceptance are rejected
 and lost.
@@ -355,7 +356,7 @@ For simplicity we begin by considering only the acceptance in the $z$ direction
 motion in the $x$ and $y$ directions, and the trajectories are simulated for
 \SI{200}{\milli\second}. The distributions as initialised and at the end of the
 simulations are shown in \myfigref{design:fig:psaeg}. The accepted
-molecules (blue) are once again those that start inside the sepatrix. There are
+molecules (blue) are once again those that start inside the separatrix. There are
 also metastable molecules (orange) which remain outside the acceptance but stay
 nearby the trap. These are molecules with nearly sufficient energy to escape
 the trap, but may take some time to do so.
@@ -380,7 +381,7 @@ the trap, but may take some time to do so.
 \end{figure}
 
 It is therefore clear that a particle that is stored in one trap can be moved
-into another if its position in phase space is inside the sepatrix of the new
+into another if its position in phase space is inside the separatrix of the new
 trap. It is therefore in our interest to design the trapping potentials such
 that the emission of one trap overlaps with the acceptance of the next one in
 the loading sequence. This is similar to the mode-matching of potentials
@@ -405,7 +406,7 @@ through this process.
 The motion of a particle can be simulated by numerically solving
 \myeqref{design:eq:hamilton}, which we do using Python~\cite{python} and the
 symplectic Euler method~\cite{Hairer2015, doi:10.1119/1.2034523} provided by
-the Desolver package~\cite{desolver}.  Symplectic methods are powerful tools
+the Desolver package~\cite{desolver}. Symplectic methods are powerful tools
 for numerically solving Hamiltonian systems whilst conserving energy and
 momentum.
 
@@ -494,7 +495,7 @@ in each direction. We also have the unit vector $\hat{\mathbf{\phi}} =
 
 In the case of that we are exchanging between
 two potentials, the segments of both traps are included in the summation, with
-the currents becoming functions of time, and similar for excahnge between a
+the currents becoming functions of time, and similar for exchange between a
 quadrupole and a wire trap, with the quadrupole gradient being a function of
 time.
 
