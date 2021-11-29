@@ -93,15 +93,15 @@ is also included.}
   \label{design:fig:chipexperiment}
 \end{figure}
 
-Since the molecules will be brought into the chamber inside magnetic trap,
-the natural thing to do seems to be to continue to trap magnetically as we
-transfer them onto the chip. Not only does this take advantage of the known,
-long-lived \CaF{} states in the trap~\cite{Williams2018}, but it allows us to
+Since the molecules will be brought into the chamber inside magnetic trap, the
+natural thing to do seems to be to continue to trap magnetically as we transfer
+them onto the chip. Not only does this take advantage of the known, long-lived
+\CaF{} states in the trap~\cite{WilliamsMagnetic2018}, but it allows us to
 follow the well-trodden path of magnetic trapping near a chip, as has been
 outlined in previous chapters.  The transfer to the chip will take the
 molecules through a series of magnetic traps of decreasing size until they are
-in the smallest trap. The design of these traps and the loading
-procedure are the main subjects of this chapter.
+in the smallest trap. The design of these traps and the loading procedure are
+the main subjects of this chapter.
 
 The first stage of the transfer is a large U wire embedded in the heat sink
 (see inset of \myfigref{design:fig:chipexperiment}).  The idea is to use this
@@ -393,7 +393,7 @@ An adiabatic change to the potential will not affect the phase-space density of
 any particles that remain trapped throughout the change~\cite{Hand1998,
 Lichtenberg1969}. Hence a cloud of trapped particles can be translated, for
 example in the transport coils, or towards the surface of the chip as will be
-discussed in section~\ref{design:sim}.
+discussed in section~\ref{design:adiabatic}.
 
 It should be noted that the Liouville theorem also holds for a time-dependent
 Hamiltonian. We will see below that the trapping potential will be changed
@@ -528,6 +528,7 @@ when initially loaded into the transport coils in the MOT chamber.
 % TODO I anticipate needing to put some comparison to the real data here...
 
 \section{Adiabatic transfer between traps}
+\label{design:adiabatic}
 
 It should be obvious that if we start with molecules in one potential, then
 rapidly turn that one off and turn on another, this will cause heating and
@@ -611,7 +612,7 @@ handover from the MTT to the U-wire, then the U-wire to $\mathrm{Z0_i}$.
 Finally we will simulate the compression in the Z-wire trap from
 $\mathrm{Z0_i}$ to $\mathrm{Z0_f}$. A full summary of the changing parameters
 throughout the simulations is given at the end of the section, see especially
-\myfigref{design:fig:simparams}.
+\myfigref{design:fig:simsum}.
 
 \subsection{MTT - U transfer}
 \label{design:sim:trans_U}
@@ -637,7 +638,7 @@ after the ramp is shown in \myfigref{design:fig:mttusim}.
     respectively. The potentials at the start and end of the transfer are shown
     in (d). Subfigure (f) shows the temperature particle number varying
     throughout the fields are varied in the times that are shaded grey (c.f.
-    \myfigref{design:fig:simparams}). \cm{Comment on the results.}
+    \myfigref{design:fig:simsum}). \cm{Comment on the results.}
   }
   \label{design:fig:mttusim}
 \end{figure}
@@ -668,7 +669,7 @@ phase-space for each projection throughout the ramp, as shown in
     Each pair of rows shows the phase-space plots for the MTT to U trap
     handover simulation in the $q_i$-$v_i$ plane, along with the cut-through of
     the potential through the trap centre along $q_i$ at various times. This
-    supplements the simulation summary shown in \myfigref{design:fig:mttusum}.
+    supplements the simulation summary shown in \myfigref{design:fig:mttusim}.
     The superposition of the quadrupole and U-traps briefly causes a lowering
     of the trapping potential, as can be seen at \SI{75}{\milli\second} in the
     $y$ projection. Such reductions are not accounted for when considering the
@@ -705,7 +706,7 @@ there is minimal change in the particle distribution in space and velocity.
   \import{figs/simsThesis/}{u_z_summary.pgf}
   \caption{
     The U trap to Z trap handover is summarised, with subfigures and colours as
-    in \mysubfigref{design:fig:mttusum}. Here we again see loss effects similar
+    in \mysubfigref{design:fig:mttusim}. Here we again see loss effects similar
     to those seen for the MTT to U trap handover, with a decrease in trap depth
     which we attribute to changing from a quadrupole trap to a Ioffe-Pritchard
     trap.
