@@ -768,8 +768,6 @@ that are changed for each ramp are also given.
 \section{Phase-space acceptance of remaining Z traps}
 \label{design:transferbetweenzs}
 
-\cm{Revisit this spiel.}
-
 Once trapped in $\mathrm{Z0_f}$, the remaining loading stages are simply
 repeated handovers to the smaller wires, with a compression stage carried out
 on each wire to bring the molecules closer to the surface. This is a
@@ -781,12 +779,14 @@ space density than previous experiments with atoms, it is important to ensure
 that our loading procedure will not suffer from any unnecessary losses. These
 compressed traps contain hotter molecules, requiring a smaller time step for
 simulation. It is therefore easier to directly examine the acceptance of each
-trap.
+trap. We also note now that the trap gradients are sufficiently large the the
+effects of gravity can be ignored.
 
-These are shown in \myfigref{design:fig:phasematchinggrid}, starting with
-$\mathrm{Z0_f}$ in row (a). The region of the trap that we expect to be
-occupied (as determined by the simulation above) is marked with a dashed line.
-This cloud of molecules will be adiabatically transferred into $\mathrm{Z1_i}$.
+The trap acceptances are shown in \myfigref{design:fig:phasematchinggrid},
+starting with $\mathrm{Z0_f}$ in row (a). The region of the trap that we expect
+to be occupied (as determined by the simulation above) is marked with a dashed
+line.  This cloud of molecules will be adiabatically transferred into
+$\mathrm{Z1_i}$.
 
 Since the process is adiabatic, we can anticipate that there will be no
 reduction in phase-space density. The cloud of molecules will be transferred to
@@ -815,7 +815,6 @@ is the final cause of particle loss (due to spillover). Then the trap is
 compressed to hold the particles \SI{10}{\micro\meter} from the surface, as
 shown in \mysubfigref{design:fig:phasematchinggrid}{c}.
 
-
 \begin{figure}[htb]
 \centering
   \begin{overpic}[page=1]{figs/sims/phase_matching_grid.pdf}
@@ -824,16 +823,16 @@ shown in \mysubfigref{design:fig:phasematchinggrid}{c}.
     \put(0,21){(c)}
   \end{overpic}
   \caption{
-    A low bound of the acceptance (solid) and expected occupation (dashed) of
-    each Z wire trap. This is calculated by finding the acceptance in the weak
-    ($x$) trapping direction. Row (a) shows $\mathrm{Z0_f}$, with occupation
+    The acceptance (solid) and expected occupation (dashed) of each Z wire
+    trap. This is calculated by finding the acceptance in the weak ($x$)
+    trapping direction. Row (a) shows $\mathrm{Z0_f}$, with occupation
     determined by the above simulation. Molecules will be adiabatically
     transferred to $\mathrm{Z1_i}$, which will be fully occupied. Some
     particles will be lost due to the decrease in acceptance but this is to be
     expected, and phase-space density should not increase. In (b) we have the
     acceptance and occupation of $\mathrm{Z1_f}$ following adiabatic
     compression.  Particles will be adiabatically transferred into
-    $\mathrm{Z2_i}$, resulting in similar losses to the previous step.  Row (c)
+    $\mathrm{Z2_i}$, resulting in similar losses to the previous step. Row (c)
     shows the final acceptance and occupation of $\mathrm{Z2_f}$.
   }
   \label{design:fig:phasematchinggrid}
@@ -846,8 +845,8 @@ In this chapter I have presented the design of the chip experiment, starting
 with the source of molecules up to the stage of confinement in a Z trap
 \SI{10}{\micro\meter} from the chip surface. I have shown that we have created
 a loading procedure that will allow us to load this final trap through a series
-of wire traps of decreasing size. This is justified by simulation and visual
-analysis of the acceptance of the various trapping stages.
+of wire traps of decreasing size. This is justified by simulation and
+phase-space analysis of the acceptance of the various trapping stages.
 
 The design leaves scope for the addition of microwave guides on a second layer
 above the trapping wires, as discussed in chapter~\ref{intro}.
