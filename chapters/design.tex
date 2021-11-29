@@ -66,6 +66,9 @@ away from the transport axis. The flange assembly consists of current
 feedthroughs and a PCB to deliver trapping currents to the chip, a large copper
 heat sink, and microwave feedthroughs. It will be mounted so that the chip
 faces the floor, allowing us to trap and then drop the molecules for imaging.
+External magnetic coils will provide the bias fields, and currents will be
+provided by drivers discussed in \cm{a later chapter.}
+% TODO Ensure I go on to discuss the current drivers
 
 \begin{figure}[ht]
   \centering
@@ -76,7 +79,17 @@ faces the floor, allowing us to trap and then drop the molecules for imaging.
   \hspace{1cm}
   \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{figs/chip_present2.pdf}
+    %\includegraphics[width=\textwidth]{figs/chip_present2.pdf}
+    \begin{overpic}[abs, width=\textwidth]{figs/chip_present3.pdf}
+      \put(10, 160){\small (i)}
+      \put(60, 160){\small(ii)}
+      \put(175, 60){\small(iii)}
+      \put(70, 90){\small \SI{20}{\micro\meter}}
+      \put(112, 93){\small\SI{10}{\micro\meter}}
+      \put(10, 40){\small Z0}
+      \put(10, 10){\small Z1}
+      \put(10, 200){\small Z2}
+    \end{overpic}
     \caption{}
   \end{subfigure}
   \caption{
@@ -85,11 +98,15 @@ faces the floor, allowing us to trap and then drop the molecules for imaging.
     bushings to electrically isolate the retaining screws from the surface. The
     microwave feedthroughs remain disconnected. In (b) we show a schematic of
     the chip features, with the scaling exaggerated for visibility. The three
-    overlapping Z-wires are shown. Toward the left is the electroplating
-    connection pad and various features used for characterisation, and the small
-  wire there are several anchors to improve adhesion. All of these will be
-  discussed further in chapter~\ref{fab}. The crest of Imperial College London
-is also included.}
+    overlapping Z-wires are shown and labeled. The gaps between the wires are
+    highlighted.
+    %
+    Toward the left (i) is the
+    electroplating connection pad and various features used for
+    characterisation (ii). On Z2 it is possible to see several small pads used
+    as anchors, to secure the thin wire to the substrate.  All of these will be
+    discussed further in chapter~\ref{fab}. The crest of Imperial College
+    London (iii) is also included.}
   \label{design:fig:chipexperiment}
 \end{figure}
 
