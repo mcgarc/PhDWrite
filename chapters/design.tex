@@ -501,6 +501,7 @@ time.
 
 
 \subsection{Simulation initialisation}
+\label{design:sim:init}
 
 For all the simulations described below, we begin with a cloud of molecules in
 a magnetic quadrupole trap. We use the following initialisation procedure so
@@ -592,33 +593,38 @@ strongly in the adiabatic r\'egime.
 
 \section{Trajectory simulation of the initial loading stages}
 
-To ensure that the chip design will allow for robust loading, the loading
-process has been simulated up to the $\mathrm{Z0_f}$ trap. This demonstrates
+In this section we will present simulations of loading molecules from the MTT
+into the on-chip Z-wire traps. 
+This demonstrates
 the two main types of transitions in the loading process: handovers between
 traps, and compression within a single trap. The timing of the simulation do
 not exactly reflect those that will be used in practice, long holding periods
 have been inserted between ramps to better illustrate the cause of particle
-loss.
+loss. It is useful to perform direct trajectory simulations as opposed to
+simple analysis of the phase-space emittance and acceptance, since (as we will
+see later) brief lowering of trap depth during trap handovers can induce
+additional loss of particles.
 
-The results of the simulation and the parameters of the ramps are outlined in
+We will consider the handover in four stages, the particle initialisation which
+was already discussed in section~\ref{design:sim:init}, followed by the
+handover from the MTT to the U-wire, then the U-wire to $\mathrm{Z0_i}$.
+Finally we will simulate the compression in the Z-wire trap from
+$\mathrm{Z0_i}$ to $\mathrm{Z0_f}$. A full summary of the changing parameters
+throughout the simulations is given at the end of the section, see especially
 \myfigref{design:fig:simparams}.
-%TODO Redo this old nonsense
-\cm{This can be considered in four parts, first
-from $t = 0$ to $t=\SI{100}{\milli\second}$ there is a settling period where
-the molecules are held in the transport trap. Then there are three
-\SI{100}{\milli\second} ramps, each of which is followed by a
-\SI{100}{\milli\second} stabilisation period. These three ramps describe the
-handover from the transport trap to the U, the U to $\mathrm{Z0_i}$, and the
-compression of $\mathrm{Z0_i}$ to $\mathrm{Z0_F}$. They are described in detail
-in the following subsections. This simulation used $N=1000$ particles, with one
-particle lost during initialisation.}
-\cm{For this fig. I think I just want all the parameters, temp, ramps,etc in
-one go, similar to before.}
-
-
 
 \subsection{MTT - U transfer}
 \label{design:sim:trans_U}
+
+The cloud is initialised by the usual procedure, with $\sigma_i =
+\SI{1}{\milli\meter}$ and $T=\SI{50}{\micro\kelvin}$, corresponding to the
+typical cloud sizes and temperatures we measure in the tweezer chamber after
+transport. Over \SI{100}{\milli\second} the field from the coils is linearly
+redued to zero and the U-wire current is ramped up to its maximum value of
+\SI{100}{\ampere}. The bias fields in the $y$ and $z$ directions (no $x$ bias
+is applied) are also ramped linearly, to maintain the trap centre at a height
+of \SI{3}{\milli\meter} below the chip. The state of the system before and
+after the ramp is shown in \myfigref{design:fig:mttusim}.
 
 \begin{figure}[p]
 \centering
@@ -633,35 +639,25 @@ one go, similar to before.}
     throughout the fields are varied in the times that are shaded grey (c.f.
     \myfigref{design:fig:simparams}). \cm{Comment on the results.}
   }
-  \label{design:fig:mttusum}
+  \label{design:fig:mttusim}
 \end{figure}
 
+The phase-space distribution in the $z$-$v_z$ projection is shown for the start
+(\mysubfigref{design:fig:mttusim}{a}) and end
+(\mysubfigref{design:fig:mttusim}{b}) of the simulation. Note that there is
+little change to the velocity distribution, but in position the particles shift
+to occupy the positive $z$ direction, where the potential is less steep.
 
+Looking at the change in the particle number throughout the ramp
+(\mysubfigref{design:fig:mttusim}{f}) it is clear that there is some loss
+during the ramp (shaded grey region of the figure). Naively, we would expect
+there to be no loss during this transfer, since the final trap depth is larger
+than the temperature of the cloud, and there is good mode-matching of the two
+potentials. To see why this loss occurs, we  look at the evolution in
+phase-space for each projection throughout the ramp, as shown in
+\myfigref{design:fig:trans_U}.
 
-
-\cm{Ensure language is consistent when talking about chip, so is the U
-above or below?}
-%
-The first step is to transfer the molecules from the transport coils to the U
-wire. This U wire has the largest axial length, and so will be the easiest trap
-the transport coils to. The U-wire is also capable of carrying more current
-than any of the other wires, which is essential as it is positioned further
-from the molecule cloud, beneath the chip.
-
-Between $t=\SI{100}{\milli\second}$ and $t=\SI{200}{\milli\second}$ the current
-in the transport coils is adiabtically ramped down while the currents in
-the U trap and in the bias coils are ramped up. The molecules are then held
-until $t=\SI{300}{\milli\second}$ to ensure that they remain trapped after the
-ramp. The simulation parameters are shown in
-\mysubfigref{design:fig:simparams}{b}.
-
-The particle loss during the ramp is approximately 10\% of the total. There is
-also some heating, which decreases the phase-space density of the cloud. The
-cause of this can be seen in \myfigref{design:fig:trans_U}, which shows the
-phase-space positions of the molecules at various times throughout the ramp,
-and the trapping potential at those times.
-
-\begin{figure}[p]
+\begin{figure}[htp]
 \centering
   \begin{tabular}{c}
   \import{figs/simsThesis/}{mtt_u_detail_x.pgf} \\
@@ -674,30 +670,35 @@ and the trapping potential at those times.
     the potential through the trap centre along $q_i$ at various times. This
     supplements the simulation summary shown in \myfigref{design:fig:mttusum}.
     The superposition of the quadrupole and U-traps briefly causes a lowering
-    of the trapping potential, as can be seen at \cm{time??} in the $y$
-    direction. Such reductions are not accounted for when considering the
+    of the trapping potential, as can be seen at \SI{75}{\milli\second} in the
+    $y$ projection. Such reductions are not accounted for when considering the
     simple phase-space handovers discussed in the main text.
   }
   \label{design:fig:mttudetail}
 \end{figure}
 
 At $t=\SI{175}{\milli\second}$ there is a noticeable decrease in the trapping
-depth in the $y$ direction. This is the cause of the particle leak, and occurs
+depth in the $-y$ direction. This is the cause of the particle leak, and occurs
 due to the due to the superposition of the two fields causing an overall
 decrease in the trap depth in the $x$ and $y$ directions. This only occurs for
-a brief period during the ramp (lasting approximately \SI{40}{\milli\second}). 
-
-In addition to the loss during the ramp, we observe a steady loss between
-$t=\SI{200}{\milli\second}$ and $t=\SI{300}{\milli\second}$, but only when the
-simulation accounts for collision with the chip surface. This loss due to
-collision occurs in the U wire because of its position beneath the chip. This
-means that the trap is not sufficiently deep to hold our molecules for an
-extended period. However the holding time in this simulation is only for
-illustration, and the prolonged trapping in the U trap will not be part of the
-final experiment. Hence these losses can be ignored.
+a brief period during the ramp (lasting approximately \SI{40}{\milli\second}).
+Hence some of the more energetic particles are lost, as can be seen in the
+figure.
 
 \subsection{U - Z transfer}
 \label{design:sim:U_to_Z0i}
+
+The next stage of loading is the U to $\mathrm{Z0_i}$ handover. Simulation of
+this continues immediately from the MTT-U transfer, with the $z$
+bias field is switched off instantaneously. The Z-wire current is then linearly
+ramped on over \SI{100}{\milli\second} to \SI{30}{\ampere}. The bias fields are
+linearly ramped to maintain the trap height at \SI{3}{\milli\meter}.
+%
+The simulation is presented in \mysubfigref{design:fig:uzsim}. We see that
+there is once again a loss of particles, which we can attribute to a similar
+lowering of trap depth during the handover as was seen for the MTT-U handover,
+pictured in \myfigref{design:fig:mttudetail}. Other than this, we see that
+there is minimal change in the particle distribution in space and velocity.
 
 \begin{figure}[p]
 \centering
@@ -706,59 +707,61 @@ final experiment. Hence these losses can be ignored.
     The U trap to Z trap handover is summarised, with subfigures and colours as
     in \mysubfigref{design:fig:mttusum}. Here we again see loss effects similar
     to those seen for the MTT to U trap handover, with a decrease in trap depth
-    \cm{that may be} due to changing from a quadrupole trap to a
-    Ioffe-Pritchard trap.
+    which we attribute to changing from a quadrupole trap to a Ioffe-Pritchard
+    trap.
   }
-  \label{design:fig:uzsum}
+  \label{design:fig:uzsim}
 \end{figure}
 
-The U to $\mathrm{Z0_i}$ handover occurs in our simulation from
-$t=\SI{300}{\milli\second}$ to $t=\SI{400}{\milli\second}$, shown in
-\mysubfigref{design:fig:simparams}{c}.  The phase-space positions of the
-molecules and the potentials are shown in \myfigref{design:fig:U_Z0i}.
-
-In the ramp between the transport trap and the U trap, we saw that a hole was
-introduced in the trapping potential due to interference between the two
-trapping fields. We will see a similar effect when transferring from the U trap
-to trap $\mathrm{Z0_i}$.  This time the reduction in depth appears in the $x$
-direction, and is due to the current in the U and Z wires opposing each other
-on the positive $x$ side. This can be seen in \myfigref{design:fig:U_Z0i} at
-$t=\SI{375}{\milli\second}$.
-
-In \myfigref{design:fig:simparams} we see that the loss is again about 10\% of
-the particles, however there is no significant change in the phase-space
-density. The acceptance of trap $\mathrm{Z0_i}$ is smaller than the emittance
-of the U, so this is to be expected.
-
 \subsection{Z compression}
+
+The final stage of the loading procedure is a linear ramp of the trap height
+from \SI{3}{\milli\meter} below the chip surface to \SI{1}{\milli\meter} below.
+Here only the $y$ bias field is changed (ramping with $\tilde{B}_y \propto
+t^{-1}$. Ramping by increasing the bias field means that the trap depth
+increases, and the cloud is compressed, providing good localisation of the
+molecules.
+
+As can be seen in \myfigref{design:fig:zsim}, there is particle loss,
+although much of this is due to particles that had already left the trapping
+region in the previous ramp, note that in subfigure~(f) the particle number is
+decreasing before the ramp begins. The other major effect of the ramp is
+heating to the spatial compression and conservation of phase-space density.
+%
+The transfer of the cloud towards the chip surface is largely succesful, as can
+be seen in \mysubfigref{design:fig:zsim}{e}, the particles are highly localised
+around the new trap minimum at $z=\SI{1}{\milli\meter}$.
+
 \begin{figure}[p]
 \centering
   \import{figs/simsThesis/}{z_summary.pgf}
   \caption{
   }
-  \label{design:fig:mttusum}
+  \label{design:fig:zsim}
 \end{figure}
 
-
-In the final stage of the simulation we look at a compression stage. The
-trapping potential is adiabatically altered to bring the field minimum closer
-to the chip surface. This is achieved by increasing the bias field, but since
-this also increases the trap depth the cloud is simultaneously compressed as it
-is heated. Since the phase-space density is conserved, the particles heat up in
-the trap. This phenomenon is made visible in
-\mysubfigref{design:fig:simparams}{d}.
-
-The trajectories and potentials are shown in \myfigref{design:fig:Z0i_Z0f}.
-Here the compression in number density and expansion in velocity space is clear
-by the changing cloud shape over time. The cloud also clearly follows the
-potential minimum without losses.
+The entire simulation from MTT to $\mathrm{Z0_f}$ is summarised in
+\myfigref{design:fig:simsum}. For each stage: initialisation (a), MTT-U
+transfer (b), U-Z transfer (c) and Z compression (d) the particle number is
+shown. The total temperature and cloud width are also given for the particles
+that remain in the trap at the end of the simulation. The profile of parameters
+that are changed for each ramp are also given.
 
 \begin{figure}[p]
 \centering
   \import{figs/simsThesis/}{total_summary.pgf}
   \caption{
+    Details for each stage of the simulation in turn. Column (a) shows the
+    initialisation procedure. Column (b) shows the ramp from the MTT to U-wire,
+    with the ramp duration shaded grey. During the ramp handover there is some
+    expansion of the cloud, which causes oscillations in the width that can be
+    seen continuing on into the next phase. In column (c) we have the U-Z
+    handover and the $z$ bias field is switched off. Finally in column (d) is the
+    compression in the Z-trap, note in particular the increase in cloud
+    temperature as the width decreases. The lower two rows show the parameters
+    of the simulation that are changed to alter the trapping potentials.
   }
-  \label{design:fig:mttusum}
+  \label{design:fig:simsum}
 \end{figure}
 
 
