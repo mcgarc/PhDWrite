@@ -1,228 +1,195 @@
-This chapter begins with an overview of the chip experiment design, from
-molecule source to the final chip trap. I will then give an overview of how we
-can calculate and simulate the trajectories of trapped \CaF{} molecules. This
-will be used to simulate and analyse the loading scheme for the chip.
+This chapter describes the process of desigining the molecule chip experiment.
+This was motivated by three main factors: the need to integrate with the
+existing experiment, the core proposal of confining molecules close to a
+microwave guide, and the practicalities of fabricating the chip.
 
-\cm{Need to direct to microwaves ch rather than do this...}
-This chapter deals mainly with the trapping aspect of the experiment and not
-the microwaves. The implementation of microwave guides on the
-chip was discussed in the early stage assessment, and has not significantly
-changed since then.
+Each of these factors will be addressed in order. We begin with a discussion of
+the existing experiment, and where the chip fits into it. We will see that this
+lead us to the conclusion that magnetic traps would be most suitable for our
+experiment. Trapping close to the microwave guides requires brining the
+molecules close to the surface of the trap, a loading procedure that was
+thorourghly investigated with simulations, and analysis of the phase-space
+acceptance of the traps. Problems arising from fabrication will mainly be
+discussed in the following chapter.
 
 \section{Experiment overview}
 
-\cm{Check that this does not overlap too much with the intro}
-
-\cm{Will likely need more discussion of transport in the thesis. For one
-thing it seems like it does cause a bit of heating for tweezers at the moment.}
-%
-The design of our experiment is largely motivated by the existing apparatus.
-The ultracold molecule source described in \inlineref{Truppe2017} has been
-adapted to allow for additional experiments to be carried out either in the
-same chamber, or in neighbouring chambers. In the latter case, molecules are
-transported between chambers by magnetic transport. This is achieved with coils
-forming a quadrupole trap mounted on a
-transport stage, similar to those described
-in~\cite{Lewandowski2003}. Early experiments have shown that \Rb{} atoms can be
-transferred with minimal losses and heating.
-
-\cm{This para is rubbish, but I cba to fix it rn}
-%
-Currently, there are two experiment chambers, the MOT chamber, where the
-molecule MOT is originally formed, and the blue-detuned molasses are applied.
-This chamber is also capable of hosting a \Rb{} MOT, which we will be able to
-use to test the chip trap. The second chamber is used for experiments with
-optical tweezers and dipole traps. Our molecules will be transported through
-this chamber into the chip chamber for our experiment, as pictured in
-\myfigref{design:fig:vacuumsystem}.
-
-\cm{Need to fix this fig to put the chip on the right side of the chamber. But
-a top-down view of the whole experiment would probably be a better use of my
-time.}
+Our ultracold molecules are created using the methods described above. Our
+apparatus, including the proposed chip chamber, are shown in
+\myfigref{design:fig:vacuumsystem}. A buffer-gas source is used to create
+\CaF{} molecules in the source chamber, with the beam being longitudinally and
+transversely slowed before it is captured in a MOT inside the collisions
+chamber.
 
 \begin{figure}[htb]
   \centering
-  \begin{overpic}[width=0.7\textwidth]{figs/vacuum_setup.pdf}
-    \put(1,-5){Chip chamber}
-    \put(34,-5){Tweezer chamber}
-    \put(73,-5){MOT chamber}
-  \end{overpic}
-  \vspace{1cm}
+  \includegraphics[width=0.7\textwidth]{figs/experiment_placeholder.png}
   \caption{
-    \cm{Maybe redo this figure with more detail.}
-    The main vacuum chambers are shown. The experiment begins with a buffer gas
-    source of \CaF{} molecules (not pictured). This produces a beam of
-    molecules which is laser-slowed for capture in the MOT chamber. Here
-    blue-detuned molasses are used to cool the molecules to
-    \SI{50}{\milli\kelvin}. We can then use transport coils to transfer the
-    molecule cloud to the other chambers. Our experiment is conducted in the
-    most downstream chamber. The molecule cloud is brought into place directly
-    beneath the chip flange (gold).
-  }
+    \cm{To be replaced with a proper CAD drawing of the experiment}
+    A top-down view of the planned \CaF{} experiment is shown. Molecules are
+    created in the source chamber in a buffer-gas cell. They are then
+    laser-slowed by the methods described in~\cite{} and undergo transverse
+    cooling, before being captured in the collisions chamber.
+    Here we can cool the
+    molecules by the methods described in \cm{theory ch} and perform
+    experiments in collisions as detailed in \cm{how to cite collisions
+    experiment?}. The magnetic transport
+    trap (MTT) can transfer a cloud of molecules to the neighbouring tweezer
+    chamber (for the optical tweezer experiment). The chip chamber will be
+    positioned next to the tweezer chamber, and will receive molecules from the
+    MTT in the same way. Inset, an exploded view of the flange assembly. The
+    chip is mounted on a PCB for current (and later microwave) delivery. This
+    is positioned above a large copper U-wire for intermediary trapping of
+    molecules. The U-wire is electrically isolated by alumininium nitride
+    plates.}
   \label{design:fig:vacuumsystem}
 \end{figure}
 
-The chip trap will be positioned inside this chamber, held in place by a flange
-assembly, with the chip surface \SI{4}{\milli\meter}
-%
-\cm{be exact here, think it is 3.8??}
-%
+The \CaF{} MOT is the powerhouse of our experiment. Captured molecules can be
+cooled further (as discussed above) and used as a source for experiments into
+collisions with \Rb{} atoms (see \cm{papers}) and optical tweezers. The tweezer
+experiment is undertaken in the neighbouring tweezer chamber, which is loaded
+by transporting molecules in a magnetic transport trap (MTT), a quadrupole trap
+with coils mounted on a transport stage outside the vacuum chamber. This
+transport of the molecules is similar to that used in
+\inlineref{Lewandowski2003,PhysRevResearch.1.033035} and elsewhere. It will be
+discussed further below and in \cm{transport chapter}.
+
+The chip experiment will integrate into this setup as shown in
+\myfigref{design:fig:vacuumsystem}. An additional chamber will be mounted
+further downstream of the transport stage, so that molecules can be brought
+straight through the tweezer chamber from the collisions chamber. The chip trap
+will be held here mounted to a flange using the assembly shown in the inset of
+\myfigref{design:fig:vacuumsystem} and in
+\mysubfigref{design:fig:chipexperiment}{a}.
 away from the transport axis. The flange assembly consists of current
 feedthroughs and a PCB to deliver trapping currents to the chip, a large copper
-heatsink, and microwave feedthroughs. It will be mounted so that the chip
-faces the floor, allowing us to trap and then drop the molecules for absorption
-imaging~\cite{Willliams2018}.
-
-Once the molecules are brought into the chamber by the transport coils, they
-will be magnetically transferred onto the chip trap. The transfer will take
-the molecules through a series of magnetic traps of decreasing size until
-they are in the smallest trap. The design of these traps and the loading
-procedure are the main subjects of this chapter.
-
-The first stage of the transfer is a large U wire embedded in the flange
-assembly, and the rest  incorporated into the design of the chip itself (see
-\mysubfigref{design:fig:chipexperiment}{b}).
-\cm{Mike doesn't understand how the U wire will help align with the transport
-coils. Perhaps this could be explained better than just waving away with a
-citation.}
-The U wire can carry a larger
-current than any wires on the chip, and so is suitable to create a deep trap
-which will prove useful for alignment with the transport coils~\cite{Ott2001}.
-Its current is limited to \SI{100}{\ampere} by the vacuum feedthroughs. Since
-the U is embedded in the flange \mt{To me, the flange means the vacuum flange.
-But that's not where the U is.}, it is further away from the molecules cloud
-than the wires on the chip. Since trap depth is related to the current (see
-equations ~\ref{intro:eq:trapbias} and~\ref{intro:eq:trapdepth}, this is what
-limits the depth of the trap.
+heat sink, and microwave feedthroughs. It will be mounted so that the chip
+faces the floor, allowing us to trap and then drop the molecules for imaging.
 
 \begin{figure}[ht]
   \centering
-  \parbox{\textwidth}{
-    \parbox{.5\textwidth}{%
-\centering
-      \subcaptionbox{}{
-\includegraphics[width=0.4\textwidth]{figs/FlangeAssemblyForPresentationTopRight.png}
-}
-      \vskip3em
-      \subcaptionbox{}{
-\centering
-\includegraphics[height=0.2\textwidth]{figs/fab/subchip1_cropped3.pdf}
-}  
-    }
-    \hskip1em
-    \parbox{.5\textwidth}{%
-      \subcaptionbox{}{
-  \begin{overpic}[width=\hsize,page=1]{figs/chip_des.pdf}
-    \put(26,64){{\tiny\SI{100}{\micro\meter}}}
-  \end{overpic}
-}
-    }
-  }
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{figs/chip_pic_crop.png}
+    \caption{}
+  \end{subfigure}
+  \hspace{1cm}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figs/chip_present2.pdf}
+    \caption{}
+  \end{subfigure}
   \caption{
-    Details of the experiment aparatus. The chip flange (a) \mt{too small and
-    needs labelling} hosts the subchip
-    (detailed in b \mt{make larger and label} \cm{this fig also looks weird in
-    evince?}) and chip (detailed in c) and provides power to the chip via
-    feedthroughs. The subchip is a printed circuit board which will carry power
-    to the chip. A hole will be milled so that the chip can be glued in place,
-    flush with the surface. Electrical contact will be made by wirebonds. The
-    subchip hosts three Z wires detailed in \mytableref{design:table:wires}.
-    The inset in (c) shows the relative positioning of the wires.
-%
-    \mt{Figure could be improved to highlight more of the important details,
-    e.g. where is the U, how are the microwaves and dc currents brought in etc.
-    One helpful thing would be to make (a) large and add labelling to it so
-    that readers can understand what they're looking at. Another helpful thing
-    would be to show what's underneath the chip carrier.}
-  }
+    In (a) we have the chip assembly fully constructed, with a view of the
+    aluminium-core PCB (subchip) for current delivery. Note also the polyimide
+    bushings to electrically isolate the retaining screws from the surface. The
+    microwave feedthroughs remain disconnected. In (b) we show a schematic of
+    the chip features, with the scaling exaggerated for visibility. The three
+    overlapping Z-wires are shown. Toward the left is the electroplating
+    connection pad and various features used for characterisation, and the small
+  wire there are several anchors to improve adhesion. All of these will be
+  discussed further in chapter~\ref{fab}. The crest of Imperial College London
+is also included.}
   \label{design:fig:chipexperiment}
 \end{figure}
 
-Once loaded into the U, the molecules will be transferred through the Z wire
-traps on the chip. Each trap must be designed to have a sufficient cross
-section to carry the trapping current. In the case of the first Z wire,
-the molecules are still \SI{3}{\milli\meter} away from the chip, a
-current of order \SI{10}{\ampere} is required to form a suitable trap
-%
-\cm{need to figure out what the actual depth is}.
-%
-We will discuss in chapter~\ref{fab} that the maximum wire height
-achievable is \SI{5}{\micro\meter}, and we expect that the wires will be able
-to carry a maximum current density of \SI{6E10}{\ampere\per\meter\squared},
-as was found for a similar chip design in \inlineref{Treutlein2008}. The Z wire
-will therefore have a width $w=\SI{200}{\micro\meter}$. Other wire parameters
-are shown in \mytableref{design:table:wires}.
+Since the molecules will be brought into the chamber inside magnetic trap,
+the natural thing to do seems to be to continue to trap magnetically as we
+transfer them onto the chip. Not only does this take advantage of the known,
+long-lived \CaF{} states in the trap~\cite{Williams2018}, but it allows us to
+follow the well-trodden path of magnetic trapping near a chip, as has been
+outlined in previous chapters.  The transfer to the chip will take the
+molecules through a series of magnetic traps of decreasing size until they are
+in the smallest trap. The design of these traps and the loading
+procedure are the main subjects of this chapter.
 
-It is widely assumed in the literature and in this work that the trapping
-currents are carried by wires which are infinitesimally small compared to the
-length scale of the trap. We therefore suppose that the trapping height (the
-distance of the cloud centre from the chip) must be much larger than the wire
-width at all times.
+The first stage of the transfer is a large U wire embedded in the heat sink
+(see inset of \myfigref{design:fig:chipexperiment}).  The idea is to use this
+as a deep, macroscopic trap that is well-aligned with the chip (by virtue of
+being built into the assembly) and can be easily aligned with the MTT,
+similarly to other experiments such as \inlineref{Ott2001}.  Since it is under
+the chip, it will of course be further from the molecule cloud than the other
+wires, hence more current will be required to create a deep trap (as per
+equations~\ref{intro:eq:trapbias} and~\ref{intro:eq:trapdepth}). The current is
+limited to \SI{100}{\ampere} by the vacuum feedthroughs, allowing for a trap of
+depth around \SI{2}{\milli\kelvin} by equation \cm{ref. earlier chapter}.
 
-The axial length  of the wires also decreases to gradually reduce the size of
-the trapped cloud in the $x$ direction. The wire layout is shown in
-\mysubfigref{design:fig:chipexperiment}{c} and more details along with the
-heights are outlined in \mytableref{design:table:wires}. All wires have
-been designed to carry twice the current that is required in the loading
-scheme.
+Once loaded into the U-trap, the molecules will be transferred through the
+Z-wire traps on the chip. The idea is that each Z-wire should be sufficiently
+large to maintain the currents required to form a trap at height $z$ below the
+trap, whilst having a width and height  $w, h \ll z$ so that that the current
+is highly localised compared to the cloud size.  This follows the widely-made
+assumption in the literature that the trapping currents are carried by wires
+which are infinitesimally small compared to the length scale of the trap
+~\cite{2011Ac}.
 
-\cm{Add bias fields required to this table (as a ramp, like trap height)
-maybe just they y bias?? Also CONFIRM THE AXIS LENGTHS.}
-%
+In the case of the first Z-wire, the molecules are still \SI{4}{\milli\meter}
+away from the trapping wire. If we (pessimistically) expect the cloud to have a
+temperate on the order of \SI{1}{\milli\kelvin}, then we will require a
+trapping current of \SI{30}{\ampere} to form a trap of this depth.  We will
+discuss in chapter~\ref{fab} that the maximum wire height achievable is
+\SI{5}{\micro\meter}, and we expect that the wires will be able to carry a
+maximum current density of \SI{6E10}{\ampere\per\meter\squared}, as was found
+for a similar chip design in \inlineref{Treutlein2008}. The Z wire will
+therefore have a width $w=\SI{200}{\micro\meter}$. Other wire parameters are
+shown in \mytableref{design:table:wires}.
+
+The axial length of the wires also decreases to gradually reduce the size of
+the trapped cloud in the $x$ direction. An exaggerated schematic of the wire
+layout is shown in \myfigref{design:fig:chipexperiment} and further details are
+outlined in \mytableref{design:table:wires}. All wires have been designed to
+carry twice the current that is required in the loading scheme.
+
+% TODO Maybe need more detail here
 \begin{table}
   \centering
 \begin{tabular}{lrrrrr}
-  Name & Axis length (\si{\milli\meter}) & Width (\si{\micro\meter})& Height
-  (\si{\micro\meter})& $I_\text{max}$ & Trap height (\si{\micro\meter}) \\
+  Name & Axis length (\si{\milli\meter}) & Width (\si{\micro\meter})& $I_\text{max}$ & Trap height (\si{\micro\meter}) \\
  \hline
-  U & 16 & N/A& N/A& 100 & 3000\\
-  $\mathrm{Z0}$ & 12 & 200&  5& 60& $3000\rightarrow1000$ \\
-  $\mathrm{Z1}$ &  6 & 20&  5& 6& $1000\rightarrow100$ \\
-  $\mathrm{Z2}$ &  3 & 2&  5& 0.6& $100\rightarrow10$ \\
+  U & 16 & N/A& 100 & 3000\\
+  $\mathrm{Z0}$ & 12 & 200& 60& $3000\rightarrow1000$ \\
+  $\mathrm{Z1}$ &  6 & 20& 6& $1000\rightarrow100$ \\
+  $\mathrm{Z2}$ &  2 & 2& 0.6& $100\rightarrow10$ \\
  \hline
 \end{tabular}
   \caption{Details on the wire dimensions, maximum current, and desired
   trapping heights. The wire design is shown in
   \mysubfigref{design:fig:chipexperiment}{c}. Note that the U wire current is
-  limited by vacuum feedthroughs and not by the wire dimensions or cooling.
-  The maximum currents have been designed for use at only 50\% of their
-  potential maximum ($I_\text{max}$).
+  limited by vacuum feedthroughs and not by the maximum current calculated by
+  the wire dimensions.  The maximum currents have been designed for use at only
+  50\% of their potential maximum ($I_\text{max}$).
   }
   \label{design:table:wires}
 \end{table}
 
 Each Z trap will begin trapping at one height before the bias field is
-increased to allow for trapping closer to the surface (as per
+increased to bring the trap centre closer to the surface (as per
 \myeqref{intro:eq:trapbias}).  To distinguish between the two trap stages for
 each wire, we label them $\mathrm{ZX_i}$ for the initial (higher) trap and
 $\mathrm{ZX_f}$ for the final (lower) trap, with $\mathrm{ZX}$ corresponding to
 the wire labels in \mytableref{design:table:wires}.
 
-We aim to eventually incorporate microwave guides onto the chip. This can be
+A future goal of the project is to incorporate microwave guides onto the chip. This can be
 accomplished by adding an insulating layer on top of the wires, on to which we
-can fabricate coplanar waveguides~\cite{1127105}. The flange and subchip have
-been designed to allow delivery of microwaves to the chip. \cm{Direct to
-microwaves on a chip chapter.} This was discussed in detail in the early stage
-assessment and will not be repeated here.
+can fabricate coplanar waveguides~\cite{1127105}. The flange has been designed
+with microwave feedthroughs, so that microwaves can be launched onto the
+subchip and carried to the chip via coplanar waveguides \cm{to be discussed in
+a later chapter}.
 
-In the rest of this chapter, I will demonstrate through simulation and analysis
-of the trapping potentials that this design will be capable of loading trapped
-\CaF{} molecules.
+Having broadly outlined the experiment, the rest of this chapter will justify
+the design of the trapping wires by means of simulation and analysis
+of the trapping potentials.
 
-\section{Motion of molecules in a potential}
+\section{Motion of molecules in a trap}
 \label{design:motion}
 
-It is important to review the physics behind the motion of the molecules in the
-potentials, which we shall do in this section. We will also briefly describe
-the simulation methods.
-
-\subsection{Motion in the traps}
-\label{desgin:motion}
-
+% TODO Is the Bohr magneton introduced above?
+% TODO Do I introduce this ket notation above?
 We can assume that the motion of the molecules in the trap is classical. They
-move in the potential $V(t, \mathbf{q}) = \mu B(t, \mathbf{q})$, where $\mu$ is
-the magnetic dipole moment of the molecule.  The motion of any one particle is
-described by Hamilton's equations,~\cite{Lichtenberg1969}
+move in the potential $V(t, \mathbf{q}) = \mu B(t, \mathbf{q})$, where
+$\mu\approx\mu_B$ is the magnetic dipole moment of the molecule in the
+$\ket{1,0,-1}$ state.  The motion of any one particle is described by Hamilton's
+equations,~\cite{Lichtenberg1969}
 %
 \begin{align}
   \label{design:eq:hamilton}
@@ -240,13 +207,13 @@ For now we neglect the time dependence of the potential, so that $V(t,
 
 Solving Hamilton's equations tells us the position and momentum of a single
 particle. Taken together, these two vectors describe a point in a six
-dimensional \emph{phase space} of position and momentum. The ensemble of
-trapped molecules, each one starting at a different point in phase space, can
+dimensional phase-space of position and momentum. The ensemble of
+trapped molecules, each one starting at a different point in phase-space, can
 be treated by considering the motion of the molecules at its
-boundary, and the \cm{hyphen?} six-dimensional phase space volume that this
+boundary, and the six-dimensional phase-space volume that this
 boundary encloses~\cite{Hand1998}.
 
-It is helpful for us to write the phase space volume $V$ in terms of the
+It is helpful for us to write the phase-space volume $V$ in terms of the
 spatial volume occupied by the ensemble ($V_\text{space}$) and its temperature.
 The length-scale for a monatomic gas of temperature $T$ is the thermal de
 Broglie wavelength~\cite{blundell2}
@@ -254,35 +221,33 @@ Broglie wavelength~\cite{blundell2}
 \begin{equation}
   \lambda_\text{dB}(T) = \frac{h}{\sqrt{2 \pi m k_B T}}.
 \end{equation}
-And hence the unitless phase space volume is \cm{Think I need to figure out
-what the deal is with the unit. Mike seems to think there should be a $h^3$ in
-here, but I think for there to be no units this is better.}
+%
+Hence the unitless phase-space volume is
 %
 \begin{equation}
-  V = V_\text{space} / \lambda_\text{dB}^3.
+  V = V_\text{space} \lambda_\text{dB}^{-3}(T).
 \end{equation}
 %
-It is also useful to define a unitless phase space
+It is also useful to define a unitless phase-space
 density~\cite{PhysRevA.52.1423}
 %
 \begin{equation}
   \rho = \frac{N}{V} = \frac{N \lambda_\text{dB}^3}{V_\text{space}}.
 \end{equation}
 %
-For a given cloud with phase space density $\rho$, trap with volume
+For a given cloud with phase-space density $\rho$, trap with volume
 $V_\text{trap}$ and depth $T_\text{depth}$,
 the maximum possible number of particles that can be trapped is $\rho
 V_\text{trap}/\lambda_\text{dB}^3(T_\text{depth})$.
 
 Furthermore, Liouville's theorem~\cite{Landau1982, Hand1998} states that the
-phase space volume is a conserved quantity, as long as the trapping potential
-is consevative. This means that the phase space density of a trapped molecular
+phase-space volume is a conserved quantity, as long as the trapping potential
+is consevative. This means that the phase-space density of a trapped molecular
 cloud cannot be increased without application of some velocity-dependent
-damping, such as an optical molasses~\cite{Metcalf1999}. The impact of this for the chip
-is that the phase space density of the cloud at the point of loading onto the
-chip determines the maximum number of molecules that can be trapped in the
-final trap.
-
+damping, such as an optical molasses~\cite{Metcalf1999}. The impact of this for
+the chip is that the phase-space density of the cloud at the point of loading
+onto the chip determines the maximum number of molecules that can be trapped in
+the final trap.
 
 If we do not introduce any further cooling steps, then the number of molecules
 we are able to trap in the final trap will be
@@ -294,55 +259,137 @@ we are able to trap in the final trap will be
   \label{design:eq:psd_N}
 \end{equation}
 %
-where $\rho_\text{\CaF{}} = 3.4\times10^{-12}$ is the phase space density of the \CaF{} cloud
-after cooling in the blue-detuned molasses~\cite{Truppe2017},
+where $\rho_\text{\CaF{}} = 3.4\times10^{-12}$ is the phase-space density of
+the \CaF{} cloud after cooling in the blue-detuned molasses~\cite{Truppe2017},
 $V_\text{trap}\sim(\SI{10}{\micro\meter})^3$ and
-$T_\text{trap}=\SI{4}{\kelvin}$. The trap depth used here is for the smallest
-trap operating at \SI{3}{\ampere}, and can be calculated using
-equation~\ref{intro:eq:trapdepth}. We therfore have
+$T_\text{trap}=\SI{4}{\kelvin}$. The \CaF{} mass is
+$m_\text{\CaF{}}=\SI{9.79E-26}{\kilogram}$. The trap depth used here is for the
+smallest trap operating at \SI{3}{\ampere}, and can be calculated using
+equation~\ref{intro:eq:trapdepth}. We therefore have
 %
 \begin{equation}
-  N_\text{final} \sim 3000.
+  N_\text{final} \lesssim 2000
 \end{equation}
 %
-This upper bound for the number of trapped molecules is calculated with the
-assumption that all the trapping stages are deep enough to contain all the
-molecules that are within the trapping region. 
-%
-\cm{As Mike points out, this is clearly not correct. I have also used the phase
-space density for the 50uK experiment, so probably off by a factor of
-$10^{3/2}$ (need to check that also...) Alex also pointed out that it is hard
-to calculate this because not all the constants are available/ obvious, e.g.
-the mass. So just need to make this paragraph a lot more clear and put some
-care into it.}
+as an upper bound for the number of molecules trapped in the final trap. To
+reiterate, this assumes that the entire trap is full, and no excess molecules
+have been lost during loading. We will see below that this will not be the
+case. A more realistic number of molecules to be trapped can be found by using
+two key tools: analysis of the phase-space acceptance of the traps, and direct
+trajectory simulation of the cloud.
 
-This motivates us to introduce the concept of the acceptance of a trap.
-This is the phase space volume within which all particles are trapped.
-Particles outside of the acceptance are either positioned outside the trap or
-are positioned inside the trap but have enough energy to escape it. The
-boundary of the acceptance is called the separatrix. An example is shown
-in \myfigref{design:fig:psaeg}~\cite{Lichtenberg1969, Hand1998}.
+\subsection{Phase-space acceptance}
 
-\cm{Try to recreate this fig myself with my code!}
+\cm{Probably need to cite Hand 1998}
+
+For a particle to be trapped, it is obvious that it must exist within the
+spatial region of the trap, and it must not have sufficient energy to escape
+from the trap's potential. In other words, the Hamiltonian of the particle
+$H(\mathbf{q}, \mathbf{p})$ must be less than the trap depth $T_\text{depth}$.
+This relation defines a region of phase-space that we call the
+acceptance. Any particles within this region will not have sufficient
+energy to escape, and so will remain trapped under classical motion unless
+externally influenced (ignoring for example any collisions, decays, Majorana
+losses, etc.)~\cite{Lichtenberg1969}.
+
+As an example consider the one-dimensional case of a harmonic trap found in 
+\inlineref{Crompvoets2005}
 %
-\begin{figure}
+\begin{equation}
+  V(z) = \begin{cases}
+    0 & |z| > l \\
+    -\frac{1}{2}m\omega^2 z^2 & |z| \leq l.
+  \end{cases}
+\end{equation}
+%
+Here, any particle which starts with a position $l \leq z \leq l$ will be
+trapped, so long as its velocity is not sufficiently large that it will escape
+into the $|z|> l$ region. To reach $z=l$ from an initial position $z_0$, the
+particle must have kinetic energy of at least
+%
+\begin{equation}
+  \frac{1}{2}mv_0^2 = \frac{1}{2}m\omega^2(l^2 - z_0^2)
+\end{equation}
+%
+where $v_0$ is the initial velocity. It is now clear that a particle is trapped
+on the condition that
+%
+\begin{equation}
+  (v_0/\omega)^2 + x_0^2 < l^2
+\end{equation}
+%
+which defines an ellipse in phase-space.
+
+% Note that in the simulation I have omega = 1, so taking omega -> 1000 means
+% that we end up with the nice circle with v in m/s. The consequence is that
+% the simulation ends up lasting 1.2ms rather than 1.2s
+
+This trapping region is can be verified by simulation, as is shown in
+\mysubfigref{design:fig:psaeg}{a}, where the trap has been simulated for $m =
+1$, $\omega = \SI[parse-numbers=false]{10^3}{\radian\per\second}$ and $l
+=\SI{1}{\milli\meter}$. We initialise 2000 particles uniformly distributed with
+$|z_0| < \SI{0.2}{\milli\meter}$ and $|v_0|< \SI{1.5}{\meter\per\second}$,
+their trajectories are computed for \SI{1.2}{\milli\second} by the methods
+described in the next section. The boundary of the acceptance, called the
+separatrix is shown in black. All particles that are initialised inside the
+acceptance remain trapped and evolve through time in the usual way for a
+harmonic potential.  Particles initialised outside the acceptance are rejected
+and lost.
+
+It is also instructive to consider anharmonic potentials, for example
+%
+\begin{equation}
+  V(x) = -V_0\cos(\omega z)
+\end{equation}
+%
+which is also presented in \myfigref{design:fig:psaeg}, using the same
+parameters as for the previous potential. We again see that particles with
+sufficiently low energy in the trapping region remain trapped, however in this
+case the anharmonicity of the trap results in the particle cloud spiralling
+outwards, undergoing an effective increase in the phase-space density.
+
+Finally, it is useful to consider the phase-space acceptance of a wire trap.
+For simplicity we begin by considering only the acceptance in the $z$ direction
+(perpendicular to the chip surface). Acceptance of a Z-wire with an axis of
+\SI{20}{\milli\meter}, current of \SI{40}{\ampere} and a trapping height of
+\SI{3}{\milli\meter}. The particles are initialised such that they have no
+motion in the $x$ and $y$ directions, and the trajectories are simulated for
+\SI{200}{\milli\second}. The distributions as initialised and at the end of the
+simulations are shown in \myfigref{design:fig:psaeg}. The accepted
+molecules (blue) are once again those that start inside the separatrix. There are
+also metastable molecules (orange) which remain outside the acceptance but stay
+nearby the trap. These are molecules with nearly sufficient energy to escape
+the trap, but may take some time to do so.
+
+% TODO This caption
+\begin{figure}[htb]
   \centering
-  \includegraphics[width=0.6\textwidth, page=1]{figs/psa_eg.png}
+  \import{figs/simsThesis/}{psa_1D.pgf}
   \caption{
-    Phase space acceptance of a harmonic (left) and anharmonic (right) trap in
-    one dimension. The separatrix is shown in both cases. The initial particle
-    positions in phase space are shown in the top row, with the accepted
-    particles in black and the unaccepted particles in grey. In the anharmonic
-    case, the particles expand to fill the acceptance, increasing the effective
-    phase space density (a process called filamentation). This figure is
-    reproduced from \inlineref{Crompvoets2005}.
+    The phase-space acceptance for harmonic (a, d), anharmonic (b, e) and
+    Z-wire trap (c, e) are shown. The top row shows the initial positions of
+    the particles, those that are accepted by the trap are shaded blue,
+    particles that are lost are shaded red, and metastable particles in orange.
+    The energy contour of the trap depth is also shown. The end state of the
+    simulation is shown in the lower row. Note the filamentation effect in (e)
+    and (f), where the effective phase-space density of the particles increases
+    as they explore regions that are energetically accessible. The harmonic and
+    anharmonic examples are inspired by discussion in
+    \inlineref{Crompvoets2005}.
   }
   \label{design:fig:psaeg}
 \end{figure}
 
-\cm{I should discuss filamentation in more detail}
+It is therefore clear that a particle that is stored in one trap can be moved
+into another if its position in phase space is inside the separatrix of the new
+trap. It is therefore in our interest to design the trapping potentials such
+that the emission of one trap overlaps with the acceptance of the next one in
+the loading sequence. This is similar to the mode-matching of potentials
+described in, for example, \inlineref{2011Ac}. We will see below that the
+matching of trap acceptances does indeed allow for reliable loading of the
+traps
 
-An adiabatic change to the potential will not affect the phase space density of
+An adiabatic change to the potential will not affect the phase-space density of
 any particles that remain trapped throughout the change~\cite{Hand1998,
 Lichtenberg1969}. Hence a cloud of trapped particles can be translated, for
 example in the transport coils, or towards the surface of the chip as will be
@@ -350,50 +397,66 @@ discussed in section~\ref{design:sim}.
 
 It should be noted that the Liouville theorem also holds for a time-dependent
 Hamiltonian. We will see below that the trapping potential will be changed
-adiabatically, and make use of the fact that phase space density is conserved
+adiabatically, and make use of the fact that phase-space density is conserved
 through this process.
 
 \subsection{Simulating the motion}
 \label{design:motion:simmethods}
 
-\cm{When can we ignore VdW forces?}
+The motion of a particle can be simulated by numerically solving
+\myeqref{design:eq:hamilton}, which we do using Python~\cite{python} and the
+symplectic Euler method~\cite{Hairer2015, doi:10.1119/1.2034523} provided by
+the Desolver package~\cite{desolver}. Symplectic methods are powerful tools
+for numerically solving Hamiltonian systems whilst conserving energy and
+momentum.
 
-The particle motion can be simulated by numerically solving
-\myeqref{design:eq:hamilton}. This was done on Imperial College London's high
-performance computing services~\cite{ICRCS} using Python~\cite{python} and the
-symplectic Euler method provided by the Desolver package~\cite{desolver}.
-Symplectic methods are powerful tools for numerically solving Hamiltonian
-systems whilst conserving energy and momentum \cite{Hairer2015,
-doi:10.1119/1.2034523}. A time step of $\dd t = \SI{1E-4}{\second}$ was
-sufficient to achieve this for our potentials.
-
-Magnetic potentials were calculated by considering the traps to be formed of
-segments of straight wires, each producing a magnetic field
-$\mathbf{B}_\text{seg}^{(i)}$, and the bias field $\mathbf{B}_\text{bias}(t)$. The total
-field is the sum of contributions from the set of all segments (S), and the
-bias. The potential is therefore
-%
-\begin{equation} V(t, \mathbf{q}) = \mu B (t, \mathbf{q}) = \mu \left|
-  \sum_{i\in S}
-  \mathbf{B}_\text{seg}^{(i)}(t, \mathbf{q}) + \mathbf{B}_\text{bias}(t)\right|.
-\end{equation}
-
-The field due to a segment of straight wire with length carrying current $I(t)$
-can be found analytically by integration of the Bio-Savart Law.
-This field can be expressed in terms of the angle between the ends of the wire
-at $\mathbf{q}$, as is shown in \myfigref{design:fig:wiresegment}. The field
-is given by~\cite{Griffiths2017}
+We are able to simulate any arbitrary potential, such as those already
+discussed in the previous section, but it is useful to consider a more
+realistic potential given by the sum of the magnetic and gravitational
+potentials,
 %
 \begin{equation}
-  \mathbf{B}_\text{seg}(t, \mathbf{q}) = \frac{\mu_0 I(t)}{4\pi
-  s_\text{seg}(\mathbf{q})} (\sin(\theta_2)  -
-  \sin(\theta_1))\mathbf{\mathbf{\phi}}
-\label{design:eq:segmentfield}
+  V(t, \mathbf{q}) = V_\text{mag} + mg(z_0-z)
 \end{equation}
-here $s_\text{seg}(\mathbf{q})$ is the shortest distance between the segment
-and $\mathbf{q}$, and $\hat{\mathbf{\phi}}$ is the unit vector pointing
-perpendicular to $\mathbf{q}$ and the wire segment. \cm{Should take more care
-indefining this unit vector! (also formatting mathbf and hat?)}
+where $g=\SI{9.8}{\meter\per\second\squared}$ is the acceleration due to
+gravity, and $z_0$ is an arbitrary point chosen to be the zero of the
+gravitational potential. The actual value chosen does not matter as it
+constitutes only a linear shift in the entire potential, we normally present
+the potentials with $z_0$ chosen such that the trap minimum is zero.
+
+The Van der Waals attraction between the chip and the molecules is neglected,
+since the molecules will (by design) never be close enough to the chip for this
+force to be significant.
+
+When simulating the motion of the particles in a quadrupole coil trap (such as
+the MTT), the magnetic field is assumed to be an idea quadrupole, so
+%
+\begin{equation}
+  \mathbf{B}(x, y, z) = B'\begin{pmatrix} -x/2 \\ -y/2 \\ z \end{pmatrix}
+\end{equation}
+where $B'$ is the field gradient.
+
+The magnetic potentials of the wire traps are calculated by considering the
+traps to be formed of segments of straight wires, each producing a magnetic
+field $\mathbf{B}_\text{seg}^{(i)}$, and the bias field
+$\mathbf{B}_\text{bias}(t)$.  The total field is the sum of contributions from
+the set of all segments (S), and the bias. The potential is therefore
+%
+\begin{equation} V\text{mag}(t, \mathbf{q}) = \mu B (t, \mathbf{q}) = \mu
+\left| \sum_{i\in S} \mathbf{B}_\text{seg}^{(i)}(t, \mathbf{q}) +
+\mathbf{B}_\text{bias}(t)\right|.  \end{equation}
+%
+Where the field of each wire segment is~\cite{Griffiths2017}
+%
+\begin{equation} \mathbf{B}_\text{seg}(t, \mathbf{q}) = \frac{\mu_0 I(t)}{4\pi
+s_\text{seg}(\mathbf{q})} (\sin(\theta_2)  -
+\sin(\theta_1))\hat{\mathbf{\phi}}. \label{design:eq:segmentfield}
+\end{equation}
+%
+Here $s_\text{seg}(\mathbf{q})$ represents the shortest distance between the
+point $\mathbf{q}$ and the line that runs through the segment off to infinity
+in each direction. We also have the unit vector $\hat{\mathbf{\phi}} =
+\mathbf{I}\times\mathbf{q}/(qI)$.
 
 \begin{figure}[h]
 \centering
@@ -402,12 +465,15 @@ indefining this unit vector! (also formatting mathbf and hat?)}
     \coordinate (O) at (0, 0);
     \coordinate (L) at (-3, 0);
     \coordinate (R) at (3, 0);
-    \coordinate (Q) at (1, 4);
+    \coordinate (Q) at (-4, 4);
     % Draw lines
     \draw[line width=0.75mm, ->] (L) -- (R);
     \draw (L) -- (Q);
     \draw (R) -- (Q);
-    \draw[<->, densely dotted,shorten >=.5mm,shorten <=.8mm] (Q) -- (1, 0);
+    \draw[<->, densely dotted,shorten >=.5mm,shorten <=.8mm] (Q) -- (-4, 0);
+    % Draw line parallel to wire
+    \draw[-, dashed] (-5, 0) -- (L);
+    \draw[-, dashed] (R) -- (5, 0);
     % Draw dot at Q
     \node at (Q)[circle,fill,inner sep=.5mm]{};
     % Draw angels
@@ -415,334 +481,291 @@ indefining this unit vector! (also formatting mathbf and hat?)}
     \draw pic[draw,angle radius=1cm,"$\theta_2$" shift={(-7mm,2mm)}] {angle=Q--R--L};
     % Label
     \node[shift={(4mm,0)}] at (Q) {$\mathbf{q}$};
-    \node[shift={(2mm, 0)}] at (R) {$I$};
-    \node[fill=white] at (1., 1.8) {$s_\text{seg}(\mathbf{q})$};
+    \node[shift={(2mm, 4mm)}] at (R) {$I$};
+    \node[fill=white] at (-5.0, 1.8) {$s_\text{seg}(\mathbf{q})$};
   \end{tikzpicture}
   \caption{Geometry of a wire segment (bold) carrying current $I$, whose field
-  can be calculated using \myeqref{design:eq:segmentfield}. The dottend line
+  can be calculated using \myeqref{design:eq:segmentfield}. The dotted line
   shows $s_\text{seg}(\mathbf{q})$, the shortest distance from the point at
-  which the field is calculated ($\mathbf{q}$) to the segment.
+  which the field is calculated ($\mathbf{q}$) to the line parallel with the
+  wire (dashed line).
   }
   \label{design:fig:wiresegment}
 \end{figure}
 
-This is everything that is needed to simulate a wire trap, or the handover
-between two traps (by including the wire segments of both traps in the field
-calculation). The transport trap is assumed to be a perfect quadrupole.
+In the case of that we are exchanging between
+two potentials, the segments of both traps are included in the summation, with
+the currents becoming functions of time, and similar for exchange between a
+quadrupole and a wire trap, with the quadrupole gradient being a function of
+time.
 
-Molecule trajectories are calculated up to a pre-determined end time, or until
-they are determined to be lost. In the following simulations a molecule is lost
-when it's displacement from the origin in any cardinal direction is greater
-than \SI{10}{\milli\meter}.
-
-\subsection{Example simulation: Z trap acceptance}
-
-To illustrate both the simulation methods and the example of phase space
-acceptance given in section~\ref{design:motion:simmethods}, we present an
-example simulation where a uniform distribution of molecules is spread over the
-acceptance of the $\mathrm{Z0_i}$ trap used in our experiment. We should expect
-that the molecules inside the acceptance remain trapped for arbitrarty long
-time, and those outside are lost.
-
-This is indeed what we see in \myfigref{design:fig:acceptance}, where the
-results of the simulation are shown in a trio of plots, each one showing a
-projection of phase space into the $(q_i, v_i)$ plane. Here $i\in\{x, y, z\}$
-and we have converted from units of momentum to velocity for convenience. 
-
-\cm{There was some confusion in the LSR because I said $10^6$ here, but I
-checked and it was $10^5$.}
-We simulated $10^5$ \CaF{} molecules, which are initialised with position and
-velocity drawn from a uniform distribution inside the range indicated by the
-gold rectangle in \myfigref{design:fig:acceptance}. The trajectories are then
-integrated for the first \SI{300}{\milli\second} of the motion. The starting
-position of those molecules who remained trapped are then plotted.
-
-The separatrix is also shown. It is found by considering the energy at all
-points in the phase space plane. The highest energy that forms a closed contour
-is the acceptance of the trap. The energy is different in every plane (the $x$
-direction is a weaker trapping direction).
-
-\cm{This sounds like a pretty weak excuse. I better figure out what is
-actually going on here. Suspect I am underestimating the size of the
-acceptance.}
-There are 443 particles that remain trapped throughout the simulation. \mt{This
-result tells you the actual phase space acceptance of the trap - it will be
-$443/10^{6}\times$ initial phase space volume. It would be interesting to compare
-this to the phase space volume you calculate analytically.} Of those
-that are trapped, the vast majority fall within the calculated acceptance.
-However in some edge cases it appears that the particles are outside. This is
-due to the acceptance shown being a contour on a cut-through of the potential.
-The true acceptance is a hypersurface that cannot easily be displayed in print.
-\cm{I am kind of bullshitting here. Mike says the following, which seems more
-reasonable: I can see how this results in particles inside the separatrix being
-lost. But I can't see how it results in particles outside the separatrix not
-being lost. I think more likely is that particles slightly outside the
-separatrix are on metastable trajectories meaning they would be lost if you ran
-the simulation longer.}
-
-\cm{Check that the separatrix is calculated sensibly, is it the same in
-every direction?}
-%
-\begin{figure}
-  \centering
-  \includegraphics[page=1]{figs/sims/example_acceptance.pdf}
-  \caption{Example simulation showing the acceptance of the $\mathrm{Z0_i}$.
-  The region marked by the gold rectangles is populated with $10^5$ particles.
-  The starting positions of the 443 particles that are trapped are marked with a pink dot.
-  The acceptance is approximated by a contour of the trapping potential, shown
-  here in black. Trapping is weaker in the $x$ direction than the other
-  directions, so this contour has a lower value. The majority of the trapped
-  particles start within this approximation of the acceptance.}
-  \label{design:fig:acceptance}
-\end{figure}
-
-As well as demonstrating that the simulation is able to reproduce the expected
-results from a simple phase space acceptance problem, we can use it to check
-that constants of the motion are indeed conserved. This is shown to be the case
-in \myfigref{design:fig:conservation}.  The fluctuations in the values are a
-side effect of the symplectic method, but there is no overall trend for the
-constants to increase or decrease \cite{doi:10.1119/1.2034523}. The phase
-space density is significantly lower due to the nmber of simulated particles
-being smaller than we would expect in reality, and the phase space volume of
-the initial cloud being significantly larger.
-
-\begin{figure}
-  \centering
-  \includegraphics[page=1]{figs/sims/example_conservation.pdf}
-  \caption{Conservation of energy and phase space density in our simulation.
-  Energy is the total energy of the trapped particles, but is given in units of
-  \si{\milli\kelvin} for convenience. \cm{Needs to be more clear that this is
-  total energy (all particles). Mike was unclear on this.}
-  }
-  \label{design:fig:conservation}
-\end{figure}
 
 \subsection{Simulation initialisation}
+\label{design:sim:init}
 
-For other simulations it is useful to initialise the simulation to replicate
-the conditions in the transport trap just as we would have at the beginning of
-the loading procedure.
+For all the simulations described below, we begin with a cloud of molecules in
+a magnetic quadrupole trap. We use the following initialisation procedure so
+that the distribution of our molecules matches that which we expect in the
+experiment. 
 
-This can be done by initialising a cloud of $N$ molecules whose positions are
-normally distributed in all three spatial dimensions with a standard deviation
-of \SI{1}{\milli\meter}. Similarly the velocity components are normally
-distributed with a standard deviation of \SI{84}{\milli\meter\per\second}
-(corresponding to a temperature of \SI{50}{\micro\kelvin}). This is what we
-would expect for the cloud after leaving the molasses.
+We begin with a cloud of $N$ molecules whose positions are normally distributed
+in all three spatial dimensions with a standard deviation of $\sigma_i$
+(typically $\sigma_i = \SI{1}{\milli\meter}$. Similarly the velocity components
+are normally distributed with a standard deviation of $\sigma_{v_0}$ (typically
+\SI{40}{\milli\meter\per\second}, corresponding to a temperature of
+\SI{5}{\micro\kelvin}). 
 
-The cloud is immediately placed in a quadrupole trap with gradient
+The cloud is initialised in a quadrupole trap with gradient
 \SI{10}{\gauss\per\centi\meter}. They are held for \SI{50}{\milli\second}
-before the gradient is ramped up over \SI{100}{\milli\second} to the actual
-transport gradient of \SI{61}{\gauss\per\centi\meter}. This causes the
-molecules to compress as they would when initially loaded into the transport
-coils in the MOT chamber.
+before the gradient is linearly ramped over \SI{100}{\milli\second} to
+\SI{60}{\gauss\per\meter} (the gradient used in the MTT).
+The molecules are then held for a further \SI{50}{\milli\second}, as a
+stabilisation time.
 
-For the purposes of these simulations, the effects of heating in loading
-\mt{Not sure which effects you mean here.} \cm{think this is quite vague. we
-must get some heating by transporting them, I think that is what I want to
-refer to...} are
-ignored. The molecules are therefore held for a further \SI{50}{\milli\second}
-until $t=0$. It is possible for a very small number of particles to stray too
-far from the centre of the trap during initialisation, at which point they are
-considered to be lost. There may therefore be a difference between the number
-of particles that are initialised and the number present at $t=0$.
+The increasing trap gradient causes the molecules to compress as they would
+when initially loaded into the transport coils in the MOT chamber.
 
-\section{Modelling the loading procedure}
-\label{design:sim}
+% TODO I anticipate needing to put some comparison to the real data here...
 
-To ensure that the chip design will allow for robust loading, the loading
-process has been simulated up to the $\mathrm{Z0_f}$ trap. This demonstrates
+\section{Adiabatic transfer between traps}
+
+It should be obvious that if we start with molecules in one potential, then
+rapidly turn that one off and turn on another, this will cause heating and
+increasing its size.  However, if we ramp between the traps adiabatically, then
+we expect the effect to the cloud size to be minimal. In order to understand
+how best to load the chip trap, it is important that we understand the extent
+of heating in the case of rapid transfer, and the timescale of transfer
+required to be adiabatic.
+
+We can investigate this with a simple example.  Consider two ideal quadrupoles
+with gradients of \SI{60}{\gauss\per\centi\meter} separated by
+\SI{3}{\milli\meter} in the $x$ direction. We simulate 2000 \CaF{} molecules
+using the above-described initialisation procedure, with initial $\sigma_i =
+\SI{2}{\milli\meter}$ in all directions, and initial temperature
+$T=\SI{50}{\micro\kelvin}$. We ramp linearly between the potentials in a time
+$t_\text{ramp}$, which we vary between \SI{1}{\milli\second} and
+\SI{100}{\milli\second}. The molecules are then held for a further
+\SI{100}{\milli\second}. The state of the system at the end of the simulation
+is shown for $t_\text{ramp}\in \{\SI{1}{\milli\second}, \SI{30}{\milli\second},
+\SI{100}{\milli\second}\}$ in \myfigref{design:fig:adia3sim}, along with the
+behaviour of the cloud in the \SI{100}{\milli\second} hold time. Note that as
+the ramp time increases, the oscillation in cloud size, temperate and position
+decreases, as we have said we expect.
+
+\begin{figure}[p]
+\centering
+  \import{figs/simsThesis/}{adiabatic_3sim.pgf}
+  \caption{
+    Exchange between two quadrupole traps, separated by \SI{3}{\milli\meter} at
+    different ramp times. The top row shows the $x$-projection of the
+    phase-space distributions of the particles at the start of the simulation
+    (grey) and after various ramp times (see legend) followed by a
+    \SI{100}{\milli\second} hold in the displaced trap. The mean position, size and
+    temperature of the cloud are shown throughout the hold time for each
+    simulation. Note that for the longer ramps we observe less heating,
+    oscillation and widening of the cloud.
+  }
+  \label{design:fig:adia3sim}
+\end{figure}
+
+
+The question then is at what point do we enter the adiabatic r\'egime?
+\myfigref{design:fig:adiavary} shows the cloud width and temperature at the end
+of the simulation for varying $t_\text{ramp}$. After
+$t_\text{ramp}\sim\SI{50}{\milli\second}$ the reduction is minimal, and we are
+strongly in the adiabatic r\'egime.
+
+\begin{figure}[t!]
+\centering
+  \import{figs/simsThesis/}{adiabatic_varyramps.pgf}
+  \caption{
+    The final temperature and size of particle clouds transferred between
+    offset quadrupole traps at various ramp times. Note that the large
+    oscillations in width that occur for short ramp times (see
+    \myfigref{design:fig:adia3sim}) can result in the instantaneous width of
+    the cloud being small, such as in the shorter ramp times here.
+  }
+  \label{design:fig:adiavary}
+\end{figure}
+
+% TODO I do have some stuff about rapid vs. adiabatic transfer between z-traps,
+% but I think it is unnecessary.
+
+\section{Trajectory simulation of the initial loading stages}
+
+In this section we will present simulations of loading molecules from the MTT
+into the on-chip Z-wire traps. 
+This demonstrates
 the two main types of transitions in the loading process: handovers between
 traps, and compression within a single trap. The timing of the simulation do
 not exactly reflect those that will be used in practice, long holding periods
 have been inserted between ramps to better illustrate the cause of particle
-loss.
+loss. It is useful to perform direct trajectory simulations as opposed to
+simple analysis of the phase-space emittance and acceptance, since (as we will
+see later) brief lowering of trap depth during trap handovers can induce
+additional loss of particles.
 
-The results of the simulation and the parameters of the ramps are outlined in
-\myfigref{design:fig:simparams}. This can be considered in four parts, first
-from $t = 0$ to $t=\SI{100}{\milli\second}$ there is a settling period where
-the molecules are held in the transport trap. Then there are three
-\SI{100}{\milli\second} ramps, each of which is followed by a
-\SI{100}{\milli\second} stabilisation period. These three ramps describe the
-handover from the transport trap to the U, the U to $\mathrm{Z0_i}$, and the
-compression of $\mathrm{Z0_i}$ to $\mathrm{Z0_F}$. They are described in detail
-in the following subsections. This simulation used $N=1000$ particles, with one
-particle lost during initialisation.
+We will consider the handover in four stages, the particle initialisation which
+was already discussed in section~\ref{design:sim:init}, followed by the
+handover from the MTT to the U-wire, then the U-wire to $\mathrm{Z0_i}$.
+Finally we will simulate the compression in the Z-wire trap from
+$\mathrm{Z0_i}$ to $\mathrm{Z0_f}$. A full summary of the changing parameters
+throughout the simulations is given at the end of the section, see especially
+\myfigref{design:fig:simparams}.
 
-\begin{figure}[htb]
-\centering
-  \begin{overpic}[page=1]{figs/sims/mtt_u_z_params.pdf}
-    \put(32.5,55){(a)}
-    \put(45.5,55){(b)}
-    \put(63,55){(c)}
-    \put(80.5,55){(d)}
-  \end{overpic}
-  \caption{
-    The simulation parameters are shown for loading from the transport trap
-    into trap $\mathrm{Z0_f}$. The simulation begins with a stabilisation
-    period (a), in which the molecules are held in the transport trap for \SI{100}{\milli\second}. In period (b) the transport
-    trap is ramped off and the U is ramped on. There is some heating of
-    molecules as they leave the trap, and a reduction in phase
-    space density. The transfer to $\mathrm{Z0_i}$ occurs in period (c), where
-    more loss occurs due to the trap depth being reduced in the $x$
-    direction. Finally in (d) the trap is compressed to $\mathrm{Z0_f}$, when
-    the molecules are brought from \SI{3}{\milli\meter} to \SI{1}{\milli\meter}
-    of the chip surface. The solid lines show the simulation results when
-    collisions with the chip surface are ignored, and the dashed line shows
-    results when collision with the surface results in loss of the molecule.
-    %
-   \mt{Would be useful to show some quantity that measures the size of the
-   cloud, along with all the other parameters, e.g. you could plot $\sigma_x 
-   \sigma_y  \sigma_z$ as a measure of the volume of the cloud. Then, I would
-   expect to see the volume go down in places where the temperature goes up.}
-  }
-  \label{design:fig:simparams}
-\end{figure}
-
-\subsection{Handover to the U trap}
+\subsection{MTT - U transfer}
 \label{design:sim:trans_U}
 
-
-\cm{Ensure language is consistent when talking about chip, so is the U
-above or below?}
-%
-The first step is to transfer the molecules from the transport coils to the U
-wire. This U wire has the largest axial length, and so will be the easiest trap
-the transport coils to. The U-wire is also capable of carrying more current
-than any of the other wires, which is essential as it is positioned further
-from the molecule cloud, beneath the chip.
-
-Between $t=\SI{100}{\milli\second}$ and $t=\SI{200}{\milli\second}$ the current
-in the transport coils is adiabtically ramped down while the currents in
-the U trap and in the bias coils are ramped up. The molecules are then held
-until $t=\SI{300}{\milli\second}$ to ensure that they remain trapped after the
-ramp. The simulation parameters are shown in
-\mysubfigref{design:fig:simparams}{b}.
-
-The particle loss during the ramp is approximately 10\% of the total. There is
-also some heating, which decreases the phase space density of the cloud. The
-cause of this can be seen in \myfigref{design:fig:trans_U}, which shows the
-phase-space positions of the molecules at various times throughout the ramp,
-and the trapping potential at those times.
+The cloud is initialised by the usual procedure, with $\sigma_i =
+\SI{1}{\milli\meter}$ and $T=\SI{50}{\micro\kelvin}$, corresponding to the
+typical cloud sizes and temperatures we measure in the tweezer chamber after
+transport. Over \SI{100}{\milli\second} the field from the coils is linearly
+redued to zero and the U-wire current is ramped up to its maximum value of
+\SI{100}{\ampere}. The bias fields in the $y$ and $z$ directions (no $x$ bias
+is applied) are also ramped linearly, to maintain the trap centre at a height
+of \SI{3}{\milli\meter} below the chip. The state of the system before and
+after the ramp is shown in \myfigref{design:fig:mttusim}.
 
 \begin{figure}[p]
 \centering
-  %\setlength\extrarowheight{-3pt}
+  \import{figs/simsThesis/}{mtt_u_summary.pgf}
+  \caption{
+    The particle distribution in the MTT (blue) and after transfer to the U
+    trap (red) following the process described in the main text. The
+    phase-space distributions are shown in the $z$-$v_z$ plane in (a) and (b),
+    with histograms of the $z$ and $v_z$ projections in (c) and (e)
+    respectively. The potentials at the start and end of the transfer are shown
+    in (d). Subfigure (f) shows the temperature particle number varying
+    throughout the fields are varied in the times that are shaded grey (c.f.
+    \myfigref{design:fig:simparams}). \cm{Comment on the results.}
+  }
+  \label{design:fig:mttusim}
+\end{figure}
+
+The phase-space distribution in the $z$-$v_z$ projection is shown for the start
+(\mysubfigref{design:fig:mttusim}{a}) and end
+(\mysubfigref{design:fig:mttusim}{b}) of the simulation. Note that there is
+little change to the velocity distribution, but in position the particles shift
+to occupy the positive $z$ direction, where the potential is less steep.
+
+Looking at the change in the particle number throughout the ramp
+(\mysubfigref{design:fig:mttusim}{f}) it is clear that there is some loss
+during the ramp (shaded grey region of the figure). Naively, we would expect
+there to be no loss during this transfer, since the final trap depth is larger
+than the temperature of the cloud, and there is good mode-matching of the two
+potentials. To see why this loss occurs, we  look at the evolution in
+phase-space for each projection throughout the ramp, as shown in
+\myfigref{design:fig:trans_U}.
+
+\begin{figure}[htp]
+\centering
   \begin{tabular}{c}
-    \includegraphics[page=1]{figs/sims/mtt_u_x.pdf} \\
-    \includegraphics[page=1,trim=0 0 0 15, clip]{figs/sims/mtt_u_y.pdf} \\
-    \includegraphics[page=1,trim=0 0 0 15, clip]{figs/sims/mtt_u_z.pdf}
+  \import{figs/simsThesis/}{mtt_u_detail_x.pgf} \\
+  \import{figs/simsThesis/}{mtt_u_detail_y.pgf} \\
+  \import{figs/simsThesis/}{mtt_u_detail_z.pgf}
   \end{tabular}
   \caption{
-    For each dimension, a cut-through of the potential and a plot of
-    phase-space positions of the particles is shown. Each column shows a
-    different time during the ramp from the transport trap into the U trap. The
-    cut-throughs pass through $\mathbf{t}_0 = (0, 0, \SI{3}{\milli\meter})$. In
-    the $x$ direction, it is possible to see decompression and recompression as
-    the potential varies from $t=\SI{125}{\milli\second}$ to
-    $t=\SI{200}{\milli\second}$. In the $y$ direction, the depth is lowered due
-    to the superposition of the trapping fields, leading to a significant loss.
-    This is partially visible at $t=\SI{175}{\milli\second}$, where we can see
-    the drop in the potential and particles with $y<0$, $v_y<0$ escaping the
-    trap. In the $z$ direction, some hotter molecules escape as the U trap
-    reaches its final depth at $t=\SI{200}{\milli\second}$. Note that this loss
-    has ended after the settling time, which can be seen in
-    \myfigref{design:fig:U_Z0i}.
+    Each pair of rows shows the phase-space plots for the MTT to U trap
+    handover simulation in the $q_i$-$v_i$ plane, along with the cut-through of
+    the potential through the trap centre along $q_i$ at various times. This
+    supplements the simulation summary shown in \myfigref{design:fig:mttusum}.
+    The superposition of the quadrupole and U-traps briefly causes a lowering
+    of the trapping potential, as can be seen at \SI{75}{\milli\second} in the
+    $y$ projection. Such reductions are not accounted for when considering the
+    simple phase-space handovers discussed in the main text.
   }
-  \label{design:fig:trans_U}
+  \label{design:fig:mttudetail}
 \end{figure}
 
 At $t=\SI{175}{\milli\second}$ there is a noticeable decrease in the trapping
-depth in the $y$ direction. This is the cause of the particle leak, and occurs
+depth in the $-y$ direction. This is the cause of the particle leak, and occurs
 due to the due to the superposition of the two fields causing an overall
 decrease in the trap depth in the $x$ and $y$ directions. This only occurs for
-a brief period during the ramp (lasting approximately \SI{40}{\milli\second}). 
+a brief period during the ramp (lasting approximately \SI{40}{\milli\second}).
+Hence some of the more energetic particles are lost, as can be seen in the
+figure.
 
-In addition to the loss during the ramp, we observe a steady loss between
-$t=\SI{200}{\milli\second}$ and $t=\SI{300}{\milli\second}$, but only when the
-simulation accounts for collision with the chip surface. This loss due to
-collision occurs in the U wire because of its position beneath the chip. This
-means that the trap is not sufficiently deep to hold our molecules for an
-extended period. However the holding time in this simulation is only for
-illustration, and the prolonged trapping in the U trap will not be part of the
-final experiment. Hence these losses can be ignored.
-
-\subsection{Handover to $\mathrm{Z0_i}$}
+\subsection{U - Z transfer}
 \label{design:sim:U_to_Z0i}
 
-The U to $\mathrm{Z0_i}$ handover occurs in our simulation from
-$t=\SI{300}{\milli\second}$ to $t=\SI{400}{\milli\second}$, shown in
-\mysubfigref{design:fig:simparams}{c}.  The phase space positions of the
-molecules and the potentials are shown in \myfigref{design:fig:U_Z0i}.
-
-\begin{figure}[p]
-\centering
-  %\setlength\extrarowheight{-3pt}
-  \begin{tabular}{c}
-    \includegraphics[page=1]{figs/sims/u_Z0i_x.pdf} \\
-    \includegraphics[page=1,trim=0 0 0 15, clip]{figs/sims/u_Z0i_y.pdf} \\
-    \includegraphics[page=1,trim=0 0 0 15, clip]{figs/sims/u_Z0i_z.pdf}
-  \end{tabular}
-  \caption{
-    The same simulation results are displayed as in
-    \myfigref{design:fig:trans_U}, this time for the handover to $\mathrm{Z0_i}$.
-    The superposition of the U and Z traps causes a reduction of the trap depth
-    in the $x$ direction, as seen at time $t=\SI{375}{\milli\second}$.
-    Molecules can be seen coming into contact with the chip surface when held
-    in the U trap, but after transfer to the Z trap, which is located on the
-    chip surface, the cloud is strongly repelled from the surface.
-  }
-  \label{design:fig:U_Z0i}
-\end{figure}
-
-In the ramp between the transport trap and the U trap, we saw that a hole was
-introduced in the trapping potential due to interference between the two
-trapping fields. We will see a similar effect when transferring from the U trap
-to trap $\mathrm{Z0_i}$.  This time the reduction in depth appears in the $x$
-direction, and is due to the current in the U and Z wires opposing each other
-on the positive $x$ side. This can be seen in \myfigref{design:fig:U_Z0i} at
-$t=\SI{375}{\milli\second}$.
-
-In \myfigref{design:fig:simparams} we see that the loss is again about 10\% of
-the particles, however there is no significant change in the phase space
-density. The acceptance of trap $\mathrm{Z0_i}$ is smaller than the emittance
-of the U, so this is to be expected.
-
-\subsection{Compression to $\mathrm{Z0_f}$}
-
-In the final stage of the simulation we look at a compression stage. The
-trapping potential is adiabatically altered to bring the field minimum closer
-to the chip surface. This is achieved by increasing the bias field, but since
-this also increases the trap depth the cloud is simultaneously compressed as it
-is heated. Since the phase space density is conserved, the particles heat up in
-the trap. This phenomenon is made visible in
-\mysubfigref{design:fig:simparams}{d}.
-
-The trajectories and potentials are shown in \myfigref{design:fig:Z0i_Z0f}.
-Here the compression in number density and expansion in velocity space is clear
-by the changing cloud shape over time. The cloud also clearly follows the
-potential minimum without losses.
-
-\cm{In these figures state the trapping heights $z_0$}
+The next stage of loading is the U to $\mathrm{Z0_i}$ handover. Simulation of
+this continues immediately from the MTT-U transfer, with the $z$
+bias field is switched off instantaneously. The Z-wire current is then linearly
+ramped on over \SI{100}{\milli\second} to \SI{30}{\ampere}. The bias fields are
+linearly ramped to maintain the trap height at \SI{3}{\milli\meter}.
 %
+The simulation is presented in \mysubfigref{design:fig:uzsim}. We see that
+there is once again a loss of particles, which we can attribute to a similar
+lowering of trap depth during the handover as was seen for the MTT-U handover,
+pictured in \myfigref{design:fig:mttudetail}. Other than this, we see that
+there is minimal change in the particle distribution in space and velocity.
+
 \begin{figure}[p]
 \centering
-  \begin{tabular}{c}
-    \includegraphics[page=1]{figs/sims/Z0i_Z0f_x.pdf} \\
-    \includegraphics[page=1,trim=0 0 0 15, clip]{figs/sims/Z0i_Z0f_y.pdf} \\
-    \includegraphics[page=1,trim=0 0 0 15, clip]{figs/sims/Z0i_Z0f_z.pdf}
-  \end{tabular}
-  \caption{Presentation of the loading simulation is continued from
-  \myfigref{design:fig:trans_U} and \myfigref{design:fig:U_Z0i}. Here we see
-  the compression from $\mathrm{Z0_i}$ to $\mathrm{Z0_f}$. The compression in
-  the spatial dimensions causes heating, which can be seen as a spread in the
-  velocity directions. This is in line with what is expected from Liouville's
-  theorem.
+  \import{figs/simsThesis/}{u_z_summary.pgf}
+  \caption{
+    The U trap to Z trap handover is summarised, with subfigures and colours as
+    in \mysubfigref{design:fig:mttusum}. Here we again see loss effects similar
+    to those seen for the MTT to U trap handover, with a decrease in trap depth
+    which we attribute to changing from a quadrupole trap to a Ioffe-Pritchard
+    trap.
   }
-  \label{design:fig:Z0i_Z0f}
+  \label{design:fig:uzsim}
 \end{figure}
 
-\subsection{Transfer between Z traps}
+\subsection{Z compression}
+
+The final stage of the loading procedure is a linear ramp of the trap height
+from \SI{3}{\milli\meter} below the chip surface to \SI{1}{\milli\meter} below.
+Here only the $y$ bias field is changed (ramping with $\tilde{B}_y \propto
+t^{-1}$. Ramping by increasing the bias field means that the trap depth
+increases, and the cloud is compressed, providing good localisation of the
+molecules.
+
+As can be seen in \myfigref{design:fig:zsim}, there is particle loss,
+although much of this is due to particles that had already left the trapping
+region in the previous ramp, note that in subfigure~(f) the particle number is
+decreasing before the ramp begins. The other major effect of the ramp is
+heating to the spatial compression and conservation of phase-space density.
+%
+The transfer of the cloud towards the chip surface is largely succesful, as can
+be seen in \mysubfigref{design:fig:zsim}{e}, the particles are highly localised
+around the new trap minimum at $z=\SI{1}{\milli\meter}$.
+
+\begin{figure}[p]
+\centering
+  \import{figs/simsThesis/}{z_summary.pgf}
+  \caption{
+  }
+  \label{design:fig:zsim}
+\end{figure}
+
+The entire simulation from MTT to $\mathrm{Z0_f}$ is summarised in
+\myfigref{design:fig:simsum}. For each stage: initialisation (a), MTT-U
+transfer (b), U-Z transfer (c) and Z compression (d) the particle number is
+shown. The total temperature and cloud width are also given for the particles
+that remain in the trap at the end of the simulation. The profile of parameters
+that are changed for each ramp are also given.
+
+\begin{figure}[p]
+\centering
+  \import{figs/simsThesis/}{total_summary.pgf}
+  \caption{
+    Details for each stage of the simulation in turn. Column (a) shows the
+    initialisation procedure. Column (b) shows the ramp from the MTT to U-wire,
+    with the ramp duration shaded grey. During the ramp handover there is some
+    expansion of the cloud, which causes oscillations in the width that can be
+    seen continuing on into the next phase. In column (c) we have the U-Z
+    handover and the $z$ bias field is switched off. Finally in column (d) is the
+    compression in the Z-trap, note in particular the increase in cloud
+    temperature as the width decreases. The lower two rows show the parameters
+    of the simulation that are changed to alter the trapping potentials.
+  }
+  \label{design:fig:simsum}
+\end{figure}
+
+
+\section{Phase-space acceptance of remaining Z traps}
 \label{design:transferbetweenzs}
 
 Once trapped in $\mathrm{Z0_f}$, the remaining loading stages are simply
@@ -756,20 +779,22 @@ space density than previous experiments with atoms, it is important to ensure
 that our loading procedure will not suffer from any unnecessary losses. These
 compressed traps contain hotter molecules, requiring a smaller time step for
 simulation. It is therefore easier to directly examine the acceptance of each
-trap.
+trap. We also note now that the trap gradients are sufficiently large the the
+effects of gravity can be ignored.
 
-These are shown in \myfigref{design:fig:phasematchinggrid}, starting with
-$\mathrm{Z0_f}$ in row (a). The region of the trap that we expect to be
-occupied (as determined by the simulation above) is marked with a dashed line.
-This cloud of molecules will be adiabatically transferred into $\mathrm{Z1_i}$.
+The trap acceptances are shown in \myfigref{design:fig:phasematchinggrid},
+starting with $\mathrm{Z0_f}$ in row (a). The region of the trap that we expect
+to be occupied (as determined by the simulation above) is marked with a dashed
+line.  This cloud of molecules will be adiabatically transferred into
+$\mathrm{Z1_i}$.
 
 Since the process is adiabatic, we can anticipate that there will be no
-reduction in phase space density. The cloud of molecules will be transferred to
+reduction in phase-space density. The cloud of molecules will be transferred to
 $\mathrm{Z1_i}$ with negligible heating. However, the total acceptance of the
-trap is less than the expected phase space volume of the cloud, so there
+trap is less than the expected phase-space volume of the cloud, so there
 will be particle loss due to spillover.
 
-This was anticipated in section~\ref{design:motion}: phase space density cannot
+This was anticipated in section~\ref{design:motion}: phase-space density cannot
 increase in a conservative potential, and the acceptance of the smallest trap
 will be smaller than the initial cloud in the transport trap. So the final
 number of particles will be lower than we started with, as calculated in
@@ -777,7 +802,7 @@ number of particles will be lower than we started with, as calculated in
 
 Next, $\mathrm{Z1_i}$ is adiabatically compressed to $\mathrm{Z1_f}$, with the
 molecules held \SI{100}{\micro\meter} from the surface. Again, this
-compression is adiabatic, so we expect no change in the phase space density.
+compression is adiabatic, so we expect no change in the phase-space density.
 Compression increases the trap acceptance, so there is also no loss of
 particles. This is further supported by the simulated compression of
 $\mathrm{Z0_i}$ to $\mathrm{Z0_f}$ discussed above. The acceptance of
@@ -790,7 +815,6 @@ is the final cause of particle loss (due to spillover). Then the trap is
 compressed to hold the particles \SI{10}{\micro\meter} from the surface, as
 shown in \mysubfigref{design:fig:phasematchinggrid}{c}.
 
-
 \begin{figure}[htb]
 \centering
   \begin{overpic}[page=1]{figs/sims/phase_matching_grid.pdf}
@@ -799,16 +823,16 @@ shown in \mysubfigref{design:fig:phasematchinggrid}{c}.
     \put(0,21){(c)}
   \end{overpic}
   \caption{
-    A low bound of the acceptance (solid) and expected occupation (dashed) of
-    each Z wire trap. This is calculated by finding the acceptance in the weak
-    ($x$) trapping direction. Row (a) shows $\mathrm{Z0_f}$, with occupation
+    The acceptance (solid) and expected occupation (dashed) of each Z wire
+    trap. This is calculated by finding the acceptance in the weak ($x$)
+    trapping direction. Row (a) shows $\mathrm{Z0_f}$, with occupation
     determined by the above simulation. Molecules will be adiabatically
     transferred to $\mathrm{Z1_i}$, which will be fully occupied. Some
     particles will be lost due to the decrease in acceptance but this is to be
-    expected, and phase space density should not increase. In (b) we have the
+    expected, and phase-space density should not increase. In (b) we have the
     acceptance and occupation of $\mathrm{Z1_f}$ following adiabatic
     compression.  Particles will be adiabatically transferred into
-    $\mathrm{Z2_i}$, resulting in similar losses to the previous step.  Row (c)
+    $\mathrm{Z2_i}$, resulting in similar losses to the previous step. Row (c)
     shows the final acceptance and occupation of $\mathrm{Z2_f}$.
   }
   \label{design:fig:phasematchinggrid}
@@ -821,8 +845,8 @@ In this chapter I have presented the design of the chip experiment, starting
 with the source of molecules up to the stage of confinement in a Z trap
 \SI{10}{\micro\meter} from the chip surface. I have shown that we have created
 a loading procedure that will allow us to load this final trap through a series
-of wire traps of decreasing size. This is justified by simulation and visual
-analysis of the acceptance of the various trapping stages.
+of wire traps of decreasing size. This is justified by simulation and
+phase-space analysis of the acceptance of the various trapping stages.
 
 The design leaves scope for the addition of microwave guides on a second layer
 above the trapping wires, as discussed in chapter~\ref{intro}.
