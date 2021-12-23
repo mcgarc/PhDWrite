@@ -1,7 +1,7 @@
 We aim to create squeezed spin states on a molecule chip. I think this is
 possible by employing a quantum non-demolition (QND) measurement on a two-level
-system in the magnetic trap. In this document I will explain in general how
-a QND measurement can be performed by coupling a spin-two system to a cavity,
+system in the magnetic trap. In this chapter I will explain in general how
+a QND measurement can be performed by coupling a spin-half system to a cavity,
 and how squeezed spin states can be created in such a system. I will then
 describe how this could be implemented on a chip trap with calcium monofluoride
 (CaF) molecules.
@@ -13,16 +13,16 @@ describe how this could be implemented on a chip trap with calcium monofluoride
 Consider a spin-half system with ground and excited states $\ket{g}$
 and $\ket{e}$ respectively, with a transition frequency $\omega_0$. These
 states are eigenstates of the spin operator $s_z = \sigma_z /2$ where
-$\sigma_j$ represents the $j^\text{th}$ Pauli matrix.
+$\sigma_j$ represents the Pauli matrix, and $j\in \{x,y,z\}$.
 
 When such a spin interacts with a mode of an optical cavity of frequency
 $\omega_c$, the behaviour is described by the familiar Jaynes-Cummings
-Hamiltonian~\cite{}
+Hamiltonian in the rotating wave approximation~\cite{}
 %
 \begin{equation}
   H_\text{JC} = \hbar\omega_c a^\dagger a + \frac{\hbar \omega_0}{2}\sigma_z +
   \frac{\hbar\Omega}{2}(a^\dagger \sigma_- + a\sigma_+)
-  \label{JCH}
+  \label{squeeze:eqn:JCH}
 \end{equation}
 %
 where $a$ ($a^\dagger$) is the annihilation (creation) operator of the photons,
@@ -31,11 +31,12 @@ $\Omega = 2g$ is the Rabi frequency of the interaction, and $\sigma_\pm =
 detuning of the cavity resonance from that of the spin is $\Delta = \omega_0 -
 \omega_c$.
 
-Light is coupled out of the cavity with some decay rate $\kappa = \omega/Q$,
-with $Q$ being the cavity's quality factor. The spin can decay into other modes
-at some decay rate $\gamma$. We assume that we are in the strong coupling
-r\'egime, so that such decays can be neglected. In this case $g \gg \kappa,
-\gamma$.~\cite{PhysRevA.69.062320}.
+The number of photons in the cavity is $n$, the eigenvalue of the number
+operator $a^\dagger a$.  Light is coupled out of the cavity with some decay
+rate $\kappa = \omega_c/Q$, with $Q$ being the cavity's quality factor. The
+spin can decay into other modes at some decay rate $\gamma$. We assume that we
+are in the strong coupling r\'egime, so that such decays can be neglected. In
+this case $g \gg \kappa, \gamma$.~\cite{PhysRevA.69.062320}.
 
 We shall also assume that we have some control over $\omega_0$ and hence also
 the detuning $\Delta$. Consider the dispersive r\'egime, where  $g\ll|\Delta|$.
@@ -45,7 +46,7 @@ dispersive behaviour by applying  a unitary transformation
 \begin{equation} U = \exp \left[\frac{g}{\Delta}(a\sigma_+ -
 a^\dagger\sigma_-)\right] \end{equation}
 %
-up to second order in $g$.
+up to second order in $g/\Delta$.
 %\footnote{This is quite an interesting reference as
 %they do a lot of what we are interested in but with a Cooper pair box instead
 %of CaF molecules (for experiment see reference \cite{Wallraff2004}). Note that
@@ -55,19 +56,20 @@ up to second order in $g$.
 From this we obtain
 %
 \begin{equation} H= UH_\text{JC}U^\dagger \approx \hbar \omega_c
-  a^\dagger a + \frac{\hbar}{2}\left(\Omega +
+  a^\dagger a + \frac{\hbar}{2}\left(\omega_c +
   \frac{g^2}{\Delta}\right)\sigma_z + \frac{\hbar
   g^2}{\Delta}\sigma_z a^\dagger a.  \end{equation}
 %
 These three terms describe the oscillation of light in the cavity, the energy
-of the spin (which undergoes the usual AC Stark shift) and the interaction of
-the photons with the spin. This last term is what will ultimately allow us to
-perform QND measurement, since it will enable exchange of information between
-the z-component of the spin with the photons.
+of the spin and the interaction of the photons with the spin. Note that the
+interaction of the photons and the spins induces the usual AC start shift
+proportional to $(n+\frac{1}{2})$. The last term is what will ultimately allow
+us to perform QND measurement, since it will enable exchange of information
+between the z-component of the spin with the photons.
 
 \subsection{Spin ensemble Hamiltonian}
 
-We are interested in the case where there are $N$ spins in the
+We are interested in the case where there are $N\gg1$ spins in the
 cavity. Assume that the coupling between each spin and the resonator photons is
 the same (that is, the coupling is homogeneous), then the ensemble is described
 by the Tavis-Cummings Hamiltonian~\cite{Kirton2019}
@@ -79,9 +81,8 @@ by the Tavis-Cummings Hamiltonian~\cite{Kirton2019}
     \sigma^i_- + a\sigma^i_+)\right]
 \end{equation}
 %
-% TODO proper equation ref here
-in direct analogy to eqn~\ref{JCH}, and using $\sigma_*^i$ to refer to the
-$i^\text{th}$ spin's operators.
+in direct analogy to~\myeqref{squeeze:eqn:JCH}, and using $\sigma_*^i$ to refer
+to the $i^\text{th}$ spin's operators.
 
 Now define the spin operator for a single spin
 %
@@ -120,7 +121,7 @@ for new Hamiltonian
 \begin{equation}
   H_\text{E}= U_\text{E}H_\text{TC}U_\text{E}^\dagger \approx 
     \hbar \omega_c a^\dagger a + 
-    \frac{\hbar}{2}\left(\Omega + \frac{g^2}{\Delta}\right)S_z + 
+    \frac{\hbar}{2}\left(\omega_c + \frac{g^2}{\Delta}\right)S_z + 
     \frac{\hbar g^2}{\Delta}S_z a^\dagger a.
   \label{eqn:He}
 \end{equation}
@@ -137,7 +138,7 @@ Consider the spins represented on the Bloch sphere \cite{PhysRevA.47.3554}.
 Here the state of the $i^\text{th}$ spin is written as
 %
 \begin{equation}
-  \ket{\psi}_i = \cos\left(\frac{\theta_i}{2}\right)\ket{e}_i +
+  \ket{\psi(\theta, \phi)}_i = \cos\left(\frac{\theta_i}{2}\right)\ket{e}_i +
   e^{i\phi_i}\sin\left(\frac{\theta_i}{2}\right)\ket{g}_i.
   \label{eqn:blochspin}
 \end{equation}
@@ -150,29 +151,28 @@ the ensemble is
   \ket{\Psi} = \bigotimes_{i=1}^N \ket{\psi}_i.
 \end{equation}
 Such a state can also be represented on a sphere as the sum of all the
-individual spin vectors. In this case the radius of the sphere is variable. For
-the purposes of this discussion, we will limit ourselves to considering the
-case where the spins are in a coherent spin state (CSS), that is they are all
-aligned such that 
+individual spin vectors. In this case the radius of the sphere is variable. 
 
 We can limit ourselves to considering the case where spins are aligned,
 so that for all $i$, $\theta_i = \theta$ and $\phi_i = \phi$, in which case the
-sphere has radius $N$. Such a state is known as a coherent spin state
-(CSS)~\cite{MA201189, Gazeau2009} and
-% TODO proper fig. ref
-is illustrated in Fig.~\ref{CSSbloch}. The state can be written similarly to
-% TODO proper eqn. ref
-Eqn.~\ref{eqn:blochspin} as
+sphere has radius $N/2$. Such a state is known as a coherent spin state
+(CSS)~\cite{MA201189, Gazeau2009}. In such a case it is useful to consider a system where
+all spins are initially in, for example, the ground state. They then undergo
+the same uniform rotation into the desired state $\ket{\psi(\theta, \phi)}_i$,
+which we write as
 %
 \begin{equation}
-  \ket{\Psi} = \cos\left(\frac{\theta}{2}\right)\ket{e} +
-  e^{i\phi}\sin\left(\frac{\theta}{2}\right)\ket{g}
+  \ket{\Psi(\theta,\phi)} = \mathcal{R}(\theta, \phi)\ket{g}
 \end{equation}
 %
-where $\ket{e} = \bigotimes_{i=1}^N\ket{e}_i$ and similarly for $\ket{g}$.
-However, it is often more useful to denote the state in terms of the
+where $\ket{g} = \bigotimes_{i=1}^N\ket{g}_i$ and similarly for $\ket{e}$. We
+represent this visually on the Bloch sphere, in analogy with the single spin
+case, as illustrated in Fig.~\ref{CSSbloch}. 
+% TODO Need to do my own version of this figure to show single spin bloch
+% sphere, 
+
+It is also useful to denote the state in terms of the
 eigenstates of the angular momentum operator. In particular, the eigenstate of
-% TODO Need to introduce the eigenstates above with spin operators?
 $S_z$, denoted $\ket{S, m}$ can be used to describe a CSS
 %
 \begin{equation}
@@ -191,27 +191,23 @@ and $\ket{g} = \ket{S, -S}$.
   sphere. Note the reduced uncertainty in the z direction.
   Both reproduced from~\cite{Cox2016}}
   \label{CSSbloch}
+  % TODO Redo this, see earlier TODO
 \end{figure}
 
 Of particular interest to us will be the CSS aligned along the $x$ axis, so
-that $\theta = \pi/2$ and $\phi = 0$. We denote such a state as $\ket{+}$, since
+that $\theta = \pi/2$ and $\phi = 0$. We denote such a state as
 %
 \begin{equation}
   \ket{+} = \bigotimes_{i=1}^N \ket{+}_i.
 \end{equation}
-%
-This state can be created by initialising the system with all states in the
-ground state $\ket{g}$ and then performing a roataional transormation
-% TODO: check pulse!
-($\pi/2$-pulse) on each spin.
 
-Direct measurement of any individual spin would yeild $\ket{e}_i$ or
-$\ket{g}_i$ with probability $p=1/2$. Hence measuring the eigenvalue of $S_z$
-will give a value $m$ with probabilty given by the binomial
+Direct measurement of any individual spin in $\ket{+}$ would yield $\ket{e}_i$
+or $\ket{g}_i$ with probability $p=1/2$. Hence measuring the eigenvalue of
+$S_z$ will give a value $m$ with probabilty given by the binomial
 theorem~\cite{Gazeau2009}
 %
 \begin{equation}
-  P(m) = \frac{1}{2^N} {N \choose m +N/2}
+  P(m) = \frac{1}{2^N} \binom{N}{m+N/2}
 \end{equation}
 %
 or for large $N$, the binomial is approximated by the Gaussian
@@ -226,15 +222,16 @@ amplitudes of $\ket{+}$ so that
 %
 \begin{equation}
   \ket{+} = \sum_{m=-S}^S \sqrt{P(m)}\ket{S,m}.
+  \label{squeeze:eqn:plusdicke}
 \end{equation}
 
 Note that such a state has expectation values $\langle S_z \rangle = 0$,
 $\langle S_z^2\rangle = \Delta_m^2$, and the uncertainty in $S_z$ is consistent
 with the usual formula $\Delta_m^2 = \langle S_z^2 \rangle - \langle
 S_z\rangle^2$. This uncertainty is the projection noise of a CSS, and it
-corresponsts to to an uncertainty in $\theta$
+corresponds to to an uncertainty in $\theta$
 %
-\footnote{This can be shown geometrically: consider the anlge on the Bloch
+\footnote{This can be shown geometrically: consider the angle on the Bloch
 sphere between the x-axis and the arrow representing the CSS, call this
 $\theta'$ and assume it to be small. Then $\sin
 \theta' \approx \tan \theta' = m/S \approx \theta'$. Differentiating both sides
@@ -245,41 +242,17 @@ $\Delta \theta' = \Delta \theta$.
 \begin{equation}
   \Delta\theta = \frac{1}{\sqrt{N}}
 \end{equation}
-which is known as the standard quantum limit (SQL). By symmety $\Delta \phi =
+which is known as the standard quantum limit (SQL). By symmetry $\Delta \phi =
 \Delta \theta$.
 
 Note that these uncertainties hold only for $\ket{+}$ and other states where
-$\theta = \pi$ (states on the equator of the Bloch sphere). For example for
-$\ket{e}$ and $\ket{g}$, $\Delta \theta = 0$.~\cite{PhysRevA.47.3554}
+$\theta = \pi$ (states on the equator of the Bloch sphere). For example in the
+cases of $\ket{e}$ and $\ket{g}$, $\Delta \theta = 0$~\cite{PhysRevA.47.3554}.
 
-%Note that the expected value of $S_z$ is
-%%
-%\begin{align}
-%  \langle S_z \rangle &= \bra{+}S_z\ket{+} \\
-%  &= \sum_{m,n} \sqrt{P(m)P(n)}m\bra{n}\ket{m} \\
-%  &= \sum_m mP(m) \\
-%  &\approx \int_{-\infty}^\infty mP(m)\dd m \\
-%  &=0.
-%\end{align}
-%%
-%Here we use the fact that $N$ is large, to approximate the summation as an
-%integral, and note the final equality since the integrand is odd. Of course,
-%this result is intuitvely obvious.
-%
-%Similarly we have that
-%%
-%\begin{align}
-%  \langle S_z^2 \rangle &= \bra{+}S_z^2\ket{+} \\
-%  &\approx \int_{-\infty}^\infty m^2P(m) \dd m \\
-%  &=\frac{N}{4}, 
-%\end{align}
-%%
-%so the uncertainty in $m$ is...
-
-\subsection{Quantum non-demoltion measurement of the spin state}
+\subsection{Quantum non-demolition measurement of the spin state}
 
 A useful tool for quantum information processing is the quantum non-demolition
-(QND) measurement~\cite{}. Such a measurement allows the insepction of the
+(QND) measurement~\cite{}. Such a measurement allows the inspection of the
 state of a system (in this case the spin ensemble) while preserving some
 quantum coherence. QND measurements can be deployed not only for state readout,
 but for the preparation of non-classical states, as will be explained in the
@@ -287,8 +260,9 @@ following sections. The QND method described here has been demonstrated to work
 in superconducting qubits~\cite{PhysRevA.69.062320} and expands on the proposal
 in \cite{Andre2006}.
 
-Consider the spin ensemble coupled to resonator photons as described above. Take
-the resonator photons to be in a canonical coherent state~\cite{Gazeau2009}
+Consider the spin ensemble coupled to resonator photons as described above, and
+initialised in the state $\ket{+}$ ($a_m = \sqrt{P(m)}$). Take the resonator
+photons to be in a canonical coherent state~\cite{Gazeau2009}
 %
 \begin{equation}
   \ket{\alpha} = e^{-\frac{|\alpha|^2}{2}}\sum_{n=0}^\infty \frac{\alpha^n}{\sqrt{n!}} \ket{n}
@@ -340,33 +314,27 @@ by writing $\ket{\alpha}$ in terms of the summation over Fock states
 It is now clear measuring the phase of the light leaving the cavity
 (for example with a homodyne detector) will therefore tell us something about
 the state of the ensemble. Notably, the information gained tells us only about
-the entire state of the ensemble, and not about any individual spins. Therfore
+the entire state of the ensemble, and not about any individual spins. Therefore
 the quantum coherence is conserved throughout this process.
 % TODO I'm not convinced by this assertion. CITE? Actually check... 
-In the case that the measurement is perfectly accurate, the final state of the
-% TODO fix abs
-system will be $\ket{S, m}$ with probability $P(m) = |a_m|^2$. This constitutes
-a QND measurement of the system. %TODO Check/ cite
 
 \subsection{Homodyne measurement}
 
-As mentioned above, the phase of the light can be determined by a homodyne
-measurement ~\cite{agarwal2012}, as illustrated in Fig.
-\ref{fig:homodyne}.
 % TODO Homodyne figure
-The phase-shifted light transmitted through the cavity
-($\ket{\Psi_\text{out}}$)
-% TODO Need to account for transmission coefficient, mention this above?
-is then incident on one port (a) of a
-% balanced?
-beam splitter. On the other port (b) we have a strong local oscillator (LO) in a
-coherent state $\ket{\beta}$. We assume the LO has large amplitude ($|\beta|
+As mentioned above, the phase of the light can be determined by a homodyne
+measurement ~\cite{agarwal2012}, as illustrated in Fig.  \ref{fig:homodyne}.
+The phase-shifted light transmitted through the cavity is incident on one port
+(a) of the beam splitter (we label this light $\ket{\Psi_a}$). On the other
+port (b) we have a strong local oscillator (LO) in a coherent state
+$\ket{\beta}$. We assume the LO has large amplitude ($|\beta|
 \gg |\alpha|$) and has phase $-\varphi$, which we set relative to the phase of
 alpha, so that $\arg(\alpha)=0$.
+% TODO Need to account for transmission coefficient but probably later, see
+% Mauro's paper (Q. Tomography), eqn. 2.37 - 2.42
 
-The annihilation operators associated with the
-input ports are related to those of the output ports (c and d) by the usual
-relation for a balanced beam splitter~\cite{agarwal2012}
+The annihilation operators associated with the input ports are related to those
+of the output ports (c and d) by the usual relation for a balanced beam
+splitter~\cite{agarwal2012}
 %
 \begin{equation}
   \begin{pmatrix} c \\ d \end{pmatrix} = \frac{1}{\sqrt{2}}\begin{pmatrix}
@@ -376,116 +344,120 @@ relation for a balanced beam splitter~\cite{agarwal2012}
 %
 The difference in the expected photon numbers arriving at each
 detector is
-% TODO need to use $a' = \sqrt{\kappa} a$ here. IO formalism for transmitted
-% light (I think...)
-%
+% TODO Need to introduce this a -> kappa a thing here, from I/O formalism, but
+% I lost the paper I need for the cite and explanation..
 \begin{align}
   \langle c^\dagger c - d^\dagger d\rangle &= i
-  \bra{\Psi_\text{out}}\bra{\beta}(a^\dagger b-
-  ab^\dagger)\ket{\beta}\ket{\Psi_\text{out}} \\
-  & = i|\beta|\kappa_T \bra{\Psi}(a^\dagger e^{i\varphi} - a
-  e^{-i\varphi})\ket{\Psi} \\
-  &= \sqrt{2}|\beta|\kappa_T\bra{\Psi}(X\sin\varphi +
-  Y\cos\varphi)\ket{\Psi}.
+  \bra{\Psi_a}\bra{\beta}(a^\dagger b-
+  ab^\dagger)\ket{\beta}\ket{\Psi_a} \\
+  & = i|\beta|\kappa \bra{\Psi_a}(a^\dagger e^{i\varphi} - a
+  e^{-i\varphi})\ket{\Psi_a} \\
+  &= 2|\beta|\kappa\bra{\Psi_a}(Y\cos\varphi - X\sin\varphi)\ket{\Psi_a} \\
+  &= 2|\beta|\kappa\bra{\Psi_a}(X\sin(\varphi+\frac{\pi}{2}) +
+  Y\cos(\varphi+\frac{\pi}{2}))\ket{\Psi_a}.
+  \label{squeeze:eqn:homoquads}
 \end{align}
 %
 The last equality introduces the canonical quadratures of the light field,
-corresponding to its real and imaginary parts. They are defined by
-%
+corresponding to its real and imaginary parts. They are defined
+by~\cite{gerry_knight_2004}
 \begin{align}
-  X = \frac{a + a^\dagger}{\sqrt{2}} && Y = \frac{a - a^\dagger}{\sqrt{2}}.
+  X = \frac{a + a^\dagger}{2} && Y = \frac{a - a^\dagger}{2i}.
 \end{align}
 
 Hence measuring the intensity of each output of the beamsplitter can give us
-information on the phase of the light. We choose $\varphi = \pi/2$ so that the
-% TODO FOrgot how to do i.e. in latex
-measurement is of the $Y$ quadrature, i.e. we measure the imaginary part of
-$\alpha e^{-i\theta_Tm}$ for a result
+information on the phase of the light. We choose $\varphi = 0$ so that the
+measurement is of the $Y$ quadrature, i.e.\ we measure the imaginary part of
+$\ket{\Psi_a} = \ket{\alpha e^{-i\theta_Tm}}$ for a result
 %
 \begin{equation}
-  \langle c^\dagger c - d^\dagger d\rangle = \sqrt{2}\kappa |\alpha||\beta|\left\langle\sin(\frac{g^2 T
-  m}{\Delta})\right\rangle.
+  \langle c^\dagger c - d^\dagger d\rangle =  2\kappa
+  |\alpha||\beta|\left\langle\sin(\frac{g^2 T S_z}{\Delta})\right\rangle.
 \end{equation}
 %
 For a short pulse of light, the interrogation time will be the lifetime of the
-photons in the cavity, $T = \kappa^{-1}$. In this r\'egime the small angle
-approximation can be made so that
+photons in the cavity, $T = \kappa^{-1}$. In this r\'egime we can expand sine
+to first order, so that
 %
 \begin{equation}
-  x \approx \frac{|\alpha|g^2 T}{\Delta}S_z
-  \label{eqn:xapprox}
-\end{equation}
-%
-and therefore
-% TODO Can I justify this please? Could just sub in suitable values...
-%
-\begin{equation}
-  \langle c^\dagger c - d^\dagger d\rangle = \sqrt{2}|\alpha||\beta|
-  \frac{g^2}{\Delta}\langle m\rangle.
+  \langle c^\dagger c - d^\dagger d\rangle = 2|\alpha||\beta|
+  \frac{g^2}{\Delta}\langle S_z\rangle.
   \label{eqn:homomeas}
 \end{equation}
 
-To resolve $m$ perfectly, the uncertainty in the measurement must be
-$\Delta_\eta \ll \sqrt{2}|\alpha||\beta|g^2/\Delta$. 
-%
-% TODO Analyse this result
-%
-% Make this sentence fit with other things
-The effects of having larger uncertainty are discussed in the next section.
+In this section we have introduced the homodyne measurement, and shown how it
+can be applied here to measure the light after interacting with spins inside
+the cavity, thus giving us a measurement of $S_z$. In the next section we will
+see how this can be applied to produce non-classical states in the spin system.
+
+\section{Entangled states in the ensemble}
+
+% TODO Spiel on why entangled states are interesting, what they can do.
+% Emphasis on squeezed states
 
 % TODO
-\emph{
+\cm{
 Need to consider dephasing of spins, some spins collapsing on measurement
 (shrinking the Bloch sphere) and the uncertainty associated with the
 measurement.
 }
 
-\section{Entangled states in the ensemble}
-
-% TODO: Spiel
-
-\subsection{Spin squeezing}
-
-% TODO: Better description of squeezing here
-
-For the purposes of quantum meterology, it can be useful to reduce the
-uncertainty in one of $\theta$ or $\phi$...
-% TODO: cite!
-
 \subsection{QND measurement to squeeze the ensemble}
 
-% TODO: Replace this example with a more abstract discussion of the squeezing
-% process, with more details on the measurement of the light and how this can
-% could create a max. entangled state with precise enough measurement, less
-% precision -> less squeezing
+% TODO I never actually talk about spin collapse, so maybe don't draw attention
+% to this...
+Up to this point we have demonstrated that a QND measurement of $m$ can be
+performed via homodyne measurement of the light exiting the cavity. We now wish
+to determine the state of the system following such a measurement. We will
+begin by considering an example measurement which is able to exactly determine
+the eigenvalue of $S_z$ without any collapse of spins. In this toy model, we
+say that the outcome of this measurement is $\meas{m}$, so the projector is
+%
+\begin{equation}
+  \Upsilon_0(\meas{m}) = \ket{S, \meas{m}}\bra{S, \meas{m}}.
+\end{equation}
 
-% Consider the above case of QND measurement, with Psi(0) = +, in which case
-% P(m) is some Gaussian (for large N)...
+In general, the state of a system following a measurement
+is~\cite{gerry_knight_2004}
+%
+\begin{equation}
+  \ket{\text{result}} = \frac{\Upsilon\ket{\Psi}}{\sqrt{P_\text{result}}}
+  \label{squeeze:eqn:projresult}
+\end{equation}
+%
+where $\Upsilon$ is the relevant projector, and
+%
+\begin{equation}
+  P_\text{result} = \bra{\Psi}\Upsilon\ket{\Psi}
+\end{equation}
+%
+is the probability of determining this result, ensuring that
+$\ket{\text{final}}$ is normalised.
 
-% TODO Need to have introudced and explained what I mean by perfect QND
-% measurment above.
-Consider a perfect QND measurement peformed on the state $\ket{\Psi(0)} =
-\ket{+}$. The end result will be a state
+Hence, such a QND measurement performed on the state $\ket{\Psi(0)} =
+\ket{+}$ produces the state
 %
 \begin{equation}
   \ket{\Psi_{\meas{m}}} = \ket{S, \meas{m}}
 \end{equation}
 %
 where $\meas{m}$ is the eigenvalue of $S_z$ that was the outcome of our
-measurement, which was obtainted with probability $P(\meas{m})$.
-$\ket{\Psi_{\meas{m}}}$ is a Dicke state~\cite{Baertschi2019}, the sum of all
-states with $N_e = \meas{m} + N/2$ spins in the excited state, and $N_g = N -
-N_e$ spins in the ground state.  We can write this in terms of the set $\Pi$ of
-combinations of $N_e$ numbers chosen from $[1,N]\cap\mathbb{Z}$, which we
+measurement, obtained with probability $P(\meas{m})$. This is of course what we
+expect of our perfect measurement.
+
+It is of note that $\ket{\Psi_{\meas{m}}}$ is a Dicke
+state~\cite{Baertschi2019}, the sum of all states with $N_e = \meas{m} + N/2$
+spins in the excited state, and $N_g = N - N_e$ spins in the ground state.  We
+can write this in terms of the set $\Pi$ of combinations of $N_e$ numbers
+chosen from $[1,N]\cap\mathbb{Z}$, as
 %
 \begin{equation}
-  \ket{\Psi_{\meas{m}}} = {N \choose N_e}^{-\frac{1}{2}}\sum_{\pi \in \Pi}
-  \bigotimes_{i=1}^{N_e} \sigma_x^{\pi_i} \ket{g}
+  \ket{\Psi_{\meas{m}}} = \binom{N}{N_e}^{-\frac{1}{2}}\sum_{\pi \in \Pi}
+  \bigotimes_{i=1}^{N_e} \sigma_x^{\pi_i} \ket{g}.
 \end{equation}
 
-To borrow an example from
-reference~\cite{Cox2016}, consider the case with $N=4$, $\meas{m}=0$ so we have
-$N_e = N_g = 2$. Then the state is
+To borrow an example from reference~\cite{Cox2016}, consider the case with
+$N=4$, $\meas{m}=0$ so we have $N_e = N_g = 2$. Then the state is
 %
 \begin{equation}
   \ket{\Psi_0} = \frac{1}{\sqrt{6}}(\ket{eegg} + \ket{egeg} + \ket{egge} +
@@ -495,67 +467,78 @@ $N_e = N_g = 2$. Then the state is
 which is a maximally entangled state, represented on the Bloch sphere as a ring
 around the equator.
 %
-Clearly, such a state would have zero uncertainty in $S_z$, it is therefore
-%TODO emph?
-\emph{maximally squeezed}
-and also has infinite uncertainty in $S_x$.
+Such a state necessarily has zero uncertainty in $S_z$, since this is the value
+that has been measured. It is therefore maximally squeezed and also has maximum
+uncertainty in $S_x$.
 
-With perfect measurement, it is therfore possible to generate a maximally
-squeezed state, simply by peforming QND measurement on  $\ket{+}$. The state
+With this idealised measurement, it is therefore possible to generate a maximally
+squeezed state, simply by performing QND measurement on $\ket{+}$. The state
 that is produced will be entangled (unless $\meas{m} = \pm S$). We know the
 state we have produced by looking at the value of $\meas{m}$, but have no
 control over this outcome, for this reason the squeezing is referred to as
-% TODO when do I emph new words?
-\emph{conditional}.
+conditional squeezing.
 %
 We expect for large $N$ that $|\meas{m}|/N \ll 1$, so it is likely that the
 state will have $m$ close to zero.
 
+\subsection{Realistic squeezing with QND measurement}
+
 In the event that the homodyne measurement is not perfect, what is the state
-that we are in? If the uncertainty assoicated with the measurement is smaller
+that we are in? If the uncertainty associated with the measurement is smaller
 than the standard quantum limit, then we expect that we are somewhere between
 the maximally squeezed state and the CSS, so that some squeezing has
-occured.
+occurred.
 
-The nature of the resulting state is described by the
-projector onto the x states:~\cite{Cox2016, Zhang2019}
+We saw in the previous section that performing a homodyne measurement on the
+light is equivalent to performing a measurement on the spin states, with the
+signal intensity related to the measurement of $S_z$ by \myeqref{eqn:homomeas}.
+The associated projector is~\cite{MAURODARIANO2003205, Vanner16182, Cox2016}
+%% NOTE Don't bother citing Zhang2019 because it just cites this Vanner paper
 %
 \begin{equation}
-  \Pi_\text{light}(\meas{x}) = \frac{1}{\sqrt{2\pi\Delta_\eta^2}}\exp\left[
-    -\frac{(x-\meas{x})^2}{2\Delta_\eta^2}\right].
-\end{equation}
-%
-Due to the entanglement of the light with the spins, this is equivalent to
-projecting onto the eigenstate of $S_z$, which will act directly on the spin
-state. Maintaing the approximation of
-% TODO eqn ref
-eqn.~\ref{eqn:xapprox}
-we have the projector
-%
-\begin{equation}
-  \Pi(\meas{m}) = \frac{1}{\sqrt{2\pi\Delta_{S_z}^2}}\exp\left[
+  \Upsilon(\meas{m})\ket{\Psi(T)} = \frac{1}{\sqrt{\pi\Delta_m^2}}\exp\left[
     -\frac{(S_z-\meas{m})^2}{2\Delta_{S_z}^2}\right].
 \end{equation}
 %
-where
+This operator represents a measurement where we have some Gaussian uncertainty
+($\Delta_{S_z}$) in the measured result. This uncertainty is related to the
+previously defined measurement uncertainty in the homodyne detection. Again
+using \myeqref{squeeze:eqn:homoquads}, we have that
 %
 \begin{equation}
   \Delta_{S_z}^2 = \frac{\Delta_\eta^2}{(|\alpha|\theta_T)^2}.
 \end{equation}
 
-Following the above example for a perfect measurement, we again QND measurement
-of the state $\ket{+}$. In this case the probability of measuing $m=\meas{m}$
-from $\ket{\Psi(T)}$ is given by~\cite{}
+The final spin state will once again be given by
+\myeqref{squeeze:eqn:projresult}. Begin by calculating the numerator, that is
+the homodyne projector acting on $\ket{\Psi(T)}$
 %
+\begin{equation}
+  \Upsilon(\meas{m})\ket{\Psi(T)} =
+  \sum_{m=-S}^{S}a_m\Upsilon(\meas{m})\ket{S,m}\ket{\alpha e^{-i\theta_T m}}.
+\end{equation}
+%
+At this point we drop the ket representing the state of the light. Although we
+have a QND measurement on the spins, this process destroys the light state, and
+so it is no longer relevant. Therefore we have
+%
+\begin{equation}
+  \Upsilon(\meas{m}) = \frac{1}{\sqrt{\pi\Delta_m^2}}\exp\left[
+    -\frac{(m-\meas{m})^2}{2\Delta_m^2}\right]\ket{S,m}.
+\end{equation}
+%
+Which we can immediately use to find the probability
+%
+%TODO Fix probability noomenclature throughout
 \begin{align}
-  P(m=\meas{m}) &= \bra{+}\Pi(\meas{m})\ket{+}\\
+  P(m=\meas{m}) &= \bra{\Psi(T)}\Upsilon(\meas{m})\ket{Psi(T)}\\
   & = \sum_{m'=-S}^S \sum_{m=-S}^S \sqrt{P(m')P(m)}\bra{S,
-  m'}\Pi(\meas{m})\ket{S, m} \\
+  m'}\Upsilon(\meas{m})\ket{S, m} \\
   & = \sum_{m'=-S}^S \sum_{m=-S}^S \sqrt{P(m')P(m)}
   \frac{1}{\sqrt{2\pi\Delta_{S_z}^2}}\exp\left[-\frac{(m-\meas{m})^2}{2\Delta_{S_z}^2}\right] 
   \bra{S, m'}\ket{S, m} \\
   &= \sum_{m=-S}^{S} P(m) 
-  \frac{1}{\sqrt{2\pi\Delta_{S_z}^2}}\exp\left[-\frac{(m-\meas{m})^2}{2\Delta_{S_z}^2}\right] 
+  \frac{1}{\sqrt{2\pi\Delta_{S_z}^2}}\exp\left[-\frac{(m-\meas{m})^2}{2\Delta_{S_z}^2}\right] .
 \end{align}
 %
 taking the large $N$ limit, and approximating the summation as an integral,
@@ -566,37 +549,37 @@ this last equality becomes a convolution of two Gaussians, so that
     -\frac{\meas{m}^2}{2(\Delta_m^2 + \Delta_{S_z}^2)}\right].
 \end{equation}
 %
-This becomes eqn.~\ref{eqn:CSSmprob} in the limit that $\Delta_{S_z} \to 0$.
-% TODO Extend to not maximally squeezed states
+This becomes eqn.~\ref{eqn:CSSmprob} in the limit that $\Delta_{S_z} \to 0$
+i.e., when the uncertainty in the homodyne detection is small we measure the
+state $m$ according to its expected distribution. If we have some large
+uncertainty in our measurement then the distribution that we measure is not the
+same as the expected distribution.
 
-Finally, we can calulate the state after the measurement, which is given
-by~\cite{}
+Finally we calculate the state resulting from the measurement, again taking the
+approximation that we are in the limit of large $N$, and also that
+$\Delta_{S_z}^2 \ll \Delta_m^2$,
 %
 \begin{equation}
   \ket{\Psi_\text{final}} =
-  \frac{\Pi(\meas{m})\ket{+}}{\bra{+}\Pi(\meas{m})\ket{+}}.
+  \sum_{m=-S}^S\left\{\frac{1}{\sqrt{2\pi\Delta_{S_z}^2}} \exp\left[-\frac{(m -
+  \meas{m})^2}{2\Delta_{S_z}^2}\right]\right\}^\frac{1}{2} \ket{S,m}
 \end{equation}
 %
-We again take the approximation that we are in the limit of large $N$, and also
-that $\Delta_{S_z}^2 \ll \Delta_m^2$,
-%
-\begin{equation}
-  \ket{\Psi_\text{final}} = \sum_{m=-S}^S\frac{1}{\sqrt{2\pi\Delta_{S_z}^2}}
-  \exp\left[-\frac{(m - \meas{m})^2}{2\Delta_{S_z}^2}\right] \ket{S,m}
-\end{equation}
-%
-% TODO Better fig. and refernce
-which is a squeezed state, analogous to that shown in fig~\ref{CSSbloch}.
+% TODO Better fig. and reference
+which is a state that has been squeezed in comparison to the initial spin state
+$\ket{+}$ as in \myeqref{squeeze:eqn:plusdicke}. The $S_z$ distribution now has
+a width $\Delta_{S_z}^2$ rather than $\Delta_m^2$, as illustrated in
+fig~\ref{CSSbloch}.
 
-\emph{Should probably talk about the expectation values, definitely want to
+\cm{Should probably talk about the expectation values, definitely want to
 talk about how many spins we can lose to collapse and what we can expect
-squeezing paramter to be.}
+squeezing parameter to be. (Mike agrees!)}
 
 \subsection{Cat states}
 
 % TODO
 
-\emph{Measuring the other quadrature creates a cat state because we get
+\cm{Measuring the other quadrature creates a cat state because we get
 $\cos(x) \approx 1 - x^2$ not $\sin(x)\approx x$, which means the sign of
 measured $\theta$ is hidden.}
 
@@ -680,7 +663,7 @@ measured $\theta$ is hidden.}
 For our two-level system in CaF choose the states $\ket{g} = \ket{N=0, F=1,
 m_F=1}$ and $\ket{e} = \ket{1, 2, 2}$ for their long lifetime in a magnetic
 trap. The transition has frequency $\omega_0/2\pi = \SI{20.5}{\giga\hertz}$
-\cite{Williams2018}. The idea is to use a high $Q$ microwave cavity on the
+\cite{WilliamsMagnetic2018}. The idea is to use a high $Q$ microwave cavity on the
 chip, with the molecules magnetically trapped near to an antinode to maximise
 the coupling. This is similar to the proposal made by Andr\'e et
 al.~\cite{Andre2006}, who also discuss the idea of using a cavity for QND
