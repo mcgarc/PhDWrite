@@ -291,24 +291,24 @@ where the interaction Hamiltonian is
 After the pulse, we therefore have the state
 %
 \begin{equation}
-  \ket{\Psi(T)} = \sum_{m=-S}^S a_m e^{-i\theta_T S_z
+  \ket{\Psi(T)} = \sum_{m=-S}^S a_m e^{-i\nu T S_z
   a^\dagger a} \ket{S, m}\ket{\alpha}
 \end{equation}
 %
-with $\theta_T = \frac{g^2}{\Delta} T$. It is now straightforward to show that
+with $\nu = g^2/\Delta$. It is now straightforward to show that
 the state of the spin ensemble is entangled with the state of the light field,
 by writing $\ket{\alpha}$ in terms of the summation over Fock states
 %
 \begin{align}
   \ket{\Psi(T)} &= e^{-\frac{|\alpha|^2}{2}}\sum_{m=-S}^S \sum_{n=0}^\infty a_m
-   \frac{\alpha^n}{\sqrt{n!}} e^{-i\theta_T S_z a^\dagger a} \ket{S, m} \ket{n}
+   \frac{\alpha^n}{\sqrt{n!}} e^{-i\nu T S_z a^\dagger a} \ket{S, m} \ket{n}
    \\
   &= e^{-\frac{|\alpha|^2}{2}}\sum_{m=-S}^S \sum_{n=0}^\infty a_m
-  \frac{\alpha^n}{\sqrt{n!}} e^{-i\theta_T m n} \ket{S, m} \ket{n} \\
+  \frac{\alpha^n}{\sqrt{n!}} e^{-i\nu Tm n} \ket{S, m} \ket{n} \\
   &= \sum_{m=-S}^S a_m \ket{S, m} \left( e^{-\frac{|\alpha|^2}{2}}
-  \sum_{n=0}^\infty \frac{(\alpha e^{-i\theta_T m})^n}{\sqrt{n!}}\ket{n}\right)
+  \sum_{n=0}^\infty \frac{(\alpha e^{-i\nu T m})^n}{\sqrt{n!}}\ket{n}\right)
   \\
-  &= \sum_{m=-S}^S a_m \ket{S, m}\ket{\alpha e^{-i\theta_T m}}.
+  &= \sum_{m=-S}^S a_m \ket{S, m}\ket{\alpha e^{-i\nu T m}}.
 \end{align}
 
 It is now clear measuring the phase of the light leaving the cavity
@@ -368,7 +368,7 @@ by~\cite{gerry_knight_2004}
 Hence measuring the intensity of each output of the beamsplitter can give us
 information on the phase of the light. We choose $\varphi = 0$ so that the
 measurement is of the $Y$ quadrature, i.e.\ we measure the imaginary part of
-$\ket{\Psi_a} = \ket{\alpha e^{-i\theta_Tm}}$ for a result
+$\ket{\Psi_a} = \ket{\alpha e^{-i\nu Tm}}$ for a result
 %
 \begin{equation}
   \langle c^\dagger c - d^\dagger d\rangle =  2\kappa
@@ -383,6 +383,23 @@ to first order, so that
   \langle c^\dagger c - d^\dagger d\rangle = 2|\alpha||\beta|
   \frac{g^2}{\Delta}\langle S_z\rangle.
   \label{eqn:homomeas}
+\end{equation}
+
+It can be shown that the expectation of the square of the signal difference
+is given by \cm{is this sort of relation obvious? It can be shown, but
+there is a small trick to avoid being totally tangled in commutation
+relations}
+%
+\begin{equation}
+  \langle (c^\dagger c - d^\dagger d\rangle)^2 \rangle = (2|\alpha||\beta|
+  \frac{g^2}{\Delta})^2\langle S_z^2\rangle
+\end{equation}
+%
+and therefore the uncertainty in the resulting spin state is directly
+related to the uncertainty in the signal measurement
+%
+\begin{equation}
+  \Delta_{S_z}^2 = \frac{\Delta_\eta^2}{(|\alpha|\nu T)^2}.
 \end{equation}
 
 In this section we have introduced the homodyne measurement, and shown how it
@@ -432,7 +449,7 @@ where $\Upsilon$ is the relevant projector, and
 \end{equation}
 %
 is the probability of determining this result, ensuring that
-$\ket{\text{final}}$ is normalised.
+$\ket{\text{result}}$ is normalised.
 
 Hence, such a QND measurement performed on the state $\ket{\Psi(0)} =
 \ket{+}$ produces the state
@@ -496,7 +513,7 @@ The associated projector is~\cite{MAURODARIANO2003205, Vanner16182, Cox2016}
 %% NOTE Don't bother citing Zhang2019 because it just cites this Vanner paper
 %
 \begin{equation}
-  \Upsilon(\meas{m})\ket{\Psi(T)} = \frac{1}{\sqrt{\pi\Delta_m^2}}\exp\left[
+  \Upsilon(\meas{m}) = \frac{1}{\sqrt{\pi\Delta_m^2}}\exp\left[
     -\frac{(S_z-\meas{m})^2}{2\Delta_{S_z}^2}\right].
 \end{equation}
 %
@@ -505,9 +522,7 @@ This operator represents a measurement where we have some Gaussian uncertainty
 previously defined measurement uncertainty in the homodyne detection. Again
 using \myeqref{squeeze:eqn:homoquads}, we have that
 %
-\begin{equation}
-  \Delta_{S_z}^2 = \frac{\Delta_\eta^2}{(|\alpha|\theta_T)^2}.
-\end{equation}
+\cm{Fix ref here} % TODO
 
 The final spin state will once again be given by
 \myeqref{squeeze:eqn:projresult}. Begin by calculating the numerator, that is
@@ -515,7 +530,7 @@ the homodyne projector acting on $\ket{\Psi(T)}$
 %
 \begin{equation}
   \Upsilon(\meas{m})\ket{\Psi(T)} =
-  \sum_{m=-S}^{S}a_m\Upsilon(\meas{m})\ket{S,m}\ket{\alpha e^{-i\theta_T m}}.
+  \sum_{m=-S}^{S}a_m\Upsilon(\meas{m})\ket{S,m}\ket{\alpha e^{-i\nu Tm}}.
 \end{equation}
 %
 At this point we drop the ket representing the state of the light. Although we
@@ -523,7 +538,8 @@ have a QND measurement on the spins, this process destroys the light state, and
 so it is no longer relevant. Therefore we have
 %
 \begin{equation}
-  \Upsilon(\meas{m}) = \frac{1}{\sqrt{\pi\Delta_m^2}}\exp\left[
+  \Upsilon(\meas{m}) \ket{\Psi(T)} =
+  \frac{1}{\sqrt{\pi\Delta_m^2}}\sum_{m=-S}^S a_m \exp\left[
     -\frac{(m-\meas{m})^2}{2\Delta_m^2}\right]\ket{S,m}.
 \end{equation}
 %
@@ -531,7 +547,7 @@ Which we can immediately use to find the probability
 %
 %TODO Fix probability noomenclature throughout
 \begin{align}
-  P(m=\meas{m}) &= \bra{\Psi(T)}\Upsilon(\meas{m})\ket{Psi(T)}\\
+  P(m=\meas{m}) &= \bra{\Psi(T)}\Upsilon(\meas{m})\ket{\Psi(T)}\\
   & = \sum_{m'=-S}^S \sum_{m=-S}^S \sqrt{P(m')P(m)}\bra{S,
   m'}\Upsilon(\meas{m})\ket{S, m} \\
   & = \sum_{m'=-S}^S \sum_{m=-S}^S \sqrt{P(m')P(m)}
