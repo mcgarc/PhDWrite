@@ -134,8 +134,8 @@ term will allow the information transfer for our QND measurements.
 \subsection{Spin states of the ensemble}
 
 % TODO Better Bloch sphere cite
-Consider the spins represented on the Bloch sphere \cite{PhysRevA.47.3554}.
-Here the state of the $i^\text{th}$ spin is written as
+We can represent the state of the individual spins on a Bloch sphere in the
+usual way, that is by writing the state in the form
 %
 \begin{equation}
   \ket{\psi(\theta, \phi)}_i = \cos\left(\frac{\theta_i}{2}\right)\ket{e}_i +
@@ -143,20 +143,27 @@ Here the state of the $i^\text{th}$ spin is written as
   \label{eqn:blochspin}
 \end{equation}
 %
-The values of $\theta$ and $\phi$ uniquely define the points on a sphere of
-radius $1$, with $\ket{e}_i$ and $\ket{g}_i$ at the poles. The spin state of
-the ensemble is
+The angles $\theta_i$ and $\phi_i$ now define a point on a sphere of unit
+radius with $\ket{e}_i$ and $\ket{g}_i$ at the poles. The cartesian
+representation is given by the expectation value $\langle \mathbf{s}_i
+\rangle$.
+
+
+The spin state of the ensemble is
 %
 \begin{equation}
   \ket{\Psi} = \bigotimes_{i=1}^N \ket{\psi}_i.
 \end{equation}
+%
 Such a state can also be represented on a sphere as the sum of all the
-individual spin vectors. In this case the radius of the sphere is variable. 
-
-We can limit ourselves to considering the case where spins are aligned,
-so that for all $i$, $\theta_i = \theta$ and $\phi_i = \phi$, in which case the
+individual spin vectors. In this case the radius of the sphere is variable, but
+we will limit ourselves to the case where 
+all spins are aligned.
+We therefore have that for all $i$, $\theta_i = \theta$ and $\phi_i = \phi$ and the
 sphere has radius $N/2$. Such a state is known as a coherent spin state
-(CSS)~\cite{MA201189, Gazeau2009}. In such a case it is useful to consider a system where
+(CSS)~\cite{MA201189, Gazeau2009}.
+
+In such a case it is useful to consider a system where
 all spins are initially in, for example, the ground state. They then undergo
 the same uniform rotation into the desired state $\ket{\psi(\theta, \phi)}_i$,
 which we write as
@@ -167,7 +174,9 @@ which we write as
 %
 where $\ket{g} = \bigotimes_{i=1}^N\ket{g}_i$ and similarly for $\ket{e}$. We
 represent this visually on the Bloch sphere, in analogy with the single spin
-case, as illustrated in Fig.~\ref{CSSbloch}. 
+case, as illustrated in Fig.~\ref{CSSbloch}. Again we can represent the vector
+in a cartesian form as the expectation value $\langle \mathbf{S} \rangle$. 
+
 % TODO Need to do my own version of this figure to show single spin bloch
 % sphere, 
 
@@ -228,8 +237,10 @@ amplitudes of $\ket{+}$ so that
 Note that such a state has expectation values $\langle S_z \rangle = 0$,
 $\langle S_z^2\rangle = \Delta_m^2$, and the uncertainty in $S_z$ is consistent
 with the usual formula $\Delta_m^2 = \langle S_z^2 \rangle - \langle
-S_z\rangle^2$. This uncertainty is the projection noise of a CSS, and it
-corresponds to to an uncertainty in $\theta$
+S_z\rangle^2$. This uncertainty is the projection noise of a CSS, arising from
+the uncertainty in the measurement of the individual spins. We can understand
+this in terms of an uncertainty in the cartesian Bloch vector $\langle
+\mathbf{S} \rangle$, or as an uncertainty in $\theta$
 %
 \footnote{This can be shown geometrically: consider the angle on the Bloch
 sphere between the x-axis and the arrow representing the CSS, call this
@@ -243,7 +254,7 @@ $\Delta \theta' = \Delta \theta$.
   \Delta\theta = \frac{1}{\sqrt{N}}
 \end{equation}
 which is known as the standard quantum limit (SQL). By symmetry $\Delta \phi =
-\Delta \theta$.
+\Delta \theta$ (corresponding to uncertainty in $S_y$).
 
 Note that these uncertainties hold only for $\ket{+}$ and other states where
 $\theta = \pi$ (states on the equator of the Bloch sphere). For example in the
