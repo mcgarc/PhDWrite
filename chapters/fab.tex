@@ -1,54 +1,49 @@
-Fabrication of a chip has been an iterative process, where we have
-simultaneously improved upon both the chip's design and our fabrication
-techniques.
-In this chapter I will present the progress that we have made in
-learning how to build a chip trap, and how we plan to integrate a microwave
-guide in future experiments. 
-
-All the microfabrication techniques described below except for the
-electroplating were undertaken at the London Centre for Nanotechnology (LCN). 
+This chapter details the production of our chip traps using microfabrication
+techniques, which was mostly undertaken in cleanroom facilities at the London
+Centre for Nanotechnology.
 
 \section{Overview of the fabrication procedure}
 
 % TODO I grabbed this Madou2002 citation from Treutlein, but I should ensure
 % that it is legit
-Our trap has been designed so that the size of the wires is small compared to
+As discussed in chapter ~\ref{design}, our trap has been designed so that the size of the wires is small compared to
 the size and height of the trapped cloud. As such trapping wires on the chip
 are as small as \SI{3}{\micro\meter} in width. Such small features can be
 produced using standard photolithography techniques~\cite{Madou2002}. However,
 the maximum height of features produced in these procedures is usually of the
 order \SI{100}{\nano\meter}.
 
-% TODO Need to cite this $j$ number and probably revise this based on what we
-% actually say in design chapter. I don't think I need this caluclation here
 We must ensure that the wires are capable of carrying the currents that are
-outlined in chapter~\ref{design}.  Other experiments with two-layer atom chips
-have reported a current density of $j=\SI{6E10}{\ampere\per\meter\squared}$ in
-the trapping wires. For our wires this would require a minimum height of $h
-\sim I w/j = \SI{1}{\ampere} \times
+outlined in \mytableref{design:table:wires}. Other experiments with two-layer
+atom chips have reported a current density of
+$j=\SI{6E10}{\ampere\per\meter\squared}$ in the trapping
+wires~\cite{Treutlein2008}. For our wires this would require a minimum height
+of $h \sim I w/j = \SI{1}{\ampere} \times
 \SI{10}{\micro\meter}/\SI{6E10}{\ampere\per\meter\squared} \sim
 \SI{1}{\micro\meter}$  to carry our trapping currents.This is much higher than
 can be achieved with photolithography techniques.
 
 To achieve the required height, we have used through-mask
-electroplating~\cite{Ruythooren_2000}. First a substate is coated with a thin
+electroplating~\cite{Ruythooren_2000}. First a substrate is coated with a thin
 seed layer of gold, then photolithography is used to produce a thick (several
-mircron high) mould. The mould covers regions where no further deposition is
+micrometer high) mould. The mould covers regions where no further deposition is
 required. The substrate can then be electroplated, with the seed layer acting
 as the anode, allowing thick wires to be deposited into the mould.
 After electroplating the seed layer can be etched away. This is a common
 technique for constructing atom chips and is described in \inlinerefs{2011Ac,
 Lev2003, KOUKHARENKO2004600}.
 
-The fabrication process for our final chip begins with a four inch silicon
-wafer, which we dice into individual \SI{20}{\milli\meter} by
-\SI{20}{\milli\meter} dies. The remaining process can be briefly summarised:
-\cm{Is there a better way to link this list to the following sections?}
+Our fabrication process begins with a \SI{100}{\milli\meter} diameter silicon
+wafer, with a \SI{300}{\nano\meter} SiO\textsubscript{2} layer from Pi-Kem. The
+wafers are of nominal thickness \SIrange{450}{600}{\micro\meter} and $<100>$
+orientation, although these are arbitrary choices for our purposes. The
+fabrication can then be summarised as follows:
+%
 \begin{enumerate}
   \item Dice silicon wafer into \SI{20}{\milli\meter} by \SI{20}{\milli\meter}
     dies.
-  \item Evaporate adhesion layer of chromium.
-  \item Evaporate seed layer of gold.
+  \item Evaporate adhesion layer of chromium ($\sim\SI{10}{\micro\meter}$).
+  \item Evaporate seed layer of gold ($\sim\SI{50}{\micro\meter}$).
   \item Spin coat a thick (\SI{6}{\micro\meter}) layer of photoresist.
   \item Expose photoresist to pattern the die.
   \item Develop photoresist to create photoresist mould.
@@ -56,10 +51,11 @@ wafer, which we dice into individual \SI{20}{\milli\meter} by
     desired height.
   \item Remove the photoresist mould.
   \item Chemically etch the gold seed layer.
-  \item Chemically etch the chromium adhesion layer so as to remove the seed.
+  \item Chemically etch the chromium adhesion layer so as to remove the seed
     layer and electrically isolate the wires.
 \end{enumerate}
-This process is illustrated in \myfigref{fab:fig:process}
+%
+This process is illustrated in \myfigref{fab:fig:process}.
 
 \begin{figure}[p]
 \vspace{0.8cm}
@@ -91,15 +87,16 @@ Steps \numrange{5}{8}, highlighted in the grey box, include a more detailed
 overview of through-mask electroplating, with a top-down view (top row), profile
 view (second row) and profilometer scan (bottom row). The dashed line denotes
 the cut for the profile view and profilometer scan. In (5) a region of
-photoresist (blue) is exposed to the UV light by raster scanning (black lines) of
-the direct writer. The die is then developed (6) to create a photoresist mould,
-which can be electroplated to build tall wires (7). Removing the mould (8)
-leaves only the tall wires, and the initial metal layers.
+photoresist (blue) is exposed to the UV light by scanning (black lines, not to
+scale) of the direct writer. The die is then developed (6) to create a
+photoresist mould, which can be electroplated to build tall wires (7). Removing
+the mould (8) leaves only the tall wires, and the initial metal layers.
 
 The gold and then chromium layers are etched (9 and 10) to isolate the
-features. Planned further fabrication steps are shown in the box. We
-intend to spin coat with polyimide (11, pink), allowing fabrication of features
-such as microwave guides on a second layer above the trapping wires (12).
+features. Planned further fabrication steps are shown in the lower right hand
+box. We intend to spin coat with polyimide (11, pink), allowing fabrication of
+features such as microwave guides on a second layer above the trapping wires
+(12).
   }
   \label{fab:fig:process}
 \end{figure}
@@ -125,21 +122,51 @@ complicated, and were based on the assumption that the traps should share an
 axial wire, so that all trap centres were in the same position in the
 \xyplane{}. Later analysis (described above) showed that this was not
 necessary, and so a design more similar to that shown in
-\myfigref{design:fig:chipexperiment} was adopted.  informed by existing designs
-in the literature~\cite{} and an idea that the traps should 
+\myfigref{design:fig:chipexperiment} was adopted.
 
-\begin{figure}[htbp]
-\centering
-  \ph{Fig of fuse design}
-  \caption{}
+\begin{figure}[ht]
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+      \begin{tikzpicture}
+        \node[anchor=south west,inner sep=0] (image)
+{\includegraphics[width=0.8\textwidth]{figs/fab/olddesign/oldchip_present.pdf} };
+        \begin{scope}[x={(image.south east)},y={(image.north west)}]
+        \draw [black, line width=0.2em] (0.3,1.2em) -- node[below,inner
+sep=0.1em, font=\footnotesize] {\SI{3}{\milli \meter}} (0.15+0.3,1.2em);
+         \end{scope}
+      \end{tikzpicture}
+    \caption{}
+  \end{subfigure}
+  \hspace{1cm}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+      \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image)
+{\includegraphics[width=0.8\textwidth]{figs/fab/olddesign/oldchip_present_detail.pdf} };
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+      \draw [black, line width=0.2em] (0.2,9em) -- node[below,inner
+sep=0.1em, font=\footnotesize] {\SI{600}{\micro\meter}} (0.15+0.2,9em);
+      \end{scope}
+    \end{tikzpicture}
+    \caption{}
+  \end{subfigure}
+  \caption{Wire layout for an early design used in initial testing of
+  microfabrication procedures. The whole chip is shown in subfigure (a), with
+  the central region marked by the black box shown in detail in subfigure (b).
+  Note that the six Z-traps in this design share an overlapping axial wire,
+  whose size tapers close to the centre. The wire widths range from
+  \SIrange{60}{10}{\micro\meter}, and the axis lengths are in the range
+  \SIrange{3000}{90}{\micro\meter}. There is also a central wire to form a
+  dimple trap with width \SI{3}{\micro\meter}.
+  }
   \label{fab:figs:earlydesign}
 \end{figure}
 
 In this chapter I will present the development of the fabrication process in
 detail. At times I will present data for the early designs of the chip, which
 was useful to inform later fabrication of the final design. I will describe the
-various pitfalls we encounted, point out where limitations of the process have
-lead to changes in the design of the chip.
+various pitfalls we encountered and point out where limitations of the process
+have lead to changes in the design of the chip.
 
 \section{Metal evaporation of seed layer}
 
@@ -242,7 +269,7 @@ project, however we found that it was easier to achieve reliable results by
 using the the Heidlberg DWL 66, a direct writer~\cite{}. 
 
 Instead of using a mask to cast a shadow, the direct writer uses a tightly
-focused ultraviolet laser, whose beam is raster scanned across the surface. The
+focused ultraviolet laser, whose beam is scanned across the surface. The
 beam is then switched on and off so as to produce the pattern that is required.
 This process is depicted for a in \myfigref{fab:fig:methods}. The Heidelberg
 DWL 66 is capable of producing features down to \SI{300}{\nano\meter} in size.
