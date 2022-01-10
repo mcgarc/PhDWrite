@@ -144,8 +144,8 @@ sep=0.1em, font=\footnotesize] {\SI{3}{\milli \meter}} (0.15+0.3,1.2em);
       \node[anchor=south west,inner sep=0] (image)
 {\includegraphics[width=0.8\textwidth]{figs/fab/olddesign/oldchip_present_detail.pdf} };
       \begin{scope}[x={(image.south east)},y={(image.north west)}]
-      \draw [black, line width=0.2em] (0.2,9em) -- node[below,inner
-sep=0.1em, font=\footnotesize] {\SI{600}{\micro\meter}} (0.15+0.2,9em);
+      \draw [black, line width=0.2em] (0.1,9em) -- node[below,inner
+sep=0.1em, font=\footnotesize] {\SI{1}{\milli\meter}} (0.25+0.1,9em);
       \end{scope}
     \end{tikzpicture}
     \caption{}
@@ -172,26 +172,27 @@ have lead to changes in the design of the chip.
 
 Before any fabrication, the die must be cleaned and dehydrated to ensure that
 there will be good adhesion to the substrate. A solvent clean with acetone and
-isopropyl alchol will remove any organic compounds \cm{check this}. The die is
+isopropyl alchol will remove any organic compounds. The die is
 then rinsed with deionised water and dehydrated in an oxygen plasma for ten
 minutes.
 The die is then ready for metalization, which here is done by metal
 evaporation. To further improve adhesion between the gold and silicon, a thin
-($<10\si{\micro\meter}$) intermediary chrome layer is deposited first, followed
-by \SI{50}{\micro\meter} of gold.
+($<10\si{\nano\meter}$) intermediary chrome layer is deposited first, followed
+by a nominal \SI{50}{\nano\meter} of gold. These heights are recorded for later
+calcualtion of etching time.
 
 We performed evaporation using an Edwards A306 bell jar evaporator. Typically
-we \cm{metalize} four dies at a time. They are loaded into the belljar, along
-with gold and chrome, using a boat and rod respectively.  we deposit gold onto
-four dies at a time. The dies are positioned with the polished side facing down
-towards the metal. This arrangement is shown in \myfigref{fab:fig:belljar}.
+we metalize four dies at a time. They are loaded into the belljar, along with
+gold and chrome, using a boat and rod respectively. The dies are positioned
+with the polished side facing down towards the metal. This arrangement is shown
+in \myfigref{fab:fig:belljar}.
 
 \begin{figure}
   \centering
   \begin{subfigure}[b]{0.22\textwidth}
     \centering
     \begin{overpic}[width=\textwidth]{figs/fab/cartoon/evap.pdf}
-      \put(48,6){$I$}
+      \put(47,6.5){$I$}
     \end{overpic}
     \caption{}
   \end{subfigure}
@@ -218,46 +219,42 @@ deposition onto the substrate until the desired current has been reached. It is
 then opened to begin deposition.
 The Edwards bell jar evaporator incorporates a FTM7 deposition monitor, which
 reports the rate of deposition and automatically shuts off deposition once the
-desired thickness has been reached by closing the shutter. \cm{What
-determines/ limits the deposition rates? What happens when we have too much
-current?}
+desired thickness has been reached by closing the shutter. The current is then
+slowly decreased so that the vacuum can be lifted and the dies retrieved.
 
-The deposition rate of gold is typically \SI{0.2}{\nano\meter\per\second}.
-%
-\cm{Find a way to cite LCN for this and maybe some other factoids.}
-%
-As discussed above a thickness of \SI{5}{\micro\meter} is desirable for the
-chip's trapping wires. Achieving this with evaporation would take over an hour,
-and it would not be possible to load the evaporator with enough gold to last
-this long. This is why we must use electroplating to achieve the desired
-thickness.
+We typically achieve a deposition rate of \SI{0.2}{\nano\meter\per\second}.  As
+discussed above a thickness of \SI{5}{\micro\meter} is desirable for the chip's
+trapping wires. Achieving this with evaporation would take over an hour, and
+the belljar would then require extensive cleaning after use. It is further
+unclear if the desired thickness would be possible due to limitations of the
+amount of gold that could be loaded into this machine. We therefore opt to use
+use electroplating to achieve the desired thickness.
 
 \section{Spin coating of photoresist}
 \label{fab:spin}
 
-Spin coating is a procedure for distributing a uniform layer of liquid such as
+Spin coating is a procedure for distributing a uniform film such as a
 photoresist  across a substrate~\cite{Cohen2011}. It is typically followed by
 baking to solidify the layer. We use spin coating to apply Dupont SPR220-7
-\cite{} photoresist, which will form the mould for the wires.
+photoresist, which will form the mould for the wires.
 
 The die is mounted in a spin coater, and approximately \SI{1}{\milli\meter} of
-SPR220-7 is appled. The die undergoes a \cm{\SI{2}{\second} ramp to
-\SI{500}{\rpm} where it is held before a second ramp to \SI{4000}{\rpm} and
-held for \SI{30}{\second}.} This results in a nominal \SI{6}{\micro\meter} high
+SPR220-7 is applied. The die undergoes a \SI{2}{\second} ramp to \SI{500}{\rpm}
+where it is held before a \SI{1}{\second} ramp to \SI{4000}{\rpm} and it is
+held for \SI{30}{\second}. This results in a nominal \SI{6}{\micro\meter} high
 coating of photoresist. SPR220-7 requires a post-application bake, first at
 \SI{90}{\celsius} for two minutes, then immediately afterwards at
 \SI{120}{\celsius}.
 
 Spin coating the photoresist results in a bead at the edge of the die. This
 thick region of photoresist may not receive sufficient exposure to fully
-develop later. This can cause defects in features near the edge. It is
-possible to remove the bead by inserting an intial exposure and development
-step before the lithography discussed in the next section. However, since the
-only features that are covered by the bead are the robust wire bond pads, this
-is deemed unnecessary for our purposes. \cm{Defects due to the presence of a
-bead can be seen in \myfigref{}.} Using too much photoresist during coating can
-produce an unduly thick bead, which can further interfere with photolithography
-steps.
+develop later which can cause defects in features near the edge. It is possible
+to remove the bead by inserting an initial exposure and development step before
+the lithography discussed in the next section. Using too much photoresist
+during coating can produce an unduly thick bead, which can further interfere
+with photolithography steps. We found that approximately half a millilitre of
+photoresist was sufficient, however the liquid is very viscous and care must be
+taken not to introduce bubbles during pipetting as these cause a poor coat.
 
 \section{Lithography of the wire mould}
 
@@ -269,10 +266,12 @@ project, however we found that it was easier to achieve reliable results by
 using the the Heidlberg DWL 66, a direct writer~\cite{}. 
 
 Instead of using a mask to cast a shadow, the direct writer uses a tightly
-focused ultraviolet laser, whose beam is scanned across the surface. The
-beam is then switched on and off so as to produce the pattern that is required.
-This process is depicted for a in \myfigref{fab:fig:methods}. The Heidelberg
-DWL 66 is capable of producing features down to \SI{300}{\nano\meter} in size.
+focused ultraviolet laser, whose beam is scanned across the surface. The beam
+is then switched on and off so as to produce the pattern that is required.
+This process is depicted for an example pattern in
+\mysubfigref{fab:fig:process}{5}. The Heidelberg DWL 66 is capable of producing
+features down to \SI{300}{\nano\meter} in size, well below our smallest feature
+sizes on the order of a few micrometers.
 
 Since designs can be directly uploaded to the direct writer, there is no need
 to wait for a third party to construct a mask.  Hence the direct writer allows
@@ -285,8 +284,17 @@ are those which will be removed on developing. It has an exposure energy of
 \SI{140}{\milli\joule\per\square\centi\meter} is required, which is
 administered over three passes. The laser power is calibrated to achieve the
 correct exposure of the laser, operating at \SI{70}{\milli\watt}. The
-whole scan for one die takes around twenty minutes. This process is illustrated
-in \mysubfigref{fab:fig:process}{5}.
+whole scan for one die takes around twenty minutes.
+
+The photoresist bead commonly caused defects in the end product (for an
+example see \myfigref{fab:fig:etchres}), so  we took additional photolithography
+steps to avoid this. Conventionally a bead can be removed by an initial 
+exposure of the edge of the sample, followed by a short development to remove
+some of this photoresist. With the direct writer it is possible to perform
+targeted exposure of the affected features. We performed a second exposure of
+features within \SI{1}{\milli\meter} of the edge of the die. Since these
+features are all very large (feature size on the order of millimeters), they
+are not negatively impacted by the effects of overexposure of the photoresist.
 
 Following exposure a rehydration step is required. The die is left at ambient
 temperature overnight before it is developed in Microposit MF-319 until it runs
@@ -303,7 +311,7 @@ mould after developing. This blocks the current during electroplating, and
 prevents the formation of wires. This can be seen with the microscope, and is
 confirmed when electroplating dies where the underdevelopment is present.
 
-\begin{figure}[h]
+\begin{figure}[phtb]
 \end{figure}
 \begin{figure}
   \centering
@@ -322,8 +330,9 @@ confirmed when electroplating dies where the underdevelopment is present.
   \end{overpic}
     \caption{}
   \end{subfigure}
-  rcaption{
-    Photoresist moulds for \ph{design one} dies. In (a) we see the effects of
+  \caption{
+    Photoresist moulds using the earlier design shown in
+    \myfigref{fab:figs:earlydesign}. In (a) we see the effects of
     underexposure, features below $\sim20\si{\micro\meter}$ are completely
     absent. The \SI{20}{\micro\meter} wire is present but has not been
     completely developed. Subfigure (b) shows a well-exposed die of the same
@@ -340,7 +349,7 @@ easily resolved by returning the die to the developer.
 
 \section{Electroplating the tall wires}
 
-Now the chip is returned to the Blacket Laboratory for electroplating.
+Now the chip is taken to the Blacket Laboratory for electroplating.
 Electroplating does not take place in cleanroom conditions, but it is important
 that the dies are treated with great care during transport, and kept sealed
 until electroplating can begin. We found that the dies were surprisingly
@@ -349,24 +358,20 @@ electroplating.
 
 In electroplating, a conductive target (here, the die) is connected to an
 electric circuit as an anode and placed into an electrolytic solution along
-with a cathode. Current passed through the solution causes ions in the solution
-to be deposited onto the target. This is illustrated in
-\mysubfigref{fab:fig:etch}{a}, and the results of the process are shown
-schematically in \mysubfigref{fab:fig:process}{\cm{9 and 10}}. An overview of
-electroplating can be found in \inlineref{Schlesinger2011}.
-%
-\cm{This ref again, check it is ok!}
+with a cathode. Current is passed through the solution causing ions to be
+deposited onto the target. This is illustrated in \mysubfigref{fab:fig:etch}{a}
+and  an overview of electroplating can be found in \inlineref{Schlesinger2011}.
 
 Here we use the through-mask electroplating method to deposit thick gold wires
 into the regions that are not covered by the photoresist mould, as shown in
 \myfigref{fab:fig:eplate}. This method allows us to produce wires up to the
 thickness of the photoresist height. Above this the wires will begin to
 ``mushroom,'' spreading out across the top of the photoresist and losing their
-shape. As per the discussion in \cm{ref chapter}, we require a minimum wire
-height of \cm{\SI{5}{\micro\meter}}. We will see below that we have been able
-to reliably produce wires up to a height of \SI{6}{\micro\meter}.
+shape. We will see here that we are able to reliably produce wires of
+height \SI{6}{\micro\meter}. The results of the process are shown
+schematically in \mysubfigref{fab:fig:process}{\numrange{5}{8}}.
 
-\begin{figure}
+\begin{figure}[phtb]
 \vspace{0.8cm}
 \centering
   \begin{subfigure}[b]{0.22\textwidth}
@@ -383,13 +388,13 @@ to reliably produce wires up to a height of \SI{6}{\micro\meter}.
     \caption{}
   \end{subfigure}
   \caption{
-    The elecroplating scheme is shown schematically in (a). A die is submerged in a gold electrolyte
+    The electroplating scheme is shown schematically in (a). A die is submerged in a gold electrolyte
     (light blue) along with an electrode (grey mesh). These are connected to a
     current supply to enable current flow and deposition of gold ions (yellow
     circle)  is depicted. The solution is held at \SI{60}{\celsius} and
     agitated by a stirrer and bubbler. A photograph of our apparatus is shown
     in (b). The beaker containing the electrolyte is submerged in a water bath
-    and aggitated with a stirrer and bubbler.
+    and agitated with a stirrer and bubbler.
   }
   \label{fab:fig:eplate}
 \end{figure}
@@ -403,12 +408,11 @@ equation~\cite{Ruythooren_2000}
 \end{equation}
 %
 where $I$ is the current, $F=\SI{96.5}{\kilo\ampere\second\per\mole}$ is the
-Faraday constant, and other parameters with values specific to our gold
-deposition are: $\alpha\sim0.9$, the current efficiency; $M =
-\SI{197}{\gram\per\mole}$ the molar mass;
+Faraday constant, $S$ is the surface area and other parameters with values
+specific to our gold deposition are: plating efficiency $\alpha\sim0.9$, the current efficiency;
+$M = \SI{197}{\gram\per\mole}$ the molar mass;
 $\rho=\SI{19.32}{\gram\per\centi\meter\cubed}$, the density of the deposited
-metal; $n=1$, the charge on the deposited ions in units of electron charge; and
-$A\sim\SI{1}{\centi\meter\squared}$ is the area for plating.
+metal; $n=1$, the charge on the deposited ions in units of electron charge.
 
 We therefore have a relationship between the current, the target height and the
 time,
@@ -416,35 +420,34 @@ time,
 \begin{equation}
   h \approx \left(
   \SI[per-mode=fraction]{1e-10}{\meter\cubed\per\ampere\per\second} \right)
-  \times\frac{It}{A}.
+  \times\frac{It}{S}.
 \end{equation}
 %
-\cm{Ensure I am not word stealing here...}
-For our electrolytic solution, we have used Metakem Goldbath-SF.
-Metakem Goldbath-SF is chosen because it produces very pure (99.99\%) deposits,
-and will not react with our photoresist. The effectiveness of this product has
-been demonstrated for a similar design in \inlineref{Treutlein2008}.
+For our electrolytic solution, we have used Metakem Goldbath-SF because it
+produces very pure (99.99\%) deposits, and will not react with our photoresist.
+The effectiveness of this product has been demonstrated for a similar design in
+\inlineref{Treutlein2008}.
 %
-\cm{Should cite metakem}
-
 Goldbath-SF is suitable for use with current densities in the range
 \SIrange{1}{15}{\milli\ampere\per\centi\meter\squared}. Final chip design has a
-plating surface area of $S\approx85\si{\milli\meter\squared}$. There is also an
+plating surface area of $83\si{\milli\meter\squared}$. There is also an
 additional contribution to surface area from the clip with which we hold the
 die in place during plating. We therefore do not know the plating area
 exactly, but we ensure that the entire clip in the solution every time to
-ensure the results are reproducable. We can also estimate the minimum plating
-time for wire heights of \SI{3}{\micro\meter}, which we expect to be
-\cm{TODO}.
-
-% Can we figure out the chip area from the offset of different plating times?
+ensure the results are reproducible. Estimating the total plated surface area
+to be $S\approx\SI{1}{\centi\meter\squared}$, we have an approximate plating
+rate of $\SI{1}{\micro\meter}/\SI{100}{\second}$, with the exact rate to be
+determined experimentally.
 
 Our apparatus for the electroplating step is shown in
-\mysubfigref{fab:fig:eplate}. The electrolytic solution is placed in a
+\mysubfigref{fab:fig:eplate}{b}. The electrolytic solution is placed in a
 beaker, which itself is placed in a water bath held at \SI{60}{\celsius}. The
 bath is heated using a hotplate with magnetic stirrer. Some time is allowed for
-thermalisation, during which it is imporant that the goldbath is covered to
-prevent loss by evaporation.
+thermalisation, during which it is important that the goldbath is covered to
+prevent loss by evaporation. We noted that using a foil cover would result in
+corrosion on the foil, which could potentially cause contamination of the
+solution. A glass lid should be used, and care should be taken to ensure that
+any material placed in the solution will not be corroded.
 
 When the goldbath has reached \SI{60}{\celsius} the target chip and the cathode
 are submerged. The chip is held in position by a stiff insulated wire, which
@@ -452,16 +455,12 @@ also carries current to the seed layer. A multimeter can be used to ensure that
 there is good electrical contact from the wire to the holder. The wire is
 insulated, and we use the smallest clip possible so as to minimise gold plating
 to the chip.  The cathode is a grid of platinised titanium which has been cut
-to the size of our beaker.  This was also purchased from Metakem.
-
-% Change this to show that electroplating without the aggitation didn't work
-% The whole of the next three paragraphs needs to be turned into more of the
-% narative of how we learned to electroplate. Including profiling results
+to the size of our beaker. This was also purchased from Metakem.
 
 A bubbler is placed to agitate the solution near to the chip surface. This in
 combination with gentle stirring ensures good circulation of the solution and
 hence prevents localised depletion of the ions near to the chip
-surface~\cite{Schlesinger2011} \cm{also cite conversation with S Etienne?}.
+surface~\cite{Schlesinger2011, SEtienne2020}. 
 
 After electroplating, dies are rinsed with deionised water, and the photoresist
 is removed overnight with Dupont 1165 photoresist remover, as illustrated
@@ -473,13 +472,13 @@ final fabrication steps.
 \subsection{Inspecting the wires}
 \label{fab:inspwire}
 
-After plating it is useful to inspect the dies uner a microscope. This can
-confirm that the wires have been \cm{created} successfully, and that the there
+After plating it is useful to inspect the dies under a microscope. This can
+confirm that the wires have been formed successfully, and that the there
 is continuity along them, but it cannot tell us the height that was achieved
 during plating. To measure the plating height we use a a stylus profilometer,
 in this case the Bruker DektakXT.
 
-A stylus profilometer operates by positioning a gold stylus onto the surface of
+The stylus profilometer operates by positioning a gold stylus onto the surface of
 the die and dragging it in one direction. As the stylus comes into contact with
 features its height will change, allowing a profile of the surface to be
 measured. Profiling of a surface is illustrated in \myfigref{fab:fig:process}
@@ -529,12 +528,13 @@ mould used to fabricate these wires.
   \end{tikzpicture}
     \caption{}
   \end{subfigure}
-  \caption{Stylus profiling of the characterisation features. In (a) the lines
-  feature of the chip is shown \ph{(c.f. earlier chapter)}, with the grey
-  dashed line denoting the profile. Typical profiles are which is shown in (b),
-  for both the photoresist mould and the plated wires. Stylus size limits the
-  size of the trenches that can be fully profiled, and can make both trenches
-  and hills appear narrower and wider respectively.
+  \caption{Stylus profiling of the characterisation features. In (a) the
+  characterisation lines feature of the chip is shown in detail (c.f.
+  \mysubfigref{design:fig:chipexperiment}{b}) the grey dashed line denoting the
+  profile. Typical profiles are which is shown in (b), for both the photoresist
+  mould and the plated wires. Stylus size limits the size of the trenches that
+  can be fully profiled, and can make both trenches and hills appear narrower
+  and wider respectively.
   }
   \label{fab:fig:chipprofile}
 \end{figure}
@@ -550,37 +550,39 @@ figure.
 
 \subsection{Troubleshooting}
 
-Electroplating the dies was by far the most challenging stage of the
-fabrication process.  It is therefore worth noting some of the complications
+The electroplating procedure was initiallly unreliable, but we have developed
+it into a robust process. It is of use to note some of the complications
 that we experienced and how they were overcome. 
 
 % See OneNote 27 Nov 2019
 Our first attempt at electroplating was with the photoresist mould shown in
-\myfigref{fab:fig:moulds}, meaning that the full wires could not have been
-formed. These were nonetheless sutiable targets for practice. We manually
-agitated the electroplating solution during plating and were succesful in
+\mysubfigref{fab:fig:moulds}{a}, meaning that the full wires could not have
+been formed. These were nonetheless suitable targets for practice. We manually
+agitated the electroplating solution during plating and were successful in
 laying down the larger features such as the wire bond pads, but sub
-$\sim100\si{\micro\meter}$ features were not fabricated after removing the
-photoresist mould. This can be clearly seen when inspecting the region around
-the wire bond pads, as seen in \mysubfigref{fab:fig:aggandcorr}{a}.
+$\sim100\si{\micro\meter}$ features were not formed, as could be seen after
+removing the photoresist mould, see \mysubfigref{fab:fig:aggandcorr}{a}.
 
-We attempted to improve the adhesion with manual aggitation, and using a
-bubbler, but eventually found that we achieved the best results with a
-combination of gentle stirring and bubbling of the goldbath. This allowed us to
-fabricate features up to around the \ph{limit imposed by our poor mould, as
-described above}. However we found that our attempts to remove the photoresist
-with acetone were ineffective, and resulted in the debris visible in
+We attempted to improve the adhesion with manual agitation in combination with
+a bubbler, but eventually found that we achieved the best results with a
+combination of gentle stirring with a magnetic stirrer and bubbling of the
+goldbath. This allowed us to fabricate the smallest features resolvable in the
+mould. We followed this by removing the photoresist by sonicating in acetone
+for twenty minutes, however this resulted in the debris visible in
 \mysubfigref{fab:fig:aggandcorr}{b}. It was resolved that this was unsuitable
-and \ph{microposit 1165 remover} must be used instead.
+and Dow Electronic Materials Microposit Remover 1165 heated to
+\SI{65}{\celsius} was used instead. 
 
 For later attempts at electroplating we used a mould that had been exposed
-correctly, shown in \ph{figure}. Combined with proper aggitation of the
-solution and liftoff allowed fabrication of features to the
-$1\si{\micro\meter}$ scale, as can be seen in
+correctly, shown in \mysubfigref{fab:fig:moulds}{b}. Combined with proper
+agitation of the solution and liftoff allowed fabrication of features to the
+$10\si{\micro\meter}$ scale, as can be seen in
 \mysubfigref{fab:fig:aggandcorr}{c} and (d). We can also see in these figures
 that the smallest wires (\SI{10}{\micro\meter} and \SI{3}{\micro\meter}) have
 been broken off from the surface of the die. This was due to sonicating the
-chip during photoresist removal. 
+chip during resist removal. We were able to avoid sonicating and resolve this
+issue by removing the photoresist with an overnight soak in Microposit Remover
+1165 at room temperature.
 
 
 % TODO Add a scale to these figs.
@@ -611,35 +613,33 @@ chip during photoresist removal.
     \caption{}
   \end{subfigure}
   \caption{
-    The effects of insufficient aggitation (a) and removal of the photoresist
+    The effects of insufficient agitation (a) and removal of the photoresist
     with solvents (b) can be compared to later results, where the solution is
-    well aggitated during electroplating (c) and the photoresist is removed
-    with \ph{1165 remover}. However the smallest wires were damaged by
+    well agitated during electroplating (c) and the photoresist is removed
+    with Microposit Remover 1165. However the smallest wires were damaged by
     sonicating. The dies shown in (a) and (b) are different dies
     from the same batch. Subfigures (c) and (d) both show the same die, which
     was produced after the cause of both problems was identified. All three
     dies here have been electroplated at \SI{10}{\milli\ampere} for
-    \SI{200}{\milli\second}.
+    \SI{200}{\milli\second}, and use the early iteration of the design shown in
+    \myfigref{fab:figs:earlydesign}.
   }
   \label{fab:fig:aggandcorr}
 \end{figure}
 
-To protect the fragile features we no longer sonicate the die during removal,
-and instead submerge the die in the remover overnight. This was done with
-\ph{the new design}, and we were able to electroplate features with a
-resolution of up to \SI{3}{\micro\meter}. See figure \ph{a figure showcasing a
-good chip with nice height including profiles}.
-
-Note how the larger wires in \ph{above fig. again} were not uniformly plated,
-with some areas near the edge seemingly shadowed by the mould as shown in
-\myfigref{fab:fig:shadow}. This phenomenom was also noted in
+After several iterations of electroplating we found that the larger wires were
+not uniformly plated, with some areas near the edge seemingly shadowed by the
+mould as shown in \myfigref{fab:fig:shadow}. This phenomenon was also noted in
 \inlineref{Treutlein2008}, where it is suggested that the only solution is to
-change to new goldbath. Indeed doing this and following the same procedure
-produced results without this shadowing effect, see \cm{figure without
-shadowing}.
+change to a new batch of Goldbath-SF. Indeed doing this and following the same procedure
+produced results without this shadowing effect.
 %
-% Could note that this is likely due to aging, as we started to see the effect
-% after coming back from covid.
+% This is likely due to aging, as we started to see the effect after coming
+% back from covid.
+%
+We noted that the plating rate with the new batch of solution was not
+consistent with what we had seen previously, suggesting some variation in
+plating efficiency between batches.
 
 \begin{figure}[h]
   \centering
@@ -681,27 +681,16 @@ shadowing}.
   \label{fab:fig:chipprofile}
 \end{figure}
 
-Although the shadowing was successful, we noted that the height of the wires
-was very different between the two solutions for the same plating time and
-currents. Dies \cm{C, D and E?} were all plated for \cm{Time and current}, but
-\cm{C?} was plated with older solution yielding shadowing and \cm{D and E} were
-plated with new solution without shadowing. The wires in \cm{C?} are \cm{3?}
-times higher than those of \cm{D and E?} suggesting that the plating efficency
-$\alpha$ varies between solutions. Plating of \cm{F} for \cm{twice as long as D
-and E} produced wires of \cm{twice the height}, suggesting that the process is
-consistent with \myeqref{fab:eqn:faraday}. The results from this plating are
-examined in \cm{need a figure for this!}
-
 \section{Etching}
 
 The seed layer electrically connects the trapping wires, which is
 essential for electroplating, but they must be separated for operation. This is
-achieved by etching the metal.
+achieved by acid etching the metal.
 
 Any thin films or other debris left on the die can become stuck to the chip
-during etching. \cite{} Hence it is essential to ensure that the die is very
-well cleaned (having been exposed to a non-cleanroom environment for
-electroplating). We found that a solvent clean on its own was insufficient,
+during etching, so it is essential to ensure that the die is very
+well cleaned having been exposed to a non-cleanroom environment for
+electroplating. We found that a solvent clean on its own was insufficient,
 and would leave some residue on the die after the etch that we could not
 remove, shown in \myfigref{fab:fig:etchres}. This was resolved by also cleaning
 for ten minutes in an oxygen plasma, suggesting that this debris may have been
@@ -727,23 +716,41 @@ caused by residual photoresist.
   \label{fab:fig:etchres}
 \end{figure}
 
-\cm{Need to figure out the actual name of the etchant, and check numbers}
-%
 After cleaning the gold etch is performed by placing the chip into a beaker of
-Iodine etchant, which etches gold at a rate of \SI{5}{\nano\meter\per\second}.
-This means that an etch of \SI{10}{\second} will remove the seed layer. After
-this the chip is immediately transferred to a beaker of deionised water and
-then rinsed. Since the seed layer thickness is significantly smaller than the
-dimensions of the wire, the cross-sectional area will not be significantly
-altered in this time.
+etchant. We used a pre-mixed etchant made up of 50\% potassium iodide and
+\numrange{10}{20}\% iodine, which etches gold at a rate of
+\SI{5}{\nano\meter\per\second}.  This means that an etch of
+\SIrange{5}{10}{\second} will remove the seed layer. After this the chip is
+immediately transferred to a beaker of deionised water and then rinsed.  Visual
+inspection of the die will clearly show if the seed layer has been removed.
+Since the seed layer thickness is significantly smaller than the dimensions of
+the wire, they will not be significantly altered by the etch.
 
-\cm{Need to find out what the Cr etchant is called}
-%
 To complete the separation of the wires, the chromium layer must also be etched
-in the same way. The process is the same as for the gold etch: the chip is
-submerged in a beaker of the etchant and after the pre-determined exposure time
-it is transferred to deionised water and then rinsed. This stage of the
-fabrication is represented in \mysubfigref{fab:fig:etch}{d}. 
+in the same way. For this we use a premixed etchant of \numrange{20}{25}\%
+diammonium hexanitritratocerate and \numrange{5}{10}\% nitric acid. The process
+is the same as for the gold etch: the chip is submerged in a beaker of the
+etchant and after the pre-determined exposure time it is transferred to
+deionised water and then rinsed. This stage of the fabrication is represented
+in \mysubfigref{fab:fig:process}{10}. 
+
+We occasionally found that etching could cause some of the smaller features to
+become detached from the chip, see \mysubfigref{fab:fig:overetch}. This could be due to over-etching, or poor
+adhesion from electroplating. To overcome this we made changes to the chip
+design, making the central wire larger (the Z2 wire was originally only
+\SI{4}{\micro\meter} in width) and adding the anchoring pads shown in
+\mysubfigref{design:fig:chipexperiment}{b}. It is helpful when etching to
+be very careful with the chip, and hold it in the etchant with tweezers as
+opposed to dropping it. This ensures that the die can be removed and placed
+into water without delay - particularly important when the etching time is only
+a few seconds.
+
+\begin{figure}
+  %\includegraphics[width=\textwidth]{figs/fab/etch/etchdebris.jpg}
+  \ph{Over etch}
+  \caption{over etch}
+  \label{fab:fig:overetch}
+\end{figure}
 
 \section{Inspecting the finished die}
 
