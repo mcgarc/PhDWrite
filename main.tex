@@ -70,7 +70,8 @@
 						doi=false,
 						isbn=false,
 						eprint=false,
-						giveninits=true
+						giveninits=true,
+            sortcites=true
 						]{biblatex}
 
 % This is the macro to do this. see SE:
@@ -175,7 +176,7 @@
 
 % --- Other macros ---
 % Measured value
-\newcommand*\meas[1]{\overline{#1}}
+\newcommand*\meas[1]{\tilde{#1}}
 
 
 % Uncomment and fill if using article
@@ -192,6 +193,7 @@
 % Title page
 \input{./chapters/title}
 
+<<<<<<< HEAD
 % Abstract
 \chapter*{Abstract}
 \input{./chapters/abs}
