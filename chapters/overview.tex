@@ -14,12 +14,41 @@ acceptance of the traps. Problems arising from fabrication will mainly be
 discussed in the following chapter.
 }
 
+\section{Existing \CaF{} apparatus}
+
+\section{Design requirements}
+
+\cm{
+\begin{itemize}
+  \item Andr`\e proposal, want to strongly couple to coplanar waveguides
+  \item Want to do quantum operations with rotational stretched states
+  \item Need small size scale
+  \item Height limited by VdW force, as per Ed's notebook (Charles Smith also said something
+    about charges causing decoherence?) height gives scale size
+  \item We want to use magnetic trapping rather than electric (as explained
+    in QSUM report: long coherence times and easier to load (?))
+  \item Need to be able to load (one step is no good, ref. next chapter)
+\end{itemize}
+}
+
+\section{Design choices}
+% TODO Maybe a better name for this 
+
+\cm{
+  \begin{itemize}
+    \item Load with big U wire under chip
+    \item IP better than QP because of majorana losses (so choose Z wires)
+    \item Current and mw delivery by subchip (? this is a detail)
+    \item Load via magnetic transport
+  \end{itemize}
+}
+
 \section{Experiment overview}
-\label{design:overview}
+\label{overview:overview}
 
 Our ultracold molecules are created using the methods described above, with our
 apparatus, including the proposed chip chamber shown in
-\myfigref{design:fig:vacuumsystem}. A buffer-gas source is used to create
+\myfigref{overview:fig:vacuumsystem}. A buffer-gas source is used to create
 \CaF{} molecules in the source chamber, with the beam being longitudinally and
 transversely slowed before it is captured in a MOT inside the collisions
 chamber.
@@ -46,7 +75,7 @@ chamber.
     is positioned above a large copper U-wire for intermediary trapping of
     molecules. The U-wire is electrically isolated by aluminium nitride
     plates.}
-  \label{design:fig:vacuumsystem}
+  \label{overview:fig:vacuumsystem}
 \end{figure}
 
 The \CaF{} MOT is the workhorse of our experiment, providing molecules which
@@ -61,7 +90,7 @@ molecules is similar to that used in
 discussed further below and in \cm{transport chapter}.
 
 The chip experiment will integrate into this setup as shown in
-\myfigref{design:fig:vacuumsystem}, an additional chamber will be mounted
+\myfigref{overview:fig:vacuumsystem}, an additional chamber will be mounted
 further downstream of the transport stage, so that molecules can be brought
 straight through the tweezer chamber from the collisions chamber.  Since the
 molecules will be brought into the chamber inside magnetic trap, we propose to
@@ -86,8 +115,8 @@ and two high-current feedthroughs to power the U-wire.
 % TODO Ensure I go on to discuss the current drivers
 % TODO confirm distance in this para
 We refer to this entire device as the flange assembly, and it is shown in the
-inset of \myfigref{design:fig:vacuumsystem} and in
-\mysubfigref{design:fig:chipexperiment} It will be mounted so that the chip is
+inset of \myfigref{overview:fig:vacuumsystem} and in
+\mysubfigref{overview:fig:chipexperiment} It will be mounted so that the chip is
 \SI{3}{\milli\meter} away from the transport axis and facing the floor,
 allowing us to trap and then drop the molecules for imaging.  External magnetic
 coils will provide the bias fields, and currents will be provided by drivers
@@ -133,7 +162,7 @@ discussed in \cm{a later chapter.} {a}.
     similar. All of the above features  will be discussed further in
     chapter~\ref{fab}. The crest of Imperial College London (iv) is also
     included.}
-  \label{design:fig:chipexperiment}
+  \label{overview:fig:chipexperiment}
 \end{figure}
 
 % TODO Check what these equations that I use actually are and where they go. I
@@ -168,12 +197,12 @@ is \SI{5}{\micro\meter}, and we expect that the wires will be able to carry a
 maximum current density of \SI{6E10}{\ampere\per\meter\squared}, as was found
 for a similar chip design in \inlineref{Treutlein2008}. The Z-wire will
 therefore have a width $w=\SI{200}{\micro\meter}$. Other wire parameters are
-shown in \mytableref{design:table:wires}.
+shown in \mytableref{overview:table:wires}.
 
 The axial length of the wires also decreases to gradually reduce the size of
 the trapped cloud in the $x$ direction. An exaggerated schematic of the wire
-layout is shown in \myfigref{design:fig:chipexperiment} and further details are
-outlined in \mytableref{design:table:wires}. All wires have been designed to
+layout is shown in \myfigref{overview:fig:chipexperiment} and further details are
+outlined in \mytableref{overview:table:wires}. All wires have been designed to
 carry twice the current that is required in the loading scheme, so that there
 is sufficient headroom for further experiments, and to reduce risk of
 accidental damage to the chip during normal operation.
@@ -192,12 +221,12 @@ accidental damage to the chip during normal operation.
 \end{tabular}
   \caption{Details on the wire dimensions, maximum current, and desired
   trapping heights. The wire design is shown in
-  \mysubfigref{design:fig:chipexperiment}{c}. Note that the U-wire current is
+  \mysubfigref{overview:fig:chipexperiment}{c}. Note that the U-wire current is
   limited by vacuum feedthroughs and not by the maximum current calculated by
   the wire dimensions.  The maximum currents have been designed for use at only
   50\% of their potential maximum ($I_\text{max}$).
   }
-  \label{design:table:wires}
+  \label{overview:table:wires}
 \end{table}
 
 Each Z-trap will begin trapping at one height before the bias field is
@@ -208,7 +237,7 @@ increased to bring the trap centre closer to the surface (as per
 ).  To distinguish between the two trap stages for
 each wire, we label them $\mathrm{ZX_i}$ for the initial (higher) trap and
 $\mathrm{ZX_f}$ for the final (lower) trap, with $\mathrm{ZX}$ corresponding to
-the wire labels in \mytableref{design:table:wires}.
+the wire labels in \mytableref{overview:table:wires}.
 
 In order to incorporate microwave guides onto the chip. This can be
 accomplished by adding an insulating layer on top of the wires, on to which we
