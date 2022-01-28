@@ -1,29 +1,65 @@
-\cm{
 This chapter describes the process of desigining the molecule chip experiment.
 This was motivated by three main factors: the need to integrate with the
 existing experiment, the core proposal of confining molecules close to a
-microwave guide, and the practicalities of fabricating the chip.
-%
-Each of these factors will be addressed in order. We begin with a discussion of
-the existing experiment, and where the chip fits into it. We will see that this
-lead us to the conclusion that magnetic traps would be most suitable for our
-experiment. Trapping close to the microwave guides requires bringing the
-molecules close to the surface of the trap, a loading procedure that was
-thorourghly investigated with simulations, and analysis of the phase-space
-acceptance of the traps. Problems arising from fabrication will mainly be
-discussed in the following chapter.
-}
+microwave guide, and the practicalities of fabricating the chip. Here I will
+focus on how the first two factors informed the design choices, with changes
+due to fabrication discussed in chapter~\ref{fab}. The design will be further
+justified by simulation in chapter~\ref{design}.
+
+We begin with a discussion of
+the existing experiment, and where the chip fits into it. I will then discuss
+the process that lead us to choose a magnetic trap for our design. I will
+present the final design \cm{and how it can be integrated with the existing
+apparatus}. 
 
 \section{Existing \CaF{} apparatus}
 
 \cm{Need to think a little about how this will build on theory chapter}
 
+The methods for laser-cooling of molecules described in
+chapter~\ref{theory} are applied in our experiments to produce cold \CaF{}
+molecules. The apparatus shown in \myfigref{overview:fig:vacuumsystem} can be
+used to produce and slow a \CaF{} beam~\cite{PhysRevA.89.053416, Truppe2017a}, capture these
+molecules in a MOT and cool them below the Doppler limit~\cite{Truppe2017}. We
+are then able to conduct experiments in coherent control of molecules in a
+magnetic trap~\cite{PhysRevLett.124.063001} and investigate collisions with
+rubidium atoms~\cite{PhysRevLett.126.153401, Jurgilas2021}.
+
+\begin{figure}[htb]
+  \centering
+  \includegraphics[width=0.7\textwidth]{figs/overview/apparatus_04_crp.png}
+  \caption{
+    The \CaF{} experiment is shown along with the planned additional chip
+    chamber.}
+  \label{overview:fig:vacuumsystem}
+\end{figure}
+
+All our experiments begin with the production of a beam of \CaF{} in the source
+chamber with a buffer-gas cell. The molecules undergo laser-slowing before
+being captured in a MOT in the MOT chamber. Subsequent experiments can be
+conducted in this chamber or in the neighbouring tweezer chamber. This can be
+populated by means of a magnetic transport trap (MTT).  Molecules can be
+trapped in an external anti-Helmholtz coil mounted on a transport stage. Moving
+the coils from their position around the MOT chamber can transport the trapped
+molecules into the neighbouring tweezer chamber. \cm{To be discussed in later
+chapter??}
+
+The chip experiment will make use of this aparatus by adding an additional
+experiment chamber downstream of the tweezer chamber, as shown in
+\myfigref{overview:fig:vacuumsystem}. By transporting molecules through the
+tweezer chamber and into this chip chamber, we will be able to load on to the
+chip for this new experiment. In the rest of this chapter I will outline the
+requirements for the chip experiment so that it can operate in conjunction with
+the existing setup. I will then show how we have chosen to implement our
+design.
+
+
 \section{Design requirements}
 
 \cm{
 \begin{itemize}
-  \item Andr`\e proposal, want to strongly couple to coplanar waveguides
-  \item Want to do quantum operations with rotational stretched states
+  \item Andr\'e proposal, want to strongly couple to coplanar waveguides
+  \item Wantto do quantum operations with rotational stretched states
   \item Need small size scale
   \item Height limited by VdW force, as per Ed's notebook (Charles Smith also said something
     about charges causing decoherence?) height gives scale size
@@ -45,7 +81,7 @@ discussed in the following chapter.
   \end{itemize}
 }
 
-\section{Experiment overview}
+\section{Old stuff}
 \label{overview:overview}
 
 Our ultracold molecules are created using the methods described above, with our
@@ -55,30 +91,6 @@ apparatus, including the proposed chip chamber shown in
 transversely slowed before it is captured in a MOT inside the collisions
 chamber.
 
-\begin{figure}[htb]
-  \centering
-  \includegraphics[width=0.7\textwidth]{figs/experiment_placeholder.png}
-  \caption{
-    \cm{To be replaced with a proper CAD drawing of the experiment}
-    A top-down view of the planned \CaF{} experiment is shown. Molecules are
-    created in the source chamber in a buffer-gas cell. They are then
-    laser-slowed  and undergo transverse
-    cooling, before being captured in the collisions chamber.
-    Here we can cool the
-    molecules using the methods described in and perform
-    experiments in collisions. All these are explained further in \cm{theory
-    chapter} and \inlinerefs{Jurgilas2021, JurgilasIOP2021,
-    PhysRevLett.126.153401}. The magnetic transport
-    trap (MTT) can transfer a cloud of molecules to the neighbouring tweezer
-    chamber (for the optical tweezer experiment). The chip chamber will be
-    positioned next to the tweezer chamber, and will receive molecules from the
-    MTT in the same way. Inset, an exploded view of the flange assembly. The
-    chip is mounted on a PCB for current (and later microwave) delivery. This
-    is positioned above a large copper U-wire for intermediary trapping of
-    molecules. The U-wire is electrically isolated by aluminium nitride
-    plates.}
-  \label{overview:fig:vacuumsystem}
-\end{figure}
 
 The \CaF{} MOT is the workhorse of our experiment, providing molecules which
 can be further cooled cooled further (as discussed above) used for experiments
