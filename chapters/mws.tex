@@ -1,38 +1,12 @@
-\cm{TODO: Should include more theory of the interaction stuff/ cavity QED
-in this chapter. Intro should be something like:
-%
+% TODO Better intro spiel
+\cm{
 In chapter (probably the introduction) I introduced the concept of microwave
 guides integrated into chip traps. Previous experiments have used on-chip
 microave guides to couple to \cm{(I think this is right)} the hyperfine structure
 of atoms. However, the coupling to heteronuclear dipolar molecules is much
 stronger \cm{Why?}. In the strong coupling regime it may be possible to \cm{(do
 cavity QED, sideband cooling, etc...)}
-%
-I will now discuss the theory of interaction between molecules and microwaves
-and the implementation of a coplanar waveguide on our chip.
-%
 }
-
-%To summarise the previous sections, there are good prospects for developing a
-%molecule chip using magnetic traps integrated with on-chip microwave guides for
-%coherent quantum control and measurement. Such a device would take advantage of
-%magnetically insensitive rotational transisions in \CaF{} to form a qubit with
-%long coherence times. Forming a microwave resonator on chip will allow the use
-%of powerful techniques due to cavity QED effects.
-%
-%\thesis{Have referred to a quibt here, but I think I should actually avoid this
-%and find a better way to refer to it. Mayb have to introduce above.}
-%
-%Now I will present a plan for implementation of such a chip, beginning with a
-%discussion of propagating microwaves on the surface of a chip and moving on to
-%look at integration of the trapping wires and microwave guides by use of
-%multiple layers. The chip design will then be presented followed by a proposed
-%loading scheme.
-
-
-\section{Theory of microwave--molecule interaction}
-
-\cm{Check hyphenation of section title}
 
 \section{The coplanar waveguide}
 
@@ -41,113 +15,94 @@ takeaways are the field strcutre, where the molecules need to sit in this
 field, and what we need to do to get a cavity. What can we do if we don't have
 a cavity?}
 
-As discussed in \cm{chapter ??}, it is highly beneficial to be able to
-incorporate microwave waveguides onto the chip surface. The structure most
-commonly used for this application is the coplanar waveguide
-(CPW)~\cite{1127105, Simons2004}, which was was originally proposed by Cheng
-P.~Wen in 1969.~\cite{1127105} CPWs are formed from a conductor layer on a
-dielectric substrate, with two channels of conductor carved out in order to
-create a centre conductor strip, and the other conducting regions forming a
-surrounding ground plane.  A segment of a CPW is illustrated in
-Fig.~\ref{experiment:fig:CPWxsec}.
+The coplanar waveguide (CPW) was originally proposed by Cheng P.~Wen as a
+means of guiding microwaves across the surface of a dielectric
+substrate~\cite{1127105}. It consists of a central conductor with a ground
+plane on either side, as pictured in~\myfigref{mws:fig:CPW}. CPWs have become
+prolific, since they allow the creation of robust microwave devices, and offer
+some benefits over other waveguide \cm{architectures} such as the stipline
+waveguide because they can provide circularly polarised fields, and also
+provide easy access to the ground plane for shunt connections.
 
-\cm{Should replace this paragraph with some COMSOL simulation and further
-discussion. Figure should be from our COMSOL sims not Simons.}
-%
 The CPW's geometry is defined by the centre conductor width ($S$) and the
-channel width ($W$). The geometry of the CPW determines the region the microwave
-field occupies, as illustrated in \myfigref{experiment:fig:CPWfield}. The CPW
-can therefore be designed to maximise overlap between the microwave field and
-the trapped molecules. As a rough approximation the molecules should be trapped
-at a distance $h\sim S$ above the centre of the CPW to achieve a good
-overlap.~\cite{Boehi2009}
+channel width ($W$). The geometry of the CPW determines the region the
+microwave field occupies, as illustrated in \myfigref{experiment:fig:CPWfield}.
+The CPW can therefore be designed to maximise overlap between the microwave
+field and a cloud of molecules trapped nearby.  As a rough approximation the
+molecules should be trapped at a distance $h\sim S$ above the centre of the CPW
+to achieve a good overlap.~\cite{Boehi2009} The field surrounding the CPW is
+shwon in \mysubfigref{mws:fig:CPW}{b}, the equations defining this field can be
+found analytically~\cite{Simons2004}, or the field can be determined by a
+finite-element simulation.
 
-\cm{I can combine these two theses into one reference. Probably a good idea,
-but don't have time right now. The way to do it is to cite them as
-\\cite{Treutlein2008, *Boehi2009}
-but it seems that I would have to change every single instance to make this work
-properly.
-}
-
-\begin{figure}
-  \includegraphics{./figs/2019-01-18_stripline_xsection.png}
-  \caption{
-    \cm{TODO: Redrawa myself and fix the labels (don't need $h_1$, just $h$,
-    etc.}
-    Cross section of a coplanar waveguide segment, showing the characteristic
-    features of a centre conductor of width $S$, which is isolated from the
-    ground plane by a distance of width $W$. Note the similarity to a coaxial
-    cable, where the centre conductor takes the place of the central pin and the
-    ground plane the shielding. This figure is reproduced from
-    reference~\cite{Simons2004}}.
-  \label{experiment:fig:CPWxsec}
-\end{figure}
-
+% TODO Need to make it clear that we are in a limiting geometry with large
+% dielectirc compared to conductor height
 
 \begin{figure}
-  \includegraphics[width=0.5\textwidth]{./figs/simons_cpw_e_field.png}
-  \caption{
-    \cm{Redraw, fix permittivity labesl. Also need to think about quantum
-    squeezing mode volume, as mentioned by Alex (somehow related to
-    $(\lambda/n)^3$}
-    Electric field lines in the vicinity of a CPW are shown. The geometry of the 
-    the CPW can be chosen to determine the intensity profile of the field. Ths
-    figure is reproduced from reference~\cite{Simons2004}.
-  }
-  \label{experiment:fig:CPWfield}
+  %\includegraphics{}
+  \cm{Need a drawing of CPW and a drawing of field lines. In former ensure we
+  define the permittivities}
+  \caption{}
+  \label{mws:fig:CPW}
 \end{figure}
 
-We must ensure that coupling between CPW microwaves and trapped molecules is
-achievable. In this section we will focus on ensuring that the microwaves will
-be able to propagate along the waveguide. This will rely on impedance matching
-at CPW interfaces and satisfactory levels of attenuation on the
-chip.~\cite{Jackson1975, Simons2004}.
+\subsection{CPW properties}
 
-We will now outline the basic mathematical description of a CPW.  For our
-purposes it will be sufficient to consider the case where the height of the
-substrate ($h_1$) far exceeds the other distances, that is $h_1 \gg S$, whilst
-$S \sim W$. The dielectric has relative permittivity $\epsilon_\mathrm{r1}$.
-
-\cm{Throughout: need to figure out I vs we}
-\subsubsection{CPW Impedance}
-
-It is common to define the planar geometry in terms of the
-ratio~\cite{1127105, Simons2004}
+We will now consider the electric properties of a CPW. These will largely
+depend on the the planar geometry of the waveguide, which we express in terms
+of the ratio~\cite{1127105, Simons2004}
+%
 \begin{equation}
   k_0 = \frac{S}{S+2W} = \sqrt{1-{k'_0}^2}
   \label{eqn:k0def}
 \end{equation}
-where the second equality defines $k'_0$.
 %
-Wen demonstrated~\cite{1127105} that a conformal mapping \cm{expand} can be used
-to describe a CPW as a transmission line~\cite{Jackson1975} in terms of elliptic
-integrals of the first kind $K(k)$. The capacitance of a the dielectric region
-of the CPW is given by
+where the second equality defines $k'_0$.
+
+Since the field of the CPW will pass through both the dielectric and the
+surrouding air, the CPW's capacitance is the sum of the capacitance of each of
+these two parts
+%
 \begin{equation}
-  C_\mathrm{CPW} = 2\epsilon_0(\epsilon_\mathrm{r1}-1)\frac{K(k_0)}{K(k'_0)}
+  C_\text{CPW} = C_\text{dielectic} + C_\text{air}.
 \end{equation}
+%
+The method of finding these individual contributions is somewhat involved, so
+we simply state the results here in terms of the elliptic integral of the
+first kind $K(k)$~\cite{Simons2004}. The capacitance due to the dielectric id 
+%
+%
+\begin{equation}
+  C_\text{dielectric} = 2\epsilon_0(\epsilon_\text{r1}-1)\frac{K(k_0)}{K(k'_0)}
+\end{equation}
+%
 and the capacitance of the air region is
+%
 \begin{equation}
-  C_\mathrm{air} = 4\epsilon_0 \frac{K(k_0)}{K(k'_0)}.
+  C_\text{air} = 4\epsilon_0 \frac{K(k_0)}{K(k'_0)}.
 \end{equation}
-We can use this to find the effective permittivity 
+
+We can use this to find the effective permittivity~\cite{Simons2004}
+%
 \begin{align}
-  \epsilon_\mathrm{eff} &= \frac{C_\mathrm{CPW}}{C_\mathrm{air}} \\
-    &= \frac{1+ \epsilon_\mathrm{r1}}{2} \\
+  \epsilon_\text{eff} &= \frac{C_\text{dielectric}}{C_\text{air}} \\
+    &= \frac{1+ \epsilon_\text{r1}}{2} \\
 \end{align}
-the phase velocity (using $c$ as the speed of light)
+%
+and the phase velocity (using $c$ as the speed of light)~\cite{Simons2004}
+%
 \begin{align}
-  v_\mathrm{ph} &= \frac{c}{\sqrt{\epsilon_\mathrm{eff}}} \\
-    &= \frac{c}{\sqrt{(1 + \epsilon_\mathrm{r1})/2}}
+  v_\text{ph} &= \frac{c}{\sqrt{\epsilon_\text{eff}}} \\
+    &= \frac{c}{\sqrt{(1 + \epsilon_\text{r1})/2}}.
 \end{align}
-\cm{check that [Ohm] notation is ok}
-and hence the impedance of the CPW\footnote{This result makes use of the
-approximation $\sqrt{\mu_0/\epsilon_0}\approx120\pi\mathrm{[Ohms]}$, which is
-used commonly in microwave engineering~\cite{Collin2007}}
+
+Now using the approximation~\cite{Collin2007}
+$\sqrt{\mu_0/\epsilon_0}\approx120\pi\text{Ohms}$ we have the line
+impedance~\cite{Simons2004}
 \begin{align}
-  Z_0 &= \frac{1}{C_\mathrm{CPW} v_\mathrm{ph}} \\
-    &= \frac{30 \pi}{\sqrt{(\epsilon_\mathrm{r1}+1)/2}} \frac{K(k_0)}{K(k'_0)}
-    \mathrm{[Ohms]}
+  Z_0 &= \frac{1}{C_\text{air} v_\text{ph}} \\
+    &= \frac{30 \pi}{\sqrt{(\epsilon_\text{r1}+1)/2}} \frac{K(k_0)}{K(k'_0)}
+    \text{Ohms}
 \end{align}
 Note that the impedance of the waveguide has dependence only on the geometry in
 the form of the ratio $k_0$, and the relative permittivity of the
@@ -156,12 +111,10 @@ value of $k_0$ can be chosen to fix the impedance at the standard $Z_0 =
 \SI{50}{\ohm}$.
 
 Therefore as long as $k_0$ is held constant the CPW can be tapered to change the
-size of the centre conductor, and hence control the region the field occupies
-(c.f. \myfigref{experiment:fig:CPWfield}).  Various typical CPW tapers  can be
-seen in in \myfigref{experiment:fig:resonator}.~\cite{Simons2004}
+size of the centre conductor, and hence control the region the field occupies.
 
-\subsubsection{CPW Resonators}
-\label{experiment:mw:resonator}
+\subsection{CPW Resonators}
+\label{mws:resonators}
 
 Here I will present the implementation and theory of CPW microwave resonators,
 with a view to determine whether implementation of the Andr\'e design is
@@ -412,8 +365,37 @@ reference~\cite{doi:10.1063/1.3573824}) but it is not possible to do the same
 for a waveguide.
 }}
 
-\subsection{Chips with multiple layers}
-\label{experiment:multilayer}
+\section{Coupling with a single molecule on a chip}
+
+\cm{
+  \begin{itemize}
+    \item Build on maths in theory chapter
+    \item Specify the states of the molecule that we will use
+    \item Specify coupling parameters, etc.
+    \item Discuss coupling to waveguide and to a resonator
+  \end{itemize}
+}
+
+\section{Experiments with a single molecule coupled to a mw resonator}
+
+\subsection{Sideband cooling}
+
+\subsection{State readout}
+
+\subsection{State preparation}
+
+\cm{What is this?}
+
+\subsection{Coupling between molecules}
+
+\cm{How will this work?}
+
+
+\section{Integrating microwave structures on a chip}
+\label{mws:integrating}
+
+% TODO
+\cm{This is from the ESA, so need to fix up}
 
 \cm{Mike:This bit doesn't make sense to me. The logic here seems to imply that
 the  electrostatic trap relies on a resonator but the magnetic trap doesn't.
