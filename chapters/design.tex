@@ -358,9 +358,20 @@ The cloud is initialised in a quadrupole trap with gradient
 before the gradient is linearly ramped over \SI{100}{\milli\second} to
 \SI{60}{\gauss\per\centi\meter} (the gradient used in the MTT).  The molecules are
 then held for a further \SI{50}{\milli\second}, as a stabilisation time. The
-increasing trap gradient compresses the distribution.
+increasing trap gradient compresses the distribution. The resulting
+distribution is Gaussian in velocity and position, centred on
+$z=\SI{3}{\milli\meter}$, as shown in \myfigref{design:fig:initsum}.
 
-% TODO Fig here showing init distro
+\begin{figure}[htb]
+\centering
+  \import{figs/simsThesis/}{init_summary.pgf}
+  \caption{ The particle distribution in phase-space after initialisation. A
+  scatter plot of the $z\,v_z$-phase-space plane the is shown in (a), with
+  histograms of $z$ and $v_z$ distributions in (c) and (b) respectively. The
+  position distributions for $x$ and $y$ are shown in (d) in orange and green
+  respectively.}
+  \label{design:fig:initsum}
+\end{figure}
 
 \section{Adiabatic transfer between traps}
 \label{design:adiabatic}
