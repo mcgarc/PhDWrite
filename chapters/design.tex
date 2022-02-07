@@ -491,8 +491,8 @@ after the ramp is shown in \myfigref{design:fig:mttusim}.
     (a) and (b), with histograms of the $z$ and $v_z$ projections in (c) and
     (e) respectively. The potentials at the start and end of the transfer are
     shown in (d). Subfigure (f) shows the temperature particle number varying
-    throughout the fields are varied in the times that are shaded grey (c.f.
-    \myfigref{design:fig:simsum}).
+    throughout the fields are varied in the times that are shaded grey
+    (c.f.~\myfigref{design:fig:simsum}).
   }
   \label{design:fig:mttusim}
 \end{figure}
@@ -528,8 +528,8 @@ phase-space for each projection throughout the ramp, as shown in
     of the trapping potential, as can be seen at \SI{75}{\milli\second}. These
     reductions can occur when moving between different types of traps, such as
     from the coil-based to wire trap, or from a quadrupole to Ioffe-Pritchard
-    trap. Care must be taken in such cases to ensure the potential remains
-    conservative and sufficiently deep throughout the handover.
+    trap. Care must be taken in such cases to ensure the potential sufficiently
+    deep throughout the handover.
 }
   \label{design:fig:mttudetail}
 \end{figure}
@@ -556,23 +556,20 @@ bias fields are linearly ramped to maintain the trap height at
 \SI{3}{\milli\meter}. The ramps are summarised in \myfigref{design:fig:simsum}
 and the simulation is presented in \myfigref{design:fig:uzsim}.
 
-In this figure we have the initial (a, blue) and final (b, red) particle distributions.
-With the $z$ velocities and positions summarised in the histograms in (c) and
-(e) respectively. We can see that the mean position and velocity remains the
-same, but it is clear from (b) that there are a number of particles that have
-picked up velocity in the positive $z$ direction, and can be seen leaving the
-trap. This is the notable streak to the right of the subfigure, and can also
-be seen in the tail of the histogram in (e). The particle number decreases, as
-seen in (f). This loss is similar to that of the MTT to U-trap handover, with a
-decrease in trap depth that we attribute from changing from a quadrupole to
-Ioffe-Pritchard trap. This changeover can be seen in (d) where we note that the
-final trapping potential's minimum is non-zero.
-
-We see that there
-is once again a loss of particles, which we can attribute to a similar lowering
-of trap depth during the handover as was seen for the MTT-U handover.  Other
-than this, we see that there is minimal change in the particle distribution in
-space and velocity.
+In this figure we have the initial (a, blue) and final (b, red) particle
+distributions.  With the $z$ velocities and positions summarised in the
+histograms in (c) and (e) respectively. We can see that the mean position and
+velocity remains the same, but it is clear from (b) that there are a number of
+particles that have picked up velocity in the positive $z$ direction, and can
+be seen leaving the trap. This is the notable streak to the right of the
+subfigure, and can also be seen in the tail of the histogram in (e). The
+particle number decreases by 20\% as seen in (f), although the particles do not
+fully leave the trap until the next step (see
+\mysubfigref{design:fig:simsum}{d}). This loss is similar to that of the MTT to
+U-trap handover, with a decrease in trap depth that we attribute from changing
+from a quadrupole to Ioffe-Pritchard trap. This changeover can be seen in (d)
+where we note that the final trapping potential's minimum is non-zero. Despite
+the particle losses there is minimal change to the particle distribution
 
 \begin{figure}[p]
 \centering
@@ -586,7 +583,7 @@ space and velocity.
     (c) and (e) respectively. The potentials at the start and end of the
     transfer are shown in (d). Subfigure (f) shows the temperature particle
     number varying throughout the fields are varied in the times that are
-    shaded grey (c.f.  \myfigref{design:fig:simsum}).
+    shaded grey (c.f.~\myfigref{design:fig:simsum}).
   }
   \label{design:fig:uzsim}
 \end{figure}
@@ -602,7 +599,7 @@ function of time so that $B_{\text{bias}, y} \propto t^{-1}$.
 
 As can be seen in \myfigref{design:fig:zsim}, there is particle loss,
 although much of this is due to particles that had already left the trapping
-region in the previous ramp, note that in subfigure~(f) the particle number is
+region in the previous ramp. Note that in subfigure~(f) the particle number is
 decreasing before the ramp begins. The other major effect of the ramp is
 heating, which occurs due to the spatial compression and conservation of
 phase-space density.
@@ -615,12 +612,16 @@ the new trap minimum at $z=\SI{1}{\milli\meter}$.
 \centering
   \import{figs/simsThesis/}{z_summary.pgf}
   \caption{
-    The Z-trap compression simulation is summarised, with subfigures and colours as
-    in \myfigref{design:fig:mttusim}. The particle loss before the ramp
-    begins is due to effects from the U-Z handover. We experience minimal
-    particle loss in the compression, and the depth of the trap increases
-    significantly, so that despire the heating of the cloud there is good
-    localisation close to the surface.
+    The simulation of the compression in the Z-wire trap. The state of the
+    system is presented at the end of the initialisation procedure (blue) when
+    the trapping potential minimum is held \SI{3}{\milli\meter} from the
+    surface, and after compressing to the height of \SI{1}{\milli\meter} (red).
+    The phase-space distributions are shown in the $z$-$v_z$ plane in (a) and
+    (b), with histograms of the $z$ and $v_z$ projections in (c) and (e)
+    respectively. The potentials at the start and end of the transfer are shown
+    in (d). Subfigure (f) shows the temperature particle number varying
+    throughout the fields are varied in the times that are shaded grey
+    (c.f.~\myfigref{design:fig:simsum}).
   }
   \label{design:fig:zsim}
 \end{figure}
@@ -639,15 +640,13 @@ that are changed for each ramp are also shown.
 \centering
   \import{figs/simsThesis/}{total_summary.pgf}
   \caption{
-    Details for each stage of the simulation in turn. Column (a) shows the
-    initialisation procedure. Column (b) shows the ramp from the MTT to U-wire,
-    with the ramp duration shaded grey. During the ramp handover there is some
-    expansion of the cloud, which causes oscillations in the width that can be
-    seen continuing on into the next phase. In column (c) we have the U-Z
-    handover and the $z$ bias field is switched off. Finally in column (d) is the
-    compression in the Z-trap, note in particular the increase in cloud
-    temperature as the width decreases. The lower two rows show the parameters
-    of the simulation that are changed to alter the trapping potentials.
+    Details for each stage of the simulation in turn. The top two rows show
+    properties of the molecule cloud and the second two rows show the trapping
+    currents and bias fields throughout. Column (a) shows the initialisation
+    procedure. Column (b) shows the ramp from the MTT to U-wire, with the ramp
+    duration shaded grey.  In column (c) we have the U-Z handover and the $z$
+    bias field is switched off. Finally in column (d) is the compression in the
+    Z-trap.
   }
   \label{design:fig:simsum}
 \end{figure}
@@ -660,16 +659,19 @@ efficiency is possible. It may also be possible to implement some cooling in
 the chip chamber to reduce this temperature, but we are restricted by the
 limited optical access.
 %
+There is some expansion of the cloud as molecules are lost, particularly caused
+during the U-Z handover stage.
+%
 Heating in the trap is largely due to the compression in the final stage. This
 is inevitable, but does not cause any problems, since the trap depth
 increases for traps closer to the surface, and the molecules are
 well contained.
 
 The trajectory simulation discussed in this section is instructive, since it
-tells us something about the handovers between different types of traps. Notice
+tells us about the handovers between different types of traps. Notice
 that the largest source of particle loss is when converting from the quadrupole
 U-trap to the Ioffe-Pritchard Z-trap. Here it is not sufficient to look just at
-the phase-space emittance and aceeptance at the end of each traps, but we must
+the phase-space emittance and acceptance in the final traps, but we must
 investigate the potential across the ramp, since a brief lowering of the
 potential can induce enormous loss. Fortunately this is not an issue when
 compressing and handing over between Z-traps, and the phase-space analysis is
@@ -678,16 +680,14 @@ sufficient for the rest of the procedure.
 \section{Phase-space acceptance of remaining Z-traps}
 \label{design:transferbetweenzs}
 
-% TODO This is quite weak I think. Let's see if Mike says I should run some
-% numbers, it seems kind of trivial and this chapter is already very long.
 Once trapped in $\mathrm{Z0_f}$, the remaining loading stages are simply
 repeated handovers to the smaller wires, with a compression stage carried out
 on each wire to bring the molecules closer to the surface. This is a
 well-understood and robust procedure that has been used before to load atom
 chips with minimal losses~\cite{Reichel2002}. The ramps used are detailed in
-table~\ref{design:table:wires}.  The timing aof the ramps could be shorter for
+table~\ref{design:table:wires}.  The timing of the ramps could be shorter for
 the Z-traps, since the timescale of motion in these traps is higher. This, as
-well as the optimal shape of the ramp can be deterimined empirically.
+well as the optimal shape of the ramp can be determined empirically.
 
 That said, since our experiment will operate with a significantly lower phase
 space density than previous experiments with atoms, it is important to ensure
