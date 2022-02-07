@@ -87,40 +87,43 @@ the chip is that the phase-space density of the cloud at the point of loading
 onto the chip determines the maximum number of molecules that can be trapped in
 the final trap.
 
+% This calculation in Mathematica notebook 2022-01-20
 If we do not introduce any further cooling steps, then the number of molecules
 we are able to trap in the final trap will be
 %
 \begin{equation}
   N_\text{final} = \frac{\rho_\text{\CaF{}}V_\text{trap}}
   {\lambda_\text{dB, trap}^3} = \frac{\rho_\text{\CaF{}} V_\text{trap}(2 \pi m k_B
-  T_\text{trap})^\frac{3}{2}}{h^3}
+  T_\text{trap})^\frac{3}{2}}{h^3}.
   \label{design:eq:psd_N}
 \end{equation}
 %
-% NOTE it is really 3.4 10^-12 PSD in paper. BS told me typical N ~ 10^4
-where $\rho_\text{\CaF{}} = 3\times10^{-12}$ is the phase-space density of the
-\CaF{} cloud, which is typical of a cloud of around $10^4$ molecules after
-cooling in the blue-detuned molasses~\cite{Truppe2017},
-$V_\text{trap}\sim(\SI{10}{\micro\meter})^3$ and
-$T_\text{trap}=\SI{4}{\kelvin}$. The \CaF{} mass is
-$m_\text{\CaF{}}=\SI{9.79E-26}{\kilogram}$. The trap depth used here is for the
-smallest trap operating at \SI{3}{\ampere}, and can be calculated using
-equation~\ref{intro:eq:trapdepth}. We therefore have
-%
-\begin{equation} N_\text{final} \lesssim 2000 \end{equation}
-%
-as an upper bound for the number of molecules trapped in the final trap, for a
-loading efficiency of 20\%. To
-reiterate, this assumes that the entire trap is full, and no excess molecules
-have been lost during loading. We will see below that this will not be the
-case. A more realistic number of molecules to be trapped can be found by using
-two key tools: analysis of the phase-space acceptance of the traps, and direct
-trajectory simulation of the cloud.
+% TODO Check that these parameters are not introudced somewhere else earlier.
+% especially mass
+Phase space densities of $\rho_\text{\CaF{}} = 1.4\times10^{-8}$ can be
+achieved by compressing the cloud in an optical dipole trap~\cite{PhysRevLett.121.083201}. The
+smallest trap will have volume
+$V_\text{trap}\sim(\SI{10}{\micro\meter})^2\times\SI{1}{\milli\meter}$ and
+depth
+$T_\text{trap}=\SI{4}{\milli\kelvin}$, which can be calculated by
+equation~\ref{intro:eq:trapdepth}. The \CaF{} mass is
+$m_\text{\CaF{}}=\SI{9.79E-26}{\kilogram}$.  We therefore expect that as many
+as $10^5$ molecules can be trapped.
+
+In the current experiment we are not able to implement a dipole trap, although
+this technique is being developed within our group. Using sub-Doppler cooling
+techniques, the maximum phase
+space density that we can achieve is much lower, at $\rho_\text{\CaF{}} =
+3\times10^{-12}$ meaning the number of molecules trapped will be of order one.
+Clearly we require the high phase-space density cloud to efficiently load the
+final trap, however it will still be possible to load molecules into the outer
+traps with the techniques available to us. By carefully designing a loading
+scheme, we hope to be able to maximise the number of molecules that will be
+accepted in the final trap.
+
 
 \subsection{Phase-space acceptance}
 
-% TODO I think it's OK to refer to depths in terms of temperature, but must be
-% consistent!
 For a particle to be trapped, it is obvious that it must occupy some spatial
 region that is within the trapping potential and it must not have sufficient
 energy to escape from said potential. In other words, the total energy of the
@@ -235,8 +238,6 @@ throughout~\cite{Hand1998, Lichtenberg1969}. Hence a cloud of trapped particles
 can be translated, for example in the transport coils, or towards the surface
 of the chip as will be discussed in section~\ref{design:adiabatic}.
 
-% TODO Also I'm not sure about this subsection's location, maybe it should go
-% up but leaving it here for the time being.
 \subsection{Simulating the motion}
 \label{design:motion:simmethods}
 
@@ -451,9 +452,6 @@ be reached for processes lasting around \SI{100}{\milli\second}.
   \label{design:fig:adiavary}
 \end{figure}
 
-% TODO I do have some stuff about rapid vs. adiabatic transfer between z-traps,
-% but I think it is unnecessary.
-
 \section{Trajectory simulation of the initial loading stages}
 
 In this section we will present simulations of loading molecules from the MTT
@@ -479,8 +477,6 @@ throughout the simulations is given at the end of the section, see especially
 \subsection{MTT - U transfer}
 \label{design:sim:trans_U}
 
-
-% TODO Check temperature here, said init at 5uK above
 The cloud is initialised by the usual procedure, with $\sigma_i =
 \SI{1}{\milli\meter}$ and $T=\SI{50}{\micro\kelvin}$, corresponding to the
 typical cloud sizes and temperatures we measure in the tweezer chamber after
@@ -760,11 +756,13 @@ loss. The final occupation is shown in
 Particle loss during the procedure can be estimated from the mismatching
 of these phase-space emittances and acceptances.
 
-% TODO Improve this discussion 
 The above-described spillover losses can be combined with the loading efficiency
 described by the trajectory simulations. We 
 expect a loading efficieny of 2\%. This would deliver only 50 molecules into
-the final trap in what is a highly-idealised loading simulation. This confirms
+the final trap in what is a highly-idealised loading simulation. Notably the
+analysis of the phase-space acceptance does not account for an increase in
+effective phase-space density by fillamenation, which will further reduce the
+final occupation. This confirms
 that we will need to produce a much higher initial phase-space density to
 load a sufficiently large number of molecules into the trap. However it is
 clear that this procedure can be used to load a cloud Ongoing efforts to produce higher
@@ -777,8 +775,7 @@ with the source of molecules up to the stage of confinement in a Z-trap
 \SI{10}{\micro\meter} from the chip surface. I have shown that we have created
 a loading procedure that will allow us to load this final trap through a series
 of wire traps of decreasing size. This is justified by simulation and
-phase-space analysis of the acceptance of the various trapping stages, which
-have shown that we expect 5\% loading efficiency into the final trap.
+phase-space analysis of the acceptance of the various trapping stages.
 %
 The design leaves scope for the addition of microwave guides on a second layer
 above the trapping wires, as discussed in chapter~\ref{intro}.
