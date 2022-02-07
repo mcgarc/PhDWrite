@@ -716,25 +716,23 @@ $\mathrm{Z1_i}$.
 %
 The cloud of molecules will be transferred to $\mathrm{Z1_i}$ with negligible
 heating. However, the total acceptance of the trap is less than the expected
-phase-space volume of the cloud, so there will be particle loss due to
-spillover.  Performing the handover adiabatically will maximise the number of
-molecules that can be transfered.
+phase-space volume of the cloud. We can estimate the spillover loss t be 73\%
+on the phase-space volumes in
+\myfigref{design:fig:phasematchinggrid}. Performing the handover adiabatically
+will maximise the number of molecules that can be transfered.
 
 Next, $\mathrm{Z1_i}$ is adiabatically compressed to $\mathrm{Z1_f}$, with the
-molecules held \SI{100}{\micro\meter} from the surface, as shown in row (b). The particles will
-undergo fillamentation, 
-exploring all regions that are energetically accesible and increasing the effective phase-space volume that they
-occupy. This expected occupation region is calculated from the energy-contour in
-phase-space that matches the temperature of the cloud, and is marked by the
-dotted line. There is now handover into $\mathrm{Z2_f}$, with the particles
-inside the phase-space acceptance contained in the new trap. Other particles
-spillover and are lost.
-
-Finally, $\mathrm{Z2}$ is loaded and compressed in exactly the same way as
-$\mathrm{Z1}$. The adiabatic handover from $\mathrm{Z1_f}$ to $\mathrm{Z2_i}$
-is the final cause of particle loss (due to spillover). Then the trap is
-compressed to hold the particles \SI{10}{\micro\meter} from the surface, as
-shown in \mysubfigref{design:fig:phasematchinggrid}{c}.
+molecules held \SI{100}{\micro\meter} from the surface, as shown in row (b).
+The particles will undergo fillamentation, exploring all regions that are
+energetically accesible and increasing the effective phase-space volume that
+they occupy. This expected occupation region is calculated from the
+energy-contour in phase-space that matches the temperature of the cloud, and is
+marked by the dotted line. There is now handover into $\mathrm{Z2_i}$, with the
+particles inside the phase-space acceptance contained in the new trap. We
+expect spillover losses of 84\%. In the final
+stage the trap is compressed, into $\mathrm{Z2_f}$, during which we expect no
+loss. The final occupation is shown in
+\mysubfigref{design:fig:phasematchinggrid}{c}.
 
 \begin{figure}[tbhp]
 \centering
@@ -760,12 +758,16 @@ shown in \mysubfigref{design:fig:phasematchinggrid}{c}.
 \end{figure}
 
 Particle loss during the procedure can be estimated from the mismatching
-of these phase-space emittances and acceptances. We can directly calculate
-these six-dimenal volumes, and we find that the total loss for both handovers
-is a factor of 12. Combined with the above trajectory simulations, we therefore
-expect a loading efficieny of 5\%, slightly lower than our earlier
-approximation of 20\%, but we will still have around $5\times10^2$ molecules
-loaded onto the chip by the existing methods. Ongoing efforts to produce higher
+of these phase-space emittances and acceptances.
+
+% TODO Improve this discussion 
+The above-described spillover losses can be combined with the loading efficiency
+described by the trajectory simulations. We 
+expect a loading efficieny of 2\%. This would deliver only 50 molecules into
+the final trap in what is a highly-idealised loading simulation. This confirms
+that we will need to produce a much higher initial phase-space density to
+load a sufficiently large number of molecules into the trap. However it is
+clear that this procedure can be used to load a cloud Ongoing efforts to produce higher
 density clouds of \CaF{} could improve this final molecule number even further.
 
 \section{Summary}
