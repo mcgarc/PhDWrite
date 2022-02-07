@@ -3,7 +3,7 @@ particular I show that we have developed a procedure for loading molecules into
 the chip trap.
 
 \section{Motion of molecules in a trap}
-\label{design:motion}
+\label{sim:motion}
 
 % TODO Is the Bohr magneton introduced above?
 % TODO Do I introduce this ket notation above?
@@ -14,7 +14,7 @@ $\ket{0,1,1}$ state.  The motion of any one particle is described by Hamilton's
 equations,~\cite{Lichtenberg1969}
 %
 \begin{align}
-  \label{design:eq:hamilton}
+  \label{sim:eq:hamilton}
   \dot{\mathbf{q}} =  \frac{\partial H}{\partial \mathbf{p}} &&
   \dot{\mathbf{p}} = -\frac{\partial H}{\partial \mathbf{q}},
 \end{align}
@@ -95,7 +95,7 @@ we are able to trap in the final trap will be
   N_\text{final} = \frac{\rho_\text{\CaF{}}V_\text{trap}}
   {\lambda_\text{dB, trap}^3} = \frac{\rho_\text{\CaF{}} V_\text{trap}(2 \pi m k_B
   T_\text{trap})^\frac{3}{2}}{h^3}.
-  \label{design:eq:psd_N}
+  \label{sim:eq:psd_N}
 \end{equation}
 %
 % TODO Check that these parameters are not introudced somewhere else earlier.
@@ -168,7 +168,7 @@ which defines an ellipse in phase-space.
 
 % TODO Want to be able to ref. multiple subfigs?
 This trapping condition can be verified by simulation, as is shown in
-\myfigref{design:fig:psaeg} (a) and (d), where the trap has been simulated for
+\myfigref{sim:fig:psaeg} (a) and (d), where the trap has been simulated for
 $m = 1$, $\omega = \SI[parse-numbers=false]{10^3}{\radian\per\second}$ and $l
 =\SI{1}{\milli\meter}$. We initialise 2000 particles uniformly distributed with
 $|z_0| < \SI{0.2}{\milli\meter}$ and $|v_0|< \SI{1.5}{\meter\per\second}$.
@@ -185,7 +185,7 @@ It is also instructive to consider anharmonic potentials, for example
   V(z) = -V_0\cos(\omega z)
 \end{equation}
 %
-which is also presented in \myfigref{design:fig:psaeg}, using the same
+which is also presented in \myfigref{sim:fig:psaeg}, using the same
 parameters as for the previous potential. We again see that particles with
 sufficiently low energy in the trapping region remain trapped, however in this
 case the anharmonicity of the trap results in the particle cloud spiralling
@@ -202,7 +202,7 @@ For simplicity we begin by considering only the acceptance in the $z$ direction
 with an axis of \SI{20}{\milli\meter}, current of \SI{40}{\ampere} and a
 trapping height of \SI{3}{\milli\meter}. The particles are initialised such
 that they have no motion in the $x$ and $y$ directions, and the trajectories
-are simulated for \SI{200}{\milli\second}. Figures~\ref{design:fig:psaeg}~(c)
+are simulated for \SI{200}{\milli\second}. Figures~\ref{sim:fig:psaeg}~(c)
 and (f) show the distribution at the start and end of the simulation.
 The accepted molecules (blue) are once again those that start inside the
 separatrix. There are also metastable molecules (orange) which remain outside
@@ -226,7 +226,7 @@ period the trap's phase-space emittance.
     anharmonic examples are inspired by the discussion in
     \inlineref{Crompvoets2005}.
   }
-  \label{design:fig:psaeg}
+  \label{sim:fig:psaeg}
 \end{figure}
 
 While this applies to a rapid switching off and on of trapping potentials, we
@@ -236,13 +236,13 @@ achieved because the Liouville theorem also holds for time-dependent
 Hamiltonians, as long as the potential remains conservative
 throughout~\cite{Hand1998, Lichtenberg1969}. Hence a cloud of trapped particles
 can be translated, for example in the transport coils, or towards the surface
-of the chip as will be discussed in section~\ref{design:adiabatic}.
+of the chip as will be discussed in section~\ref{sim:adiabatic}.
 
 \subsection{Simulating the motion}
-\label{design:motion:simmethods}
+\label{sim:motion:simmethods}
 
 The motion of a particle can be simulated by numerically solving
-\myeqref{design:eq:hamilton}, which we do using Python~\cite{python} and the
+\myeqref{sim:eq:hamilton}, which we do using Python~\cite{python} and the
 symplectic Euler method~\cite{Hairer2015, doi:10.1119/1.2034523} provided by
 the Desolver package~\cite{desolver}. Unlike other numerical methods,
 symplectic integrators guarantee the conservation of energy and momentum.
@@ -289,12 +289,12 @@ Where the field of each wire segment is~\cite{Griffiths2017}
 %
 \begin{equation} \mathbf{B}_\text{seg}(t, \mathbf{q}) = \frac{\mu_0 I(t)}{4\pi
 s_\text{seg}(\mathbf{q})} (\sin(\theta_2)  -
-\sin(\theta_1))\hat{\mathbf{\phi}}. \label{design:eq:segmentfield}
+\sin(\theta_1))\hat{\mathbf{\phi}}. \label{sim:eq:segmentfield}
 \end{equation}
 %
 Here $s_\text{seg}(\mathbf{q})$ represents the shortest distance between the
 point $\mathbf{q}$ and the line that runs through the segment off to infinity
-in each direction as defined in \myfigref{design:fig:wiresegment}. We also have
+in each direction as defined in \myfigref{sim:fig:wiresegment}. We also have
 the unit vector $\hat{\mathbf{\phi}} = \mathbf{I}\times\mathbf{q}/(qI)$.
 
 \begin{figure}[h]
@@ -325,12 +325,12 @@ the unit vector $\hat{\mathbf{\phi}} = \mathbf{I}\times\mathbf{q}/(qI)$.
     \node[fill=white] at (-5.0, 1.8) {$s_\text{seg}(\mathbf{q})$};
   \end{tikzpicture}
   \caption{Geometry of a wire segment (bold) carrying current $I$, whose field
-  can be calculated using \myeqref{design:eq:segmentfield}. The dotted line
+  can be calculated using \myeqref{sim:eq:segmentfield}. The dotted line
   shows $s_\text{seg}(\mathbf{q})$, the shortest distance from the point at
   which the field is calculated ($\mathbf{q}$) to the line parallel with the
   wire (dashed line).
   }
-  \label{design:fig:wiresegment}
+  \label{sim:fig:wiresegment}
 \end{figure}
 
 %In the case of that we are exchanging between
@@ -340,7 +340,7 @@ the unit vector $\hat{\mathbf{\phi}} = \mathbf{I}\times\mathbf{q}/(qI)$.
 %time.
 
 \subsection{Simulation initialisation}
-\label{design:sim:init}
+\label{sim:sim:init}
 
 For all the simulations described below, we begin with a cloud of molecules in
 a magnetic quadrupole trap. We use the following initialisation procedure so
@@ -361,7 +361,7 @@ before the gradient is linearly ramped over \SI{100}{\milli\second} to
 then held for a further \SI{50}{\milli\second}, as a stabilisation time. The
 increasing trap gradient compresses the distribution. The resulting
 distribution is Gaussian in velocity and position, centred on
-$z=\SI{3}{\milli\meter}$, as shown in \myfigref{design:fig:initsum}.
+$z=\SI{3}{\milli\meter}$, as shown in \myfigref{sim:fig:initsum}.
 
 \begin{figure}[htb]
 \centering
@@ -371,11 +371,11 @@ $z=\SI{3}{\milli\meter}$, as shown in \myfigref{design:fig:initsum}.
   histograms of $z$ and $v_z$ distributions in (c) and (b) respectively. The
   position distributions for $x$ and $y$ are shown in (d) in orange and green
   respectively.}
-  \label{design:fig:initsum}
+  \label{sim:fig:initsum}
 \end{figure}
 
 \section{Adiabatic transfer between traps}
-\label{design:adiabatic}
+\label{sim:adiabatic}
 
 It should be obvious that if we start with molecules in one potential, then
 rapidly turn that one off and turn on another with a different shape, is likely
@@ -395,7 +395,7 @@ $t_\text{ramp}$, which we vary between \SI{1}{\milli\second} and
 \SI{100}{\milli\second}. The molecules are then held for a further
 \SI{100}{\milli\second}. The state of the system at the end of the simulation
 is shown for $t_\text{ramp}\in \{\SI{1}{\milli\second}, \SI{30}{\milli\second},
-\SI{100}{\milli\second}\}$ in \myfigref{design:fig:adia3sim}, along with the
+\SI{100}{\milli\second}\}$ in \myfigref{sim:fig:adia3sim}, along with the
 behaviour of the cloud in the \SI{100}{\milli\second} hold time. Note that as
 the ramp time increases, the oscillation in cloud size, temperate and position
 decreases, as we have said we expect.
@@ -413,12 +413,12 @@ decreases, as we have said we expect.
     simulation. Note that for the longer ramps we observe less severe heating,
     oscillation and widening of the cloud.
   }
-  \label{design:fig:adia3sim}
+  \label{sim:fig:adia3sim}
 \end{figure}
 
 
 The question then is at what point do we enter the adiabatic r\'egime?
-\myfigref{design:fig:adiavary} shows the cloud width and temperature at the end
+\myfigref{sim:fig:adiavary} shows the cloud width and temperature at the end
 of the simulation for varying $t_\text{ramp}$. After
 $t_\text{ramp}\sim\SI{50}{\milli\second}$ the reduction is minimal, and we are
 strongly in the adiabatic r\'egime. This is approximately the timescale we
@@ -446,10 +446,10 @@ be reached for processes lasting around \SI{100}{\milli\second}.
     The final temperature and size of particle clouds transferred between
     offset quadrupole traps at various ramp times. Note that the large
     oscillations in width that occur for short ramp times (see
-    \myfigref{design:fig:adia3sim}) can result in the instantaneous width of
+    \myfigref{sim:fig:adia3sim}) can result in the instantaneous width of
     the cloud being small, such as in the shorter ramp times here.
   }
-  \label{design:fig:adiavary}
+  \label{sim:fig:adiavary}
 \end{figure}
 
 \section{Trajectory simulation of the initial loading stages}
@@ -467,15 +467,15 @@ see later) brief lowering of trap depth during trap handovers can induce
 additional loss of particles.
 
 We will consider the handover in four stages: the particle initialisation, which
-was already discussed in section~\ref{design:sim:init}; followed by the
+was already discussed in section~\ref{sim:sim:init}; followed by the
 handover from the MTT to the U-wire; then the U-wire to $\mathrm{Z0_i}$.
 Finally we will simulate the compression in the Z-wire trap from
 $\mathrm{Z0_i}$ to $\mathrm{Z0_f}$. A full summary of the changing parameters
 throughout the simulations is given at the end of the section, see especially
-\myfigref{design:fig:simsum}.
+\myfigref{sim:fig:simsum}.
 
 \subsection{MTT - U transfer}
-\label{design:sim:trans_U}
+\label{sim:sim:trans_U}
 
 The cloud is initialised by the usual procedure, with $\sigma_i =
 \SI{1}{\milli\meter}$ and $T=\SI{50}{\micro\kelvin}$, corresponding to the
@@ -485,7 +485,7 @@ reduced to zero and the U-wire current is ramped up to its maximum value of
 \SI{100}{\ampere}. The bias fields in the $y$ and $z$ directions (no $x$ bias
 is applied) are also ramped linearly, to maintain the trap centre at a height
 of \SI{3}{\milli\meter} below the chip. The state of the system before and
-after the ramp is shown in \myfigref{design:fig:mttusim}.
+after the ramp is shown in \myfigref{sim:fig:mttusim}.
 
 \begin{figure}[p]
 \centering
@@ -499,25 +499,25 @@ after the ramp is shown in \myfigref{design:fig:mttusim}.
     (e) respectively. The potentials at the start and end of the transfer are
     shown in (d). Subfigure (f) shows the temperature particle number varying
     throughout the fields are varied in the times that are shaded grey
-    (c.f.~\myfigref{design:fig:simsum}).
+    (c.f.~\myfigref{sim:fig:simsum}).
   }
-  \label{design:fig:mttusim}
+  \label{sim:fig:mttusim}
 \end{figure}
 
 The phase-space distribution in the $z$-$v_z$ projection is shown for the start
-(\mysubfigref{design:fig:mttusim}{a}) and end
-(\mysubfigref{design:fig:mttusim}{b}) of the simulation. Note that there is
+(\mysubfigref{sim:fig:mttusim}{a}) and end
+(\mysubfigref{sim:fig:mttusim}{b}) of the simulation. Note that there is
 little change to the velocity distribution, but in position the particles shift
 to occupy the positive $z$ direction, where the potential is less steep.
 
 Looking at the change in the particle number throughout the ramp
-(\mysubfigref{design:fig:mttusim}{f}) it is clear that there is some loss
+(\mysubfigref{sim:fig:mttusim}{f}) it is clear that there is some loss
 during the ramp (shaded grey region of the figure). We would naively expect
 there to be no loss during this transfer, since the final trap depth is larger
 than the temperature of the cloud, and there is good mode-matching of the two
 potentials. To see why this loss occurs, we  look at the evolution in
 phase-space for each projection throughout the ramp, as shown in
-\myfigref{design:fig:mttudetail}.
+\myfigref{sim:fig:mttudetail}.
 
 \begin{figure}[htp]
 \centering
@@ -530,7 +530,7 @@ phase-space for each projection throughout the ramp, as shown in
     Each pair of rows shows the phase-space plots for the MTT to U-trap
     handover simulation in the $q_i$-$v_i$ plane, along with the cut-through of
     the potential through the trap centre along $q_i$ at various times. This
-    supplements the simulation summary shown in \myfigref{design:fig:mttusim}.
+    supplements the simulation summary shown in \myfigref{sim:fig:mttusim}.
     The superposition of the quadrupole and U-traps briefly causes a lowering
     of the trapping potential, as can be seen at \SI{75}{\milli\second}. These
     reductions can occur when moving between different types of traps, such as
@@ -538,7 +538,7 @@ phase-space for each projection throughout the ramp, as shown in
     trap. Care must be taken in such cases to ensure the potential sufficiently
     deep throughout the handover.
 }
-  \label{design:fig:mttudetail}
+  \label{sim:fig:mttudetail}
 \end{figure}
 
 At $t=\SI{75}{\milli\second}$ there is a noticeable decrease in the trapping
@@ -553,15 +553,15 @@ be transferred from the MTT to the U-trap with minimal loss by mode-matching of
 the potentials.
 
 \subsection{U - Z transfer}
-\label{design:sim:U_to_Z0i}
+\label{sim:sim:U_to_Z0i}
 
 The next stage of loading is the U to $\mathrm{Z0_i}$ handover. We simulate
 this process as a continuation of the MTT-U transfer.  The Z-wire current is
 then linearly ramped on over \SI{100}{\milli\second} to \SI{30}{\ampere}, while
 the U-wire current is ramped off. The
 bias fields are linearly ramped to maintain the trap height at
-\SI{3}{\milli\meter}. The ramps are summarised in \myfigref{design:fig:simsum}
-and the simulation is presented in \myfigref{design:fig:uzsim}.
+\SI{3}{\milli\meter}. The ramps are summarised in \myfigref{sim:fig:simsum}
+and the simulation is presented in \myfigref{sim:fig:uzsim}.
 
 In this figure we have the initial (a, blue) and final (b, red) particle
 distributions.  With the $z$ velocities and positions summarised in the
@@ -572,7 +572,7 @@ be seen leaving the trap. This is the notable streak to the right of the
 subfigure, and can also be seen in the tail of the histogram in (e). The
 particle number decreases by 20\% as seen in (f), although the particles do not
 fully leave the trap until the next step (see
-\mysubfigref{design:fig:simsum}{d}). This loss is similar to that of the MTT to
+\mysubfigref{sim:fig:simsum}{d}). This loss is similar to that of the MTT to
 U-trap handover, with a decrease in trap depth that we attribute from changing
 from a quadrupole to Ioffe-Pritchard trap. This changeover can be seen in (d)
 where we note that the final trapping potential's minimum is non-zero. Despite
@@ -590,9 +590,9 @@ the particle losses there is minimal change to the particle distribution
     (c) and (e) respectively. The potentials at the start and end of the
     transfer are shown in (d). Subfigure (f) shows the temperature particle
     number varying throughout the fields are varied in the times that are
-    shaded grey (c.f.~\myfigref{design:fig:simsum}).
+    shaded grey (c.f.~\myfigref{sim:fig:simsum}).
   }
-  \label{design:fig:uzsim}
+  \label{sim:fig:uzsim}
 \end{figure}
 
 \subsection{Z compression}
@@ -604,7 +604,7 @@ increases and the cloud is compressed, providing good localisation of the
 molecules. Ramping the height linearly requires the bias to change as a
 function of time so that $B_{\text{bias}, y} \propto t^{-1}$.
 
-As can be seen in \myfigref{design:fig:zsim}, there is particle loss,
+As can be seen in \myfigref{sim:fig:zsim}, there is particle loss,
 although much of this is due to particles that had already left the trapping
 region in the previous ramp. Note that in subfigure~(f) the particle number is
 decreasing before the ramp begins. The other major effect of the ramp is
@@ -612,7 +612,7 @@ heating, which occurs due to the spatial compression and conservation of
 phase-space density.
 %
 The transfer of the cloud towards the chip surface is succesful, as can be seen
-in \mysubfigref{design:fig:zsim}{e}, the particles are highly localised around
+in \mysubfigref{sim:fig:zsim}{e}, the particles are highly localised around
 the new trap minimum at $z=\SI{1}{\milli\meter}$.
 
 \begin{figure}[p]
@@ -628,15 +628,15 @@ the new trap minimum at $z=\SI{1}{\milli\meter}$.
     respectively. The potentials at the start and end of the transfer are shown
     in (d). Subfigure (f) shows the temperature particle number varying
     throughout the fields are varied in the times that are shaded grey
-    (c.f.~\myfigref{design:fig:simsum}).
+    (c.f.~\myfigref{sim:fig:simsum}).
   }
-  \label{design:fig:zsim}
+  \label{sim:fig:zsim}
 \end{figure}
 
 \subsection{Summary of the simulation}
 
 The entire simulation from MTT to $\mathrm{Z0_f}$ is summarised in
-\myfigref{design:fig:simsum}. For each stage: initialisation (a), MTT-U
+\myfigref{sim:fig:simsum}. For each stage: initialisation (a), MTT-U
 transfer (b), U-Z transfer (c) and Z compression (d) the particle number is
 shown. The total temperature and cloud width are also given for the particles
 that remain in the trap at the end of the simulation. The profile of parameters
@@ -655,7 +655,7 @@ that are changed for each ramp are also shown.
     bias field is switched off. Finally in column (d) is the compression in the
     Z-trap.
   }
-  \label{design:fig:simsum}
+  \label{sim:fig:simsum}
 \end{figure}
 
 The simulation shows that the loading of the initial chip trap can bring in
@@ -685,14 +685,14 @@ compressing and handing over between Z-traps, and the phase-space analysis is
 sufficient for the rest of the procedure.
 
 \section{Phase-space acceptance of remaining Z-traps}
-\label{design:transferbetweenzs}
+\label{sim:transferbetweenzs}
 
 Once trapped in $\mathrm{Z0_f}$, the remaining loading stages are simply
 repeated handovers to the smaller wires, with a compression stage carried out
 on each wire to bring the molecules closer to the surface. This is a
 well-understood and robust procedure that has been used before to load atom
 chips with minimal losses~\cite{Reichel2002}. The ramps used are detailed in
-table~\ref{design:table:wires}.  The timing of the ramps could be shorter for
+table~\ref{sim:table:wires}.  The timing of the ramps could be shorter for
 the Z-traps, since the timescale of motion in these traps is higher. This, as
 well as the optimal shape of the ramp can be determined empirically.
 
@@ -704,7 +704,7 @@ simulation. It is therefore easier to directly examine the acceptance of each
 trap. We also note now that the trap gradients are sufficiently large the the
 effects of gravity can be ignored.
 
-The trap acceptances are shown in \myfigref{design:fig:phasematchinggrid},
+The trap acceptances are shown in \myfigref{sim:fig:phasematchinggrid},
 starting with $\mathrm{Z0_f}$ in row (a). The region of the trap that we expect
 to be occupied (as determined by the simulation above) is marked with a dashed
 line.  This cloud of molecules will be adiabatically transferred into
@@ -714,7 +714,7 @@ The cloud of molecules will be transferred to $\mathrm{Z1_i}$ with negligible
 heating. However, the total acceptance of the trap is less than the expected
 phase-space volume of the cloud. We can estimate the spillover loss t be 73\%
 on the phase-space volumes in
-\myfigref{design:fig:phasematchinggrid}. Performing the handover adiabatically
+\myfigref{sim:fig:phasematchinggrid}. Performing the handover adiabatically
 will maximise the number of molecules that can be transfered.
 
 Next, $\mathrm{Z1_i}$ is adiabatically compressed to $\mathrm{Z1_f}$, with the
@@ -728,7 +728,7 @@ particles inside the phase-space acceptance contained in the new trap. We
 expect spillover losses of 84\%. In the final
 stage the trap is compressed, into $\mathrm{Z2_f}$, during which we expect no
 loss. The final occupation is shown in
-\mysubfigref{design:fig:phasematchinggrid}{c}.
+\mysubfigref{sim:fig:phasematchinggrid}{c}.
 
 \begin{figure}[tbhp]
 \centering
@@ -750,7 +750,7 @@ loss. The final occupation is shown in
     $\mathrm{Z2_i}$, resulting in similar losses to the previous step. Row (c)
     shows the final acceptance and occupation of $\mathrm{Z2_f}$.
   }
-  \label{design:fig:phasematchinggrid}
+  \label{sim:fig:phasematchinggrid}
 \end{figure}
 
 Particle loss during the procedure can be estimated from the mismatching
