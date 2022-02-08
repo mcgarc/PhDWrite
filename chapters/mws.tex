@@ -155,16 +155,15 @@ There are two contributing terms to the attenuation constant
 %
 there are the contributions from dielectric and conductor respectively.
 Negligible contributions from radiative losses are
-neglected~\cite{Frankel1991}. We also do not consider the insertion loss of the
-resonator, since this does not affect the quality
-factor~\cite{doi:10.1063/1.3010859}. Bending losses can be neglected as long as
+neglected~\cite{Frankel1991}.  Bending losses can be neglected as long as
 the radius of the bends are much larger than the wavelength of the propagating
 wave. We must be mindful of this during design, since the typical wavelengths
 for rotational transitions are on the order of centimeters.
 
-\cm{Mike: This section is very useful. I would find even more useful if you had
-included graphs to show how the various loss modes depend on the key parameters
-(frequency, conductor width/thickness etc).}
+\cm{Fix, there is a bit about this in Goppl}
+We also do not consider the insertion loss of the
+resonator, since this does not affect the quality
+factor~\cite{doi:10.1063/1.3010859}.
 
 \subsubsection{Dielectric losses}
 
@@ -180,20 +179,15 @@ where $\tan\delta_e$ is the dielectric loss tangent. Common dielectrics for
 microwave guides include aluminium nitride (\AlN{}) and high-resitivity
 silicon.  For our purposes we wish to consider waveguides situated on
 dielectrics layers that can be easily deposited above the trapping wires.
-Following the work in \inlineref{Treutlein2008}, we consider polyimide, which
+Following the work in \inlineref{Treutlein2008}, we primarily consider polyimide, which
 can be despoitied by spoin-coating. Other options are available, such as
-polyethylene naphthalate (PEN) which has been used in \inlineref{} to create
-CPW resonators on a flexible substrate.
+polyethylene naphthalate (PEN) ~\cite{WEI20169937}.
 
 Typical values of dielectric constants and $\alpha_d$ are shown in
 \mytableref{mws:table:diprops}. Note that these parameters have some dependence
 on the frequency and temperature of the dielectric, and so are presented to
 illustrate the amount of loss that can typically be expected for our experiment
 at room temperature and frequencies in the \SI{10}{\giga\hertz} r\'egime.
-%
-%Reducing the temperature may lower dielectric loss and losses in experiment may
-%differ from those that are predicted (as they were for example in \inlineref{}
-%\cm{PEN paper}).
 
 \begin{table}[ht]
   \caption{Dielectric constants and loss for various substrates in the
@@ -323,7 +317,7 @@ first we present how a microwave resonator can be implemented with a CPW.
 A microwave resonator can be formed from a section of CPW that is capacitively
 coupled to another driving segment~\cite{Day2003}. The resonant frequency is
 determined by the resonator's length, $L$, and the waveguide's phase
-veloctiy~\cite{}
+veloctiy~\cite{Simons2004}
 %
 \begin{equation}
   \omega_0 = \frac{\pi v_\text{ph}}{L} = \frac{\pi
@@ -335,11 +329,9 @@ with a microwave guide, or in parallel as shown in \cm{some figure that I need
 to make}. The strength of the coupling can be controlled by the shape of the
 interface between the resonator and the waveguide~\cite{doi:10.1063/1.3010859}
 
-To achieve strong coupling we require \cm{something about quality factor I
-probably said somewhere else that I should reference}. The quality factor of a
-CPW resonator is given in terms of an attenuation constant
-$\alpha$~\cite{Simons2004}
-% Simons pg. 409-410
+Recall from the discussion in chapter~\ref{theory} that for strong coupling we
+require $Q > 1.7 \times 10^5$. The quality factors for CPW resonators can be
+expressed in terms of an attenuation constant
 %
 \begin{equation}
   Q = \frac{\omega_0}{2c\alpha}.
@@ -348,85 +340,25 @@ $\alpha$~\cite{Simons2004}
 %
 From \myfigref{mws:fig:conductorloss} and \mytableref{mws:table:diprops} it is
 clear that without the use of superconductors, the attenuation will be
-dominated by conductor losses, and $Q\sim10$. This is not sufficient for
-cooling. On the other hand, a superconducting resonator on a 
-\cm{
-Finding \cm{high enough Q resonator, c.f. Alex's comment below} is essential
-for the \cm{strong-coupled proposals} that will be discussed in \cm{the next
-section}. Hence we will discuss the sources of attenutation that contribute to
-$\alpha$, demonstrating how to implement a resonator of sufficient $Q$ to reach
-the strong coupling r\'egime.}
+dominated by conductor losses, and $Q\sim10$. This is clearly not sufficient
+for our purposes.
 
-However the high-$Q$
-resonators implemented in for example ~\cite{}
-% https://aip.scitation.org/doi/10.1063/1.3693409
-require the lower dielectric losses of other dielectrics. We will continue this
-discussion after we have considered the
-contribution of conductor losses.
-cm{Should strong coupling be hyphenated?}
+Conductor losses can be eliminated by use of a superconducting CPW. CPW
+resonators are a developed technology, commonly used for coupling to
+solid-state qubits~\cite{Wallraff2004}. Operating at the low temperatures
+required for superconductors allows the achievement of very high quality
+factors of order $10^6$~\cite{doi:10.1063/1.3552890, Day2003}. For such devices
+a low-loss dielectric is usually chosen for the substrate (sapphire being a
+common choice) however a multi-layer resonator could potentially be achieved by
+etching the polyimide in the slot gaps, as in \inlineref{920142}. Otherwise, a
+single-layer superconducting design such as that shown in
+\inlineref{Hattermann2017} could be adopted. Regardless, the multilayer design
+remains a useful tool for prototyping a \cm{strong-coupling experiment.}
 
-
-Conductor losses for gold CPWs are large, but it is possible to use
-superconductors to produce resonators with $Q$ on the order of
-$1000$~\cite{Booth1999, Wallraff2004}. \cm{Much higher than this is possible!}
-However as discussed above, cooling of the chip is not currently possible due
-to experimental restrictions, and hence we are not able to make use of
-superconductors to reach these high quality factors.
-%
-
-% TODO Replace with figure showing values of alpha for various different
-% situations, varying the conductor thickness, or maybe S? Bottom line is that
-% we need a superconducting resonator
-%
-%
-%Consider an example case of gold conductor on HiRes Si substrate. Gold has
-%resistivity $\rho_\mathrm{Au} = \SI{2.4E-8}{\ohm\metre}$ at room temperature,
-%and as above, we will have $\epsilon_\mathrm{r1} \approx 10$. This requires $k_0
-%\approx 1/3$ to achieve impedance matching at $Z_0 = \SI{50}{\ohm}$. The only
-%free parameters are the conductor thickness $t$, and the width of the centre
-%conductor $S$, both of which must be maximised to reduce loss. Typical values
-%for the smallest CPWs will be $S\sim\SI{1}{\micro\metre}$,
-%%
-%\cm{Mike: surely 10um is the smallest we are fabricating? Cameron: maybe need
-%different values for different x-sections (or widths with set height?) see above
-%comment from Mike about more plots}
-%%
-%with a height of approximately \SI{6}{\micro\metre}
-%(discussed further below). Typical conductor losses are therefore expected to be
-%of order
-%\begin{equation}
-%  \alpha_c \sim \SI{400}{\neper\per\metre}
-%\end{equation}
-%or as a quality factor
-%\begin{equation}
-%  Q_c \sim 1.
-%\end{equation}
-
-\subsubsection{Summary}
-
-It is clear from the above discussion that a superconducting CPW is required to
-implement a resonator. In this case we will be limited by the dielectric losses
-described above. However, the dielectric properties of the substrates must be
-determined experimentally in this low temperature r\'egime. Further, it is
-known that the interface between the conductor and dielectric can cause an
-anomolous decrease in quality factor, which must also be found experimentally.
-
-For this reason, integrating a resonator into the multi-level design is not
-feasible. Potential solutions will be discussed further in
-section~\ref{mws:integrating}. With this in mind, the dielectric and conductor
-losses do not prevent the implementation of a microwave guide for interacting
-with molecules trapped on a chip. Such a device can operate at room temperature
-with for example a polyimide dielectric and gold conductor. This would be
-similar to the device described in \cm{can I not reference Treutlein thesis
-here?}
-
-\cm{Alex: also need to mention bending losses}
-
-\cm{Raise point from Gopl about at low drive powers Q factor is reduced, so not
-suitable for single photon work? c.f. ref 28 therein}
-
-\cm{Alex: should re-calculate for the actual loss over the length of small
-waveguide we are using and include that. Also use realistic $S$.}
+% I have this point from Goppl that at low drive powers Q is somehow reduced. I
+% don't understand this really, and don't think it's that relevant because we
+% are so far off single-photon regime here anyway. But didn't want to entirely
+% forget, so now this comment exists.
 
 \section{Integrating microwave structures on a chip}
 \label{mws:integrating}
