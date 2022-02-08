@@ -80,7 +80,7 @@ V_\text{trap}/\lambda_\text{dB, trap}^3$, where $\lambda_\text{dB, trap} =
 A second powerful tool for determining the motion of the particles is
 Liouville's theorem~\cite{Landau1982, Hand1998} which states that the phase-space
 volume is a conserved quantity, as long as the trapping potential is
-consevative. This means that the phase-space density of a trapped molecular
+conservative. This means that the phase-space density of a trapped molecular
 cloud cannot be increased without application of some velocity-dependent
 force, such as an optical molasses~\cite{Metcalf1999}. The impact of this for
 the chip is that the phase-space density of the cloud at the point of loading
@@ -98,17 +98,20 @@ we are able to trap in the final trap will be
   \label{sim:eq:psd_N}
 \end{equation}
 %
-% TODO Check that these parameters are not introudced somewhere else earlier.
-% especially mass
+% TODO Check that these parameters are not introduced somewhere else earlier.
 Phase space densities of $\rho_\text{\CaF{}} = 1.4\times10^{-8}$ can be
 achieved by compressing the cloud in an optical dipole trap~\cite{PhysRevLett.121.083201}. The
 smallest trap will have volume
 $V_\text{trap}\sim(\SI{10}{\micro\meter})^2\times\SI{1}{\milli\meter}$ and
 depth
 $T_\text{trap}=\SI{4}{\milli\kelvin}$, which can be calculated by
-equation~\ref{intro:eq:trapdepth}. The \CaF{} mass is
-$m_\text{\CaF{}}=\SI{9.79E-26}{\kilogram}$.  We therefore expect that as many
-as $10^5$ molecules can be trapped.
+equation~\ref{intro:eq:trapdepth}.
+%
+% TODO Mike crossed this out here. Should be OK because it should probably go
+% higher up
+% The \CaF{} mass is $m_\text{\CaF{}}=\SI{9.79E-26}{\kilogram}$.
+%
+We therefore expect that as many as $10^5$ molecules can be trapped.
 
 In the current experiment we are not able to implement a dipole trap, although
 this technique is being developed within our group. Using sub-Doppler cooling
@@ -166,7 +169,6 @@ which defines an ellipse in phase-space.
 % that we end up with the nice circle with v in m/s. The consequence is that
 % the simulation ends up lasting 1.2ms rather than 1.2s
 
-% TODO Want to be able to ref. multiple subfigs?
 This trapping condition can be verified by simulation, as is shown in
 \myfigref{sim:fig:psaeg} (a) and (d), where the trap has been simulated for
 $m = 1$, $\omega = \SI[parse-numbers=false]{10^3}{\radian\per\second}$ and $l
@@ -272,8 +274,7 @@ the MTT), the magnetic field is assumed to be an ideal quadrupole, so
 \begin{equation}
   \mathbf{B}(x, y, z) = B'\begin{pmatrix} -x/2 \\ -y/2 \\ z \end{pmatrix}
 \end{equation}
-where $B'$ is the field gradient in the $z$ direction. \cm{This eqn. will probably end up in an earlier
-chapter.}
+where $B'$ is the field gradient in the $z$ direction. 
 
 The magnetic potentials of the wire traps are calculated by considering the
 traps to be formed of segments of straight wires, each producing a magnetic
@@ -606,14 +607,14 @@ function of time so that $B_{\text{bias}, y} \propto t^{-1}$.
 
 As can be seen in \myfigref{sim:fig:zsim}, there is particle loss,
 although much of this is due to particles that had already left the trapping
-region in the previous ramp. Note that in subfigure~(f) the particle number is
-decreasing before the ramp begins. The other major effect of the ramp is
-heating, which occurs due to the spatial compression and conservation of
+region in the previous ramp. As can be seen in subfigure~(f), the particle
+number is decreasing before the ramp begins. The other major effect of the ramp
+is heating, which occurs due to the spatial compression and conservation of
 phase-space density.
 %
 The transfer of the cloud towards the chip surface is succesful, as can be seen
-in \mysubfigref{sim:fig:zsim}{e}, the particles are highly localised around
-the new trap minimum at $z=\SI{1}{\milli\meter}$.
+in \mysubfigref{sim:fig:zsim}{e}, the particles are highly localised around the
+new trap minimum at $z=\SI{1}{\milli\meter}$.
 
 \begin{figure}[p]
 \centering
@@ -701,7 +702,7 @@ space density than previous experiments with atoms, it is important to ensure
 that our loading procedure will not suffer from any unnecessary losses. These
 compressed traps contain hotter molecules, requiring a smaller time step for
 simulation. It is therefore easier to directly examine the acceptance of each
-trap. We also note now that the trap gradients are sufficiently large the the
+trap. We also note now that the trap gradients are sufficiently large the
 effects of gravity can be ignored.
 
 The trap acceptances are shown in \myfigref{sim:fig:phasematchinggrid},
@@ -715,12 +716,12 @@ heating. However, the total acceptance of the trap is less than the expected
 phase-space volume of the cloud. We can estimate the spillover loss t be 73\%
 on the phase-space volumes in
 \myfigref{sim:fig:phasematchinggrid}. Performing the handover adiabatically
-will maximise the number of molecules that can be transfered.
+will maximise the number of molecules that can be transferred.
 
 Next, $\mathrm{Z1_i}$ is adiabatically compressed to $\mathrm{Z1_f}$, with the
 molecules held \SI{100}{\micro\meter} from the surface, as shown in row (b).
-The particles will undergo fillamentation, exploring all regions that are
-energetically accesible and increasing the effective phase-space volume that
+The particles will undergo filamentation, exploring all regions that are
+energetically accessible and increasing the effective phase-space volume that
 they occupy. This expected occupation region is calculated from the
 energy-contour in phase-space that matches the temperature of the cloud, and is
 marked by the dotted line. There is now handover into $\mathrm{Z2_i}$, with the
@@ -761,7 +762,7 @@ described by the trajectory simulations. We
 expect a loading efficieny of 2\%. This would deliver only 50 molecules into
 the final trap in what is a highly-idealised loading simulation. Notably the
 analysis of the phase-space acceptance does not account for an increase in
-effective phase-space density by fillamenation, which will further reduce the
+effective phase-space density by filamenation, which will further reduce the
 final occupation. This confirms
 that we will need to produce a much higher initial phase-space density to
 load a sufficiently large number of molecules into the trap. However it is
@@ -772,7 +773,7 @@ density clouds of \CaF{} could improve this final molecule number even further.
 
 In this chapter I have presented the design of the chip experiment, starting
 with the source of molecules up to the stage of confinement in a Z-trap
-\SI{10}{\micro\meter} from the chip surface. I have shown that we have created
+\SI{10}{\micro\meter} from the chip surface. I have presented
 a loading procedure that will allow us to load this final trap through a series
 of wire traps of decreasing size. This is justified by simulation and
 phase-space analysis of the acceptance of the various trapping stages.
