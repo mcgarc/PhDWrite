@@ -1,6 +1,7 @@
 \cm{Intro spiel}
 
 \section{Molecule theory}
+\label{theory:molecules}
 
 \cm{TODO}
 
@@ -103,3 +104,48 @@ there is additional offset due to the second term in
 \myeqref{theory:eqn:JCHenergies}, see part (d) of the figure.
 
 \cm{Now justify need to be in strong-coupling r\'egime.}
+
+In order to achieve strong coupling, we require the coupling to be stronger
+than the decay rate of the cavity. The coupling parameter is $g= 2\Omega$ and
+the cavity decay rate is $\kappa = \omega_0 / Q$, where $Q$ is called the
+quality factor of the cavity. The coupling parameter is related to the
+transition dipole moment \cm{$d=??$} and the amplitude of the electric field
+$E_0$ by
+%
+\begin{equation}
+  \hbar g = \frac{d E_0}{2}.
+\end{equation}
+%
+For the resonator, the amplitude of the electric field can be expressed in
+terms of the cavity parameters by considering the electric field density
+%
+\begin{equation}
+  \fac{1}{2} \epsilon_0 E_0 = \frac{\hbar \omega_0}{V}
+\end{equation}
+%
+where $V$ is the volume of the mode in the cavity. The idea is to confine the
+molecules in a trap that is on the $w=\SI{10}{\micro\meter}$ scale (see
+chapter~\ref{overview}) and the resonator will necessarily have a length on the
+scale of $\lambda_0 = 2\pi c / \omega_0$, therefore $V\approx w^2\lambda_0$.
+Hence we have that
+%
+\begin{equation}
+  g = \sqrt{\frac{2\pi c d^2}{\hbar \epsilon_0 w^2 \lambda_0^2}}.
+\end{equation}
+
+% TODO I might introduce this in an earlier section
+\cm{For the rotational \CaF{} transisitions that are discussed in
+section~\ref{theory:molecules} $d = \mu/\sqrt{3}$ with $\mu = \SI{31}{\debye}$.
+The coupling strength is therfore expected to be
+%
+\begin{equation}
+  \frac{g}{2\pi} = \SI{20}{\kilo\hertz}
+\end{equation}
+%
+and for strong coupling a cavity quality of
+%
+\begin{equation}
+  Q = \frac{\omega_0}{g} > 1.7 \times 10^5
+\end{equation}
+%
+is required.
