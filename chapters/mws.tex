@@ -306,6 +306,19 @@ This will not prevent the implementation of a microwave guide on a multi-layer
 chip trap, but it will impact our ability to build incorporate a microwave
 resonator as we will now discuss.
 
+\cm{Clear up this para, but use as basis for explaining that a waveguide can be
+built}
+That said, it should be noted that the high loss should not prevent us from
+using the CPW to directly drive microwave transitions in trapped molecules, as
+we will still be able to pass signal through the waveguide without the need to
+construct a resonator. With loss of $\alpha \approx \alpha_c$, and waveguides of
+lengths on the scale of a few centimeter, we can expect a total loss of around
+$\SI{400}{\neper\per\metre} \times \SI{0.01}{\metre} = \SI{35}{\decibel}$. This
+should be sufficiently small that microwaves will be able to reach molecules
+trapped on the chip.~\cite{Treutlein2008}
+One of the later goals of the project will be to characterise microwave losses
+on the chip and compare these with those expected from theory.
+
 \subsection{CPW resonators}
 \label{mws:resonators}
 
@@ -354,6 +367,7 @@ etching the polyimide in the slot gaps, as in \inlineref{920142}. Otherwise, a
 single-layer superconducting design such as that shown in
 \inlineref{Hattermann2017} could be adopted. Regardless, the multilayer design
 remains a useful tool for prototyping a \cm{strong-coupling experiment.}
+\cm{Rephrase this to stress that it might still work with resonator.}
 
 % I have this point from Goppl that at low drive powers Q is somehow reduced. I
 % don't understand this really, and don't think it's that relevant because we
@@ -363,84 +377,67 @@ remains a useful tool for prototyping a \cm{strong-coupling experiment.}
 \section{Integrating microwave structures on a chip}
 \label{mws:integrating}
 
-That said, it should be noted that the high loss should not prevent us from
-using the CPW to directly drive microwave transitions in trapped molecules, as
-we will still be able to pass signal through the waveguide without the need to
-construct a resonator. With loss of $\alpha \approx \alpha_c$, and waveguides of
-lengths on the scale of a few centimeter, we can expect a total loss of around
-$\SI{400}{\neper\per\metre} \times \SI{0.01}{\metre} = \SI{35}{\decibel}$. This
-should be sufficiently small that microwaves will be able to reach molecules
-trapped on the chip.~\cite{Treutlein2008}
-One of the later goals of the project will be to characterise microwave losses
-on the chip and compare these with those expected from theory.
-%
-\cm{I might be able to expand on this further down the line, but it seems
-unnecessary to include now. Maybe need a fig. to explain too?
-%
-\emph{
-A consequence of being unable to implement a microwave resonator is that it
-becomes challenging to implement the electrostatic trap proposed by Andr\'e et
-al.~\cite{Andre2006} as this relied on the ability to introduce a bias voltage
-on the centre conductor of the resonator in order to form the trap. It is
-possible to bias the centre conductor (as detailed in
-reference~\cite{doi:10.1063/1.3573824}) but it is not possible to do the same
-for a waveguide.
-}}
+Having established the CPW, and that such a device can operate on a polyimide
+substrate, we can now consider the logistics of implementing such a device
+with our design. We have already outlined how to fabricate a multi-layer device
+in chater~\ref{fab}, but the problem of delivering microwaves to the CPW
+remains to be discussed.
 
+% TODO Fill in blanks, note the chapter ref. is likely to change in the near
+% future (might discuss subship in fab)
+% TODO Add arlon thing to dielectrics table above
+The chip flange (shown in \myfigref{overview:figs:chipexperiment}) has been
+designed to incorporate high-frequency coaxial feedthroughs. \cm{Company name/
+spec. here.} These can be used to bring microwaves inside the chip chamber,
+where they can be launched onto a CPW on the subchip. As discussed in
+chapter~\ref{} the subchip in its current form is \cm{an aluminium-core PCB},
+however in future iterations of the experiment this can be replaced with, for
+example, an \cm{Arlon something somthing} board, which will be a suitable
+carrier for both trapping currents and microwaves. This is inspired by the
+atom-chip design presented in \cm{Hogan paper}. A schematic of the proposed
+microwave delivery system is shown in \mysubfigref{mws:fig:implement}{a}.
 
 % TODO
-\cm{This is from the ESA, so need to fix up}
+\begin{figure}[ht]
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    %\includegraphics[width=\textwidth]{figs/chip_pic_crop.png}
+    \cm{TODO}
+    \caption{}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.45\textwidth}
+    %\includegraphics[width=\textwidth]{figs/chip_pic_crop.png}
+    % TODO Probably want CPW vertical to the trapping wire to illustrate dimple
+    % trap
+    \cm{TODO}
+    \caption{}
+  \end{subfigure}
+  \caption{\cm{(a) is the detail of mw delivery, (b) is a chip with CPW design}}
+  \label{mws:fig:implement}
+\end{figure}
 
-\cm{Mike:This bit doesn't make sense to me. The logic here seems to imply that
-the  electrostatic trap relies on a resonator but the magnetic trap doesn't.
-Which isn't true!  We chose the magnetic trap because we think it will give us
-longer coherence times. \\
-%
-Cameron: I think my reasoning here glossed over the details from the COMSOL
-models Kyle made for brining the bias onto the chip. I thought our conclusion
-was that the electrostatic trap required a resonator to bring the bias in, but
-maybe I am wrong? Mike has probably forgotten this, and a new reader wouldn't
-know it to start with, so I need to figure out how best to explain myself. Maybe
-forget the bias stuff and just argue that magentically insensetive transitions
-lead to long coherence times, which is what we want.
-}
+The subchip CPW will be connected to the \cm{science chip} CPW by wire-bonds.
+These can be chosen to be arbitrarily large s that it is easy to make good
+connection with the wire bonds, and then tapered down to reduce the field size
+while maintaining the same $k_0$ and hence the same impedance. This CPW can be
+capacitively coupled to a microwave resonator, but for a simple example we show
+a multi-layer design for a single CPW in \mysubfigref{mws:fig:implement}{b}.
 
-As the microwave attenuation prevents implementation of a resonator (and hence
-implementation of an electrostatic trap integrated with the waveguide) another
-solution for trapping and control of the microwaves must be found. Since
-magnetic trapping of atoms above a chip has been extensively researched (see
-section~\ref{chiptraps}), we have chosen this mechanism for trapping of molecules
-above the chip.
+To form an even smaller trap than discussed above, the CPW centre conductor can
+be biased, to create a dimple trap along with the underlying axis of the
+Z-wire, as was done in \inlineref{Treutlein2008}. For a resonator it would also
+be possible to introduce a bias field, but this would have to be done on-chip
+with a band stop filter~\cite{doi:10.1063/1.4808364}. This could also be used
+to implement the electrostatic traps described in \inlineref{Andre2006}.
 
-Various possible geometries for combining magnetic trapping wires and a CPW have
-been extensively explored. It transpires that it is extremely challenging to
-construct a geometry with both of these on the same layer that achieves a
-satisfactory overlap between the CPW field and the trapping region. To get
-around this, a chip with two layers has been designed: the lower layer consists
-of an array of DC trapping wires, and an upper layer hosts the CPW. The two are
-to be separated by an insulating layer of resin.
-
-Multi-layer chips have been constructed before, notably those by
-Treutlein~\cite{Treutlein2008} and B\"ohi~\cite{rohtua}, whose work has heavily
-inspired our design. Treutlein and B\"ohi used photolithography followed by
-electroplating to create the lower layer (see section \ref{chiptraps:wiretraps})
-then formed the insulating layer by spin-coating polyimide resin in several
-stages. This allows the creation of a smooth layer, effectively covering bumps
-that can be formed from the underlying wires which avoids significant
-discontinuities in the waveguide.
-
-Polyimide is used as the resin as it is highly resistant to cleaning techniques
-commonly used in photolithography, including piranha clean.  It is also
-effective as a microwave substrate~\cite{Simons2004} \cm{Mike seems concerned
-about this being high}
-($\epsilon_\mathrm{r1} = 3.3$, $\tan\delta_e = 0.016$) with conductor losses
-still dominating those caused by the dielectric.
-
-\cm{Alex: were these the limits or the max they used?}
-Using a multi-layer chip introduces thermal constraints on the currents that can
-flow through the trapping wires. Current densities achieved by Treutlein and
-B\"ohi \cite{} were \SI{2.8E10}{\ampere\per\metre\squared} in the upper layer and
-\SI{5.5E10}{\ampere\per\metre\squared} in the lower layer.
+% TODO Introduce Stark shift in theory
+Since the resonant frequency of the resonator is fixed by its length, it will
+be useful to be able to tune the frequency of the molecule transition, either
+to bring the molecules \cm{into} or out of resonance with the microwaves. We
+propose that this can be done by using the Stark shift due to a d.c.~field.
+By positioning voltage-biased pads near to the molecule trap, the d.c.~field
+can be used to shift the transition by \cm{how much?} as per \cm{ref equation
+in theory}.
 
 \section{Coupling with a single molecule on a chip}
 
