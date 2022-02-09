@@ -37,14 +37,38 @@ shwon in \mysubfigref{mws:fig:CPW}{b}, the equations defining this field can be
 found analytically~\cite{Simons2004}, or the field can be determined by a
 finite-element simulation.
 
-% TODO Need to make it clear that we are in a limiting geometry with large
-% dielectirc compared to conductor height
-\begin{figure}
-  %\includegraphics{}
-  \cm{Need a drawing of CPW and a drawing of field lines. In former ensure we
-  define the permittivities. Like simons 2.2(a) and 2.25}
-  \caption{}
-  \label{mws:fig:CPW}
+% TODO 
+\begin{figure}[ht]
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \begin{overpic}[abs, width=\textwidth]{figs/mws/CPW_dims.pdf}
+      \put(20, 180){(a)}
+      \put(100, 25){$S$}
+      \put(126, 12){$W$}
+      \put(15, 43){$h$}
+      \put(193, 58){$t$}
+      \put(40, 43){$\epsilon_r$}
+    \end{overpic}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \begin{overpic}[abs, width=\textwidth]{figs/mws/CPWMode_legend.png}
+      \put(20, 180){\textcolor{white}{(b)}}
+      \put(165, 180){\textcolor{white}{High}}
+      \put(165, 110){\textcolor{white}{Low}}
+		  \put(20, 20){\textcolor{white}{\SI{20}{\micro\meter}}}
+    \end{overpic}
+  \end{subfigure}
+	\caption{Subfigure (a) shows a perspective view of a segment of CPW on dielectric substrate, with
+pertinent geometery and dielectric constants labeled. The conductor is in gold
+  and the dielectric is left transparent. A COMSOL finite-element simulation of the
+resulting field density near such a CPW is shown in (b), with
+$S=\SI{20}{\micro\meter}$, $W=\SI{10}{\micro\meter}$, $\epsilon_r=10$,
+$h=\SI{10}{\micro\meter}$. Conductor regions are highlighted in gold and the
+end of the bottom of the substrate is marked with the black line. The field is
+presented in arbitrary units to illustrate where strong coupling can be
+achieved. Note that in a resonator the field will depend on the losition in the
+longitudinal direction.}
+	\label{mws:fig:CPW}
 \end{figure}
 
 \subsection{CPW properties}
@@ -396,6 +420,8 @@ example, an \cm{Arlon something somthing} board, which will be a suitable
 carrier for both trapping currents and microwaves. This is inspired by the
 atom-chip design presented in \cm{Hogan paper}. A schematic of the proposed
 microwave delivery system is shown in \mysubfigref{mws:fig:implement}{a}.
+\cm{Need to mention that I vacuum-tested these components (point to experiment
+chapter?)}
 
 % TODO
 \begin{figure}[ht]
