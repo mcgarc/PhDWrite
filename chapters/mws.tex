@@ -423,22 +423,34 @@ microwave delivery system is shown in \mysubfigref{mws:fig:implement}{a}.
 \cm{Need to mention that I vacuum-tested these components (point to experiment
 chapter?)}
 
-% TODO
 \begin{figure}[ht]
   \centering
-  \begin{subfigure}[b]{0.45\textwidth}
-    %\includegraphics[width=\textwidth]{figs/chip_pic_crop.png}
-    \cm{TODO}
-    \caption{}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \begin{overpic}[abs,
+      width=\textwidth]{figs/mws/FlangeAssemblyFinalMWPresent.png}
+      \put(10, 132){(a)}
+    \end{overpic}
   \end{subfigure}
-  \begin{subfigure}[b]{0.45\textwidth}
-    %\includegraphics[width=\textwidth]{figs/chip_pic_crop.png}
-    % TODO Probably want CPW vertical to the trapping wire to illustrate dimple
-    % trap
-    \cm{TODO}
-    \caption{}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \begin{overpic}[abs, width=\textwidth]{figs/mws/present_CPW2_IS.pdf}
+      \put(10, 132){(b)}
+    \end{overpic}
   \end{subfigure}
-  \caption{\cm{(a) is the detail of mw delivery, (b) is a chip with CPW design}}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \begin{overpic}[abs, width=\textwidth]{figs/mws/present_CPW2_inset.pdf}
+      \put(10, 132){(c)}
+    \end{overpic}
+  \end{subfigure}
+  \caption{
+    The microwave components of the flange assembly (flange, feedthroughs,
+    barallel connectors, launchers, PCB and chip) are shown in (a). In (b) we
+    have the chip design from \myfigref{overview:figs:chipexperiment} with the
+    additional microwave guide layer overlayed (red). Conversely to the lower
+    layer, the microwave layer shows areas where the dielectric is exposed, so
+    regions that aren't pink are covered with conductor. Example voltage pads
+    for Stark-shifting the molecules are also shown. Subfigure (c) shows a
+    detailed view of the trapping region.
+  }
   \label{mws:fig:implement}
 \end{figure}
 
