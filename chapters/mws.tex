@@ -478,9 +478,20 @@ By positioning voltage-biased pads near to the molecule trap, the d.c.~field
 can be used to shift the transition by \cm{how much?} as per \cm{ref equation
 in theory}.
 
-\section{Coupling with a single molecule on a chip}
+\section{Coupling a single molecule to a CPW resonator}
+
+Molecules trapped on a chip near a CPW (not a resonator) could be used for
+microwave spectroscopy experiments, similar to the free space experiments
+described in section~\ref{theory:molecules} and
+\inlineref{WilliamsMagnetic2018}. Coupling molecules to a resonator however
+promises a variety of new tools for quantum control of the molecules. Although
+there are various obstacles to overcome in building such a device, it is
+instructive to consider its operation. \cm{Better phrasing}
 
 \cm{
+  This list was originally from when I had the CPW waveguide only bit as a
+  section, but I think it's not worth having that section anymore. Where can
+  this stuff go? In theory??
   \begin{itemize}
     \item Build on maths in theory chapter
     \item Specify the states of the molecule that we will use
@@ -489,9 +500,76 @@ in theory}.
   \end{itemize}
 }
 
-\section{Experiments with a single molecule coupled to a mw resonator}
+Throughout section we assume that we operate with a single molecule coupled to a
+high-quality cavity ($Q\sim10^6$, $\kappa \sim 10^4$) in the strong coupling
+r\'egime ($g\sim10^5>Q$)
 
 \subsection{Sideband cooling}
+
+This subsection summarises the sideband cooling scheme presented in
+\inlineref{Andre2006} and presents cooling rates for our trapping scheme with
+\CaF{}. In the macroscopic magnetic trap, the
+$\ket{e}\rightarrow\ket{g}$ decay is very slow ($\Gamma \sim
+10^{-5}\si{hertz}$), but when a molecule is in close proximity to a microwave
+resonator at the transition frequency, the decay rate is strongly enhanced. 
+with rate
+%
+\begin{equation}
+  \Gamma_c = \frac{\kappa}{2}.
+\end{equation}
+%
+This enhanced decay rate opens the door to sideband cooling into the motional
+ground state of the trap.
+
+We write the state of the molecule as $\ket{N, m}$ where $N\in\{e,g\}$ is the
+rotational state of the molecule, and $m$ is the quantum number of the motion
+in the trap. We imagine that an external driving field is applied on the
+$\ket{g, m} \rightarrow \ket{e, m-1}$ transition as pictured in
+\myfigref{mws:fig:sideband}. Combined with the enhanced decay, this allows
+sideband cooling into low motional ground states of the trap.
+
+\begin{figure}[htb]
+  \centering
+  \includegraphics[width=0.7\textwidth]{figs/mws/sidebandcool.pdf}
+  \caption{The sideband cooling scheme, with an external driving field applied to the
+    $\ket{g, m}\rightarrow\ket{e, m-1}$ transition. Decay on
+    $\ket{e,m}\rightarrow\ket{g,m}$ is strongly enhanced by the resonator,
+    allowing sideband cooling to low motional states.
+    }
+  \label{mws:fig:sideband}
+\end{figure}
+
+% TODO Check trap frequency is what we expect, see sideband cooling notebook,
+% think it should be more like a MHz
+The cooling rate is given by the enhanced scattering rate time the energy
+reduced per scatter. The latter of these being given by $\hbar\omega_t$, with
+$\omega_t$ being the trap frequency. As per discussion in
+section~\ref{theory:chips}, we expect typical trap frequencies $\omega_t\sim
+2\pi \times 10^4 \si{\hertz}$ and therefore the cooling rate will be
+\SI{10}{\milli\kelvin\per\second}.
+
+\cm{Change where this little discussion about temperature goes?}
+\cm{EVEN BETTER: change to do a graph of resonator temp vs minimum temperature
+that can be achieved at various trap frequencies.}
+The lowest motional state that can be reached is determined by the background
+photon number in the resonator. A typical high-$Q$ cavity will operate at a few
+tens of millikelvin~\cite{doi:10.1063/1.3010859} but these temperatures require
+a dilution fridge, and high-temperature superconductors can operate at typical
+cryocooler temperatures of $T=\SI{4}{\kelvin}$. This corresponds to a background
+photon number of
+%
+\begin{equation}
+  m_\text{min} = \frac{\hbar T}{\hbar \omega_0} = 25.
+\end{equation}
+%
+The minimum temperature achievable by sideband cooling is therefore
+\cm{This result, but not the above is for the MHz trap freq}
+%
+\begin{equation}
+  T_\text{min} = \hbar \omega_t m_\text{min} = \SI{20}{\micro\kelvin}.
+\end{equation}
+
+This is a somewhat unsatisfying result, the 
 
 \subsection{State readout}
 
