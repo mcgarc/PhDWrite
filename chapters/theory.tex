@@ -14,8 +14,18 @@
 }
 
 \section{Chip trap theory}
+\label{theory:chips}
 
-\cm{TODO}
+\cm{
+  \begin{itemize}
+      \item Basic idea of 2D traps
+      \item How close can we get to surface? %(Blackbody, note from Charles in interview? (about charge??))
+      \item Extend to 3D
+      \item U and Z, majorana losses
+      \item dimple traps
+      \item Typical trap freqs (for small traps, used in sideband cooling)
+  \end{itemize}
+  }
 
 \section{Quantum optics}
 
@@ -52,14 +62,16 @@ approximation~\cite{gerry_knight_2004}
 % TODO Note that s_z isn't defined here, will I define it above or have to add?
 %
 \begin{equation}
-  H_\text{JC} = \hbar\omega_c a^\dagger a + \hbar \omega_0 s_z +
+  H_\text{JC} = \hbar\omega_c a^\dagger a + \frac{\hbar \omega_0}{2} \sigma_z +
   \frac{\hbar\Omega}{2}(a^\dagger \sigma_- + a\sigma_+)
   \label{theory:eqn:JCH}
 \end{equation}
 %
 where $a$ ($a^\dagger$) is the annihilation (creation) operator of the photons,
-$\Omega$ is the Rabi frequency of the interaction, and $\sigma_\pm =
-(\sigma_x \pm i\sigma_y)/2$ are the raising and lowering operators of spin. The
+$\Omega$ is the Rabi frequency of the interaction, $\sigma_i$ with $i\in{x, y,
+z}$ are the Pauli matrices, and $\sigma_\pm =
+(\sigma_x \pm i\sigma_y)/2$ are the raising and lowering operators of the
+molecule state. The
 detuning of the cavity resonance from that of the spin is $\Delta = \omega_0 -
 \omega_c$. The system is shown in \mysubfigref{theory:fig:JCHstates}{a}.
 
@@ -111,7 +123,12 @@ degeneracy, as in part (c). When the detuning is non-zero ($\Delta \neq 0$)
 there is additional offset due to the second term in
 \myeqref{theory:eqn:JCHenergies}, see part (d) of the figure.
 
+% TODO before giving to Mike
 \cm{Now justify need to be in strong-coupling r\'egime.}
+
+% TODO Can probablly leave this until I get around to rest of theory section
+\cm{Talk about the states used, building on the microwaves discussion above
+(yet to be written).}
 
 In order to achieve strong coupling, we require the coupling to be stronger
 than the decay rate of the cavity. The coupling parameter is $g= 2\Omega$ and
