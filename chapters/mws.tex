@@ -530,11 +530,35 @@ sideband cooling into low motional ground states of the trap.
 
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=0.7\textwidth]{figs/mws/sidebandcool.pdf}
-  \caption{The sideband cooling scheme, with an external driving field applied to the
+  \begin{subfigure}[b]{0.48\textwidth}
+  \begin{overpic}[grid, abs, width=\textwidth]{figs/mws/sidebandcool.pdf}
+      \put(10, 132){(c)}
+    \end{overpic}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.48\textwidth}
+  \begin{tikzpicture}
+    \begin{axis}[
+        xmode=log,
+        enlargelimits=true,
+        xlabel=Trapping current (\si{\ampere}),
+        ylabel=$T_\text{min}$ (\si{\micro\kelvin}),
+        width=\textwidth,
+        height = 0.7\textwidth,
+        x tick label style={/pgf/number format/.cd, set thousands separator={}}
+    ]
+      \addplot [thick, black] table {figs/mws/mintemps.dat};
+      \addplot [style=thick, color=blue] table [y index=2] {figs/mws/mintemps.dat};
+      \addplot [style=thick, color=pink] table [y index=3] {figs/mws/mintemps.dat};
+      \node [] at (5cm, 3.1cm) {(a)};
+    \end{axis}
+  \end{tikzpicture}
+    \caption{The sideband cooling scheme is shown in (a) with an external driving field applied to the
     $\ket{g, m}\rightarrow\ket{e, m-1}$ transition. Decay on
     $\ket{e,m}\rightarrow\ket{g,m}$ is strongly enhanced by the resonator,
-    allowing sideband cooling to low motional states.
+    allowing sideband cooling to low motional states. Subfigure (b) shows the
+    minimum temperature that can be achieved as a function of trapping current
+    for different resonator temperatures: \SI{4}{\kelvin} (black),
+    \SI{400}{\milli\kelvin} (blue) and \SI{40}{\milli\kelvin} (red).
     }
   \label{mws:fig:sideband}
 \end{figure}
@@ -555,21 +579,26 @@ The lowest motional state that can be reached is determined by the background
 photon number in the resonator. A typical high-$Q$ cavity will operate at a few
 tens of millikelvin~\cite{doi:10.1063/1.3010859} but these temperatures require
 a dilution fridge, and high-temperature superconductors can operate at typical
-cryocooler temperatures of $T=\SI{4}{\kelvin}$. This corresponds to a background
-photon number of
+cryocooler temperatures of $T_\text{res}=\SI{4}{\kelvin}$. This corresponds
+to a background photon number of
 %
 \begin{equation}
-  m_\text{min} = \frac{k_B T}{\hbar \omega_0} = 25.
+  \overline{m} = \frac{k_B T_\text{res}}{\hbar \omega_0}
 \end{equation}
 %
-The minimum temperature achievable by sideband cooling is therefore
-\cm{This result, but not the above is for the MHz trap freq}
+\cm{and can eliminate other sources of noise, cite Wallraff strong coupling
+paper}
+We expect the minimum temperature achievable by sideband cooling to be reached
+when the molecule motion and photon energy are in thermal equilibirum, so that
 %
 \begin{equation}
-  T_\text{min} = \frac{\hbar \omega_t m_\text{min}}{k_B} = \SI{20}{\micro\kelvin}.
+  T_\text{min} = \frac{\hbar \omega_t \overline{m}}{k_B}
 \end{equation}
-
-This is a somewhat unsatisfying result, the 
+%
+which is shown as a function of the trapping current for various resonator
+temperatures in \mysubfigref{mws:fig:sideband}. \cm{Discuss lowering current
+to decrease temp and that this is actually really cold in tight confinement,
+not worth comparing to free space.}
 
 \subsection{State readout}
 
