@@ -610,6 +610,112 @@ not worth comparing to free space.}
 
 \subsection{State readout}
 
+% TODO It's more nuanced than this, because in single molecule case measuring
+% the phase will collapse the state, so this isn't really QND
+Reference~\cite{Andre2008} also proposes a quantum non-demolition state (QND)
+readout of the molecule's state, in analogy to that applied to a
+superconducting qubit in~\cite{PhysRevA.69.062320}. That is, if the molecule is
+in some state $\ket{\psi} = \cos(\theta)\ket{g} + e^{i\phi}\sin(\theta)\ket{e}$
+then it is possible to perform a measurement on the molecule, yielding
+$\ket{g}$ ($\ket{e}$) with probability $\cos^2\theta$ ($\sin^2\theta$) 
+while preserving the coherent state $\ket{\psi}$.
+
+QND readout can be achieved in the dispersive r\'egime, where the transition
+frequency is tuned so that $|\Delta|\gg g$. 
+Reference~\cite{PhysRevA.69.062320} tells us that we can gain insight into the
+dispersive behaviour by applying the unitary transformation
+%
+\begin{equation} U = \exp \left[\frac{g}{\Delta}(a\sigma_+ -
+a^\dagger\sigma_-)\right] \end{equation}
+%
+to the Jaynes-Cummings Hamiltonian described in section~\ref{theory:QO}. With
+expansion up to second order in $g/\Delta$, we obtain
+%
+\begin{equation} H= UH_\text{JC}U^\dagger \approx \hbar \omega_c
+  a^\dagger a + \hbar\left(\omega_c +
+  \frac{g^2}{\Delta}\right)s_z + \frac{\hbar
+  g^2}{\Delta}\sigma_z a^\dagger a.
+\end{equation}
+%
+% TODO Probably better to start with s_i in theory
+Here we have introduced the spin operator $s_i = \sigma_i/2$.
+
+The three terms of $H$ describe the oscillation of light in the cavity, the energy
+of the spin and the interaction of the photons with the spin. Note that the
+interaction of the photons and the spins induces the usual AC start shift
+proportional to $(n+\frac{1}{2})$. The last term allows the pefromance of 
+QND measurement, since it will enable exchange of information
+between the z-component of the spin with the photons.
+
+We take the state of the photons in the resonator to be in a canonical coherent
+state~\cite{Gazeau2009}
+%
+\begin{equation}
+  \ket{\alpha} = e^{-\frac{|\alpha|^2}{2}}\sum_{n=0}^\infty \frac{\alpha^n}{\sqrt{n!}} \ket{n}
+\end{equation}
+%
+% TODO Wording here, again representing? Was it before? Is it clear?
+% Should I change n to m (including above) for consistency?
+with $\alpha\in\mathbb{C}$, and $\ket{n}$ again representing the $n^\text{th}$
+Fock state of the light~\cite{agarwal2012}. The interaction of the light with
+the molecule is desribed by the last term in $H$, so for an interaction over
+time $T$, we have
+%
+\begin{equation}
+  \ket{\Psi(T)} = \exp\left(-iH_\text{int}T/\hbar\right)\ket{\Psi(0)}
+\end{equation}
+%
+where
+%
+\begin{equation}
+  H_\text{int} = \hbar \frac{g^2}{\Delta} S_z a^\dagger a
+\end{equation}
+%
+and $\ket{\Psi(0) = \ket{\psi}\ket{\alpha}}$ is the state of the system at the
+time of measurement. This can be expanded by inserting the definition of the
+coherent and molecule states,
+%
+% TODO Define nu
+\begin{equation}
+  \ket{\Psi(T)} = e^{-\frac{|\alpha|^2}{2}}\sum_{n=0}^\infty
+   \frac{\alpha^n}{\sqrt{n!}} e^{-i\nu T s_z a^\dagger a} \ket{n} (\cos\theta
+   \ket{g} + e^{i\phi}\ket{e})
+\end{equation}
+%
+% TODO Did I introduce number operator already?
+% TODO TODO I dropped the phase at some point
+Now the number operator in the exponent acts on $\ket{n}$, and the spin
+operator acts on $\ket{N}$ for
+%
+\begin{equation}
+   \ket{\Psi(T)} = e^{-\frac{|\alpha|^2}{2}}\sum_{n=0}^\infty
+   \frac{\alpha^n}{\sqrt{n!}} (e^{i\nu T n \hbar/2}\ket{n}\ket{g} + e^{-i\nu T
+   \hbar/2}\ket{n}\ket{e}).
+\end{equation}
+%
+Collecting the coefficients of the molecule states yields
+%
+\begin{equation}
+  \ket{\Psi(T)} = \left(e^{-\frac{|\alpha|^2}{2}}\sum_{n=0}^\infty
+   \frac{(\alpha e^{i\nu T \hbar/2})^n}{\sqrt{n!}}\ket{n}\right)\ket{g} +  
+    \left(e^{-\frac{|\alpha|^2}{2}}\sum_{n=0}^\infty
+   \frac{(\alpha e^{-i\nu T \hbar/2})^n}{\sqrt{n!}}\ket{n}\right)\ket{e}.
+\end{equation}
+%
+Finally, note that each of the photon states (in parentheses) defines a
+coherent state, so the resulting state after interaction is
+%
+\begin{equation}
+  \ket{\Psi(T)} = \cos\theta\ket{\alpha_+}\ket{g} +
+  e^{i\phi}\sin\theta\ket{\alpha_-}\ket{e}
+\end{equation}
+%
+where $\alpha_\pm = \alpha \exp(\pm i \nu T \hbar/2)$.
+
+The state of the molecule is now entangled with the state of the light.
+Measuring the phase of the light will perform a readout of the molecule state.
+
+
 \subsection{State preparation}
 
 \cm{What is this?}
