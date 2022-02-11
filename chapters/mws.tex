@@ -517,7 +517,7 @@ with rate
 \begin{equation}
   \Gamma_c = \frac{\kappa}{2}.
 \end{equation}
-%
+
 This enhanced decay rate opens the door to sideband cooling into the motional
 ground state of the trap.
 
@@ -530,15 +530,21 @@ sideband cooling into low motional ground states of the trap.
 
 \begin{figure}[htb]
   \centering
-  \begin{subfigure}[b]{0.48\textwidth}
-  \begin{overpic}[grid, abs, width=\textwidth]{figs/mws/sidebandcool.pdf}
-      \put(10, 132){(c)}
-    \end{overpic}
+  \begin{subfigure}[c]{0.4\textwidth}
+  %\begin{overpic}[abs, width=\textwidth]{figs/mws/sidebandcool.pdf}
+  %    %\put(10, 105){(a)}
+  %  \end{overpic}
+      \begin{tikzpicture}
+        \node[anchor=south west,inner sep=0] (image) {\includegraphics[width=\textwidth]{figs/mws/sidebandcool.pdf} };
+        %\node [] at (0.1, 4.3) {(a)};
+        %\node [] at (9.5, 4.3) {(b)};
+      \end{tikzpicture}
   \end{subfigure}
-  \begin{subfigure}[b]{0.48\textwidth}
+  \hspace{1cm}
+  \begin{subfigure}[c]{0.48\textwidth}
   \begin{tikzpicture}
     \begin{axis}[
-        xmode=log,
+        ymode=log,
         enlargelimits=true,
         xlabel=Trapping current (\si{\ampere}),
         ylabel=$T_\text{min}$ (\si{\micro\kelvin}),
@@ -549,10 +555,12 @@ sideband cooling into low motional ground states of the trap.
       \addplot [thick, black] table {figs/mws/mintemps.dat};
       \addplot [style=thick, color=blue] table [y index=2] {figs/mws/mintemps.dat};
       \addplot [style=thick, color=pink] table [y index=3] {figs/mws/mintemps.dat};
-      \node [] at (5cm, 3.1cm) {(a)};
+      %\addlegendentry{\SI{4}{\kelvin}}
     \end{axis}
+    %\node [] at (0.1, 0.9) {(b)};
   \end{tikzpicture}
-    \caption{The sideband cooling scheme is shown in (a) with an external driving field applied to the
+  \end{subfigure}
+  \caption{The sideband cooling scheme is shown in (a) with an external driving field applied to the
     $\ket{g, m}\rightarrow\ket{e, m-1}$ transition. Decay on
     $\ket{e,m}\rightarrow\ket{g,m}$ is strongly enhanced by the resonator,
     allowing sideband cooling to low motional states. Subfigure (b) shows the
@@ -562,7 +570,7 @@ sideband cooling into low motional ground states of the trap.
     }
   \label{mws:fig:sideband}
 \end{figure}
-
+%
 % TODO Check trap frequency is what we expect, see sideband cooling notebook,
 % think it should be more like a MHz
 The cooling rate is given by the enhanced scattering rate time the energy
