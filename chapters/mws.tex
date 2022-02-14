@@ -686,30 +686,29 @@ and $\ket{\Psi(0) = \ket{\psi}\ket{\alpha}}$ is the state of the system at the
 time of measurement. This can be expanded by inserting the definition of the
 coherent and molecule states,
 %
-% TODO Define nu
 \begin{equation}
   \ket{\Psi(T)} = e^{-\frac{|\alpha|^2}{2}}\sum_{n=0}^\infty
    \frac{\alpha^n}{\sqrt{n!}} e^{-i\nu T s_z a^\dagger a} \ket{n} (\cos\theta
-   \ket{g} + e^{i\phi}\ket{e})
+   \ket{g} + e^{i\phi}\sin\theta\ket{e})
 \end{equation}
 %
+where $\nu = g^2/\Delta$.
 % TODO Did I introduce number operator already?
-% TODO TODO I dropped the phase at some point
 Now the number operator in the exponent acts on $\ket{n}$, and the spin
 operator acts on $\ket{N}$ for
 %
 \begin{equation}
    \ket{\Psi(T)} = e^{-\frac{|\alpha|^2}{2}}\sum_{n=0}^\infty
-   \frac{\alpha^n}{\sqrt{n!}} (e^{i\nu T n \hbar/2}\ket{n}\ket{g} + e^{-i\nu T
-   \hbar/2}\ket{n}\ket{e}).
+   \frac{\alpha^n}{\sqrt{n!}} (e^{i\nu T n \hbar/2}\cos\theta\ket{n}\ket{g} +
+   e^{-i\nu T n \hbar/2}e^{i\phi}\sin\theta\ket{n}\ket{e}).
 \end{equation}
 %
 Collecting the coefficients of the molecule states yields
 %
 \begin{equation}
-  \ket{\Psi(T)} = \left(e^{-\frac{|\alpha|^2}{2}}\sum_{n=0}^\infty
+  \ket{\Psi(T)} = \cos\theta\left(e^{-\frac{|\alpha|^2}{2}}\sum_{n=0}^\infty
    \frac{(\alpha e^{i\nu T \hbar/2})^n}{\sqrt{n!}}\ket{n}\right)\ket{g} +  
-    \left(e^{-\frac{|\alpha|^2}{2}}\sum_{n=0}^\infty
+    e^{i\phi}\sin\theta\left(e^{-\frac{|\alpha|^2}{2}}\sum_{n=0}^\infty
    \frac{(\alpha e^{-i\nu T \hbar/2})^n}{\sqrt{n!}}\ket{n}\right)\ket{e}.
 \end{equation}
 %
@@ -799,7 +798,16 @@ The expected photon difference is now
 
 % TODO Need to account for transmission coefficient but probably later, see
 % Mauro's paper (Q. Tomography), eqn. 2.37 - 2.42
-The annihilation operators associated with the input ports are related to those
+Hence measuring the intensity of each output of the beamsplitter can give us
+information on the phase of the light. We choose $\varphi = 0$ so that the
+measurement is of the $Y$ quadrature, i.e.\ we measure the imaginary part of
+$\ket{\Psi_a}$
+%
+\begin{equation}
+  \langle c^\dagger c - d^\dagger d\rangle =  2\kappa
+  |\alpha||\beta|\left\langle\sin(\nu T s_z)\right\rangle.
+\end{equation}
+%
 For a short pulse of light, the interrogation time will be the lifetime of the
 photons in the cavity, $T = \kappa^{-1}$. In this r\'egime we can expand sine
 to first order, so that
