@@ -585,7 +585,7 @@ sideband cooling into low motional ground states of the trap.
 %
 % TODO Check trap frequency is what we expect, see sideband cooling notebook,
 % think it should be more like a MHz
-The cooling rate is given by the enhanced scattering rate time the energy
+The cooling rate is given by the enhanced scattering rate times the energy
 reduced per scatter. The latter of these being given by $\hbar\omega_t$, with
 $\omega_t$ being the trap frequency. As per discussion in
 section~\ref{theory:chips}, we expect typical trap frequencies $\omega_t\sim
@@ -679,7 +679,7 @@ time $T$, we have
 where
 %
 \begin{equation}
-  H_\text{int} = \hbar \frac{g^2}{\Delta} S_z a^\dagger a
+  H_\text{int} = \hbar \frac{g^2}{\Delta} s_z a^\dagger a
 \end{equation}
 %
 and $\ket{\Psi(0) = \ket{\psi}\ket{\alpha}}$ is the state of the system at the
@@ -725,15 +725,104 @@ where $\alpha_\pm = \alpha \exp(\pm i \nu T \hbar/2)$.
 
 \subsection{State readout}
 
-The state of the molecule is now entangled with the state of the light so that
-measuring the phase of the light will perform a readout of the molecule state.
-This can be achieved, for example by a homodyne measurement.
+The state of the molecule is now entangled with the state of the light in such
+a way that measuring the phase of the light will perform a readout of the
+molecule state. In this subsection I will present the homodyne
+measurement~\cite{agarwal2012} technique in the context of performing a
+measurement of our molecule state.
 
-% TODO Homodyne measurement for state readout discussion
+The homodyne \cm{experiment} is illustrated in \myfigref{mws:fig:homodyne}. The
+light to be measured, here labelled $\ket{\Psi_a}$, is incident on one port (a)
+of a beam splitter. On the other port (b) we have a strong local oscillator in
+a coherent state $\ket{\beta}$, with large amplitude, in
+this case meaning that $|\beta| \gg |\alpha|$. We set the relative phases of
+$\ket{\alpha}$ and $\ket{\beta}$ so that $\arg{\alpha}=0$ and
+$\arg{\beta}=-\varphi$.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.3\textwidth]{figs/mws/homodyne.pdf}
+  \caption{Schematic of a homodyne measurement. The state to be measured
+    $\ket{\Psi_a}$ is incident on port (a) of the beamsplitter, and the local
+    oscillator $\ket{\beta}$ is incident on port (b). The signal from
+    photodiodes at the output ports is summed to produce a homodyne
+    measurement.
+  }
+  \label{mws:fig:homodyne}
+\end{figure}
+
+The annihilation operators associated with the input ports are related to those
+of the output ports (c and d) by the usual relation for a balanced beam
+splitter~\cite{agarwal2012}
+%
+\begin{equation}
+  \label{squeeze:eqn:bsmat}
+  \begin{pmatrix} c \\ d \end{pmatrix} = \frac{1}{\sqrt{2}}\begin{pmatrix}
+    1 & i \\ i & 1 
+  \end{pmatrix}  \begin{pmatrix} a \\ b \end{pmatrix}.
+\end{equation}
+%
+The difference in the expected photon numbers arriving at each
+detector is
+%
+\begin{align}
+  \langle c^\dagger c - d^\dagger d\rangle &= i\langle a^\dagger b- ab^\dagger
+  \rangle \\
+  &= i \kappa \bra{\Psi_a}\bra{\beta}(a^\dagger b-
+  ab^\dagger)\ket{\beta}\ket{\Psi_a} \\
+  & = i|\beta|\kappa \bra{\Psi_a}(a^\dagger e^{i\varphi} - a
+  e^{-i\varphi})\ket{\Psi_a} \\
+\end{align}
+%
+where we have used $b\ket{\beta} = \beta\ket{\beta}$ and the factor of $\kappa$
+arises from the fact that we are looking at the output of the cavity light,
+which takes the state from $\ket{\gamma}_\text{in}$ to $\ket{\gamma}_\text{out}
+= \sqrt{\kappa}\ket{\gamma}_\text{in}$~\cite{Vanner16182}.
+% TODO I need to find better cite, could also cite Blais and that might be
+% enough?
+
+We now intoduce the canonical quadratures of the light field, corresponding to
+its real and imaginary parts. They are defined by~\cite{gerry_knight_2004}
+%
+\begin{align}
+  X = \frac{a + a^\dagger}{2} && Y = \frac{a - a^\dagger}{2i}.
+\end{align}
+%
+The expected photon difference is now
+\begin{align}
+  \langle c^\dagger c - d^\dagger d\rangle &=
+  2|\beta|\kappa\bra{\Psi_a}(Y\cos\varphi - X\sin\varphi)\ket{\Psi_a} \\
+  &= 2|\beta|\kappa\bra{\Psi_a}(X\sin(\varphi+\frac{\pi}{2}) +
+  Y\cos(\varphi+\frac{\pi}{2}))\ket{\Psi_a}.
+  \label{squeeze:eqn:homoquads}
+\end{align}
+
+% TODO Need to account for transmission coefficient but probably later, see
+% Mauro's paper (Q. Tomography), eqn. 2.37 - 2.42
+The annihilation operators associated with the input ports are related to those
+For a short pulse of light, the interrogation time will be the lifetime of the
+photons in the cavity, $T = \kappa^{-1}$. In this r\'egime we can expand sine
+to first order, so that
+%
+\begin{equation}
+  \langle c^\dagger c - d^\dagger d\rangle = 2|\alpha||\beta|
+  \frac{g^2}{\Delta}\langle s_z\rangle.
+  \label{eqn:homomeas}
+\end{equation}
+%
+% TODO This isn't really a spin state, need to make this more clear above
+In other words, the expectation value of the photon measurement is linked
+directly to that of the molecule's state. A measurement of $\langle c^\dagger c
+- d^\dagger d\rangle$ will also measure $s_z$. This allows for readout of the
+spin state via the microwave ports.
+
+\cm{TODO A bit on implementation with specifics in \CaF{}}
 
 \subsection{State preparation}
 
 \cm{What is this?}
+
+\cm{Maybe something about preparing light states too?}
 
 \subsection{Coupling between molecules}
 
