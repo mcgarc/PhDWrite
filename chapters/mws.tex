@@ -875,12 +875,51 @@ say something about the distance between the shifting plates.}
 
 \subsection{State preparation}
 
-\cm{What is this?}
-
-\cm{Maybe something about preparing light states too?}
+The engtangling of the molecule and light state will produce a powerful system
+with applications beyond simple state readout. First, the system can be used to
+produce Schr\"odinger cat states in the light field~\cite{Andre2006}. This can be achieved
+by pulsing the microwaves to produce the entangled state in
+\myeqref{mws:eqn:entangled}. Expressing the molecule state in the $x$ basis
+$\ket{\pm} = (\ket{g} \pm \ket{e})/2$, this becomes
+%
+\begin{equation}
+  \ket{\Psi(T)} = \ket{\Alpha_+(\theta, \phi) }\ket{+} + \ket{\Alpha_-(\theta,
+  \phi)}\ket{-}
+\end{equation}
+%
+with
+%
+\begin{equation}
+  \ket{\Alpha_\pm(\theta, \phi)} = \cos\theta\ket{\alpha_+} \pm
+  e^{i\phi}\sin\theta\ket{\alpha_-}.
+\end{equation}
+%
+Now independent measurement of the molecule state in the $x$ basis will yield
+$\ket{\pm}$, \cm{heralding} the creation of the $\ket{\Alpha_\pm(\theta,
+\phi)}$ Schr\"odinger cat state in the light field. This is an attractive
+method for producing such states in the microwave r\'egime, in analogy to what
+has previously been achieved using visible light~\cite{}.
+% TODO CITE https://www.nature.com/articles/s41566-018-0339-5
 
 \subsection{Coupling between molecules}
 
-\cm{How will this work?}
+As reported in \inlineref{Andre2006}, the entanglement can also be used to
+couple between molecules trapped near the same resonator. We write the state of
+the two molecules as $\ket{\Psi}_i$, $i\in\{1,2\}$, with the detunings
+individually controlled labelled $\Delta_i$. Molecule $1$ can be addressed
+independently of $2$ by setting $\Delta_2 >> \Delta_1$ and visa versa. 
 
+When $\Delta_1 = \Delta_2$ the interaction Hamiltonian between the two
+molecules can be found by adiabatic elimination of the photon state to
+be~\cite{Andre2006}
+%
+\begin{equation}
+  H_\text{int} = \hbar \frac{g^2}{\Delta} (\sigma_+^1\sigma_-^2 +
+  \sigma_-^1\sigma_+^2)
+\end{equation}
+%
+where $\sigma^i_k$ is the $\sigma_k$ operator acting on the
+$i^\text{th}$ molecule. It can be shown that such an interaction can be used to
+implement high-fidelity two-qubit operation on a chip~\cite{Andre2006}.
 
+\cm{would be good to find some other cites for this part}
