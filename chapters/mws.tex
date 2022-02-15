@@ -678,9 +678,12 @@ state~\cite{Gazeau2009}
 % TODO Wording here, again representing? Was it before? Is it clear?
 % Should I change n to m (including above) for consistency?
 with $\alpha\in\mathbb{C}$, and $\ket{n}$ again representing the $n^\text{th}$
-Fock state of the light~\cite{agarwal2012}. The interaction of the light with
-the molecule is desribed by the last term in $H$, so for an interaction over
-time $T$, we have
+Fock state of the light~\cite{agarwal2012}. For such a state $|\alpha|^2$ is
+the average photon number, with $a^\dagger a$ being the number operator such
+that $\bra{\alpha}a^\dagger a \ket{\alpha} = |\alpha|^2$.
+
+The interaction of the light with the molecule is desribed by the last term in
+$H$, so for an interaction over time $T$, we have
 %
 \begin{equation}
   \ket{\Psi(T)} = \exp\left(-iH_\text{int}T/\hbar\right)\ket{\Psi(0)}
@@ -703,7 +706,6 @@ coherent and molecule states,
 \end{equation}
 %
 where $\nu = g^2/\Delta$.
-% TODO Did I introduce number operator already?
 Now the number operator in the exponent acts on $\ket{n}$, and the spin
 operator acts on $\ket{N}$ for
 %
@@ -768,28 +770,29 @@ splitter~\cite{agarwal2012}
   \label{squeeze:eqn:bsmat}
   \begin{pmatrix} c \\ d \end{pmatrix} = \frac{1}{\sqrt{2}}\begin{pmatrix}
     1 & i \\ i & 1 
-  \end{pmatrix}  \begin{pmatrix} a \\ b \end{pmatrix}.
+  \end{pmatrix}  \begin{pmatrix} a' \\ b \end{pmatrix}.
 \end{equation}
 %
-The difference in the expected photon numbers arriving at each
-detector is
+Here $a'$ represents the annihilation operator of light arriving at the (a)
+port of the beamsplitter. In our experiment this will be the light that is
+emitted from the resonator, which has annihilation operator
+$a'=\sqrt{\kappa}a$~\cite{Vanner16182}.
 %
-\begin{align}
-  \langle c^\dagger c - d^\dagger d\rangle &= i\langle a^\dagger b- ab^\dagger
-  \rangle \\
-  &= i \kappa \bra{\Psi_a}\bra{\beta}(a^\dagger b-
-  ab^\dagger)\ket{\beta}\ket{\Psi_a} \\
-  & = i|\beta|\kappa \bra{\Psi_a}(a^\dagger e^{i\varphi} - a
-  e^{-i\varphi})\ket{\Psi_a} \\
-\end{align}
-%
-where we have used $b\ket{\beta} = \beta\ket{\beta}$ and the factor of $\kappa$
-arises from the fact that we are looking at the output of the cavity light,
-which takes the state from $\ket{\gamma}_\text{in}$ to $\ket{\gamma}_\text{out}
-= \sqrt{\kappa}\ket{\gamma}_\text{in}$~\cite{Vanner16182}.
 % TODO I need to find better cite, could also cite Blais and that might be
 % enough?
 
+The difference in the expected photon numbers arriving at each
+detector is therefore
+%
+\begin{align}
+  \langle c^\dagger c - d^\dagger d\rangle &= i\langle a'^\dagger b-
+  a'b^\dagger \rangle \\
+  &= i \kappa \bra{\Psi_a}\bra{\beta}(a^\dagger b-
+  ab^\dagger)\ket{\beta}\ket{\Psi_a} \\
+  & = i|\beta|\kappa \bra{\Psi_a}(a^\dagger e^{i\varphi} - a
+  e^{-i\varphi})\ket{\Psi_a}.
+\end{align}
+%
 We now intoduce the canonical quadratures of the light field, corresponding to
 its real and imaginary parts. They are defined by~\cite{gerry_knight_2004}
 %
