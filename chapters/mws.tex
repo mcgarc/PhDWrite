@@ -13,31 +13,25 @@ this comes later.
 
 \section{The coplanar waveguide}
 
-\cm{The following is mostly from my ESA so will need editing! Important
-takeaways are the field strcutre, where the molecules need to sit in this
-field, and what we need to do to get a cavity. What can we do if we don't have
-a cavity?}
-
-The coplanar waveguide (CPW) was originally proposed by Cheng P.~Wen as a
-means of guiding microwaves across the surface of a dielectric
+The coplanar waveguide (CPW) was originally proposed by Cheng P.~Wen as a means
+of guiding microwaves across the surface of a dielectric
 substrate~\cite{1127105}. It consists of a central conductor with a ground
 plane on either side, as pictured in~\myfigref{mws:fig:CPW}. CPWs have become
 prolific, since they allow the creation of robust microwave devices, and offer
-some benefits over other waveguide \cm{architectures} such as the stipline
-waveguide because they can provide circularly polarised fields, and also
+some benefits over other waveguide architectures, such as the stripline
+waveguide, because they can provide circularly polarised fields, and also
 provide easy access to the ground plane for shunt connections.
 
 The CPW's geometry is defined by the centre conductor width ($S$) and the
 channel width ($W$). The height of the conductor is $t$ and the dielectric
-height is $h$. 
-The geometry of the CPW determines the region the
-microwave field occupies, as illustrated in \myfigref{experiment:fig:CPWfield}.
-The CPW can therefore be designed to maximise overlap between the microwave
-field and a cloud of molecules trapped nearby.  As a rough approximation the
-molecules should be trapped at a distance $h\sim S$ above the centre of the CPW
-to achieve a good overlap.~\cite{Boehi2009} The field surrounding the CPW is
-shwon in \mysubfigref{mws:fig:CPW}{b}, the equations defining this field can be
-found analytically~\cite{Simons2004}, or the field can be determined by a
+height is $h$.  The geometry of the CPW determines the region the microwave
+field occupies, as illustrated in \myfigref{experiment:fig:CPWfield}.  The CPW
+can therefore be designed to maximise overlap between the microwave field and a
+cloud of molecules trapped nearby.  As a rough approximation the molecules
+should be trapped at a distance $h\sim S$ above the centre of the CPW to
+achieve a good overlap.~\cite{Boehi2009} The field surrounding the CPW is shown
+in \mysubfigref{mws:fig:CPW}{b}, the equations defining this field can be found
+analytically~\cite{Simons2004}, or the field can be determined by a
 finite-element simulation.
 
 % TODO 
@@ -62,14 +56,14 @@ finite-element simulation.
     \end{overpic}
   \end{subfigure}
 	\caption{Subfigure (a) shows a perspective view of a segment of CPW on dielectric substrate, with
-pertinent geometery and dielectric constants labeled. The conductor is in gold
+pertinent geometry and dielectric constants labeled. The conductor is in gold
   and the dielectric is left transparent. A COMSOL finite-element simulation of the
 resulting field density near such a CPW is shown in (b), with
 $S=\SI{20}{\micro\meter}$, $W=\SI{10}{\micro\meter}$, $\epsilon_r=10$,
 $h=\SI{10}{\micro\meter}$. Conductor regions are highlighted in gold and the
 end of the bottom of the substrate is marked with the black line. The field is
 presented in arbitrary units to illustrate where strong coupling can be
-achieved. Note that in a resonator the field will depend on the losition in the
+achieved. Note that in a resonator the field will depend on the position in the
 longitudinal direction.}
 	\label{mws:fig:CPW}
 \end{figure}
@@ -100,11 +94,11 @@ and skin effect surface resistance~\cite{Simons2004}
 \end{equation}
 
 Since the field of the CPW will pass through both the dielectric and the
-surrouding air, the CPW's capacitance is the sum of the capacitance of each of
+surrounding air, the CPW's capacitance is the sum of the capacitance of each of
 these two parts
 %
 \begin{equation}
-  C_\text{CPW} = C_\text{dielectic} + C_\text{air}.
+  C_\text{CPW} = C_\text{dielectric} + C_\text{air}.
 \end{equation}
 %
 The method of finding these individual contributions is somewhat involved, so
@@ -186,11 +180,8 @@ neglected~\cite{Frankel1991}.  Bending losses can be neglected as long as
 the radius of the bends are much larger than the wavelength of the propagating
 wave. We must be mindful of this during design, since the typical wavelengths
 for rotational transitions are on the order of centimeters.
-
-\cm{Fix, there is a bit about this in Goppl}
-We also do not consider the insertion loss of the
-resonator, since this does not affect the quality
-factor~\cite{doi:10.1063/1.3010859}.
+We also do not consider the insertion loss of the resonator, since this does
+not affect the quality factor~\cite{doi:10.1063/1.3010859}.
 
 \subsubsection{Dielectric losses}
 
@@ -333,26 +324,19 @@ This will not prevent the implementation of a microwave guide on a multi-layer
 chip trap, but it will impact our ability to build incorporate a microwave
 resonator as we will now discuss.
 
-\cm{Clear up this para, but use as basis for explaining that a waveguide can be
-built}
-That said, it should be noted that the high loss should not prevent us from
-using the CPW to directly drive microwave transitions in trapped molecules, as
-we will still be able to pass signal through the waveguide without the need to
-construct a resonator. With loss of $\alpha \approx \alpha_c$, and waveguides of
-lengths on the scale of a few centimeter, we can expect a total loss of around
-$\SI{400}{\neper\per\metre} \times \SI{0.01}{\metre} = \SI{35}{\decibel}$. This
-should be sufficiently small that microwaves will be able to reach molecules
-trapped on the chip.~\cite{Treutlein2008}
-One of the later goals of the project will be to characterise microwave losses
-on the chip and compare these with those expected from theory.
+That said, it should be noted that the high loss will not prevent the use of
+the CPW to directly drive microwave transitions in trapped molecules. This
+would allow the same coherent control achieved in free space
+experiments~\cite{WilliamsMagnetic2018} although
+realisation of the JCH will clearly not be possible and a strong driving field
+may be required to overcome losses.  With loss of $\alpha \approx \alpha_c$,
+and waveguides of lengths on the scale of a few centimeter, we can expect a
+total loss of around $\SI{400}{\neper\per\metre} \times \SI{0.01}{\metre} =
+\SI{35}{\decibel}$. This should be sufficiently small that microwaves will be
+able to reach molecules trapped on the chip.~\cite{Treutlein2008}
 
 \subsection{CPW resonators}
 \label{mws:resonators}
-
-We discussed in chapter~\ref{theory} that strong-coupling between a microwave
-resonator and a trapped molecule has the potential to be a powerful tool for
-\cm{new physics}. These proposals will be explored further in the next section, but
-first we present how a microwave resonator can be implemented with a CPW.
 
 A microwave resonator can be formed from a section of CPW that is capacitively
 coupled to another driving segment~\cite{Day2003}. The resonant frequency is
@@ -409,27 +393,13 @@ substrate, we can now consider the logistics of implementing such a device
 with our design. In this section we will consider the \cm{states that we will
 use} and \cm{how the transition frequency can be tuned to (or away from) the
 resonator frequency}. We have already outlined how to fabricate a multi-layer device
-in chater~\ref{fab}, but the problem of delivering microwaves to the CPW
+in chapter~\ref{fab}, but the problem of delivering microwaves to the CPW
 will also be discussed in this section.
 
-\cm{I like this para, but I think it doesn't really go here... Definitely need
-to say something about resonator vs. waveguide}
-%
-Molecules trapped on a chip near a CPW (not a resonator) could be used for
-microwave spectroscopy experiments, similar to the free space experiments
-described in section~\ref{theory:molecules} and
-\inlineref{WilliamsMagnetic2018}. Coupling molecules to a resonator however
-promises a variety of new tools for quantum control of the molecules. Although
-there are various obstacles to overcome in building such a device, it is
-instructive to consider its operation. \cm{Better phrasing}
-
-\subsection{Rotational transition}
-
-\cm{
-Specify the states of the molecule that we will use
-%
-Specify coupling parameters, etc.
-}
+% TODO Ensure this is introduced
+For the remainder of this chapter we will consider microwave coupling to the
+$\omega_0 = 2\pi \times \SI{20.5}{\giga\hertz}$ transition between the
+stretched states, which was introduced in section~\ref{theory:molecules}.
 
 \subsection{Stark shift}
 
@@ -525,7 +495,8 @@ to implement the electrostatic traps described in \inlineref{Andre2006}.
 This subsection summarises the sideband cooling scheme presented in
 \inlineref{Andre2006} and presents cooling rates for our trapping scheme with
 \CaF{}.  Throughout section we assume that we operate with a single molecule
-coupled to a high-quality cavity ($Q\sim10^6$, $\kappa \sim 10^4$) in the
+coupled to a high-quality cavity ($Q\sim10^6$, $\kappa \approx
+2\pi\times \SI{20}{\kilo\hertz}$) in the
 strong coupling r\'egime ($g\sim10^5>Q$)
 
 In the macroscopic magnetic trap, the
@@ -633,11 +604,14 @@ cryocooler temperatures of $T_\text{res}=\SI{4}{\kelvin}$. This corresponds
 to a background photon number of
 %
 \begin{equation}
-  \overline{m} = \frac{k_B T_\text{res}}{\hbar \omega_0}
+  \overline{m} = \frac{k_B T_\text{res}}{\hbar \omega_0}.
 \end{equation}
 %
-\cm{and can eliminate other sources of noise, cite Wallraff strong coupling
-paper}
+It has been commonly shown that other sources of background photons can be
+eliminated~\cite{Wallraff2004}, in particular it can be useful to filter
+high-frequency photons that can enter from the input
+ports~\cite{doi:10.1063/1.3638063}. 
+
 We expect the minimum temperature achievable by sideband cooling to be reached
 when the molecule motion and photon energy are in thermal equilibirum, so that
 %
@@ -646,23 +620,24 @@ when the molecule motion and photon energy are in thermal equilibirum, so that
 \end{equation}
 %
 which is shown as a function of the trapping current for various resonator
-temperatures in \mysubfigref{mws:fig:sideband}. \cm{Discuss lowering current
+temperatures in \mysubfigref{mws:fig:sbtemps}{b}. \cm{Discuss lowering current
 to decrease temp and that this is actually really cold in tight confinement,
 not worth comparing to free space.}
 
 \section{Entangling light and photon states}
 
-Reference~\cite{Andre2008} also proposes entangling the molecule state with the
+Reference~\cite{Andre2006} also proposes entangling the molecule state with the
 quantum state of photons in the resonator. This is inspired by the methodology
 of \inlineref{PhysRevA.69.062320} where the state of a Cooper-pair box is
 entangled with a resonator state. This entanglement can be used to perform
-state readout or coupling to neighbouring qubits, as will be discussed further
-below.
-
+state readout, state preparation and coupling to neighbouring qubits. In this
+section we will mainly discuss state readout, since this framework will be
+useful in the next chapter.
+%
 % TODO Bring in any more necessary cites (from squeeze ch)
 
-\cm{Entangling} can be achieved in the dispersive r\'egime, where the transition
-frequency is tuned so that $|\Delta|\gg g$. 
+Entangling of the light and molecule state can be achieved in the dispersive
+r\'egime, where the transition frequency is tuned so that $|\Delta|\gg g$.
 Reference~\cite{PhysRevA.69.062320} tells us that we can gain insight into the
 dispersive behaviour by applying the unitary transformation
 %
@@ -750,6 +725,7 @@ coherent state, so the resulting state after interaction is
 \begin{equation}
   \ket{\Psi(T)} = \cos\theta\ket{\alpha_+}\ket{g} +
   e^{i\phi}\sin\theta\ket{\alpha_-}\ket{e}
+  \label{mws:eqn:entangled}
 \end{equation}
 %
 where $\alpha_\pm = \alpha \exp(\pm i \nu T \hbar/2)$.
