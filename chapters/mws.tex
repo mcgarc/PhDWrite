@@ -550,26 +550,44 @@ $\ket{g, m} \rightarrow \ket{e, m-1}$ transition as pictured in
 \myfigref{mws:fig:sideband}. Combined with the enhanced decay, this allows
 sideband cooling into low motional ground states of the trap.
 
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.6\textwidth]{figs/mws/sidebandcool.pdf}
+  \caption{
+    The sideband cooling scheme is shown, with an external driving field
+    applied to the $\ket{g, m}\rightarrow\ket{e, m-1}$ transition. Decay on
+    $\ket{e,m}\rightarrow\ket{g,m}$ is strongly enhanced by the resonator,
+    allowing sideband cooling to low motional states.
+  }
+  \label{mws:fig:sideband}
+\end{figure}
+
+
 \begin{figure}[htb]
   \centering
-  \begin{subfigure}[c]{0.4\textwidth}
-  %\begin{overpic}[abs, width=\textwidth]{figs/mws/sidebandcool.pdf}
-  %    %\put(10, 105){(a)}
-  %  \end{overpic}
-      \begin{tikzpicture}
-        \node[anchor=south west,inner sep=0] (image) {\includegraphics[width=\textwidth]{figs/mws/sidebandcool.pdf} };
-        %\node [] at (0.1, 4.3) {(a)};
-        %\node [] at (9.5, 4.3) {(b)};
-      \end{tikzpicture}
+  \begin{subfigure}[b]{0.44\textwidth}
+  \begin{tikzpicture}
+    \begin{axis}[
+        enlargelimits=true,
+        xlabel=Trapping current (\si{\ampere}),
+        ylabel=$R_\text{sbc}$ (\si{\milli\kelvin\per\second}),
+        width=\textwidth,
+        height = 0.7\textwidth,
+        x tick label style={/pgf/number format/.cd, set thousands separator={}}
+    ]
+      \addplot [thick, black] table {figs/mws/coolrate.dat};
+    \end{axis}
+    \node [] at (0.6, 3.2) {(a)};
+  \end{tikzpicture}
   \end{subfigure}
   \hspace{1cm}
-  \begin{subfigure}[c]{0.48\textwidth}
+  \begin{subfigure}[b]{0.44\textwidth}
   \begin{tikzpicture}
     \begin{axis}[
         ymode=log,
         enlargelimits=true,
         xlabel=Trapping current (\si{\ampere}),
-        ylabel=$T_\text{min}$ (\si{\micro\kelvin}),
+        ylabel=$T_\text{min}$ (\si{\nano\kelvin}),
         width=\textwidth,
         height = 0.7\textwidth,
         x tick label style={/pgf/number format/.cd, set thousands separator={}}
