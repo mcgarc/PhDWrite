@@ -826,7 +826,7 @@ to first order, so that
 \begin{equation}
   \langle c^\dagger c - d^\dagger d\rangle = 2|\alpha||\beta|
   \frac{g^2}{\Delta}\langle s_z\rangle.
-  \label{eqn:homomeas}
+  \label{mws:eqn:homomeas}
 \end{equation}
 %
 % TODO This isn't really a spin state, need to make this more clear above
@@ -835,7 +835,23 @@ directly to that of the molecule's state. A measurement of $\langle c^\dagger c
 - d^\dagger d\rangle$ will also measure $s_z$. This allows for readout of the
 spin state via the microwave ports.
 
-\cm{TODO A bit on implementation with specifics in \CaF{}}
+For this readout procedure, we have made the assumptions that we are operating
+in the dispersive r\'egime ($|\Delta| \gg g$) but in the final step
+(\myeqref{mws:eqn:homomeas} the expansion of sine require a stricter condition,
+that 
+%
+\begin{equation}
+  \frac{g^2}{\Delta\kappa} \ll 1.
+\end{equation}
+%
+The detuning required for our $g$ and $Q$ is therefore
+%
+\begin{equation}
+  \frac{\Delta}{2 \pi} \gg \SI{250}{\kilo\hertz}.
+\end{equation}
+%
+Which translates to a field strength of \cm{need to figure out Stark effect and
+say something about the distance between the shifting plates.}
 
 \subsection{State preparation}
 
