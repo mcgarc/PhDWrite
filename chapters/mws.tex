@@ -460,24 +460,34 @@ microwave delivery system is shown in \mysubfigref{mws:fig:implement}{a}.
 \cm{Need to mention that I vacuum-tested these components (point to experiment
 chapter?)}
 
-\begin{figure}[ht]
-  \centering
-  \begin{subfigure}[b]{0.3\textwidth}
+\begin{figure}[htb]
+    \centering
+    \begin{tabular}[t]{cc}
+\begin{subfigure}{0.4\textwidth}
+    \centering
+    \smallskip
     \begin{overpic}[abs,
       width=\textwidth]{figs/mws/FlangeAssemblyFinalMWPresent.png}
       \put(10, 132){(a)}
     \end{overpic}
-  \end{subfigure}
-  \begin{subfigure}[b]{0.3\textwidth}
-    \begin{overpic}[abs, width=\textwidth]{figs/mws/present_CPW2_IS.pdf}
-      \put(10, 132){(b)}
-    \end{overpic}
-  \end{subfigure}
-  \begin{subfigure}[b]{0.3\textwidth}
-    \begin{overpic}[abs, width=\textwidth]{figs/mws/present_CPW2_inset.pdf}
-      \put(10, 132){(c)}
-    \end{overpic}
-  \end{subfigure}
+\end{subfigure}
+    &
+        \begin{tabular}{c}% if you add [t], than sub images are pushed down
+        \smallskip
+            \begin{subfigure}[t]{0.4\textwidth}
+                \centering
+                \begin{overpic}[abs, width=0.8\linewidth]{figs/mws/present_CPW2_IS.pdf}
+                  \put(5, 139){(b)}
+                \end{overpic}
+            \end{subfigure}\\
+            \begin{subfigure}[t]{0.4\textwidth}
+                \centering
+                \begin{overpic}[abs, width=0.8\textwidth]{figs/mws/present_CPW2_inset.pdf}
+                  \put(5, 139){(c)}
+                \end{overpic}
+            \end{subfigure}
+        \end{tabular}\\
+    \end{tabular}
   \caption{
     The microwave components of the flange assembly (flange, feedthroughs,
     barallel connectors, launchers, PCB and chip) are shown in (a). In (b) we
