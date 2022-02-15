@@ -597,32 +597,34 @@ sideband cooling into low motional ground states of the trap.
       \addplot [style=thick, color=pink] table [y index=3] {figs/mws/mintemps.dat};
       %\addlegendentry{\SI{4}{\kelvin}}
     \end{axis}
-    %\node [] at (0.1, 0.9) {(b)};
+    \node [] at (0.6, 3.2) {(b)};
   \end{tikzpicture}
   \end{subfigure}
-  \caption{The sideband cooling scheme is shown in (a) with an external driving field applied to the
-    $\ket{g, m}\rightarrow\ket{e, m-1}$ transition. Decay on
-    $\ket{e,m}\rightarrow\ket{g,m}$ is strongly enhanced by the resonator,
-    allowing sideband cooling to low motional states. Subfigure (b) shows the
-    minimum temperature that can be achieved as a function of trapping current
-    for different resonator temperatures: \SI{4}{\kelvin} (black),
-    \SI{400}{\milli\kelvin} (blue) and \SI{40}{\milli\kelvin} (red).
+  \caption{
+    Subfigure (a) shows the cooling rate for varying trapping current for a
+    $Q=10^6$ resonator. Subfigure (b) shows the minimum temperature that can be
+    achieved as a function of trapping current for different resonator
+    temperatures: \SI{4}{\kelvin} (black), \SI{400}{\milli\kelvin} (blue) and
+    \SI{40}{\milli\kelvin} (red).
     }
-  \label{mws:fig:sideband}
+    \label{mws:fig:sbtemps}
 \end{figure}
 %
-% TODO Check trap frequency is what we expect, see sideband cooling notebook,
-% think it should be more like a MHz
-The cooling rate is given by the enhanced scattering rate times the energy
-reduced per scatter. The latter of these being given by $\hbar\omega_t$, with
-$\omega_t$ being the trap frequency. As per discussion in
-section~\ref{theory:chips}, we expect typical trap frequencies $\omega_t\sim
-2\pi \times 10^4 \si{\hertz}$ and therefore the cooling rate will be
-\SI{10}{\milli\kelvin\per\second}.
+The rate at which energy is dissipated by the resonator is given by the
+enhanced scattering rate times the energy reduced per scatter. The cooling rate
+is therefore given by
+%
+\begin{equation}
+  R_\text{sbc} = \frac{\hbar\Gamma_c\omega_t}{k_B}
+\end{equation}
+%
+where 
+$\omega_t$ is the trap frequency.
+As per discussion in section~\ref{theory:chips}, we expect typical trap
+frequencies $\omega_t\sim 2\pi \times 10^5 \si{\hertz}$ and therefore the
+cooling rate will be of order \SI{10}{\milli\kelvin\per\second}. This is shown
+for various trapping currents in \mysubfigref{mws:fig:sbtemps}{a}.
 
-\cm{Change where this little discussion about temperature goes?}
-\cm{EVEN BETTER: change to do a graph of resonator temp vs minimum temperature
-that can be achieved at various trap frequencies.}
 The lowest motional state that can be reached is determined by the background
 photon number in the resonator. A typical high-$Q$ cavity will operate at a few
 tens of millikelvin~\cite{doi:10.1063/1.3010859} but these temperatures require
