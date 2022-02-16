@@ -327,13 +327,13 @@ resonator as we will now discuss.
 That said, it should be noted that the high loss will not prevent the use of
 the CPW to directly drive microwave transitions in trapped molecules. This
 would allow the same coherent control achieved in free space
-experiments~\cite{WilliamsMagnetic2018} although
-realisation of the JCH will clearly not be possible and a strong driving field
-may be required to overcome losses.  With loss of $\alpha \approx \alpha_c$,
-and waveguides of lengths on the scale of a few centimeter, we can expect a
-total loss of around $\SI{400}{\neper\per\metre} \times \SI{0.01}{\metre} =
-\SI{35}{\decibel}$. This should be sufficiently small that microwaves will be
-able to reach molecules trapped on the chip.~\cite{Treutlein2008}
+experiments~\cite{WilliamsMagnetic2018} although realisation of the JCH will
+clearly not be possible and a strong driving field may be required to overcome
+losses.  With loss of $\alpha \approx \alpha_c$, and waveguides of lengths on
+the scale of a few centimeter, we can expect a total loss of around
+$\SI{400}{\neper\per\metre} \times \SI{0.01}{\metre} = \SI{35}{\decibel}$. This
+should be sufficiently small that microwaves will be able to reach molecules
+trapped on the chip.~\cite{Treutlein2008}
 
 \subsection{CPW resonators}
 \label{mws:resonators}
@@ -657,8 +657,10 @@ r\'egime, where the transition frequency is tuned so that $|\Delta|\gg g$.
 Reference~\cite{PhysRevA.69.062320} tells us that we can gain insight into the
 dispersive behaviour by applying the unitary transformation
 %
-\begin{equation} U = \exp \left[\frac{g}{\Delta}(a\sigma_+ -
-a^\dagger\sigma_-)\right] \end{equation}
+\begin{equation}
+  U = \exp \left[\frac{g}{\Delta}(a\sigma_+ - a^\dagger\sigma_-)\right]
+  \label{mws:eqn:Utransform}
+\end{equation}
 %
 to the Jaynes-Cummings Hamiltonian described in section~\ref{theory:QO}. With
 expansion up to second order in $g/\Delta$, we obtain
@@ -667,6 +669,7 @@ expansion up to second order in $g/\Delta$, we obtain
   a^\dagger a + \hbar\left(\omega_c +
   \frac{g^2}{\Delta}\right)s_z + \frac{\hbar
   g^2}{\Delta}\sigma_z a^\dagger a.
+  \label{mws:eqn:UHU}
 \end{equation}
 %
 % TODO Probably better to start with s_i in theory
@@ -714,6 +717,7 @@ coherent and molecule states,
   \ket{\Psi(T)} = e^{-\frac{|\alpha|^2}{2}}\sum_{n=0}^\infty
    \frac{\alpha^n}{\sqrt{n!}} e^{-i\nu T s_z a^\dagger a} \ket{n} (\cos\theta
    \ket{g} + e^{i\phi}\sin\theta\ket{e})
+   \label{mws:eqn:evolve1}
 \end{equation}
 %
 where $\nu = g^2/\Delta$.
@@ -747,6 +751,7 @@ coherent state, so the resulting state after interaction is
 where $\alpha_\pm = \alpha \exp(\pm i \nu T \hbar/2)$.
 
 \subsection{State readout}
+\label{mws:readout}
 
 The state of the molecule is now entangled with the state of the light in such
 a way that measuring the phase of the light will perform a readout of the
