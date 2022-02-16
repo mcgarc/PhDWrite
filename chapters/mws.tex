@@ -34,7 +34,6 @@ in \mysubfigref{mws:fig:CPW}{b}, the equations defining this field can be found
 analytically~\cite{Simons2004}, or the field can be determined by a
 finite-element simulation.
 
-% TODO 
 \begin{figure}[ht]
   \centering
   \begin{subfigure}[b]{0.45\textwidth}
@@ -207,6 +206,7 @@ on the frequency and temperature of the dielectric, and so are presented to
 illustrate the amount of loss that can typically be expected for our experiment
 at room temperature and frequencies in the \SI{10}{\giga\hertz} r\'egime.
 
+% TODO Add arlon thing to dielectrics table
 \begin{table}[ht]
   \caption{Dielectric constants and loss for various substrates in the
   \SI{10}{\giga\hertz} r\'egime at room temperature}
@@ -414,21 +414,42 @@ can be used to shift the transition by \cm{how much?}.
 
 \subsection{Integrating microwave components}
 
-% TODO Fill in blanks, note the chapter ref. is likely to change in the near
-% future (might discuss subship in fab)
-% TODO Add arlon thing to dielectrics table above
+% COMPONENTS
+% Vacuum-side barrel connector
+% https://www.mouser.co.uk/ProductDetail/Radiall/R127703001?qs=exnfk7tZe0CIIzofDocGig%3D%3D
+% Vacuum-side launcher
+% https://www.pasternack.com/2.92mm-female-end-launch-pcb-connector-pe45507-p.aspx
+% Feedthroughs
+% Kyle wrote in one note it's MDC SMA45-GS-WELD 
+% I can't quite find this, think the new version is this one
+% https://www.mdcprecision.com/9251004-sma-coaxial-feedthrough-1-pin-grounded-shield-double-ended-weldable
+
 The chip flange (shown in \myfigref{overview:figs:chipexperiment}) has been
-designed to incorporate high-frequency coaxial feedthroughs. \cm{Company name/
-spec. here.} These can be used to bring microwaves inside the chip chamber,
-where they can be launched onto a CPW on the subchip. As discussed in
-chapter~\ref{} the subchip in its current form is \cm{an aluminium-core PCB},
-however in future iterations of the experiment this can be replaced with, for
-example, an \cm{Arlon something somthing} board, which will be a suitable
-carrier for both trapping currents and microwaves. This is inspired by the
-atom-chip design presented in \cm{Hogan paper}. A schematic of the proposed
-microwave delivery system is shown in \mysubfigref{mws:fig:implement}{a}.
-\cm{Need to mention that I vacuum-tested these components (point to experiment
-chapter?)}
+designed to incorporate MCD Precision's SMA45-GS-WLED \SI{2.92}{\milli\meter}
+high-frequency SMA feedthroughs. These welded connectors can be used to bring
+microwaves inside the chip chamber, where they can be launched onto a CPW on
+the subchip. Microwaves will be transfered through from the feedthrough to the
+subchip using a SMA male-male barrel adapter from Pasternak, and a female-clamp
+PCB launcher from Pasternack. The launching assembly can be seen in
+\mysubfigref{mws:fig:implement}{a}. These components have been tested for UHV
+compatability, as discussed in \cm{reference relevant chapter}.  The flange
+assembly has been designed to allow microwaves to exit the chamber, where they
+can be terminated or measured.
+
+Once launched onto the subchip, the microwaves will be delivered by CPW to the
+subchip. 
+%
+As discussed in chapter~\ref{} the subchip in its current form is \cm{an
+aluminium-core PCB}, however in future iterations of the experiment this can be
+replaced with, for example, an Arlon AD1000 board, which will be a suitable
+carrier for both trapping currents and microwaves~\cite{Morgan2020}. 
+%
+The subchip CPW will be connected to the \cm{science chip} CPW by wire-bonds.
+These can be chosen to be arbitrarily large s that it is easy to make good
+connection with the wire bonds, and then tapered down to reduce the field size
+while maintaining the same $k_0$ and hence the same impedance. This CPW can be
+capacitively coupled to a microwave resonator, but for a simple example we show
+a multi-layer design for a single CPW in \mysubfigref{mws:fig:implement}{b}.
 
 \begin{figure}[htb]
     \centering
@@ -472,12 +493,6 @@ chapter?)}
   \label{mws:fig:implement}
 \end{figure}
 
-The subchip CPW will be connected to the \cm{science chip} CPW by wire-bonds.
-These can be chosen to be arbitrarily large s that it is easy to make good
-connection with the wire bonds, and then tapered down to reduce the field size
-while maintaining the same $k_0$ and hence the same impedance. This CPW can be
-capacitively coupled to a microwave resonator, but for a simple example we show
-a multi-layer design for a single CPW in \mysubfigref{mws:fig:implement}{b}.
 
 To form an even smaller trap than discussed above, the CPW centre conductor can
 be biased, to create a dimple trap along with the underlying axis of the
@@ -486,11 +501,7 @@ be possible to introduce a bias field, but this would have to be done on-chip
 with a band stop filter~\cite{doi:10.1063/1.4808364}. This could also be used
 to implement the electrostatic traps described in \inlineref{Andre2006}.
 
-
-
-
 \section{Sideband cooling}
-
 
 This subsection summarises the sideband cooling scheme presented in
 \inlineref{Andre2006} and presents cooling rates for our trapping scheme with
@@ -511,15 +522,28 @@ with rate
 
 This enhanced decay rate opens the door to sideband cooling into the motional
 ground state of the trap.
-
-% TODO, this really isn't explained very well. Need to go into a fair bit more
-% detail
+%
 We write the state of the molecule as $\ket{N, m}$ where $N\in\{e,g\}$ is the
 rotational state of the molecule, and $m$ is the quantum number of the motion
-in the trap. We imagine that an external driving field is applied on the
-$\ket{g, m} \rightarrow \ket{e, m-1}$ transition as pictured in
+in the trap. For any ground state $\ket{g,m}$ there is a carrier frequency
+transition to $\ket{e, m}$ at the resonant frequency $\omega_0$, and sidebands
+to the $\ket{e, m+m'}$ states at frequency $\omega_0 + m'\omega_t$, where
+$\omega_t$ is the trap frequency and $m'\in \mathbb{Z}$. There are similar
+carrier and sideband transitions for $\ket{e,m} \rightarrow \ket{g, m+m'}$.
+
+We imagine that an external driving field is applied on the
+$\ket{g, m} \rightarrow \ket{e, m-1}$ sideband as pictured in
 \myfigref{mws:fig:sideband}. Combined with the enhanced decay, this allows
-sideband cooling into low motional ground states of the trap.
+sideband cooling into low motional ground states of the trap. The molecule will
+be transfered by the driving field into a lower motional state, and will
+rapidly decay into the ground state by releasing a photon into the resonator.
+Each time this happens the molecule's energy is reduced by $\hbar\omega_t$.
+This results in a cooling rate
+%
+\begin{equation}
+  R_\text{sbc} = \frac{\hbar\Gamma_c\omega_t}{k_B}.
+\end{equation}
+
 
 \begin{figure}[ht]
   \centering
@@ -580,21 +604,13 @@ sideband cooling into low motional ground states of the trap.
     }
     \label{mws:fig:sbtemps}
 \end{figure}
-%
-The rate at which energy is dissipated by the resonator is given by the
-enhanced scattering rate times the energy reduced per scatter. The cooling rate
-is therefore given by
-%
-\begin{equation}
-  R_\text{sbc} = \frac{\hbar\Gamma_c\omega_t}{k_B}
-\end{equation}
-%
-where 
-$\omega_t$ is the trap frequency.
+
 As per discussion in section~\ref{theory:chips}, we expect typical trap
 frequencies $\omega_t\sim 2\pi \times 10^5 \si{\hertz}$ and therefore the
 cooling rate will be of order \SI{10}{\milli\kelvin\per\second}. This is shown
-for various trapping currents in \mysubfigref{mws:fig:sbtemps}{a}.
+for a molecule in a dimple trap (\cm{reference theory section on dimple traps
+not yet written}) at various trapping currents in
+\mysubfigref{mws:fig:sbtemps}{a}.
 
 The lowest motional state that can be reached is determined by the background
 photon number in the resonator. A typical high-$Q$ cavity will operate at a few
@@ -620,9 +636,9 @@ when the molecule motion and photon energy are in thermal equilibirum, so that
 \end{equation}
 %
 which is shown as a function of the trapping current for various resonator
-temperatures in \mysubfigref{mws:fig:sbtemps}{b}. \cm{Discuss lowering current
-to decrease temp and that this is actually really cold in tight confinement,
-not worth comparing to free space.}
+temperatures in \mysubfigref{mws:fig:sbtemps}{b}. Note that reducing the
+trapping current will reduce the trap frequency, and hence also the lowest
+temperate that can be achieved. \cm{Is this meaningful?}
 
 \section{Entangling light and photon states}
 
@@ -738,13 +754,12 @@ molecule state. In this subsection I will present the homodyne
 measurement~\cite{agarwal2012} technique in the context of performing a
 measurement of our molecule state.
 
-The homodyne \cm{experiment} is illustrated in \myfigref{mws:fig:homodyne}. The
+The homodyne measurement is illustrated in \myfigref{mws:fig:homodyne}. The
 light to be measured, here labelled $\ket{\Psi_a}$, is incident on one port (a)
 of a beam splitter. On the other port (b) we have a strong local oscillator in
-a coherent state $\ket{\beta}$, with large amplitude, in
-this case meaning that $|\beta| \gg |\alpha|$. We set the relative phases of
-$\ket{\alpha}$ and $\ket{\beta}$ so that $\arg{\alpha}=0$ and
-$\arg{\beta}=-\varphi$.
+a coherent state $\ket{\beta}$, with large amplitude, in this case meaning that
+$|\beta| \gg |\alpha|$. We set the relative phases of $\ket{\alpha}$ and
+$\ket{\beta}$ so that $\arg{\alpha}=0$ and $\arg{\beta}=-\varphi$.
 
 \begin{figure}
   \centering
@@ -871,11 +886,10 @@ with
 \end{equation}
 %
 Now independent measurement of the molecule state in the $x$ basis will yield
-$\ket{\pm}$, \cm{heralding} the creation of the $\ket{\Alpha_\pm(\theta,
-\phi)}$ Schr\"odinger cat state in the light field. This is an attractive
-method for producing such states in the microwave r\'egime, in analogy to what
-has previously been achieved using visible light~\cite{}.
-% TODO CITE https://www.nature.com/articles/s41566-018-0339-5
+$\ket{\pm}$, heralding the creation of the $\ket{\Alpha_\pm(\theta, \phi)}$
+Schr\"odinger cat state in the light field. This is an attractive method for
+producing such states in the microwave r\'egime, in analogy to what has
+previously been achieved using visible light~\cite{Hacker2019}.
 
 \subsection{Coupling between molecules}
 
@@ -898,4 +912,4 @@ where $\sigma^i_k$ is the $\sigma_k$ operator acting on the
 $i^\text{th}$ molecule. It can be shown that such an interaction can be used to
 implement high-fidelity two-qubit operation on a chip~\cite{Andre2006}.
 
-\cm{would be good to find some other cites for this part}
+\cm{Would be good to find some other cites for this part}
