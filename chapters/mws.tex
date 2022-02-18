@@ -572,9 +572,10 @@ to implement the electrostatic traps described in \inlineref{Andre2006}.
 This subsection summarises the sideband cooling scheme presented in
 \inlineref{Andre2006} and presents cooling rates for our trapping scheme with
 \CaF{}.  Throughout section we assume that we operate with a single molecule
-coupled to a high-quality cavity ($Q\sim10^6$, $\kappa \approx
-2\pi\times \SI{20}{\kilo\hertz}$) in the
-strong coupling r\'egime ($g\sim10^5>Q$)
+coupled to a high-quality cavity ($Q\sim10^6$, $\kappa \approx 2\pi\times
+\SI{20}{\kilo\hertz}$) in the strong coupling r\'egime ($g\sim10^5>Q$). We take
+the molecule to act as a two-level system in the stretched states $\ket{g} =
+??$ and $\ket{e}=??$.
 
 In the macroscopic magnetic trap, the
 $\ket{e}\rightarrow\ket{g}$ decay is very slow ($\Gamma \sim
@@ -585,10 +586,10 @@ with rate
 \begin{equation}
   \Gamma_c = \frac{\kappa}{2}.
 \end{equation}
-
+%
 This enhanced decay rate opens the door to sideband cooling into the motional
 ground state of the trap.
-%
+
 We write the state of the molecule as $\ket{N, m}$ where $N\in\{e,g\}$ is the
 rotational state of the molecule, and $m$ is the quantum number of the motion
 in the trap. For any ground state $\ket{g,m}$ there is a carrier frequency
@@ -718,18 +719,22 @@ useful in the next chapter.
 %
 % TODO Bring in any more necessary cites (from squeeze ch)
 
+We again assume that the molecule is trapped in one of the stretched states
+$\ket{g}=??$ and $\ket{e}=??$. The molecule-resonator coupling is then
+described by the Jaynes-Cummings Hamiltonian described in
+section~\ref{theory:QO}.
+%
 Entangling of the light and molecule state can be achieved in the dispersive
 r\'egime, where the transition frequency is tuned so that $|\Delta|\gg g$.
 Reference~\cite{PhysRevA.69.062320} tells us that we can gain insight into the
 dispersive behaviour by applying the unitary transformation
 %
 \begin{equation}
-  U = \exp \left[\frac{g}{\Delta}(a\sigma_+ - a^\dagger\sigma_-)\right]
+  U = \exp \left[\frac{g}{\Delta}(a\sigma_+ - a^\dagger\sigma_-)\right].
   \label{mws:eqn:Utransform}
 \end{equation}
 %
-to the Jaynes-Cummings Hamiltonian described in section~\ref{theory:QO}. With
-expansion up to second order in $g/\Delta$, we obtain
+With expansion up to second order in $g/\Delta$, we obtain
 %
 \begin{equation} H= UH_\text{JC}U^\dagger \approx \hbar \omega_c
   a^\dagger a + \hbar\left(\omega_c +
