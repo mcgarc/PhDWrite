@@ -1,24 +1,210 @@
 % TODO
-\cm{Need to check this intro, but it is dependent on the context of this and
-previous chapters, so revisit later.}
-In the previous chapter I described how a microwave resonator can be used for
-coherent control of a strongly-coupled ensemble of cold molecules. Now I will
-expand on this to demonstrate how such a system can be used for the creation of
-non-classical states for use in quantum metrology \cm{etc...}
+%\cm{Need to check this intro, but it is dependent on the context of this and
+%previous chapters, so revisit later.}
+%In the previous chapter I described how a microwave resonator can be used for
+%coherent control of a strongly-coupled ensemble of cold molecules. Now I will
+%expand on this to demonstrate how such a system can be used for the creation of
+%non-classical states for use in quantum metrology \cm{etc...}
+%
+%I will begin with a description of the interaction of a spin ensemble with
+%light in a cavity. I will then show that using such a system it is possible to
+%entangle the spin state of the ensemble with the light exiting the cavity.
+%Measuring the light state therefore provides a means of measuring the spin
+%state whilst maintaing coherence of the spins. I will go on to show that
+%performing such a measurement can be used to generate an entangled spin state,
+%with emphasis on the spin squeezed state.
 
-I will begin with a description of the interaction of a spin ensemble with
-light in a cavity. I will then show that using such a system it is possible to
-entangle the spin state of the ensemble with the light exiting the cavity.
-Measuring the light state therefore provides a means of measuring the spin
-state whilst maintaing coherence of the spins. I will go on to show that
-performing such a measurement can be used to generate an entangled spin state,
-with emphasis on the spin squeezed state.
+\cm{Intro spiel -- spin squeezed states are the best thing since sliced bread}
+
+\section{Spin states of the ensemble}
+
+\cm{TODO: more spiel}
+
+\subsection{Coherent spin states}
+
+For an ensemble of $N$ spin-half particles, we label the Pauli matrices and the
+ladder operators for the $i^\text{th}$ spin as $\sigma_*^i$. The spin operator
+for this particle is then
+%
+\begin{equation}
+  \mathbf{s}^i = \frac{1}{2}\begin{bmatrix} \sigma^i_x \\ \sigma^i_y \\ \sigma^i_z
+\end{bmatrix}.
+\end{equation}
+%
+We now define the collective spin operator
+%
+\begin{equation}
+  \mathbf{S} = \sum_{i=1}^N \mathbf{s}^i.
+\end{equation}
+%
+The common eigenstates of $\mathbf{S}$ and $S_z$ are the familiar angular
+momentum eigenstates, which we label $\ket{S,m_S}$, so that $S^2 \ket{S,m} =
+S(S+1)\ket{S, m}$ and $S_z \ket{S,m} = m\ket{S, m}$. These are the so-called
+Dicke states~\cite{}, which we will see shortly are entangled states of the
+spin system.
+
+Consider how we can write down the total state of the system. For an individual
+spin, the state can be written as
+%
+\begin{equation}
+  \ket{\psi(\theta, \phi)}_i = \cos\left(\frac{\theta_i}{2}\right)\ket{e}_i +
+  e^{i\phi_i}\sin\left(\frac{\theta_i}{2}\right)\ket{g}_i.
+  \label{eqn:blochspin}
+\end{equation}
+%
+It is common to represent such a state visually by the Bloch sphere.
+The angles $\theta_i$ and $\phi_i$ define a point on a sphere of unit
+radius with $\ket{e}_i$ and $\ket{g}_i$ at the poles. The cartesian
+representation is given by the expectation value $\langle \mathbf{s}_i
+\rangle$.
+%
+The state of the ensemble is then
+%
+\begin{equation}
+  \ket{\Psi} = \bigotimes_{i=1}^N \ket{\psi}_i
+\end{equation}
+%
+and the Bloch sphere representation is given by the sum of the individual spin
+vectors, as illustrated in \cm{TODO}.
+
+An important case is that of the coherent spin state (CSS), that is a
+state when all the spins are aligned, so that for all $i$, $\theta_i = \theta$
+and $\phi_i = \phi$~\cite{MA201189, Gazeau2009}.
+It is useful to consider a system where all spins are initially
+in, for example, the ground state. They then undergo the same uniform rotation
+into the desired state $\ket{\psi(\theta, \phi)}_i$, which we write as
+%
+\begin{equation}
+  \ket{\Psi(\theta,\phi)} = \mathcal{R}(\theta, \phi)\ket{g}
+\end{equation}
+%
+where $\ket{g} = \bigotimes_{i=1}^N\ket{g}_i$ and similarly for $\ket{e}$. We
+represent this visually on the Bloch sphere, now with radius $S=N/2$, in
+analogy with the single spin case, as illustrated in \cm{TODO}. Again
+we can represent the vector in a cartesian form as the expectation value
+$\langle \mathbf{S} \rangle$. 
+%
+We note now that $\ket{g} = \ket{S,-S}$ and $\ket{e}=\ket{S,S}$.
+
+% TODO Are ladder operators s_\pm defined elsewhere?
+% TODO Cite Binney
+% Page 205 onwards in Biney has a discussion of this for N=2 and general S(->J)
+%The raising and lowering operators are $S_\pm = (S_x \pm iS_y)/2 =
+%\sum_{i=1}^Ns_\pm^i$. It is instructive to consider the state
+%when all spins are in the ground state
+
+In the next section, we will make particular use of the state
+%
+\begin{equation}
+  \ket{+} = \bigotimes_{i=1}^N \ket{+}_i.
+\end{equation}
+%
+Such a state can be represented on the Bloch sphere as a line pointing along
+the $x$ axis ($\theta=\pi/2$, $\phi=0$), as in \cm{ref fig TODO}, or can be
+found in terms of $\ket{S,m}$. A CSS can be written in the form 
+%
+\begin{equation}
+  \ket{\Psi} = \sum_{m=-S}^S a_m \ket{S, m}
+\end{equation}
+%
+with the general form of $a_m$ given in \inlineref{PhysRevA.6.2211}. We will
+consider only $\ket{+}$, where the probability amplitudes can be understood as
+a probabilty of measuring $m_S$ to be some value $\meas{m}$.
+
+For any individual spin, the chances of measuring it to be in $\ket{e}_i$ or
+$\ket{g}_i$ are equal. Measuing the state to be in the state $\ket{S, \meas{m}}$
+is equivalent to measuring $N_e$ molecules in the excited state, and $N_g = N -
+N_e$ in the ground state such that $\meas{m} = N_e - N_g$ (although note that
+we do not determine which spin is in which state). It follows that the
+probability of measuring the state to be $\ket{S,\meas{m}}$ will occur with a
+binomial probability~\cite{Gazeau2009}
+%
+% TODO Fix when I use meas{m} and just m
+\begin{equation}
+  P(m) = \frac{1}{2^N} \binom{N}{m+N/2}
+\end{equation}
+%
+or for large $N$, the binomial is approximated by the Gaussian
+%
+\begin{equation}
+  P(m) \approx\frac{1}{\sqrt{2\pi \Delta_N^2}} e^{-m^2/(2\Delta_N^2)}.
+  \label{eqn:CSSmprob}
+\end{equation}
+%
+where the variance is $\Delta_N^2 = N/4$. We therefore rewrite the probability
+amplitudes of $\ket{+}$ so that
+%
+\begin{equation}
+  \ket{+} = \sum_{m=-S}^S \sqrt{P(m)}\ket{S,m}.
+  \label{squeeze:eqn:plusdicke}
+\end{equation}
+
+Note that such a state has expectation values $\langle S_z \rangle = 0$,
+$\langle S_z^2\rangle = \Delta_N^2$, and the uncertainty in $S_z$ is consistent
+with the usual formula $\Delta_N^2 = \langle S_z^2 \rangle - \langle
+S_z\rangle^2$. This uncertainty is the projection noise of a CSS, arising from
+the uncertainty in the measurement of the individual spins. We can understand
+this in terms of an uncertainty in the cartesian Bloch vector $\langle
+\mathbf{S} \rangle$, or as an uncertainty in $\theta$~\cite{PhysRevA.47.3554}
+%
+% TODO Un-footnote this
+\footnote{This can be shown geometrically: consider the angle on the Bloch
+sphere between the x-axis and the arrow representing the CSS, call this
+$\theta'$ and assume it to be small. Then $\sin
+\theta' \approx \tan \theta' = m/S \approx \theta'$. Differentiating both sides
+with respect to theta gives $\Delta m / \Delta \theta \approx 1/S$, noting that
+$\Delta \theta' = \Delta \theta$.
+}
+%
+\begin{equation}
+  \Delta\theta = \frac{1}{\sqrt{N}}
+\end{equation}
+which is known as the standard quantum limit (SQL). By symmetry $\Delta \phi =
+\Delta \theta$ (corresponding to uncertainty in $S_y$).
+%
+\cm{Introuduce term `shot-noise'?}
+
+\cm{Check this makes sense...}
+Note that these uncertainties hold only for $\ket{+}$ and other states where
+$\theta = \pi$ (states on the equator of the Bloch sphere). For example in the
+cases of $\ket{e}$ and $\ket{g}$, $\Delta \theta = 0$~\cite{PhysRevA.47.3554}.
+
+\subsection{Spin-squeezed states}
+
+As noted above, the idea of a SSS is to reduce the uncertainty of one component
+of $\mathbf{S}$ at the expense of another that we do not care about. Thus we
+are able to achieve an uncertainty below the SQL. This is readily exmplified by
+a maximally-squeezed state, where the uncertainty is reduced as far as
+possible. An example of this continues our discussion of $\ket{+}$ from the
+previous section.
+
+Suppose that we are able to prepare the spin state $\ket{+}$ and then measure
+$S_z$. As previously described, we will measure $\ket{S, \meas{m}}$ with some
+probability $P(\meas{m})$, which is Gaussian for sufficiently large $N$. We
+will borrow an example from~\inlineref{Cox2016}, and consider the case where
+$N=4$ and $\meas{m}=0$. This results in the state $\ket{2, 0}$ which can be
+found by repeated applicaiton of the ladder operators to $\ket{2,-2}$ to be
+%
+\begin{equation}
+  \ket{2,0} = \frac{1}{\sqrt{6}}(\ket{eegg} + \ket{egeg} + \ket{egge} +
+  \ket{geeg} + \ket{gege} + \ket{ggee})
+\end{equation}
+%
+which is a maximally entangled state, represented on the Bloch sphere as a ring
+around the equator.
+%
+Such a state necessarily has zero uncertainty in $S_z$, since this is the
+operator that has been measured. The state is therefore maximally squeezed and
+also has maximum uncertainty in $S_x$.
+%
+\cm{Need to say something about H'berg at some point, probably (far) above.}
+%
+Hence we have demonstrated that a measurement of $\ket{+}$ can produce a SSS.
+
+\cm{A note on the fact that it is entanglement (spin-correlations) that reduce
+  the uncertainty WITH CITE.}
 
 \section{Spin ensemble in a cavity}
-
-\cm{Really want to introduce this idea that we can treat the molecule qubit
-state as a spin, this needs to be established in mw chapter for single-spin
-case.}
 
 \subsection{Spin Hamiltonian}
 
@@ -35,30 +221,9 @@ by the Tavis-Cummings Hamiltonian~\cite{Kirton2019}
 %
 in direct analogy to~\myeqref{theory:eqn:JCH}, where $\sigma_*^i$ to refers
 to the pauli or ladder operator acting on the $i^\text{th}$ spin.
-
-We also define for the $i^\text{th}$ spin
+\cm{Maybe I defined this already above?}
 %
-\begin{equation}
-  \mathbf{s}^i = \frac{1}{2}\begin{bmatrix} \sigma^i_x \\ \sigma^i_y \\ \sigma^i_z
-\end{bmatrix}
-\end{equation}
-%
-and a collective spin operator
-%
-\begin{equation}
-\mathbf{S} = \sum_{i=1}^N \mathbf{s}^i.
-\end{equation}
-%
-We will usually be interested in the eigenstates of $S_z$ which we denote in
-the usual way as $\ket{S, m}$, with $S^2 \ket{S,m} = S(S+1)\ket{S, m}$ and $S_z
-\ket{S,m} = m\ket{S, m}$. These are the Dicke states~\cite{}, and in
-section~\ref{squeeze:QNDsqueeze} we will show that they are entangled states of
-the spin system.
-% TODO Do I follow through on this?
-%
-The raising and lowering operators are $S_\pm = (S_x \pm iS_y)/2 =
-\sum_{i=1}^N\sigma_\pm^i/\sqrt{N}$.
-%
+% TODO Why introduce then immediately re-write?
 Now rewrite the Hamiltonian for the ensemble as
 %
 \begin{equation}
@@ -90,138 +255,6 @@ This extension is valid since the mathematics of the transformation is exactly
 the same as for the single-spin case. The operator $\mathbf{S}$ has the same
 commutation relations as the analogous $\mathbf{s}^i$. Once again, the final
 term will allow the information transfer for our QND measurements.
-
-\subsection{Spin states of the ensemble}
-
-It will be instructive to visually represent the spin state on a Bloch sphere.
-This will be familiar for a single spin, where we write the state in the
-form~\cite{PhysRevA.47.3554}
-%
-\begin{equation}
-  \ket{\psi(\theta, \phi)}_i = \cos\left(\frac{\theta_i}{2}\right)\ket{e}_i +
-  e^{i\phi_i}\sin\left(\frac{\theta_i}{2}\right)\ket{g}_i.
-  \label{eqn:blochspin}
-\end{equation}
-%
-The angles $\theta_i$ and $\phi_i$ now define a point on a sphere of unit
-radius with $\ket{e}_i$ and $\ket{g}_i$ at the poles. The cartesian
-representation is given by the expectation value $\langle \mathbf{s}_i
-\rangle$.
-
-The spin state of the ensemble is
-%
-\begin{equation}
-  \ket{\Psi} = \bigotimes_{i=1}^N \ket{\psi}_i.
-\end{equation}
-%
-Such a state can also be represented on a sphere as the sum of all the
-individual spin vectors. In this case the radius of the sphere is variable, but
-we will limit ourselves to the case where all spins are aligned.  We therefore
-have that for all $i$, $\theta_i = \theta$ and $\phi_i = \phi$ and the sphere
-has radius $N/2$. Such a state is known as a coherent spin state
-(CSS)~\cite{MA201189, Gazeau2009}.
-
-In such a case it is useful to consider a system where all spins are initially
-in, for example, the ground state. They then undergo the same uniform rotation
-into the desired state $\ket{\psi(\theta, \phi)}_i$, which we write as
-%
-\begin{equation}
-  \ket{\Psi(\theta,\phi)} = \mathcal{R}(\theta, \phi)\ket{g}
-\end{equation}
-%
-where $\ket{g} = \bigotimes_{i=1}^N\ket{g}_i$ and similarly for $\ket{e}$. We
-represent this visually on the Bloch sphere, in analogy with the single spin
-case, as illustrated in Fig.~\ref{CSSbloch}. Again we can represent the vector
-in a cartesian form as the expectation value $\langle \mathbf{S} \rangle$. 
-
-% TODO Need to do my own version of this figure to show single spin bloch
-% sphere, 
-
-% TODO Is the below statement true because the |S, m> states form a basis?
-% If so then I can probably say that, otherwise it is a a bit convoluted
-It is also useful to denote the state in terms of the eigenstates of the
-angular momentum operator. In particular, the eigenstates of $S_z$ ($\ket{S,
-m}$) can be used to describe a CSS
-%
-\begin{equation}
-  \ket{\Psi} = \sum_{m=-S}^S a_m \ket{S, m}
-\end{equation}
-%
-where $a_m$ are the probability amplitudes. Note that $\ket{e} = \ket{S, S}$
-and $\ket{g} = \ket{S, -S}$.
-%
-The general form of $a_m$ can be found in \inlineref{PhysRevA.6.2211}, but we
-consider specifically the CSS aligned along the $x$ axis, so that $\theta =
-\pi/2$ and $\phi = 0$. We denote such a state as
-%
-\begin{equation}
-  \ket{+} = \bigotimes_{i=1}^N \ket{+}_i.
-\end{equation}
-
-\begin{figure}
-  \centering
-  \includegraphics[width=0.4\textwidth]{figs/squeeze/CSS_Bloch_Cox.png}
-  %
-  \includegraphics[width=0.5\textwidth]{figs/squeeze/squeezed_Bloch_Cox.png}
-  \caption{Left: A coherent spin state as represented on the Bloch sphere.
-  Right: Comparison of a CSS and squeezed state as represented on the Bloch
-  sphere. Note the reduced uncertainty in the z direction.
-  Both reproduced from~\cite{Cox2016}}
-  \label{CSSbloch}
-  % TODO Redo this, see earlier TODO
-\end{figure}
-
-Direct measurement of any individual spin in $\ket{+}$ would yield $\ket{e}_i$
-or $\ket{g}_i$ with probability $p=1/2$. Hence measuring the eigenvalue of
-$S_z$ will give a value $m$ with probabilty given by the binomial
-theorem~\cite{Gazeau2009}
-%
-\begin{equation}
-  P(m) = \frac{1}{2^N} \binom{N}{m+N/2}
-\end{equation}
-%
-or for large $N$, the binomial is approximated by the Gaussian
-%
-\begin{equation}
-  P(m) \approx\frac{1}{\sqrt{2\pi \Delta_N^2}} e^{-m^2/(2\Delta_N^2)}.
-  \label{eqn:CSSmprob}
-\end{equation}
-%
-where the variance is $\Delta_N^2 = N/4$. We therefore rewrite the probability
-amplitudes of $\ket{+}$ so that
-%
-\begin{equation}
-  \ket{+} = \sum_{m=-S}^S \sqrt{P(m)}\ket{S,m}.
-  \label{squeeze:eqn:plusdicke}
-\end{equation}
-
-Note that such a state has expectation values $\langle S_z \rangle = 0$,
-$\langle S_z^2\rangle = \Delta_N^2$, and the uncertainty in $S_z$ is consistent
-with the usual formula $\Delta_N^2 = \langle S_z^2 \rangle - \langle
-S_z\rangle^2$. This uncertainty is the projection noise of a CSS, arising from
-the uncertainty in the measurement of the individual spins. We can understand
-this in terms of an uncertainty in the cartesian Bloch vector $\langle
-\mathbf{S} \rangle$, or as an uncertainty in $\theta$~\cite{PhysRevA.47.3554}
-%
-\footnote{This can be shown geometrically: consider the angle on the Bloch
-sphere between the x-axis and the arrow representing the CSS, call this
-$\theta'$ and assume it to be small. Then $\sin
-\theta' \approx \tan \theta' = m/S \approx \theta'$. Differentiating both sides
-with respect to theta gives $\Delta m / \Delta \theta \approx 1/S$, noting that
-$\Delta \theta' = \Delta \theta$.
-}
-%
-\begin{equation}
-  \Delta\theta = \frac{1}{\sqrt{N}}
-\end{equation}
-which is known as the standard quantum limit (SQL). By symmetry $\Delta \phi =
-\Delta \theta$ (corresponding to uncertainty in $S_y$).
-
-\cm{Introuduce term `shot-noise'?}
-
-Note that these uncertainties hold only for $\ket{+}$ and other states where
-$\theta = \pi$ (states on the equator of the Bloch sphere). For example in the
-cases of $\ket{e}$ and $\ket{g}$, $\Delta \theta = 0$~\cite{PhysRevA.47.3554}.
 
 \subsection{Quantum non-demolition measurement of the spin state}
 
@@ -333,6 +366,8 @@ The uncertainties are now related by
 where in the last line we have used the approximations $|\beta| \gg |\alpha|$
 and $|\beta|\gg 1$.
 
+% TODO TODO TODO I added this section but not sure it makes sense in structure
+% any more?
 \section{Entangled states in the ensemble}
 
 % TODO
