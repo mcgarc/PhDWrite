@@ -114,7 +114,7 @@ a probabilty of measuring $m_S$ to be some value $\meas{m}$.
 For any individual spin, the chances of measuring it to be in $\ket{e}_i$ or
 $\ket{g}_i$ are equal. Measuing the state to be in the state $\ket{S, \meas{m}}$
 is equivalent to measuring $N_e$ molecules in the excited state, and $N_g = N -
-N_e$ in the ground state such that $\meas{m} = N_e - N_g$ (although note that
+N_e$ in the ground state such that $2\meas{m} = N_e - N_g$ (although note that
 we do not determine which spin is in which state). It follows that the
 probability of measuring the state to be $\ket{S,\meas{m}}$ will occur with a
 binomial probability~\cite{Gazeau2009}
@@ -173,24 +173,65 @@ cases of $\ket{e}$ and $\ket{g}$, $\Delta \theta = 0$~\cite{PhysRevA.47.3554}.
 
 As noted above, the idea of a SSS is to reduce the uncertainty of one component
 of $\mathbf{S}$ at the expense of another that we do not care about. Thus we
-are able to achieve an uncertainty below the SQL. This is readily exmplified by
+are able to achieve an uncertainty below the SQL. This is readily exemplified by
 a maximally-squeezed state, where the uncertainty is reduced as far as
 possible. An example of this continues our discussion of $\ket{+}$ from the
 previous section.
 
 Suppose that we are able to prepare the spin state $\ket{+}$ and then measure
 $S_z$. As previously described, we will measure $\ket{S, \meas{m}}$ with some
-probability $P(\meas{m})$, which is Gaussian for sufficiently large $N$. We
-will borrow an example from~\inlineref{Cox2016}, and consider the case where
-$N=4$ and $\meas{m}=0$. This results in the state $\ket{2, 0}$ which can be
-found by repeated applicaiton of the ladder operators to $\ket{2,-2}$ to be
+probability $P(\meas{m})$. It is useful to frame such a measurement in a
+projector formalism. In general, the state of a system following a measurement
+is~\cite{gerry_knight_2004}
+%
+\begin{equation}
+  \ket{\text{result}} = \frac{\Upsilon\ket{\Psi}}{\sqrt{P_\text{result}}}
+  \label{squeeze:eqn:projresult}
+\end{equation}
+%
+where $\Upsilon$ is a projector into the measured state, and
+%
+\begin{equation}
+  P_\text{result} = \bra{\Psi}\Upsilon\ket{\Psi}
+\end{equation}
+%
+is the probability of determining this result, ensuring that
+$\ket{\text{result}}$ is normalised. In the case of measuring $S_z$ perfectly
+to be $\meas{m}$ the projector is 
+%
+\begin{equation}
+  \Upsilon_0(\meas{m}) = \ket{S, \meas{m}}\bra{S, \meas{m}}.
+\end{equation}
+%
+which, as discussed already, yields $\ket{S,\meas{m}}$ with probability
+$P(\meas{m})$.
+
+At this point it is worth pointing out that if we can realise such a
+measurement then we are done. The Dicke states are entangled states with a
+reduced uncertainty (except for $\ket{g}$ and $\ket{e}$). \cm{CHECK THIS!} The
+Dicke states can be found by repeated application of the ladder operators, and
+are the superposition of all possible states with $N_e$ atoms in $\ket{e}$ and 
+$N_g = N - N_e$ atoms in $\ket{g}$. We can therefore write in general that
+%
+\begin{equation}
+  \ket{\frac{N}{2}, m} = \binom{N}{N_e}^{-\frac{1}{2}}\sum_{\pi \in \Pi}
+  \bigotimes_{i=1}^{N_e} \sigma_x^{\pi_i} \ket{g}
+\end{equation}
+%
+with $N_e=(N/2)+m$.
+%
+This is perhaps more easily explored by example, which we can 
+borrow from~\inlineref{Cox2016}. Consider the case where
+$N=4$ and $\meas{m}=0$. This results in the state $\ket{2, 0}$ which is
 %
 \begin{equation}
   \ket{2,0} = \frac{1}{\sqrt{6}}(\ket{eegg} + \ket{egeg} + \ket{egge} +
-  \ket{geeg} + \ket{gege} + \ket{ggee})
+  \ket{geeg} + \ket{gege} + \ket{ggee}).
 \end{equation}
 %
-which is a maximally entangled state, represented on the Bloch sphere as a ring
+Note that every possible combination of two excited, and two ground state spins
+appear in equal superposition. We can now see that this state is 
+maximally entangled state, and would be represented on the Bloch sphere as a ring
 around the equator.
 %
 Such a state necessarily has zero uncertainty in $S_z$, since this is the
@@ -204,14 +245,27 @@ Hence we have demonstrated that a measurement of $\ket{+}$ can produce a SSS.
 \cm{A note on the fact that it is entanglement (spin-correlations) that reduce
   the uncertainty WITH CITE.}
 
+\cm{Applying a
+rotation to the entire ensemble can manipulate the state to lie along any axis
+and can be used for precise quantum measurements. }
+
 Measuring $m$ exactly produces a maximally squeezed state, but precise
 determination of this value is not always possible, but measuring $m$ with some
 uncertainty $\Delta m < \Delta_N$ will still produce a state with reduced
-uncertainty in $S_z$, as illustrated in \cm{fig. TODO and CITE}. Applying a
-rotation to the entire ensemble can manipulate the state to lie along any axis
-and can be used for precise quantum measurements. In the next section we will
-detail how such a state can be created using \CaF{} coupled to a resonator on a
-chip.
+uncertainty in $S_z$, as illustrated in \cm{fig. TODO and CITE}. Here the
+measurement projector is
+~\cite{MAURODARIANO2003205, Vanner16182, Cox2016}
+%% NOTE Don't bother citing Zhang2019 because it just cites this Vanner paper
+%
+\begin{equation}
+  \Upsilon_{\Delta_{S_z}}(\meas{m}) = \frac{1}{\sqrt{\pi\Delta_N^2}}\exp\left[
+    -\frac{(S_z-\meas{m})^2}{2\Delta_{S_z}^2}\right].
+\end{equation}
+%
+representing a measurement where we have some Gaussian uncertainty
+($\Delta_{S_z}$) in the measured result.  In the next section we will see how
+to implement this measurement in a \CaF{} chip system to create squeezed
+states.
 
 \section{Spin ensemble in a cavity}
 
