@@ -1,24 +1,21 @@
-% TODO
-%\cm{Need to check this intro, but it is dependent on the context of this and
-%previous chapters, so revisit later.}
-%In the previous chapter I described how a microwave resonator can be used for
-%coherent control of a strongly-coupled ensemble of cold molecules. Now I will
-%expand on this to demonstrate how such a system can be used for the creation of
-%non-classical states for use in quantum metrology \cm{etc...}
-%
-%I will begin with a description of the interaction of a spin ensemble with
-%light in a cavity. I will then show that using such a system it is possible to
-%entangle the spin state of the ensemble with the light exiting the cavity.
-%Measuring the light state therefore provides a means of measuring the spin
-%state whilst maintaing coherence of the spins. I will go on to show that
-%performing such a measurement can be used to generate an entangled spin state,
-%with emphasis on the spin squeezed state.
+In the previous chapter we described the interaction of a single molcule with a
+microwave resonator, but for some experiments a large number of molecules is
+desirable. This is particularly true in the field of precise measurement.
+Na\"ively we can say that for a measurement of $N$ particles, the signal to
+noise ratio (SNR) goes like $\sqrt{N}$, ergo increasing the number of particles
+will increase SNR. In this chapter I will present a proposal for how large
+ensembles of \CaF{} molecules trapped on a chip could be used to create
+non-classical spin-squeezed states~\cite{} (SSS) with potential application in
+quantum measurement. I will also suggest how this technique can be adapted to
+produce Schr\"odinger cat states, or applied in other architectures.
 
-\cm{Intro spiel -- spin squeezed states are the best thing since sliced bread}
+\section{Spin states of an ensemble}
 
-\section{Spin states of the ensemble}
-
-\cm{TODO: more spiel}
+We begin with an overview of the quantum states of a non-interacting ensemble
+of spin-half particles. In the first sub-section I will introduce the coherent
+spin state (CSS), where all spins in the ensemble are aligned. I will then
+explain how such a state can be converted into a SSS by quantum non-demolition
+measurement and why the SSS is a useful tool for precise quantum measurement.
 
 \subsection{Coherent spin states}
 
@@ -171,18 +168,34 @@ cases of $\ket{e}$ and $\ket{g}$, $\Delta \theta = 0$~\cite{PhysRevA.47.3554}.
 
 \subsection{Spin-squeezed states}
 
-As noted above, the idea of a SSS is to reduce the uncertainty of one component
-of $\mathbf{S}$ at the expense of another that we do not care about. Thus we
-are able to achieve an uncertainty below the SQL. This is readily exemplified by
-a maximally-squeezed state, where the uncertainty is reduced as far as
-possible. An example of this continues our discussion of $\ket{+}$ from the
-previous section.
+The uncertainty in $S_z$ $\Delta_\theta$ can be reduced at the expense of
+increasing uncertainty in other components of $\mathbf{S}$, so that the
+Heisenberg uncertainty principle is obeyed~\cite{}. The resulting state is a
+spin-squeezed state (SSS) and is \cm{shown in a fig.} The SSS can be
+manipulated by standard microwave spectroscopy techniques, for example by being
+rotated onto the an axis of interest \cm{as in another pic}. Such states have
+been created and utilised for measurements below the SQL for example in atomic
+clocks~\cite{} and \cm{other measurement experiments to be cited}.
 
-Suppose that we are able to prepare the spin state $\ket{+}$ and then measure
-$S_z$. As previously described, we will measure $\ket{S, \meas{m}}$ with some
-probability $P(\meas{m})$. It is useful to frame such a measurement in a
-projector formalism. In general, the state of a system following a measurement
-is~\cite{gerry_knight_2004}
+It is possible to create a SSS by two main methods. One method is to implelment
+a system with a one-axis twisting Hamiltonian~\cite{}, where the SSS is induced
+by, for example, collisions between particles \cm{is this right?}. For the
+\CaF{} experiment, we propose the creation of a SSS by a quantum non-demolition
+(QND) measurement. In such a scheme, measurement of
+$m_S$ is performed in such a way that the coherence of the quantum state of the
+spin ensemble is preserved, thus reducing the uncertainty $\Delta_\theta$.
+Similar experiments to our proposal have been performed for atoms trapped in
+optical cavities~\cite{Cox2016, MonicaSchleirSmith}, however our proposal will 
+make use of the CPW microwave cavity for readout, similar to the method for a
+single molecule described in section~\ref{mws:readout}.
+
+Our scheme is readliy exemplified by the creation of a maximally-squeezd state
+where the uncertainty is reduced as far as possible.  Continuing the disccusion
+from the previous section, suppose that we are able to prepare the CSS
+$\ket{+}$ and we then measure $S_z$. As previously described, we will measure
+$\ket{S, \meas{m}}$ with some probability $P(\meas{m})$. It is useful to frame
+such a measurement in a projector formalism. In general, the state of a system
+in state $\ket{\Psi}$ following a measurement is~\cite{gerry_knight_2004}
 %
 \begin{equation}
   \ket{\text{result}} = \frac{\Upsilon\ket{\Psi}}{\sqrt{P_\text{result}}}
@@ -230,31 +243,23 @@ $N=4$ and $\meas{m}=0$. This results in the state $\ket{2, 0}$ which is
 \end{equation}
 %
 Note that every possible combination of two excited, and two ground state spins
-appear in equal superposition. We can now see that this state is 
-maximally entangled state, and would be represented on the Bloch sphere as a ring
-around the equator.
+appear in equal superposition. We can now see that this state is a maximally
+entangled state, and would be represented on the Bloch sphere as a ring around
+the equator~\cite{Cox2016}.
 %
 Such a state necessarily has zero uncertainty in $S_z$, since this is the
 operator that has been measured. The state is therefore maximally squeezed and
-also has maximum uncertainty in $S_x$.
-%
-\cm{Need to say something about H'berg at some point, probably (far) above.}
-%
-Hence we have demonstrated that a measurement of $\ket{+}$ can produce a SSS.
+also has maximum uncertainty in $S_x$.  Hence we have demonstrated that a
+measurement of $\ket{+}$ can produce a SSS.
 
 \cm{A note on the fact that it is entanglement (spin-correlations) that reduce
   the uncertainty WITH CITE.}
-
-\cm{Applying a
-rotation to the entire ensemble can manipulate the state to lie along any axis
-and can be used for precise quantum measurements. }
 
 Measuring $m$ exactly produces a maximally squeezed state, but precise
 determination of this value is not always possible, but measuring $m$ with some
 uncertainty $\Delta m < \Delta_N$ will still produce a state with reduced
 uncertainty in $S_z$, as illustrated in \cm{fig. TODO and CITE}. Here the
-measurement projector is
-~\cite{MAURODARIANO2003205, Vanner16182, Cox2016}
+measurement projector is ~\cite{MAURODARIANO2003205, Vanner16182, Cox2016}
 %% NOTE Don't bother citing Zhang2019 because it just cites this Vanner paper
 %
 \begin{equation}
@@ -682,10 +687,6 @@ The procedure to create entangled states on the chip would be as follows:
 
 \section{Outlook}
 
-\subsection{QND readout expanded}
-
-\cm{QND to measure aribtrary states, as in Andr\'e paper.}
-
 \subsection{Superradiance}
 
 \subsection{Cat states}
@@ -693,3 +694,8 @@ The procedure to create entangled states on the chip would be as follows:
 \subsection{Two-mode squeezing}
 
 % https://journals.aps.org/pra/pdf/10.1103/PhysRevA.99.012325
+
+\subsection{Squeezing in other architectures}
+
+% Atoms?
+% NV-centres
