@@ -136,6 +136,8 @@ amplitudes of $\ket{+}$ so that
   \label{squeeze:eqn:plusdicke}
 \end{equation}
 
+\cm{Check various Delta labels}
+%
 Note that such a state has expectation values $\langle S_z \rangle = 0$,
 $\langle S_z^2\rangle = \Delta_N^2$, and the uncertainty in $S_z$ is consistent
 with the usual formula $\Delta_N^2 = \langle S_z^2 \rangle - \langle
@@ -154,7 +156,7 @@ $\Delta \theta' = \Delta \theta$.
 }
 %
 \begin{equation}
-  \Delta\theta = \frac{1}{\sqrt{N}}
+  \Delta\theta_\text{SQL} = \frac{1}{\sqrt{N}}
 \end{equation}
 which is known as the standard quantum limit (SQL). By symmetry $\Delta \phi =
 \Delta \theta$ (corresponding to uncertainty in $S_y$).
@@ -424,7 +426,9 @@ The uncertainties are now related by
 \end{align}
 %
 where in the last line we have used the approximations $|\beta| \gg |\alpha|$
-and $|\beta|\gg 1$.
+and $|\beta|\gg 1$. The uncertainty in the measurement is perhaps best
+considered as a propotion of the photons in the LO beam, which we call
+$\Delta_\gamma = \Delta_\eta/|\beta|$.
 
 The homodyne measurement therefore realises the projector given in
 \myeqref{squeeze:eqn:squeezeproj}, with the uncertainty 
@@ -528,7 +532,40 @@ factors:
     \item The uncertainty in the homodyne measurement.
 \end{enumerate}
 
-\cm{Expand on all of these.}
+We have already addressed the number of molecules that it is possible to trap
+on a chip in detail in chapter \cm{ref chapter}. Maximising the phase-space
+density of molecules before trapping on the chip will increase $N$, but we can
+certainly expect to be working in the r\'egime of $N\gtrapprox10^3$. We also
+expect that the majority of these spins will remain trapped over an
+interrogation time of $T\sim\kappa^-1$, since the stretched states have
+lifetimes in the trap on the order of several hundred milliseconds.
+
+By substitution of typical values into \myeqref{squeeze:eqn:homouncer} (and
+taking $\Delta\sim \SI{1}{\giga\hertz}$) the uncertainty in the homodyne
+measurement is related to that of the spin state by
+%
+\begin{equation}
+  \Delta_{S_z}^2 = \frac{50}{|\alpha|^2}\Delta_\gamma^2.
+\end{equation}
+%
+To achieve any squeezing at all, the measured uncertainty must be below the
+sql ($\Delta_{S_z}^2 < N/4$ % TODO check
+i.e.~
+%
+\begin{equation}
+  \Delta_\gamma^2 < \frac{N |\alpha|^2}{200}
+\end{equation}
+%
+Further, to generate a maximally squeezed state, the uncertainty required is
+$\Delta_{S_z}\ll1$, therefore
+%
+\begin{equation}
+  \Delta_\gamma^2 \ll \frac{|\alpha|^2}{50}.
+\end{equation}
+%
+\cm{Some conclusion about the photon detectors we need (see Mike's email.)}
+
+\cm{Something about my simulations?}
 
 \section{Outlook}
 
