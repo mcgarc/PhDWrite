@@ -410,14 +410,14 @@ equivalent for $b$) to obtain
 %
 \begin{equation}
   \langle (c^\dagger c - d^\dagger d)^2 \rangle = (2|\alpha||\beta|
-  \frac{g^2}{\Delta})^2\langle S_z^2\rangle + |\alpha|^2+|\beta|^2.
+  \frac{g^2}{\Delta\kappa})^2\langle S_z^2\rangle + |\alpha|^2+|\beta|^2.
 \end{equation}
 
 The uncertainties are now related by
 %
 \begin{align}
   \Delta_\eta^2 &= \langle (c^\dagger c - d^\dagger d)^2 \rangle - \langle
-  c^\dagger c - d^\dagger d\rangle \\
+  c^\dagger c - d^\dagger d\rangle^2 \\
   &= (2|\alpha||\beta| \frac{g^2}{\Delta\kappa})^2(\langle S_z^2\rangle - \langle
   S_z\rangle^2) - |\alpha|^2 - |\beta|^2 \\
   \Delta_{S_z}^2
@@ -540,7 +540,8 @@ expect that the majority of these spins will remain trapped over an
 interrogation time of $T\sim\kappa^-1$, since the stretched states have
 lifetimes in the trap on the order of several hundred milliseconds.
 
-By substitution of typical values into \myeqref{squeeze:eqn:homouncer} (and
+By substitution of typical values into \myeqref{squeeze:eqn:homouncer}
+(including
 taking $\Delta\sim \SI{1}{\giga\hertz}$) the uncertainty in the homodyne
 measurement is related to that of the spin state by
 %
@@ -548,12 +549,22 @@ measurement is related to that of the spin state by
   \Delta_{S_z}^2 = \frac{50}{|\alpha|^2}\Delta_\gamma^2.
 \end{equation}
 %
-To achieve any squeezing at all, the measured uncertainty must be below the
-sql ($\Delta_{S_z}^2 < N/4$ % TODO check
-i.e.~
+We estimate $|\alpha|^2$, the mean number of photons in the resonator as follows,
+assume a $P=\SI{1}{\milli\watt}$ pulse of duration $T=\kappa$, then the total
+energy is
 %
 \begin{equation}
-  \Delta_\gamma^2 < \frac{N |\alpha|^2}{200}
+  PT=|\alpha|^2\hbar\omega_0
+\end{equation}
+%
+therefore $|\alpha|^2\sim10^{14}$.
+
+To achieve any squeezing at all, the measured uncertainty must be below the
+sql ($\Delta_{S_z}^2 < N/4$ % TODO check
+i.e. (for $N\sim10^4$)
+%
+\begin{equation}
+  \Delta_\gamma^2 < \frac{N |\alpha|^2}{200} \sim 5\times10^{15}.
 \end{equation}
 %
 Further, to generate a maximally squeezed state, the uncertainty required is
