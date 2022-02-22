@@ -433,7 +433,7 @@ numerator, that is the homodyne projector acting on $\ket{\Psi(T)}$
 %
 Which we can immediately use to find the probability of measuring $\meas{m}$
 %
-%TODO Fix probability noomenclature throughout
+%TODO Fix probability nomenclature throughout
 \begin{align}
   \tilde{P}(\meas{m}) &= \bra{\Psi(T)}\Upsilon(\meas{m})\ket{\Psi(T)}\\
   & = \sum_{m'=-S}^S \sum_{m=-S}^S \sqrt{P(m')P(m)}\bra{S,
@@ -508,8 +508,8 @@ factors:
 %
 \begin{enumerate}
     \item The number of molecules that can be trapped, $N$
-    \item The number of spins that decay during the interrogation time,
     \item The uncertainty in the homodyne measurement.
+    \item The number of spins that decay during the interrogation time,
 \end{enumerate}
 
 We have already addressed the number of molecules that it is possible to trap
@@ -517,7 +517,7 @@ on a chip in detail in chapter \cm{ref chapter}. Maximising the phase-space
 density of molecules before trapping on the chip will increase $N$, but we can
 certainly expect to be working in the r\'egime of $N\gtrapprox10^3$. We also
 expect that the majority of these spins will remain trapped over an
-interrogation time of $T\sim\kappa^-1$, since the stretched states have
+interrogation time of $T\sim\kappa^{-1}$, since the stretched states have
 lifetimes in the trap on the order of several hundred milliseconds.
 
 The uncertainty in the homodyne measurement determines the uncertainty in
@@ -528,7 +528,6 @@ factors, including thermal and electronic noise. However using
 approximation that for squeezing of width $\Delta_{S_z}$, we require
 measurement uncertainty in photon number
 %
-% TODO Missing this new kappa factor too...
 \begin{equation}
   \Delta_\gamma < 2|\alpha||\beta| \frac{g^2}{\Delta\kappa}\Delta_{S_z}.
 \end{equation}
@@ -540,25 +539,97 @@ like the square root of the photon number, which is exactly $|\beta|$.
 Therefore increasing $|\beta|$ on the right side of the inequality makes
 reduction of $\Delta_\gamma$ on the left side harder.
 
+%We estimate $|\alpha|^2$, the mean number of photons in the resonator as follows,
+%assume a $P=\SI{1}{\milli\watt}$ pulse of duration $T=\kappa$, then the total
+%energy is
+%%
+%\begin{equation}
+%  PT=|\alpha|^2\hbar\omega_0
+%\end{equation}
+%%
+%therefore $|\alpha|^2\sim10^{14}$.
+
 It is therefore instructive to consider the quantity $\Delta_\gamma/|\beta|$ as
-a function of the probe amplitude ($|\alpha|$). It is now clear that a low
-probe intensity is beneficial to the squeezing measurement, with the maximum
-squeezing that can be achieved going like $|\alpha|^{-1}$.
+a function of the probe amplitude ($|\alpha|$) and the other parameters of the
+cavity system. The requisite photon uncertainty to achieve a given squeezing
+can be found numerically. The results for a \SI{-50}{\dbm} probe power and
+$N=200$ are shown in \myfigref{squeeze:fig:squeezeuncert}. This figure shows
+the squeezing by reduction of $\Delta_{S_z}$ for lower $\Delta_\gamma/|\beta|$.
+We also see the corresponding increase in the uncertainty in the other
+components of $\mathbf{S}$, which we parameterise as $\Delta_{S_{x,y}} =
+\sqrt{\Delta_{S_x}^2 + \Delta_{S_y}^2}$. This result demonstrates that the
+experiment operates in the r\'egime where squeezing is certainly possible with
+conventional microwave detectors~\cite{Dicke1946m, PhysRevD.88.035020}, however
+this does not account for other sources of noise that may arise during the
+experiment.
 
-We estimate $|\alpha|^2$, the mean number of photons in the resonator as follows,
-assume a $P=\SI{1}{\milli\watt}$ pulse of duration $T=\kappa$, then the total
-energy is
-%
-\begin{equation}
-  PT=|\alpha|^2\hbar\omega_0
-\end{equation}
-%
-therefore $|\alpha|^2\sim10^{14}$.
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+        enlargelimits=true,
+        xlabel=$\Delta_\gamma/|\beta|$,
+        ylabel=$\Delta_{S_i}$,
+        width=0.7\textwidth,
+        height = 0.4\textwidth,
+        %legend pos=outer north east
+    ]
+      \addplot [thick, black] table {figs/squeeze/squeezing.dat};
+      \addlegendentry{$\Delta_{S_z}$}
+      \addplot [style=thick, color=blue] table [y index=2]
+      {figs/squeeze/squeezing.dat};
+      \addlegendentry{$\Delta_{S_{x,y}}$}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{The squeezing (reduction in $\Delta_{S_z}$) and anti-squeezing
+  (increase in other components of $\Delta_S$) versus the uncertainty in
+  homodyne photon detection.
+  }
+  \label{mws:fig:squeezeuncert}
+\end{figure}
 
-%
-\cm{Some conclusion about the photon detectors we need (see Mike's email.)}
+Finally, we rephrase the squeezing in terms of the Wineland criterion \cm{ref
+eqn}. We again anticipate from the free space microwave spectrscopy
+experiments~\cite{WilliamsMagnetic2018} that there will be minimal dephasing
+and loss of spins over the timescale of our experiment. We present the Wineland
+criterion for various decreases of $|S|$ in \cm{figure}.
 
-\cm{Something about my simulations?}
+% Data generated by squeeze/2022-02-22_squeeze.nb
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+        enlargelimits=true,
+        ylabel=$\chi^2$,
+        xlabel=$\Delta_\gamma / |\beta|$,
+        width=0.7\textwidth,
+        height = 0.4\textwidth,
+        legend pos=outer north east
+        %x tick label style={/pgf/number format/.cd, set thousands separator={}}
+    ]
+      % Hack legend entry
+      \addlegendimage{empty legend}
+      \addlegendentry{\hspace{-.6cm} $|S|/(N/2)$}
+      \addplot [thick, black] table {figs/squeeze/chisqds.dat};
+      \addlegendentry{1}
+      \addplot [style=thick, color=blue] table [y index=2] {figs/squeeze/chisqds.dat};
+      \addlegendentry{0.9}
+      \addplot [style=thick, color=pink] table [y index=3] {figs/squeeze/chisqds.dat};
+      \addlegendentry{0.75}
+      \addplot [style=thick, color=purple] table [y index=4] {figs/squeeze/chisqds.dat};
+      \addlegendentry{0.5}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{The Wineland criterion $\chi^2$ is shown versus the homodyne
+  measurement uncertainty to pump noise ratio $\Delta_\gamma/|\beta|$ for
+  various spin losses $|S|/(N/2)$. We take
+  $g/2\pi = \SI{125}{\kilo\hertz}$, $\kappa/2\pi = \SI{21}{\kilo\hertz}$,
+  % for this power value, could cite
+  % goppl or https://sites.astro.caltech.edu/~jonas/Theses/Jiansong_Gao_08.pdf
+  $P=\SI{-50}{\dbm}$. 
+  }
+  \label{squeeze:fig:wineland}
+\end{figure}
 
 \section{Outlook}
 
