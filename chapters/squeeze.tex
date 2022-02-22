@@ -392,52 +392,29 @@ interaction time so that $T\approx\kappa^{-1}$ and take the strong dispersive
 limit ($|\Delta| \gg g^2/\kappa$). The difference in photon numbers arriving at
 the homodyne detectors is therefore related to the spin ensemble by
 %
+% TODO Missing a factor of what I confusingly called kappa before (see mws
+% TODO on calculating expectation)
 \begin{equation}
   \langle c^\dagger c - d^\dagger d\rangle = 2|\alpha||\beta|
-  \frac{g^2}{\Delta}\langle S_z\rangle.
+  \frac{g^2}{\Delta\kappa}\langle S_z\rangle.
   \label{eqn:homomeas}
 \end{equation}
 
 It is clear that performing the homodyne measurement is equivalent to
-performing a measurement of the $S_z$ operator for the spins. We will want to
-know the uncertainty of the spin measurement ($\Delta_{S_z}$), and how it
-relates to the uncertainty in the homodyne measurement ($\Delta_\eta$). The two
-can be linked by considering the expectation value $\langle (c^\dagger c -
-d^\dagger d)^2 \rangle$.
-We follow a similar procedure to finding $\langle c^\dagger c - d^\dagger d
-\rangle$, as well as the commutation relation $[a,a^\dagger] = 1$ (and
-equivalent for $b$) to obtain
+performing a measurement of the $S_z$ operator for the spins. In order to
+distinguish between neighbouring $S_z$ states, we must be able to resolve
+photon differences smaller than $2|\alpha||\beta|g^2/(\Delta\kappa)$. Since
+$|\beta|$ is large, this photon difference is amplified to make the measurement
+possible. In the event that neighbouring states are easily distinguishable, we
+can create sates of the form $\ket{S,m_S}$. However if there is some
+uncertainty in the homodyne measurement $\Delta_{S_z}$ then the homodyne
+measurement realises the projector given in \myeqref{squeeze:eqn:squeezeproj}. 
+%
+The result of the homodyne heralds the creation of a state
 %
 \begin{equation}
-  \langle (c^\dagger c - d^\dagger d)^2 \rangle = (2|\alpha||\beta|
-  \frac{g^2}{\Delta\kappa})^2\langle S_z^2\rangle + |\alpha|^2+|\beta|^2.
-\end{equation}
-
-The uncertainties are now related by
-%
-\begin{align}
-  \Delta_\eta^2 &= \langle (c^\dagger c - d^\dagger d)^2 \rangle - \langle
-  c^\dagger c - d^\dagger d\rangle^2 \\
-  &= (2|\alpha||\beta| \frac{g^2}{\Delta\kappa})^2(\langle S_z^2\rangle - \langle
-  S_z\rangle^2) - |\alpha|^2 - |\beta|^2 \\
-  \Delta_{S_z}^2
-  &\approx \left(\frac{\Delta_\eta/|\beta|}{2|\alpha|g^2/\Delta\kappa}\right)^2
-  \label{squeeze:eqn:homouncert}
-\end{align}
-%
-where in the last line we have used the approximations $|\beta| \gg |\alpha|$
-and $|\beta|\gg 1$. The uncertainty in the measurement is perhaps best
-considered as a propotion of the photons in the LO beam, which we call
-$\Delta_\gamma = \Delta_\eta/|\beta|$.
-
-The homodyne measurement therefore realises the projector given in
-\myeqref{squeeze:eqn:squeezeproj}, with the uncertainty 
-$\Delta_{S_z}$ related to the uncertainty in the homodyne measurement by
-\myeqref{squeeze:eqn:homouncert}. By \myeqref{squeeze:eqn:projresult}, the
-result of the homodyne heralds the creation of a state
-%
-\begin{equation}
-  \ket{\Phi(\meas{m}, \Delta)} = \frac{\Upsilon_{\Delta_{S_z}} (\meas{m})\ket{+}}{ \sqrt{P_{\meas{m}}} }
+  \ket{\Phi(\meas{m}, \Delta)} = \frac{\Upsilon_{\Delta_{S_z}}
+  (\meas{m})\ket{+}}{ \sqrt{P_{\meas{m}}} }
 \end{equation}
 %
 At this point we have dropped the ket representing the state of the light.
@@ -522,6 +499,9 @@ previous chapter, so that $\ket{g} = \ket{N=0, F=1, m_F=1}$ and $\ket{e} =
 \ket{1, 2, 2}$. We assume that the resonator used is a high-$Q$ ($Q\sim10^6$)
 superconducting resonator, with a superconducting dimple trap, so that
 arbitrarily high trapping frequencies and trap depths are achievable.
+%
+\cm{Make sure $g$, $\Delta$ and $\kappa$ are written down somewhere. Do I need
+  to really point at them or repeat here?}
 
 The squeezing that can be achieved on the chip is then dependent on three main
 factors:
@@ -540,15 +520,31 @@ expect that the majority of these spins will remain trapped over an
 interrogation time of $T\sim\kappa^-1$, since the stretched states have
 lifetimes in the trap on the order of several hundred milliseconds.
 
-By substitution of typical values into \myeqref{squeeze:eqn:homouncer}
-(including
-taking $\Delta\sim \SI{1}{\giga\hertz}$) the uncertainty in the homodyne
-measurement is related to that of the spin state by
+The uncertainty in the homodyne measurement determines the uncertainty in
+$S_z$, and hence the extent of the squeezing. However, relating these two
+quantities analytically is non-trivial, and will largely depend on experimental
+factors, including thermal and electronic noise. However using
+\myeqref{squeeze:eqn:homomeas} we can make a good
+approximation that for squeezing of width $\Delta_{S_z}$, we require
+measurement uncertainty in photon number
 %
+% TODO Missing this new kappa factor too...
 \begin{equation}
-  \Delta_{S_z}^2 = \frac{50}{|\alpha|^2}\Delta_\gamma^2.
+  \Delta_\gamma < 2|\alpha||\beta| \frac{g^2}{\Delta\kappa}\Delta_{S_z}.
 \end{equation}
 %
+A na\"ive approach to reducing the required uncertainty for squeezing might be
+to simply increase the LO amplitude ($|\beta|$) arbitraritly. Note however that
+the noise associated with the measurement of photons is Poissonian, and goes
+like the square root of the photon number, which is exactly $|\beta|$.
+Therefore increasing $|\beta|$ on the right side of the inequality makes
+reduction of $\Delta_\gamma$ on the left side harder.
+
+It is therefore instructive to consider the quantity $\Delta_\gamma/|\beta|$ as
+a function of the probe amplitude ($|\alpha|$). It is now clear that a low
+probe intensity is beneficial to the squeezing measurement, with the maximum
+squeezing that can be achieved going like $|\alpha|^{-1}$.
+
 We estimate $|\alpha|^2$, the mean number of photons in the resonator as follows,
 assume a $P=\SI{1}{\milli\watt}$ pulse of duration $T=\kappa$, then the total
 energy is
@@ -559,20 +555,6 @@ energy is
 %
 therefore $|\alpha|^2\sim10^{14}$.
 
-To achieve any squeezing at all, the measured uncertainty must be below the
-sql ($\Delta_{S_z}^2 < N/4$ % TODO check
-i.e. (for $N\sim10^4$)
-%
-\begin{equation}
-  \Delta_\gamma^2 < \frac{N |\alpha|^2}{200} \sim 5\times10^{15}.
-\end{equation}
-%
-Further, to generate a maximally squeezed state, the uncertainty required is
-$\Delta_{S_z}\ll1$, therefore
-%
-\begin{equation}
-  \Delta_\gamma^2 \ll \frac{|\alpha|^2}{50}.
-\end{equation}
 %
 \cm{Some conclusion about the photon detectors we need (see Mike's email.)}
 
