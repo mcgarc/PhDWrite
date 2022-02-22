@@ -857,16 +857,8 @@ splitter~\cite{agarwal2012}
   \label{squeeze:eqn:bsmat}
   \begin{pmatrix} c \\ d \end{pmatrix} = \frac{1}{\sqrt{2}}\begin{pmatrix}
     1 & i \\ i & 1 
-  \end{pmatrix}  \begin{pmatrix} a' \\ b \end{pmatrix}.
+  \end{pmatrix}  \begin{pmatrix} a \\ b \end{pmatrix}.
 \end{equation}
-%
-Here $a'$ represents the annihilation operator of light arriving at the (a)
-port of the beamsplitter. In our experiment this will be the light that is
-emitted from the resonator, which has annihilation operator
-$a'=\sqrt{\kappa}a$~\cite{Zhang2019}.
-%
-% TODO TODO Need a different symbol from kappa because this is already used!
-% Also fix below
 %
 % TODO I need to find better cite, could also cite Blais and that might be
 % enough?
@@ -875,11 +867,11 @@ The difference in the expected photon numbers arriving at each
 detector is therefore
 %
 \begin{align}
-  \langle c^\dagger c - d^\dagger d\rangle &= i\langle a'^\dagger b-
+  \langle c^\dagger c - d^\dagger d\rangle &= i\langle a^\dagger b-
   a'b^\dagger \rangle \\
-  &= i \kappa \bra{\Psi_a}\bra{\beta}(a^\dagger b-
+  &= i \bra{\Psi_a}\bra{\beta}(a^\dagger b-
   ab^\dagger)\ket{\beta}\ket{\Psi_a} \\
-  & = i|\beta|\kappa \bra{\Psi_a}(a^\dagger e^{i\varphi} - a
+  & = i|\beta| \bra{\Psi_a}(a^\dagger e^{i\varphi} - a
   e^{-i\varphi})\ket{\Psi_a}.
 \end{align}
 %
@@ -893,7 +885,7 @@ its real and imaginary parts. They are defined by~\cite{gerry_knight_2004}
 The expected photon difference is now
 \begin{equation}
   \langle c^\dagger c - d^\dagger d\rangle =
-  2|\beta|\kappa\bra{\Psi_a}(Y\cos\varphi - X\sin\varphi)\ket{\Psi_a} \\
+  2|\beta|\bra{\Psi_a}(Y\cos\varphi - X\sin\varphi)\ket{\Psi_a} \\
   \label{squeeze:eqn:homoquads}
 \end{equation}
 
@@ -905,7 +897,7 @@ measurement is of the $Y$ quadrature, i.e.\ we measure the imaginary part of
 $\ket{\Psi_a}$
 %
 \begin{equation}
-  \langle c^\dagger c - d^\dagger d\rangle =  2\kappa
+  \langle c^\dagger c - d^\dagger d\rangle =  2
   |\alpha||\beta|\left\langle\sin(\nu T s_z)\right\rangle.
 \end{equation}
 %
