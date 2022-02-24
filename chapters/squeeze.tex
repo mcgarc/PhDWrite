@@ -77,7 +77,7 @@ into the desired state $\ket{\psi(\theta, \phi)}_i$, which we write as
 %
 where $\ket{g} = \bigotimes_{i=1}^N\ket{g}_i$ and similarly for $\ket{e}$. We
 represent this visually on the Bloch sphere, now with radius $S=N/2$, in
-analogy with the single spin case, as illustrated in \cm{TODO}. Again
+analogy with the single spin case, as illustrated in \myfigref{squeeze:fig:CSS}. Again
 we can represent the vector in a cartesian form as the expectation value
 $\langle \mathbf{S} \rangle$. 
 %
@@ -89,6 +89,19 @@ We note now that $\ket{g} = \ket{S,-S}$ and $\ket{e}=\ket{S,S}$.
 %The raising and lowering operators are $S_\pm = (S_x \pm iS_y)/2 =
 %\sum_{i=1}^Ns_\pm^i$. It is instructive to consider the state
 %when all spins are in the ground state
+
+\begin{figure}[ht]
+  \centering
+    \includegraphics[width=0.6\textwidth]{figs/squeeze/CSS.pdf}
+    \label{squeeze:fig:CSS}
+    \caption{
+      Graphical representation of a CSS formed by the combined state of $N$
+      spins in the same state. In this case the spin states all lie on the
+      equator of the Bloch sphere. The uncertainty in the CSS is represented by
+      the patch, having a width $\Delta\theta$ (patch width is a guide to the
+      eye and not to scale).
+  }
+\end{figure}
 
 In the next section, we will make particular use of the state
 %
