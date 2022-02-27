@@ -1,19 +1,16 @@
-% TODO Better intro spiel
-\cm{
-In chapter (probably the introduction) I introduced the concept of microwave
-guides integrated into chip traps. Previous experiments have used on-chip
-microave guides to couple to \cm{(I think this is right)} the hyperfine structure
-of atoms. However, the coupling to heteronuclear dipolar molecules is much
-stronger \cm{Why?}. In the strong coupling regime it may be possible to \cm{(do
-cavity QED, sideband cooling, etc...)}
-%
-Need to briefly say that we will use the stretched states, but the detail on
-this comes later.
-}
+One of the key motivations for developing a molecule chip is the ability to
+integrate microwave guides for strong coupling between photons and rotational
+transitions. In this chapter I will present how such a scheme can be realised.
+I will begin with a summary of the coplananr waveguide (CPW), which can be used
+to guide microwaves across a dielectric surface. I will then move on to discuss
+the logistics of integrating a CPW into the experiment, and espeically on the
+delivery of microwaves to the chip. I will then present two uses of single
+\CaF{} molecules coupled to microwave guides: sideband cooling and state
+readout.
 
 \section{The coplanar waveguide}
 
-The coplanar waveguide (CPW) was originally proposed by Cheng P.~Wen as a means
+The CPW was originally proposed by Cheng P.~Wen as a means
 of guiding microwaves across the surface of a dielectric
 substrate~\cite{1127105}. It consists of a central conductor with a ground
 plane on either side, as pictured in~\myfigref{mws:fig:CPW}. CPWs have become
@@ -146,9 +143,19 @@ the form of the ratio $k_0$, and the relative permittivity of the
 substrate.~\cite{Simons2004} This means that for any substrate we choose the
 value of $k_0$ can be chosen to fix the impedance at the standard $Z_0 =
 \SI{50}{\ohm}$.
-
+%
 Therefore as long as $k_0$ is held constant the CPW can be tapered to change the
 size of the centre conductor, and hence control the region the field occupies.
+
+A CPW has a cut-off frequency for the lowest transverse electric mode, given
+by~\cite{Simons2004}
+%
+\begin{equation}
+  f_\text{cutoff} = \frac{c}{4h\sqrt{\epsilon_r - 1}}
+\end{equation}
+%
+which will always be several orders of magnitude above our operating frequency,
+even if $h$ is chosen to be several microns.
 
 \subsection{CPW attenuation}
 
@@ -206,7 +213,6 @@ on the frequency and temperature of the dielectric, and so are presented to
 illustrate the amount of loss that can typically be expected for our experiment
 at room temperature and frequencies in the \SI{10}{\giga\hertz} r\'egime.
 
-% TODO Add arlon thing to dielectrics table
 \begin{table}[ht]
   \caption{Dielectric constants and loss for various substrates in the
   \SI{10}{\giga\hertz} r\'egime at room temperature}
@@ -220,6 +226,7 @@ at room temperature and frequencies in the \SI{10}{\giga\hertz} r\'egime.
   Silicon (high resistivity)& $\sim{12}$ & \SI{2E-4}{} & 0.02 & \cite{Simons2004, 1717770, doi:10.1063/1.4929503} \\
   Sapphire & $\sim10$ & $2\times10^{-5}$ & $10^{-3}$ & \cite{mw101}\\ % TODO Better cite?
   Aluminium nitride & 8.9 & \SI{5E-4}{} & 0.22 & \cite{mw101} \\ % TODO Better cite?
+  Arlon AD1000 & 10.2 & 0.0023 & 1.0 & \cite{arlon}
 \hline
 \end{tabular}
 \label{mws:table:diprops}
@@ -377,8 +384,8 @@ common choice) however a multi-layer resonator could potentially be achieved by
 etching the polyimide in the slot gaps, as in \inlineref{920142}. Otherwise, a
 single-layer superconducting design such as that shown in
 \inlineref{Hattermann2017} could be adopted. Regardless, the multilayer design
-remains a useful tool for prototyping a \cm{strong-coupling experiment.}
-\cm{Rephrase this to stress that it might still work with resonator.}
+remains a useful tool for microwave-molecule interactions, and investigating
+lower quality resonators coupled to molecules. 
 
 % I have this point from Goppl that at low drive powers Q is somehow reduced. I
 % don't understand this really, and don't think it's that relevant because we
@@ -390,16 +397,10 @@ remains a useful tool for prototyping a \cm{strong-coupling experiment.}
 
 Having established the CPW, and that such a device can operate on a polyimide
 substrate, we can now consider the logistics of implementing such a device
-with our design. In this section we will consider the \cm{states that we will
-use} and \cm{how the transition frequency can be tuned to (or away from) the
-resonator frequency}. We have already outlined how to fabricate a multi-layer device
-in chapter~\ref{fab}, but the problem of delivering microwaves to the CPW
-will also be discussed in this section.
-
-% TODO Ensure this is introduced
-For the remainder of this chapter we will consider microwave coupling to the
-$\omega_0 = 2\pi \times \SI{20.5}{\giga\hertz}$ transition between the
-stretched states, which was introduced in section~\ref{theory:molecules}.
+with our design. In this section we will consider the details of the
+impolementation including the detuning of molecules with Stark shift, the
+delivery of microwaves to the science chip, and schemes for sideband cooling
+and state readout with the microwaves.
 
 \subsection{Stark shift}
 
@@ -414,17 +415,18 @@ When the shift is sufficiently small compared to the unperturbed energy, the
 Stark shift can be found by second-order perturbation theory. The full
 derivation can be found in, for example \inlineref{}, but for our purposes it
 is sufficient to simply state the result, which is that the energy shift of the
-% TODO Where do I introduce this notation?
-rotational state is $\ket{N, m_N}$ is given by
-% TODO Where do I introduce this energy rot notation?
+rotational state $\ket{N, m_N}_\text{rot}$
+% TODO Leave this note for Mike, but also have to do it!
+\cm{need to intoduce this notation in theory section}
+is given by 
 %
 \begin{equation} \Delta_{N, m_N} = \sum_{N', m_N'} \frac{(\mu_e
 E)^2}{E_\text{rot}(N) - E_\text{rot}(N')} |\bra{N', m_N'}C_0^{(1)} \ket{N,
 m_N}|^2.  \end{equation}
 %
 Where $C_q^{(k)}$ is a renormalised spherical harmonic, and the matrix element
-here can be found by application of the Wigner-Eckart theorem~\cite{}.
-% TODO Cite Mike's thing and Edmonds textbook
+here can be found by application of the Wigner-Eckart
+theorem~\cite{edmonds1996}.
 %
 \begin{equation} \bra{N', m_N'}C_0^{(1)} \ket{N, m_N} =
   (-1)^{m_N'}\sqrt{(2N+1)(2N'+1)}
@@ -505,12 +507,13 @@ can be terminated or measured.
 Once launched onto the subchip, the microwaves will be delivered by CPW to the
 subchip. 
 %
-As discussed in chapter~\ref{} the subchip in its current form is \cm{an
-aluminium-core PCB}, however in future iterations of the experiment this can be
+As discussed in chapter~\ref{fab} the subchip in its current form is based on an
+aluminium-core PCB, however in future iterations of the experiment this can be
 replaced with, for example, an Arlon AD1000 board, which will be a suitable
 carrier for both trapping currents and microwaves~\cite{Morgan2020}. 
 %
-The subchip CPW will be connected to the \cm{science chip} CPW by wire-bonds.
+% TODO Do I actually ever call it a 'science chip'?
+The subchip CPW will be connected to the science chip CPW by wire-bonds.
 These can be chosen to be arbitrarily large s that it is easy to make good
 connection with the wire bonds, and then tapered down to reduce the field size
 while maintaining the same $k_0$ and hence the same impedance. This CPW can be
@@ -574,8 +577,12 @@ This subsection summarises the sideband cooling scheme presented in
 \CaF{}.  Throughout section we assume that we operate with a single molecule
 coupled to a high-quality cavity ($Q\sim10^6$, $\kappa \approx 2\pi\times
 \SI{20}{\kilo\hertz}$) in the strong coupling r\'egime ($g\sim10^5>Q$). We take
-the molecule to act as a two-level system in the stretched states $\ket{g} =
-??$ and $\ket{e}=??$.
+the molecule to act as a two-level system in the stretched states.
+For our example we choose $\ket{g}=\ket{0}_\text{str}$ and
+$\ket{e}=\ket{1}_\text{str}$.
+% TODO Note mainly for Mike, need to do it!
+\cm{Need to introduce the stretched state notation in theory as in long
+  coherence times... paper}
 
 In the macroscopic magnetic trap, the
 $\ket{e}\rightarrow\ket{g}$ decay is very slow ($\Gamma \sim
@@ -715,14 +722,12 @@ of \inlineref{PhysRevA.69.062320} where the state of a Cooper-pair box is
 entangled with a resonator state. This entanglement can be used to perform
 state readout, state preparation and coupling to neighbouring qubits. In this
 section we will mainly discuss state readout, since this framework will be
-useful in the next chapter.
-%
-% TODO Bring in any more necessary cites (from squeeze ch)
+useful in chapter~\ref{squeeze}.
 
-We again assume that the molecule is trapped in one of the stretched states
-$\ket{g}=??$ and $\ket{e}=??$. The molecule-resonator coupling is then
-described by the Jaynes-Cummings Hamiltonian described in
-section~\ref{theory:QO}.
+We again assume that the molecule is trapped in the $N=0$ or $N=1$ stretched
+states. In this case the resonator is populated with photons, so that the
+molecule-resonator coupling is then described by the Jaynes-Cummings
+Hamiltonian described in section~\ref{theory:QO}.
 %
 Entangling of the light and molecule state can be achieved in the dispersive
 r\'egime, where the transition frequency is tuned so that $|\Delta|\gg g$.
@@ -743,15 +748,15 @@ With expansion up to second order in $g/\Delta$, we obtain
   \label{mws:eqn:UHU}
 \end{equation}
 %
-% TODO Probably better to start with s_i in theory
-Here we have introduced the spin operator $s_i = \sigma_i/2$.
+% Could have s_i in theory, just pass this to mike and see what he says...
+Here we have introduced the spin operator $s_i = \sigma_i/2$ for convenience.
 
-The three terms of $H$ describe the oscillation of light in the cavity, the energy
-of the spin and the interaction of the photons with the spin. Note that the
-interaction of the photons and the spins induces the usual AC start shift
-proportional to $(n+\frac{1}{2})$. The last term allows the pefromance of 
-QND measurement, since it will enable exchange of information
-between the z-component of the spin with the photons.
+The three terms of $H$ describe the oscillation of light in the cavity, the
+energy of the spin and the interaction of the photons with the spin. Note that
+the interaction of the photons and the spins induces the usual AC start shift
+proportional to $(n+\frac{1}{2})$. The last term allows the pefromance of QND
+measurement, since it will enable exchange of information between the
+z-component of the spin with the photons.
 
 We take the state of the photons in the resonator to be in a canonical coherent
 state~\cite{Gazeau2009}
@@ -760,9 +765,7 @@ state~\cite{Gazeau2009}
   \ket{\alpha} = e^{-\frac{|\alpha|^2}{2}}\sum_{n=0}^\infty \frac{\alpha^n}{\sqrt{n!}} \ket{n}
 \end{equation}
 %
-% TODO Wording here, again representing? Was it before? Is it clear?
-% Should I change n to m (including above) for consistency?
-with $\alpha\in\mathbb{C}$, and $\ket{n}$ again representing the $n^\text{th}$
+with $\alpha\in\mathbb{C}$, and $\ket{n}$ representing the $n^\text{th}$
 Fock state of the light~\cite{agarwal2012}. For such a state $|\alpha|^2$ is
 the average photon number, with $a^\dagger a$ being the number operator such
 that $\bra{\alpha}a^\dagger a \ket{\alpha} = |\alpha|^2$.
@@ -859,9 +862,6 @@ splitter~\cite{agarwal2012}
     1 & i \\ i & 1 
   \end{pmatrix}  \begin{pmatrix} a \\ b \end{pmatrix}.
 \end{equation}
-%
-% TODO I need to find better cite, could also cite Blais and that might be
-% enough?
 
 The difference in the expected photon numbers arriving at each
 detector is therefore
@@ -889,8 +889,8 @@ The expected photon difference is now
   \label{squeeze:eqn:homoquads}
 \end{equation}
 
-% TODO Need to account for transmission coefficient but probably later, see
-% Mauro's paper (Q. Tomography), eqn. 2.37 - 2.42
+% For transmission coefficient, can see Mauro's paper (Q. Tomography), eqn.
+% 2.37 - 2.42 but I am ignoring it here (just reduces $\alpha$)
 Hence measuring the intensity of each output of the beamsplitter can give us
 information on the phase of the light. We choose $\varphi = 0$ so that the
 measurement is of the $Y$ quadrature, i.e.\ we measure the imaginary part of
@@ -911,7 +911,6 @@ to first order, so that
   \label{mws:eqn:homomeas}
 \end{equation}
 %
-% TODO This isn't really a spin state, need to make this more clear above
 In other words, the expectation value of the photon measurement is linked
 directly to that of the molecule's state. A measurement of $\langle c^\dagger c
 - d^\dagger d\rangle$ will also measure $s_z$. This allows for readout of the
@@ -928,13 +927,12 @@ that
 %
 The detuning required for our $g$ and $Q$ is therefore
 %
-\cm{I think this is off by a little bit, see coupling notebook}
+% From calculation in 2022-02-08_coupling
 \begin{equation}
-  \frac{\Delta}{2 \pi} \gg \SI{250}{\kilo\hertz}.
+  \frac{\Delta}{2 \pi} \gg \SI{5}{\mega\hertz}
 \end{equation}
 %
-Which translates to a field strength of \cm{need to figure out Stark effect and
-say something about the distance between the shifting plates.}
+which is well within the bounds achievable with the Stark shift.
 
 \subsection{State preparation}
 
@@ -982,6 +980,5 @@ be~\cite{Andre2006}
 %
 where $\sigma^i_k$ is the $\sigma_k$ operator acting on the
 $i^\text{th}$ molecule. It can be shown that such an interaction can be used to
-implement high-fidelity two-qubit operation on a chip~\cite{Andre2006}.
-
-\cm{Would be good to find some other cites for this part}
+implement high-fidelity two-qubit operation on a chip~\cite{Andre2006,
+PhysRevA.69.062320}.
