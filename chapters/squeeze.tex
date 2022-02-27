@@ -56,7 +56,7 @@ spin, the state can be written as
 %
 It is common to represent such a state visually by the Bloch sphere.
 The angles $\theta_i$ and $\phi_i$ define a point on a sphere of unit
-radius with $\ket{e}_i$ and $\ket{g}_i$ at the poles. The cartesian
+radius with $\ket{e}_i$ and $\ket{g}_i$ at the poles. The Cartesian
 representation is given by the expectation value $\langle \mathbf{s}_i
 \rangle$.
 %
@@ -96,12 +96,12 @@ into the desired state $\ket{\psi(\theta, \phi)}_i$, which we write as
 where $\ket{G} = \bigotimes_{i=1}^N\ket{g}_i$ and similarly for $\ket{E}$. We
 represent this visually on the Bloch sphere, now with radius $S=N/2$, in
 analogy with the single spin case, as illustrated in \myfigref{squeeze:fig:CSS}. Again
-we can represent the vector in a cartesian form as the expectation value
+we can represent the vector in a Cartesian form as the expectation value
 $\langle \mathbf{S} \rangle$. 
 %
 We note now that $\ket{g} = \ket{S,-S}$ and $\ket{e}=\ket{S,S}$~\cite{Binney}.
 
-% Page 205 onwards in Biney has a discussion of this for N=2 and general S(->J)
+% Page 205 onwards in Binney has a discussion of this for N=2 and general S(->J)
 %The raising and lowering operators are $S_\pm = (S_x \pm iS_y)/2 =
 %\sum_{i=1}^Ns_\pm^i$. It is instructive to consider the state
 %when all spins are in the ground state
@@ -122,7 +122,7 @@ can be found in terms of $\ket{S,m}$. A CSS can be written in the form
 %
 with the general form of $a_m$ given in \inlineref{PhysRevA.6.2211}. We will
 consider only $\ket{+}$, where the probability amplitudes can be understood as
-a probabilty of measuring $m_S$ to be some value $\meas{m}$.
+a probability of measuring $m_S$ to be some value $\meas{m}$.
 
 For any individual spin, the chances of measuring it to be in $\ket{e}_i$ or
 $\ket{g}_i$ are equal. Measuing the state to be in the state $\ket{S, \meas{m}}$
@@ -156,7 +156,7 @@ $\langle S_z^2\rangle = \Delta_N^2$, and the uncertainty in $S_z$ is consistent
 with the usual formula $\Delta_N^2 = \langle S_z^2 \rangle - \langle
 S_z\rangle^2$. This uncertainty is the projection noise of a CSS, arising from
 the uncertainty in the measurement of the individual spins. We can understand
-this in terms of an uncertainty in the cartesian Bloch vector $\langle
+this in terms of an uncertainty in the Cartesian Bloch vector $\langle
 \mathbf{S} \rangle$, or as an uncertainty in $\theta$~\cite{PhysRevA.47.3554}.
 %
 %\footnote{This can be shown geometrically: consider the angle on the Bloch
@@ -184,7 +184,7 @@ increasing uncertainty in other components of $\mathbf{S}$, so that the
 Heisenberg uncertainty principle is obeyed~\cite{}. Note that in The resulting
 state is a spin-squeezed state (SSS), represented on the Bloch sphere in
 \mysubfigref{squeeze:fig:SSS}{a}. The SSS can be manipulated by standard
-microwave spectroscopy techniques, for example by being rotated onto the an
+microwave spectroscopy techniques, for example by being rotated onto an
 axis of interest, such as is shown in \mysubfigref{squeeze:fig:SSS}{b}. Such
 states have been created and utilised for measurements below the SQL for
 example in atomic clocks~\cite{Schulte2020}.
@@ -201,7 +201,7 @@ example in atomic clocks~\cite{Schulte2020}.
   \label{squeeze:fig:SSS}
 \end{figure}
 
-It is possible to create a SSS by two main methods. One method is to implelment
+It is possible to create a SSS by two main methods. One method is to implement
 a system with a one-axis twisting Hamiltonian~\cite{PhysRevLett.94.02300},
 where the SSS is induced by, for example, collisions between
 particles~\cite{Jin_2009}. For the \CaF{} experiment, we propose the creation
@@ -214,15 +214,15 @@ cavities~\cite{Cox2016, SchleierSmith2011}, however our proposal will make use
 of the CPW microwave cavity for readout, similar to the method for a single
 molecule described in section~\ref{mws:readout}.
 %
-When discussing the SSS, it is useful to introudce the new symbol $\Delta_m$ to
+When discussing the SSS, it is useful to introduce the new symbol $\Delta_m$ to
 represent uncertainty in $S_z$. Note that for a CSS, $\Delta_m = \Delta_N$, but
 for a SSS we have $\Delta_m < \Delta_N$. This can also be thought of as
 reducing the uncertainty in $\theta$, so we have uncertainty $\Delta_\theta <
 \Delta_{\theta, \text{SQL}}$.
 
 
-Our scheme is readliy exemplified by the creation of a maximally-squeezd state
-where the uncertainty is reduced as far as possible.  Continuing the disccusion
+Our scheme is readily exemplified by the creation of a maximally-squeezed state
+where the uncertainty is reduced as far as possible.  Continuing the discussion
 from the previous section, suppose that we are able to prepare the CSS
 $\ket{+}$ and we then measure $S_z$. As previously described, we will measure
 $\ket{S, \meas{m}}$ with some probability $P(\meas{m})$. It is useful to frame
@@ -364,11 +364,11 @@ section~\ref{mws:readout} to performing a quantum non-demolition (QND)
 measurement of the ensemble state.
 %
 We will show that the state of the system can be entangled with light in the
-resonator, in exact analgogy with the single-molecule case. Measurement of this
+resonator, in exact analogy with the single-molecule case. Measurement of this
 light can then implement the squeezing projector in
 \myeqref{squeeze:eqn:squeezeproj}.
 
-The moecules can be prepared in the state $\ket{+}$ by the usual microwave
+The molecules can be prepared in the state $\ket{+}$ by the usual microwave
 spectroscopy techniques described in \inlineref{WilliamsMagnetic2018}. The
 state of the spin ensemble at time $t=0$ is then
 %
@@ -487,7 +487,7 @@ this last equality becomes a convolution of two Gaussians, so that
     -\frac{\meas{m}^2}{2(\Delta_N^2 + \Delta_m^2)}\right].
 \end{equation}
 %
-This becomes eqn.~\ref{squeeze:eqn:CSSmprob} in the limit that $\Delta_m \to 0$
+This becomes \myeqref{squeeze:eqn:CSSmprob} in the limit that $\Delta_m \to 0$
 i.e., when the uncertainty in the homodyne detection is small we measure the
 state $m$ according to its expected distribution. If we have some large
 uncertainty in our measurement then the distribution that we measure is not the
@@ -566,7 +566,7 @@ number
 \end{equation}
 %
 A na\"ive approach to reducing the required uncertainty for squeezing might be
-to simply increase the LO amplitude ($|\beta|$) arbitraritly. Note however that
+to simply increase the LO amplitude ($|\beta|$) arbitrarily. Note however that
 the noise associated with the measurement of photons is Poissonian, and goes
 like the square root of the photon number, which is exactly $|\beta|$.
 Therefore increasing $|\beta|$ on the right side of the inequality makes
@@ -623,7 +623,7 @@ experiment.
 
 Finally, we rephrase the squeezing in terms of the squeezing parameter
 \myeqref{squeeze:eqn:squeezeparam}. We again anticipate from the free space
-microwave spectrscopy experiments~\cite{WilliamsMagnetic2018} that there will
+microwave spectroscopy experiments~\cite{WilliamsMagnetic2018} that there will
 be minimal dephasing and loss of spins over the timescale of our experiment. We
 present the squeezing parameter for various decreases of $|S|$ in
 \myfigref{squeeze:fig:wineland}. We anticipate an input power of
@@ -716,5 +716,5 @@ previously been implemented for nitrogen-vacancy ensembles in the dispersive
 r\'egime~\cite{PhysRevA.99.012325}. As a related, final thought, it is possible
 the spin-squeezing proposal described above could be applied to a
 nitrogen-vacancy ensemble in close proximity to a CPW resonator. The same could
-be possible with other spin sensemble systems such as Rydberg atoms. These
+be possible with other spin ensemble systems such as Rydberg atoms. These
 schemes are however beyond the scope of this discussion.
