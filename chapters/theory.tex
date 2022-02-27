@@ -29,14 +29,13 @@
 \section{Quantum optics}
 \label{theory:QO}
 
-It is instructive to begin with a discussion of the theory of quantum optics.
-In this section we will focus on a general model, mostly considering a simple
-two-level system interacting with light. Since this is a broad field, I will
-focus the discussion only on the details that are directly used in this thesis.
-Namely the calculation of the scattering rates for molecules in a light field
-and the coupling of molecules to a light field in a resonator.
+In this section we introduce a general model of molecules interacting with
+light.  Since this is a broad field, I will focus the discussion only on the
+details that are directly used in this thesis.  Namely the calculation of the
+scattering rates for molecules in a light field and the coupling of molecules
+to a light field in a resonator.
 
-\cm{Do I also need to discuss the normal mw spectroscopy in free space?}
+%\cm{Do I also need to discuss the normal mw spectroscopy in free space?}
 
 \subsection{Scattering rates}
 
@@ -46,20 +45,19 @@ and the coupling of molecules to a light field in a resonator.
 
 A key part of the motivation for a molecule chip trap is the idea that
 integrated microwave guides can be used to couple photons to the rotational
-states \cm{transitions?} of the molecules. Of particular interest is the idea
-that a high-$Q$ resonator can be used to perform this coupling, leading to the
+transitions of the molecules. Of particular interest is the idea
+that a resonator can be used to perform this coupling, leading to the
 ability to perform sideband-cooling to the motional ground state, state readout
 and coupling between individually-trapped molecules~\cite{Andre2006}. This is
 similar to techniques used in atom chips~\cite{Treutlein2008} and for optical
-resonators coupling to atomic energy levels~\cite{}.
-%TODO can do numerous cites here
+resonators coupling to atomic energy levels~\cite{SchleierSmith2011}.
+% TODO Better cite in this last bit?
 
-We will later see that for our purposes, the coupling of a single molecule and
-the microwaves can be treated as the coupling of a two-level system to a quantum
-mode of a cavity field. The canonical description of such a system is given by
-the familiar Jaynes-Cummings Hamiltonian (JCH) in the rotating wave
+For our purposes, the coupling of a single molecule and the microwave field can
+be treated as the coupling of a two-level system to a quantum mode of a cavity
+field. The canonical description of such a system is given by the familiar
+Jaynes-Cummings Hamiltonian (JCH) in the rotating wave
 approximation~\cite{gerry_knight_2004}
-% TODO Note that s_z isn't defined here, will I define it above or have to add?
 %
 \begin{equation}
   H_\text{JC} = \hbar\omega_c a^\dagger a + \frac{\hbar \omega_0}{2} \sigma_z +
@@ -84,9 +82,9 @@ detuning of the cavity resonance from that of the spin is $\Delta = \omega_0 -
   \label{theory:fig:JCHstates}
 \end{figure}
 
-We denote the ground (exicted) state of the molecule as $\ket{g}$ ($\ket{e}$)
-state. The light field state can be taken to be a Fock state ($\ket{n \in
-\mathbb{Z}}$). Note that the final term in equation~\ref{theory:eqn:JCH}) has
+We denote the ground (exicted) state of the molecule as $\ket{g}$ ($\ket{e}$).
+The light field state can be taken to be a Fock state ($\ket{n}$ with $n \in
+\mathbb{Z}$). Note that the final term in equation~\ref{theory:eqn:JCH}) has
 the effect of exciting the ground state while absorbing a photon
 ($\ket{g}\ket{n} \leftrightarrow \ket{e}\ket{n-1}$) or lowering the excited state
 and releasing a photon ($\ket{e}\ket{n} \leftrightarrow \ket{g}\ket{n+1}$).
@@ -115,7 +113,9 @@ and having shifted energies
 \end{equation}
 %
 It is useful to consider the manifold of states as depicted in
-\myfigref{theory:fig:JCHstates}.  Note that in the limit of no coupling
+\myfigref{theory:fig:JCHstates}.  
+%TODO This fig
+Note that in the limit of no coupling
 ($\Omega = 0$) and no detuning ($\Delta = 0$) the energies are that of the bare
 states, and $\ket{g}\ket{n+1}$ is degenerate with $\ket{e}\ket{n}$, as in part
 (b) of the subfigure. Introducing coupling ($\Omega \neq 0$) lifts this
@@ -123,19 +123,11 @@ degeneracy, as in part (c). When the detuning is non-zero ($\Delta \neq 0$)
 there is additional offset due to the second term in
 \myeqref{theory:eqn:JCHenergies}, see part (d) of the figure.
 
-% TODO before giving to Mike
-\cm{Now justify need to be in strong-coupling r\'egime.}
-
-% TODO Can probablly leave this until I get around to rest of theory section
-\cm{Talk about the states used, building on the microwaves discussion above
-(yet to be written).}
-
-In order to achieve strong coupling, we require the coupling to be stronger
-than the decay rate of the cavity. The coupling parameter is $g= 2\Omega$ and
-the cavity decay rate is $\kappa = \omega_0 / Q$, where $Q$ is called the
-quality factor of the cavity. The coupling parameter is related to the
-transition dipole moment \cm{$d=??$} and the amplitude of the electric field
-$E_0$ by
+The strong coupling r\'egime is reached when the coupling $g=2\Omega$ is
+greater than the rate of decay from the cavity $\kappa = \omega_0 / Q$, where
+$Q$ is called the quality factor of the cavity. The coupling parameter is
+related to the transition dipole moment $d$ and the amplitude of the electric
+field $E_0$ by
 %
 \begin{equation}
   \hbar g = \frac{d E_0}{2}.
@@ -158,10 +150,11 @@ Hence we have that
   g = \sqrt{\frac{2\pi c d^2}{\hbar \epsilon_0 w^2 \lambda_0^2}}.
 \end{equation}
 
-% TODO I might introduce this in an earlier section
-\cm{For the rotational \CaF{} transitions that are discussed in
+% TODO maybe move this whole sentence above
+For the rotational \CaF{} transitions that we introduced above, in
 section~\ref{theory:molecules} $d = \mu/\sqrt{3}$ with $\mu =
-\SI{31}{\debye}$.}
+\SI{31}{\debye}$.
+%
 The coupling strength is therefore expected to be
 %
 % See nbs/2022-02-08_coupling.nb
