@@ -1,9 +1,9 @@
 One of the key motivations for developing a molecule chip is the ability to
 integrate microwave guides for strong coupling between photons and rotational
 transitions. In this chapter I will present how such a scheme can be realised.
-I will begin with a summary of the coplananr waveguide (CPW), which can be used
+I will begin with a summary of the coplanar waveguide (CPW), which can be used
 to guide microwaves across a dielectric surface. I will then move on to discuss
-the logistics of integrating a CPW into the experiment, and espeically on the
+the logistics of integrating a CPW into the experiment, and especially on the
 delivery of microwaves to the chip. I will then present two uses of single
 \CaF{} molecules coupled to microwave guides: sideband cooling and state
 readout.
@@ -67,7 +67,7 @@ longitudinal direction.}
 \subsection{CPW properties}
 
 We will now consider the electric properties of a CPW. These will largely
-depend on the the planar geometry of the waveguide, which we express in terms
+depend on the planar geometry of the waveguide, which we express in terms
 of the ratio~\cite{1127105, Simons2004}
 %
 \begin{equation}
@@ -200,11 +200,11 @@ by ~\cite{Collin2007}
 \end{equation}
 %
 where $\tan\delta_e$ is the dielectric loss tangent. Common dielectrics for
-microwave guides include aluminium nitride (\AlN{}) and high-resitivity
+microwave guides include aluminium nitride (\AlN{}) and high-resistivity
 silicon.  For our purposes we wish to consider waveguides situated on
 dielectrics layers that can be easily deposited above the trapping wires.
 Following the work in \inlineref{Treutlein2008}, we primarily consider polyimide, which
-can be despoitied by spoin-coating. Other options are available, such as
+can be depositied by spin-coating. Other options are available, such as
 polyethylene naphthalate (PEN) ~\cite{WEI20169937}.
 
 Typical values of dielectric constants and $\alpha_d$ are shown in
@@ -241,7 +241,7 @@ The conductor attenuation constant is
   \alpha_c = \frac{R_c +R_g}{2Z_0}.
 \end{equation}
 Where $R_c$ and $R_g$ are the series resistances of the centre conductor and
-the ground plance respectively.
+the ground plane respectively.
 For a waveguide with height 
 $t$, theses are given by
 \begin{equation}
@@ -315,7 +315,7 @@ shown in \myfigref{mws:fig:conductorloss}.
     \caption{
       Conductor losses are plotted for (a) varying the conductor height of the
       CPW and (b) varying the centre conductor width. Losses are shown for gold
-      on sapphire (black), silver on sapphire (blue) and gold on polyiide
+      on sapphire (black), silver on sapphire (blue) and gold on polyimide
       (red). In (a) a typical conductor width of $S=\SI{10}{\micro\meter}$ is
       assumed, and in (b) the thickness of the conductors is taken to be
       $t=\SI{5}{\micro\meter}$. In both cases the impedance is set to $Z_0 =
@@ -348,7 +348,7 @@ trapped on the chip.~\cite{Treutlein2008}
 A microwave resonator can be formed from a section of CPW that is capacitively
 coupled to another driving segment~\cite{Day2003}. The resonant frequency is
 determined by the resonator's length, $L$, and the waveguide's phase
-veloctiy~\cite{Simons2004}
+velocity~\cite{Simons2004}
 %
 \begin{equation}
   \omega_0 = \frac{\pi v_\text{ph}}{L} = \frac{\pi
@@ -398,7 +398,7 @@ lower quality resonators coupled to molecules.
 Having established the CPW, and that such a device can operate on a polyimide
 substrate, we can now consider the logistics of implementing such a device
 with our design. In this section we will consider the details of the
-impolementation including the detuning of molecules with Stark shift, the
+implementation including the detuning of molecules with Stark shift, the
 delivery of microwaves to the science chip, and schemes for sideband cooling
 and state readout with the microwaves.
 
@@ -417,7 +417,7 @@ derivation can be found in, for example \inlineref{}, but for our purposes it
 is sufficient to simply state the result, which is that the energy shift of the
 rotational state $\ket{N, m_N}_\text{rot}$
 % TODO Leave this note for Mike, but also have to do it!
-\cm{need to intoduce this notation in theory section}
+\cm{need to introduce this notation in theory section}
 is given by 
 %
 \begin{equation} \Delta_{N, m_N} = \sum_{N', m_N'} \frac{(\mu_e
@@ -438,7 +438,7 @@ where the last two matrices represent the usual 3j-symbols.
 
 
 The summation can be simplified when we note that the properties of 3j-symbols
-mean that mixing only ocurrs between states where $m_N' = m_N$ and $N=N'$. It
+mean that mixing only occurs between states where $m_N' = m_N$ and $N=N'$. It
 is simple to compute the resulting energy shift for arbitrary states, and the
 results are shown for $N=0, 1, 2$ \CaF{} states in \myfigref{mws:fig:stark}. We
 note that for small field strengths it is possible to induce a transition shift
@@ -496,11 +496,11 @@ The chip flange (shown in \myfigref{overview:figs:chipexperiment}) has been
 designed to incorporate MCD Precision's SMA45-GS-WLED \SI{2.92}{\milli\meter}
 high-frequency SMA feedthroughs. These welded connectors can be used to bring
 microwaves inside the chip chamber, where they can be launched onto a CPW on
-the subchip. Microwaves will be transfered through from the feedthrough to the
+the subchip. Microwaves will be transferred through from the feedthrough to the
 subchip using a SMA male-male barrel adapter from Pasternak, and a female-clamp
 PCB launcher from Pasternack. The launching assembly can be seen in
 \mysubfigref{mws:fig:implement}{a}. These components have been tested for UHV
-compatability, as discussed in \cm{reference relevant chapter}.  The flange
+compatibility, as discussed in \cm{reference relevant chapter}.  The flange
 assembly has been designed to allow microwaves to exit the chamber, where they
 can be terminated or measured.
 
@@ -550,7 +550,7 @@ a multi-layer design for a single CPW in \mysubfigref{mws:fig:implement}{b}.
     \end{tabular}
   \caption{
     The microwave components of the flange assembly (flange, feedthroughs,
-    barallel connectors, launchers, PCB and chip) are shown in (a). In (b) we
+    barrel connectors, launchers, PCB and chip) are shown in (a). In (b) we
     have the chip design from \myfigref{overview:figs:chipexperiment} (not to
     scale) with the
     additional microwave guide layer overlayed (red). Conversely to the lower
@@ -609,7 +609,7 @@ We imagine that an external driving field is applied on the
 $\ket{g, m} \rightarrow \ket{e, m-1}$ sideband as pictured in
 \myfigref{mws:fig:sideband}. Combined with the enhanced decay, this allows
 sideband cooling into low motional ground states of the trap. The molecule will
-be transfered by the driving field into a lower motional state, and will
+be transferred by the driving field into a lower motional state, and will
 rapidly decay into the ground state by releasing a photon into the resonator.
 Each time this happens the molecule's energy is reduced by $\hbar\omega_t$.
 This results in a cooling rate
@@ -703,7 +703,7 @@ high-frequency photons that can enter from the input
 ports~\cite{doi:10.1063/1.3638063}. 
 
 We expect the minimum temperature achievable by sideband cooling to be reached
-when the molecule motion and photon energy are in thermal equilibirum, so that
+when the molecule motion and photon energy are in thermal equilibrium, so that
 %
 \begin{equation}
   T_\text{min} = \frac{\hbar \omega_t \overline{m}}{k_B}
@@ -754,7 +754,7 @@ Here we have introduced the spin operator $s_i = \sigma_i/2$ for convenience.
 The three terms of $H$ describe the oscillation of light in the cavity, the
 energy of the spin and the interaction of the photons with the spin. Note that
 the interaction of the photons and the spins induces the usual AC start shift
-proportional to $(n+\frac{1}{2})$. The last term allows the pefromance of QND
+proportional to $(n+\frac{1}{2})$. The last term allows the performance of QND
 measurement, since it will enable exchange of information between the
 z-component of the spin with the photons.
 
@@ -770,7 +770,7 @@ Fock state of the light~\cite{agarwal2012}. For such a state $|\alpha|^2$ is
 the average photon number, with $a^\dagger a$ being the number operator such
 that $\bra{\alpha}a^\dagger a \ket{\alpha} = |\alpha|^2$.
 
-The interaction of the light with the molecule is desribed by the last term in
+The interaction of the light with the molecule is described by the last term in
 $H$, so for an interaction over time $T$, we have
 %
 \begin{equation}
@@ -875,7 +875,7 @@ detector is therefore
   e^{-i\varphi})\ket{\Psi_a}.
 \end{align}
 %
-We now intoduce the canonical quadratures of the light field, corresponding to
+We now introduce the canonical quadratures of the light field, corresponding to
 its real and imaginary parts. They are defined by~\cite{gerry_knight_2004}
 %
 \begin{align}
