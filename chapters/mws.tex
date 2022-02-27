@@ -13,7 +13,7 @@ readout.
 The CPW was originally proposed by Cheng P.~Wen as a means
 of guiding microwaves across the surface of a dielectric
 substrate~\cite{1127105}. It consists of a central conductor with a ground
-plane on either side, as pictured in~\myfigref{mws:fig:CPW}. CPWs have become
+plane on either side, as pictured in~\mysubfigref{mws:fig:CPW}{a}. CPWs have become
 prolific, since they allow the creation of robust microwave devices, and offer
 some benefits over other waveguide architectures, such as the stripline
 waveguide, because they can provide circularly polarised fields, and also
@@ -22,14 +22,14 @@ provide easy access to the ground plane for shunt connections.
 The CPW's geometry is defined by the centre conductor width ($S$) and the
 channel width ($W$). The height of the conductor is $t$ and the dielectric
 height is $h$.  The geometry of the CPW determines the region the microwave
-field occupies, as illustrated in \myfigref{experiment:fig:CPWfield}.  The CPW
+field occupies, as illustrated in \mysubfigref{mws:fig:CPWfield}{b}.  The CPW
 can therefore be designed to maximise overlap between the microwave field and a
 cloud of molecules trapped nearby.  As a rough approximation the molecules
 should be trapped at a distance $h\sim S$ above the centre of the CPW to
-achieve a good overlap.~\cite{Boehi2009} The field surrounding the CPW is shown
+achieve a good overlap~\cite{Boehi2009}. The electric field surrounding the CPW is shown
 in \mysubfigref{mws:fig:CPW}{b}, the equations defining this field can be found
 analytically~\cite{Simons2004}, or the field can be determined by a
-finite-element simulation.
+finite-element simulation, as is done here.
 
 \begin{figure}[ht]
   \centering
@@ -58,9 +58,8 @@ resulting field density near such a CPW is shown in (b), with
 $S=\SI{20}{\micro\meter}$, $W=\SI{10}{\micro\meter}$, $\epsilon_r=10$,
 $h=\SI{10}{\micro\meter}$. Conductor regions are highlighted in gold and the
 end of the bottom of the substrate is marked with the black line. The field is
-presented in arbitrary units to illustrate where strong coupling can be
-achieved. Note that in a resonator the field will depend on the position in the
-longitudinal direction.}
+presented in arbitrary units. Note that in a resonator the field will depend on
+the position in the longitudinal direction.}
 	\label{mws:fig:CPW}
 \end{figure}
 
@@ -71,7 +70,7 @@ depend on the planar geometry of the waveguide, which we express in terms
 of the ratio~\cite{1127105, Simons2004}
 %
 \begin{equation}
-  k_0 = \frac{S}{S+2W} = \sqrt{1-{k'_0}^2}
+  k_0 = \frac{S}{S+2W} = \sqrt{1-{k'_0}^2}.
   \label{eqn:k0def}
 \end{equation}
 %
@@ -99,7 +98,7 @@ these two parts
 %
 The method of finding these individual contributions is somewhat involved, so
 we simply state the results here in terms of the elliptic integral of the
-first kind $K(k)$~\cite{Simons2004}. The capacitance due to the dielectric is
+first kind, $K(k)$~\cite{Simons2004}. The capacitance due to the dielectric is
 %
 %
 \begin{equation}
@@ -120,9 +119,10 @@ We can use this to find the effective permittivity~\cite{Simons2004}
 \end{align}
 %
 where we have assumed that we are in the limit of a thick dielectric layer ($h
-\gg W$ so that most of the field density is inside the dielectric.
+\gg W$) so that most of the field density is inside the dielectric.
 %
-The phase velocity (using $c$ as the speed of light) is~\cite{Simons2004}
+% TODO Ensure $c$ is introduced already somewhere above...
+The phase velocity  is~\cite{Simons2004}
 %
 \begin{align}
   v_\text{ph} &= \frac{c}{\sqrt{\epsilon_\text{eff}}} \\
@@ -135,14 +135,15 @@ impedance~\cite{Simons2004}
 \begin{align}
   Z_0 &= \frac{1}{C_\text{air} v_\text{ph}} \\
     &= \frac{30 \pi}{\sqrt{(\epsilon_\text{r1}+1)/2}} \frac{K(k_0)}{K(k'_0)}
-    \text{Ohms}
+    \text{Ohms}.
     \label{mws:eqn:Z0}
 \end{align}
 Note that the impedance of the waveguide has dependence only on the geometry in
 the form of the ratio $k_0$, and the relative permittivity of the
-substrate.~\cite{Simons2004} This means that for any substrate we choose the
+substrate.~\cite{Simons2004} This means that for any substrate we choose, the
 value of $k_0$ can be chosen to fix the impedance at the standard $Z_0 =
-\SI{50}{\ohm}$.
+\SI{50}{\ohm}$. This is useful for building macroscopic input ports to the CPW,
+and then tapering for a highly localised field near the molecule trap.
 %
 Therefore as long as $k_0$ is held constant the CPW can be tapered to change the
 size of the centre conductor, and hence control the region the field occupies.
@@ -155,11 +156,18 @@ by~\cite{Simons2004}
 \end{equation}
 %
 which will always be several orders of magnitude above our operating frequency,
-even if $h$ is chosen to be several microns.
+even if $h$ is chosen to be several microns. The cutoff frequency can therefore
+be ignored for the purpses of our discussion.
 
 \subsection{CPW attenuation}
 
-The electric field inside a CPW evolves according to
+It is important to understand the level of attenuation across a CPW. Not only
+is it important that we can transmit enough signal to the molecules to effect
+rotational transitions, but the attenuation in a resonator will be the dominant
+factor in determinning its quality factor, and hence whether we are in the
+strong coupling r\'egime. Begin by considering the electric field inside a CPW.
+Say that the field at a position $z$ along the axis of the guide is $E(z)$.
+This evolves according to
 %
 \begin{equation}
   \widetilde{E}(z) = \widetilde{E}(0)e^{-\gamma z}.
@@ -180,14 +188,14 @@ There are two contributing terms to the attenuation constant
   \alpha = \alpha_d + \alpha_c,
 \end{equation}
 %
-there are the contributions from dielectric and conductor respectively.
-Negligible contributions from radiative losses are
-neglected~\cite{Frankel1991}.  Bending losses can be neglected as long as
-the radius of the bends are much larger than the wavelength of the propagating
-wave. We must be mindful of this during design, since the typical wavelengths
-for rotational transitions are on the order of centimeters.
-We also do not consider the insertion loss of the resonator, since this does
-not affect the quality factor~\cite{doi:10.1063/1.3010859}.
+there are the contributions from dielectric and conductor respectively.  We
+neglect small contributions from radiative losses~\cite{Frankel1991}. Bending
+losses can also be ignored as long as the radius of the bends are much larger
+than the wavelength of the propagating wave. We must be mindful of this during
+design, since the typical wavelengths for rotational transitions are on the
+order of centimeters.  We also do not consider the insertion loss of the
+resonator, since this does not affect the quality
+factor~\cite{doi:10.1063/1.3010859}.
 
 \subsubsection{Dielectric losses}
 
@@ -195,7 +203,7 @@ Dielectric losses in the thick dielectric limit are described
 by ~\cite{Collin2007}
 \begin{equation}
   \alpha_d =
-  \frac{\omega_0}{4c}\frac{\epsilon_\mathrm{r1}}{\sqrt{\epsilon_\mathrm{eff}}}
+  \frac{\omega_0}{4c}\frac{\epsilon_r}{\sqrt{\epsilon_\mathrm{eff}}}
   \tan \delta_e
 \end{equation}
 %
@@ -206,6 +214,7 @@ dielectrics layers that can be easily deposited above the trapping wires.
 Following the work in \inlineref{Treutlein2008}, we primarily consider polyimide, which
 can be depositied by spin-coating. Other options are available, such as
 polyethylene naphthalate (PEN) ~\cite{WEI20169937}.
+% TODO Is it possible to grow some other dielectric?
 
 Typical values of dielectric constants and $\alpha_d$ are shown in
 \mytableref{mws:table:diprops}. Note that these parameters have some dependence
@@ -361,7 +370,7 @@ velocity~\cite{Simons2004}
 Microwaves can be coupled to the resonator by positioning the resonator inline
 with a microwave guide, or in parallel as shown in
 \myfigref{mws:fig:resonators}. The strength of the coupling can be controlled by the shape of the
-interface between the resonator and the waveguide~\cite{doi:10.1063/1.3010859}
+interface between the resonator and the waveguide~\cite{doi:10.1063/1.3010859}.
 
 \begin{figure}
   \centering
@@ -389,8 +398,8 @@ clear that without the use of superconductors, the attenuation will be
 dominated by conductor losses, and $Q\sim10$. This is clearly not sufficient
 for our purposes.
 
-Conductor losses can be eliminated by use of a superconducting CPW. CPW
-resonators are a developed technology, commonly used for coupling to
+Conductor losses can be eliminated by use of a superconducting CPW. Such
+devices are a developed technology, which have been used for coupling to
 solid-state qubits~\cite{Wallraff2004}. Operating at the low temperatures
 required for superconductors allows the achievement of very high quality
 factors of order $10^6$~\cite{doi:10.1063/1.3552890, Day2003}. For such devices
