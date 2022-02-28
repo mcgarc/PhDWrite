@@ -34,8 +34,8 @@ We now define the collective spin operator
   \mathbf{S} = \sum_{i=1}^N \mathbf{s}^i.
 \end{equation}
 %
-The common eigenstates of $\mathbf{S}$ and $S_z$ are the familiar angular
-momentum eigenstates, which we label $\ket{S,m_S}$, so that $S^2 \ket{S,m} =
+The common eigenstates of $S^2$ and $S_z$ are the familiar angular
+momentum eigenstates, which we label $\ket{S,m}$, so that $S^2 \ket{S,m} =
 S(S+1)\ket{S, m}$ and $S_z \ket{S,m} = m\ket{S, m}$. These are the so-called
 Dicke states~\cite{}, which we will see shortly are entangled states of the
 spin system. The ladder operators for such a state are
@@ -55,8 +55,8 @@ spin, the state can be written as
 \end{equation}
 %
 It is common to represent such a state visually by the Bloch sphere.
-The angles $\theta_i$ and $\phi_i$ define a point on a sphere of unit
-radius with $\ket{e}_i$ and $\ket{g}_i$ at the poles. The Cartesian
+The angles $\theta_i$ and $\phi_i$ define a point on a unit sphere
+with $\ket{e}_i$ and $\ket{g}_i$ at the poles. The Cartesian
 representation is given by the expectation value $\langle \mathbf{s}_i
 \rangle$.
 %
@@ -67,20 +67,8 @@ The state of the ensemble is then
 \end{equation}
 %
 and the Bloch sphere representation is given by the sum of the individual spin
-vectors, as illustrated in \myfigref{squeeze:fig:CSS}.
+vectors.
 
-\begin{figure}[ht]
-  \centering
-    \includegraphics[width=0.6\textwidth]{figs/squeeze/CSS.pdf}
-    \caption{
-      Graphical representation of a CSS formed by the combined state of $N$
-      spins in the same state. In this case the spin states all lie on the
-      equator of the Bloch sphere. The uncertainty in the CSS is represented by
-      the patch, having a width $\Delta\theta$ (patch width is a guide to the
-      eye and not to scale).
-  }
-    \label{squeeze:fig:CSS}
-\end{figure}
 
 An important case is that of the coherent spin state (CSS), that is a
 state when all the spins are aligned, so that for all $i$, $\theta_i = \theta$
@@ -101,6 +89,19 @@ $\langle \mathbf{S} \rangle$.
 %
 We note now that $\ket{g} = \ket{S,-S}$ and $\ket{e}=\ket{S,S}$~\cite{Binney}.
 
+\begin{figure}[ht]
+  \centering
+    \includegraphics[height=0.3\textwidth]{figs/squeeze/CSS.pdf}
+    \caption{
+      Graphical representation of a CSS formed by the combined state of $N$
+      spins in the same state. In this case the spin states all lie on the
+      equator of the Bloch sphere. The uncertainty in the CSS is represented by
+      the patch, having a width $\Delta\theta$ (patch width is a guide to the
+      eye and not to scale).
+  }
+    \label{squeeze:fig:CSS}
+\end{figure}
+
 % Page 205 onwards in Binney has a discussion of this for N=2 and general S(->J)
 %The raising and lowering operators are $S_\pm = (S_x \pm iS_y)/2 =
 %\sum_{i=1}^Ns_\pm^i$. It is instructive to consider the state
@@ -109,7 +110,8 @@ We note now that $\ket{g} = \ket{S,-S}$ and $\ket{e}=\ket{S,S}$~\cite{Binney}.
 In the next section, we will make particular use of the state
 %
 \begin{equation}
-  \ket{+} = \bigotimes_{i=1}^N \ket{+}_i.
+  \ket{+} = \bigotimes_{i=1}^N \left(\frac{\ket{g}_i +
+  \ket{e}_i}{\sqrt{2}}\right).
 \end{equation}
 %
 Such a state can be represented on the Bloch sphere as a line pointing along
@@ -123,7 +125,7 @@ can be found in terms of $\ket{S,m}$. A CSS can be written in the form
 with the general form of $a_m$ given in \inlineref{PhysRevA.6.2211}. We will
 consider only $\ket{+}$, where the probability amplitudes can be understood as
 a probability of measuring $m_S$ to be some value $\meas{m}$.
-
+%
 For any individual spin, the chances of measuring it to be in $\ket{e}_i$ or
 $\ket{g}_i$ are equal. Measuing the state to be in the state $\ket{S, \meas{m}}$
 is equivalent to measuring $N_e$ molecules in the excited state, and $N_g = N -
@@ -134,6 +136,7 @@ binomial probability~\cite{Gazeau2009}
 %
 \begin{equation}
   P(m) = \frac{1}{2^N} \binom{N}{m+N/2}
+  \label{squeeze:eqn:binprob}
 \end{equation}
 %
 or for large $N$, the binomial is approximated by the Gaussian
@@ -174,24 +177,29 @@ which is known as the standard quantum limit (SQL) or the shot-noise. By
 symmetry $\Delta \phi = \Delta \theta$ (corresponding to uncertainty in $S_y$).
 %
 Note that these uncertainties hold only for $\ket{+}$ and other states where
-$\theta = \pi$ (states on the equator of the Bloch sphere). For example in the
-cases of $\ket{e}$ and $\ket{g}$, $\Delta \theta = 0$~\cite{PhysRevA.47.3554}.
+$\theta = \pi/2$ (states on the equator of the Bloch sphere). For example in the
+cases of $\ket{E}$ and $\ket{G}$, $\Delta \theta = 0$~\cite{PhysRevA.47.3554}.
 
 \subsection{Spin-squeezed states}
 
-The uncertainty in $S_z$ $\Delta_\theta$ can be reduced at the expense of
-increasing uncertainty in other components of $\mathbf{S}$, so that the
-Heisenberg uncertainty principle is obeyed~\cite{}. Note that in The resulting
-state is a spin-squeezed state (SSS), represented on the Bloch sphere in
-\mysubfigref{squeeze:fig:SSS}{a}. The SSS can be manipulated by standard
-microwave spectroscopy techniques, for example by being rotated onto an
-axis of interest, such as is shown in \mysubfigref{squeeze:fig:SSS}{b}. Such
-states have been created and utilised for measurements below the SQL for
-example in atomic clocks~\cite{Schulte2020}.
+The uncertainty in $S_z$ ($\Delta_m \sim \Delta_\theta$) can be reduced at the
+expense of increasing uncertainty in other components of $\mathbf{S}$, so that
+the Heisenberg uncertainty principle is obeyed~\cite{PhysRevA.47.3554}. Note
+that the resulting state is a spin-squeezed state (SSS), represented on the
+Bloch sphere in \mysubfigref{squeeze:fig:SSS}{a} as a patch with reduced extent
+in the $\theta$ direction, and increased extent around the equator. The SSS can
+be manipulated by standard microwave spectroscopy techniques, for example by
+being rotated onto an axis of interest, such as is shown in
+\mysubfigref{squeeze:fig:SSS}{b}. Such states have been created and utilised
+for measurements below the SQL for example in atomic clocks~\cite{Schulte2020}.
+%
+Note that for a CSS, $\Delta_m = \Delta_N$, but for a SSS we can have $\Delta_m
+< \Delta_N$. This can also be thought of as reducing the uncertainty in
+$\theta$, so we have uncertainty $\Delta_\theta < \Delta_{\theta, \text{SQL}}$.
 
 \begin{figure}[ht]
   \centering
-    \includegraphics[width=0.6\textwidth]{figs/squeeze/SSScombined.pdf}
+    \includegraphics[height=0.3\textwidth]{figs/squeeze/SSScombined.pdf}
     \caption{
       Graphical representations of SSSs. In (a) the state is squeezed along the
       $S_z$ component, reducing $\Delta\theta$ beneath the SQL. In (b) a
@@ -201,24 +209,17 @@ example in atomic clocks~\cite{Schulte2020}.
   \label{squeeze:fig:SSS}
 \end{figure}
 
-It is possible to create a SSS by two main methods. One method is to implement
-a system with a one-axis twisting Hamiltonian~\cite{PhysRevLett.94.02300},
-where the SSS is induced by, for example, collisions between
-particles~\cite{Jin_2009}. For the \CaF{} experiment, we propose the creation
-of a SSS by a quantum non-demolition (QND) measurement. In such a scheme,
-measurement of $m_S$ is performed in such a way that the coherence of the
-quantum state of the spin ensemble is preserved, thus reducing the uncertainty
-$\Delta_\theta$ (and hence also $\Delta_N$).  Similar experiments to our
-proposal have been performed for atoms trapped in optical
-cavities~\cite{Cox2016, SchleierSmith2011}, however our proposal will make use
-of the CPW microwave cavity for readout, similar to the method for a single
-molecule described in section~\ref{mws:readout}.
-%
-When discussing the SSS, it is useful to introduce the new symbol $\Delta_m$ to
-represent uncertainty in $S_z$. Note that for a CSS, $\Delta_m = \Delta_N$, but
-for a SSS we have $\Delta_m < \Delta_N$. This can also be thought of as
-reducing the uncertainty in $\theta$, so we have uncertainty $\Delta_\theta <
-\Delta_{\theta, \text{SQL}}$.
+One method of preparing a SSS is to implement a system with a one-axis twisting
+Hamiltonian~\cite{PhysRevLett.94.023003}, where the SSS is induced by, for
+example, collisions between particles~\cite{Jin_2009}. For the \CaF{}
+experiment however, we propose a different method using a quantum
+non-demolition (QND) measurement. In such a scheme, measurement of $m_S$ is
+performed in such a way that the coherence of the quantum state of the spin
+ensemble is preserved, thus reducing the uncertainty $\Delta_\theta$ (and hence
+also $\Delta_N$).  Similar experiments to our proposal have been performed for
+atoms trapped in optical cavities~\cite{Cox2016, SchleierSmith2011}, however
+our proposal will make use of the CPW microwave cavity for readout, similar to
+the method for a single molecule described in section~\ref{mws:readout}.
 
 
 Our scheme is readily exemplified by the creation of a maximally-squeezed state
@@ -253,7 +254,7 @@ $P(\meas{m})$.
 
 At this point it is worth pointing out that if we can realise such a
 measurement then we are done. The Dicke states are entangled states with a
-reduced uncertainty (except for $\ket{g}$ and $\ket{e}$)
+reduced uncertainty (except for $\ket{G}$ and $\ket{E}$)
 ~\cite{PhysRevA.83.013821}. The Dicke states can be found by repeated
 application of the ladder operators~\cite{Binney}, and are the superposition
 of all possible states with $N_e$ atoms in $\ket{e}$ and $N_g = N - N_e$ atoms
@@ -261,7 +262,7 @@ in $\ket{g}$. We can therefore write in general that
 %
 \begin{equation}
   \ket{\frac{N}{2}, m} = \binom{N}{N_e}^{-\frac{1}{2}}\sum_{\pi \in \Pi}
-  \bigotimes_{i=1}^{N_e} \sigma_x^{\pi_i} \ket{g}
+  \bigotimes_{i=1}^{N_e} \sigma_x^{\pi_i} \ket{G}
 \end{equation}
 %
 with $N_e=(N/2)+m$.
@@ -329,7 +330,7 @@ We can also write this Hamiltonian in terms of the collective spin operator
 %
 \begin{equation}
   H_\text{TC} = \hbar\omega_c a^\dagger a + \hbar\omega_0 S_z +
-  \frac{\hbar\Omega}{2}(a^\dagger S_- + aS_+).
+  \frac{\hbar\Omega}{2\sqrt{N}}(a^\dagger S_- + aS_+).
 \end{equation}
 %
 Consider the dispersive r\'egime ($|\Delta|\gg g$) and apply the transformation
@@ -345,7 +346,7 @@ for Hamiltonian
   H_\text{E}= U_\text{E}H_\text{TC}U_\text{E}^\dagger \approx 
     \hbar \omega_c a^\dagger a + 
     \hbar\left(\omega_c + \frac{g^2}{\Delta}\right)S_z + 
-    \frac{\hbar g^2}{\Delta}S_z a^\dagger a.
+    \frac{\hbar g^2}{\Delta\sqrt{N}}S_z a^\dagger a.
   \label{eqn:He}
 \end{equation}
 %
@@ -385,7 +386,7 @@ which evolves during the interaction with the resonator over a time $T$ to
 where the interaction Hamiltonian is
 %
 \begin{equation}
-  H_\text{int} = \hbar \frac{g^2}{\Delta} S_z a^\dagger a.
+  H_\text{int} = \hbar \frac{g^2}{\Delta\sqrt{N}} S_z a^\dagger a.
 \end{equation}
 %
 After the pulse, we therefore have the state
@@ -395,20 +396,20 @@ After the pulse, we therefore have the state
   a^\dagger a} \ket{S, m}\ket{\alpha}
 \end{equation}
 %
-with $\nu = g^2/\Delta$ as before. It is now straightforward to show that
+with $\nu_N = g^2/(\Delta\sqrt{N})$. It is now straightforward to show that
 the state of the spin ensemble is entangled with the state of the light field,
 in analogy to equations~\ref{mws:eqn:evolve1}--\ref{mws:eqn:entangled}
 %
 \begin{align}
   \ket{\Psi(T)} &= e^{-\frac{|\alpha|^2}{2}}\sum_{m=-S}^S \sum_{n=0}^\infty \sqrt{P(m)}
-   \frac{\alpha^n}{\sqrt{n!}} e^{-i\nu T S_z a^\dagger a} \ket{S, m} \ket{n}
+   \frac{\alpha^n}{\sqrt{n!}} e^{-i\nu_N T S_z a^\dagger a} \ket{S, m} \ket{n}
    \\
   &= e^{-\frac{|\alpha|^2}{2}}\sum_{m=-S}^S \sum_{n=0}^\infty \sqrt{P(m)}
-  \frac{\alpha^n}{\sqrt{n!}} e^{-i\nu Tm n} \ket{S, m} \ket{n} \\
+  \frac{\alpha^n}{\sqrt{n!}} e^{-i\nu_N Tm n} \ket{S, m} \ket{n} \\
   &= \sum_{m=-S}^S \sqrt{P(m)} \ket{S, m} \left( e^{-\frac{|\alpha|^2}{2}}
-  \sum_{n=0}^\infty \frac{(\alpha e^{-i\nu T m})^n}{\sqrt{n!}}\ket{n}\right)
+  \sum_{n=0}^\infty \frac{(\alpha e^{-i\nu_N T m})^n}{\sqrt{n!}}\ket{n}\right)
   \\
-  &= \sum_{m=-S}^S \sqrt{P(m)} \ket{S, m}\ket{\alpha e^{-i\nu T m}}.
+  &= \sum_{m=-S}^S \sqrt{P(m)} \ket{S, m}\ket{\alpha e^{-i\nu_N T m}}.
 \end{align}
 
 Measuring the phase of the light leaving the cavity (for example with a
@@ -427,24 +428,24 @@ the homodyne detectors is therefore related to the spin ensemble by
 \begin{equation}
   \langle c^\dagger c - d^\dagger d\rangle = 2|\alpha||\beta|
   \frac{g^2}{\Delta\kappa}\langle S_z\rangle.
-  \label{eqn:homomeas}
+  \label{squeeze:eqn:homomeas}
 \end{equation}
 
 It is clear that performing the homodyne measurement is equivalent to
 performing a measurement of the $S_z$ operator for the spins~\cite{Bao2020}. In
 order to distinguish between neighbouring $S_z$ states, we must be able to
-resolve photon differences smaller than $2|\alpha||\beta|g^2/(\Delta\kappa)$.
-Since $|\beta|$ is large, this photon difference is amplified to make the
-measurement possible. In the event that neighbouring states are easily
-distinguishable, we can create sates of the form $\ket{S,m_S}$. However if
-there is some uncertainty in the homodyne measurement $\Delta_m$ then the
-homodyne measurement realises the projector given in
-\myeqref{squeeze:eqn:squeezeproj}. 
+resolve photon differences smaller than
+$2|\alpha||\beta|g^2/(\Delta\kappa\sqrt{N})$.  Since $|\beta|$ is large, this
+photon difference is amplified to make the measurement possible. In the event
+that neighbouring states are easily distinguishable, we can create sates of the
+form $\ket{S,m_S}$. However if there is some uncertainty in the homodyne
+measurement $\Delta_m$ then the homodyne measurement realises the projector
+given in \myeqref{squeeze:eqn:squeezeproj}. 
 %
 The result of the homodyne heralds the creation of a state
 %
 \begin{equation}
-  \ket{\Phi(\meas{m}, \Delta)} = \frac{\Upsilon_{\Delta_m}
+  \ket{\Phi(\meas{m}, \Delta_m)} = \frac{\Upsilon_{\Delta_m}
   (\meas{m})\ket{+}}{ \sqrt{P_{\meas{m}}} }
 \end{equation}
 %
@@ -460,7 +461,7 @@ numerator, that is the homodyne projector acting on $\ket{\Psi(T)}$
 %
 \begin{align}
   \Upsilon_{\Delta_m}(\meas{m})\ket{+} &=
-  \sum_{m=-S}^{S}\sqrt{P(m)}\Upsilon(\meas{m})\ket{S,m}\ket{\alpha e^{-i\nu
+  \sum_{m=-S}^{S}\sqrt{P(m)}\Upsilon(\meas{m})\ket{S,m}\ket{\alpha e^{-i\nu_N
   Tm}} \\
   &=\frac{1}{\sqrt{\pi\Delta_N^2}}\sum_{m=-S}^S \sqrt{P(m)} \exp\left[
     -\frac{(m-\meas{m})^2}{2\Delta_N^2}\right]\ket{S,m}.
@@ -489,9 +490,10 @@ this last equality becomes a convolution of two Gaussians, so that
 %
 This becomes \myeqref{squeeze:eqn:CSSmprob} in the limit that $\Delta_m \to 0$
 i.e., when the uncertainty in the homodyne detection is small we measure the
-state $m$ according to its expected distribution. If we have some large
-uncertainty in our measurement then the distribution that we measure is not the
-same as the expected distribution.
+state $m$ according to its expected distribution given previously in
+\myeqref{squeeze:eqn:CSSmprob}. If we have some large uncertainty in our
+measurement then the distribution that we measure is not the same as the
+expected distribution.
 
 Finally we calculate the state resulting from the measurement using
 \myeqref{squeeze:eqn:projresult}, again taking the
@@ -499,21 +501,21 @@ approximation that we are in the limit of large $N$, and also that
 $\Delta_m^2 \ll \Delta_N^2$,
 %
 \begin{equation}
-  \ket{\Psi_{\meas{m}}} =
+  \ket{\Phi(\meas{m}, \Delta_m)} =
   \sum_{m=-S}^S\left\{\frac{1}{\sqrt{2\pi\Delta_m^2}} \exp\left[-\frac{(m -
   \meas{m})^2}{2\Delta_m^2}\right]\right\}^\frac{1}{2} \ket{S,m}
 \end{equation}
 %
 which is a state that has been squeezed in comparison to the initial spin
 state. The $S_z$ distribution now has a width $\Delta_m^2$ rather than
-$\Delta_N^2$, as illustrated in fig~\ref{squeeze:fig:blochsqueezed}. Since the
+$\Delta_N^2$, as illustrated in \myfigref{squeeze:fig:SSS}. Since the
 Heisenberg uncertainty principle must be obeyed, the reduction of uncertainty
 in $S_z$ increases the uncertainty in $S_y$ ~\cite{PhysRevA.47.3554}.
 
 The squeezing is parameterised by the parameter~\cite{PhysRevA.46.R6797}
 %
 \begin{equation}
-  \chi^2 = \left(\frac{\sqrt{N}/2}{\Delta S_z}\frac{|S|}{N/2}^2\right)^2
+  \chi^2 = \left(\frac{\sqrt{N}/2}{\Delta_m}\frac{|S|}{N/2}^2\right)^2
   \label{squeeze:eqn:squeezeparam}
 \end{equation}
 %
@@ -562,7 +564,7 @@ squeezing of width $\Delta_m$, we require measurement uncertainty in photon
 number
 %
 \begin{equation}
-  \Delta_\gamma < 2|\alpha||\beta| \frac{g^2}{\Delta\kappa}\Delta_m.
+  \Delta_\gamma < 2|\alpha||\beta| \frac{g^2}{\Delta\kappa\sqrt{N}}\Delta_m.
 \end{equation}
 %
 A na\"ive approach to reducing the required uncertainty for squeezing might be
@@ -592,7 +594,7 @@ We also see the corresponding increase in the uncertainty in the other
 components of $\mathbf{S}$, which we parameterise as $\Delta_{S_{x,y}} =
 \sqrt{\Delta_{S_x}^2 + \Delta_{S_y}^2}$. This result demonstrates that the
 experiment operates in the r\'egime where squeezing is certainly possible with
-conventional microwave detectors~\cite{Dicke1946m, PhysRevD.88.035020}, however
+conventional microwave detectors~\cite{Dicke1946, PhysRevD.88.035020}, however
 this does not account for other sources of noise that may arise during the
 experiment.
 
@@ -614,9 +616,9 @@ experiment.
       \addlegendentry{$\Delta_{S_{x,y}}$}
     \end{axis}
   \end{tikzpicture}
-  \caption{The squeezing (reduction in $\Delta_{S_z}$) and anti-squeezing
-  (increase in other components of $\Delta_S$) versus the uncertainty in
-  homodyne photon detection.
+  \caption{The squeezing (reduction in $\Delta_m$) and anti-squeezing (increase
+    in uncertaintiy in other components of $\mathbf{S}$) versus the uncertainty
+    in homodyne photon detection. In this example we take $N=200$.
   }
   \label{squeeze:fig:squeezeuncert}
 \end{figure}
@@ -662,7 +664,7 @@ experiments~\cite{doi:10.1063/1.3010859}.
   $g/2\pi = \SI{125}{\kilo\hertz}$, $\kappa/2\pi = \SI{21}{\kilo\hertz}$,
   % for this power value, could cite
   % goppl or https://sites.astro.caltech.edu/~jonas/Theses/Jiansong_Gao_08.pdf
-  $P=\SI{-50}{\dbm}$. 
+  $P=\SI{-50}{\dbm}$ and $N=200$.
   }
   \label{squeeze:fig:wineland}
 \end{figure}
@@ -687,7 +689,7 @@ $m_S=\pm\meas{m}$, as illustrated in \myfigref{squeeze:fig:cat}.
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.3\textwidth]{figs/squeeze/cat.pdf}
+  \includegraphics[height=0.3\textwidth]{figs/squeeze/cat.pdf}
   \caption{A Schr\"odinger cat spin state created by measurement of the $X$
   quadrature of cavity light is represented on the Bloch sphere.}
   \label{squeeze:fig:cat}
@@ -710,11 +712,11 @@ be easily controlled by the shape of the trapping wires. A further idea is to
 investigate superradiance in close proximity to a microwave resonator, similar
 to what is discussed in \inlineref{PhysRevB.81.041101}.
 
-Another idea is that the coupling of two spin ensembles to a resonator could be
-used to induce two-mode squeezing between those ensembles. Such a scheme has
-previously been implemented for nitrogen-vacancy ensembles in the dispersive
-r\'egime~\cite{PhysRevA.99.012325}. As a related, final thought, it is possible
-the spin-squeezing proposal described above could be applied to a
+A further possible development is using the coupling of two spin ensembles to a
+resonator to induce two-mode squeezing between those ensembles. Such a scheme
+has previously been implemented for nitrogen-vacancy ensembles in the
+dispersive r\'egime~\cite{PhysRevA.99.012325}. As a related, final thought, it
+is possible the spin-squeezing proposal described above could be applied to a
 nitrogen-vacancy ensemble in close proximity to a CPW resonator. The same could
 be possible with other spin ensemble systems such as Rydberg atoms. These
 schemes are however beyond the scope of this discussion.
