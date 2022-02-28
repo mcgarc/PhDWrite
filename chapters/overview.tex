@@ -27,10 +27,37 @@ rubidium atoms~\cite{PhysRevLett.126.153401, Jurgilas2021}.
 
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=0.7\textwidth]{figs/overview/apparatus_04_crp.png}
+  %\includegraphics[width=0.7\textwidth]{figs/overview/apparatus_04_crp.png}
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image)
+{\includegraphics[width=0.8\textwidth]{figs/overview/apparatus_04_crp.png} };
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+        \draw [-stealth] (0.45, 0.35) -- (0.45,0.52);
+        \node[] at (0.46,0.3) {\small MOT chamber};
+        \draw [-stealth] (0.18,0.23) -- (0.1, 0.3);
+        \node[] at (0.21,0.2) {\small Chip chamber};
+        \draw [-stealth] (0.15, 0.7) -- (0.2,0.63);
+        \node[] at (0.12,0.72) {\small Tweezer chamer};
+        \draw [-stealth] (0.7, 0.95) -- (0.52,0.85);
+        \node[] at (0.72,0.99) {\small \Rb{} cell};
+        \draw [-stealth] (0.95, 0.85) -- (0.8,0.7);
+        \node[] at (0.97,0.89) {\small Slowing region};
+        \draw [-stealth] (0.6, 0.2) -- (0.7,0.2);
+        \node[] at (0.54,0.2) {\small Source};
+      \end{scope}
+    \end{tikzpicture}
+%    \begin{overpic}[width=0.7\textwidth]{figs/overview/apparatus_04_crp.png}
+%      \put(5,15){\small Chip chamber}
+%      \put(1,50){\small Tweezer chamber}
+%      \put(55,65){\small \Rb{} MOT cell}
+%      \put(81, 45){\small Slowing region}
+%      \put(60, 5){\small Source}
+%      \put(45,23){\vector(0,4){15}}
+%      \put(36,19){\small MOT chamber}
+%    \end{overpic}
   \caption{
     The \CaF{} experiment is shown along with the planned additional chip
-    chamber.}
+    chamber. Not shown: external transport coils and transverse cooling region.}
   \label{overview:fig:vacuumsystem}
 \end{figure}
 
