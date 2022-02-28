@@ -22,7 +22,7 @@ provide easy access to the ground plane for shunt connections.
 The CPW's geometry is defined by the centre conductor width ($S$) and the
 channel width ($W$). The height of the conductor is $t$ and the dielectric
 height is $h$.  The geometry of the CPW determines the region the microwave
-field occupies, as illustrated in \mysubfigref{mws:fig:CPWfield}{b}.  The CPW
+field occupies, as illustrated in \mysubfigref{mws:fig:CPW}{b}.  The CPW
 can therefore be designed to maximise overlap between the microwave field and a
 cloud of molecules trapped nearby.  As a rough approximation the molecules
 should be trapped at a distance $h\sim S$ above the centre of the CPW to
@@ -447,7 +447,7 @@ is given by
 %
 \begin{equation}
   \Delta_{N, m_N} = \sum_{N', m_N'} \frac{(\mu_e E)^2}{E_\text{rot}(N) -
-  E_\text{rot}(N')} |_\text{rot}\bra{N', m_N'}C_0^{(1)} \ket{N,
+  E_\text{rot}(N')} |\prescript{}{\text{rot}}{\bra{N', m_N'}}C_0^{(1)} \ket{N,
 m_N}_\text{rot}|^2.
 \end{equation}
 %
@@ -455,7 +455,7 @@ Where $C_q^{(k)}$ is a renormalised spherical harmonic, and the matrix element
 here can be found by application of the Wigner-Eckart
 theorem~\cite{edmonds1996}.
 %
-\begin{multline} _\text{rot}\bra{N', m_N'}C_0^{(1)} \ket{N, m_N}_\text{rot} =
+\begin{multline} \prescript{}{\text{rot}}{\bra{N', m_N'}}C_0^{(1)} \ket{N, m_N}_\text{rot} =
   \\ (-1)^{m_N'}\sqrt{(2N+1)(2N'+1)}
   % 3 j symbols
   \begin{pmatrix} N' & 1 & N \\ -m_N' & 0 & m_N \end{pmatrix} \begin{pmatrix}
