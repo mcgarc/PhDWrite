@@ -137,22 +137,8 @@ found in \inlineref{1367-2630-18-12-123017} and~\cite{Truppe2017}.
 
 \cm{inc. optical pumping}
 
-
-
-
-
-
-\section{Design requirements}
-
-% TODO Redo this para, should be mostly ok...
-The chip experiment will make use of this apparatus by adding an additional
-experiment chamber downstream of the tweezer chamber, as shown in
-\myfigref{overview:fig:vacuumsystem}. By transporting molecules through the
-tweezer chamber and into this chip chamber, we will be able to load on to the
-chip for this new experiment. In the rest of this chapter I will outline the
-requirements for the chip experiment so that it can operate in conjunction with
-the existing setup. I will then show how we have chosen to implement our
-design.
+\subsection*{Other experiments}
+% TODO Is this section really necessary?
 
 % TODO Rework this para? Maybe it just becomes a sentence, something like "we
 % use this setup for lots of things, not we want to use it for chip instead"
@@ -166,6 +152,49 @@ mounted on a transport stage outside the vacuum chamber. This transport of the
 molecules is similar to that used in
 \inlinerefs{Lewandowski2003,PhysRevResearch.1.033035} and elsewhere, it will be
 discussed further below and in \cm{transport chapter}.
+
+
+
+
+
+
+
+\section{Design requirements}
+
+%\begin{itemize}
+%  \item Andr\'e proposal, want to strongly couple to coplanar waveguides
+%  \item Want to do quantum operations with rotational stretched states
+%  \item Need small size scale
+%  \item Height limited by VdW force, as per Ed's notebook (Charles Smith also said something
+%    about charges causing decoherence?) height gives scale size
+%  \item We want to use magnetic trapping rather than electric (as explained
+%    in QSUM report: long coherence times and easier to load (?))
+%  \item Need to be able to load (one step is no good, ref. next chapter)
+%\end{itemize}
+
+As discussed in \cm{the introduction} the aim of this project is ultimately to
+trap molecules in close proximity to microwave resonators so that we can
+perform coherent control of quantum states on the rotational transitions in the
+molecules.
+%
+Following the proposal by \inlineref{Andre2006}, this can be achieved in a chip
+architecture, with the molecule trapped as close to the resonator as possible.
+%
+\cm{Calculation of VdW force to get the 10um figure}
+%
+Given that the molecules will be $\sim\SI{10}{\micro\meter}$ from the surface,
+% TODO just smaller scale surely?
+we will require that trapping electronics will be of a similar or smaller
+scale for the trapping potential to keep the molecule \cm{well localised}.
+Features of such a size can be easily created by standard photolithography
+techniques.
+
+Additionally, we aim to integrate into our existing chip experiment. This can
+be done by the addition of a new chamber to our setup, shown in
+\myfigref{overview:fig:vacuumsystem}. The chip chamber will be positioned along
+the existing MTT axis, allowing extension of the transport system and the
+delivery of molecules to this chamber. \CaF{} molecules can then be transferred
+onto the chip trap.
 
 \begin{figure}[htb]
   \centering
@@ -194,18 +223,33 @@ discussed further below and in \cm{transport chapter}.
   \label{overview:fig:vacuumsystem}
 \end{figure}
 
-\cm{
-\begin{itemize}
-  \item Andr\'e proposal, want to strongly couple to coplanar waveguides
-  \item Wantto do quantum operations with rotational stretched states
-  \item Need small size scale
-  \item Height limited by VdW force, as per Ed's notebook (Charles Smith also said something
-    about charges causing decoherence?) height gives scale size
-  \item We want to use magnetic trapping rather than electric (as explained
-    in QSUM report: long coherence times and easier to load (?))
-  \item Need to be able to load (one step is no good, ref. next chapter)
-\end{itemize}
-}
+At this point we note that the rotational stretched states of \CaF{} have been
+demonstrated to have exceptionally long lifetimes in a macroscopic magnetic
+trap~\cite{}. For this reason it was decided that using such traps would be
+preferable to the electrostatic traps suggested in \inlineref{Andre2006}. This
+has the additional problem of avoiding the need to transfer from a magnetic
+trap to an electostatic one. This problem of loading is one that has been
+similarly addressed for atom chips. For example \inlineref{} \cm{Ott paper?}
+have transferred \cm{from a similar transport trap to ours?} into a chip trap,
+via a macroscopic U-trap that is aligned with the chip. This makes it easier to
+align the MTT and the chip trap.
+
+From here it is a question of transferring a cloud of molecules from high above
+the surface into a \SI{10}{\micro\meter} scale trap. Such a procedure is
+non-tirival, and is the main subject of chapter~\ref{sim}. However it is
+apparent from the literature that directly transferring from the macroscopic
+% TODO Should be able to cite lots here
+trap to the microscopic is highly inefficient~ \cite{}.
+%
+Instead, it is generally preferred to have a series of traps of decreasing
+size. For magnetic traps, the width of the wires should decrease, so that the
+molecules remain \cm{highly localised around the trap centre} throughout
+loading.
+
+Given that at this point we have free reign to design our series of traps, we
+suggest that a \cm{Z trap is preferable to a U trap because of spin-flip
+(Majorana) losses...}
+
 
 \section{Design choices}
 % TODO Maybe a better name for this 
@@ -218,9 +262,8 @@ section...
 %
   \begin{itemize}
     \item Load with big U wire under chip
-    \item IP better than QP because of majorana losses (so choose Z wires)
     \item Current and mw delivery by subchip (? this is a detail)
-    \item Load via magnetic transport
+    \item Present design
   \end{itemize}
 }
 
