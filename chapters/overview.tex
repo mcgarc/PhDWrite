@@ -14,16 +14,158 @@ apparatus}.
 
 \section{Existing \CaF{} apparatus}
 
-\cm{Need to think a little about how this will build on theory chapter}
+In this section I will present a summary of the process used to produce
+ultracold \CaF{} molecules in a magnetic trap, which we intend to load onto the
+chip trap. We will consider the various stages of the process, which is
+presented in \myfigref{overview:fig:CaFcartoon}. First a beam of \CaF{}
+molecules is created using a buffer gas
+source~\cite{doi:10.1080/09500340.2017.1384516}. The beam is then slowed by
+application of slowing light opposing its direction of
+travel~\cite{Truppe2017a}. The slowing light can also be applied in the
+transverse direction to reduce the broadening of the beam during its flight.
+The molecules are captured in a MOT~\cite{Williams2017} and cooled in optical
+molasses~\cite{Truppe2017} before being optically pumped into a weak field
+seeking state~\cite{WilliamsMagnetic2018}. This allows for magnetic trapping
+and transport of the molecules.
 
-The methods for laser-cooling of molecules described in
-chapter~\ref{theory} are applied in our experiments to produce cold \CaF{}
-molecules. The apparatus shown in \myfigref{overview:fig:vacuumsystem} can be
-used to produce and slow a \CaF{} beam~\cite{PhysRevA.89.053416, Truppe2017a}, capture these
-molecules in a MOT and cool them below the Doppler limit~\cite{Truppe2017}. We
-are then able to conduct experiments in coherent control of molecules in a
-magnetic trap~\cite{PhysRevLett.124.063001} and investigate collisions with
-rubidium atoms~\cite{PhysRevLett.126.153401, Jurgilas2021}.
+\begin{figure}
+  \cm{TODO: Cartoon of CaF experiment up to MOT chamber}
+  \caption{}
+  \label{overview:fig:CaFcartoon}
+\end{figure}
+
+\subsection*{Buffer gas source}
+
+In the buffer gas source, a copper cell containing a \cm{calcium} target is
+cooled to \SI{4}{\kelvin}. \cm{Helium} (the eponymous buffer gas) flows into
+the cell, thermalises with the cell walls and flows out through the exit
+aperture. \cm{SF6} is also injected into the cell, and a high-power \cm{ndyag}
+laser is fired at the target. The laser ablates the \cm{calcium} target,
+producing \cm{Ca atoms} which react with the \cm{SF6} to produce \CaF{}
+molecules which thermalise with the \cm{helium} and follow the flow out of the
+exit aperture.  The result is a pulsed beam of \CaF{} molecules with typical
+mean velocity \SI{160}{\meter\per\second}.
+
+\subsection*{Slowing the beam}
+
+The beam velocity can be further reduced by application of a counter-propagating
+beam of slowing light. The light is resonant with the \cm{$X(v=0)\rightarrow
+B$} transition \cm{($\mathcal{L^S_{00}}$}. A \SI{5}{\gauss} magnetic field is
+applied, and the slowing light is linearly polarised at a relative
+\SI{45}{\degree} angle, to remix dark ground states. The slowing light is
+combined with repump light from \cm{$X(v=1)\rightarrow A(v=0)$, $\mathcal{L}_{10}$}
+to avoid losing molecules that scatter into \cm{$X(v=1)$}. Since the molecules'
+velocity will decrease during the slowing, the Doppler shift of the transition
+frequency will also change. We account for this by chirping the slowing light,
+and broadening the repump light. This process can reduce the molecule velocity
+to \cm{??}.
+
+\subsection*{Transverse cooling}
+
+Slowing the beam has the undesirable effect of increasing the transverse
+velocity of the molecules. This is due to the random walk of the molecules as
+they scatter photons from the slowing light. To counteract this we apply
+slowing beams in the transverse direction, also on the $\mathcal{L}_{00}^S$
+transition. The slowing procedure described above is carried out
+simultaneously, providing the remixing of dark ground states and the $v=1$
+repump light.
+%
+Scattering of light in the transverse direction can collimate the beam, and has
+been shown to improve the population of the MOT by a factor of $\sim3$. 
+
+\subsection*{Capture in a MOT}
+
+The \CaF{} beam travels \cm{some distance}, undergoing slowing and transverse
+cooling before reaching the MOT chamber, where we capture the molecules. The
+\CaF{} MOT is a type-II MOT~\cite{}, meaning that the angular momentum of the
+excited state ($A(v=0)$, with $F'=1$) is greater than that of the ground state
+($X(v=0)$ with $F=2$). Unlike a type-I MOT, it is therefore possible for a
+molecule that has been pumped into the excited state to decay into a dark
+state, or into a state that is anti-trapped by the MOT~\cite{}.
+
+To resolve this, a dual-frequency MOT is employed. The main MOT transition is
+addressed by the \pewpew{C}{00} light, with r.f.\ sidebands added to address
+the different hyperfine levels. The sideband addressing the $F=1$ hyperfine
+state is given opposite polarisation, and simultaneously serves as a second
+frequency for the $F=2$ state, ensuring that the normally anti-trapped states
+are repumped by the restoring beam into the MOT cycle. This is shown in \cm{a
+figure}. The $F=2$ level is now strongly trapped and although the other levels
+remain weakly trapped, this is sufficient to create a strong MOT.
+
+The branching ratios of \CaF{} mean that the excited state can decay into
+$X(v>0)$ states. One of the chief reasons that \CaF{} is chosen for our
+experiment is that it has highly diagonal Franck-Condon factors, and so the
+decay into these other states is minimised. However it is still essential to
+repump the $X(v=1,2,3)$ states, which we do with the \pewpew{}{10}
+\pewpew{}{21} and \pewpew{}{32} lasers respectively. Once again, r.f.\
+sidebands are added to address the hyperfine levels of the $X$ state.
+
+The capture velocity of the MOT is \cm{??} meaning that we are typically able
+to capture $??$ molecules from our beam. The MOT population can be estimated by
+looking at the scatter, or by turning off the light and performing
+light-induced fluorescence imaging using \pewpew{C}{00}. The MOT temperature is
+typically \cm{}, and this can be further reduced by lowering the intensity of
+\pewpew{C}{00}~\cite{Truppe2017} \cm{what is final temp?}
+
+\subsection*{Optical molasses}
+
+Sub-Doppler cooling of \CaF{} is achievable by employing a blue-detuned
+molasses. In this scheme the MOT coils are switched off, and \pewpew{C}{00}
+is detuned to be blue-detuned \cm{by how much?}.  Consider the example of a
+$F=1$ hyperfine level ground state, and $F=0$ excited state which is shown in
+\cm{fig like Hannah's 5.1}. A polarisation gradient is established across the
+molasses. In regions where the polarisation is $\sigma_-$ ($\sigma_-$) only the
+$m=1$ ($m=-1$) ground state is coupled to the light.
+
+The a.c.\ Stark shift now acts on the bright states, meaning that as they move
+through the light field they lose kinetic energy. Near the peak of the energy
+shift, the bright state molecules are preferentially pumped into the dark
+state. Meanwhile the dark states will adiabatically transfer back to bright
+states, which occurs preferentially at regions where the bright and dark states
+are close in energy. This cycle then repeats, resulting in the molecule losing
+energy as it passes through the light field.
+
+% TODO Cite Molecules cooled belowo DOppler limit and
+% Weidemu ̈ller, M., Esslinger, T., Ol’shanii, M. A., Hem- merich, A. & Ha ̈nsch, T. W. A novel scheme for efficient cooling below the photon recoil limit. EPL 27, 109–114 (1994).
+
+In the \CaF{} experiment, the situation is not so simple. We must account for
+intensity gradients as well as those of polarisation, and of course the real
+experiment occurs in three dimensions not one. Details of this scheme can be
+found in \inlineref{1367-2630-18-12-123017} and~\cite{Truppe2017}.
+
+\subsection*{Magnetic trapping and transport}
+
+\cm{inc. optical pumping}
+
+
+
+
+
+
+\section{Design requirements}
+
+% TODO Redo this para, should be mostly ok...
+The chip experiment will make use of this apparatus by adding an additional
+experiment chamber downstream of the tweezer chamber, as shown in
+\myfigref{overview:fig:vacuumsystem}. By transporting molecules through the
+tweezer chamber and into this chip chamber, we will be able to load on to the
+chip for this new experiment. In the rest of this chapter I will outline the
+requirements for the chip experiment so that it can operate in conjunction with
+the existing setup. I will then show how we have chosen to implement our
+design.
+
+% TODO Rework this para? Maybe it just becomes a sentence, something like "we
+% use this setup for lots of things, not we want to use it for chip instead"
+The \CaF{} MOT is the workhorse of our experiment, providing molecules which
+can be further cooled cooled further (as discussed above) used for experiments
+in collisions with \Rb{} atoms (see \inlinerefs{Jurgilas2021, JurgilasIOP2021,
+PhysRevLett.126.153401}) and optical tweezers. The tweezer experiment is
+undertaken in the neighbouring tweezer chamber, which is loaded by transporting
+molecules in a magnetic transport trap (MTT), a quadrupole trap with coils
+mounted on a transport stage outside the vacuum chamber. This transport of the
+molecules is similar to that used in
+\inlinerefs{Lewandowski2003,PhysRevResearch.1.033035} and elsewhere, it will be
+discussed further below and in \cm{transport chapter}.
 
 \begin{figure}[htb]
   \centering
@@ -46,42 +188,11 @@ rubidium atoms~\cite{PhysRevLett.126.153401, Jurgilas2021}.
         \node[] at (0.54,0.2) {\small Source};
       \end{scope}
     \end{tikzpicture}
-%    \begin{overpic}[width=0.7\textwidth]{figs/overview/apparatus_04_crp.png}
-%      \put(5,15){\small Chip chamber}
-%      \put(1,50){\small Tweezer chamber}
-%      \put(55,65){\small \Rb{} MOT cell}
-%      \put(81, 45){\small Slowing region}
-%      \put(60, 5){\small Source}
-%      \put(45,23){\vector(0,4){15}}
-%      \put(36,19){\small MOT chamber}
-%    \end{overpic}
   \caption{
     The \CaF{} experiment is shown along with the planned additional chip
     chamber. Not shown: external transport coils and transverse cooling region.}
   \label{overview:fig:vacuumsystem}
 \end{figure}
-
-All our experiments begin with the production of a beam of \CaF{} in the source
-chamber with a buffer-gas cell. The molecules undergo laser-slowing before
-being captured in a MOT in the MOT chamber. Subsequent experiments can be
-conducted in this chamber or in the neighbouring tweezer chamber. This can be
-populated by means of a magnetic transport trap (MTT).  Molecules can be
-trapped in an external anti-Helmholtz coil mounted on a transport stage. Moving
-the coils from their position around the MOT chamber can transport the trapped
-molecules into the neighbouring tweezer chamber. \cm{To be discussed in later
-chapter??}
-
-The chip experiment will make use of this aparatus by adding an additional
-experiment chamber downstream of the tweezer chamber, as shown in
-\myfigref{overview:fig:vacuumsystem}. By transporting molecules through the
-tweezer chamber and into this chip chamber, we will be able to load on to the
-chip for this new experiment. In the rest of this chapter I will outline the
-requirements for the chip experiment so that it can operate in conjunction with
-the existing setup. I will then show how we have chosen to implement our
-design.
-
-
-\section{Design requirements}
 
 \cm{
 \begin{itemize}
@@ -100,6 +211,11 @@ design.
 % TODO Maybe a better name for this 
 
 \cm{
+%
+Everything below here is what was in the fab chapter before (I think...) Need
+to rework it to fit more with the above. Maybe integrate entirely with the prev
+section...
+%
   \begin{itemize}
     \item Load with big U wire under chip
     \item IP better than QP because of majorana losses (so choose Z wires)
@@ -108,27 +224,8 @@ design.
   \end{itemize}
 }
 
-\section{Old stuff}
-\label{overview:overview}
-
-Our ultracold molecules are created using the methods described above, with our
-apparatus, including the proposed chip chamber shown in
-\myfigref{overview:fig:vacuumsystem}. A buffer-gas source is used to create
-\CaF{} molecules in the source chamber, with the beam being longitudinally and
-transversely slowed before it is captured in a MOT inside the collisions
-chamber.
 
 
-The \CaF{} MOT is the workhorse of our experiment, providing molecules which
-can be further cooled cooled further (as discussed above) used for experiments
-in collisions with \Rb{} atoms (see \inlinerefs{Jurgilas2021, JurgilasIOP2021,
-PhysRevLett.126.153401}) and optical tweezers. The tweezer experiment is
-undertaken in the neighbouring tweezer chamber, which is loaded by transporting
-molecules in a magnetic transport trap (MTT), a quadrupole trap with coils
-mounted on a transport stage outside the vacuum chamber. This transport of the
-molecules is similar to that used in
-\inlinerefs{Lewandowski2003,PhysRevResearch.1.033035} and elsewhere, it will be
-discussed further below and in \cm{transport chapter}.
 
 The chip experiment will integrate into this setup as shown in
 \myfigref{overview:fig:vacuumsystem}, an additional chamber will be mounted
