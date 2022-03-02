@@ -154,12 +154,7 @@ molecules is similar to that used in
 discussed further below and in \cm{transport chapter}.
 
 
-
-
-
-
-
-\section{Design requirements}
+\section{Design requirements and overview}
 
 %\begin{itemize}
 %  \item Andr\'e proposal, want to strongly couple to coplanar waveguides
@@ -225,11 +220,12 @@ onto the chip trap.
 
 At this point we note that the rotational stretched states of \CaF{} have been
 demonstrated to have exceptionally long lifetimes in a macroscopic magnetic
-trap~\cite{}. For this reason it was decided that using such traps would be
+trap~\cite{WilliamsMagnetic2018}. For this reason it was decided that using such traps would be
 preferable to the electrostatic traps suggested in \inlineref{Andre2006}. This
 has the additional problem of avoiding the need to transfer from a magnetic
 trap to an electostatic one. This problem of loading is one that has been
-similarly addressed for atom chips. For example \inlineref{} \cm{Ott paper?}
+similarly addressed for atom chips. For example in \inlineref{Ott2001} \cm{fix
+phrasing}
 have transferred \cm{from a similar transport trap to ours?} into a chip trap,
 via a macroscopic U-trap that is aligned with the chip. This makes it easier to
 align the MTT and the chip trap.
@@ -242,66 +238,64 @@ apparent from the literature that directly transferring from the macroscopic
 trap to the microscopic is highly inefficient~ \cite{}.
 %
 Instead, it is generally preferred to have a series of traps of decreasing
-size. For magnetic traps, the width of the wires should decrease, so that the
+size~\cite{Reichel1999}. For magnetic traps, the width of the wires should decrease, so that the
 molecules remain \cm{highly localised around the trap centre} throughout
 loading.
+%
+Each wire trap will begin trapping at one height before the bias field is
+increased to bring the trap centre closer to the surface (as per
+% TODO back to link
+%\myeqref{intro:eq:trapbias}
+%
+\cm{reference eqn. $B = \mu_0 I / (2\pi h)$}
+).  To distinguish between the two trap stages for
+each wire, we label them $\mathrm{ZX_i}$ for the initial (higher) trap and
+$\mathrm{ZX_f}$ for the final (lower) trap, with $\mathrm{ZX}$ corresponding to
+the wire labels in \mytableref{overview:table:wires}.
+\cm{Want to work in this info: External magnetic
+coils will provide the bias fields, and currents will be provided by drivers
+discussed in somehwere else.
+}
 
+
+A cross section of the chip chamber is shown in \cm{fig}. Molecules can be
+brought in along the transport axis and positioned below the surface of the
+chip, which is mounted on the chip flange assembly, detailed in \cm{fig, with
+pic and exploded view}. The flange is equipped with a large copper heat sink, a
+large U-wire to form the macroscopic alignment trap and a subchip for current
+and microwave delivery. The \cm{science chip} is mounted into a recess in the
+subchip so that it is flush with the surface. The chip is mounted facing
+downwards so that molecules can be dropped for imaging as they fall.
+
+% TODO better phrasing here
 Given that at this point we have free reign to design our series of traps, we
 suggest that a \cm{Z trap is preferable to a U trap because of spin-flip
 (Majorana) losses...}
 
+Once loaded into the U-trap, the molecules will be transferred through a series
+of Z-wire traps on the chip. Each Z-wire should be sufficiently large to
+maintain the currents required to form a trap at height $z$ below the trap,
+whilst having a width and height  $w, h \ll z$ so that that the current is
+highly localised compared to the cloud size.  This follows the widely-made
+assumption in the literature that the trapping currents are carried by wires
+which are infinitesimally small compared to the length scale of the trap
+~\cite{2011Ac}. Once in the smallest trap, the molecules will be close enough
+for coupling to microwave guides.
 
-\section{Design choices}
-% TODO Maybe a better name for this 
-
-\cm{
-%
-Everything below here is what was in the fab chapter before (I think...) Need
-to rework it to fit more with the above. Maybe integrate entirely with the prev
-section...
-%
-  \begin{itemize}
-    \item Load with big U wire under chip
-    \item Current and mw delivery by subchip (? this is a detail)
-    \item Present design
-  \end{itemize}
-}
+% TODO Make sure that this link to fab chapter is ok
+In the case of the first Z-wire, the molecules are still \SI{3}{\milli\meter}
+away from the trapping wire. If we demand a trap depth of
+$k_B\times\SI{1}{\milli\kelvin}$, then we will require a trapping current of
+\SI{30}{\ampere} to form a trap of this depth.  We will discuss in
+chapter~\ref{fab} that the maximum wire height that can reliably be fabricated
+is \SI{5}{\micro\meter}, and we expect that the wires will be able to carry a
+maximum current density of \SI{6E10}{\ampere\per\meter\squared}, as was found
+for a similar chip design in \inlineref{Treutlein2008}. The Z-wire will
+therefore have a width $w=\SI{200}{\micro\meter}$. Other wire parameters are
+shown in \mytableref{overview:table:wires}.
 
 
 
-
-The chip experiment will integrate into this setup as shown in
-\myfigref{overview:fig:vacuumsystem}, an additional chamber will be mounted
-further downstream of the transport stage, so that molecules can be brought
-straight through the tweezer chamber from the collisions chamber.  Since the
-molecules will be brought into the chamber inside magnetic trap, we propose to
-transfer them gradually into other magnetic traps formed on the chip.
-%
-Not only does this take advantage of the known, long-lived \CaF{} states in the
-trap~\cite{WilliamsMagnetic2018}, but it allows us to follow the well-trodden
-path of magnetic trapping near a chip, as has been outlined in previous
-chapters.  The transfer to the chip will take the molecules through a series of
-magnetic traps of decreasing size until they are in the smallest trap, similar
-to what has previously been done in atom chips \cite{Reichel1999} or for
-guiding molecules near surfaces \cite{Meek2009}
-
-The chip will be held in its chamber recessed in a PCB used for power (and
-later microwave) delivery. We use an aluminium-core PCB to ensure good heat
-conduction away from the chip and we refer to it as the subchip.  This is
-attached to a large copper heatsink, which has a large U-wire built into it,
-isolated from the rest of the copper by aluminium-nitride plates. The heatsink
-connects to a flange equipped with a \cm{?} pin feedthrough for chip currents,
-and two high-current feedthroughs to power the U-wire.
-
-% TODO Ensure I go on to discuss the current drivers
-% TODO confirm distance in this para
-We refer to this entire device as the flange assembly, and it is shown in the
-inset of \myfigref{overview:fig:vacuumsystem} and in
-\mysubfigref{overview:fig:chipexperiment} It will be mounted so that the chip is
-\SI{3}{\milli\meter} away from the transport axis and facing the floor,
-allowing us to trap and then drop the molecules for imaging.  External magnetic
-coils will provide the bias fields, and currents will be provided by drivers
-discussed in \cm{a later chapter.} {a}.
 
 \begin{figure}[ht]
   \centering
@@ -346,39 +340,6 @@ discussed in \cm{a later chapter.} {a}.
   \label{overview:fig:chipexperiment}
 \end{figure}
 
-% TODO Check what these equations that I use actually are and where they go. I
-% think the current wording might basically be the same equation twice...
-The first stage of the magnetic transfer is to take the molecules from the MTT
-to the large U-wire embedded in the heat sink.  The idea is to use this as a
-deep, macroscopic trap that is well-aligned with the chip by virtue of being
-built into the assembly, and can be easily aligned with the MTT, similarly to
-other experiments such as \inlineref{Ott2001}.  Since it is under the chip, it
-will of course be further from the molecule cloud than the other wires, hence
-more current will be required to create a deep trap (as per
-equations~\ref{intro:eq:trapbias} and~\ref{intro:eq:trapdepth}). The current is
-limited to \SI{100}{\ampere} by the vacuum feedthroughs, allowing for a trap of
-depth around \SI{2}{\milli\kelvin} by equation \cm{ref. earlier chapter}.
-
-Once loaded into the U-trap, the molecules will be transferred through the
-Z-wire traps on the chip. Each Z-wire should be sufficiently
-large to maintain the currents required to form a trap at height $z$ below the
-trap, whilst having a width and height  $w, h \ll z$ so that that the current
-is highly localised compared to the cloud size.  This follows the widely-made
-assumption in the literature that the trapping currents are carried by wires
-which are infinitesimally small compared to the length scale of the trap
-~\cite{2011Ac}.
-
-% TODO Make sure that this link to fab chapter is ok
-In the case of the first Z-wire, the molecules are still \SI{3}{\milli\meter}
-away from the trapping wire. If we demand a trap depth of
-$k_B\times\SI{1}{\milli\kelvin}$, then we will require a trapping current of
-\SI{30}{\ampere} to form a trap of this depth.  We will discuss in
-chapter~\ref{fab} that the maximum wire height that can reliably be fabricated
-is \SI{5}{\micro\meter}, and we expect that the wires will be able to carry a
-maximum current density of \SI{6E10}{\ampere\per\meter\squared}, as was found
-for a similar chip design in \inlineref{Treutlein2008}. The Z-wire will
-therefore have a width $w=\SI{200}{\micro\meter}$. Other wire parameters are
-shown in \mytableref{overview:table:wires}.
 
 The axial length of the wires also decreases to gradually reduce the size of
 the trapped cloud in the $x$ direction. An exaggerated schematic of the wire
@@ -410,16 +371,8 @@ accidental damage to the chip during normal operation.
   \label{overview:table:wires}
 \end{table}
 
-Each Z-trap will begin trapping at one height before the bias field is
-increased to bring the trap centre closer to the surface (as per
-% TODO back to link
-%\myeqref{intro:eq:trapbias}
-\cm{reference eqn. $B = \mu_0 I / (2\pi h)$}
-).  To distinguish between the two trap stages for
-each wire, we label them $\mathrm{ZX_i}$ for the initial (higher) trap and
-$\mathrm{ZX_f}$ for the final (lower) trap, with $\mathrm{ZX}$ corresponding to
-the wire labels in \mytableref{overview:table:wires}.
 
+\cm{Fix phrasing}
 In order to incorporate microwave guides onto the chip. This can be
 accomplished by adding an insulating layer on top of the wires, on to which we
 can fabricate coplanar waveguides~\cite{1127105}. The flange has been designed
