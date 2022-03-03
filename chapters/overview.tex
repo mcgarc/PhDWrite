@@ -1,18 +1,16 @@
-This chapter describes the process of desigining the molecule chip experiment.
-This was motivated by three main factors: the need to integrate with the
-existing experiment, the core proposal of confining molecules close to a
-microwave guide, and the practicalities of fabricating the chip. Here I will
-focus on how the first two factors informed the design choices, with changes
-due to fabrication discussed in chapter~\ref{fab}. The design will be further
-justified by simulation in chapter~\ref{sim}.
+The design of the \CaF{} chip experiment was motivated by three main factors:
+the need to integrate with the existing experiment, the core proposal of
+confining molecules close to a microwave guide, and the practicalities of
+fabricating the chip. In this chapter I will describe how the first two factors
+informed the design choices, with changes due to fabrication discussed in
+chapter~\ref{fab}. The design will be further justified by simulation in
+chapter~\ref{sim}.
+%
+We begin with a discussion of the existing experiment. I will then give an
+overview and motivation of the design of the new experiment.
 
-We begin with a discussion of
-the existing experiment, and where the chip fits into it. I will then discuss
-the process that lead us to choose a magnetic trap for our design. I will
-present the final design \cm{and how it can be integrated with the existing
-apparatus}. 
 
-\section{Existing \CaF{} apparatus}
+\section{Existing \CaF{} experiment}
 
 In this section I will present a summary of the process used to produce
 ultracold \CaF{} molecules in a magnetic trap, which we intend to load onto the
@@ -29,10 +27,69 @@ seeking state~\cite{WilliamsMagnetic2018}. This allows for magnetic trapping
 and transport of the molecules.
 
 \begin{figure}
-  \cm{TODO: Cartoon of CaF experiment up to MOT chamber}
-  \caption{}
+  \centering
+  \includegraphics{figs/overview/cartoon.pdf}
+  \caption{A schematic of the \CaF{} source, slowing region and MOT chamber.
+  \CaF{} molecules (grey cone) are produced by the buffer gas cell, and are
+  slowed by longitudinal slowing and transverse cooling light (green,
+  \pewpew{S}{00}). The molecules are then captured in a MOT (MOT light
+  \pewpew{}{00} and repumps combined are shown here in orange) where
+  they can be further cooled and transferred to a magnetic trap. The molecules
+  can then be transported out of the chamber by the MTT in the direction of the
+  pink arrow.}
   \label{overview:fig:CaFcartoon}
 \end{figure}
+
+\subsection*{\CaF{} energy structure}
+
+The energy structure of \CaF{} is depicted in
+\myfigref{overview:fig:CaFenergy}. Here we show only the levels that are
+pertinent to this thesis, those being the X, A and B electronic levels up to
+vibrational level $v= 3, 2 \text{and} 0$ respectively.  For the X state, we
+will discuss both the $N=0\text{and}1$ states.
+Figure~\ref{overview:fig:CaFenergy} and \cm{a table} also label the various
+lasers that are used to addressed the \CaF{} transitions. We label these as
+\pewpew{}{vv'} where $v$ ($v'$) is the lower (excited) vibrational level that
+the laser addresses. The superscript $S$ is used for the $X\rightarrow B$
+transition.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.8\textwidth]{figs/energylevels/main_sbs.pdf}
+  \caption{
+    The energy levels of \CaF{} are shown, along with the lasers that will be
+    used to address the various transitions (further information is found in
+    \cm{table}. The branching ratios for the allowed decays are shown with
+    dashed lines. Note that the $X(N=0)$ level is included, but for simplicity
+    the $X(N=2)$ level is omitted. The box shows the hyperfine levels of
+    $X(N=1, v=0)$. This figure is adapted from \inlineref{Williams2018}. 
+  }
+  \label{overview:fig:CaFenergy}
+\end{figure}
+
+Also shown by the dashed lines are the permitted decay paths, along with their
+branching ratios. One of the reasons \CaF{} is chosen for study over other
+molecules is its highly diagonal Franck-Condon factors, so that most decays
+occurr with $v'=v$. However for large numbers of scattered photons we must
+employ the various repump lasers to avoid pumping into states that are dark to
+the cooling light, as we shall see when we discuss slowing of the beam and the
+MOT.
+
+Hyperfine splitting occurs in \CaF{} due to the spin-half contribution of the
+fluorine atom. This is not resolved in the $A$ state, but must be accounted for
+in the $X$ state. The hyperfine splitting is shown in the box of
+\myfigref{overview:fig:CaFenergy} and is in the region that it can be addressed
+by the addition of r.f.\ sidebands to the lasers.
+
+At this stage we also introduce three stretched states in \CaF{}. These states
+lie in the $X$ electronic level, and are denoted $\ket{N}_\text{str} = \ket{N,
+m_N}_\text{rot}\ket{S, m_S=S}\ket{I,m_I=I}$, where the degeneracy must be
+lifted by the application of an external magnetic field, $m_X$ is then the
+projection of $X$ onto this field's axis. The stretched states are of interest
+because they are not only weak-field seekers, but the transitions between
+neighbouring stretched states
+($\ket{N}_\text{str}\leftrightarrow\ket{N+1}_\text{str}$) are highly
+insensitive to magnetic fields.
 
 \subsection*{Buffer gas source}
 
@@ -42,9 +99,9 @@ the cell, thermalises with the cell walls and flows out through the exit
 aperture. \cm{SF6} is also injected into the cell, and a high-power \cm{ndyag}
 laser is fired at the target. The laser ablates the \cm{calcium} target,
 producing \cm{Ca atoms} which react with the \cm{SF6} to produce \CaF{}
-molecules which thermalise with the \cm{helium} and follow the flow out of the
-exit aperture.  The result is a pulsed beam of \CaF{} molecules with typical
-mean velocity \SI{160}{\meter\per\second}.
+molecules. These in turn thermalise with the \cm{helium} and follow the flow
+out of the exit aperture.  The result is a pulsed beam of \CaF{} molecules with
+typical mean velocity \SI{160}{\meter\per\second}. We can reliably produce 
 
 \subsection*{Slowing the beam}
 
@@ -84,7 +141,7 @@ molecule that has been pumped into the excited state to decay into a dark
 state, or into a state that is anti-trapped by the MOT~\cite{}.
 
 To resolve this, a dual-frequency MOT is employed. The main MOT transition is
-addressed by the \pewpew{C}{00} light, with r.f.\ sidebands added to address
+addressed by the \pewpew{}{00} light, with r.f.\ sidebands added to address
 the different hyperfine levels. The sideband addressing the $F=1$ hyperfine
 state is given opposite polarisation, and simultaneously serves as a second
 frequency for the $F=2$ state, ensuring that the normally anti-trapped states
@@ -92,6 +149,7 @@ are repumped by the restoring beam into the MOT cycle. This is shown in \cm{a
 figure}. The $F=2$ level is now strongly trapped and although the other levels
 remain weakly trapped, this is sufficient to create a strong MOT.
 
+% TODO Change this, discussed above now.
 The branching ratios of \CaF{} mean that the excited state can decay into
 $X(v>0)$ states. One of the chief reasons that \CaF{} is chosen for our
 experiment is that it has highly diagonal Franck-Condon factors, and so the
@@ -287,7 +345,7 @@ the trapped cloud in the $x$ direction.
 \end{tabular}
   \caption{Details on the wire dimensions, maximum current, and desired
   trapping heights. The wire design is shown in
-  \mysubfigref{overview:fig:chipexperiment}{c}. Note that the U-wire current is
+  \mysubfigref{overview:fig:chiplayout}. Note that the U-wire current is
   limited by vacuum feedthroughs and not by the maximum current calculated by
   the wire dimensions.  The maximum currents have been designed for use at only
   50\% of their potential maximum ($I_\text{max}$).
@@ -331,7 +389,7 @@ chater~\ref{fab}.
     similar. All of the above features  will be discussed further in
     chapter~\ref{fab}. The crest of Imperial College London (iv) is also
     included.}
-  \label{overview:fig:chipexperiment}
+  \label{overview:fig:chiplayout}
 \end{figure}
 
 Notice that this design does not incorporate microwave guides. These are to be
@@ -352,25 +410,29 @@ operation is discussed in chapters~\ref{mws} and \ref{squeeze}.
     \includegraphics[width=\textwidth]{figs/chip_pic_crop.png}
     \caption{}
   \end{subfigure}
-  A cross section of the chip chamber is shown in (b). The arrow shows how
+  \caption{
+  A cross section of the chip chamber is shown in (a). The arrow shows how
   molecules will enter the chamber, brought in by the MTT.
   In (b) we have the chip assembly fully constructed, with a view of the
-    aluminium-core PCB (subchip) for current delivery. Note also the polyimide
-    bushings to electrically isolate the retaining screws from the surface. The
+    aluminium-core PCB (subchip) for current delivery. The
     microwave feedthroughs remain disconnected.
+  }
+  \label{overview:fig:chipchamber}
 \end{figure}
 
 % TODO Put exploded view with details in the experiment chapter
 
 To facilitate all of this, the internals of the chip chamber have been designed
-as shown (in cross section) in \cm{fig}. Molecules can be brought in along the
-transport axis and positioned below the surface of the chip, which is mounted
-on the chip flange assembly, detailed in \cm{fig}.
-The flange is equipped with a large copper heat sink, a large U-wire to form
-the macroscopic alignment trap and a subchip for current and microwave
-delivery. The \cm{science chip} is mounted into a recess in the subchip so that
-it is flush with the surface. The chip is mounted facing downwards so that
-molecules can be dropped for imaging as they fall. The flange itself is fitted
-with two high-current feedthroughs, a \cm{??} pin feedthrough rated for
-\cm{currents}, and microwave feedthroughs. In this way the entire assembly 
-is \cm{self contained and awesome}.
+as shown (in cross section) in \mysubfigref{overview:fig:chipchamber}{a}.
+Molecules can be brought in along the transport axis (shown by the arrow in the
+figure) and positioned below the surface of the chip, which is mounted on the
+chip flange assembly. The chip flange assembly is detailed in
+\mysubfigref{overview:fig:chipchamber}{b}, and is is equipped with a large
+copper heat sink, a large U-wire to form the macroscopic alignment trap and a
+subchip for current and microwave delivery. The \cm{science chip} is mounted
+into a recess in the subchip so that it is flush with the surface. The chip is
+mounted facing downwards so that molecules can be dropped for imaging as they
+fall. The flange itself is fitted with two high-current feedthroughs, a \cm{??}
+pin feedthrough rated for \cm{currents}, and microwave feedthroughs. In this
+way the entire assembly is \cm{self contained and awesome}. The flange assembly
+will be explained in futher detail in chapter~\ref{experiment}.
