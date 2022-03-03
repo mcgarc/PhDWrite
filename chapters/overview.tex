@@ -40,18 +40,18 @@ and transport of the molecules.
   \label{overview:fig:CaFcartoon}
 \end{figure}
 
-\subsection*{\CaF{} energy structure}
+\subsection*{\CaF{} energy structure and constants}
 
 The energy structure of \CaF{} is depicted in
 \myfigref{overview:fig:CaFenergy}. Here we show only the levels that are
 pertinent to this thesis, those being the X, A and B electronic levels up to
 vibrational level $v= 3, 2 \text{and} 0$ respectively.  For the X state, we
 will discuss both the $N=0\text{and}1$ states.
-Figure~\ref{overview:fig:CaFenergy} and \cm{a table} also label the various
-lasers that are used to addressed the \CaF{} transitions. We label these as
-\pewpew{}{vv'} where $v$ ($v'$) is the lower (excited) vibrational level that
-the laser addresses. The superscript $S$ is used for the $X\rightarrow B$
-transition.
+Figure~\ref{overview:fig:CaFenergy} and \mytableref{overview:table:lasers} also
+label the various lasers that are used to addressed the \CaF{} transitions. We
+label these as \pewpew{}{vv'} where $v$ ($v'$) is the lower (excited)
+vibrational level that the laser addresses. The superscript $S$ is used to
+distinguish the $X\rightarrow B$ transition.
 
 \begin{figure}
   \centering
@@ -59,13 +59,34 @@ transition.
   \caption{
     The energy levels of \CaF{} are shown, along with the lasers that will be
     used to address the various transitions (further information is found in
-    \cm{table}. The branching ratios for the allowed decays are shown with
-    dashed lines. Note that the $X(N=0)$ level is included, but for simplicity
-    the $X(N=2)$ level is omitted. The box shows the hyperfine levels of
-    $X(N=1, v=0)$. This figure is adapted from \inlineref{Williams2018}. 
+    \mytableref{overview:table:lasers}). The branching ratios for the allowed
+    decays are shown with dashed lines. Note that the $X(N=0)$ level is
+    included, but for simplicity the $X(N=2)$ level is omitted. The box shows
+    the hyperfine levels of $X(N=1, v=0)$. This figure is adapted from
+    \inlineref{Williams2018}. 
   }
   \label{overview:fig:CaFenergy}
 \end{figure}
+
+\begin{table}
+  \centering
+\begin{tabular}{llll}
+  Symbol & Ground state & excited state & wavelength (\si{\nano\meter}) \\
+  \pewpew{}{00} & $X(v=0)$ & $A(v=0)$ &  606 \\
+  \pewpew{S}{00} & $X(v=0)$ & $B(v=0)$ & 531 \\
+  \pewpew{}{01} & $X(v=0)$ & $A(v=1)$ & 628 \\
+  \pewpew{}{12} & $X(v=1)$ & $A(v=2)$ & 628 \\
+  \pewpew{}{23} & $X(v=2)$ & $A(v=3)$ & 628 \\
+  \pewpew{}{10} & $X(v=1)$ & $A(v=0)$ & 585 \\
+ \hline
+\end{tabular}
+\caption{
+  The various laser transitions used in this thesis are tabulated.
+  \pewpew{}{10} is included for completion, and will be explained in
+  chapter~\ref{experiment}.
+  }
+  \label{overview:table:lasers}
+\end{table}
 
 Also shown by the dashed lines are the permitted decay paths, along with their
 branching ratios. One of the reasons \CaF{} is chosen for study over other
@@ -78,18 +99,28 @@ MOT.
 Hyperfine splitting occurs in \CaF{} due to the spin-half contribution of the
 fluorine atom. This is not resolved in the $A$ state, but must be accounted for
 in the $X$ state. The hyperfine splitting is shown in the box of
-\myfigref{overview:fig:CaFenergy} and is in the region that it can be addressed
-by the addition of r.f.\ sidebands to the lasers.
+\myfigref{overview:fig:CaFenergy}. In the $B$ level, the $F=0$ and $F=1$ states
+are split by \SI{20}{\mega\hertz}, which can be neglected for the purposes of
+our discussion. A full description of the \CaF{} energy structure and various
+constants can be found in \inlineref{Anderegg2019a}, those that are most useful
+are presented in \mytableref{overview:table:constants}.
 
-At this stage we also introduce three stretched states in \CaF{}. These states
-lie in the $X$ electronic level, and are denoted $\ket{N}_\text{str} = \ket{N,
-m_N}_\text{rot}\ket{S, m_S=S}\ket{I,m_I=I}$, where the degeneracy must be
-lifted by the application of an external magnetic field, $m_X$ is then the
-projection of $X$ onto this field's axis. The stretched states are of interest
-because they are not only weak-field seekers, but the transitions between
-neighbouring stretched states
-($\ket{N}_\text{str}\leftrightarrow\ket{N+1}_\text{str}$) are highly
-insensitive to magnetic fields.
+\begin{table}
+  \centering
+\begin{tabular}{lll}
+  Constant & Symbol & Value \\
+  Mass & m & \\
+  % TODO I think Mike gave this to me, but it it for particular transitions?
+  Electric dipole moment & $\mu_e$ & \\
+  Magnetic dipole moment & $\mu$ & \\
+ \hline
+\end{tabular}
+\caption{
+  Various constants for \CaF{} taken from \inlineref{Anderegg2019a}.
+  % TODO Also taken from elsewhere?
+  }
+  \label{overview:table:lasers}
+\end{table}
 
 \subsection*{Buffer gas source}
 
@@ -149,15 +180,6 @@ are repumped by the restoring beam into the MOT cycle. This is shown in \cm{a
 figure}. The $F=2$ level is now strongly trapped and although the other levels
 remain weakly trapped, this is sufficient to create a strong MOT.
 
-% TODO Change this, discussed above now.
-The branching ratios of \CaF{} mean that the excited state can decay into
-$X(v>0)$ states. One of the chief reasons that \CaF{} is chosen for our
-experiment is that it has highly diagonal Franck-Condon factors, and so the
-decay into these other states is minimised. However it is still essential to
-repump the $X(v=1,2,3)$ states, which we do with the \pewpew{}{10}
-\pewpew{}{21} and \pewpew{}{32} lasers respectively. Once again, r.f.\
-sidebands are added to address the hyperfine levels of the $X$ state.
-
 The capture velocity of the MOT is \cm{??} meaning that we are typically able
 to capture $??$ molecules from our beam. The MOT population can be estimated by
 looking at the scatter, or by turning off the light and performing
@@ -194,6 +216,17 @@ found in \inlineref{1367-2630-18-12-123017} and~\cite{Truppe2017}.
 \subsection*{Magnetic trapping and transport}
 
 \cm{inc. optical pumping}
+
+At this stage we also introduce three stretched states in \CaF{}. These states
+lie in the $X$ electronic level, and are denoted $\ket{N}_\text{str} = \ket{N,
+m_N}_\text{rot}\ket{S, m_S=S}\ket{I,m_I=I}$, where the degeneracy must be
+lifted by the application of an external magnetic field, $m_X$ is then the
+projection of $X$ onto this field's axis. The stretched states are of interest
+because they are not only weak-field seekers, but the transitions between
+neighbouring stretched states
+($\ket{N}_\text{str}\leftrightarrow\ket{N+1}_\text{str}$) are highly
+insensitive to magnetic fields.
+
 
 \subsection*{Other experiments}
 % TODO Is this section really necessary?
