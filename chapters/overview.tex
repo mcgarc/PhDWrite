@@ -17,7 +17,7 @@ ultracold \CaF{} molecules in a magnetic trap, which we intend to load onto the
 chip trap. We will consider the various stages of the process, which is
 presented in \myfigref{overview:fig:CaFcartoon}. First a beam of \CaF{}
 molecules is created using a buffer gas
-source~\cite{doi:10.1080/09500340.2017.1384516}. The beam is then slowed by
+source~\cite{Truppe2018}. The beam is then slowed by
 application of slowing light opposing its direction of
 travel~\cite{Truppe2017a}. The slowing light can also be applied in the
 transverse direction to reduce the broadening of the beam during its flight.
@@ -36,7 +36,8 @@ and transport of the molecules.
   \pewpew{}{00} and repumps combined are shown here in orange) where
   they can be further cooled and transferred to a magnetic trap. The molecules
   can then be transported out of the chamber by the MTT in the direction of the
-  pink arrow.}
+  pink arrow. A detailed view of the source is shown in
+  \myfigref{overview:fig:source}}
   \label{overview:fig:CaFcartoon}
 \end{figure}
 
@@ -124,15 +125,43 @@ are presented in \mytableref{overview:table:constants}.
 
 \subsection*{Buffer gas source}
 
-In the buffer gas source, a copper cell containing a \cm{calcium} target is
-cooled to \SI{4}{\kelvin}. \cm{Helium} (the eponymous buffer gas) flows into
-the cell, thermalises with the cell walls and flows out through the exit
-aperture. \cm{SF6} is also injected into the cell, and a high-power \cm{ndyag}
-laser is fired at the target. The laser ablates the \cm{calcium} target,
-producing \cm{Ca atoms} which react with the \cm{SF6} to produce \CaF{}
-molecules. These in turn thermalise with the \cm{helium} and follow the flow
-out of the exit aperture.  The result is a pulsed beam of \CaF{} molecules with
-typical mean velocity \SI{160}{\meter\per\second}. We can reliably produce 
+We begin all our experiments by creating a pulsed beam of \CaF{} molecules
+using a buffer gas source. Such a device operates by using a buffer gas (in
+this case helium) to thermalise between a cold cell and warm molecules. The
+molecules then exit through an aperture to form a beam. The \CaF{} molecules are also
+created inside the beam from \SFsix{} gas and calcium atoms, which are ablated
+from a target by a high-power Nd:YAG laser.
+
+The buffer gas cell is pictured in \myfigref{overview:fig:source}. A \Ca{}
+target is positioned inside the cell, opposite an aperture for optical access
+with the ablation laser. This is mounted on a rotating stage, so that when one
+region is depleted another can be targeted. We flow \SFsix{} into the cell at
+\SI{270}{\kelvin}, which reacts with ablated \Ca{} atoms to form \CaF{}. The
+cell is cryogenically cooled to \SI{4}{\kelvin} and is designed to optimise the
+flow of \He{} so as to thermalise with \CaF{} and guide it to the exit aperture
+without the creation of vortices, where the molecules can be
+trapped~\cite{Truppe2018}. For this reason \He{} enters the back of the cell at
+\SI{4}{\kelvin} and flows towards the exit aperture.
+
+\begin{figure}
+  \centering
+  \cm{TODO Cell figure}
+  \caption{}
+  \label{overview:fig:source}
+\end{figure}
+
+\cm{For charcoal, cite Sarunas' ref 121}
+In order to remove excess helium, a copper shield, coated with coconut charcoal
+and also cooled to \SI{4}{\kelvin} is used as a helium absorber. These are
+theramlly cycled overnight when the source is not in use to avoid saturation.
+A mechanical shutter is also installed after the cell to minimise any increase
+in background pressure due to \He{} gas leaving the source.
+
+As noted in \inlineref{Jurgilas2021}, this buffer gas source originally
+produced up to \SI{5E10}{molecules/steradian} with a mean velocity of
+\SI{160}{\meter\per\second}~\cite{Truppe2018} but its performance has degraded
+since this original report, and we now capture only \SIrange{50}{60}{\percent}
+lower capture in the MOT than we have previously observed~\cite{}.
 
 \subsection*{Slowing the beam}
 
