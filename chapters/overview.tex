@@ -41,6 +41,10 @@ and transport of the molecules.
   \label{overview:fig:CaFcartoon}
 \end{figure}
 
+This section is merely an outline of a very broad topic, but one that is
+essential to the context of the chip. A more complete description  can be found
+in \inlineref{Jurgilas2021}.
+
 \subsection*{\CaF{} energy structure and constants}
 
 The energy structure of \CaF{} is depicted in
@@ -162,27 +166,38 @@ produced up to \SI{5E10}{molecules/steradian} molecules in $X(N=1, v=0)$ with a
 mean velocity of \SI{160}{\meter\per\second}~\cite{Truppe2018} but its
 performance has degraded since this original report, and we now capture only
 \SIrange{50}{60}{\percent} lower capture in the MOT than we have previously
-observed~\cite{}.
+observed.
 
 \subsection*{Slowing the beam}
 
-The beam velocity can be further reduced by application of a counter-propagating
-beam of slowing light. The light is resonant with the \cm{$X(v=0)\rightarrow
-B$} transition \cm{($\mathcal{L^S_{00}}$}. A \SI{5}{\gauss} magnetic field is
-applied, and the slowing light is linearly polarised at a relative
-\SI{45}{\degree} angle, to remix dark ground states. The slowing light is
-combined with repump light from \cm{$X(v=1)\rightarrow A(v=0)$, $\mathcal{L}_{10}$}
-to avoid losing molecules that scatter into \cm{$X(v=1)$}. Since the molecules'
-velocity will decrease during the slowing, the Doppler shift of the transition
-frequency will also change. We account for this by chirping the slowing light,
-and broadening the repump light. This process can reduce the molecule velocity
-to \cm{??}.
+The buffer gas source produces a beam of molecules with slower average velocity
+than, for example, a \cm{supersonic source} but they are still far above the
+capture velocity of our MOT. The beam's velocity can be further reduced by
+radiation pressure due to a counter-propagating beam of \pewpew{S}{00}
+slowing light. This is chirpped to account for the change in Doppler shift of the transition
+frequency as the molecules slow. The slowing light is also combined with the
+\pewpew{}{10} repump light to avoid pumping into the $X(v=1)$ state. To again
+account for Doppler shift during slowing, the repump light is frequency
+broadened by \SI{300}{\mega\hertz}.
 
-\subsection*{Transverse cooling}
+We apply the light for \cm{time}, which slows over approximately
+\SI{90}{\centi\meter} of travel from the buffer gas cell's exit aperture.
+Linear chirps used in previous experiments have shown to reduce the velocity to
+\cm{??}, however an exponential chirp proposed \cm{by Harvard} and implemented
+\cm{by Sarunas} produced a \SIrange{60}{80}{\percent} improvement in the number
+of molecules in the MOT.
 
 Slowing the beam has the undesirable effect of increasing the transverse
 velocity of the molecules. This is due to the random walk of the molecules as
-they scatter photons from the slowing light. To counteract this we apply
+they scatter photons from the slowing light. One method of reducing this effect
+is to focus the combined light so as to converge towards the cell to reduce
+transverse scattering. 
+
+\subsection*{Transverse cooling}
+
+\cm{It's not chirped, we use sidebands -- intoduce \pewpew{T}{00}}
+
+The transverse heating effect can be further reduced by applying
 slowing beams in the transverse direction, also on the $\mathcal{L}_{00}^S$
 transition. The slowing procedure described above is carried out
 simultaneously, providing the remixing of dark ground states and the $v=1$
@@ -193,27 +208,65 @@ been shown to improve the population of the MOT by a factor of $\sim3$.
 
 \subsection*{Capture in a MOT}
 
-The \CaF{} beam travels \cm{some distance}, undergoing slowing and transverse
-cooling before reaching the MOT chamber, where we capture the molecules. The
-\CaF{} MOT is a type-II MOT~\cite{}, meaning that the angular momentum of the
-excited state ($A(v=0)$, with $F'=1$) is greater than that of the ground state
-($X(v=0)$ with $F=2$). Unlike a type-I MOT, it is therefore possible for a
-molecule that has been pumped into the excited state to decay into a dark
-state, or into a state that is anti-trapped by the MOT~\cite{}.
+Positioned \cm{\SI{130}{\centi\meter}} from the cell's exit aperture is the 
+centre of the MOT chamber. The MOT magnetic field is provided by in-vacuum
+anti-Helmholtz coils, and the \pewpew{}{00}, \pewpew{}{10}, \pewpew{}{21},
+\pewpew{}{32} light is incident on the molecules in combined beams entering
+on all three axes and retroreflected to provide restoring beams in both
+directions (see \myfigref{overview:fig:cartoon}).
+%
+The operating principle of the \CaF{} MOT is similar to those described in
+\cm{ref section in theory}, but with some key differences that we outline
+here. A complete description is far beyond the scope of this overview, and has
+been described in detail elsewhere, for example see \cm{Hannah's thesis,
+  Sarunas' thesis, something else not a thesis?}
 
-To resolve this, a dual-frequency MOT is employed. The main MOT transition is
-addressed by the \pewpew{}{00} light, with r.f.\ sidebands added to address
-the different hyperfine levels. The sideband addressing the $F=1$ hyperfine
-state is given opposite polarisation, and simultaneously serves as a second
-frequency for the $F=2$ state, ensuring that the normally anti-trapped states
-are repumped by the restoring beam into the MOT cycle. This is shown in \cm{a
-figure}. The $F=2$ level is now strongly trapped and although the other levels
-remain weakly trapped, this is sufficient to create a strong MOT.
+First, the significant number of photon scatters \cm{what is it?} in the MOT
+mean that it is necessary to apply the vibrational repumps (\pewpew{}{10},
+\pewpew{}{21} and \pewpew{32}) along with the main cooling light
+(\pewpew{}{00}), or else molecules will be pumped into these dark states. All
+of these beams must be \cm{equipped} with the r.f.\ sidebands to address the
+hyperfine levels of the $X$ state (recall that the hyperfine levels of $A$ are
+unresolved).
+
+The second nuance is that the \CaF{} MOT is that it is a type-II MOT~\cite{},
+meaning that the angular momentum of the excited state ($A(v=0)$, with $F'=1$)
+is less than that of the ground state ($X(v=0)$ with $F=2$). Unlike a type-I
+MOT (where $F'>F$), it is therefore possible for a molecule that has been
+pumped into the excited state to decay into a dark state, or into a state that
+is anti-trapped by the MOT~\cite{}.
+%
+To resolve this, we employ a dual-frequency MOT. The main MOT transition is
+addressed by the \pewpew{}{00} light, with r.f.\ sidebands added to address the
+different hyperfine levels. The sideband addressing the $F=1$ hyperfine state
+is given opposite polarisation, and simultaneously serves as a second frequency
+for the $F=2$ state. This ensures that the normally anti-trapped states are
+repumped by the restoring beam into the MOT cycle. The $F=2$ level is now
+strongly trapped and although the other levels remain weakly trapped, this is
+sufficient to create a strong MOT.
+
+A simplified case with $F=0$ and $F'=1$ is shown in
+\myfigref{overview:fig:dualfreq}. When there is no blue-detuned light, any
+molecule that decays into the $m_F=-1$ state can be lost from the cycle. When
+the blue-detuned light is present these molecules can be repumped. Since this
+transition has a change in $m_F$ of $\Delta m_F = m'_F- m_F=1$, we require the
+blue-detuned light to have $\sigma_+$ polarisation.
+
+\begin{figure}
+  \centering
+  \cm{TODO: remake Hannah's fig 4.1 (RHS only)}
+  \caption{
+    A dual frequency scheme for the type-II case $F'=0$, $F=1$. The molecules
+    in each state (circles) can be pumped by their corresponding red- (blue-)
+    detuned light. This figure is adapted from one in \inlineref{Williams2018}.
+  }
+  \label{overview:fig:dualfreq}
+\end{figure}
 
 The capture velocity of the MOT is \cm{??} meaning that we are typically able
 to capture $??$ molecules from our beam. The MOT population can be estimated by
 looking at the scatter, or by turning off the light and performing
-light-induced fluorescence imaging using \pewpew{C}{00}. The MOT temperature is
+light-induced fluorescence imaging using \pewpew{}{00}. The MOT temperature is
 typically \cm{}, and this can be further reduced by lowering the intensity of
 \pewpew{C}{00}~\cite{Truppe2017} \cm{what is final temp?}
 
