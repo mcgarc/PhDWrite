@@ -273,28 +273,46 @@ typically \cm{}, and this can be further reduced by lowering the intensity of
 \subsection*{Optical molasses}
 
 Sub-Doppler cooling of \CaF{} is achievable by employing a blue-detuned
-molasses. In this scheme the MOT coils are switched off, and \pewpew{C}{00}
-is detuned to be blue-detuned \cm{by how much?}.  Consider the example of a
-$F=1$ hyperfine level ground state, and $F=0$ excited state which is shown in
-\cm{fig like Hannah's 5.1}. A polarisation gradient is established across the
-molasses. In regions where the polarisation is $\sigma_-$ ($\sigma_-$) only the
-$m=1$ ($m=-1$) ground state is coupled to the light.
+molasses. In this scheme the MOT coils are switched off, and \pewpew{C}{00} is
+detuned to be blue-detuned \cm{by how much?}. Consider again the example of a
+$F=1$ hyperfine level ground state, and $F=0$ excited state travelling in 1D,
+as is shown in \myfigref{overview:fig:molasses}.  The counter-propagating beams
+establish a polarisation-gradient, which coulple the hyperfine states in $F=1$
+to the $F'=0$ state. As explained in \cm{ref Weidelmuller} we will a bright
+state (superposition states of $\ket{F=1, m_F=1}$ and $\ket{F=1, m_F=-1}$) that
+is coupled to the excited state, and dark states ($\ket{F=1, m_F=0}$ and
+another superposition state) that are not coupled. The strength of this
+coupling varies as a function of the polarisation, and so as molecules move
+through the gradient the bright state energy changes, as is shown in the
+figure.
 
-The a.c.\ Stark shift now acts on the bright states, meaning that as they move
-through the light field they lose kinetic energy. Near the peak of the energy
-shift, the bright state molecules are preferentially pumped into the dark
-state. Meanwhile the dark states will adiabatically transfer back to bright
-states, which occurs preferentially at regions where the bright and dark states
-are close in energy. This cycle then repeats, resulting in the molecule losing
-energy as it passes through the light field.
+\begin{figure}
+  \centering
+  \cm{fig like Hannah's 5.1}
+  \caption{}
+  \label{overview:fig:molasses}
+\end{figure}
 
-% TODO Cite Molecules cooled belowo DOppler limit and
+% TODO Here need good cite of Weidmeuller
+When a molecule in a dark state moves through the potential it can expend
+lose climbing the potential. At the top of the potential it is prefferentially
+pumped into the dark state via the excited state. From the dark state,
+molecules can adiabatically transfer back into the dark state at regions where
+the energy difference is low. The molecule can now repeat this cycle, each time
+losing energy travelling up the potential. Note that the light must be
+blue-detuned because in the case of red-detuning the bright states have lower
+energy than the dark states, and we have a heating effect \cm{cite Mike's 3D
+paper}
+
+In the three-dimensional case the same principle applies but is more
+complicated. As well as polarization-gradients we must account for intensity
+gradeints, which also affect the coupling. We must also consider the numerous
+energy levels of \CaF{} and the sideband structure required to address the
+hyperfine state \cm{cite 3D paper and deep cooling paper}
+
+% TODO Cite Molecules cooled belowo DOppler limit, Three dimensional pape
+% rand...
 % Weidemu ̈ller, M., Esslinger, T., Ol’shanii, M. A., Hem- merich, A. & Ha ̈nsch, T. W. A novel scheme for efficient cooling below the photon recoil limit. EPL 27, 109–114 (1994).
-
-In the \CaF{} experiment, the situation is not so simple. We must account for
-intensity gradients as well as those of polarisation, and of course the real
-experiment occurs in three dimensions not one. Details of this scheme can be
-found in \inlineref{1367-2630-18-12-123017} and~\cite{Truppe2017}.
 
 \subsection*{Magnetic trapping and transport}
 
