@@ -28,10 +28,18 @@ vacuum (UHV, $P<\SI{1E-8}{\milli\bar}$) conditions to avoid losses due to
 collisions with other particles. Only the source chamber operates at a higher
 pressure, due to the presence of the buffer gas.
 
-% TODO Labels in tikz
 \begin{figure}
   \centering
-  \includegraphics{figs/overview/cartoon_notext.pdf}
+  \includegraphics[width=0.8\textwidth]{figs/overview/cartoon.pdf}
+    %\begin{overpic}[width=0.8\textwidth]{figs/overview/cartoon_notext.pdf}
+    %  \put(5, -1){Source}
+    %  \put(32, -1){Slowing}
+    %  \put(70.5, -1){MOT}
+    %  \put(78, 55){\color{pink}{To chip}}
+    %  \put(36, 52){\color{Lorange}{\pewpew{}{00} and repumps}}
+    %  \put(95, 29){\color{Lgreen}{\pewpew{S}{00}}}
+    %\end{overpic}
+    %\vspace{1cm}
   \caption{A schematic of the \CaF{} source, slowing region and MOT chamber.
   \CaF{} molecules (grey cone) are produced by the buffer gas cell, and are
   slowed by longitudinal slowing and transverse cooling light (green,
@@ -83,7 +91,7 @@ distinguish the $X\rightarrow B$ transition.
   \pewpew{}{01} & $X(v=0)$ & $A(v=1)$ & 628.6 \\
   \pewpew{}{12} & $X(v=1)$ & $A(v=2)$ & 628.1 \\
   \pewpew{}{23} & $X(v=2)$ & $A(v=3)$ & 628.7 \\
-  \pewpew{}{10} & $X(v=1)$ & $A(v=0)$ & 585 \\ % TODO More decimal places
+  \pewpew{}{10} & $X(v=1)$ & $A(v=0)$ & 585.4 \\
  \hline
 \end{tabular}
 \caption{
@@ -150,12 +158,11 @@ without the creation of vortices, where the molecules can be
 trapped~\cite{Truppe2018}. For this reason \He{} enters the back of the cell at
 \SI{4}{\kelvin} and flows towards the exit aperture.
 
-% TODO Labels
 \begin{figure}
   \centering
-  \includegraphics{figs/overview/cell.pdf}
-  \caption{The buffer gas cell. \He{} and \SFsix flow into the cell. \Ca{}
-  atoms are ablated from a target by a Nd:YAG laser. \CaF{} molecules are
+  \includegraphics[width=0.6\textwidth]{figs/overview/cell.pdf}
+  \caption{The buffer gas cell. Helium and \SFsix flow into the cell. \Ca{}
+  atoms are ablated from a target (shown in blue) by a Nd:YAG laser. \CaF{} molecules are
 formed which thermalise with the \He{} and a molecule beam exits from the aperture.}
   \label{overview:fig:source}
 \end{figure}
@@ -203,8 +210,6 @@ transverse scattering~\cite{Truppe20717a}.
 
 \subsection*{Transverse cooling}
 
-\cm{It's not chirped, we use sidebands -- intoduce \pewpew{T}{00}}
-
 The transverse heating effect can be further reduced by applying slowing beams
 in the transverse direction, also on the $X\rightarrow B$ transition, but this
 time the light is not chripped, but has the r.f.\ sidebands to address the $X$
@@ -233,13 +238,12 @@ will not discuss an important alternative scheme for forming a \CaF{} MOT, the
 r.f.\ MOT, a description of which can be found in
 \inlineref{PhysRevLett.119.103201}.
 
-First, the significant number of photon scatters in the MOT
-mean that it is necessary to apply the vibrational repumps (\pewpew{}{10},
-\pewpew{}{21} and \pewpew{32}) along with the main cooling light
-(\pewpew{}{00}), or else molecules will be pumped into these dark states. All
-of these beams must be \cm{equipped} with the r.f.\ sidebands to address the
-hyperfine levels of the $X$ state (recall that the hyperfine levels of $A$ are
-unresolved).
+First, the significant number of photon scatters in the MOT mean that it is
+necessary to apply the vibrational repumps (\pewpew{}{10}, \pewpew{}{21} and
+\pewpew{32}) along with the main cooling light (\pewpew{}{00}), or else
+molecules will be pumped into these dark states. All of these beams must havei
+the r.f.\ sidebands to address the hyperfine levels of the $X$ state (recall
+that the hyperfine levels of $A$ are unresolved).
 
 The second nuance is that the \CaF{} MOT is that it is a type-II MOT~\cite{},
 meaning that the angular momentum of the excited state ($A(v=0)$, with $F'=1$)
@@ -264,10 +268,17 @@ the blue-detuned light is present these molecules can be repumped. Since this
 transition has a change in $m_F$ of $\Delta m_F = m'_F- m_F=1$, we require the
 blue-detuned light to have $\sigma_+$ polarisation.
 
-% TODO Tikz text
 \begin{figure}
   \centering
-  \includegraphics[width=0.2\textwidth]{figs/overview/typeII.pdf}
+    \begin{overpic}[abs, width=0.2\textwidth]{figs/overview/typeII.pdf}
+      \put(-40, 43){$F=1$}
+      \put(-40, 148){$F'=0$}
+      \put(90, 43){$m_F=0$}
+      \put(90, 81){$m_F=1$}
+      \put(90, 5){$m_F=-1$}
+      \put(5, 5){\color{blue}{$\sigma^+$}}
+      \put(5, 81){\color{pink}{$\sigma^-$}}
+    \end{overpic}
   \caption{
     A dual frequency scheme for the type-II case $F'=0$, $F=1$. The molecules
     in each state (circles) can be pumped by their corresponding red- (blue-)
@@ -276,13 +287,13 @@ blue-detuned light to have $\sigma_+$ polarisation.
   \label{overview:fig:dualfreq}
 \end{figure}
 
-% TODO missing these details
-The capture velocity of the MOT is \cm{??} meaning that we are typically able
-to capture $??$ molecules from our beam. The MOT population can be estimated by
-looking at the scatter, or by turning off the light and performing
-light-induced fluorescence imaging using \pewpew{}{00}. The MOT temperature is
-typically \cm{}, and this can be further reduced by lowering the intensity of
-\pewpew{C}{00}~\cite{Truppe2017} \cm{what is final temp?}
+The capture velocity of the MOT is \SI{13}{\meter\per\second} meaning that we
+are typically able to capture on the order of $10^4$ molecules from our beam.
+The MOT population can be estimated by looking at the scatter, or by turning
+off the light and performing light-induced fluorescence imaging using
+\pewpew{}{00}. The MOT temperature is typically \cm{}, and this can be further
+reduced by lowering the intensity of \pewpew{C}{00}~\cite{Truppe2017} to
+achieve a MOT temperature of $<\SI{4}{\milli\kelvin}$.
 
 \subsection*{Optical molasses}
 
@@ -300,6 +311,7 @@ coupling varies as a function of the polarisation, and so as molecules move
 through the gradient the bright state energy changes, as is shown in the
 figure.
 
+% TODO
 \begin{figure}
   \centering
   \cm{fig like Hannah's 5.1}
@@ -321,7 +333,9 @@ In the three-dimensional case the same principle applies but is more
 complicated. As well as polarization-gradients we must account for intensity
 gradeints, which also affect the coupling. We must also consider the numerous
 energy levels of \CaF{} and the sideband structure required to address the
-hyperfine state~\cite{1367-2630-18-12-123017, PhysRevLett.123.033202}.
+hyperfine state~\cite{1367-2630-18-12-123017, PhysRevLett.123.033202}. In our
+experiment we apply this technique to produce a \CaF{} cloud of temperature
+$<\SI{6}{\micro\kelvin}$~\cite{PhysRevLett.123.033202}.
 
 \subsection*{Magnetic trapping and transport}
 
@@ -366,10 +380,7 @@ to neighbouring experiments, or hold them in the field generated by the MOT
 coils for experiments in the collisions chamber.
 
 \subsection*{Other experiments}
-% TODO Is this section really necessary?
 
-% TODO Rework this para? Maybe it just becomes a sentence, something like "we
-% use this setup for lots of things, not we want to use it for chip instead"
 The \CaF{} MOT is the workhorse of our experiment, providing molecules which
 can be further cooled cooled further (as discussed above) used for experiments
 in collisions with \Rb{} atoms (see \inlinerefs{Jurgilas2021, JurgilasIOP2021,
@@ -378,8 +389,9 @@ undertaken in the neighbouring tweezer chamber, which is loaded by transporting
 molecules in a magnetic transport trap (MTT), a quadrupole trap with coils
 mounted on a transport stage outside the vacuum chamber. This transport of the
 molecules is similar to that used in
-\inlinerefs{Lewandowski2003,PhysRevResearch.1.033035} and elsewhere, it will be
-discussed further below and in \cm{transport chapter}.
+\inlinerefs{Lewandowski2003,PhysRevResearch.1.033035} and elsewhere. In the
+next section, we will begin to discuss how the molecule chip can also be
+incorporated as an additional experiment.
 
 
 \section{Design requirements and overview}
@@ -444,28 +456,30 @@ be transferred onto the chip trap.
 
 At this point, we note that the long-lived stretched states discussed in
 section~\ref{overview:existing} are promising candidates for the qubit states
-in a molecule chip.For this reason it was decided that using magnetic traps,
-such as those describedin \cm{section} would be preferable to the electrostatic
-traps suggested in \inlineref{Andre2006}. We are now faced with the question of
-how exactly we can load molecules from the MTT into the microscopic chip trap.
+in a molecule chip. For this reason it was decided that using magnetic traps,
+such as those describedin \cm{ref theory section} would be preferable to the
+electrostatic traps suggested in \inlineref{Andre2006}. We are now faced with
+the question of how exactly we can load molecules from the MTT into the
+microscopic chip trap.
 
-% TODO The phrasing of this para can be improved
-Fortunately this problem has previously been addressed for atom chips. For
-example in \inlineref{Ott2001} a similar transport scheme to ours is used to
-load an atom chip. Here the authors have used a macroscopic U-trap that is
-aligned with the chip to improve alignment of their transport trap and their
-chip trap. We propose to do the same thing, with molecules then transferred
-between the traps by ramping of the trapping currents in the U-wire and coils.
-%
-Molecules can similarly be transferred onto and between traps on the chip by
-ramping of the trapping currents~\cite{}. Such a procedure is
-non-tirival, and is the main subject of chapter~\ref{sim}.
+% TODO Check this para because I will presumably discuss relevant stuff in
+% intro/theory
+Fortunately this problem has previously been addressed for atom chips. We
+discussed already in \cm{reference intro} that atoms can be guided on chips by
+changing of trapping currents and voltages. We also discussed the transfer of
+atoms between on-chip magnetic traps. For the problem of loading from a
+macroscopic trap, we can turn to \inlineref{Ott2001}, where transfer from a
+transport trap to a microtrap is made easier by the use of an intermediary
+macroscopic trap that is well-aligned with the microtrap.
+We propose a similar solution: embedding a mcaroscopic U-wire beneath our chip
+trap which is aligned to the chip and a large target for loading form the MTT.
+This will be discussed further in \cm{experiment chapter}.
 
-To ensure that molecules are loaded into the smallest trap efficiently, we
+To ensure that molecules are then loaded into the smallest trap efficiently, we
 again follow the footsteps of atom chips, and have designed  a series of traps
 of decreasing size~\cite{Reichel1999}. For magnetic traps, the width of the
-wires should decrease, so that the molecules remain \cm{highly localised around
-the trap centre} throughout loading. 
+wires should decrease, so that the molecules remain localised around
+the trap centre throughout loading. 
 %
 Each wire trap will begin trapping at one height before the bias field is
 increased to bring the trap centre closer to the surface (as per
@@ -499,7 +513,6 @@ accidental damage to the chip during normal operation.
 The axial length of the wires also decreases to gradually reduce the size of
 the trapped cloud in the $x$ direction.  
 
-% TODO Maybe need more detail here
 \begin{table}
   \centering
 \begin{tabular}{lrrrrr}
@@ -525,14 +538,14 @@ The final chip design was informed both by the requirements here, the
 simulations presented in chapter~\ref{sim} and the restrictions due to the
 fabrication process, which will be discussed in chater~\ref{fab}. We tried
 various different designs, but the final one that was chosen is shown in
-\cm{fig}. It features the wires as stipulated in
+\myfigref{overview:fig:chiplayout}. It features the wires as stipulated in
 \mytableref{overview:table:wires}, fanouts for connection to macroscopic
 \cm{current delivery} and various other features that will also be explained in
 chater~\ref{fab}.
 
 \begin{figure}[ht]
   \centering
-    \begin{overpic}[abs, width=0.45\textwidth]{figs/chip_present4.pdf}
+    \begin{overpic}[abs, width=0.51\textwidth]{figs/chip_present4.pdf}
       \put(10, 160){\small (i)}
       \put(60, 160){\small(ii)}
       \put(175, 60){\small(iv)}
@@ -570,12 +583,12 @@ operation is discussed in chapters~\ref{mws} and \ref{squeeze}.
 \begin{figure}
   \centering
   \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{figs/overview/chamber_xsecarrow.pdf}
+    \includegraphics[height=\textwidth]{figs/overview/chamber_xsecarrow.pdf}
     \caption{}
   \end{subfigure}
   \hspace{1cm}
   \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{figs/chip_pic_crop.png}
+    \includegraphics[height=\textwidth]{figs/chip_pic_crop.png}
     \caption{}
   \end{subfigure}
   \caption{
@@ -600,7 +613,8 @@ copper heat sink, a large U-wire to form the macroscopic alignment trap and a
 subchip for current and microwave delivery. The chip is mounted
 into a recess in the subchip so that it is flush with the surface. The chip is
 mounted facing downwards so that molecules can be dropped for imaging as they
-fall. The flange itself is fitted with two high-current feedthroughs, a \cm{??}
-pin feedthrough rated for \cm{currents}, and microwave feedthroughs. In this
-way the entire assembly is \cm{self contained and awesome}. The flange assembly
-will be explained in futher detail in chapter~\ref{experiment}.
+fall. The flange itself is fitted with two high-current feedthroughs, a 16-pin
+feedthrough rated for \SI{3}{\ampere} currents, and microwave feedthroughs. All
+access to the chip is therfore through this one flange, allowing for easy access
+and assembly. The flange assembly will be explained in futher detail in
+chapter~\ref{experiment}.
