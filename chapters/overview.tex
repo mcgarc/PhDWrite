@@ -14,21 +14,24 @@ overview and motivation of the design of the new experiment.
 
 In this section I will present a summary of the process used to produce
 ultracold \CaF{} molecules in a magnetic trap, which we intend to load onto the
-chip trap. We will consider the various stages of the process, which is
+chip trap. We will consider the various stages of the process, which are
 presented in \myfigref{overview:fig:CaFcartoon}. First a beam of \CaF{}
-molecules is created using a buffer gas
-source~\cite{Truppe2018}. The beam is then slowed by
-application of slowing light opposing its direction of
+molecules is created using a buffer gas source~\cite{Truppe2018}. The beam is
+then slowed by radiation pressure from slowing light opposing its direction of
 travel~\cite{Truppe2017a}. The slowing light can also be applied in the
 transverse direction to reduce the broadening of the beam during its flight.
 The molecules are captured in a MOT~\cite{Williams2017} and cooled in optical
 molasses~\cite{Truppe2017} before being optically pumped into a weak field
 seeking state~\cite{WilliamsMagnetic2018}. This allows for magnetic trapping
-and transport of the molecules.
+and transport of the molecules. The experiment is conducted under ultra-high
+vacuum (UHV, $P<\SI{1E-8}{\milli\bar}$) conditions to avoid losses due to
+collisions with other particles. Only the source chamber operates at a higher
+pressure, due to the presence of the buffer gas.
 
+% TODO Labels in tikz
 \begin{figure}
   \centering
-  \includegraphics{figs/overview/cartoon.pdf}
+  \includegraphics{figs/overview/cartoon_notext.pdf}
   \caption{A schematic of the \CaF{} source, slowing region and MOT chamber.
   \CaF{} molecules (grey cone) are produced by the buffer gas cell, and are
   slowed by longitudinal slowing and transverse cooling light (green,
@@ -41,17 +44,15 @@ and transport of the molecules.
   \label{overview:fig:CaFcartoon}
 \end{figure}
 
-This section is merely an outline of a very broad topic, but one that is
-essential to the context of the chip. A more complete description  can be found
-in \inlineref{Jurgilas2021}.
-
 \subsection*{\CaF{} energy structure and constants}
 
 The energy structure of \CaF{} is depicted in
 \myfigref{overview:fig:CaFenergy}. Here we show only the levels that are
 pertinent to this thesis, those being the X, A and B electronic levels up to
-vibrational level $v= 3, 2 \text{and} 0$ respectively.  For the X state, we
-will discuss both the $N=0\text{and}1$ states.
+vibrational level $v=$ \numrange{0}{3} respectively.  For the X state, we
+will discuss $N=$ \numrange{0}{2}, but $N=2$ is not included in this figure for
+clarity. 
+%
 Figure~\ref{overview:fig:CaFenergy} and \mytableref{overview:table:lasers} also
 label the various lasers that are used to addressed the \CaF{} transitions. We
 label these as \pewpew{}{vv'} where $v$ ($v'$) is the lower (excited)
@@ -77,17 +78,17 @@ distinguish the $X\rightarrow B$ transition.
   \centering
 \begin{tabular}{llll}
   Symbol & Ground state & excited state & wavelength (\si{\nano\meter}) \\
-  \pewpew{}{00} & $X(v=0)$ & $A(v=0)$ &  606 \\
-  \pewpew{S}{00} & $X(v=0)$ & $B(v=0)$ & 531 \\
-  \pewpew{}{01} & $X(v=0)$ & $A(v=1)$ & 628 \\
-  \pewpew{}{12} & $X(v=1)$ & $A(v=2)$ & 628 \\
-  \pewpew{}{23} & $X(v=2)$ & $A(v=3)$ & 628 \\
-  \pewpew{}{10} & $X(v=1)$ & $A(v=0)$ & 585 \\
+  \pewpew{}{00} & $X(v=0)$ & $A(v=0)$ &  606.3 \\
+  \pewpew{S}{00} & $X(v=0)$ & $B(v=0)$ & 531.0 \\
+  \pewpew{}{01} & $X(v=0)$ & $A(v=1)$ & 628.6 \\
+  \pewpew{}{12} & $X(v=1)$ & $A(v=2)$ & 628.1 \\
+  \pewpew{}{23} & $X(v=2)$ & $A(v=3)$ & 628.7 \\
+  \pewpew{}{10} & $X(v=1)$ & $A(v=0)$ & 585 \\ % TODO More decimal places
  \hline
 \end{tabular}
 \caption{
-  The various laser transitions used in this thesis are tabulated.
-  \pewpew{}{10} is included for completion, and will be explained in
+  The various laser transitions used in this thesis.  The laser \pewpew{}{10}
+  is included for completion, and will be explained in
   chapter~\ref{experiment}.
   }
   \label{overview:table:lasers}
@@ -114,15 +115,17 @@ are presented in \mytableref{overview:table:constants}.
   \centering
 \begin{tabular}{lll}
   Constant & Symbol & Value \\
-  Mass & m & \\
-  % TODO I think Mike gave this to me, but it it for particular transitions?
-  Electric dipole moment & $\mu_e$ & \\
-  Magnetic dipole moment & $\mu$ & \\
+  Mass & m & \SI{59}{\amu}\\
+  Electric dipole moment ($X$ state) & $\mu_e$ & $\SI{-3.08}{\debye}$\\
+  % Don't confuse EDM with transition moment
+  Magnetic dipole moment & $\mu_B$ & \SI{9.274}{\joule\per\tesla} \\
+  % This is what Ed uses in his notebook, I think it is the same as mu_e...
+  % Had to convert form his units, but pretty sure this is right.
+  %Chemistry dipole moment & $\mu_c$ & $3\si{\debye}$ \\
  \hline
 \end{tabular}
 \caption{
   Various constants for \CaF{} taken from \inlineref{Anderegg2019a}.
-  % TODO Also taken from elsewhere?
   }
   \label{overview:table:lasers}
 \end{table}
@@ -132,9 +135,9 @@ are presented in \mytableref{overview:table:constants}.
 We begin all our experiments by creating a pulsed beam of \CaF{} molecules
 using a buffer gas source. Such a device operates by using a buffer gas (in
 this case helium) to thermalise between a cold cell and warm molecules. The
-molecules then exit through an aperture to form a beam. The \CaF{} molecules are also
-created inside the beam from \SFsix{} gas and calcium atoms, which are ablated
-from a target by a high-power Nd:YAG laser.
+molecules then exit through an aperture to form a beam. The \CaF{} molecules
+are also created inside the cell from \Ca{} atoms, which are ablated from a
+target by a high-power Nd:YAG laser, and \SFsix{} gas.
 
 The buffer gas cell is pictured in \myfigref{overview:fig:source}. A \Ca{}
 target is positioned inside the cell, opposite an aperture for optical access
@@ -147,19 +150,22 @@ without the creation of vortices, where the molecules can be
 trapped~\cite{Truppe2018}. For this reason \He{} enters the back of the cell at
 \SI{4}{\kelvin} and flows towards the exit aperture.
 
+% TODO Labels
 \begin{figure}
   \centering
-  \cm{TODO Cell figure}
-  \caption{}
+  \includegraphics{figs/overview/cell.pdf}
+  \caption{The buffer gas cell. \He{} and \SFsix flow into the cell. \Ca{}
+  atoms are ablated from a target by a Nd:YAG laser. \CaF{} molecules are
+formed which thermalise with the \He{} and a molecule beam exits from the aperture.}
   \label{overview:fig:source}
 \end{figure}
 
-\cm{For charcoal, cite Sarunas' ref 121}
 In order to remove excess helium, a copper shield, coated with coconut charcoal
-and also cooled to \SI{4}{\kelvin} is used as a helium absorber. These are
-theramlly cycled overnight when the source is not in use to avoid saturation.
-A mechanical shutter is also installed after the cell to minimise any increase
-in background pressure due to \He{} gas leaving the source.
+and also cooled to \SI{4}{\kelvin} is used as a helium
+absorber~\cite{doi:10.1116/1.574141}. These are theramlly cycled overnight when
+the source is not in use to avoid saturation.  A mechanical shutter is also
+installed after the cell to minimise any increase in background pressure due to
+\He{} gas leaving the source.
 
 As noted in \inlineref{Jurgilas2021}, this buffer gas source originally
 produced up to \SI{5E10}{molecules/steradian} molecules in $X(N=1, v=0)$ with a
@@ -171,57 +177,63 @@ observed.
 \subsection*{Slowing the beam}
 
 The buffer gas source produces a beam of molecules with slower average velocity
-than, for example, a \cm{supersonic source} but they are still far above the
-capture velocity of our MOT. The beam's velocity can be further reduced by
-radiation pressure due to a counter-propagating beam of \pewpew{S}{00}
-slowing light. This is chirpped to account for the change in Doppler shift of the transition
-frequency as the molecules slow. The slowing light is also combined with the
-\pewpew{}{10} repump light to avoid pumping into the $X(v=1)$ state. To again
-account for Doppler shift during slowing, the repump light is frequency
-broadened by \SI{300}{\mega\hertz}.
+than, for example, a supersonic source~\cite{Mathavan2016} but they are still
+far above the capture velocity of our MOT. The beam's velocity can be further
+reduced by radiation pressure due to a counter-propagating beam of
+\pewpew{S}{00} slowing light. This is chirpped to account for the change in
+Doppler shift of the transition frequency as the molecules slow. The slowing
+light is also combined with the \pewpew{}{10} repump light to avoid pumping
+into the $X(v=1)$ state. To again account for Doppler shift during slowing, the
+repump light is frequency broadened by \SI{300}{\mega\hertz}.
 
-We apply the light for \cm{time}, which slows over approximately
+% Time and final velocity according to Hannah's thesis
+We apply the light for \SI{6}{\milli\second}, which slows over approximately
 \SI{90}{\centi\meter} of travel from the buffer gas cell's exit aperture.
 Linear chirps used in previous experiments have shown to reduce the velocity to
-\cm{??}, however an exponential chirp proposed \cm{by Harvard} and implemented
-\cm{by Sarunas} produced a \SIrange{60}{80}{\percent} improvement in the number
-of molecules in the MOT.
+\SI{50}{\meter\per\second}~\cite{Truppe2017a}. Implementing an
+exponential chirp originally proposed in \inlineref{Anderegg2019}  produced a
+\SIrange{60}{80}{\percent} improvement in the number of molecules in the
+MOT~\cite{Jurgilas2021}.
 
 Slowing the beam has the undesirable effect of increasing the transverse
 velocity of the molecules. This is due to the random walk of the molecules as
 they scatter photons from the slowing light. One method of reducing this effect
 is to focus the combined light so as to converge towards the cell to reduce
-transverse scattering. 
+transverse scattering~\cite{Truppe20717a}. 
 
 \subsection*{Transverse cooling}
 
 \cm{It's not chirped, we use sidebands -- intoduce \pewpew{T}{00}}
 
-The transverse heating effect can be further reduced by applying
-slowing beams in the transverse direction, also on the $\mathcal{L}_{00}^S$
-transition. The slowing procedure described above is carried out
+The transverse heating effect can be further reduced by applying slowing beams
+in the transverse direction, also on the $X\rightarrow B$ transition, but this
+time the light is not chripped, but has the r.f.\ sidebands to address the $X$
+hyperfine structure. The slowing procedure described above is carried out
 simultaneously, providing the remixing of dark ground states and the $v=1$
 repump light.
 %
 Scattering of light in the transverse direction can collimate the beam, and has
-been shown to improve the population of the MOT by a factor of $\sim3$. 
+been shown to improve the population of the MOT by a factor of
+$\sim3$~\cite{Jurgilas2021}.
 
 \subsection*{Capture in a MOT}
 
-Positioned \cm{\SI{130}{\centi\meter}} from the cell's exit aperture is the 
-centre of the MOT chamber. The MOT magnetic field is provided by in-vacuum
+Positioned \SI{130}{\centi\meter} from the cell's exit aperture is the centre
+of the MOT chamber. The MOT magnetic field is provided by in-vacuum
 anti-Helmholtz coils, and the \pewpew{}{00}, \pewpew{}{10}, \pewpew{}{21},
-\pewpew{}{32} light is incident on the molecules in combined beams entering
-on all three axes and retroreflected to provide restoring beams in both
-directions (see \myfigref{overview:fig:cartoon}).
+\pewpew{}{32} light is incident on the molecules in combined beams entering on
+all three axes and retroreflected to provide restoring beams in both directions
+(see \myfigref{overview:fig:cartoon}).
 %
 The operating principle of the \CaF{} MOT is similar to those described in
-\cm{ref section in theory}, but with some key differences that we outline
-here. A complete description is far beyond the scope of this overview, and has
-been described in detail elsewhere, for example see \cm{Hannah's thesis,
-  Sarunas' thesis, something else not a thesis?}
+\cm{ref section in theory}, but with some key differences that we outline here.
+A complete description is far beyond the scope of this overview, and has been
+described in detail elsewhere, for example see \inlineref{Williams2017}.  We
+will not discuss an important alternative scheme for forming a \CaF{} MOT, the
+r.f.\ MOT, a description of which can be found in
+\inlineref{PhysRevLett.119.103201}.
 
-First, the significant number of photon scatters \cm{what is it?} in the MOT
+First, the significant number of photon scatters in the MOT
 mean that it is necessary to apply the vibrational repumps (\pewpew{}{10},
 \pewpew{}{21} and \pewpew{32}) along with the main cooling light
 (\pewpew{}{00}), or else molecules will be pumped into these dark states. All
@@ -252,9 +264,10 @@ the blue-detuned light is present these molecules can be repumped. Since this
 transition has a change in $m_F$ of $\Delta m_F = m'_F- m_F=1$, we require the
 blue-detuned light to have $\sigma_+$ polarisation.
 
+% TODO Tikz text
 \begin{figure}
   \centering
-  \cm{TODO: remake Hannah's fig 4.1 (RHS only)}
+  \includegraphics[width=0.2\textwidth]{figs/overview/typeII.pdf}
   \caption{
     A dual frequency scheme for the type-II case $F'=0$, $F=1$. The molecules
     in each state (circles) can be pumped by their corresponding red- (blue-)
@@ -263,6 +276,7 @@ blue-detuned light to have $\sigma_+$ polarisation.
   \label{overview:fig:dualfreq}
 \end{figure}
 
+% TODO missing these details
 The capture velocity of the MOT is \cm{??} meaning that we are typically able
 to capture $??$ molecules from our beam. The MOT population can be estimated by
 looking at the scatter, or by turning off the light and performing
@@ -274,13 +288,13 @@ typically \cm{}, and this can be further reduced by lowering the intensity of
 
 Sub-Doppler cooling of \CaF{} is achievable by employing a blue-detuned
 molasses. In this scheme the MOT coils are switched off, and \pewpew{C}{00} is
-detuned to be blue-detuned \cm{by how much?}. Consider again the example of a
+now blue-detuned from the transition frequency. Consider again the example of a
 $F=1$ hyperfine level ground state, and $F=0$ excited state travelling in 1D,
 as is shown in \myfigref{overview:fig:molasses}.  The counter-propagating beams
 establish a polarisation-gradient, which coulple the hyperfine states in $F=1$
-to the $F'=0$ state. As explained in \cm{ref Weidelmuller} we will a bright
-state (superposition states of $\ket{F=1, m_F=1}$ and $\ket{F=1, m_F=-1}$) that
-is coupled to the excited state, and dark states ($\ket{F=1, m_F=0}$ and
+to the $F'=0$ state. As explained in \inlineref{Weidem_ller_1994} we will have bright
+states (superposition states of $\ket{F=1, m_F=1}$ and $\ket{F=1, m_F=-1}$) that
+are coupled to the excited state, and dark states ($\ket{F=1, m_F=0}$ and
 another superposition state) that are not coupled. The strength of this
 coupling varies as a function of the polarisation, and so as molecules move
 through the gradient the bright state energy changes, as is shown in the
@@ -293,47 +307,41 @@ figure.
   \label{overview:fig:molasses}
 \end{figure}
 
-% TODO Here need good cite of Weidmeuller
-When a molecule in a dark state moves through the potential it can expend
-lose climbing the potential. At the top of the potential it is prefferentially
+When a molecule in a dark state moves through the potential it can expend lose
+climbing the potential. At the top of the potential it is prefferentially
 pumped into the dark state via the excited state. From the dark state,
 molecules can adiabatically transfer back into the dark state at regions where
 the energy difference is low. The molecule can now repeat this cycle, each time
 losing energy travelling up the potential. Note that the light must be
 blue-detuned because in the case of red-detuning the bright states have lower
-energy than the dark states, and we have a heating effect \cm{cite Mike's 3D
-paper}
+energy than the dark states, and there is a heating rather than a cooling
+effect~\cite{1367-2630-18-12-123017}.
 
 In the three-dimensional case the same principle applies but is more
 complicated. As well as polarization-gradients we must account for intensity
 gradeints, which also affect the coupling. We must also consider the numerous
 energy levels of \CaF{} and the sideband structure required to address the
-hyperfine state \cm{cite 3D paper and deep cooling paper}
-
-% TODO Cite Molecules cooled belowo DOppler limit, Three dimensional pape
-% rand...
-% Weidemu ̈ller, M., Esslinger, T., Ol’shanii, M. A., Hem- merich, A. & Ha ̈nsch, T. W. A novel scheme for efficient cooling below the photon recoil limit. EPL 27, 109–114 (1994).
+hyperfine state~\cite{1367-2630-18-12-123017, PhysRevLett.123.033202}.
 
 \subsection*{Magnetic trapping and transport}
 
-\cm{inc. optical pumping}
+The molecules can now be transferred into a weak-field seeking state by optical
+pumping. The weak-field seekers can be confined in a magnetic trap, provided
+either by the MOT coils, or by the external transport coils. In the case of the
+latter, the molecules can then be transferred to the tweezer chamber, or in the
+future to the chip for loading.
 
-Following cooling in the molasses, the molecules can be transferred into a
-weak-field seeking state by optical pumping. The weak-field seekers can be
-confined in a magnetic trap, provided either by the MOT coils, or by the
-external transport coils. In the case of the latter, the molecules can then be
-transferred to the tweezer chamber, or in the future to the chip for loading.
-
-Following the molasses, the molecules are distributed between the Zeeman
-substates of $X(v=0, N=1)$. Attempting to magnetically trap at this point would
-cause a significant loss, so we transfer into the weak-field seeking state by
-the procedure described in \cm{magnetic trapping paper}. This transfer is
-achieved with optical pumping, where the EOM producing the \pewpew{}{00}
-sidebands is over-driven, reducing the power in the sideband that addresses
-$F=0$. Hence the molecules are preferentially moved into $\ket{N=0, F=0,
-m_F=0}$. These molecules can then be transferred to weak-field seeking states
-by a microwave pulse, and any that were not succesfully pumped can be blown
-away by \pewpew{S}{00} light.
+During the molasses there is no magnetic field to lift the degeneracy between
+the Zeeman states. Therefore after the molasses light is turned off the
+molecules are distributed between the Zeeman substates of $X(v=0, N=1)$.
+Attempting to magnetically trap at this point would cause a significant loss,
+so we transfer into the weak-field seeking state by the procedure described in
+\inlineref{WilliamsMagnetic2018}. This transfer is achieved with optical
+pumping, where the EOM producing the \pewpew{}{00} sidebands is over-driven,
+reducing the power in the sideband that addresses $F=0$. Hence the molecules
+are preferentially moved into $\ket{N=0, F=0, m_F=0}$. These molecules can then
+be transferred to weak-field seeking states by a microwave pulse, and any that
+were not succesfully pumped can be blown away by \pewpew{S}{00} light.
 
 At this stage we also introduce three stretched states in \CaF{}. These states
 lie in the $X$ electronic level, and are denoted $\ket{N}_\text{str} = \ket{N,
@@ -346,15 +354,16 @@ neighbouring stretched states
 insensitive to magnetic fields. Of particular note are, the
 $\ket{0}_\text{str}\leftrightarrow\ket{1}_\text{str}$ ($\omega_0/(2\pi) =
 \SI{20.5}{\giga\hertz}$) and
-$\ket{1}_\text{str}\leftrightarrow\ket{2}_\text{str}$ (\cm{$\omega_0/(2\pi) =
-\SI{41}{\giga\hertz}$}) transitions observed in \cm{cite long coherence times
-paper}, which we will discuss further in chapter~\ref{mws}.
+$\ket{1}_\text{str}\leftrightarrow\ket{2}_\text{str}$ ($\omega_0/(2\pi) =
+\SI{41.1}{\giga\hertz}$) transitions observed in
+\inlineref{PhysRevLett.124.063001}, which we will discuss further in
+chapter~\ref{mws}.
 
-After transferring into the magnetically-trappable states, the molecules
-can be contained in a magnetic trap, as also discussed in \inlineref{}. We can
-transfer them to the MTT for transport to neighbouring experiments, or hold
-them in the field generated by the MOT coils for experiments in the collisions
-chamber.
+After transferring into the magnetically-trappable states, the molecules can be
+contained in a magnetic trap, as also discussed in
+\inlineref{WilliamsMagnetic2018}. We can transfer them to the MTT for transport
+to neighbouring experiments, or hold them in the field generated by the MOT
+coils for experiments in the collisions chamber.
 
 \subsection*{Other experiments}
 % TODO Is this section really necessary?
@@ -375,17 +384,6 @@ discussed further below and in \cm{transport chapter}.
 
 \section{Design requirements and overview}
 
-%\begin{itemize}
-%  \item Andr\'e proposal, want to strongly couple to coplanar waveguides
-%  \item Want to do quantum operations with rotational stretched states
-%  \item Need small size scale
-%  \item Height limited by VdW force, as per Ed's notebook (Charles Smith also said something
-%    about charges causing decoherence?) height gives scale size
-%  \item We want to use magnetic trapping rather than electric (as explained
-%    in QSUM report: long coherence times and easier to load (?))
-%  \item Need to be able to load (one step is no good, ref. next chapter)
-%\end{itemize}
-
 As discussed in \cm{the introduction} the aim of this project is ultimately to
 trap molecules in close proximity to microwave resonators so that we can
 perform coherent control of quantum states on the rotational transitions in the
@@ -394,12 +392,22 @@ molecules.
 Following the proposal by \inlineref{Andre2006}, this can be achieved in a chip
 architecture, with the molecule trapped as close to the resonator as possible.
 %
-\cm{Calculation of VdW force to get the 10um figure}
+The limiting factor will come from the Van der Waals force, where the
+fluctuating electric dipole moment of the molecule results in attraction
+between the molecule and the chip surface~\cite{}. The associated energy
+shift is 
 %
-Given that the molecules will be $\sim\SI{10}{\micro\meter}$ from the surface,
-we will require that trapping electronics will be on a smaller scale than this
-so that trapping potential is \cm{sufficiently localised}.  Features of such a
-size can be easily created by standard photolithography techniques.
+\begin{equation}
+  V_\text{vdW}(z) \approx \frac{\mu_e^2}{4\pi\epsilon_0 h z^3}.
+\end{equation}
+%
+We want this and the gradient $V'_\text{vdW}(z)$ to be small compared to the
+vacuum Rabi frequency found in \cm{reference theory section}. We find this to
+be true when $z\geq\SI{10}{\micro\meter}$, which we deem is the closest that we
+will trap molecules to the surface.  We therefore require that trapping
+electronics will be on a smaller scale than this so that trapping potential is
+sufficiently localised.  Features of such a size can be easily created by
+standard photolithography techniques.
 
 Additionally, we aim to integrate the chip trap into our existing \CaF{}
 experiment. This can be done by the addition of a new chamber to our setup,
@@ -410,7 +418,6 @@ be transferred onto the chip trap.
 
 \begin{figure}[htb]
   \centering
-  %\includegraphics[width=0.7\textwidth]{figs/overview/apparatus_04_crp.png}
     \begin{tikzpicture}
       \node[anchor=south west,inner sep=0] (image)
 {\includegraphics[width=0.8\textwidth]{figs/overview/apparatus_04_crp.png} };
@@ -435,20 +442,20 @@ be transferred onto the chip trap.
   \label{overview:fig:vacuumsystem}
 \end{figure}
 
-At this point we note that the rotational stretched states of \CaF{} have been
-demonstrated to have exceptionally long lifetimes in a macroscopic magnetic
-trap~\cite{WilliamsMagnetic2018}. For this reason it was decided that using
-magnetic traps, such as those describedin \cm{section} would be
-preferable to the electrostatic traps suggested in \inlineref{Andre2006}. We
-are now faced with the question of how exactly we can load molecules from the
-MTT into the microscopic chip trap.
-%
+At this point, we note that the long-lived stretched states discussed in
+section~\ref{overview:existing} are promising candidates for the qubit states
+in a molecule chip.For this reason it was decided that using magnetic traps,
+such as those describedin \cm{section} would be preferable to the electrostatic
+traps suggested in \inlineref{Andre2006}. We are now faced with the question of
+how exactly we can load molecules from the MTT into the microscopic chip trap.
+
+% TODO The phrasing of this para can be improved
 Fortunately this problem has previously been addressed for atom chips. For
-example in \inlineref{Ott2001} \cm{fix phrasing} have transferred \cm{from a
-similar transport trap to ours?} into a chip trap, via a macroscopic U-trap
-that is aligned with the chip. This makes it easier to align the MTT and the
-chip trap. The molecules can then be transferred between the traps by ramping
-of the trapping currents in the U-wire and coils.
+example in \inlineref{Ott2001} a similar transport scheme to ours is used to
+load an atom chip. Here the authors have used a macroscopic U-trap that is
+aligned with the chip to improve alignment of their transport trap and their
+chip trap. We propose to do the same thing, with molecules then transferred
+between the traps by ramping of the trapping currents in the U-wire and coils.
 %
 Molecules can similarly be transferred onto and between traps on the chip by
 ramping of the trapping currents~\cite{}. Such a procedure is
@@ -590,7 +597,7 @@ figure) and positioned below the surface of the chip, which is mounted on the
 chip flange assembly. The chip flange assembly is detailed in
 \mysubfigref{overview:fig:chipchamber}{b}, and is is equipped with a large
 copper heat sink, a large U-wire to form the macroscopic alignment trap and a
-subchip for current and microwave delivery. The \cm{science chip} is mounted
+subchip for current and microwave delivery. The chip is mounted
 into a recess in the subchip so that it is flush with the surface. The chip is
 mounted facing downwards so that molecules can be dropped for imaging as they
 fall. The flange itself is fitted with two high-current feedthroughs, a \cm{??}
