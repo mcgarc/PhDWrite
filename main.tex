@@ -29,7 +29,9 @@
 %\usepackage{xcolor} % Uncomment if not using bibliography links
 
 % --- Common ---
-\usepackage[left=2cm, right=2cm, top=2cm, bottom=3cm]{geometry}
+\usepackage[left=3cm, right=3cm, top=2cm, bottom=3cm]{geometry}
+% NOTE Changed l/r margins from 2cm to 3cm, so textwidth changed form 
+% 169.988mm to 149.988mm
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -49,6 +51,7 @@
 \usepackage[T1]{fontenc} % Some fonts in some bibs...
 \usepackage{amssymb}
 \usepackage{import} % For importing pgfs with embedded pngs
+\usepackage{layouts}
 
 % --- Custom colors --- 
 \usepackage[dvipsnames]{xcolor}
@@ -59,6 +62,8 @@
 \definecolor{gold}{HTML}{d2ab22}
 \definecolor{pink}{HTML}{D73665}
 \definecolor{deeppurple}{HTML}{312032}
+\definecolor{Lorange}{HTML}{d36800}
+\definecolor{Lgreen}{HTML}{009915}
 
 % --- Bibliography ---
 % Uses biblatex with biber. Don't include url, doi, isbn because we will use
@@ -159,6 +164,7 @@
 \DeclareSIUnit\gauss{G}
 \DeclareSIUnit\inch{inch}
 \DeclareSIUnit\rpm{rpm}
+\DeclareSIUnit\debye{D}
 \sisetup{range-phrase=--}
 
 % --- Line spacing ---
