@@ -1,467 +1,1012 @@
-\cm{TODO: Should include more theory of the interaction stuff/ cavity QED
-in this chapter. Intro should be something like:
-%
-In chapter (probably the introduction) I introduced the concept of microwave
-guides integrated into chip traps. Previous experiments have used on-chip
-microave guides to couple to \cm{(I think this is right)} the hyperfine structure
-of atoms. However, the coupling to heteronuclear dipolar molecules is much
-stronger \cm{Why?}. In the strong coupling regime it may be possible to \cm{(do
-cavity QED, sideband cooling, etc...)}
-%
-I will now discuss the theory of interaction between molecules and microwaves
-and the implementation of a coplanar waveguide on our chip.
-%
-}
-
-%To summarise the previous sections, there are good prospects for developing a
-%molecule chip using magnetic traps integrated with on-chip microwave guides for
-%coherent quantum control and measurement. Such a device would take advantage of
-%magnetically insensitive rotational transisions in \CaF{} to form a qubit with
-%long coherence times. Forming a microwave resonator on chip will allow the use
-%of powerful techniques due to cavity QED effects.
-%
-%\thesis{Have referred to a quibt here, but I think I should actually avoid this
-%and find a better way to refer to it. Mayb have to introduce above.}
-%
-%Now I will present a plan for implementation of such a chip, beginning with a
-%discussion of propagating microwaves on the surface of a chip and moving on to
-%look at integration of the trapping wires and microwave guides by use of
-%multiple layers. The chip design will then be presented followed by a proposed
-%loading scheme.
-
-
-\section{Theory of microwave--molecule interaction}
-
-\cm{Check hyphenation of section title}
+One of the key motivations for developing a molecule chip is the ability to
+integrate microwave guides for strong coupling between photons and rotational
+transitions. In this chapter I will present how such a scheme can be realised.
+I will begin with a summary of the coplanar waveguide (CPW), which can be used
+to guide microwaves across a dielectric surface. I will then move on to discuss
+the logistics of integrating a CPW into the experiment, and especially on the
+delivery of microwaves to the chip. I will then present two uses of single
+\CaF{} molecules coupled to microwave guides: sideband cooling and state
+readout.
 
 \section{The coplanar waveguide}
 
-\cm{The following is mostly from my ESA so will need editing! Important
-takeaways are the field strcutre, where the molecules need to sit in this
-field, and what we need to do to get a cavity. What can we do if we don't have
-a cavity?}
+The CPW was originally proposed by Cheng P.~Wen as a means
+of guiding microwaves across the surface of a dielectric
+substrate~\cite{1127105}. It consists of a central conductor with a ground
+plane on either side, as pictured in~\mysubfigref{mws:fig:CPW}{a}. CPWs have become
+prolific, since they allow the creation of robust microwave devices, and offer
+some benefits over other waveguide architectures, such as the stripline
+waveguide, because they can provide circularly polarised fields, and also
+provide easy access to the ground plane for shunt connections.
 
-As discussed in \cm{chapter ??}, it is highly beneficial to be able to
-incorporate microwave waveguides onto the chip surface. The structure most
-commonly used for this application is the coplanar waveguide
-(CPW)~\cite{1127105, Simons2004}, which was was originally proposed by Cheng
-P.~Wen in 1969.~\cite{1127105} CPWs are formed from a conductor layer on a
-dielectric substrate, with two channels of conductor carved out in order to
-create a centre conductor strip, and the other conducting regions forming a
-surrounding ground plane.  A segment of a CPW is illustrated in
-Fig.~\ref{experiment:fig:CPWxsec}.
-
-\cm{Should replace this paragraph with some COMSOL simulation and further
-discussion. Figure should be from our COMSOL sims not Simons.}
-%
 The CPW's geometry is defined by the centre conductor width ($S$) and the
-channel width ($W$). The geometry of the CPW determines the region the microwave
-field occupies, as illustrated in \myfigref{experiment:fig:CPWfield}. The CPW
-can therefore be designed to maximise overlap between the microwave field and
-the trapped molecules. As a rough approximation the molecules should be trapped
-at a distance $h\sim S$ above the centre of the CPW to achieve a good
-overlap.~\cite{Boehi2009}
+channel width ($W$). The height of the conductor is $t$ and the dielectric
+height is $h$.  The geometry of the CPW determines the region the microwave
+field occupies, as illustrated in \mysubfigref{mws:fig:CPW}{b}.  The CPW
+can therefore be designed to maximise overlap between the microwave field and a
+cloud of molecules trapped nearby.  As a rough approximation the molecules
+should be trapped at a distance $h\sim S$ above the centre of the CPW to
+achieve a good overlap~\cite{Boehi2009}. The electric field surrounding the CPW is shown
+in \mysubfigref{mws:fig:CPW}{b}, the equations defining this field can be found
+analytically~\cite{Simons2004}, or the field can be determined by a
+finite-element simulation, as is done here.
 
-\cm{I can combine these two theses into one reference. Probably a good idea,
-but don't have time right now. The way to do it is to cite them as
-\\cite{Treutlein2008, *Boehi2009}
-but it seems that I would have to change every single instance to make this work
-properly.
-}
-
-\begin{figure}
-  \includegraphics{./figs/2019-01-18_stripline_xsection.png}
-  \caption{
-    \cm{TODO: Redrawa myself and fix the labels (don't need $h_1$, just $h$,
-    etc.}
-    Cross section of a coplanar waveguide segment, showing the characteristic
-    features of a centre conductor of width $S$, which is isolated from the
-    ground plane by a distance of width $W$. Note the similarity to a coaxial
-    cable, where the centre conductor takes the place of the central pin and the
-    ground plane the shielding. This figure is reproduced from
-    reference~\cite{Simons2004}}.
-  \label{experiment:fig:CPWxsec}
+\begin{figure}[ht]
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \begin{overpic}[abs, width=\textwidth]{figs/mws/CPW_dims.pdf}
+      \put(20, 180){(a)}
+      \put(100, 25){$S$}
+      \put(126, 12){$W$}
+      \put(15, 43){$h$}
+      \put(193, 58){$t$}
+      \put(40, 43){$\epsilon_r$}
+    \end{overpic}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \begin{overpic}[abs, width=\textwidth]{figs/mws/CPWMode_legend.png}
+      \put(20, 180){\textcolor{white}{(b)}}
+      \put(165, 180){\textcolor{white}{High}}
+      \put(165, 110){\textcolor{white}{Low}}
+		  \put(20, 20){\textcolor{white}{\SI{20}{\micro\meter}}}
+    \end{overpic}
+  \end{subfigure}
+	\caption{Subfigure (a) shows a perspective view of a segment of CPW on dielectric substrate, with
+pertinent geometry and dielectric constants labeled. The conductor is in gold
+  and the dielectric is left transparent. A COMSOL finite-element simulation of the
+resulting field density near such a CPW is shown in (b), with
+$S=\SI{20}{\micro\meter}$, $W=\SI{10}{\micro\meter}$, $\epsilon_r=10$,
+$h=\SI{10}{\micro\meter}$. Conductor regions are highlighted in gold and the
+end of the bottom of the substrate is marked with the black line. The field is
+presented in arbitrary units. Note that in a resonator the field will depend on
+the position in the longitudinal direction.}
+	\label{mws:fig:CPW}
 \end{figure}
 
+\subsection{CPW properties}
 
-\begin{figure}
-  \includegraphics[width=0.5\textwidth]{./figs/simons_cpw_e_field.png}
-  \caption{
-    \cm{Redraw, fix permittivity labesl. Also need to think about quantum
-    squeezing mode volume, as mentioned by Alex (somehow related to
-    $(\lambda/n)^3$}
-    Electric field lines in the vicinity of a CPW are shown. The geometry of the 
-    the CPW can be chosen to determine the intensity profile of the field. Ths
-    figure is reproduced from reference~\cite{Simons2004}.
-  }
-  \label{experiment:fig:CPWfield}
-\end{figure}
-
-We must ensure that coupling between CPW microwaves and trapped molecules is
-achievable. In this section we will focus on ensuring that the microwaves will
-be able to propagate along the waveguide. This will rely on impedance matching
-at CPW interfaces and satisfactory levels of attenuation on the
-chip.~\cite{Jackson1975, Simons2004}.
-
-We will now outline the basic mathematical description of a CPW.  For our
-purposes it will be sufficient to consider the case where the height of the
-substrate ($h_1$) far exceeds the other distances, that is $h_1 \gg S$, whilst
-$S \sim W$. The dielectric has relative permittivity $\epsilon_\mathrm{r1}$.
-
-\cm{Throughout: need to figure out I vs we}
-\subsubsection{CPW Impedance}
-
-It is common to define the planar geometry in terms of the
-ratio~\cite{1127105, Simons2004}
+We will now consider the electric properties of a CPW. These will largely
+depend on the planar geometry of the waveguide, which we express in terms
+of the ratio~\cite{1127105, Simons2004}
+%
 \begin{equation}
-  k_0 = \frac{S}{S+2W} = \sqrt{1-{k'_0}^2}
+  k_0 = \frac{S}{S+2W} = \sqrt{1-{k'_0}^2}.
   \label{eqn:k0def}
 \end{equation}
-where the second equality defines $k'_0$.
 %
-Wen demonstrated~\cite{1127105} that a conformal mapping \cm{expand} can be used
-to describe a CPW as a transmission line~\cite{Jackson1975} in terms of elliptic
-integrals of the first kind $K(k)$. The capacitance of a the dielectric region
-of the CPW is given by
+For a waveguide made of a material with conductivity $\sigma$
+and permeability $\mu$ and propagating field with frequency $\omega$
+there is a skin depth~\cite{Simons2004}
+%
 \begin{equation}
-  C_\mathrm{CPW} = 2\epsilon_0(\epsilon_\mathrm{r1}-1)\frac{K(k_0)}{K(k'_0)}
+  \delta = \sqrt{\frac{2}{\omega\mu\sigma}}
 \end{equation}
+%
+and skin effect surface resistance~\cite{Simons2004}
+%
+\begin{equation}
+  R_s = \frac{1}{\sigma\delta}.
+\end{equation}
+
+Since the field of the CPW will pass through both the dielectric and the
+surrounding air, the CPW's capacitance is the sum of the capacitance of each of
+these two parts
+%
+\begin{equation}
+  C_\text{CPW} = C_\text{dielectric} + C_\text{air}.
+\end{equation}
+%
+The method of finding these individual contributions is somewhat involved, so
+we simply state the results here in terms of the elliptic integral of the
+first kind, $K(k)$~\cite{Simons2004}. The capacitance due to the dielectric is
+%
+%
+\begin{equation}
+  C_\text{dielectric} = 2\epsilon_0(\epsilon_\text{r1}-1)\frac{K(k_0)}{K(k'_0)}
+\end{equation}
+%
 and the capacitance of the air region is
+%
 \begin{equation}
-  C_\mathrm{air} = 4\epsilon_0 \frac{K(k_0)}{K(k'_0)}.
+  C_\text{air} = 4\epsilon_0 \frac{K(k_0)}{K(k'_0)}.
 \end{equation}
-We can use this to find the effective permittivity 
+
+We can use this to find the effective permittivity~\cite{Simons2004}
+%
 \begin{align}
-  \epsilon_\mathrm{eff} &= \frac{C_\mathrm{CPW}}{C_\mathrm{air}} \\
-    &= \frac{1+ \epsilon_\mathrm{r1}}{2} \\
+  \epsilon_\text{eff} &= \frac{C_\text{dielectric}}{C_\text{air}} \\
+    &= \frac{1+ \epsilon_\text{r1}}{2} \\
 \end{align}
-the phase velocity (using $c$ as the speed of light)
+%
+where we have assumed that we are in the limit of a thick dielectric layer ($h
+\gg W$) so that most of the field density is inside the dielectric.
+%
+% TODO Ensure $c$ is introduced already somewhere above...
+The phase velocity  is~\cite{Simons2004}
+%
 \begin{align}
-  v_\mathrm{ph} &= \frac{c}{\sqrt{\epsilon_\mathrm{eff}}} \\
-    &= \frac{c}{\sqrt{(1 + \epsilon_\mathrm{r1})/2}}
+  v_\text{ph} &= \frac{c}{\sqrt{\epsilon_\text{eff}}} \\
+    &= \frac{c}{\sqrt{(1 + \epsilon_\text{r1})/2}}.
 \end{align}
-\cm{check that [Ohm] notation is ok}
-and hence the impedance of the CPW\footnote{This result makes use of the
-approximation $\sqrt{\mu_0/\epsilon_0}\approx120\pi\mathrm{[Ohms]}$, which is
-used commonly in microwave engineering~\cite{Collin2007}}
+
+Now using the approximation~\cite{Collin2007}
+$\sqrt{\mu_0/\epsilon_0}\approx120\pi\text{Ohms}$ we have the line
+impedance~\cite{Simons2004}
 \begin{align}
-  Z_0 &= \frac{1}{C_\mathrm{CPW} v_\mathrm{ph}} \\
-    &= \frac{30 \pi}{\sqrt{(\epsilon_\mathrm{r1}+1)/2}} \frac{K(k_0)}{K(k'_0)}
-    \mathrm{[Ohms]}
+  Z_0 &= \frac{1}{C_\text{air} v_\text{ph}} \\
+    &= \frac{30 \pi}{\sqrt{(\epsilon_\text{r1}+1)/2}} \frac{K(k_0)}{K(k'_0)}
+    \text{Ohms}.
+    \label{mws:eqn:Z0}
 \end{align}
 Note that the impedance of the waveguide has dependence only on the geometry in
 the form of the ratio $k_0$, and the relative permittivity of the
-substrate.~\cite{Simons2004} This means that for any substrate we choose the
+substrate.~\cite{Simons2004} This means that for any substrate we choose, the
 value of $k_0$ can be chosen to fix the impedance at the standard $Z_0 =
-\SI{50}{\ohm}$.
-
+\SI{50}{\ohm}$. This is useful for building macroscopic input ports to the CPW,
+and then tapering for a highly localised field near the molecule trap.
+%
 Therefore as long as $k_0$ is held constant the CPW can be tapered to change the
-size of the centre conductor, and hence control the region the field occupies
-(c.f. \myfigref{experiment:fig:CPWfield}).  Various typical CPW tapers  can be
-seen in in \myfigref{experiment:fig:resonator}.~\cite{Simons2004}
+size of the centre conductor, and hence control the region the field occupies.
 
-\subsubsection{CPW Resonators}
-\label{experiment:mw:resonator}
-
-Here I will present the implementation and theory of CPW microwave resonators,
-with a view to determine whether implementation of the Andr\'e design is
-feasible.
-
-A microwave resonator can be formed from a section of CPW that is capacitively
-coupled to another driving segment.~\cite{Day2003} The properties of such a
-resonator are determined by the geometry, including its length and the nature
-of the capacitor structures, which can be made up of gaps, or overlapping
-fingers. An example of such a resonator is shown in
-\myfigref{experiment:fig:resonator}.~\cite{doi:10.1063/1.3010859, Pain1999}
-
-\begin{figure}
-  \includegraphics[width=0.8\textwidth]{./figs/gopl_cpw.png}
-  \caption{
-    \cm{Aim to use one of my own CPWs here. Might be hard as I probably
-    won't have all the different coupling methods, so maybe alter this figure,
-    if that is allowed??}
-    \cm{Tight bend radisu here? I thought $\lambda/3$ was the limit but this
-    might be smaller?}
-    A CPW resonator is shown (D) along with various capacitor structures: 8
-    finger capacitor (E), two finger capacitor (H) and gap capacitors (I and K).
-    The capacitors isolate a segment of the central conductor to form the
-    resonator. Note that the curving of the CPW allows longer lengths to fit
-    into a shorter region without adversely affecting
-    transmission.~\cite{Simons2004} A taper can be seen at each end of the
-    resonator, with $k_0$ and hence $Z_0$ conserved.
-    \cm{Metion bend loss, to be expanded in body text.}
-    This figure is reproduced from reference~\cite{doi:10.1063/1.3010859}.
-  }
-  \label{experiment:fig:resonator}
-\end{figure}
-
-A CPW resonator of length $L$ has fundamental angular frequency
-\begin{equation}
-  \omega_0 = \frac{\pi v_\mathrm{ph}}{L} = \frac{\pi
-  c}{\sqrt{\epsilon_\text{eff}} L}
-\end{equation}
-
-To determine the feasibility of implementing such a resonator, the quality
-factor should be considered. By definition the quality factor of a perfect
-damped resonator is proportional to the ratio of energy stored and energy lost
-per cycle, that is~\cite{Pain1999}
-\begin{equation}
-  Q = 2\pi\frac{U_\mathrm{max}}{U_\mathrm{lost}}.
-  \label{experiment:mw:eqn:Qdef}
-\end{equation}
-It can readily be shown that the quality factor can be expressed in terms of the
-attenuation constant $\alpha$ (defined below) and the resonant frequency
-$\omega_0$, so that~\cite{Simons2004}
-% Simons pg. 409-410
+A CPW has a cut-off frequency for the lowest transverse electric mode, given
+by~\cite{Simons2004}
 %
 \begin{equation}
-  Q = \frac{\omega_0}{2c\alpha}.
-  \label{experiment:mw:eqn:Qalpha}
+  f_\text{cutoff} = \frac{c}{4h\sqrt{\epsilon_r - 1}}
 \end{equation}
 %
-\cm{Alex: Limit? I would have thought only need Q up to Q of a rotational
-transition, what is that?}
-It is desirable to maximise $Q$ (minimise damping). It has been shown that CPWs
-with $Q$ on the order of $1000$ can be fabricated.~\cite{doi:10.1063/1.3010859,
-Hattermann2017} Below we will discuss whether this can be achieved in our case.
+which will always be several orders of magnitude above our operating frequency,
+even if $h$ is chosen to be several microns. The cutoff frequency can therefore
+be ignored for the purpses of our discussion.
 
-\subsubsection{Microwave loss modes}
+\subsection{CPW attenuation}
 
-\cm{Mike: This section is very useful. I would find even more useful if you had
-included graphs to show how the various loss modes depend on the key parameters
-(frequency, conductor width/thickness etc).}
-
-The attenuation constant is defined as the real part of the propagation
-constant $\gamma = \alpha + i\beta$, where $\beta = 2\pi / \lambda$ is the wave
-number.~\cite{Simons2004} Propagation through a waveguide induces evolution
-described by
+It is important to understand the level of attenuation across a CPW. Not only
+is it important that we can transmit enough signal to the molecules to effect
+rotational transitions, but the attenuation in a resonator will be the dominant
+factor in determinning its quality factor, and hence whether we are in the
+strong coupling r\'egime. Begin by considering the electric field inside a CPW.
+Say that the field at a position $z$ along the axis of the guide is $E(z)$.
+This evolves according to
 %
 \begin{equation}
   \widetilde{E}(z) = \widetilde{E}(0)e^{-\gamma z}.
-  \label{experiment:mw:eqn:Eloss}
+  \label{mws:eqn:Eloss}
 \end{equation}
 %
+where $\gamma = \alpha + i\beta$, $\beta = 2\pi / \lambda$ is the wave
+number and $\alpha$ is the attenuation constant.~\cite{Simons2004}
 Taking the absolute value, the amplitude falls off as
 %
 \begin{equation}
-  E(z) = E(0)e^{-\alpha z}
+  E(z) = E(0)e^{-\alpha z}.
 \end{equation}
-%
-\cm{Alex asked if $\alpha_r$ includes input/output coupling. I think this is the
-same as insertion loss and I have a target to talk more about that above, but
-maybe reinforce here?}
-where the attenuation is given by the sum of attenuation from three loss modes:
-dielectric loss ($\alpha_d$), conductor loss ($\alpha_c$) and radiation loss
-($\alpha_r$). The propagation constant can be written as
+
+There are two contributing terms to the attenuation constant
 %
 \begin{equation}
-  \alpha = \alpha_d + \alpha_c + \alpha_r.
+  \alpha = \alpha_d + \alpha_c,
 \end{equation}
+%
+there are the contributions from dielectric and conductor respectively.  We
+neglect small contributions from radiative losses~\cite{Frankel1991}. Bending
+losses can also be ignored as long as the radius of the bends are much larger
+than the wavelength of the propagating wave. We must be mindful of this during
+design, since the typical wavelengths for rotational transitions are on the
+order of centimeters.  We also do not consider the insertion loss of the
+resonator, since this does not affect the quality
+factor~\cite{doi:10.1063/1.3010859}.
 
-It is instructive to consider the quality factor of a resonator for one loss
-mechanism, ignoring the effect of the others. These are given
-as~\cite{Simons2004}
-\begin{equation}
-  Q_i = \frac{\omega_0}{2c\alpha_i}
-\end{equation}
-with the total quality factor being
-\begin{equation}
-  Q = \left(\sum Q_i^{-1} \right)^{-1}.
-\end{equation}
+\subsubsection{Dielectric losses}
 
-\cm{Talk about "insertion loss" which is in Simon's 12. (pg. 410??)}
-Note that we will not consider the dependence of the quality factor the
-capacitive coupling into the resonator (insertion loss).~\cite{Simons2004,
-doi:10.1063/1.3010859} Broadly speaking, a higher coupling capacitance
-corresponds to a wider resonance peak, however in our case this effect is
-dominated by other forms of loss.
-
-\cm{Alex: also need to mention bending losses}
-
-\subsubsection*{Dielectric losses}
-
-Dielectric losses vary linearly with $\tan \delta_e$, the dielectric loss
-tangent of the substrate~\cite{Collin2007}
+Dielectric losses in the thick dielectric limit are described
+by ~\cite{Collin2007}
 \begin{equation}
   \alpha_d =
-  \frac{\omega_0}{4c}\frac{\epsilon_\mathrm{r1}}{\sqrt{\epsilon_\mathrm{eff}}}
-  \tan \delta_e.
+  \frac{\omega_0}{4c}\frac{\epsilon_r}{\sqrt{\epsilon_\mathrm{eff}}}
+  \tan \delta_e
 \end{equation}
-A typical microwave substrate is chosen to minimise these dielectric losses. As
-such we would expect $\tan\delta_e\leq10^{-3}$ and
-$\epsilon_\mathrm{r1} \sim 10$ so the limit on the dielectric loss component is
-\begin{equation}
-  \alpha_d \leq \SI{0.9}{\neper\per\meter}
-\end{equation}
-for the \SI{41}{\giga\hertz} transition in \CaF{}. As a Q-factor, that is
-\begin{equation}
-  Q_d \geq 460.
-\end{equation}
+%
+where $\tan\delta_e$ is the dielectric loss tangent. Common dielectrics for
+microwave guides include aluminium nitride (\AlN{}) and high-resistivity
+silicon.  For our purposes we wish to consider waveguides situated on
+dielectrics layers that can be easily deposited above the trapping wires.
+Following the work in \inlineref{Treutlein2008}, we primarily consider polyimide, which
+can be depositied by spin-coating. Other options are available, such as
+polyethylene naphthalate (PEN) ~\cite{WEI20169937}.
+% TODO Is it possible to grow some other dielectric?
 
-Higher $Q$ is achievable depending on the substrate that is chosen. For example,
-aluminium nitride~\cite{mw101}  ($\epsilon_\mathrm{eff}=5$, $\tan\delta_e =
-5\times10^{-4}$) or high-resistivity silicon (HiRes Si)~\cite{1717770}
-($\epsilon_\mathrm{eff}=5$, $\tan\delta_e =2\times10^{-4}$) are both good
-choices in the high-frequency regime.  Dielectric quality is usually higher
-below room temperature, but experimental limitations prevent us from cooling the
-chip at this stage.
-% https://www.microwaves101.com/encyclopedias/aluminum-nitride
-% https://www.microwaves101.com/encyclopedias/hard-substrate-materials
+Typical values of dielectric constants and $\alpha_d$ are shown in
+\mytableref{mws:table:diprops}. Note that these parameters have some dependence
+on the frequency and temperature of the dielectric, and so are presented to
+illustrate the amount of loss that can typically be expected for our experiment
+at room temperature and frequencies in the \SI{10}{\giga\hertz} r\'egime.
 
-\subsubsection*{Conductor losses}
+% For Edwards cite, seee Appendix B saved in Physics Resources/CPW
+\begin{table}[ht]
+  \caption{Dielectric constants and loss for various substrates in the
+  \SI{10}{\giga\hertz} r\'egime at room temperature}
+\centering
+\begin{tabular}{l c c c c }
+\hline\hline
+  Material & $\epsilon_r$ & $\tan\delta_e$ & $\alpha_d$ (\si{\per\meter}) & Ref. \\ [ 0.5ex]
+\hline
+  Polyimide & 3.4 & \SI{1.8E-2}{} & 0.45 & \cite{DuPontKapton} \\
+  PEN & 2.56 & 0.003 & 0.63 & \cite{WEI20169937} \\
+  Silicon (high resistivity)& $\sim{12}$ & \SI{2E-4}{} & 0.02 & \cite{Simons2004, 1717770, doi:10.1063/1.4929503} \\
+  Sapphire & $\sim10$ & $2\times10^{-5}$ & $10^{-3}$ & \cite{edwards2016foundations}\\
+  Aluminium nitride & 8.9 & \SI{5E-4}{} & 0.22 & \cite{edwards2016foundations} \\
+  Arlon AD1000 & 10.2 & 0.0023 & 1.0 & \cite{arlon}\\
+\hline
+\end{tabular}
+\label{mws:table:diprops}
+\end{table}
+
+\subsubsection{Conductor losses}
 
 Conductor losses arise due to dissipation in the centre conductor and ground
-plane of the CPW.~\cite{Simons2004} We define the height of these structures to
-be $t$, so that the series resistance of the centre conductor is
-\begin{equation}
-  R_c = \frac{R_s}{4 S(1-k_0^2)K^2(k_0)}\left[ \pi + \log\left(\frac{4\pi
-  S}{t}\right) - k_0\log\left(\frac{1+k_0}{1-k_0}\right) \right],
-\end{equation}
-and the corresponding series resistance of the ground plane
-\begin{equation}
-  R_s = \frac{k_0 R_s}{4S(1-k_0^2)K^2(k_0)}\left[\pi +
-  \log\left(\frac{4\pi(S+2W)}{t}\right) -
-  \frac{1}{k_0}\log\left(\frac{1+k_0}{1-k_0}\right)\right].
-\end{equation}
+plane of the CPW~\cite{Simons2004}.
 The conductor attenuation constant is
 \begin{equation}
   \alpha_c = \frac{R_c +R_g}{2Z_0}.
 \end{equation}
-
-Consider an example case of gold conductor on HiRes Si substrate. Gold has
-resistivity $\rho_\mathrm{Au} = \SI{2.4E-8}{\ohm\metre}$ at room temperature,
-and as above, we will have $\epsilon_\mathrm{r1} \approx 10$. This requires $k_0
-\approx 1/3$ to achieve impedance matching at $Z_0 = \SI{50}{\ohm}$. The only
-free parameters are the conductor thickness $t$, and the width of the centre
-conductor $S$, both of which must be maximised to reduce loss. Typical values
-for the smallest CPWs will be $S\sim\SI{1}{\micro\metre}$,
+Where $R_c$ and $R_g$ are the series resistances of the centre conductor and
+the ground plane respectively.
+For a waveguide with height 
+$t$, theses are given by
+\begin{equation}
+  R_c = \frac{R_s}{4 S(1-k_0^2)K^2(k_0)}\left[ \pi + \log\left(\frac{4\pi
+  S}{t}\right) - k_0\log\left(\frac{1+k_0}{1-k_0}\right) \right],
+\end{equation}
+and
+\begin{equation}
+  R_g = \frac{k_0 R_s}{4S(1-k_0^2)K^2(k_0)}\left[\pi +
+  \log\left(\frac{4\pi(S+2W)}{t}\right) -
+  \frac{1}{k_0}\log\left(\frac{1+k_0}{1-k_0}\right)\right].
+\end{equation}
 %
-\cm{Mike: surely 10um is the smallest we are fabricating? Cameron: maybe need
-different values for different x-sections (or widths with set height?) see above
-comment from Mike about more plots}
-%
-with a height of approximately \SI{6}{\micro\metre}
-(discussed further below). Typical conductor losses are therefore expected to be
-of order
-\begin{equation}
-  \alpha_c \sim \SI{400}{\neper\per\metre}
-\end{equation}
-or as a quality factor
-\begin{equation}
-  Q_c \sim 1.
-\end{equation}
+The electrical properties of silver and gold are given in
+\mytableref{mws:table:metalprops}, and the computed conductor attenuations are
+shown in \myfigref{mws:fig:conductorloss}.
 
-Conductor losses for gold CPWs are large, but it is possible to use
-superconductors to produce resonators with $Q$ on the order of
-$1000$.~\cite{Booth1999, Wallraff2004} However as discussed above, cooling of
-the chip is not currently possible due to experimental restrictions, and hence
-we are not able to make use of superconductors to reach these high quality
-factors.
+% https://www.tibtech.com/conductivite.php?lang=en_US
+% 
+\begin{table}[ht]
+  \caption{Electrical constants and loss for various conductors in the
+  \SI{10}{\giga\hertz} r\'egime at room temperature}
+\centering
+\begin{tabular}{l c c c}
+\hline\hline
+Material & $\sigma$ ($\times10^6\si{\siemens\per\meter}$) & $\mu_r$ & Ref. \\ [ 0.5ex]
+\hline
+  Gold & 44.2 & 1.0 & \cite{edwards2016foundations}\\
+  Silver & 62.1 & 1.0 & \cite{edwards2016foundations}\\
+\hline
+\end{tabular}
+\label{mws:table:metalprops}
+\end{table}
 
-\subsubsection*{Radiative losses}
+% Data generated by nbs/2022-02-06_CPWresonators.nb
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}[b]{0.48\textwidth}
+  \begin{tikzpicture}
+    \begin{axis}[
+        xmode=log,
+        enlargelimits=true,
+        xlabel=$t$ (\si{\nano\meter}),
+        ylabel=$\alpha_c$ (\si{\neper\per\meter}),
+        width=\textwidth,
+        height = 0.7\textwidth,
+        x tick label style={/pgf/number format/.cd, set thousands separator={}}
+    ]
+      \addplot [thick, black] table {figs/mws/conductorlossvaryt.dat};
+      \addplot [style=thick, color=blue] table [y index=2] {figs/mws/conductorlossvaryt.dat};
+      \addplot [style=thick, color=pink] table [y index=3] {figs/mws/conductorlossvaryt.dat};
+      \node [] at (5cm, 3.1cm) {(a)};
+    \end{axis}
+  \end{tikzpicture}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.48\textwidth}
+  \begin{tikzpicture}
+    \begin{axis}[
+        enlargelimits=true,
+        xlabel=$S$ (\si{\micro\meter}),
+        %ylabel=$\alpha_c$ (\si{\neper\per\meter}),
+        width=\textwidth,
+        height = 0.7\textwidth,
+        x tick label style={/pgf/number format/.cd, set thousands separator={}}
+    ]
+      \addplot [thick, black] table {figs/mws/conductorlossvarys.dat};
+      \addplot [style=thick, color=blue] table [y index=2] {figs/mws/conductorlossvarys.dat};
+      \addplot [style=thick, color=pink] table [y index=3] {figs/mws/conductorlossvarys.dat};
+      \node [] at (5cm, 3.1cm) {(b)};
+    \end{axis}
+  \end{tikzpicture}
+  \end{subfigure}
+    \caption{
+      Conductor losses are plotted for (a) varying the conductor height of the
+      CPW and (b) varying the centre conductor width. Losses are shown for gold
+      on sapphire (black), silver on sapphire (blue) and gold on polyimide
+      (red). In (a) a typical conductor width of $S=\SI{10}{\micro\meter}$ is
+      assumed, and in (b) the thickness of the conductors is taken to be
+      $t=\SI{5}{\micro\meter}$. In both cases the impedance is set to $Z_0 =
+      \SI{50}{\ohm}$ by choice $k_0$ by \myeqref{mws:eqn:Z0}.
+    }
+  \label{mws:fig:conductorloss}
+\end{figure}
 
-The radiation losses of a CPW have been calculated and measured by Frankel et
-al.~\cite{Frankel1991}, who show that
-\begin{equation}
-  \alpha_r = \frac{\pi^2 \omega_0^3}{2^7}\left(\frac{\left(1 -
-  \frac{\epsilon_\mathrm{eff}}{\epsilon_\mathrm{r1}}\right)^2}{\sqrt{\frac{\epsilon_\mathrm{eff}}{\epsilon_\mathrm{r1}}}}\right)
-  \frac{(S+2W)^2\epsilon_\mathrm{r1}^{3/2}}{c^3 K(k'_0)K(k_0)}.
-\end{equation}.
-Inserting typical values, we retrieve \cm{Mike: too vague, need frequency for
-example as it goes like $f^3$...}
-\begin{equation}
-  \alpha_r \sim \SI{0.4}{\neper\per\metre}
-\end{equation}
-corresponding to a minimum quality factor
-\begin{equation}
-  Q_r \geq 1000
-\end{equation}
-which agrees with the measurements made by Frankel et al. which were for CPWs of
-similar geometry and frequency domain to our intended usage.
+The conductor losses clearly dominate over the dielectric losses. For this
+reason it is common to use superconductors for CPWs~\cite{}, since for a
+superconductor $\sigma \to \infty$ and hence $R_s$ and $\alpha_c \to 0$.
+This will not prevent the implementation of a microwave guide on a multi-layer
+chip trap, but it will impact our ability to build incorporate a microwave
+resonator as we will now discuss.
 
-\subsubsection*{Comparison of loss mechanisms}
-
-It is clear that without use of superconductors, the conductor loss will far
-dominate the other sources, with an overall quality factor $Q\sim1$. Typical
-resonators will operate with much higher $Q$~\cite{Hattermann2017}, so it will
-not be possible to implement a resonator.
-
-\cm{Alex: should re-calculate for the actual loss over the length of small
-waveguide we are using and include that. Also use realistic $S$.}
-That said, it should be noted that the high loss should not prevent us from
-using the CPW to directly drive microwave transitions in trapped molecules, as
-we will still be able to pass signal through the waveguide without the need to
-construct a resonator. With loss of $\alpha \approx \alpha_c$, and waveguides of
-lengths on the scale of a few centimeter, we can expect a total loss of around
+That said, it should be noted that the high loss will not prevent the use of
+the CPW to directly drive microwave transitions in trapped molecules. This
+would allow the same coherent control achieved in free space
+experiments~\cite{WilliamsMagnetic2018} although realisation of the JCH will
+clearly not be possible and a strong driving field may be required to overcome
+losses.  With loss of $\alpha \approx \alpha_c$, and waveguides of lengths on
+the scale of a few centimeter, we can expect a total loss of around
 $\SI{400}{\neper\per\metre} \times \SI{0.01}{\metre} = \SI{35}{\decibel}$. This
 should be sufficiently small that microwaves will be able to reach molecules
 trapped on the chip.~\cite{Treutlein2008}
-One of the later goals of the project will be to characterise microwave losses
-on the chip and compare these with those expected from theory.
+
+\subsection{CPW resonators}
+\label{mws:resonators}
+
+A microwave resonator can be formed from a section of CPW that is capacitively
+coupled to another driving segment~\cite{Day2003}. The resonant frequency is
+determined by the resonator's length, $L$, and the waveguide's phase
+velocity~\cite{Simons2004}
 %
-\cm{I might be able to expand on this further down the line, but it seems
-unnecessary to include now. Maybe need a fig. to explain too?
+\begin{equation}
+  \omega_0 = \frac{\pi v_\text{ph}}{L} = \frac{\pi
+  c}{\sqrt{\epsilon_\text{eff}} L}
+\end{equation}
 %
-\emph{
-A consequence of being unable to implement a microwave resonator is that it
-becomes challenging to implement the electrostatic trap proposed by Andr\'e et
-al.~\cite{Andre2006} as this relied on the ability to introduce a bias voltage
-on the centre conductor of the resonator in order to form the trap. It is
-possible to bias the centre conductor (as detailed in
-reference~\cite{doi:10.1063/1.3573824}) but it is not possible to do the same
-for a waveguide.
-}}
+Microwaves can be coupled to the resonator by positioning the resonator inline
+with a microwave guide, or in parallel as shown in
+\myfigref{mws:fig:resonators}. The strength of the coupling can be controlled by the shape of the
+interface between the resonator and the waveguide~\cite{doi:10.1063/1.3010859}.
 
-\subsection{Chips with multiple layers}
-\label{experiment:multilayer}
+\begin{figure}
+  \centering
+  \includegraphics[width=.6\textwidth]{figs/mws/resonators.pdf}
+  \caption{Different schemes for capacative coupling into a microwave
+    resonator. Gold represents conductor and black a dielectric substrate. In
+    (a) the resonator runs parallel to a waveguide that feeds in microwaves.
+    The input port is denoted by the arrow. In (b) the resonator is in series
+    with the input port, and is also coupled to an output port.
+  }
+  \label{mws:fig:resonators}.
+\end{figure}
 
-\cm{Mike:This bit doesn't make sense to me. The logic here seems to imply that
-the  electrostatic trap relies on a resonator but the magnetic trap doesn't.
-Which isn't true!  We chose the magnetic trap because we think it will give us
-longer coherence times. \\
+Recall from the discussion in chapter~\ref{theory} that for strong coupling we
+require $Q > 1.7 \times 10^5$. The quality factors for CPW resonators can be
+expressed in terms of an attenuation constant
 %
-Cameron: I think my reasoning here glossed over the details from the COMSOL
-models Kyle made for brining the bias onto the chip. I thought our conclusion
-was that the electrostatic trap required a resonator to bring the bias in, but
-maybe I am wrong? Mike has probably forgotten this, and a new reader wouldn't
-know it to start with, so I need to figure out how best to explain myself. Maybe
-forget the bias stuff and just argue that magentically insensetive transitions
-lead to long coherence times, which is what we want.
-}
+\begin{equation}
+  Q = \frac{\omega_0}{2c\alpha}.
+  \label{mws:eqn:Qalpha}
+\end{equation}
+%
+From \myfigref{mws:fig:conductorloss} and \mytableref{mws:table:diprops} it is
+clear that without the use of superconductors, the attenuation will be
+dominated by conductor losses, and $Q\sim10$. This is clearly not sufficient
+for our purposes.
 
-As the microwave attenuation prevents implementation of a resonator (and hence
-implementation of an electrostatic trap integrated with the waveguide) another
-solution for trapping and control of the microwaves must be found. Since
-magnetic trapping of atoms above a chip has been extensively researched (see
-section~\ref{chiptraps}), we have chosen this mechanism for trapping of molecules
-above the chip.
+Conductor losses can be eliminated by use of a superconducting CPW. Such
+devices are a developed technology, which have been used for coupling to
+solid-state qubits~\cite{Wallraff2004}. Operating at the low temperatures
+required for superconductors allows the achievement of very high quality
+factors of order $10^6$~\cite{doi:10.1063/1.3552890, Day2003}. For such devices
+a low-loss dielectric is usually chosen for the substrate (sapphire being a
+common choice) however a multi-layer resonator could potentially be achieved by
+etching the polyimide in the slot gaps, as in \inlineref{920142}. Otherwise, a
+single-layer superconducting design such as that shown in
+\inlineref{Hattermann2017} could be adopted. Regardless, the multilayer design
+remains a useful tool for microwave-molecule interactions, and investigating
+lower quality resonators coupled to molecules. 
 
-Various possible geometries for combining magnetic trapping wires and a CPW have
-been extensively explored. It transpires that it is extremely challenging to
-construct a geometry with both of these on the same layer that achieves a
-satisfactory overlap between the CPW field and the trapping region. To get
-around this, a chip with two layers has been designed: the lower layer consists
-of an array of DC trapping wires, and an upper layer hosts the CPW. The two are
-to be separated by an insulating layer of resin.
+% I have this point from Goppl that at low drive powers Q is somehow reduced. I
+% don't understand this really, and don't think it's that relevant because we
+% are so far off single-photon regime here anyway. But didn't want to entirely
+% forget, so now this comment exists.
 
-Multi-layer chips have been constructed before, notably those by
-Treutlein~\cite{Treutlein2008} and B\"ohi~\cite{rohtua}, whose work has heavily
-inspired our design. Treutlein and B\"ohi used photolithography followed by
-electroplating to create the lower layer (see section \ref{chiptraps:wiretraps})
-then formed the insulating layer by spin-coating polyimide resin in several
-stages. This allows the creation of a smooth layer, effectively covering bumps
-that can be formed from the underlying wires which avoids significant
-discontinuities in the waveguide.
+\section{Implementation of CPW-molecule coupling}
+\label{mws:integrating}
 
-Polyimide is used as the resin as it is highly resistant to cleaning techniques
-commonly used in photolithography, including piranha clean.  It is also
-effective as a microwave substrate~\cite{Simons2004} \cm{Mike seems concerned
-about this being high}
-($\epsilon_\mathrm{r1} = 3.3$, $\tan\delta_e = 0.016$) with conductor losses
-still dominating those caused by the dielectric.
+Having established the CPW, and that such a device can operate on a polyimide
+substrate, we can now consider the logistics of implementing such a device
+with our design. In this section we will consider the details of the
+implementation including the detuning of molecules with Stark shift, the
+delivery of microwaves to the science chip, and schemes for sideband cooling
+and state readout with the microwaves.
 
-\cm{Alex: were these the limits or the max they used?}
-Using a multi-layer chip introduces thermal constraints on the currents that can
-flow through the trapping wires. Current densities achieved by Treutlein and
-B\"ohi \cite{} were \SI{2.8E10}{\ampere\per\metre\squared} in the upper layer and
-\SI{5.5E10}{\ampere\per\metre\squared} in the lower layer.
+\subsection{Stark shift}
+
+Since the resonant frequency of the resonator is fixed by its length, it will
+be useful to be able to tune the frequency of the molecule transition, either
+to bring the molecules into or out of resonance with the microwaves. We will
+see that this is key for state readout in section~\ref{mws:readout}. We propose
+that the detuing can be controlled by the Stark shift due to a d.c.~field.  By
+positioning voltage-biased pads near to the molecule trap, the d.c.~field can
+be used to shift the transition frequency.
+
+When the shift is sufficiently small compared to the unperturbed energy, the
+Stark shift can be found by second-order perturbation theory. The full
+derivation can be found in, for example \inlineref{brown_carrington_2003}, but
+for our purposes it is sufficient to simply state the result, which is that the
+energy shift of the rotational state $\ket{N, m_N}_\text{rot}$
+% TODO Leave this note for Mike, but also have to do it!
+\cm{need to introduce this notation in theory section}
+is given by 
+%
+\begin{equation}
+  \Delta_{N, m_N} = \sum_{N', m_N'} \frac{(\mu_e E)^2}{E_\text{rot}(N) -
+  E_\text{rot}(N')} |\prescript{}{\text{rot}}{\bra{N', m_N'}}C_0^{(1)} \ket{N,
+m_N}_\text{rot}|^2.
+\end{equation}
+%
+Where $C_q^{(k)}$ is a renormalised spherical harmonic, and the matrix element
+here can be found by application of the Wigner-Eckart
+theorem~\cite{edmonds1996}.
+%
+\begin{multline} \prescript{}{\text{rot}}{\bra{N', m_N'}}C_0^{(1)} \ket{N, m_N}_\text{rot} =
+  \\ (-1)^{m_N'}\sqrt{(2N+1)(2N'+1)}
+  % 3 j symbols
+  \begin{pmatrix} N' & 1 & N \\ -m_N' & 0 & m_N \end{pmatrix} \begin{pmatrix}
+N' & 1 & N \\ 0 & 0 & 0 \end{pmatrix}
+\end{multline}
+%
+where the last two matrices represent the usual 3j-symbols.
+
+
+The summation can be simplified when we note that the properties of 3j-symbols
+mean that mixing only occurs between states where $m_N' = m_N$ and $N=N'$. It
+is simple to compute the resulting energy shift for arbitrary states, and the
+results are shown for $N=0, 1, 2$ \CaF{} states in \myfigref{mws:fig:stark}. We
+note that for small field strengths it is possible to induce a transition shift
+of several gigahertz with a modest electric field strength. We anticipate that
+only shifts of $<\SI{10}{\mega\hertz}$ will be required in
+experiment, and for such small perturbations, any additional effects of mixing
+hyperfine states, or effects due to the magnetic field can be ignored.
+
+% Data generated by nbs/2022-02-16_stark.nb
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+        enlargelimits=true,
+        xlabel=Field strength ($B/\mu_e$),
+        ylabel=State energy (\si{\giga\hertz}),
+        width=0.7\textwidth,
+        height = 0.4\textwidth,
+        legend pos=outer north east
+        %x tick label style={/pgf/number format/.cd, set thousands separator={}}
+    ]
+      \addplot [thick, black] table {figs/mws/stark.dat};
+      \addlegendentry{$\ket{0,0}$}
+      \addplot [style=thick, color=blue] table [y index=2] {figs/mws/stark.dat};
+      \addlegendentry{$\ket{1,0}$}
+      \addplot [style=thick, color=pink] table [y index=3] {figs/mws/stark.dat};
+      \addlegendentry{$\ket{1,\pm1}$}
+      \addplot [style=thick, color=purple] table [y index=4] {figs/mws/stark.dat};
+      \addlegendentry{$\ket{2,0}$}
+      \addplot [style=thick, color=gold] table [y index=5] {figs/mws/stark.dat};
+      \addlegendentry{$\ket{2,\pm1}$}
+      \addplot [style=thick, color=grey] table [y index=6] {figs/mws/stark.dat};
+      \addlegendentry{$\ket{2,\pm2}$}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{The Stark effect for the rotational states of the molecule $\ket{N,
+    m_N}$ found by second order perturbation theory. The $N=2$ state is
+  included for completion.}
+  \label{mws:fig:stark}
+\end{figure}
+
+\subsection{Integrating microwave components}
+
+% COMPONENTS
+% Vacuum-side barrel connector
+% https://www.mouser.co.uk/ProductDetail/Radiall/R127703001?qs=exnfk7tZe0CIIzofDocGig%3D%3D
+% Vacuum-side launcher
+% https://www.pasternack.com/2.92mm-female-end-launch-pcb-connector-pe45507-p.aspx
+% Feedthroughs
+% Kyle wrote in one note it's MDC SMA45-GS-WELD 
+% I can't quite find this, think the new version is this one
+% https://www.mdcprecision.com/9251004-sma-coaxial-feedthrough-1-pin-grounded-shield-double-ended-weldable
+
+The chip flange (shown in \myfigref{overview:figs:chipexperiment}) has been
+designed to incorporate MCD Precision's SMA45-GS-WLED \SI{2.92}{\milli\meter}
+high-frequency SMA feedthroughs. These welded connectors can be used to bring
+microwaves inside the chip chamber, where they can be launched onto a CPW on
+the subchip. Microwaves will be transferred through from the feedthrough to the
+subchip using a SMA male-male barrel adapter from Pasternak, and a female-clamp
+PCB launcher from Pasternack. The launching assembly can be seen in
+\mysubfigref{mws:fig:implement}{a}. These components have been tested for UHV
+compatibility, as discussed in \cm{reference relevant chapter}.  The flange
+assembly has been designed to allow microwaves to exit the chamber, where they
+can be terminated or measured.
+
+Once launched onto the subchip, the microwaves will be delivered by CPW to the
+subchip. 
+%
+As discussed in chapter~\ref{fab} the subchip in its current form is based on an
+aluminium-core PCB, however in future iterations of the experiment this can be
+replaced with, for example, an Arlon AD1000 board, which will be a suitable
+carrier for both trapping currents and microwaves~\cite{Morgan2020}. 
+%
+% TODO Do I actually ever call it a 'science chip'?
+The subchip CPW will be connected to the science chip CPW by wire-bonds.
+These can be chosen to be arbitrarily large s that it is easy to make good
+connection with the wire bonds, and then tapered down to reduce the field size
+while maintaining the same $k_0$ and hence the same impedance. This CPW can be
+capacitively coupled to a microwave resonator, but for a simple example we show
+a multi-layer design for a single CPW in \myfigref{mws:fig:implement}.
+
+\begin{figure}[htb]
+    \centering
+    \begin{tabular}[t]{cc}
+\begin{subfigure}{0.4\textwidth}
+    \centering
+    \smallskip
+    \begin{overpic}[abs,
+      width=\textwidth]{figs/mws/FlangeAssemblyFinalMWPresent.png}
+      \put(10, 132){(a)}
+    \end{overpic}
+\end{subfigure}
+    &
+        \begin{tabular}{c}% if you add [t], than sub images are pushed down
+        \smallskip
+            \begin{subfigure}[t]{0.4\textwidth}
+                \centering
+                \begin{overpic}[abs, width=0.8\linewidth]{figs/mws/present_CPW2_IS.pdf}
+                  \put(5, 139){(b)}
+                \end{overpic}
+            \end{subfigure}\\
+            \begin{subfigure}[t]{0.4\textwidth}
+                \centering
+                \begin{overpic}[abs, width=0.8\textwidth]{figs/mws/present_CPW2_inset.pdf}
+                  \put(5, 139){(c)}
+                \end{overpic}
+            \end{subfigure}
+        \end{tabular}\\
+    \end{tabular}
+  \caption{
+    The microwave components of the flange assembly (flange, feedthroughs,
+    barrel connectors, launchers, PCB and chip) are shown in (a). In (b) we
+    have the chip design from \myfigref{overview:figs:chipexperiment} (not to
+    scale) with the
+    additional microwave guide layer overlayed (red). Conversely to the lower
+    layer, the microwave layer shows areas where the dielectric is exposed, so
+    regions that aren't pink are covered with conductor. Example voltage pads
+    for Stark-shifting the molecules are also shown. Subfigure (c) shows a
+    detailed view of the trapping region.
+  }
+  \label{mws:fig:implement}
+\end{figure}
+
+
+To form an even smaller trap than discussed above, the CPW centre conductor can
+be biased, to create a dimple trap along with the underlying axis of the
+Z-wire, as was done in \inlineref{Treutlein2008}. For a resonator it would also
+be possible to introduce a bias field, but this would have to be done on-chip
+with a band stop filter~\cite{doi:10.1063/1.4808364}. This could also be used
+to implement the electrostatic traps described in \inlineref{Andre2006}.
+
+\section{Sideband cooling}
+
+This subsection summarises the sideband cooling scheme presented in
+\inlineref{Andre2006} and presents cooling rates for our trapping scheme with
+\CaF{}.  Throughout the section we assume that we operate with a single molecule
+coupled to a high-quality cavity ($Q\sim10^6$, $\kappa \approx 2\pi\times
+\SI{20}{\kilo\hertz}$) in the strong coupling r\'egime ($g\sim10^5>Q$). We take
+the molecule to act as a two-level system in the stretched states.
+For our example we choose $\ket{g}=\ket{0}_\text{str}$ and
+$\ket{e}=\ket{1}_\text{str}$.
+% TODO Note mainly for Mike, need to do it!
+\cm{Need to introduce the stretched state notation in theory as in long
+  coherence times... paper}
+
+In the macroscopic magnetic trap, the
+$\ket{e}\rightarrow\ket{g}$ decay is very slow ($\Gamma \sim
+10^{-5}\si{\hertz}$), but when a molecule is in close proximity to a microwave
+resonator at the transition frequency, the decay rate is strongly enhanced
+with rate
+%
+\begin{equation}
+  \Gamma_c = \frac{\kappa}{2}.
+\end{equation}
+%
+This enhanced decay rate opens the door to sideband cooling into the motional
+ground state of the trap.
+
+We write the state of the molecule as $\ket{N, m}$ where $N\in\{e,g\}$ is the
+state of the molecule, and $m$ is the quantum number of the motion
+in the trap. For any ground state $\ket{g,m}$ there is a carrier frequency
+transition to $\ket{e, m}$ at the resonant frequency $\omega_0$, and sidebands
+to the $\ket{e, m+m'}$ states at frequency $\omega_0 + m'\omega_t$, where
+$\omega_t$ is the trap frequency and $m'\in \mathbb{Z}$. There are similar
+carrier and sideband transitions for $\ket{e,m} \rightarrow \ket{g, m+m'}$.
+
+We imagine that an external driving field is applied on the
+$\ket{g, m} \rightarrow \ket{e, m-1}$ sideband as pictured in
+\myfigref{mws:fig:sideband}. Combined with the enhanced decay, this allows
+sideband cooling into low motional ground states of the trap. The molecule will
+be transferred by the driving field into a lower motional state, and will
+rapidly decay into the ground state by releasing a photon into the resonator.
+Each time this happens the molecule's energy is reduced by $\hbar\omega_t$.
+This results in a cooling rate
+%
+\begin{equation}
+  R_\text{sbc} = \frac{\hbar\Gamma_c\omega_t}{k_B}.
+\end{equation}
+
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.6\textwidth]{figs/mws/sidebandcool.pdf}
+  \caption{
+    The sideband cooling scheme is shown, with an external driving field
+    applied to the $\ket{g, m}\rightarrow\ket{e, m-1}$ transition. Decay on
+    $\ket{e,m}\rightarrow\ket{g,m}$ is strongly enhanced by the resonator,
+    allowing sideband cooling to low motional states.
+  }
+  \label{mws:fig:sideband}
+\end{figure}
+
+
+\begin{figure}[htb]
+  \centering
+  \begin{subfigure}[b]{0.44\textwidth}
+  \begin{tikzpicture}
+    \begin{axis}[
+        enlargelimits=true,
+        xlabel=Trapping current (\si{\ampere}),
+        ylabel=$R_\text{sbc}$ (\si{\milli\kelvin\per\second}),
+        width=\textwidth,
+        height = 0.7\textwidth,
+        x tick label style={/pgf/number format/.cd, set thousands separator={}}
+    ]
+      \addplot [thick, black] table {figs/mws/coolrate.dat};
+    \end{axis}
+    \node [] at (0.6, 3.2) {(a)};
+  \end{tikzpicture}
+  \end{subfigure}
+  \hspace{1cm}
+  \begin{subfigure}[b]{0.44\textwidth}
+  \begin{tikzpicture}
+    \begin{axis}[
+        ymode=log,
+        enlargelimits=true,
+        xlabel=Trapping current (\si{\ampere}),
+        ylabel=$T_\text{min}$ (\si{\nano\kelvin}),
+        width=\textwidth,
+        height = 0.7\textwidth,
+        x tick label style={/pgf/number format/.cd, set thousands separator={}}
+    ]
+      \addplot [thick, black] table {figs/mws/mintemps.dat};
+      \addplot [style=thick, color=blue] table [y index=2] {figs/mws/mintemps.dat};
+      \addplot [style=thick, color=pink] table [y index=3] {figs/mws/mintemps.dat};
+      %\addlegendentry{\SI{4}{\kelvin}}
+    \end{axis}
+    \node [] at (0.6, 3.2) {(b)};
+  \end{tikzpicture}
+  \end{subfigure}
+  \caption{
+    Subfigure (a) shows the cooling rate for varying trapping current for a
+    $Q=10^6$ resonator. Subfigure (b) shows the minimum temperature that can be
+    achieved as a function of trapping current for different resonator
+    temperatures: \SI{4}{\kelvin} (black), \SI{400}{\milli\kelvin} (blue) and
+    \SI{40}{\milli\kelvin} (red).
+    }
+    \label{mws:fig:sbtemps}
+\end{figure}
+
+As per discussion in section~\ref{theory:chips}, we expect typical trap
+frequencies $\omega_t\sim 2\pi \times 10^5 \si{\hertz}$ and therefore the
+cooling rate will be of order \SI{10}{\milli\kelvin\per\second}. This is shown
+for a molecule in a dimple trap (\cm{reference theory section on dimple traps
+not yet written}) at various trapping currents in
+\mysubfigref{mws:fig:sbtemps}{a}.
+
+The lowest motional state that can be reached is determined by the background
+photon number in the resonator. A typical high-$Q$ cavity will operate at a few
+tens of millikelvin~\cite{doi:10.1063/1.3010859} but these temperatures require
+a dilution fridge, and high-temperature superconductors can operate at typical
+cryocooler temperatures of $T_\text{res}=\SI{4}{\kelvin}$. This corresponds
+to a background photon number of
+%
+\begin{equation}
+  \overline{m} = \frac{k_B T_\text{res}}{\hbar \omega_0}.
+\end{equation}
+%
+It has been commonly shown that other sources of background photons can be
+eliminated~\cite{Wallraff2004}, in particular it can be useful to filter
+high-frequency photons that can enter from the input
+ports~\cite{doi:10.1063/1.3638063}. 
+
+We expect the minimum temperature achievable by sideband cooling to be reached
+when the molecule motion and photon energy are in thermal equilibrium, so that
+%
+\begin{equation}
+  T_\text{min} = \frac{\hbar \omega_t \overline{m}}{k_B}
+\end{equation}
+%
+which is shown as a function of the trapping current for various resonator
+temperatures in \mysubfigref{mws:fig:sbtemps}{b}. Note that reducing the
+trapping current will reduce the trap frequency, and hence also the lowest
+temperate that can be achieved. \cm{Is this meaningful?}
+
+\section{Entangling light and photon states}
+
+Reference~\cite{Andre2006} also proposes entangling the molecule state with the
+quantum state of photons in the resonator. This is inspired by the methodology
+of \inlineref{PhysRevA.69.062320} where the state of a Cooper-pair box is
+entangled with a resonator state. This entanglement can be used to perform
+state readout, state preparation and coupling to neighbouring qubits. In this
+section we will mainly discuss state readout, since this framework will be
+useful in chapter~\ref{squeeze}.
+
+We again assume that the molecule is trapped in the $N=0$ or $N=1$ stretched
+states. In this case the resonator is driven by a miecrowave field, so that the
+molecule-resonator coupling is described by the Jaynes-Cummings
+Hamiltonian that was discussed in section~\ref{theory:QO}.
+%
+Entangling of the light and molecule state can be achieved in the dispersive
+r\'egime, where the transition frequency is tuned so that $|\Delta|\gg g$.
+Reference~\cite{PhysRevA.69.062320} tells us that we can gain insight into the
+dispersive behaviour by applying the unitary transformation
+%
+\begin{equation}
+  U = \exp \left[\frac{g}{\Delta}(a\sigma_+ - a^\dagger\sigma_-)\right].
+  \label{mws:eqn:Utransform}
+\end{equation}
+%
+With expansion up to second order in $g/\Delta$, we obtain
+%
+\begin{equation} H= UH_\text{JC}U^\dagger \approx \hbar \omega_c
+  a^\dagger a + \hbar\left(\omega_c +
+  \frac{g^2}{\Delta}\right)s_z + \frac{\hbar
+  g^2}{\Delta}s_z a^\dagger a.
+  \label{mws:eqn:UHU}
+\end{equation}
+%
+% Could have s_i in theory, just pass this to mike and see what he says...
+Here we have introduced the spin operator $s_i = \sigma_i/2$ for convenience.
+
+The three terms of $H$ describe the oscillation of light in the cavity, the
+energy of the spin and the interaction of the photons with the spin. Note that
+the interaction of the photons and the spins induces the usual AC Stark shift
+proportional to $(n+\frac{1}{2})$. The last term allows the performance of QND
+measurement, since it will enable exchange of information between the
+z-component of the spin with the photons.
+
+We take the state of the photons in the resonator to be in a canonical coherent
+state~\cite{Gazeau2009}
+%
+\begin{equation}
+  \ket{\alpha} = e^{-\frac{|\alpha|^2}{2}}\sum_{n=0}^\infty \frac{\alpha^n}{\sqrt{n!}} \ket{n}
+\end{equation}
+%
+with $\alpha\in\mathbb{C}$, and $\ket{n}$ representing the $n^\text{th}$
+Fock state of the light~\cite{agarwal2012}. For such a state $|\alpha|^2$ is
+the average photon number, with $a^\dagger a$ being the number operator such
+that $\bra{\alpha}a^\dagger a \ket{\alpha} = |\alpha|^2$.
+
+The interaction of the light with the molecule is described by the last term in
+$H$, so for an interaction over time $T$, we have
+%
+\begin{equation}
+  \ket{\Psi(T)} = \exp\left(-iH_\text{int}T/\hbar\right)\ket{\Psi(0)}
+\end{equation}
+%
+where
+%
+\begin{equation}
+  H_\text{int} = \hbar \frac{g^2}{\Delta} s_z a^\dagger a
+\end{equation}
+%
+and $\ket{\Psi(0) = \ket{\psi}\ket{\alpha}}$ is the state of the system at the
+time of measurement. This can be expanded by inserting the definition of the
+coherent and molecule states,
+%
+\begin{equation}
+  \ket{\Psi(T)} = e^{-\frac{|\alpha|^2}{2}}\sum_{n=0}^\infty
+   \frac{\alpha^n}{\sqrt{n!}} e^{-i\nu T s_z a^\dagger a} \ket{n} (\cos\theta
+   \ket{g} + e^{i\phi}\sin\theta\ket{e})
+   \label{mws:eqn:evolve1}
+\end{equation}
+%
+where $\nu = g^2/\Delta$.
+Now the number operator in the exponent acts on $\ket{n}$, and the spin
+operator acts on $\ket{N}$ for
+%
+\begin{equation}
+   \ket{\Psi(T)} = e^{-\frac{|\alpha|^2}{2}}\sum_{n=0}^\infty
+   \frac{\alpha^n}{\sqrt{n!}} (e^{i\nu T n \hbar/2}\cos\theta\ket{n}\ket{g} +
+   e^{-i\nu T n \hbar/2}e^{i\phi}\sin\theta\ket{n}\ket{e}).
+\end{equation}
+%
+Collecting the coefficients of the molecule states yields
+%
+\begin{equation}
+  \ket{\Psi(T)} = \cos\theta\left(e^{-\frac{|\alpha|^2}{2}}\sum_{n=0}^\infty
+   \frac{(\alpha e^{i\nu T \hbar/2})^n}{\sqrt{n!}}\ket{n}\right)\ket{g} +  
+    e^{i\phi}\sin\theta\left(e^{-\frac{|\alpha|^2}{2}}\sum_{n=0}^\infty
+   \frac{(\alpha e^{-i\nu T \hbar/2})^n}{\sqrt{n!}}\ket{n}\right)\ket{e}.
+\end{equation}
+%
+Finally, note that each of the photon states (in parentheses) defines a
+coherent state, so the resulting state after interaction is
+%
+\begin{equation}
+  \ket{\Psi(T)} = \cos\theta\ket{\alpha_+}\ket{g} +
+  e^{i\phi}\sin\theta\ket{\alpha_-}\ket{e}
+  \label{mws:eqn:entangled}
+\end{equation}
+%
+where $\alpha_\pm = \alpha \exp(\pm i \nu T \hbar/2)$.
+
+\subsection{State readout}
+\label{mws:readout}
+
+The state of the molecule is now entangled with the state of the light in such
+a way that measuring the phase of the light will perform a readout of the
+molecule state. In this subsection I will present the homodyne
+measurement~\cite{agarwal2012} technique in the context of performing a
+measurement of our molecule state.
+
+The homodyne measurement is illustrated in \myfigref{mws:fig:homodyne}. The
+light to be measured, here labelled $\ket{\Psi_a}$, is incident on one port (a)
+of a beam splitter. On the other port (b) we have a strong local oscillator in
+a coherent state $\ket{\beta}$, with large amplitude, in this case meaning that
+$|\beta| \gg |\alpha|$. We set the relative phases of $\ket{\alpha}$ and
+$\ket{\beta}$ so that $\arg(\alpha)=0$ and $\arg(\beta)=-\varphi$.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.3\textwidth]{figs/mws/homodyne.pdf}
+  \caption{Schematic of a homodyne measurement. The state to be measured
+    $\ket{\Psi_a}$ is incident on port (a) of the beamsplitter, and the local
+    oscillator $\ket{\beta}$ is incident on port (b). The signal from
+    photodiodes at the output ports is summed to produce a homodyne
+    measurement.
+  }
+  \label{mws:fig:homodyne}
+\end{figure}
+
+The annihilation operators associated with the input ports are related to those
+of the output ports (c and d) by the usual relation for a balanced beam
+splitter~\cite{agarwal2012}
+%
+\begin{equation}
+  \label{squeeze:eqn:bsmat}
+  \begin{pmatrix} c \\ d \end{pmatrix} = \frac{1}{\sqrt{2}}\begin{pmatrix}
+    1 & i \\ i & 1 
+  \end{pmatrix}  \begin{pmatrix} a \\ b \end{pmatrix}.
+\end{equation}
+
+The difference in the expected photon numbers arriving at each
+detector is therefore
+%
+\begin{align}
+  \langle c^\dagger c - d^\dagger d\rangle &= i\langle a^\dagger b-
+  a'b^\dagger \rangle \\
+  &= i \bra{\Psi_a}\bra{\beta}(a^\dagger b-
+  ab^\dagger)\ket{\beta}\ket{\Psi_a} \\
+  & = i|\beta| \bra{\Psi_a}(a^\dagger e^{i\varphi} - a
+  e^{-i\varphi})\ket{\Psi_a}.
+\end{align}
+%
+We now introduce the canonical quadratures of the light field, corresponding to
+its real and imaginary parts. They are defined by~\cite{gerry_knight_2004}
+%
+\begin{align}
+  X = \frac{a + a^\dagger}{2} && Y = \frac{a - a^\dagger}{2i}.
+\end{align}
+%
+The expected photon difference is now
+\begin{equation}
+  \langle c^\dagger c - d^\dagger d\rangle =
+  2|\beta|\bra{\Psi_a}(Y\cos\varphi - X\sin\varphi)\ket{\Psi_a} \\
+  \label{squeeze:eqn:homoquads}
+\end{equation}
+
+% For transmission coefficient, can see Mauro's paper (Q. Tomography), eqn.
+% 2.37 - 2.42 but I am ignoring it here (just reduces $\alpha$)
+Hence measuring the intensity of each output of the beamsplitter can give us
+information on the phase of the light. We choose $\varphi = 0$ so that the
+measurement is of the $Y$ quadrature, i.e.\ we measure the imaginary part of
+$\ket{\Psi_a}$
+%
+\begin{equation}
+  \langle c^\dagger c - d^\dagger d\rangle =  2
+  |\alpha||\beta|\left\langle\sin(\nu T s_z)\right\rangle.
+\end{equation}
+%
+For a short pulse of light, the interrogation time will be the lifetime of the
+photons in the cavity, $T = \kappa^{-1}$. In this r\'egime we can expand sine
+to first order, so that
+%
+\begin{equation}
+  \langle c^\dagger c - d^\dagger d\rangle = 2|\alpha||\beta|
+  \frac{g^2}{\Delta\kappa}\langle s_z\rangle.
+  \label{mws:eqn:homomeas}
+\end{equation}
+%
+In other words, the expectation value of the photon measurement is linked
+directly to that of the molecule's state. A measurement of $\langle c^\dagger c
+- d^\dagger d\rangle$ will also measure $s_z$. This allows for readout of the
+spin state via the microwave ports.
+
+For this readout procedure, we have made the assumptions that we are operating
+in the dispersive r\'egime ($|\Delta| \gg g$) but in the final step
+(\myeqref{mws:eqn:homomeas}) the expansion of sine require a stricter
+condition, that 
+%
+\begin{equation}
+  \frac{g^2}{\Delta\kappa} \ll 1.
+\end{equation}
+%
+The detuning required for our $g$ and $Q$ is therefore
+%
+% From calculation in 2022-02-08_coupling
+\begin{equation}
+  \frac{\Delta}{2 \pi} \gg \SI{5}{\mega\hertz}
+\end{equation}
+%
+which is well within the bounds achievable with the Stark shift.
+
+\subsection{State preparation}
+
+The engtangling of the molecule and light state will produce a powerful system
+with applications beyond simple state readout. First, the system can be used to
+produce Schr\"odinger cat states in the light field~\cite{Andre2006}. This can be achieved
+by pulsing the microwaves to produce the entangled state in
+\myeqref{mws:eqn:entangled}. Expressing the molecule state in the $x$ basis
+$\ket{\pm} = (\ket{g} \pm \ket{e})/2$, this becomes
+%
+\begin{equation}
+  \ket{\Psi(T)} = \ket{\Alpha_+(\theta, \phi) }\ket{+} + \ket{\Alpha_-(\theta,
+  \phi)}\ket{-}
+\end{equation}
+%
+with
+%
+\begin{equation}
+  \ket{\Alpha_\pm(\theta, \phi)} = \cos\theta\ket{\alpha_+} \pm
+  e^{i\phi}\sin\theta\ket{\alpha_-}.
+\end{equation}
+%
+Now independent measurement of the molecule state in the $x$ basis will yield
+$\ket{\pm}$, heralding the creation of the $\ket{\Alpha_\pm(\theta, \phi)}$
+Schr\"odinger cat state in the light field. This is an attractive method for
+producing such states in the microwave r\'egime, in analogy to what has
+previously been achieved using visible light~\cite{Hacker2019}.
+
+\subsection{Coupling between molecules}
+
+As reported in \inlineref{Andre2006}, the entanglement can also be used to
+couple between molecules trapped near the same resonator. We write the state of
+the two molecules as $\ket{\Psi}_i$, $i\in\{1,2\}$, with the detunings
+individually controlled labelled $\Delta_i$. Molecule $1$ can be addressed
+independently of $2$ by setting $\Delta_2 \gg \Delta_1$ and visa versa. 
+
+When $\Delta_1 = \Delta_2$ the interaction Hamiltonian between the two
+molecules can be found by adiabatic elimination of the photon state to
+be~\cite{Andre2006}
+%
+\begin{equation}
+  H_\text{int} = \hbar \frac{g^2}{\Delta} (\sigma_+^1\sigma_-^2 +
+  \sigma_-^1\sigma_+^2)
+\end{equation}
+%
+where $\sigma^i_k$ is the $\sigma_k$ operator acting on the
+$i^\text{th}$ molecule. It can be shown that such an interaction can be used to
+implement high-fidelity two-qubit operation on a chip~\cite{Andre2006,
+PhysRevA.69.062320}.

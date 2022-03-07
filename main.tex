@@ -32,6 +32,7 @@
 \usepackage[left=3cm, right=3cm, top=2cm, bottom=3cm]{geometry}
 % NOTE Changed l/r margins from 2cm to 3cm, so textwidth changed form 
 % 169.988mm to 149.988mm
+% For debugging use showframe
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -52,6 +53,7 @@
 \usepackage{amssymb}
 \usepackage{import} % For importing pgfs with embedded pngs
 \usepackage{layouts}
+\usepackage{mathtools} % Originally for prescripts
 
 % --- Page headings ---
 \usepackage{fancyhdr}
@@ -68,7 +70,6 @@
   \renewcommand{\headrulewidth}{0pt}% Line at the header invisible
   \renewcommand{\footrulewidth}{0pt}% Line at the footer visible
 }
-\title{A short example}
 
 % --- Custom colors --- 
 \usepackage[dvipsnames]{xcolor}
@@ -159,6 +160,7 @@
 \newcommand{\xyplane}{$x\,y$\nobreakdash-plane}
 \newcommand{\pewpew}[2]{$\mathcal{L}^{#1}_{#2}$}
 \usepackage{datetime} % TODO Why is this here?
+\newcommand{\Alpha}{\mathrm{A}}
 
 % Date with just the month and year (use `\monthyeardate\today`)
 \newdateformat{monthyeardate}{\monthname[\THEMONTH] \THEYEAR}
@@ -176,6 +178,8 @@
 \newcommand{\SFsix}{SF\textsubscript{6}}
 \newcommand{\He}{He}
 \newcommand{\Ca}{Ca}
+\newcommand{\AlN}{AlN}
+\newcommand{\hiresSi}{HiRes Si}
 
 % --- Units ---
 % Custom units
@@ -183,10 +187,13 @@
 \DeclareSIUnit\inch{inch}
 \DeclareSIUnit\rpm{rpm}
 \DeclareSIUnit\debye{D}
+\DeclareSIUnit{\belmilliwatt}{Bm}
+\DeclareSIUnit{\dbm}{\deci\belmilliwatt}
 \sisetup{range-phrase=--}
 
 % --- Line spacing ---
-\linespread{1.5}
+\onehalfspacing
+\raggedbottom
 
 % --- Table of contents ---
 % Patch TOC to exclude *-ed sections (default behaivour in most classes, but
@@ -221,17 +228,17 @@
 % Title page
 \input{./chapters/title}
 
-% Abstract
-\chapter*{Abstract}
-\input{./chapters/abs}
-\clearpage
-
-\chapter*{Declarations}
-\input{./chapters/dec}
-\clearpage
-
-\chapter*{Acknowledgements}
-\input{./chapters/acks}
+%% Abstract
+%\chapter*{Abstract}
+%\input{./chapters/abs}
+%\clearpage
+%
+%\chapter*{Declarations}
+%\input{./chapters/dec}
+%\clearpage
+%
+%\chapter*{Acknowledgements}
+%\input{./chapters/acks}
 
 % TOC
 \tableofcontents
@@ -245,6 +252,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                Body Start                %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 
 \chapter{Introduction}
@@ -263,11 +271,6 @@
 \label{sim}
 \input{chapters/sim}
 
-\chapter{Microwaves on a chip}
-\cm{Maybe this can be more like theory of molecule-microwave
-interaction, something that I can work on in the quarrantine?}
-%\input{chapters/mws}
-
 \chapter{Microfabrication}
 \label{fab}
 \input{chapters/fab}
@@ -275,15 +278,18 @@ interaction, something that I can work on in the quarrantine?}
 \chapter{Experiment}
 \label{experiment}
 
+\chapter{Coupling \CaF{} to on-chip microwaves}
+\label{mws}
+\input{chapters/mws}
 
 \chapter{Proposal: creating non-classical spin states}
 \label{squeeze}
-%\input{chapters/squeeze}
+\input{chapters/squeeze}
 
 \chapter{Outlook}
 % Other theory I could do: tweezer trap near CPW, mirror MOT, cooling on chip?
 \label{outlook}
-%\input{chapters/outlook}
+%\chapter{Outlook}
 
 \clearpage
 
