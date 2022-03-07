@@ -11,6 +11,7 @@ overview and motivation of the design of the new experiment.
 
 
 \section{Existing \CaF{} experiment}
+\label{overview:existing}
 
 In this section I will present a summary of the process used to produce
 ultracold \CaF{} molecules in a magnetic trap, which we intend to load onto the
@@ -48,7 +49,8 @@ pressure, due to the presence of the buffer gas.
   they can be further cooled and transferred to a magnetic trap. The molecules
   can then be transported out of the chamber by the MTT in the direction of the
   pink arrow. A detailed view of the source is shown in
-  \myfigref{overview:fig:source}}
+  \myfigref{overview:fig:source}}. This figure is based on one in
+  \inlineref{Truppe2017}.
   \label{overview:fig:CaFcartoon}
 \end{figure}
 
@@ -57,13 +59,13 @@ pressure, due to the presence of the buffer gas.
 The energy structure of \CaF{} is depicted in
 \myfigref{overview:fig:CaFenergy}. Here we show only the levels that are
 pertinent to this thesis, those being the X, A and B electronic levels up to
-vibrational level $v=$ \numrange{0}{3} respectively.  For the X state, we
-will discuss $N=$ \numrange{0}{2}, but $N=2$ is not included in this figure for
-clarity. 
+vibrational level $v=3$, 2 and 0 respectively.  For the X state, we
+will discuss $N=$ \numrange{0}{2} but for clarity $N=2$ is not included in this
+figure.
 %
 Figure~\ref{overview:fig:CaFenergy} and \mytableref{overview:table:lasers} also
 label the various lasers that are used to addressed the \CaF{} transitions. We
-label these as \pewpew{}{vv'} where $v$ ($v'$) is the lower (excited)
+denote these \pewpew{}{vv'} where $v$ ($v'$) is the lower (excited)
 vibrational level that the laser addresses. The superscript $S$ is used to
 distinguish the $X\rightarrow B$ transition.
 
@@ -104,7 +106,7 @@ distinguish the $X\rightarrow B$ transition.
   \label{overview:table:lasers}
 \end{table}
 
-Also shown by the dashed lines are the permitted decay paths, along with their
+The permitted decay paths are shown by the dashed lines, along with their
 branching ratios. One of the reasons \CaF{} is chosen for study over other
 molecules is its highly diagonal Franck-Condon factors, so that most decays
 occur with $v'=v$. However for large numbers of scattered photons we must
@@ -113,8 +115,8 @@ the cooling light, as we shall see when we discuss slowing of the beam and the
 MOT.
 
 Hyperfine splitting occurs in \CaF{} due to the spin-half contribution of the
-fluorine atom. This is not resolved in the $A$ state, but must be accounted for
-in the $X$ state. The hyperfine splitting is shown in the box of
+fluorine atom. This is not resolved in the $A$ state, but we account for the
+hyperfine splitting of the $X$ state, which is shown in the box of
 \myfigref{overview:fig:CaFenergy}. In the $B$ level, the $F=0$ and $F=1$ states
 are split by \SI{20}{\mega\hertz}, which can be neglected for the purposes of
 our discussion. A full description of the \CaF{} energy structure and various
@@ -137,7 +139,8 @@ are presented in \mytableref{overview:table:constants}.
  \hline
 \end{tabular}
 \caption{
-  Various constants for \CaF{} taken from \inlineref{Anderegg2019a}.
+  Various constants for \CaF{} taken from \inlineref{Anderegg2019a}. Note that
+  the magnetic dipole moment is taken to be the Bohr magenton.
   }
   \label{overview:table:lasers}
 \end{table}
@@ -153,7 +156,7 @@ target by a high-power Nd:YAG laser, and \SFsix{} gas.
 
 The buffer gas cell is pictured in \myfigref{overview:fig:source}. A \Ca{}
 target is positioned inside the cell, opposite an aperture for optical access
-with the ablation laser. This is mounted on a rotating stage, so that when one
+with the ablation laser, and mounted on a rotating stage, so that when one
 region is depleted another can be targeted. We flow \SFsix{} into the cell at
 \SI{270}{\kelvin}, which reacts with ablated \Ca{} atoms to form \CaF{}. The
 cell is cryogenically cooled to \SI{4}{\kelvin} and is designed to optimise the
@@ -171,19 +174,20 @@ formed which thermalise with the \He{} and a molecule beam exits from the apertu
   \label{overview:fig:source}
 \end{figure}
 
-In order to remove excess helium, a copper shield, coated with coconut charcoal
-and also cooled to \SI{4}{\kelvin} is used as a helium
-absorber~\cite{doi:10.1116/1.574141}. These are thermally cycled overnight when
-the source is not in use to avoid saturation.  A mechanical shutter is also
-installed after the cell to minimise any increase in background pressure due to
-\He{} gas leaving the source.
-
+In order to prevent excess helium entering the slowing and MOT chambers, a
+second aperture is positioned between the source and slowing chambers.
+Differential pumping ensures that the slowing chamber remains at UHV. A
+mechanical shutter at this aperture reduces the time that helium is able to
+leave the source chamber to only the time when there is a pulse of \CaF{}. We
+also use a copper shield, coated with coconut charcoal and cooled to
+\SI{4}{\kelvin} as a helium absorber~\cite{doi:10.1116/1.574141}. This is
+thermally cycled overnight when the source is not in use to avoid saturation.
 As noted in \inlineref{Jurgilas2021}, this buffer gas source originally
 produced up to \SI{5E10}{molecules/steradian} molecules in $X(N=1, v=0)$ with a
 mean velocity of \SI{160}{\meter\per\second}~\cite{Truppe2018} but its
-performance has degraded since this original report, and we now capture only
-\SIrange{50}{60}{\percent} lower capture in the MOT than we have previously
-observed.
+performance has degraded since the original report. As a result we now observe
+\SIrange{50}{60}{\percent} lower MOT population than at the time
+\inlineref{Williams2017} was published.
 
 \subsection*{Slowing the beam}
 
@@ -216,9 +220,9 @@ transverse scattering~\cite{Truppe2017a}.
 
 The transverse heating effect can be further reduced by applying slowing beams
 in the transverse direction, also on the $X\rightarrow B$ transition, but this
-time the light is not chirped, but has the r.f.\ sidebands to address the $X$
-hyperfine structure. The slowing procedure described above is carried out
-simultaneously, providing the remixing of dark ground states and the $v=1$
+time the light has the r.f.\ sidebands to address the $X$ hyperfine structure
+rather than the slowing chirp. The slowing procedure described above is carried
+out simultaneously, providing the remixing of dark ground states and the $v=1$
 repump light.
 %
 Scattering of light in the transverse direction can collimate the beam, and has
@@ -230,9 +234,9 @@ $\sim3$~\cite{Jurgilas2021}.
 Positioned \SI{130}{\centi\meter} from the cell's exit aperture is the centre
 of the MOT chamber. The MOT magnetic field is provided by in-vacuum
 anti-Helmholtz coils, and the \pewpew{}{00}, \pewpew{}{10}, \pewpew{}{21},
-\pewpew{}{32} light is incident on the molecules in combined beams entering on
-all three axes and retroreflected to provide restoring beams in both directions
-(see \myfigref{overview:fig:cartoon}).
+\pewpew{}{32} light is incident on the molecules. These alsers are combined to
+form a three-beam MOT, withc each beam retroreflected to provide the restoring
+beam in both directions (see \myfigref{overview:fig:cartoon}).
 %
 The operating principle of the \CaF{} MOT is similar to those described in
 \cm{ref section in theory}, but with some key differences that we outline here.
@@ -244,12 +248,12 @@ r.f.\ MOT, a description of which can be found in
 
 First, the significant number of photon scatters in the MOT mean that it is
 necessary to apply the vibrational repumps (\pewpew{}{10}, \pewpew{}{21} and
-\pewpew{32}) along with the main cooling light (\pewpew{}{00}), or else
-molecules will be pumped into these dark states. All of these beams must havei
+\pewpew{}{32}) along with the main cooling light (\pewpew{}{00}), or else
+molecules will be pumped into these dark states. All of these beams must have
 the r.f.\ sidebands to address the hyperfine levels of the $X$ state (recall
 that the hyperfine levels of $A$ are unresolved).
 
-The second nuance is that the \CaF{} MOT is that it is a type-II MOT~\cite{},
+The second nuance is that the \CaF{} MOT is that it is a type-II MOT~\cite{1367-2630-18-12-123017},
 meaning that the angular momentum of the excited state ($A(v=0)$, with $F'=1$)
 is less than that of the ground state ($X(v=0)$ with $F=2$). Unlike a type-I
 MOT (where $F'>F$), it is therefore possible for a molecule that has been
@@ -295,15 +299,16 @@ The capture velocity of the MOT is \SI{13}{\meter\per\second} meaning that we
 are typically able to capture on the order of $10^4$ molecules from our beam.
 The MOT population can be estimated by looking at the scatter, or by turning
 off the light and performing light-induced fluorescence imaging using
-\pewpew{}{00}. The MOT temperature is typically \cm{}, and this can be further
-reduced by lowering the intensity of \pewpew{C}{00}~\cite{Truppe2017} to
-achieve a MOT temperature of $<\SI{4}{\milli\kelvin}$.
+\pewpew{}{00}. The MOT temperature is reduced to its minimum value by lowering
+the intensity of \pewpew{C}{00}~\cite{Truppe2017}. We typically observe MOT
+temperatures of $<\SI{4}{\milli\kelvin}$.
 
 \subsection*{Optical molasses}
 
-Sub-Doppler cooling of \CaF{} is achievable by employing a blue-detuned
+Sub-Doppler cooling of \CaF{} is achieved with a blue-detuned
 molasses. In this scheme the MOT coils are switched off, and \pewpew{C}{00} is
-now blue-detuned from the transition frequency. Consider again the example of a
+now blue-detuned from the transition frequency. This scheme is somewhat
+complex, so consider again the simplified example of a
 $F=1$ hyperfine level ground state, and $F=0$ excited state travelling in 1D,
 as is shown in \myfigref{overview:fig:molasses}.  The counter-propagating beams
 establish a polarisation-gradient, which couple the hyperfine states in $F=1$
@@ -336,7 +341,7 @@ figure.
   \label{overview:fig:molasses}
 \end{figure}
 
-When a molecule in a bright state moves through the polarization gradient it
+When a molecule in a bright state moves through the polarisation gradient it
 can expend energy climbing the potential. At the top of the potential it is
 preferentially pumped into the dark state via the excited state. From the dark
 state, molecules can adiabatically transfer back into the dark state at regions
@@ -346,13 +351,13 @@ be blue-detuned because in the case of red-detuning the bright states have
 lower energy than the dark states, and there is a heating rather than a cooling
 effect~\cite{1367-2630-18-12-123017}.
 
-In the three-dimensional case the same principle applies but is more
-complicated. As well as polarization-gradients we must account for intensity
-gradients, which also affect the coupling. We must also consider the numerous
-energy levels of \CaF{} and the sideband structure required to address the
-hyperfine state~\cite{1367-2630-18-12-123017, PhysRevLett.123.033202}. In our
-experiment we apply this technique to produce a \CaF{} cloud of temperature
-$<\SI{6}{\micro\kelvin}$~\cite{PhysRevLett.123.033202}.
+In the three-dimensional case the same principle applies but we must account
+for intensity gradients as well as polarisation gradients. We must also
+consider the numerous energy levels of \CaF{} and the sideband structure
+required to address the hyperfine state, a full treatment requires solving the
+optical Bloch equations, which is done in \inlineref{1367-2630-18-12-123017}.
+In our experiment we apply this technique to produce a \CaF{} cloud of
+temperature $<\SI{6}{\micro\kelvin}$~\cite{PhysRevLett.123.033202}.
 
 \subsection*{Magnetic trapping and transport}
 
@@ -370,13 +375,14 @@ so we transfer into the weak-field seeking state by the procedure described in
 \inlineref{WilliamsMagnetic2018}. This transfer is achieved with optical
 pumping, where the EOM producing the \pewpew{}{00} sidebands is over-driven,
 reducing the power in the sideband that addresses $F=0$. Hence the molecules
-are preferentially moved into $\ket{N=0, F=0, m_F=0}$. These molecules can then
+are preferentially pumped into $\ket{N=0, F=0, m_F=0}$. From here the molecules can 
 be transferred to weak-field seeking states by a microwave pulse, and any that
 were not successfully pumped can be blown away by \pewpew{S}{00} light.
 
+% TODO Make sure this ket notation for stretched states is clear (from theory)
 At this stage we also introduce three stretched states in \CaF{}. These states
 lie in the $X$ electronic level, and are denoted $\ket{N}_\text{str} = \ket{N,
-m_N}_\text{rot}\ket{S, m_S=S}\ket{I,m_I=I}$, where the degeneracy must be
+m_N=N}_\text{rot}\ket{S, m_S=S}\ket{I,m_I=I}$, where the degeneracy must be
 lifted by the application of an external magnetic field, $m_X$ is then the
 projection of $X$ onto this field's axis. The stretched states are of interest
 because they are not only weak-field seekers, but the transitions between
@@ -490,8 +496,8 @@ macroscopic trap, we can turn to \inlineref{Ott2001}, where transfer from a
 transport trap to a microtrap is made easier by the use of an intermediary
 macroscopic trap that is well-aligned with the microtrap.
 We propose a similar solution: embedding a mcaroscopic U-wire beneath our chip
-trap which is aligned to the chip and a large target for loading form the MTT.
-This will be discussed further in \cm{experiment chapter}.
+trap which is aligned to the chip and makes a large target for loading form the
+MTT.  This will be discussed further in \cm{experiment chapter}.
 
 To ensure that molecules are then loaded into the smallest trap efficiently, we
 again follow the footsteps of atom chips, and have designed  a series of traps
@@ -508,13 +514,14 @@ $\mathrm{ZX}$ corresponding to the wire labels in
 \mytableref{overview:table:wires}. Bias fields for all traps are to be provided
 by external Helmholtz coils.
 
-Each Z-wire should be sufficiently large maintain the currents required to form
-a trap at height $z$ below the trap, whilst having a width and height  $w, h
-\ll z$ so that that the current is highly localised compared to the cloud size.
+Each Z-wire should be sufficiently large to maintain the currents required to
+form a trap at height $z$ below the trap, whilst having a width and height  $w,
+h \ll z$ so that that the current is highly localised compared to the cloud
+size.
 %
 In the case of the first Z-wire, the molecules are still \SI{3}{\milli\meter}
 away from the trapping wire. If we demand a trap depth of
-$k_B\times\SI{1}{\milli\kelvin}$, then we will require a trapping current of
+$k_B\times\SI{1}{\milli\kelvin}$, then we require a trapping current of
 \SI{30}{\ampere} to form a trap of this depth.  We will discuss in
 chapter~\ref{fab} that the maximum wire height that can reliably be fabricated
 is \SI{5}{\micro\meter}, and we expect that the wires will be able to carry a
@@ -558,9 +565,9 @@ simulations presented in chapter~\ref{sim} and the restrictions due to the
 fabrication process, which will be discussed in chapter~\ref{fab}. We tried
 various different designs, but the final one that was chosen is shown in
 \myfigref{overview:fig:chiplayout}. It features the wires as stipulated in
-\mytableref{overview:table:wires}, fanouts for connection to macroscopic
-\cm{current delivery} and various other features that will also be explained in
-chapter~\ref{fab}.
+\mytableref{overview:table:wires}, fanouts for connection of macroscopic
+current delivery wires, and various other features that will also be explained
+in chapter~\ref{fab}.
 
 \begin{figure}[ht]
   \centering
@@ -623,17 +630,17 @@ operation is discussed in chapters~\ref{mws} and \ref{squeeze}.
 % TODO Put exploded view with details in the experiment chapter
 
 To facilitate all of this, the internals of the chip chamber have been designed
-as shown (in cross section) in \mysubfigref{overview:fig:chipchamber}{a}.
+as shown in cross section in \mysubfigref{overview:fig:chipchamber}{a}.
 Molecules can be brought in along the transport axis (shown by the arrow in the
 figure) and positioned below the surface of the chip, which is mounted on the
-chip flange assembly. The chip flange assembly is detailed in
+chip flange assembly. The chip flange assembly is pictured in
 \mysubfigref{overview:fig:chipchamber}{b}, and is is equipped with a large
 copper heat sink, a large U-wire to form the macroscopic alignment trap and a
-subchip for current and microwave delivery. The chip is mounted
+subchip for current and microwave delivery. It is mounted
 into a recess in the subchip so that it is flush with the surface. The chip is
 mounted facing downwards so that molecules can be dropped for imaging as they
-fall. The flange itself is fitted with two high-current feedthroughs, a 16-pin
-feedthrough rated for \SI{3}{\ampere} currents, and microwave feedthroughs. All
-access to the chip is therfore through this one flange, allowing for easy access
-and assembly. The flange assembly will be explained in further detail in
-chapter~\ref{experiment}.
+fall. The flange itself is fitted with two high-current (\SI{100}{\ampere})
+feedthroughs, a 16-pin feedthrough rated for \SI{3}{\ampere} currents, and
+microwave feedthroughs. All access to the chip is therfore through this one
+flange, allowing for easy access and assembly. The flange assembly will be
+explained in further detail in chapter~\ref{experiment}.
