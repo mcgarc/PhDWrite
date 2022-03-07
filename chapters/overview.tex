@@ -77,7 +77,7 @@ distinguish the $X\rightarrow B$ transition.
     decays are shown with dashed lines. Note that the $X(N=0)$ level is
     included, but for simplicity the $X(N=2)$ level is omitted. The box shows
     the hyperfine levels of $X(N=1, v=0)$. This figure is adapted from
-    \inlineref{Williams2018}. 
+    \inlineref{Williams2017}. 
   }
   \label{overview:fig:CaFenergy}
 \end{figure}
@@ -85,7 +85,7 @@ distinguish the $X\rightarrow B$ transition.
 \begin{table}
   \centering
 \begin{tabular}{llll}
-  Symbol & Ground state & excited state & wavelength (\si{\nano\meter}) \\
+  Symbol & Ground state & Excited state & Wavelength (\si{\nano\meter}) \\
   \pewpew{}{00} & $X(v=0)$ & $A(v=0)$ &  606.3 \\
   \pewpew{S}{00} & $X(v=0)$ & $B(v=0)$ & 531.0 \\
   \pewpew{}{01} & $X(v=0)$ & $A(v=1)$ & 628.6 \\
@@ -105,7 +105,7 @@ distinguish the $X\rightarrow B$ transition.
 Also shown by the dashed lines are the permitted decay paths, along with their
 branching ratios. One of the reasons \CaF{} is chosen for study over other
 molecules is its highly diagonal Franck-Condon factors, so that most decays
-occurr with $v'=v$. However for large numbers of scattered photons we must
+occur with $v'=v$. However for large numbers of scattered photons we must
 employ the various repump lasers to avoid pumping into states that are dark to
 the cooling light, as we shall see when we discuss slowing of the beam and the
 MOT.
@@ -169,7 +169,7 @@ formed which thermalise with the \He{} and a molecule beam exits from the apertu
 
 In order to remove excess helium, a copper shield, coated with coconut charcoal
 and also cooled to \SI{4}{\kelvin} is used as a helium
-absorber~\cite{doi:10.1116/1.574141}. These are theramlly cycled overnight when
+absorber~\cite{doi:10.1116/1.574141}. These are thermally cycled overnight when
 the source is not in use to avoid saturation.  A mechanical shutter is also
 installed after the cell to minimise any increase in background pressure due to
 \He{} gas leaving the source.
@@ -187,7 +187,7 @@ The buffer gas source produces a beam of molecules with slower average velocity
 than, for example, a supersonic source~\cite{Mathavan2016} but they are still
 far above the capture velocity of our MOT. The beam's velocity can be further
 reduced by radiation pressure due to a counter-propagating beam of
-\pewpew{S}{00} slowing light. This is chirpped to account for the change in
+\pewpew{S}{00} slowing light. This is chirped to account for the change in
 Doppler shift of the transition frequency as the molecules slow. The slowing
 light is also combined with the \pewpew{}{10} repump light to avoid pumping
 into the $X(v=1)$ state. To again account for Doppler shift during slowing, the
@@ -212,7 +212,7 @@ transverse scattering~\cite{Truppe20717a}.
 
 The transverse heating effect can be further reduced by applying slowing beams
 in the transverse direction, also on the $X\rightarrow B$ transition, but this
-time the light is not chripped, but has the r.f.\ sidebands to address the $X$
+time the light is not chirped, but has the r.f.\ sidebands to address the $X$
 hyperfine structure. The slowing procedure described above is carried out
 simultaneously, providing the remixing of dark ground states and the $v=1$
 repump light.
@@ -302,7 +302,7 @@ molasses. In this scheme the MOT coils are switched off, and \pewpew{C}{00} is
 now blue-detuned from the transition frequency. Consider again the example of a
 $F=1$ hyperfine level ground state, and $F=0$ excited state travelling in 1D,
 as is shown in \myfigref{overview:fig:molasses}.  The counter-propagating beams
-establish a polarisation-gradient, which coulple the hyperfine states in $F=1$
+establish a polarisation-gradient, which couple the hyperfine states in $F=1$
 to the $F'=0$ state. As explained in \inlineref{Weidem_ller_1994} we will have bright
 states (superposition states of $\ket{F=1, m_F=1}$ and $\ket{F=1, m_F=-1}$) that
 are coupled to the excited state, and dark states ($\ket{F=1, m_F=0}$ and
@@ -311,27 +311,40 @@ coupling varies as a function of the polarisation, and so as molecules move
 through the gradient the bright state energy changes, as is shown in the
 figure.
 
-% TODO
-\begin{figure}
+\begin{figure}[htb]
   \centering
-  \cm{fig like Hannah's 5.1}
-  \caption{}
+    \begin{overpic}[width=0.6\textwidth]{figs/overview/molasses.pdf}
+      \put(-16, 82){$F'=0$}
+      \put(-16, 30){$F=1$}
+      \put(105, 19){Dark states}
+      \put(105, 5){Polarisation}
+      \put(105, 38){Bright states}
+    \end{overpic}
+    \vspace{1cm}
+  \caption{Blue detuned molasses for a type-II system with $F=1$, $F'=0$. Here
+    the polarisation gradient across a 1D system (bottom row) causes a change
+    in the coupling strength of bright states. A molecule travelling through
+    the gradient (blue) will be preferentially excited by \pewpew{}{00} to the
+    excited state when the coupling is strong. It will decay into the dark
+    states, and adiabatically transfer back to the light states (black arrow)
+    when the coupling is weak.  Repeating this process results in a net loss of
+  energy for the molecule. This figure is adapted from \inlineref{1367-2630-18-12-123017}.}
   \label{overview:fig:molasses}
 \end{figure}
 
-When a molecule in a dark state moves through the potential it can expend lose
-climbing the potential. At the top of the potential it is prefferentially
-pumped into the dark state via the excited state. From the dark state,
-molecules can adiabatically transfer back into the dark state at regions where
-the energy difference is low. The molecule can now repeat this cycle, each time
-losing energy travelling up the potential. Note that the light must be
-blue-detuned because in the case of red-detuning the bright states have lower
-energy than the dark states, and there is a heating rather than a cooling
+When a molecule in a bright state moves through the polarization gradient it
+can expend energy climbing the potential. At the top of the potential it is
+preferentially pumped into the dark state via the excited state. From the dark
+state, molecules can adiabatically transfer back into the dark state at regions
+where the energy difference is low. The molecule can now repeat this cycle,
+each time losing energy travelling up the potential. Note that the light must
+be blue-detuned because in the case of red-detuning the bright states have
+lower energy than the dark states, and there is a heating rather than a cooling
 effect~\cite{1367-2630-18-12-123017}.
 
 In the three-dimensional case the same principle applies but is more
 complicated. As well as polarization-gradients we must account for intensity
-gradeints, which also affect the coupling. We must also consider the numerous
+gradients, which also affect the coupling. We must also consider the numerous
 energy levels of \CaF{} and the sideband structure required to address the
 hyperfine state~\cite{1367-2630-18-12-123017, PhysRevLett.123.033202}. In our
 experiment we apply this technique to produce a \CaF{} cloud of temperature
@@ -355,7 +368,7 @@ pumping, where the EOM producing the \pewpew{}{00} sidebands is over-driven,
 reducing the power in the sideband that addresses $F=0$. Hence the molecules
 are preferentially moved into $\ket{N=0, F=0, m_F=0}$. These molecules can then
 be transferred to weak-field seeking states by a microwave pulse, and any that
-were not succesfully pumped can be blown away by \pewpew{S}{00} light.
+were not successfully pumped can be blown away by \pewpew{S}{00} light.
 
 At this stage we also introduce three stretched states in \CaF{}. These states
 lie in the $X$ electronic level, and are denoted $\ket{N}_\text{str} = \ket{N,
@@ -375,9 +388,10 @@ chapter~\ref{mws}.
 
 After transferring into the magnetically-trappable states, the molecules can be
 contained in a magnetic trap, as also discussed in
-\inlineref{WilliamsMagnetic2018}. We can transfer them to the MTT for transport
-to neighbouring experiments, or hold them in the field generated by the MOT
-coils for experiments in the collisions chamber.
+\inlineref{WilliamsMagnetic2018}. We can transfer them to a magnetic transport
+trap (MTT), where they can be transferred to neighbouring experiments, or we
+can hold them in the field generated by the MOT coils for experiments in the
+collisions chamber.
 
 \subsection*{Other experiments}
 
@@ -386,12 +400,12 @@ can be further cooled cooled further (as discussed above) used for experiments
 in collisions with \Rb{} atoms (see \inlinerefs{Jurgilas2021, JurgilasIOP2021,
 PhysRevLett.126.153401}) and optical tweezers. The tweezer experiment is
 undertaken in the neighbouring tweezer chamber, which is loaded by transporting
-molecules in a magnetic transport trap (MTT), a quadrupole trap with coils
-mounted on a transport stage outside the vacuum chamber. This transport of the
-molecules is similar to that used in
-\inlinerefs{Lewandowski2003,PhysRevResearch.1.033035} and elsewhere. In the
-next section, we will begin to discuss how the molecule chip can also be
-incorporated as an additional experiment.
+molecules in the MTT, a quadrupole trap with coils mounted on a transport stage
+outside the vacuum chamber. This transport of the molecules is similar to that
+used in \inlinerefs{Lewandowski2003,PhysRevResearch.1.033035} and elsewhere. It
+will be discussed further in chapter~\ref{experiment}. In the next section, we
+will begin to discuss how the molecule chip can also be incorporated as an
+additional experiment.
 
 
 \section{Design requirements and overview}
@@ -457,7 +471,7 @@ be transferred onto the chip trap.
 At this point, we note that the long-lived stretched states discussed in
 section~\ref{overview:existing} are promising candidates for the qubit states
 in a molecule chip. For this reason it was decided that using magnetic traps,
-such as those describedin \cm{ref theory section} would be preferable to the
+such as those described in \cm{ref theory section} would be preferable to the
 electrostatic traps suggested in \inlineref{Andre2006}. We are now faced with
 the question of how exactly we can load molecules from the MTT into the
 microscopic chip trap.
@@ -536,12 +550,12 @@ the trapped cloud in the $x$ direction.
 
 The final chip design was informed both by the requirements here, the
 simulations presented in chapter~\ref{sim} and the restrictions due to the
-fabrication process, which will be discussed in chater~\ref{fab}. We tried
+fabrication process, which will be discussed in chapter~\ref{fab}. We tried
 various different designs, but the final one that was chosen is shown in
 \myfigref{overview:fig:chiplayout}. It features the wires as stipulated in
 \mytableref{overview:table:wires}, fanouts for connection to macroscopic
 \cm{current delivery} and various other features that will also be explained in
-chater~\ref{fab}.
+chapter~\ref{fab}.
 
 \begin{figure}[ht]
   \centering
@@ -616,5 +630,5 @@ mounted facing downwards so that molecules can be dropped for imaging as they
 fall. The flange itself is fitted with two high-current feedthroughs, a 16-pin
 feedthrough rated for \SI{3}{\ampere} currents, and microwave feedthroughs. All
 access to the chip is therfore through this one flange, allowing for easy access
-and assembly. The flange assembly will be explained in futher detail in
+and assembly. The flange assembly will be explained in further detail in
 chapter~\ref{experiment}.
