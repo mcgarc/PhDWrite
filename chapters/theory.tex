@@ -15,10 +15,54 @@
 \section{Chip trap theory}
 \label{theory:chips}
 
+% TODO Motivate chip traps in introduction
+% TODO Set up with discussion of QP and IP traps including equations for their
+% fields
+In this section I will describe how a magnetic trap can be formed using
+currents on the surface of a chip.
+
+\subsection{Simple wire traps}
+
+We begin our discussion by considering a simple case of a one-dimensional trap.
+This will be formed of a straight wire, which we approximate to have infinite
+length, and an external bias field. The magnetic field due to the wire is
+described by the Biot-Savart law~\cite{}, having magnitude
+%
 \begin{equation}
-  \tilde{B} = \frac{\mu_0 I}{2\pi h}
+  B = \frac{\mu_0 I}{2 \pi r}
+\end{equation}
+%
+where $I$ is the current in the wire and $r$ is the distance from it. The
+direction of the field obeys the \cm{right} hand rule. When the bias field
+$\mathbf{\tilde{B}}$ is
+homogenous and uniform across all space, there will be a point when the two
+fields cancel. Taking the wire to run along the $y$ axis, and the bias field to
+point in the $x$ direction, there will be a field zero at
+%
+\begin{equation}
+  z = \frac{\mu_0 I}{2 \pi \tilde{B}}
   \label{theory:eqn:height}
 \end{equation}
+%
+as is shown in \cm{a figure}. The field close to the zero approximates a \cm{2D?} quadrupole field with
+gradient
+%
+\cm{TODO.}
+%
+The trapping frequency \cm{in directions..?}
+
+\cm{Are there more bias fields to consider?}
+
+Such a trap is of course only two-dimensional, since there is no confinement
+along the axis of the wire. However it is simple to introduce confinement in
+this direction -- introduce a second wire perpendicular to the first. When this
+second wire has a current much lower than the original $I_2 \ll I$, we can
+treat its contribution to the field as a perturbation. Such a configuration is
+known as a dimple trap, and produces a field \cm{TODO equations}.
+
+\cm{TODO: picture of dimple trap}
+
+
 
 \cm{
   \begin{itemize}
