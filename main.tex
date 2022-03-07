@@ -29,7 +29,9 @@
 %\usepackage{xcolor} % Uncomment if not using bibliography links
 
 % --- Common ---
-\usepackage[left=2cm, right=2cm, top=2cm, bottom=3cm]{geometry}
+\usepackage[left=3cm, right=3cm, top=2cm, bottom=3cm]{geometry}
+% NOTE Changed l/r margins from 2cm to 3cm, so textwidth changed form 
+% 169.988mm to 149.988mm
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -49,6 +51,7 @@
 \usepackage[T1]{fontenc} % Some fonts in some bibs...
 \usepackage{amssymb}
 \usepackage{import} % For importing pgfs with embedded pngs
+\usepackage{layouts}
 
 % --- Page headings ---
 \usepackage{fancyhdr}
@@ -76,7 +79,8 @@
 \definecolor{gold}{HTML}{d2ab22}
 \definecolor{pink}{HTML}{D73665}
 \definecolor{deeppurple}{HTML}{312032}
-%\usepackage{tcolorbox}
+\definecolor{Lorange}{HTML}{d36800}
+\definecolor{Lgreen}{HTML}{009915}
 
 % --- Bibliography ---
 % Uses biblatex with biber. Don't include url, doi, isbn because we will use
@@ -89,7 +93,8 @@
 						isbn=false,
 						eprint=false,
 						giveninits=true,
-            sortcites=true
+            sortcites=true,
+            sorting=none
 						]{biblatex}
 
 % This is the macro to do this. see SE:
@@ -152,7 +157,8 @@
 \newcommand{\inlinerefs}[1]{Refs.~\cite{#1}}
 \newcommand{\plane}[2]{$#1#2$\nobreakdash-plane}
 \newcommand{\xyplane}{$x\,y$\nobreakdash-plane}
-\usepackage{datetime}
+\newcommand{\pewpew}[2]{$\mathcal{L}^{#1}_{#2}$}
+\usepackage{datetime} % TODO Why is this here?
 
 % Date with just the month and year (use `\monthyeardate\today`)
 \newdateformat{monthyeardate}{\monthname[\THEMONTH] \THEYEAR}
@@ -167,12 +173,16 @@
 \newcommand{\efRb}{\textsuperscript{85}Rb}
 \newcommand{\ottCs}{\textsuperscript{133}Cs}
 \newcommand{\RbCs}{RbCs}
+\newcommand{\SFsix}{SF\textsubscript{6}}
+\newcommand{\He}{He}
+\newcommand{\Ca}{Ca}
 
 % --- Units ---
 % Custom units
 \DeclareSIUnit\gauss{G}
 \DeclareSIUnit\inch{inch}
 \DeclareSIUnit\rpm{rpm}
+\DeclareSIUnit\debye{D}
 \sisetup{range-phrase=--}
 
 % --- Line spacing ---
@@ -239,35 +249,41 @@
 
 \chapter{Introduction}
 \label{intro}
-\input{chapters/intro/main}
+%\input{chapters/intro/main}
 
-\chapter{Designing and simulating the trap}
-\label{design}
-\input{chapters/design}
+\chapter{Theory}
+\label{theory}
+\input{chapters/theory}
+
+\chapter{Overview of the experiment}
+\label{overview}
+\input{chapters/overview}
+
+\chapter{Simulating the trap}
+\label{sim}
+\input{chapters/sim}
 
 \chapter{Microwaves on a chip}
 \cm{Maybe this can be more like theory of molecule-microwave
 interaction, something that I can work on in the quarrantine?}
-\input{chapters/mws}
+%\input{chapters/mws}
 
 \chapter{Microfabrication}
 \label{fab}
 \input{chapters/fab}
 
-\chapter{Trapping molecules on a chip}
+\chapter{Experiment}
+\label{experiment}
 
-\chapter{Coherent control of molecules on a chip}
-% This might be superceeded by the earlier theory in mw on chip chapter, or it
-% could be more detailed outlook
 
 \chapter{Proposal: creating non-classical spin states}
 \label{squeeze}
-\input{chapters/squeeze}
+%\input{chapters/squeeze}
 
 \chapter{Outlook}
 % Other theory I could do: tweezer trap near CPW, mirror MOT, cooling on chip?
 \label{outlook}
-\input{chapters/outlook}
+%\input{chapters/outlook}
 
 \clearpage
 
