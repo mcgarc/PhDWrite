@@ -17,17 +17,18 @@ In this section I will present a summary of the process used to produce
 ultracold \CaF{} molecules in a magnetic trap, which we intend to load onto the
 chip trap. We will consider the various stages of the process, which are
 presented in \myfigref{overview:fig:CaFcartoon}. First a beam of \CaF{}
-molecules is created using a buffer gas source~\cite{Truppe2018}. The beam is
-then slowed by radiation pressure from slowing light opposing its direction of
-travel~\cite{Truppe2017a}. The slowing light can also be applied in the
-transverse direction to reduce the broadening of the beam during its flight.
+molecules is created using a buffer gas source~\cite{Truppe2018}. A fraction of
+the molecules in the beam are slowed to below the capture velocity of the MOT
+by radiation pressure from counter-propagating resonant
+light~\cite{Truppe2017a}. We can also apply separate light in the transverse direction
+to improve collimation of the beam during its flight.
 The molecules are captured in a MOT~\cite{Williams2017} and cooled in optical
 molasses~\cite{Truppe2017} before being optically pumped into a weak field
 seeking state~\cite{WilliamsMagnetic2018}. This allows for magnetic trapping
 and transport of the molecules. The experiment is conducted under ultra-high
-vacuum (UHV, $P<\SI{1E-8}{\milli\bar}$) conditions to avoid losses due to
-collisions with other particles. Only the source chamber operates at a higher
-pressure, due to the presence of the buffer gas.
+vacuum (UHV, $P<\SI{1E-9}{\milli\bar}$) conditions to limit background induced
+loss. Only the source chamber operates at a higher pressure, but the molecule
+beam quickly exits this chamber into the low pressure region. 
 
 \begin{figure}
   \centering
@@ -148,22 +149,15 @@ are presented in \mytableref{overview:table:constants}.
 \subsection*{Buffer gas source}
 
 We begin all our experiments by creating a pulsed beam of \CaF{} molecules
-using a buffer gas source. Such a device operates by using a buffer gas (in
-this case helium) to thermalise between a cold cell and warm molecules. The
-molecules then exit through an aperture to form a beam. The \CaF{} molecules
-are also created inside the cell from \Ca{} atoms, which are ablated from a
-target by a high-power Nd:YAG laser, and \SFsix{} gas.
-
-The buffer gas cell is pictured in \myfigref{overview:fig:source}. A \Ca{}
-target is positioned inside the cell, opposite an aperture for optical access
-with the ablation laser, and mounted on a rotating stage, so that when one
-region is depleted another can be targeted. We flow \SFsix{} into the cell at
-\SI{270}{\kelvin}, which reacts with ablated \Ca{} atoms to form \CaF{}. The
-cell is cryogenically cooled to \SI{4}{\kelvin} and is designed to optimise the
-flow of \He{} so as to thermalise with \CaF{} and guide it to the exit aperture
-without the creation of vortices, where the molecules can be
-trapped~\cite{Truppe2018}. For this reason \He{} enters the back of the cell at
-\SI{4}{\kelvin} and flows towards the exit aperture.
+using a buffer gas source. This is pictured in \myfigref{overview:fig:source}
+and consists of a copper cell cooled to \SI{4}{\kelvin}. inside which the
+\CaF{} molecules are formed from the reaction of \Ca{} atoms, ablated from a
+target (shown in blue) by a Nd:YAG laser and \SFsix{} gas. Since the reagents
+are hot (ablation warms the \Ca{} and the \SFsix{} is at \SI{270}{\kelvin}) it
+is necessary to thermalise the molecules to reduce their temperature. This is
+achieved with the eponymous buffer gas, in this case \He{}, which flows into
+the cell at \SI{4}{\kelvin} and thermliases with the molecules before they exit
+the cell in a beam.
 
 \begin{figure}
   \centering
@@ -173,6 +167,13 @@ trapped~\cite{Truppe2018}. For this reason \He{} enters the back of the cell at
 formed which thermalise with the \He{} and a molecule beam exits from the aperture.}
   \label{overview:fig:source}
 \end{figure}
+
+The cell is designed to optimise the flow of \He{} so as to thermalise with
+\CaF{} and guide it to the exit aperture without the creation of vortices,
+where the molecules can be trapped~\cite{Truppe2018}. For this reason \He{}
+enters from towards the rear of the cell at \SI{4}{\kelvin} and flows towards
+the exit aperture.  The \Ca{} target is  mounted on a rotating stage, so that
+when one region is depleted another can be targeted.
 
 In order to prevent excess helium entering the slowing and MOT chambers, a
 second aperture is positioned between the source and slowing chambers.
@@ -191,37 +192,46 @@ performance has degraded since the original report. As a result we now observe
 
 \subsection*{Slowing the beam}
 
-The buffer gas source produces a beam of molecules with slower average velocity
-than, for example, a supersonic source~\cite{Mathavan2016} but they are still
-far above the capture velocity of our MOT. The beam's velocity can be further
-reduced by radiation pressure due to a counter-propagating beam of
+The buffer gas source produces a beam of molecules with mean forward velocity
+\SI{160}{\meter\per\second} -- slower than for example, a supersonic
+source~\cite{Mathavan2016} but they are still far above the capture velocity of
+our MOT, which is $\approx\SI{10}{\meter\per\second}$. The beam's velocity can be
+further reduced by radiation pressure due to a counter-propagating beam of
 \pewpew{S}{00} slowing light. This is chirped to account for the change in
 Doppler shift of the transition frequency as the molecules slow. The slowing
 light is also combined with the \pewpew{}{10} repump light to avoid pumping
 into the $X(v=1)$ state. To again account for Doppler shift during slowing, the
-repump light is frequency broadened by \SI{300}{\mega\hertz}.
+repump light is frequency broadened by \SI{300}{\mega\hertz} by a series of
+three elecro-optic modulators.
 
 % Time and final velocity according to Hannah's thesis
 We apply the light for \SI{6}{\milli\second}, which slows over approximately
 \SI{90}{\centi\meter} of travel from the buffer gas cell's exit aperture.
-Linear chirps used in previous experiments have shown to reduce the velocity to
-\SI{50}{\meter\per\second}~\cite{Truppe2017a}. Implementing an
+Linear chirps used in previous experiments have been used to slow the molecules
+for loading into the MOT, as detailed in \inlineref{Williams2017}. Implementing an
 exponential chirp originally proposed in \inlineref{Anderegg2019}  produced a
 \SIrange{60}{80}{\percent} improvement in the number of molecules in the
 MOT~\cite{Jurgilas2021}.
 
 Slowing the beam has the undesirable effect of increasing the transverse
-velocity of the molecules. This is due to the random walk of the molecules as
-they scatter photons from the slowing light. One method of reducing this effect
-is to focus the combined light so as to converge towards the cell to reduce
-transverse scattering~\cite{Truppe2017a}.
+velocity of the molecules. This is due to the stochastic change in the
+molecules' momentum as they emit photons isotropically. The change in
+transverse velocity is $v_r\sqrt{N_\gamma/3}\sim\SI{0.4}{\meter\per\second}$,
+where $N_\gamma \sim 10^4$ is the number of photons scattered during cooling,
+and $v_r=\SI{1.27}{\centi\meter\per\second}$ is the recoil
+velocity~\cite{Jurgilas2021}.  One method of reducing this effect is to focus
+the combined light so as to converge towards the cell to reduce transverse
+scattering~\cite{Truppe2017a}.
 
 \subsection*{Transverse cooling}
 
 The transverse heating effect can be further reduced by applying slowing beams
 in the transverse direction, also on the $X\rightarrow B$ transition, but this
 time the light has the r.f.\ sidebands to address the $X$ hyperfine structure
-rather than the slowing chirp. The slowing procedure described above is carried
+rather than the slowing chirp. This collimates the molecule beam due to
+Doppler cooling taking place in the transverse direction. This process occurs before the slowing light is
+turned on, any molecules that are pumped into $X(v=1)$ can be re-cycled by the
+\pewpew{}{10} repump that is combined with the slowing light. The slowing procedure described above is carried
 out simultaneously, providing the remixing of dark ground states and the $v=1$
 repump light.
 %
@@ -234,9 +244,9 @@ $\sim3$~\cite{Jurgilas2021}.
 Positioned \SI{130}{\centi\meter} from the cell's exit aperture is the centre
 of the MOT chamber. The MOT magnetic field is provided by in-vacuum
 anti-Helmholtz coils, and the \pewpew{}{00}, \pewpew{}{10}, \pewpew{}{21},
-\pewpew{}{32} light is incident on the molecules. These alsers are combined to
-form a three-beam MOT, withc each beam retroreflected to provide the restoring
-beam in both directions (see \myfigref{overview:fig:CaFcartoon}).
+\pewpew{}{32} light is incident on the molecules. These lasers are combined to
+form a single beam, which is reflected along each axis before being
+retro-reflected through the entire experiment to provide the restoring beams.
 %
 The operating principle of the \CaF{} MOT is similar to those described in
 \cm{ref section in theory}, but with some key differences that we outline here.
@@ -295,30 +305,29 @@ blue-detuned light to have $\sigma_+$ polarisation.
   \label{overview:fig:dualfreq}
 \end{figure}
 
-The capture velocity of the MOT is \SI{13}{\meter\per\second} meaning that we
-are typically able to capture on the order of $10^4$ molecules from our beam.
-The MOT population can be estimated by looking at the scatter, or by turning
-off the light and performing light-induced fluorescence imaging using
-\pewpew{}{00}. The MOT temperature is reduced to its minimum value by lowering
-the intensity of \pewpew{C}{00}~\cite{Truppe2017}. We typically observe MOT
-temperatures of $<\SI{4}{\milli\kelvin}$.
+We are typically able to capture on the order of $10^4$ molecules from our
+beam.  The MOT population can be estimated by the light-induced fluorescence.
+The MOT temperature is reduced to its minimum value by lowering the intensity
+of \pewpew{}{00}, since this reduces the effects of sub-Doppler
+heating~\cite{Truppe2017}. We typically observe MOT temperatures of
+$<\SI{4}{\milli\kelvin}$.
 
 \subsection*{Optical molasses}
 
-Sub-Doppler cooling of \CaF{} is achieved with a blue-detuned
-molasses. In this scheme the MOT coils are switched off, and \pewpew{C}{00} is
-now blue-detuned from the transition frequency. This scheme is somewhat
-complex, so consider again the simplified example of a
-$F=1$ hyperfine level ground state, and $F=0$ excited state travelling in 1D,
-as is shown in \myfigref{overview:fig:molasses}.  The counter-propagating beams
-establish a polarisation-gradient, which couple the hyperfine states in $F=1$
-to the $F'=0$ state. As explained in \inlineref{Weidem_ller_1994} we will have bright
-states (superposition states of $\ket{F=1, m_F=1}$ and $\ket{F=1, m_F=-1}$) that
-are coupled to the excited state, and dark states ($\ket{F=1, m_F=0}$ and
-another superposition state) that are not coupled. The strength of this
-coupling varies as a function of the polarisation, and so as molecules move
-through the gradient the bright state energy changes, as is shown in the
-figure.
+Sub-Doppler cooling of \CaF{} is achieved with a blue-detuned molasses. In this
+scheme the MOT coils are switched off, and \pewpew{C}{00} is now blue-detuned
+from the transition frequency. This scheme is somewhat complex, so consider
+again the simplified example of a $F=1$ hyperfine level ground state, and $F=0$
+excited state travelling in 1D, as is shown in
+\myfigref{overview:fig:molasses}.  The counter-propagating beams establish a
+polarisation-gradient, which couple the hyperfine states in $F=1$ to the $F'=0$
+state. As explained in \inlineref{Weidem_ller_1994} we will have bright states
+(superposition states of $\ket{F=1, m_F=1}$ and $\ket{F=1, m_F=-1}$) that are
+coupled to the excited state by the a.c.\  Stark shift, and dark states
+($\ket{F=1, m_F=0}$ and another superposition state) that are not coupled. The
+strength of this coupling varies as a function of the polarisation, and so as
+molecules move through the gradient the bright state energy changes, as is
+shown in the figure.
 
 \begin{figure}[htb]
   \centering
@@ -352,12 +361,13 @@ lower energy than the dark states, and there is a heating rather than a cooling
 effect~\cite{1367-2630-18-12-123017}.
 
 In the three-dimensional case the same principle applies but we must account
-for intensity gradients as well as polarisation gradients. We must also
-consider the numerous energy levels of \CaF{} and the sideband structure
-required to address the hyperfine state, a full treatment requires solving the
-optical Bloch equations, which is done in \inlineref{1367-2630-18-12-123017}.
-In our experiment we apply this technique to produce a \CaF{} cloud of
-temperature $<\SI{6}{\micro\kelvin}$~\cite{PhysRevLett.123.033202}.
+for intensity gradients, which will affect the change in coupling of the states
+as well as polarisation gradients. We must also consider the numerous energy
+levels of \CaF{} and the sideband structure required to address the hyperfine
+state, a full treatment requires solving the optical Bloch equations, which is
+done in \inlineref{1367-2630-18-12-123017}.  In our experiment we apply this
+technique to produce a \CaF{} cloud of temperature
+$<\SI{6}{\micro\kelvin}$~\cite{PhysRevLett.123.033202}.
 
 \subsection*{Magnetic trapping and transport}
 
@@ -371,13 +381,20 @@ During the molasses there is no magnetic field to lift the degeneracy between
 the Zeeman states. Therefore after the molasses light is turned off the
 molecules are distributed between the Zeeman substates of $X(v=0, N=1)$.
 Attempting to magnetically trap at this point would cause a significant loss,
-so we transfer into the weak-field seeking state by the procedure described in
-\inlineref{WilliamsMagnetic2018}. This transfer is achieved with optical
-pumping, where the EOM producing the \pewpew{}{00} sidebands is over-driven,
-reducing the power in the sideband that addresses $F=0$. Hence the molecules
-are preferentially pumped into $\ket{N=0, F=0, m_F=0}$. From here the molecules can 
-be transferred to weak-field seeking states by a microwave pulse, and any that
-were not successfully pumped can be blown away by \pewpew{S}{00} light.
+so we optically pump into the weak-field seeking state by a procedure originally
+proposed for \SrF{} in \inlineref{} % TODO Sarunas's ref 118
+and described for \CaF{} in \inlineref{Jurgilas2021}.
+
+In this scheme a weak magnetic field (\SI{200}{\milli\gauss}) is applied across
+the cloud, and two beams of light are incident on the molecules. Both act on
+the $X\rightarrow B$ transition, but their frequency components are tuned to be
+close to the $F=2$ and $F=1^-$ hyperfine levels respectively. The $F=2$ ($F=1^-$)
+frequency component propagates parallel (perpendicular) to the magnetic field
+and its polarisation is chosen to drive $\sigma^+$ ($\pi$) transitions. This
+means that the only state dark to the light is the magnetically trappable state
+$\ket{N=1, F=2, m_F=2}$, which is eventually populated. From here it is
+possible to transfer to other states by microwave spectroscopy
+techniques~\cite{WilliamsMagnetic2018}.
 
 % TODO Make sure this ket notation for stretched states is clear (from theory)
 At this stage we also introduce three stretched states in \CaF{}. These states
@@ -397,7 +414,7 @@ $\ket{1}_\text{str}\leftrightarrow\ket{2}_\text{str}$ ($\omega_0/(2\pi) =
 chapter~\ref{mws}.
 
 After transferring into the magnetically-trappable states, the molecules can be
-contained in a magnetic trap, as also discussed in
+contained in a quadrupole magnetic trap, as also discussed in
 \inlineref{WilliamsMagnetic2018}. We can transfer them to a magnetic transport
 trap (MTT), where they can be transferred to neighbouring experiments, or we
 can hold them in the field generated by the MOT coils for experiments in the
