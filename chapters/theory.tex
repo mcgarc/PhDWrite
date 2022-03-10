@@ -44,12 +44,43 @@ point in the $x$ direction, there will be a field zero at
   \label{theory:eqn:height}
 \end{equation}
 %
-as is shown in \cm{a figure}. The field close to the zero approximates a \cm{2D?} quadrupole field with
-gradient
+as is shown in \cm{a figure}. The field close to the zero approximates a
+\cm{2D?} quadrupole field with gradient
 %
 \cm{TODO.}
 %
 The trapping frequency \cm{in directions..?}
+
+\begin{figure}
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \hfill{}
+    \includegraphics[width=0.8\textwidth]{figs/theory/wires/dimple_150.pdf}
+    \hfill{}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \import{figs/theory/wires}{simpleheat_alone.pgf}
+  \end{subfigure} \\
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \import{figs/theory/wires}{simpleheat_y.pgf}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \import{figs/theory/wires}{simpleheat_z.pgf}
+  \end{subfigure}
+  \caption{\cm{TODO: change this dimple thing to a simple wire cartoon}}
+\end{figure}
+
+
+%\begin{figure}
+%  \centering
+%  \import{figs/theory/wires}{simpleheat.pgf}
+%  \caption{}
+%  \label{TBD}
+%\end{figure}
 
 \cm{Are there more bias fields to consider?}
 
@@ -57,10 +88,66 @@ Such a trap is of course only two-dimensional, since there is no confinement
 along the axis of the wire. However it is simple to introduce confinement in
 this direction -- introduce a second wire perpendicular to the first. When this
 second wire has a current much lower than the original $I_2 \ll I$, we can
-treat its contribution to the field as a perturbation. Such a configuration is
+treat its contribution to the field as a perturbation. \cm{Somethign about sign
+  of $I_2$ is important.} Such a configuration is
 known as a dimple trap, and produces a field \cm{TODO equations}.
 
-\cm{TODO: picture of dimple trap}
+\cm{NOTE: IP trap, (or QP with more bias?)}
+
+\begin{figure}[htb]
+    \centering
+    \begin{tabular}[t]{cc}
+\begin{subfigure}{0.3\textwidth}
+    \centering
+    \smallskip
+    \includegraphics[width=\textwidth]{figs/theory/wires/dimple.pdf}
+\end{subfigure}
+    &
+        \begin{tabular}{c}% if you add [t], than sub images are pushed down
+        \smallskip
+            \begin{subfigure}[t]{0.4\textwidth}
+                \centering
+                  \import{figs/theory/wires}{dimpleheat_alone.pgf}
+            \end{subfigure}\\
+            \begin{subfigure}[t]{0.4\textwidth}
+                \centering
+                  \import{figs/theory/wires}{dimple_x.pgf}
+            \end{subfigure}
+        \end{tabular}\\
+    \end{tabular}
+  \caption{HELP!}
+\end{figure}
+
+% TODO introudce $h$ as trap height
+Consider the case where the sign of $I_2$ is reversed, now we have a maximum in
+the magnetic field at height $h$. This might not seeem to be of any use, but
+combining two such anti-traps can create a local minium in which weak-field
+seekers can be trapped. This configuration is called the H-trap, and is
+shown in \cm{ref fig}. Such a trap can be configured as a quadrupole (when the
+currents in the off-axis wires are parallel) or as a Ioffe-Pritchard (when the
+currents in the off-axis wires are anti-parallel). In the former case we can
+think of the field zero being formed due to the cancellation of the
+contribution from the off-axis wires. In the latter case, the off-axis wires
+produce fields in the same direction, and so the trap centre is non-zero.
+
+\begin{figure}
+  \centering
+  \begin{subfigure}[b]{0.4\textwidth}
+    \includegraphics[width=\textwidth]{figs/theory/wires/Htrap.pdf}
+    %\vspace{0.1mm}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \import{figs/theory/wires}{Hx.pgf}
+  \end{subfigure}
+  \caption{}
+  \label{TBD}
+\end{figure}
+
+Although the H-trap provides a clear method of creating a three dimensional
+microtrap, it is not always convenient to have to use three distinct wires.
+Fortunately the H-trap can be approximated by a single wire, either in a
+U-shape for the quadrupole variant, or a Z-shape for the Ioffe-Pritchard
+variant. These are pictured in \cm{figure}.
 
 
 
