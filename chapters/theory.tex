@@ -30,7 +30,7 @@ The magnetic field due to the wire is
 described by the Biot-Savart law~\cite{}, having magnitude
 %
 \begin{equation}
-  B(r) = \frac{\mu_0 I}{2 \pi r}
+  B_w(r) = \frac{\mu_0 I}{2 \pi r}
 \end{equation}
 %
 $r$ is the distance from the wire. The direction of the field obeys the right
@@ -40,12 +40,14 @@ bias field, whose direction opposes the field of the wire. To create the trap
 at the desired bias, the strength of the field must be $\tilde{B}_y =
 B(h)$~\cite{2011Ac}.
 
+%TODO Use this notation in sim when descirbing calculation of the field!
 Figure \myfigref{theory:fig:simplefield} illustrates this two-dimensional trap.
 Here the wire oriented along the $x$ direction, with the current
 $I=\SI{1}{\milli\ampere}$, flowing in the
 positive direction (out of the page). This generates the expected field
 $\mathbf{B}$ shown in subfigure (a). This is superimposed with the bias field
-$\mathbf{\tilde{B}}_y$, also shown in (a), to produce the resulting field shown
+$\mathbf{\tilde{B}}_y$, also shown in (a), to produce the resulting field
+$\mathbf{B} = \mathbf{B}_w + \mathbf{\tilde{B}}$ shown
 in (b). This subfigure details the field lines (pink arrows), however these do
 not tell the whole story, since weak-field seekers go to areas where the
 magnitude of the field ($B$) is low. This is shown by the gradient, with darker
@@ -78,13 +80,13 @@ demonstrates the two-dimensional trap.
   \caption{
     The field from a simple two-dimensional wire trap. In subfigure (a) a wire carries
     current $I=\SI{1}{\milli\ampere}$ in the positive $x$ direction (out of the
-    page) to create the usual field $\mathbf{B}$. This is combined with the
+    page) to create the usual field $\mathbf{B}_w$. This is combined with the
     external bias field $\mathbf{\tilde{B}}_y$ to create the two-dimensional trap
     at height $h=\SI{1}{\milli\meter}$
     shown in subfigure (b). The field lines are shown by pink arrows, and the
     magnitude of the resulting field is shown with the blue gradient (darker
     means weaker field, guide to the eye). Cut throughs of the potential are
-    shown for $y$ (with $x=0$, $y=h$) in (c) and for $z$ (with $x = y = 0$) in
+    shown for $y$ (with $x=0$, $z=h$) in (c) and for $z$ (with $x = y = 0$) in
     (d).
   }
   \label{theory:fig:simplefield}
@@ -120,8 +122,7 @@ its depth is \cm{ref earlier equation?}.
 \begin{subfigure}{0.3\textwidth}
     \centering
     \smallskip
-    \cm{TODO: this file borked -- fix}
-    %\includegraphics[width=\textwidth]{figs/theory/wires/dimple.pdf}
+    \includegraphics[width=\textwidth]{figs/theory/wires/dimple.pdf}
 \end{subfigure}
     &
         \begin{tabular}{c}% if you add [t], than sub images are pushed down
@@ -172,7 +173,7 @@ be set to zero.
   \end{subfigure}
   \caption{The geometry of the H-trap is shown in subfigure (a). In subfigure
   (b) we show the potential for an H-trap with
-  $I_1=I_2=I/10=\SI{0.1}{\milli\ampere}$. Again the bias field is chosen so
+  $I_1=I_2=I/10=\SI{0.1}{\milli\ampere}$ and $d=\SI{10}{\milli\meter}$. Again the bias field is chosen so
   that $h=\SI{1}{\milli\meter}$.}
   \label{theory:fig:Htrap}
 \end{figure}
