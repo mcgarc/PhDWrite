@@ -23,33 +23,37 @@ currents on the surface of a chip.
 
 \subsection{Simple wire traps}
 
-We begin our discussion by considering a simple case of a one-dimensional trap.
-This will be formed of a straight wire, which we approximate to have infinite
-length, and an external bias field. The magnetic field due to the wire is
+We begin our discussion by considering a simple case of a two-dimensional trap.
+This will be formed of a straight wire carrying current $I$, which we approximate to have infinite
+length. Such a wire can be free-standing or deposited on a substrate.
+The magnetic field due to the wire is
 described by the Biot-Savart law~\cite{}, having magnitude
 %
 \begin{equation}
-  B = \frac{\mu_0 I}{2 \pi r}
+  B(r) = \frac{\mu_0 I}{2 \pi r}
 \end{equation}
 %
-where $I$ is the current in the wire and $r$ is the distance from it. The
-direction of the field obeys the \cm{right} hand rule. When the bias field
-$\mathbf{\tilde{B}}$ is
-homogenous and uniform across all space, there will be a point when the two
-fields cancel. Taking the wire to run along the $y$ axis, and the bias field to
-point in the $x$ direction, there will be a field zero at
-%
-\begin{equation}
-  z = \frac{\mu_0 I}{2 \pi \tilde{B}}
-  \label{theory:eqn:height}
-\end{equation}
-%
-as is shown in \cm{a figure}. The field close to the zero approximates a
-\cm{2D?} quadrupole field with gradient
-%
-\cm{TODO.}
-%
-The trapping frequency \cm{in directions..?}
+$r$ is the distance from the wire. The direction of the field obeys the right
+hand rule. With such a geometry it is possible to create a ruidmentary
+two-dimensional trap at a distance $h$ from the wire, by applying an external
+bias field, whose direction opposes the field of the wire. To create the trap
+at the desired bias, the strength of the field must be $\tilde{B}_y =
+B(h)$~\cite{2011Ac}.
+
+Figure \myfigref{theory:fig:simplefield} illustrates this two-dimensional trap.
+Here the wire oriented along the $x$ direction, with the current
+$I=\SI{1}{\milli\ampere}$, flowing in the
+positive direction (out of the page). This generates the expected field
+$\mathbf{B}$ shown in subfigure (a). This is superimposed with the bias field
+$\mathbf{\tilde{B}}_y$, also shown in (a), to produce the resulting field shown
+in (b). This subfigure details the field lines (pink arrows), however these do
+not tell the whole story, since weak-field seekers go to areas where the
+magnitude of the field ($B$) is low. This is shown by the gradient, with darker
+areas (blue, guide to the eye) indicating areas of lower field. The bias field
+is chosen to induce a field minimum at $h=\SI{1}{\milli\meter}$. Subfigure (c)
+shows a cut-through of the potential along $y$ with $x=0$, $z=h$. Subfigure (d)
+also shows a cut-through of the potential along $z$ with $x=y=0$. This
+demonstrates the two-dimensional trap.
 
 \begin{figure}
   \centering
@@ -61,33 +65,54 @@ The trapping frequency \cm{in directions..?}
   \end{subfigure}
   \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \cm{TODO: this file borked -- fix}
-    %\import{figs/theory/wires/}{simpleheat_alone.pgf}
+    \import{figs/theory/wires/}{simpleheat_alone.pgf}
   \end{subfigure} \\
   \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \cm{TODO: this file borked -- fix}
-    %\import{figs/theory/wires/}{simpleheat_y.pgf}
+    \import{figs/theory/wires/}{simpleheat_y.pgf}
   \end{subfigure}
   \begin{subfigure}[b]{0.45\textwidth}
     \centering
     \import{figs/theory/wires/}{simpleheat_z.pgf}
   \end{subfigure}
-  \caption{\cm{TODO: change this dimple thing to a simple wire cartoon}}
+  \caption{
+    The field from a simple two-dimensional wire trap. In subfigure (a) a wire carries
+    current $I=\SI{1}{\milli\ampere}$ in the positive $x$ direction (out of the
+    page) to create the usual field $\mathbf{B}$. This is combined with the
+    external bias field $\mathbf{\tilde{B}}_y$ to create the two-dimensional trap
+    at height $h=\SI{1}{\milli\meter}$
+    shown in subfigure (b). The field lines are shown by pink arrows, and the
+    magnitude of the resulting field is shown with the blue gradient (darker
+    means weaker field, guide to the eye). Cut throughs of the potential are
+    shown for $y$ (with $x=0$, $y=h$) in (c) and for $z$ (with $x = y = 0$) in
+    (d).
+  }
+  \label{theory:fig:simplefield}
 \end{figure}
 
+Since the field minimum here is a zero, we can approximate the value near the
+centre by a (two-dimensional) quadrupole with gradient
+%
+\begin{equation}
+  B' = -\frac{2\pi \tilde{B}_y^2}{\mu_0 I}.
+\end{equation}
+%
+% TODO
+\cm{Trap depth!}
+%
+We can transform such a trap into a Ioffe-Pritchard trap by applying a second
+bias field along the $x$ direction to lift the field minimum away from
+zero~\cite{2011Ac}.
 
-\cm{Are there more bias fields to consider?}
-
-Such a trap is of course only two-dimensional, since there is no confinement
-along the axis of the wire. However it is simple to introduce confinement in
-this direction -- introduce a second wire perpendicular to the first. When this
-second wire has a current much lower than the original $I_2 \ll I$, we can
-treat its contribution to the field as a perturbation. \cm{Somethign about sign
-  of $I_2$ is important.} Such a configuration is
-known as a dimple trap, and produces a field \cm{TODO equations}.
-
-\cm{NOTE: IP trap, (or QP with more bias?)}
+Of course, it is commonly desirable to trap in all three dimensions. A simple
+way to introduce confinement along the $x$ axis is to introduce a secocond wire
+trap acting in the perpendicular direction. Such a device is called a dimple
+trap (or cross conductor trap, or X-trap) and is illustrated in
+\myfigref{theory:fig:dimple}. We label the current in the second wire $I_1$
+and the new bias field, which is parallel to the $x$-axis is labelled
+$\mathbf{B}_x$. In the case that $I_1 \ll I$, the second wire can be treated as
+a perturbation of the first. The field minimum is therefore still at $h$, and
+its depth is \cm{ref earlier equation?}.
 
 \begin{figure}[htb]
     \centering
@@ -114,7 +139,9 @@ known as a dimple trap, and produces a field \cm{TODO equations}.
   \caption{HELP!}
 \end{figure}
 
-% TODO introudce $h$ as trap height
+\cm{Equations for the dimple, including the frequencies, depth, etc.}
+
+% TODO This is mostly wrong...
 Consider the case where the sign of $I_2$ is reversed, now we have a maximum in
 the magnetic field at height $h$. This might not seeem to be of any use, but
 combining two such anti-traps can create a local minium in which weak-field
