@@ -55,7 +55,7 @@ shows a cut-through of the potential along $y$ with $x=0$, $z=h$. Subfigure (d)
 also shows a cut-through of the potential along $z$ with $x=y=0$. This
 demonstrates the two-dimensional trap.
 
-\begin{figure}
+\begin{figure}[htbp]
   \centering
   \begin{subfigure}[b]{0.45\textwidth}
     \centering
@@ -136,24 +136,32 @@ its depth is \cm{ref earlier equation?}.
             \end{subfigure}
         \end{tabular}\\
     \end{tabular}
-  \caption{HELP!}
+  \caption{
+    The geometry of the dimple trap is shown in subfigure (a), with the new
+    wire along $y$ carrying current $I_1$ intersecting the $I$ wire. An
+    additional bias field in the $x$ direction, $\tilde{B}_x$ creates the field
+    minimum. The field lines (pink) and magnitude (blue, darker is weaker,
+    guide to the eye) is shown in subfigure (b) along $x=0$. Note the strong
+    field region along the $y$ axis around the $I_1$ wire. Subfigure (c) shows
+    a cut-through of the trapping potential in the $x$ direction with $y=0$,
+    $z=h$.
+  }
+  \label{theory:fig:dimple}
 \end{figure}
 
 \cm{Equations for the dimple, including the frequencies, depth, etc.}
 
-% TODO This is mostly wrong...
-Consider the case where the sign of $I_2$ is reversed, now we have a maximum in
-the magnetic field at height $h$. This might not seeem to be of any use, but
-combining two such anti-traps can create a local minium in which weak-field
-seekers can be trapped. This configuration is called the H-trap, and is
-shown in \cm{ref fig}. Such a trap can be configured as a quadrupole (when the
-currents in the off-axis wires are parallel) or as a Ioffe-Pritchard (when the
-currents in the off-axis wires are anti-parallel). In the former case we can
-think of the field zero being formed due to the cancellation of the
-contribution from the off-axis wires. In the latter case, the off-axis wires
-produce fields in the same direction, and so the trap centre is non-zero.
+% TODO I think the condition here is slightly more complicated, there must be
+% some crossover field from minimum to maximum that is not at zero?
+Consider the dimple trap, but with $\tilde{B}_y$ set to zero. Now what was
+previously a magnetic field minimum will be a field maximum. By putting two
+such dimple traps next to each other, it is possible to create a local minimum
+within which we can trap molecules. Such a trap is called an H-trap, and is
+pictured in \myfigref{theory:fig:Htrap}. We label the current due to the second
+dimple trap $I_2$, and again note that the bias field in the $x$ direction can
+be set to zero. 
 
-\begin{figure}
+\begin{figure}[htb]
   \centering
   \begin{subfigure}[b]{0.4\textwidth}
     \includegraphics[width=\textwidth]{figs/theory/wires/Htrap.pdf}
@@ -162,9 +170,24 @@ produce fields in the same direction, and so the trap centre is non-zero.
   \begin{subfigure}[b]{0.4\textwidth}
     \import{figs/theory/wires/}{Hx.pgf}
   \end{subfigure}
-  \caption{}
-  \label{TBD}
+  \caption{The geometry of the H-trap is shown in subfigure (a). In subfigure
+  (b) we show the potential for an H-trap with
+  $I_1=I_2=I/10=\SI{0.1}{\milli\ampere}$. Again the bias field is chosen so
+  that $h=\SI{1}{\milli\meter}$.}
+  \label{theory:fig:Htrap}
 \end{figure}
+
+We note that we need not choose $I_1$ and $I_2$ to be the same. It is common to
+choose their magnitudes to be the same, but the signs can be different. i.e.\
+the currents can be parallel or anti-parallel. In the former case, the trap
+% TODO ; here?
+forms a Ioffe-Pritchard trap; we can imagine this to be due to the fields from
+$I_1$ and $I_2$ adding in the centre, to provide some overall non-zero
+component in the $x$ direction. When the currents are anti-paraellel, the $I_1$
+field opposes the $I_2$ field in the centre of the trap, the two cancel and
+there is a field zero. Hence the latter configuration is a quadrupole trap.
+
+\cm{Equations for H-trap}.
 
 Although the H-trap provides a clear method of creating a three dimensional
 microtrap, it is not always convenient to have to use three distinct wires.
@@ -172,25 +195,15 @@ Fortunately the H-trap can be approximated by a single wire, either in a
 U-shape for the quadrupole variant, or a Z-shape for the Ioffe-Pritchard
 variant. These are pictured in \cm{figure}.
 
-\begin{figure}
+\begin{figure}[htb]
   \centering
   \includegraphics[width=\textwidth]{figs/theory/wires/HUZcomp.pdf}
   \caption{}
   \label{theory:fig:HUZ}
 \end{figure}
 
-
-
-\cm{
-  \begin{itemize}
-      \item Basic idea of 2D traps
-      \item How close can we get to surface? %(Blackbody, note from Charles in interview? (about charge??))
-      \item Extend to 3D
-      \item U and Z, majorana losses
-      \item dimple traps
-      \item Typical trap freqs (for small traps, used in sideband cooling)
-  \end{itemize}
-  }
+\cm{Typical implementations, trap frequencies, what can we really achieve
+according to literature?}
 
 \section{Quantum optics}
 \label{theory:QO}
