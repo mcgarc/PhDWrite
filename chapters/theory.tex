@@ -153,8 +153,6 @@ therefore still at $h$, and its depth is \cm{ref earlier equation?}.
   \label{theory:fig:dimple}
 \end{figure}
 
-\cm{Equations for the dimple, including the frequencies, depth, etc.}
-
 The dimple trap can be used as a quadrupole trap when the bias fields are
 chosen to exactly cancel the magnetic field at the centre, or it can be used as
 a Ioffe-Pritchard trap when there is a non-zero minimum. We will focus on the
@@ -172,7 +170,7 @@ direction. We again write down the field minimum
 the transverse gradient
 %
 \begin{equation}
-  B' = \frac{\mu_0 I}{2 \pi h^2},
+  B'_\perp = \frac{\mu_0 I}{2 \pi h^2},
 \end{equation}
 %
 and the curvature along the weak component
@@ -184,7 +182,8 @@ and the curvature along the weak component
 The trap frequency in the strong direction is~\cite{2011Ac}
 %
 \begin{equation}
-  \omega_\perp = \sqrt{\frac{\mu B'^2}{m B_0}}
+  \omega_\perp = \sqrt{\frac{\mu B_\perp'^2}{m B_0}}
+  \label{theory:eqn:perpfreq}
 \end{equation}
 %
 where $m$ is the particle mass. In the weak direction (along $x$) the frequency
@@ -192,6 +191,7 @@ is~\cite{2011Ac}
 %
 \begin{equation}
   \omega_x = \sqrt{\frac{\mu B''}{m}}.
+  \label{theory:eqn:xfreq}
 \end{equation}
 
 \subsection{The H-trap}
@@ -202,7 +202,8 @@ such dimple traps next to each other, it is possible to create a local minimum
 within which we can trap molecules. Such a trap is called an H-trap, and is
 pictured in \myfigref{theory:fig:Htrap}. We label the current due to the second
 dimple trap $I_2$, and again note that the bias field in the $x$ direction can
-be set to zero. 
+be set to zero. The distance between $I_1$ and $I_2$ is denoted $d$, and we now
+refer to the wire carrying current $I$ as the axis of the trap.
 
 \begin{figure}[htb]
   \centering
@@ -220,23 +221,47 @@ be set to zero.
   \label{theory:fig:Htrap}
 \end{figure}
 
-We note that we need not choose $I_1$ and $I_2$ to be the same. It is common to
-choose their magnitudes to be the same, but the signs can be different. i.e.\
-the currents can be parallel or anti-parallel. In the former case, the trap
-% TODO ; here?
-forms a Ioffe-Pritchard trap; we can imagine this to be due to the fields from
+We note that we need not choose $I_1$ and $I_2$ to be the same, although from
+now on we will assume that they have the same magnitude, the sign can differ.
+In other words the currents can be parallel or anti-parallel. In the former
+case the trap forms a Ioffe-Pritchard trap; this is due to the fields from
 $I_1$ and $I_2$ adding in the centre, to provide some overall non-zero
 component in the $x$ direction. When the currents are anti-paraellel, the $I_1$
 field opposes the $I_2$ field in the centre of the trap, the two cancel and
 there is a field zero. Hence the latter configuration is a quadrupole trap.
 
-\cm{Equations for H-trap}.
+In the Ioffe-Pritchard configuration, we can write down the field's
+minimum~\cite{PhysRevA.79.013407}
+%
+\begin{equation}
+  B_0 = \tilde{B}_x + 2\tilde{B}_y \frac{I-1}{I}\frac{h^2}{(d/2)^2 + h^2}
+\end{equation}
+%
+transverse gradient~\cite{PhysRevA.79.013407}
+%
+\begin{equation}
+  B'_\perp = \frac{2\pi\tidle{B}_y}{\mu_0 I}
+\end{equation}
+%
+and curvature (in the $h \ll d$ limit)~\cite{PhysRevA.79.013407}
+%
+\begin{equation}
+  B'' = \frac{12\tilde{B}_y I_1 h^2}{I (d/2)^4}
+\end{equation}
+%
+and the trap frequencies are again given by equations~\ref{theory:eqn:perpfreq}
+and~\ref{theory:eqn:xfreq}. In the quadrupole configuration, the traps is
+characterised by the perpendicular gradient $B'_\perp$. 
 
-Although the H-trap provides a clear method of creating a three dimensional
+\subsection{Three dimensinal single-wire traps}
+
+Although the H-trap provides a method of creating a three dimensional
 microtrap, it is not always convenient to have to use three distinct wires.
 Fortunately the H-trap can be approximated by a single wire, either in a
 U-shape for the quadrupole variant, or a Z-shape for the Ioffe-Pritchard
-variant. These are pictured in \cm{figure}.
+variant. These are pictured in \cm{theory:fig:HUZ}. Note that for the U-trap
+the currents in the off-axis wires are once again anti-parallel, and in the
+Z-trap these currents are parallel.
 
 \begin{figure}[htb]
   \centering
@@ -245,8 +270,6 @@ variant. These are pictured in \cm{figure}.
   \label{theory:fig:HUZ}
 \end{figure}
 
-\cm{Typical implementations, trap frequencies, what can we really achieve
-according to literature?}
 
 \section{Quantum optics}
 \label{theory:QO}
