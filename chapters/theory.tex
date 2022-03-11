@@ -24,10 +24,10 @@ currents on the surface of a chip.
 \subsection{Simple wire traps}
 
 We begin our discussion by considering a simple case of a two-dimensional trap.
-This will be formed of a straight wire carrying current $I$, which we approximate to have infinite
-length. Such a wire can be free-standing or deposited on a substrate.
-The magnetic field due to the wire is
-described by the Biot-Savart law~\cite{}, having magnitude
+This will be formed of a straight wire carrying current $I$, which we
+approximate to have infinite length. Such a wire can be free-standing or
+deposited on a substrate.  The magnetic field due to the wire is described by
+the Biot-Savart law~\cite{}, having magnitude
 %
 \begin{equation}
   B_w(r) = \frac{\mu_0 I}{2 \pi r}
@@ -99,8 +99,11 @@ centre by a (two-dimensional) quadrupole with gradient
   B' = -\frac{2\pi \tilde{B}_y^2}{\mu_0 I}.
 \end{equation}
 %
-% TODO
-\cm{Trap depth!}
+The depth of the trap is $\mu \tilde{B}_y$, where $\mu$ is the \cm{magnetic dipole
+moment} of the trapped particle. This can be seen in
+\mysubfigref{theory:fig:simplefield}{d}: the potential is $B = |B_w(z) +
+\tilde{B}_y|$, and so has an asymptote at $B=|\tilde{B}_y|$ as
+$z\rightarrow\infty$.
 %
 We can transform such a trap into a Ioffe-Pritchard trap by applying a second
 bias field along the $x$ direction to lift the field minimum away from
@@ -111,10 +114,10 @@ way to introduce confinement along the $x$ axis is to introduce a secocond wire
 trap acting in the perpendicular direction. Such a device is called a dimple
 trap (or cross conductor trap, or X-trap) and is illustrated in
 \myfigref{theory:fig:dimple}. We label the current in the second wire $I_1$
-and the new bias field, which is parallel to the $x$-axis is labelled
-$\mathbf{B}_x$. In the case that $I_1 \ll I$, the second wire can be treated as
-a perturbation of the first. The field minimum is therefore still at $h$, and
-its depth is \cm{ref earlier equation?}.
+and the new bias field, which is parallel to the $x$-axis and opposes the
+$I_1$ field is labelled $\mathbf{B}_x$. In the case that $I_1 \ll I$, the
+second wire can be treated as a perturbation of the first. The field minimum is
+therefore still at $h$, and its depth is \cm{ref earlier equation?}.
 
 \begin{figure}[htb]
     \centering
@@ -152,9 +155,48 @@ its depth is \cm{ref earlier equation?}.
 
 \cm{Equations for the dimple, including the frequencies, depth, etc.}
 
-% TODO I think the condition here is slightly more complicated, there must be
-% some crossover field from minimum to maximum that is not at zero?
-Consider the dimple trap, but with $\tilde{B}_y$ set to zero. Now what was
+The dimple trap can be used as a quadrupole trap when the bias fields are
+chosen to exactly cancel the magnetic field at the centre, or it can be used as
+a Ioffe-Pritchard trap when there is a non-zero minimum. We will focus on the
+latter case, in which case it is useful to write down the trap frequencies, the
+derivation of which is similar to the one for the six-wire field discussed in
+\cm{ref theory to be writtern}.
+Since the trapping from the $I$ wire will be stronger than the $x$-axis
+confinement from the $I_1 << I$ wire, we $\omega_x$ to be the weak trapping
+direction. We again write down the field minimum
+%
+\begin{equation}
+  B_0 = \left|\tilde{B}_x + \frac{\mu_0 I_1}{2\pi h}\right|,
+\end{equation}
+%
+the transverse gradient
+%
+\begin{equation}
+  B' = \frac{\mu_0 I}{2 \pi h^2},
+\end{equation}
+%
+and the curvature along the weak component
+%
+\begin{equation}
+  B'' = \frac{\mu I_1}{\pi h^3}.
+\end{equation}
+%
+The trap frequency in the strong direction is~\cite{2011Ac}
+%
+\begin{equation}
+  \omega_\perp = \sqrt{\frac{\mu B'^2}{m B_0}}
+\end{equation}
+%
+where $m$ is the particle mass. In the weak direction (along $x$) the frequency
+is~\cite{2011Ac}
+%
+\begin{equation}
+  \omega_x = \sqrt{\frac{\mu B''}{m}}.
+\end{equation}
+
+\subsection{The H-trap}
+
+Consider the dimple trap, but with $\tilde{B}_x$ set to zero. Now what was
 previously a magnetic field minimum will be a field maximum. By putting two
 such dimple traps next to each other, it is possible to create a local minimum
 within which we can trap molecules. Such a trap is called an H-trap, and is
