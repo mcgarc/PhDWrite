@@ -1,5 +1,94 @@
 \cm{Intro spiel}
 
+\section{Doppler cooling}
+
+$F = - \alpha v$
+
+Introuce Doppler temp
+
+\section{Magneto-optical trap}
+
+Doppler cooling is an important tool in the creation of ultracold atoms and
+molecules, but it is of note that this technique does not provide any
+position-dependent restoring force, i.e. molecules that are slowed by the
+above-described techniques are not trapped.
+%
+The magneto-optical trap (MOT) is the preeminent tool of atomic and molecular
+physics, providing a way to trap a relatively cold gas of particles. It is the
+backbone of many experiments~\cite{} including our own~\cite{}. In this section
+I will describe the basic operation of the common type-I MOT, that is a two
+level system where the the ground state has angular momentum $F=0$ and the
+excited state has angular momentum $F'=1$.  In reality the molecule MOTs that
+we will discuss are type-II systems ($F'\leq F$) but these are more complicated
+and will be discussed in section~\ref{section:overview}.
+
+The MOT consists of two components, a magnetic quadrupole field, and restoring
+laser beams, which are detuned from the $F\rightarrow F'$ transition by some
+amount $\delta$. This setup is shown for one dimension in \cm{fig from
+presentation}. The Zeeman effect lifts the degeneracy of the excited state, and
+lowers the energy of the $m_F = 1$ ($m_F=-1$) state in the positive (negative)
+$x$ direction according to the usual relationship
+%
+\cm{Zeeman equation}
+%
+The detuning $\delta$ is chosen such that this shift brings the lowered state
+into resonance with the light, meaning that the particle will preferrentially
+absorb photons when it is away from the centre.
+
+% TODO Need to fill in this figure, there are some changes, like I'm not using
+% wavy arrows for decays, and I think the polarisaitons need to be superscripts
+% in the fig to match the text...
+\begin{figure}
+  \cm{Figure from presentation with changes for consistency}
+  \caption{}
+  \label{theory:fig:MOT}
+\end{figure}
+
+We wish to ensure that when a photon is absorbed the momentum change provides a
+restoring force towards the centre of the MOT. This is achieved by choosing the
+polarisation of the light so that coming from the positive (negative) $x$
+direction, the light has $\sigma^+$ ($\sigma^-$) polarisation. The result is
+that the particle will then always absorb light that is propagating towards the
+centre of the trap, resulting in a restoring force. We also observe the same
+Doppler cooling force from the molasses, so the resulting force is
+% TODO CITE, this is from Ed's notes
+%
+\begin{equation}
+  F = - \alpha v - \left(\frac{\mu B'}{\hbar k}\right)\alpha x.
+\end{equation}
+
+\section{Sub-Doppler cooling}
+
+We might expect that a MOT would cool the atoms to around the Doppler
+temperature, but in fact the temperate reached is often lower, due to
+sub-Doppler cooling effects that often occur in a MOT. Chiefly, we consider
+polarisation gradient cooling. This cannot occur in the $F=0$, $F'=1$ system
+used to introduce the MOT, so we consider instead a new system with $F=1/2$,
+$F'=3/2$ which we note is still a type-I MOT.
+
+In the centre of the MOT where there is near zero magnetic field, the $m_F$
+states of the system would be degenerate expect that the degeneracy can be
+lifted by the field of the light. This is the a.c. Stark shift, which is a
+function of the polarisation of the light. When the light has $\sigma_\pm$
+polarisation, the $m_F=\mp1/2$ state is mixed more strongly with the exited
+state, and so is higher. The relative matrix elements are shown in \cm{fig to
+reproduce from Ed or elsewhere...}.
+
+The counter-propagating beams establish a polarisation gradient across the
+trap, and hence the Stark shift of the ground states also varies across the
+trap. Particles are preferentially excited when their energies are higher, and
+will preferentially decay into the ground states. So there is an optical
+pumping from the raised state into the lower state. Once in the lower state,
+the particle will follow the potential curve until it is pumped again. The
+particles on average spend more time climbing the potential than descending it,
+and therefore expend energy through this process, reducing their temperature.
+
+\cm{TODO: figure}
+
+\cm{TODO: what is the minimum temp?}
+
+\section{Molecules in a magnetic trap}
+
 \section{Molecule theory}
 \label{theory:molecules}
 
@@ -234,9 +323,8 @@ This is illustrated in \cm{Some figure that I need to create}.
 
 % How to label the states
 
-\section{Magneto-optical trap}
+% What states are weak field seekers?
 
-\section{Molecules in a magnetic trap}
 
 \section{Chip trap theory}
 \label{theory:chips}
