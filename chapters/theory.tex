@@ -234,13 +234,13 @@ In the Ioffe-Pritchard configuration, we can write down the field's
 minimum~\cite{PhysRevA.79.013407}
 %
 \begin{equation}
-  B_0 = \tilde{B}_x + 2\tilde{B}_y \frac{I-1}{I}\frac{h^2}{(d/2)^2 + h^2}
+  B_0 = \tilde{B}_x + 2\tilde{B}_y \frac{I_1}{I}\frac{h^2}{(d/2)^2 + h^2}
 \end{equation}
 %
 transverse gradient~\cite{PhysRevA.79.013407}
 %
 \begin{equation}
-  B'_\perp = \frac{2\pi\tidle{B}_y}{\mu_0 I}
+  B'_\perp = \frac{2\pi\tilde{B}_y}{\mu_0 I}
 \end{equation}
 %
 and curvature (in the $h \ll d$ limit)~\cite{PhysRevA.79.013407}
@@ -261,15 +261,41 @@ Fortunately the H-trap can be approximated by a single wire, either in a
 U-shape for the quadrupole variant, or a Z-shape for the Ioffe-Pritchard
 variant. These are pictured in \cm{theory:fig:HUZ}. Note that for the U-trap
 the currents in the off-axis wires are once again anti-parallel, and in the
-Z-trap these currents are parallel.
+Z-trap these currents are parallel. For the U- and Z-traps, we denote the
+distance between the end wires as $d$, and again refer to this as the axis.
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{figs/theory/wires/HUZcomp.pdf}
-  \caption{}
+  \caption{Current configuration for U-trap (Z-trap) approximating the
+  quadrupole (Ioffe-Pritchard) H-trap configuration.}
   \label{theory:fig:HUZ}
 \end{figure}
 
+The Z-trap will be the primary focus of this thesis, and so we will focus on
+this as an example. In \myfigref{theory:fig:HZcontours} we compare an H-trap
+with a current of \SI{1}{\milli\ampere} on each wire with the potential due to
+a single Z-wire also with current \SI{1}{\milli\ampere}. In both cases
+$d=\SI{10}{\milli\meter}$, and a bias field of \SI{2}{\milli\gauss} in the $y$
+direction is chosen, so as to create a minimum at approximately
+$z=\SI{1}{\milli\meter}$ from the axis. The potentials are similarily
+comparable for the H-trap in quadrupole configuration and the U-trap.
+
+\begin{figure}[htbp]
+  \centering
+  \import{figs/theory/wires/}{HZcontours.pgf}
+  \caption{Contour plots comparing the potentials for a H-trap in
+    Ioffe-Pritchard configuration (left column) and Z-trap (right column), with
+    cut throughs for $z=\SI{1}{\milli\meter}$ (top row) and $x=0$ (bottom row).
+    All wires carry a current of $I=\SI{1}{\milli\ampere}$ and a bias field of
+    \SI{2}{\milli\gauss} is applied in the $y$ direction.}
+  \label{theory:fig:HZcontours}
+\end{figure}
+
+This illustrates that a single current-carrying wire can be used to form a trap
+in three dimensions. The examples here use length scales of a few millimeters,
+and have typical depths of \cm{??}, but we will discuss in chapter~\ref{sim}
+that it is possible to realise much smaller trap and \cm{deeper} traps.
 
 \section{Quantum optics}
 \label{theory:QO}
