@@ -1,12 +1,131 @@
-\cm{Intro spiel}
+In this chapter I will give an abstracted overview of the theory that is
+pertinent to this thesis. In section~\ref{theory:lasercool} I will describe the
+principles of laser-cooling and trapping of atoms and molecules, including
+magnetic traps. In section~\ref{theory:chips} I will explain how it is possible
+to create magnetic fields that will trap molecules using wires on the surface
+of a chip. Next, section~\ref{theory:mols} explains the energy structure of
+diatomic molecules. The chapter ends with an overview of \cm{quantum optics...}
 
-\section{Doppler cooling}
+\section{Laser-cooling and trapping}
 
-$F = - \alpha v$
+\subsection{Doppler cooling}
 
-Introuce Doppler temp
+We will introduce Doppler cooling in the idealised case of a two-level atom or
+molecule (henceforth, the particle) travelling in one dimension.  Say that
+light is incident on the particle from the positive $x$ direction. If the light
+is resonant with an internal transition then the particle can absorb a photon,
+which will at some later time be re-emitted and the particle will decay. The
+emission of the photon has no preferred direction, and so over a large number
+of these scatters the average effect is a net reduciton in the atom's velocity
+in the positive $x$ direction.
 
-\section{Magneto-optical trap}
+In order to quantify this process, we might start by asking ourselves, what is
+the force exerted on the particle by the photons? This will be~\cite{Foot2005}
+%
+\begin{equation}
+  F = \text{photon momentum} \times \text{scattering rate}.
+\end{equation}
+%
+The photon momentum is the usual value
+%
+\begin{equation}
+  p_\gamma = \hbar k = \frac{hc}{\omega}
+\end{equation}
+%
+and the scattering rate will be the product of the decay rate of the transition
+(its linewidth) $\Gamma$ and the population of the excited state $\rho_{22}$.
+We write the excited state in this way since it can be found from the optical
+Bloch equations in the rotating wave approximation, and steady state to
+be~\cite{Metcalf1999}
+%
+\begin{equation}
+\rho_{22} = \frac{\Omega^2/4}{(\omega-\omega_0)^2 + \Omega^2/2 + \Gamma^2/4}.
+\end{equation}
+%
+Where $\Omega$ is the Rabi frequency. We introudce the unitless parameters
+$\delta = (\omega - \omega_0)/\Gamma$, $s=\Omega^2/(2\Gamma)$ so that
+%
+\begin{equation}
+  \rho_{22} = \frac{s/2}{\delta^2 + 1 + s}.
+\end{equation}
+%
+We can now write down the scattering rate
+%
+\begin{equation}
+  R = \frac{s\gamma}{\delta^2 + 1 + s}
+\end{equation}
+%
+and force follows as
+%
+\begin{equation}
+  F = \frac{s\gamma\hbar k}{\delta^2 + 1 + s}.
+\end{equation}
+
+The force acting on the particle can be related to its velocity by the Doppler
+effect. A particle moving at speed $v$ will have its resonant frequency shifted
+so that it has some new frequency $\omega'$ such that
+%
+\begin{equation}
+  \frac{\omega'-\omega_0}{\omega_0} = \frac{v}{c},
+\end{equation}
+%
+i.e.\ the frequency is red-detuned from the transition frequency at rest. The
+result is that $\delta$ can be re-written as
+%
+\begin{equation}
+  \delta \rightarrow \delta_+ = \delta + \frac{\omega_0}{\gamma c}v
+\end{equation}
+%
+where $\delta$ represents the detuning of the laser from the resonant frequency
+at rest, and the second term is the additional shift due to the Doppler effect.
+
+However, what if the light is incident from the negative $x$ direction? In this
+case, there is a blue not a red shift, and we have
+%
+\begin{equation}
+  \delta \rightarrow \delta_- = \delta - \frac{\omega_0}{\gamma c}v.
+\end{equation}
+%
+By combining counter-propagating beams, it is possible to create a net force
+%
+\begin{equation}
+  F_\text{res} = F_+ + F_-
+\end{equation}
+%
+where
+%
+\begin{equation}
+  F_\pm = \frac{s\gamma\hbar k}{\delta_\pm^2 + 1 + s}.
+\end{equation}
+%
+For small $v$ we perform a Taylor expansion around $v=0$ to find that
+%
+\begin{equation}
+  F_\text{res} \approx \frac{4\hbar k^2 s \delta}{(1 + s
+  +\delta^2)^2}v.
+\end{equation}
+%
+Which is maximised when $\delta = -1$ and $s = 1 + \delta^2 = 2$, so that
+%
+\begin{equation}
+  F = -\frac{\hbar k^2}{2} v = - \alpha v.
+\end{equation}
+%
+So the counter-propagating beams provide a velocity-dependent damping
+force. We call this arrangement an optical molasses, and it can equally be
+applied in three dimensions.
+
+It is important to note that the particles will not be brought to a standstill
+under this effect. The molasses force does not contain the information
+on the heating that occurs when the particles re-emit the absorbed photons.
+This stochastic process limits the minimum attainable temperature to the
+Doppler temperature~\cite{}
+%
+\begin{equation}
+  T_D = \frac{\hbar\Gamma}{k_B}.
+\end{equation}
+
+\subsection{Magneto-optical trap}
 
 Doppler cooling is an important tool in the creation of ultracold atoms and
 molecules, but it is of note that this technique does not provide any
@@ -57,7 +176,7 @@ Doppler cooling force from the molasses, so the resulting force is
   F = - \alpha v - \left(\frac{\mu B'}{\hbar k}\right)\alpha x.
 \end{equation}
 
-\section{Sub-Doppler cooling}
+\subsection{Sub-Doppler cooling}
 
 We might expect that a MOT would cool the atoms to around the Doppler
 temperature, but in fact the temperate reached is often lower, due to
@@ -76,255 +195,19 @@ reproduce from Ed or elsewhere...}.
 
 The counter-propagating beams establish a polarisation gradient across the
 trap, and hence the Stark shift of the ground states also varies across the
-trap. Particles are preferentially excited when their energies are higher, and
-will preferentially decay into the ground states. So there is an optical
-pumping from the raised state into the lower state. Once in the lower state,
-the particle will follow the potential curve until it is pumped again. The
-particles on average spend more time climbing the potential than descending it,
-and therefore expend energy through this process, reducing their temperature.
+trap, as shown in \myfigref{}. We have the additional effect that the
+$m_F=\pm1/2$ state is only pumped by the $\sigma^\mp$ light, and so it happens
+that the state with higher energy is the one that is excited. The excited state
+can decay into the lower of the two ground states, where it will follow the
+potential curve until it is pumped again. The particles on average spend more
+time climbing the potential than descending it, and therefore expend energy
+through this process, reducing their temperature to \cm{the recoil limit?}
 
 \cm{TODO: figure}
 
 \cm{TODO: what is the minimum temp?}
 
-\section{Molecules in a magnetic trap}
-
-\section{Molecule theory}
-\label{theory:molecules}
-
-\cm{
-  \begin{itemize}
-      \item Summary of basic energy structure: e-, vib, rot
-      \item Making a MOT
-      \item Microwave state selection
-      \item Magnetic trapping
-  \end{itemize}
-}
-
-In this section I will briefly summarise the physics of diatomic molecules.
-
-\subsection{Electronic, vibrational, and rotational energy}
-
-We can begin by considering two atoms or ions, which we label $A$ and $B$,
-with masses  $m_i = m_p Z_i$, $i\in\{A,B\}$ and $m_p$ is the proton rest mass. We say that the location of the
-atoms is $\mathbf{R}_i$ and the distance between them is
-$R_{AB}$ where $\mathbf{R}_{AB} = \mathbf{R}_B - \mathbf{R}_A$. In the case
-that $R_{AB} \rightarrow \infty$ we have two distinct atoms that will behave 
-as we would expect them to in isolation. \cm{I'm not going to describe atomic
-  physics, go read a book.}
-
-As $R_{AB}$ is reduced, the atoms will begin to perturb each other, with the
-perturbation dominated by the Coloumb interaction between the various charges.
-We can write down the Hamiltonian of such a system, and it is most useful to do
-so in the centre of mass (COM) frame, with the reduced mass
-%
-\begin{equation}
-  m_r = \frac{m_a m_b}{m_a + m_b}
-\end{equation}
-%
-and COM location
-%
-\begin{equation}
-  \mathbf{R}_\text{COM} = \frac{m_a \mathbf{R}_a + m_b \mathbf{R}_b}{m_a+m_b}.
-\end{equation}
-%
-The Hamiltonian is then the sum of the terms arising from the Coulomb
-interaction, and the motion of the molecules
-%
-\begin{equation}
-  H = T_n + T_e + V_{nn} + V_{en} + V_{ee}
-\end{equation}
-%
-where
-%
-\begin{align}
-  T_n &= -\frac{\hbar^2}{2m_r}\nabla_{AB}^2\\
-  T_e &= -\frac{\hbar^2}{2 m_e}\sum_{i=1}^{N_e} \nabla_i'^2 -
-  \frac{\hbar^2}{2(m_a + m_b)}\sum_{i, j} \nabla'_i \cdot \nabla'_j \\
-  V_{nn} &= \frac{Z_A Z_b e^2}{4\pi\epsilon_0 R_{AB}} \\
-  V_{en} &= - \frac{e^2}{4\pi\epsilon_0}\sum_{i=1}^N \left(\frac{Z_A}{R_{iA}} + \frac{Z_B}{R_{iB}}\right) \\
-  V_{ee} &= \frac{e^2}{4\pi\epsilon_0}\sum_{i<j} \frac{1}{R_{ij}}
-\end{align}
-%
-and we have introduced the relative distances $R_{ij}$ being the distance
-between the $i^\text{th}$ and $j^\text{th}$ electrons, and $R_{Ai}$ the
-distance between $A$ and the $i^\text{th}$ electron (and similar for $B$) as
-shown in \cm{fig that I need to make}. The
-total number of electrons is $N_e$. The primed gradient operators represent
-differentiation with respect to the COM coordinates~\cite{}.
-% TODO Cite Dynamic system notes
-
-The time-independent Schr\"odinger equation (TISE),
-%
-\begin{equation}
-  H\psi = E\psi
-\end{equation}
-%
-can now be solved for this Hamiltonian, although we will only sketch the
-solution here. A full derivation can be found in \inlineref{}. The wavefunction
-$\psi$ is a function of $\mathbf{R}_{AB}$ and the positio of each of the
-electrons, that is
-%
-\begin{equation}
-  \psi = \psi(\mathbf{R}_{AB}, \mathbf{R}_1, \dots \mathbf{R}_{N_e}).
-\end{equation}
-%
-We now make the Born-Oppenheimer approximation, where we say that due to the
-fact that the nuclear mass is much higher than that of the electrons, the
-nucleii are stationary on the timescale of the electronic motion. For this
-reason we are able to separate the wavefunction for a new TISE
-%
-\begin{equation}
-  H_e \psi_q(\mathbf{R}_{AB}; \mathbf{r}) = E(R_{AB})\psi_q(\mathbf{R}_{AB};
-  \mathbf{r})
-  \label{theory:eqn:TISEelectron}
-\end{equation}
-%
-where the Hamiltonian $H_e = H - T_n$ is the previous Hamiltonian but excluding
-the term for the nuclear motion, because we say that these are stationary by
-the Born-Oppenheimer approximation. We have introduced $\mathbf{r} =
-\{\mathbf{R}_1, \dots \mathbf{R}_{N_e} \}$ to represent the set of electronic
-coordinates. This means that we now treat $\mathbf{R}_{AB}$ as a parameter of
-this equation, in which case we can find the electronic states computationally,
-similarly to the methods used to find the electronic states of atoms
-\cm{according to Mike and Noah. Can cite foot here...}
-%
-Na\"ively, we expect the electronic energies to be the typical kinetic energy
-of the electrons
-% TODO Right symbol here?
-%
-\begin{equation}
-  E_e \approx \frac{p^2}{2m} = \frac{\hbar^2}{2ma^2}
-\end{equation}
-%
-where the lengthscale of the molecule $a \approx \SI{1}{\angstrom}$, so that
-$E_e \approx \times \SI{1000}{\tera\hertz}$. This gives us the first order
-contribution to the energy of the molecule. In practicje, these energies are in
-the range \SIrange{300}{3000}{\tera\hertz}. \cm{Or is this the separation?}
-
-It can now be seen that the complete wavefunction can be written in the basis
-of $\psi_q$
-%
-\begin{equation}
-  \psi(\mathbf{R}_{AB}, \mathbf{r}) = \sum_q \psi_q(\mathbf{R}_{AB},
-  \mathbf{r}) \chi_q(\mathbf{R}_{AB}).
-\end{equation}
-%
-Using \myeqref{theory:eqn:TISEelectron}, and noting that the Born-Oppenheimer
-approximation also implies that the kinetic energy operator will not mix
-electronic states, we can retreive the following equation for the nuclear wave
-function:
-%
-\begin{equation}
-  \left(-\frac{\hbar^2}{2m_r}\nabla_{AB}^2 + E_q(R_{AB}) -
-  E\right)\chi_q(\mathbf{R}_{AB}) = 0.
-\end{equation}
-%
-We again separate to solve this equation, this time into radial and angular
-parts, so that
-%
-\begin{equation}
-  \chi_q(\mathbf{R}_{AB}) = \frac{1}{R_{AB}}f(R_{AB})Y_{N,M_N}(\theta, \phi)
-\end{equation}
-%
-where we have anticipated the solution to the radial part being the usual
-spherical harmonics $Y_{N, M_N}$. Using the property of the spherical harmonics
-%
-\begin{equation}
-  L^2 Y_{N, M_N} = N(N+1)Y_{N, M_N}
-\end{equation}
-%
-with $L$ as the angular momentum operator, we can finally write an equation
-that is only a function of the nuclear displacement
-%
-\begin{equation}
-  \left(-\frac{\hbar^2}{2m_r}\frac{\dd^2}{\dd R_{AB}^2} +
-    \frac{\hbar^2 N(N+1)}{2m_rR_{AB}^2} + E_q(R_{AB}) - E\right)f(R_{AB}).
-\end{equation}
-
-Such an equation is solved by assuming that the nuclei are stongly bound
-together, so there is some equilibrium internuclear separation $R^0_{AB}$ about
-which we expand. We also introduce the rotational energy to describe the
-second term in the parentheses
-%
-\begin{equation}
-  E_\text{rot}(N) = \frac{\hbar^2 N(N+1)}{2 m_r {R^0_{AB}}^2}
-  \label{theory:eqn:rotenergy}
-\end{equation}
-%
-and so can find the equation
-%
-\begin{equation}
-  \left(-\frac{\hbar^2}{2m_r} \frac{\dd^2}{\dd R_{AB}^2} + \frac{k}{2}(R_{AB} -
-    R^0_{AB})^2 - E_\text{vib}\right)f_\text{vib}(R_{AB})=0
-\end{equation}
-%
-which describes a simple harmonic oscillator with vibrational energy
-%
-\begin{equation}
-  E_\text{vib} = \hbar\omega_\text{vib}\left(v + \frac{1}{2}\right)
-\end{equation}
-%
-such that the total energy is $E = E_q(R_{AB}^0) + E_\text{vib} +
-E_\text{rot}$. The spring constant
-%
-\begin{equation}
-  k = \left.\frac{\dd^2 E_q}{\dd R_{AB}^2}\right\rvert_{R_{AB}^0}.
-\end{equation}
-
-We can again apply a na\"ive analysis to find the order of magnitude of the
-vibrational and rotational energy contributions. For vibrational the
-vibrational energy, we say that when the extension of the molecule is on the
-order of the electronic energy, we will have a separation of the order $a$,
-therefore
-%
-\begin{equation}
-  \frac{1}{2}\hbar\omega_\text{vib}a^2 \approx E_e = \frac{\hbar^2}{2ma^2}
-\end{equation}
-%
-which allows us to write
-%
-\begin{equation}
-  \hbar\omega_\text{vib} \approx \sqrt{\frac{\hbar^4}{m_r m_e a^4}} \approx
-    \SI{10}{\tera\hertz}.
-\end{equation}
-%
-This is the second contribution to the energy of the molecule.
-
-Finally, the rotational energy can be expected to be of a size (for $N=0$, in
-\myeqref{theory:eqn:rotenergy})
-%
-\begin{equation}
-  E_\text{rot} = \frac{\hbar}{2 m_r R^0_{AB}} \approx \SI{100}{\giga\hertz}
-\end{equation}
-%
-where we took $m_r\approx m_e$ and $R^0_{AB}\approx a$. It is now clear that the
-rotational energy is the smallest of the contributions to the molecule's
-energy, which we write as
-%
-\begin{equation}
-  E(q, v, N) = E_q(R^0_{AB}) + \hbar\omega_\text{vib}\left(v +
-    \frac{1}{2}\right) + B N(N+1).
-\end{equation}
-%
-\cm{define $B$ properly}
-This is illustrated in \cm{Some figure that I need to create}.
-
-\subsection{Transitions}
-
-% Just basic ideas or electronic, vibrational, ro-vibrational transitions.
-% Talk more about microwave spectroscopy elsewhere?
-
-\subsection{Hyperfine structure}
-
-% Nuclear and electronic spins give us $F$
-
-\subsection{Good quantum numbers}
-
-% How to label the states
-
-% What states are weak field seekers?
-
+\subsection{Magnetic trapping}
 
 \section{Chip trap theory}
 \label{theory:chips}
@@ -610,6 +493,244 @@ This illustrates that a single current-carrying wire can be used to form a trap
 in three dimensions. The examples here use length scales of a few millimeters,
 and have typical depths of \cm{??}, but we will discuss in chapter~\ref{sim}
 that it is possible to realise much smaller trap and \cm{deeper} traps.
+
+
+\section{Molecule theory}
+\label{theory:molecules}
+
+\cm{
+  \begin{itemize}
+      \item Summary of basic energy structure: e-, vib, rot
+      \item Making a MOT
+      \item Microwave state selection
+      \item Magnetic trapping
+  \end{itemize}
+}
+
+In this section I will briefly summarise the physics of diatomic molecules.
+
+\subsection{Electronic, vibrational, and rotational energy}
+
+We can begin by considering two atoms or ions, which we label $A$ and $B$,
+with masses  $m_i = m_p Z_i$, $i\in\{A,B\}$ and $m_p$ is the proton rest mass. We say that the location of the
+atoms is $\mathbf{R}_i$ and the distance between them is
+$R_{AB}$ where $\mathbf{R}_{AB} = \mathbf{R}_B - \mathbf{R}_A$. In the case
+that $R_{AB} \rightarrow \infty$ we have two distinct atoms that will behave 
+as we would expect them to in isolation. \cm{I'm not going to describe atomic
+  physics, go read a book.}
+
+As $R_{AB}$ is reduced, the atoms will begin to perturb each other, with the
+perturbation dominated by the Coloumb interaction between the various charges.
+We can write down the Hamiltonian of such a system, and it is most useful to do
+so in the centre of mass (COM) frame, with the reduced mass
+%
+\begin{equation}
+  m_r = \frac{m_a m_b}{m_a + m_b}
+\end{equation}
+%
+and COM location
+%
+\begin{equation}
+  \mathbf{R}_\text{COM} = \frac{m_a \mathbf{R}_a + m_b \mathbf{R}_b}{m_a+m_b}.
+\end{equation}
+%
+The Hamiltonian is then the sum of the terms arising from the Coulomb
+interaction, and the motion of the molecules
+%
+\begin{equation}
+  H = T_n + T_e + V_{nn} + V_{en} + V_{ee}
+\end{equation}
+%
+where
+%
+\begin{align}
+  T_n &= -\frac{\hbar^2}{2m_r}\nabla_{AB}^2\\
+  T_e &= -\frac{\hbar^2}{2 m_e}\sum_{i=1}^{N_e} \nabla_i'^2 -
+  \frac{\hbar^2}{2(m_a + m_b)}\sum_{i, j} \nabla'_i \cdot \nabla'_j \\
+  V_{nn} &= \frac{Z_A Z_b e^2}{4\pi\epsilon_0 R_{AB}} \\
+  V_{en} &= - \frac{e^2}{4\pi\epsilon_0}\sum_{i=1}^N \left(\frac{Z_A}{R_{iA}} + \frac{Z_B}{R_{iB}}\right) \\
+  V_{ee} &= \frac{e^2}{4\pi\epsilon_0}\sum_{i<j} \frac{1}{R_{ij}}
+\end{align}
+%
+and we have introduced the relative distances $R_{ij}$ being the distance
+between the $i^\text{th}$ and $j^\text{th}$ electrons, and $R_{Ai}$ the
+distance between $A$ and the $i^\text{th}$ electron (and similar for $B$) as
+shown in \cm{fig that I need to make}. The
+total number of electrons is $N_e$. The primed gradient operators represent
+differentiation with respect to the COM coordinates~\cite{}.
+% TODO Cite Dynamic system notes
+
+The time-independent Schr\"odinger equation (TISE),
+%
+\begin{equation}
+  H\psi = E\psi
+\end{equation}
+%
+can now be solved for this Hamiltonian, although we will only sketch the
+solution here. A full derivation can be found in \inlineref{}. The wavefunction
+$\psi$ is a function of $\mathbf{R}_{AB}$ and the positio of each of the
+electrons, that is
+%
+\begin{equation}
+  \psi = \psi(\mathbf{R}_{AB}, \mathbf{R}_1, \dots \mathbf{R}_{N_e}).
+\end{equation}
+%
+We now make the Born-Oppenheimer approximation, where we say that due to the
+fact that the nuclear mass is much higher than that of the electrons, the
+nucleii are stationary on the timescale of the electronic motion. For this
+reason we are able to separate the wavefunction for a new TISE
+%
+\begin{equation}
+  H_e \psi_q(\mathbf{R}_{AB}; \mathbf{r}) = E(R_{AB})\psi_q(\mathbf{R}_{AB};
+  \mathbf{r})
+  \label{theory:eqn:TISEelectron}
+\end{equation}
+%
+where the Hamiltonian $H_e = H - T_n$ is the previous Hamiltonian but excluding
+the term for the nuclear motion, because we say that these are stationary by
+the Born-Oppenheimer approximation. We have introduced $\mathbf{r} =
+\{\mathbf{R}_1, \dots \mathbf{R}_{N_e} \}$ to represent the set of electronic
+coordinates. This means that we now treat $\mathbf{R}_{AB}$ as a parameter of
+this equation, in which case we can find the electronic states computationally,
+similarly to the methods used to find the electronic states of atoms
+\cm{according to Mike and Noah. Can cite foot here...}
+%
+Na\"ively, we expect the electronic energies to be the typical kinetic energy
+of the electrons
+% TODO Right symbol here?
+%
+\begin{equation}
+  E_e \approx \frac{p^2}{2m} = \frac{\hbar^2}{2ma^2}
+\end{equation}
+%
+where the lengthscale of the molecule $a \approx \SI{1}{\angstrom}$, so that
+$E_e \approx \times \SI{1000}{\tera\hertz}$. This gives us the first order
+contribution to the energy of the molecule. In practicje, these energies are in
+the range \SIrange{300}{3000}{\tera\hertz}. \cm{Or is this the separation?}
+
+It can now be seen that the complete wavefunction can be written in the basis
+of $\psi_q$
+%
+\begin{equation}
+  \psi(\mathbf{R}_{AB}, \mathbf{r}) = \sum_q \psi_q(\mathbf{R}_{AB},
+  \mathbf{r}) \chi_q(\mathbf{R}_{AB}).
+\end{equation}
+%
+Using \myeqref{theory:eqn:TISEelectron}, and noting that the Born-Oppenheimer
+approximation also implies that the kinetic energy operator will not mix
+electronic states, we can retreive the following equation for the nuclear wave
+function:
+%
+\begin{equation}
+  \left(-\frac{\hbar^2}{2m_r}\nabla_{AB}^2 + E_q(R_{AB}) -
+  E\right)\chi_q(\mathbf{R}_{AB}) = 0.
+\end{equation}
+%
+We again separate to solve this equation, this time into radial and angular
+parts, so that
+%
+\begin{equation}
+  \chi_q(\mathbf{R}_{AB}) = \frac{1}{R_{AB}}f(R_{AB})Y_{N,M_N}(\theta, \phi)
+\end{equation}
+%
+where we have anticipated the solution to the radial part being the usual
+spherical harmonics $Y_{N, M_N}$. Using the property of the spherical harmonics
+%
+\begin{equation}
+  L^2 Y_{N, M_N} = N(N+1)Y_{N, M_N}
+\end{equation}
+%
+with $L$ as the angular momentum operator, we can finally write an equation
+that is only a function of the nuclear displacement
+%
+\begin{equation}
+  \left(-\frac{\hbar^2}{2m_r}\frac{\dd^2}{\dd R_{AB}^2} +
+    \frac{\hbar^2 N(N+1)}{2m_rR_{AB}^2} + E_q(R_{AB}) - E\right)f(R_{AB}).
+\end{equation}
+
+Such an equation is solved by assuming that the nuclei are stongly bound
+together, so there is some equilibrium internuclear separation $R^0_{AB}$ about
+which we expand. We also introduce the rotational energy to describe the
+second term in the parentheses
+%
+\begin{equation}
+  E_\text{rot}(N) = \frac{\hbar^2 N(N+1)}{2 m_r {R^0_{AB}}^2}
+  \label{theory:eqn:rotenergy}
+\end{equation}
+%
+and so can find the equation
+%
+\begin{equation}
+  \left(-\frac{\hbar^2}{2m_r} \frac{\dd^2}{\dd R_{AB}^2} + \frac{k}{2}(R_{AB} -
+    R^0_{AB})^2 - E_\text{vib}\right)f_\text{vib}(R_{AB})=0
+\end{equation}
+%
+which describes a simple harmonic oscillator with vibrational energy
+%
+\begin{equation}
+  E_\text{vib} = \hbar\omega_\text{vib}\left(v + \frac{1}{2}\right)
+\end{equation}
+%
+such that the total energy is $E = E_q(R_{AB}^0) + E_\text{vib} +
+E_\text{rot}$. The spring constant
+%
+\begin{equation}
+  k = \left.\frac{\dd^2 E_q}{\dd R_{AB}^2}\right\rvert_{R_{AB}^0}.
+\end{equation}
+
+We can again apply a na\"ive analysis to find the order of magnitude of the
+vibrational and rotational energy contributions. For vibrational the
+vibrational energy, we say that when the extension of the molecule is on the
+order of the electronic energy, we will have a separation of the order $a$,
+therefore
+%
+\begin{equation}
+  \frac{1}{2}\hbar\omega_\text{vib}a^2 \approx E_e = \frac{\hbar^2}{2ma^2}
+\end{equation}
+%
+which allows us to write
+%
+\begin{equation}
+  \hbar\omega_\text{vib} \approx \sqrt{\frac{\hbar^4}{m_r m_e a^4}} \approx
+    \SI{10}{\tera\hertz}.
+\end{equation}
+%
+This is the second contribution to the energy of the molecule.
+
+Finally, the rotational energy can be expected to be of a size (for $N=0$, in
+\myeqref{theory:eqn:rotenergy})
+%
+\begin{equation}
+  E_\text{rot} = \frac{\hbar}{2 m_r R^0_{AB}} \approx \SI{100}{\giga\hertz}
+\end{equation}
+%
+where we took $m_r\approx m_e$ and $R^0_{AB}\approx a$. It is now clear that the
+rotational energy is the smallest of the contributions to the molecule's
+energy, which we write as
+%
+\begin{equation}
+  E(q, v, N) = E_q(R^0_{AB}) + \hbar\omega_\text{vib}\left(v +
+    \frac{1}{2}\right) + B N(N+1).
+\end{equation}
+%
+\cm{define $B$ properly}
+This is illustrated in \cm{Some figure that I need to create}.
+
+\subsection{Transitions}
+
+% Just basic ideas or electronic, vibrational, ro-vibrational transitions.
+% Talk more about microwave spectroscopy elsewhere?
+
+\subsection{Hyperfine structure}
+
+% Nuclear and electronic spins give us $F$
+
+\subsection{Good quantum numbers}
+
+% How to label the states
+
+% What states are weak field seekers?
+
 
 \section{Quantum optics}
 \label{theory:QO}
