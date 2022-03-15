@@ -284,16 +284,89 @@ one of these states is bound to be a weak-field seeker.
 
 Now the final ingredient is a magnetic potential with a local minimum. There
 are a plethora of examples to choose from, but the canonical choice is the
-quadrupole trap, which can be fomred from a pair of anti-Helmholtz coils.
-% TODO
+quadrupole trap, which can be fomred from a pair of anti-Helmholtz coils, as
+shown in \mysubfigref{theory:fig:fields}{a}. We can approximate the field
+generated near the centre of such a configuration as~\cite{} % Metcalf?
+%
+% TODO I use this equation somewhere else and I need to change to reference
+% this one...
+\begin{equation}
+  \mathbf{B} = B'\begin{pmatrix} -x/2 \\ -y/2 \\ z \end{pmatrix}
+  \label{theory:eqn:quadrupole}
+\end{equation}
+%
+where $B'$ is the field gradient in the $z$ direction, and depends on the
+currents in the coils as well as their geometry.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.7\textwidth]{figs/theory/QPIP.pdf}
+  \caption{Subfigure (a) demonstrates the generation of a quadrupole field
+    (pink arrows) by
+  anti-Helmholtz coils (black arrows). Subfigure(b) demonstrates the current
+  configuration for a
+  Ioffe-Pritchard trap, with longitudinal currents (blue arrows) and endcap
+coils (black arrows). \cm{reproduced from Ed's notes}}
+  \label{theory:fig:fields}
+\end{figure}
 
 One of the drawbacks to a qaudrupole is taht the magnetic field at the centre
 is zero. In regions of low field there is no breaking of the degeneracy, and so
 it is possible for the $m_F$ quantum number to change to an un-trappable state.
 This is known as a spin-flip or Majorana loss.~\cite{} One method of resolving
 this is to instead use a Ioffe-Pritchard trap, which has a non-zero field
-minimum.
-% TODO
+minimum. The standard method of implementing such a trap is shown in
+\mysubfigref{theory:fig:fields}{b}. Four straight wires are arranged in a
+square, with a pair of parallel coils on either end to form end-caps. The field
+generated is of the form~\cite{} % Metcalf?
+%
+\begin{equation}
+  \mathbf{B} = b_1 \begin{pmatrix} x \\ -y \\ 0 \end{pmatrix}
+  + b_0 \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}
+  + b_2 \begin{pmatrix} -xz \\ -yz \\ z^2 - \rho^2/2 \end{pmatrix}
+  \label{theory:eqn:IP}
+\end{equation}
+%
+where $\rho^2 = x^2 + y^2$ and the constants $b_i$ are again functions
+of the currents and the geometry.
+
+For a quadrupole field, the motion is characterised by the gradient, but for a
+Ioffe-Pritchard trap, the motion is harmonic, and we can find the frequencies
+by evaluating the shape of the potential $\mu B$. From 
+\myeqref{theory:eqn:IP} we have
+%
+\begin{equation}
+  \mu B \approx \mu \sqrt{b_0^2 + (b_1^2 -
+  b_0b_2)\rho^2 + 2b_0b_2z^2}.
+\end{equation}
+%
+Up to the third order in position terms. Now expanding for $z=0$ and small $\rho$ we get
+%
+\begin{equation}
+  \mu B \approx \mu b_0\left(1 + \frac{b_1^2 -
+    b_0b_2}{2b_0}\rho^2\right)
+\end{equation}
+%
+which is a harmonic potential with minimum $\mu b_0$ and frequency
+%
+\begin{equation}
+  \omega_\rho = \sqrt{\frac{\mu}{m}\left(\frac{b_1^2}{b_0}-b_2\right)}
+\end{equation}
+%
+for a particle of mass $m$.
+
+Similarly for the $z$ direction, we can find the potential
+approximates to
+%
+\begin{equation}
+  \mu B = \mu b_0 (1 + b_2 z^2)
+\end{equation}
+%
+which is again harmonic, with frequency
+%
+\begin{equation}
+  \omega_z \approx \sqrt{\frac{\mu}{m}2b_2}.
+\end{equation}
 
 We note that the motion of the particles in the trap must be slow compared to
 the resonant frequency $g_F\mu_BB/\hbar$ to avoid inducing transitions.
@@ -316,7 +389,7 @@ currents on the surface of a chip.
 We begin our discussion by considering a simple case of a two-dimensional trap.
 This will be formed of a straight wire carrying current $I$, which we
 approximate to have infinite length. Such a wire can be free-standing or
-deposited on a substrate.  The magnetic field due to the wire is described by
+deposited on a substrate. The magnetic field due to the wire is described by
 the Biot-Savart law~\cite{}, having magnitude
 %
 \begin{equation}
