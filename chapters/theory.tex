@@ -145,27 +145,35 @@ The MOT consists of two components, a magnetic quadrupole field, and restoring
 laser beams, which are detuned from the $F\rightarrow F'$ transition by some
 amount $\delta$. This setup is shown for one dimension in \cm{fig from
 presentation}. The Zeeman effect lifts the degeneracy of the excited state, and
-lowers the energy of the $m_F = 1$ ($m_F=-1$) state in the positive (negative)
-$x$ direction according to the usual relationship
+introudces the usual energy shift~\cite{Binney}
 %
-\cm{Zeeman equation}
+\begin{equation}
+  \Delta E = g_F m_F \mu_B B
+\end{equation}
+%
+where $g_F$ is the Land\'e g-factor, $\mu_B$ is the Bohr magneton, and $B$ is
+the magnetic field. For a one-dimensional quadrupole field, we write $B=B'x$,
+where $B'$ is the field gradient. We therefore have a position-dependent change
+in the energy. Note that for negative $x$, the $m_F=-1$ state has lower energy,
+and for positive $x$ the $m_F=1$ state has lower energy (when $g_F>0$, if
+$g_F<0$ this is reversed).
 %
 The detuning $\delta$ is chosen such that this shift brings the lowered state
 into resonance with the light, meaning that the particle will preferrentially
 absorb photons when it is away from the centre.
 
-\begin{figure}
+\begin{figure}[ht]
   \centering
   \includegraphics[width=0.8\textwidth]{figs/theory/motThesis.pdf}
-  \caption{Illustration of the operating principle of a MOT on a two-level
-  system with $F=0$ and $F'=1$. The particle is represented by the circle, and
-  has counter-propagating beams of light (pink arrows) incident on it. A
-  quardupole magnetic field is applied, lifting the
-  degeneracy of the excited state as shown by the black lines. The light is
-  red-detuned so as to be with the transition to the lower $m_F$ state,
-  but only the restoring beam will be absorbed due to the choice
-  of polarisation. The excited state will decay back to the ground state (dashed
-  lines).
+  \caption{Illustration of the operating principle of a one-dimensional MOT on
+    a two-level system with $F=0$ and $F'=1$. The particle is represented by
+    the circle, and has counter-propagating beams of light (pink arrows)
+    incident on it. A quardupole magnetic field is applied, lifting the
+    degeneracy of the excited state as shown by the black lines. The light is
+    red-detuned so as to be resonant with the transition to the lower $m_F$
+    state, but only the restoring beam will be absorbed due to the choice of
+    polarisation. The excited state will decay back to the ground state (dashed
+    lines).
   }
   \label{theory:fig:MOT}
 \end{figure}
@@ -200,6 +208,30 @@ polarisation, the $m_F=\mp1/2$ state is mixed more strongly with the exited
 state, and so is higher. The relative matrix elements are shown in \cm{fig to
 reproduce from Ed or elsewhere...}.
 
+\begin{figure}[htb]
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+      \cm{Optical pumping fig}
+    \end{subfigure}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \begin{overpic}[width=0.8\textwidth]{figs/theory/molasses.pdf}
+      \put(4, 50){(b)}
+      \put(105, 60){$F'=3/2$}
+      \put(105, 28){$F=1/2$}
+      \put(105, 2){Polarisation}
+    \end{overpic}
+    \end{subfigure}
+    \caption{In (a) we have \cm{some coupling matrix elements} Subfigure (b)
+      shows the polarisation gradient cooling scheme described in the main
+      text.  The polarisation gradient is depicted in the bottom row, and the
+      $m_F=1/2$ ($m_F=-1/2$) state is shown by the dashed (solid) line. A
+      particle in the molasses (pink circle) will follow a path such as the one
+      shown here in pink, being pumped into the $F'=3/2$ state at the top of
+      the potential hill, then decaying (dashed grey lines) back to the lower
+      of the ground states and climbing the hill again. \cm{Cite inspiration}
+  }
+\end{figure}
+
 The counter-propagating beams establish a polarisation gradient across the
 trap, and hence the Stark shift of the ground states also varies across the
 trap, as shown in \myfigref{}. We have the additional effect that the
@@ -209,8 +241,6 @@ can decay into the lower of the two ground states, where it will follow the
 potential curve until it is pumped again. The particles on average spend more
 time climbing the potential than descending it, and therefore expend energy
 through this process, reducing their temperature to \cm{the recoil limit?}
-
-\cm{TODO: figure}
 
 \cm{TODO: what is the minimum temp?}
 
