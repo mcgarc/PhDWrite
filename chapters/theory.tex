@@ -885,6 +885,13 @@ This is illustrated in \cm{Some figure that I need to create}.
 % Just basic ideas or electronic, vibrational, ro-vibrational transitions.
 % Talk more about microwave spectroscopy elsewhere?
 
+% TODO Need loads of cites here.
+
+% TODO TODO TODO This is mostly wrong, which you can see if you actually read
+% the quantum systems notes
+
+The 
+
 Having understood the energy structure of the molecule allows us to begin
 considering the various types of transitions that can occur in molecules. We
 begin by considering transitions that go between the electronic states. We
@@ -895,11 +902,32 @@ alphabetically from there, so $q\in\{X,A,B,\ldots\}$.
 
 Typically when the transitions are between electronic states, we can also have
 a change in the vibrational level $v$. We will represent this graphically as
-shown in \cm{figure}. The electronic potentials provide the largest
-contribution to the energy of the state and the vibrational states then behave
+shown in \cm{figure}. As mentioned already, the electronic potentials are found
+computationally, and for our purposes can be said to take  the form of
+\cm{Morse potentials}, so that
+%
+\cm{eqn.}
+%
+The vibrational energy can then be thought of as a level in this potential,
+which we can treat like an anharmonic oscillator, having a wavefunction
+$\psi_\text{vib}(q, v; R_{AB})$, as depicted in the figure. The strength of the
+transition between any two such states is then proportional to the mod-square
+of the overlap integral of these functions. This is called the Franck-Condon
+factor and is written
+%
+\cm{FC factor.}
+%
+In the case that $q=q'$, the vibrational states are orthogonal except when
+$v=v'$. Any such transitions within the same electronic state must therefore be
+purely rotational.
+
+
+
+provide the largest
+contribution to the energy of the state  and the vibrational states then behave
 analagously to an anharmonic osciallator inside each of these potentials. The
 strength of the transition is then related to the overlap integral of the two
-states
+states. 
 
 \subsection{Hyperfine structure}
 
