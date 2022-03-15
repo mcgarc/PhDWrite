@@ -149,6 +149,7 @@ introudces the usual energy shift~\cite{Binney}
 %
 \begin{equation}
   \Delta E = g_F m_F \mu_B B
+  \label{theory:eqn:zeeman}
 \end{equation}
 %
 where $g_F$ is the Land\'e g-factor, $\mu_B$ is the Bohr magneton, and $B$ is
@@ -244,7 +245,62 @@ through this process, reducing their temperature to \cm{the recoil limit?}
 
 \cm{TODO: what is the minimum temp?}
 
+\cm{Also possible to just have the molasses, no B field and then we have
+  sub-Doppler cooling}
+
 \subsection{Magnetic trapping}
+
+% TODO want to cite 2d mots, pyramid mots, grating mots, etc.
+The MOT is an important tool for trapping, and can be configured in various
+ways~\cite{}, but there is considerable benefit to being able to confine
+particles using only a magnetic field. Since there is no light involved, it is
+much easier to control the trapping potential. This opens the door to
+applications in guiding~\cite{} and transporting~\cite{} particles, but also of
+course, confining close to a surface. This will be discussed in more detail in
+the next section, but for the moment we lmit ourselves to a basic description
+of magnetic trapping.
+
+Continuing with the above example of a two-level particle with $F=1/2$,
+$F'=3/2$, we notice that when the particle is in a state where $g_F m_F > 0$,
+the Zeeman shift due to a magnetic field is positive (c.f.\
+\myeqref{theory:eqn:zeeman}). Hence if the magnetic field $B$ is chosen such
+that there is a local minimum in the vicinity of the particle, then these
+states will be attracted to that minimum. Such a state is called a weak-field
+seeker. We can equally have stong-field seeksers when $g_F m_F < 0$, but these
+cannot be trapped since it is not possible to create a local magnetic field
+maximum in free space.
+%
+Note that the dependence here is on the magnitude of the magnetic field, so the
+direction of the field does not directly affect the trapping potential.
+
+So to magnetically trap our particle we need to first ensure it is in a
+weak-field seeking state, and then we need to introduce a magnetic field with a
+local minimum. It is possible to transfer into either of the states
+$\ket{F=3/2, m_F=\pm3/2}$, applying only $\sigma_\pm$ light will optically pump
+into the respective state. After the pumping scheme it is possible (if desired)
+to either of the $\ket{F=1/2, m_F=\pm1/2}$ states by a \cm{microwave
+transition}. Depending on the sign of $g_F$ (or for the excited state $g_{F'}$) 
+one of these states is bound to be a weak-field seeker.
+
+Now the final ingredient is a magnetic potential with a local minimum. There
+are a plethora of examples to choose from, but the canonical choice is the
+quadrupole trap, which can be fomred from a pair of anti-Helmholtz coils.
+% TODO
+
+One of the drawbacks to a qaudrupole is taht the magnetic field at the centre
+is zero. In regions of low field there is no breaking of the degeneracy, and so
+it is possible for the $m_F$ quantum number to change to an un-trappable state.
+This is known as a spin-flip or Majorana loss.~\cite{} One method of resolving
+this is to instead use a Ioffe-Pritchard trap, which has a non-zero field
+minimum.
+% TODO
+
+We note that the motion of the particles in the trap must be slow compared to
+the resonant frequency $g_F\mu_BB/\hbar$ to avoid inducing transitions.
+Similarly, the field can be changed adiabatically (slowly compared to the speed
+of the trapped particles) without heating~\cite{}. This can be used for
+transport, or transferring particles between magnetic traps, and will be
+discussed further in chapter~\ref{sim}.
 
 \section{Chip trap theory}
 \label{theory:chips}
