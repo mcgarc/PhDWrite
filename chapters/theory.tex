@@ -885,49 +885,71 @@ This is illustrated in \cm{Some figure that I need to create}.
 % Just basic ideas or electronic, vibrational, ro-vibrational transitions.
 % Talk more about microwave spectroscopy elsewhere?
 
-% TODO Need loads of cites here.
+We will now state without derivation, the selection rules describing the
+allowed transitions between the various states of the molecule. A complete
+derivation can be found in \inlineref{}. We will label the original state in
+the transition $\ket{1} = \ket{q, v, N, m_N}$ and the final state $\ket{2} =
+\ket{q', v', N', m_N'}$.
 
-% TODO TODO TODO This is mostly wrong, which you can see if you actually read
-% the quantum systems notes
-
-The 
-
-Having understood the energy structure of the molecule allows us to begin
-considering the various types of transitions that can occur in molecules. We
-begin by considering transitions that go between the electronic states. We
-previously labeled these states $\psi_q$, and now we will introduce the usual
-convention used to label the electronic states, with X, representing the ground
-state, A representing the next excited state, and then continuing
-alphabetically from there, so $q\in\{X,A,B,\ldots\}$.
-
-Typically when the transitions are between electronic states, we can also have
-a change in the vibrational level $v$. We will represent this graphically as
-shown in \cm{figure}. As mentioned already, the electronic potentials are found
-computationally, and for our purposes can be said to take  the form of
-\cm{Morse potentials}, so that
+It is useful to remember that the following results are found by considering
+the intensity of the transition, which is proportional to $|d_{12}|^2$, where
 %
-\cm{eqn.}
+\begin{equation}
+  d_{12} = \bra{1}\mathbf{d}\cdot\mathbf{\epsilon}\ket{2}
+\end{equation}
 %
-The vibrational energy can then be thought of as a level in this potential,
-which we can treat like an anharmonic oscillator, having a wavefunction
-$\psi_\text{vib}(q, v; R_{AB})$, as depicted in the figure. The strength of the
-transition between any two such states is then proportional to the mod-square
-of the overlap integral of these functions. This is called the Franck-Condon
-factor and is written
+is the matrix element of the transition, $\mathbf{d}$ is the dipole matrix
+operator, and $\mathbf{\epsilon}$ is a vector representing the polarisation of
+the light. This matrix element is evaluated by re-writing in a spherical basis,
+then writing this basis so that the $z$ axis is aligned with the internuclear
+axis. This yields an integral over the electronic, vibrational and rotational
+wavefunctions. Deriving this integral and its solution is beyond the scope of
+this discussion, as it is not required to understand the rest of the thesis. It
+has been explained far more eloquently and succinctly than I am capable of in
+various texts, including \cm{citations}.
+
+\subsubsection{Pure rotational transitions}
+
+In a pure rotational transition $q'=q$ and $v'=v$. Such transitions are
+permitted only when $\Delta N = N' - N = \pm1$. The selection rule for $M_N$ is
+dependent on the polarisation of the transition light. For linearly polarised
+light $\Delta M_N = M_N' - M_N =
+0$, whereas for circularly polarised light $\Delta M_N =  \pm1$ for
+$\sigma^\mp$ polarised light.
+
+\subsubsection{Vibrational transitions}
+
+In the case where $q'=q$ we have the same selection rules for any change in the
+rotational quantum numbers. It can be shown that the additional selection rule
+for the vibrational transition is $\Delta v = v' - v = \pm 1$. Of course,
+$\Delta v = 0$ is allowed, but then this reduces to the above case of a pure
+rotational transition.
+
+\subsubsection{Changing the electronic state}
+
+When the electronic state changes the analysis is more complicated, and there
+are no consistent selection rules. This can be explained when we recall that
+the matrix element $d_{12}$ is an integral over the state's wavefunction $\psi
+= \psi_q f_v(R_{AB}) Y_{N, M_N}$. When
+the electronic states are the same, the electronic contribution becomes a
+factor of one and the vibrational states are all states from the same
+anharmonic oscillator, as can be seen in \cm{figure}. In this case we can
+derive the above selection rules.
+
+Now that $q\neq q'$, the vibrational states are not the states from the same
+anharmonic potentials, and so the overlap integrals of the wave functions must
+be computed numerically. The vibrational component of the integral is called
+the Franck-Condon factor, and is written as
 %
-\cm{FC factor.}
+\cm{TODO}.
 %
-In the case that $q=q'$, the vibrational states are orthogonal except when
-$v=v'$. Any such transitions within the same electronic state must therefore be
-purely rotational.
+Various overlap integrals and their Franck-Condon factors are shown for a
+\cm{simple example in a figure}.
 
-
-
-provide the largest
-contribution to the energy of the state  and the vibrational states then behave
-analagously to an anharmonic osciallator inside each of these potentials. The
-strength of the transition is then related to the overlap integral of the two
-states. 
+The rotational state can change by the same selection rules as before, except
+in the case that the rotational angular momentum is coupled to the angular
+momentum of the electrons. In this case we can have $J$ as the good quantum
+number, with a selection rule $\Delta J = 0, \pm1$. \cm{What about $F$?}
 
 \subsection{Hyperfine structure}
 
@@ -938,7 +960,6 @@ states.
 % How to label the states
 
 % What states are weak field seekers?
-
 
 \section{Quantum optics}
 \label{theory:QO}
