@@ -730,17 +730,29 @@ The time-independent Schr\"odinger equation (TISE),
 %
 can now be solved for this Hamiltonian, although we will only sketch the
 solution here. A full derivation can be found in \inlineref{}. The wavefunction
-$\psi$ is a function of $\mathbf{R}_{AB}$ and the positio of each of the
+$\psi$ is a function of $\mathbf{R}_{AB}$ and the position of each of the
 electrons, that is
 %
 \begin{equation}
   \psi = \psi(\mathbf{R}_{AB}, \mathbf{R}_1, \dots \mathbf{R}_{N_e}).
 \end{equation}
 %
+\cm{...and?}
+
+\subsubsection{Electronic motion}
+
 We now make the Born-Oppenheimer approximation, where we say that due to the
 fact that the nuclear mass is much higher than that of the electrons, the
 nucleii are stationary on the timescale of the electronic motion. For this
-reason we are able to separate the wavefunction for a new TISE
+reason we are able to separate the wavefunction into electronic ($\psi_q$) and
+nuclear ($\chi$) parts
+%
+\begin{equation}
+  \psi = \sum_q \chi.
+\end{equation}
+%
+Since the nuclei are stationary on this timescale, $\mathbf{R_{AB}}$ becomes a
+parameter of $\psi_q$. The new TISE is
 %
 \begin{equation}
   H_e \psi_q(\mathbf{R}_{AB}; \mathbf{r}) = E(R_{AB})\psi_q(\mathbf{R}_{AB};
@@ -749,14 +761,20 @@ reason we are able to separate the wavefunction for a new TISE
 \end{equation}
 %
 where the Hamiltonian $H_e = H - T_n$ is the previous Hamiltonian but excluding
-the term for the nuclear motion, because we say that these are stationary by
-the Born-Oppenheimer approximation. We have introduced $\mathbf{r} =
+the term for the nuclear motion. We have introduced $\mathbf{r} =
 \{\mathbf{R}_1, \dots \mathbf{R}_{N_e} \}$ to represent the set of electronic
-coordinates. This means that we now treat $\mathbf{R}_{AB}$ as a parameter of
-this equation, in which case we can find the electronic states computationally,
+coordinates.
+
+We can find the electronic states and energies computationally,
 similarly to the methods used to find the electronic states of atoms
 \cm{according to Mike and Noah. Can cite foot here...}
 %
+A useful approximation of $E(R_{AB})$ is the Morse potential
+%
+\cm{eqn}
+%
+which...
+
 Na\"ively, we expect the electronic energies to be the typical kinetic energy
 of the electrons
 % TODO Right symbol here?
@@ -767,7 +785,7 @@ of the electrons
 %
 where the lengthscale of the molecule $a \approx \SI{1}{\angstrom}$, so that
 $E_e \approx \times \SI{1000}{\tera\hertz}$. This gives us the first order
-contribution to the energy of the molecule. In practicje, these energies are in
+contribution to the energy of the molecule. In practice, these energies are in
 the range \SIrange{300}{3000}{\tera\hertz}. \cm{Or is this the separation?}
 
 It can now be seen that the complete wavefunction can be written in the basis
