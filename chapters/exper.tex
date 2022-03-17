@@ -1,3 +1,14 @@
+The chip apparatus was assembled for preliminary tests, but isolated from the 
+main \CaF{} experiment. This modest setup was useful for a variety of
+measurements, which will be discussed below, including vacuum compatibility,
+current testing under vacuum, and looking at the amount of background scatter
+from the apparatus during imaging.
+
+\section{Experiment assembly}
+
+
+
+
 \section{Vacuum testing}
 
 
@@ -9,16 +20,38 @@
 
 \section{Background-free imaging}
 
+\cm{Normally we just image with 606nm light and do light-induced fluorescence
+imaging, but this creates a load of scatter which reduces SNR.}
+
 One possible method of reducing background whilst imaging molecules is Raman
-Resonance Optical Cycling (RROC), an background-free imaging scheme recently proposed
-and demonstrated using \SrF{} in \inlineref{Shaw2021}. In this scheme,
+Resonance Optical Cycling (RROC), an background-free imaging scheme recently
+proposed and demonstrated using \SrF{} in \inlineref{Shaw2021}. In this scheme,
 off-diagonal ($v\neq v'$) vibrational transitions are driven to excite the
 molecule, which will decay primarily on the diagonal ($v=v'$) transitions. The
 off-diagonal transitions are separated from the diagonal ones by
 $>\SI{10}{\tera\hertz}$, and so it is possible to use a bandpass filter to
-exclude the imaging light from any measurement.
+exclude the imaging light from any measurement. For an ideal bandpass filter
+this would remove any background from imaging light scattered by the apparatus.
 
-This scheme for \CaF{} is shown in \myfigref{exper:fig:bgfreelevels}.
+Reference~\cite{Shaw2021} reports a suppersion of scattered light by a factor
+of $\sim10^6$, and an average emission of 20 photons per molecule. In this
+experiment, a beam of molecules was imaged, and this emission is limited by the
+interaction time during travel. For imaging a stationary cloud of molecules we
+would expect instead to be limited by the reduced scattering rate in the
+off-diagaonal transitions. In this section I will \cm{either just describe the
+technique, or do this and show some results (fat chance...)}
+
+\subsection{Implementation in \CaF{}}
+
+% TODO Show name and model of bandpass filter
+
+This scheme for \CaF{} is shown in \myfigref{exper:fig:bgfreelevels}. The
+\pewpew{}{01} and \pewpew{}{10} light is used to drive the transitions at
+\SI{585}{\nano\meter} and \SI{628}{\nano\meter} respectively (see
+\mytableref{overview:table:lasers}). Fluorescenc from the decay on the
+\SI{606}{\nano\meter} transitions $v'=0\rightarrow v=0$ and $v'=1\rightarrow
+v=1$ is isolated by a bandpassfilter, and can be imaged without the usual
+background scatter.
 
 \begin{figure}
   \centering
@@ -31,3 +64,7 @@ This scheme for \CaF{} is shown in \myfigref{exper:fig:bgfreelevels}.
   }
   \label{exper:fig:bgfreelevels}
 \end{figure}
+
+\subsection{Results}
+
+% He wrote, cautiously...
