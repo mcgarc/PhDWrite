@@ -369,6 +369,9 @@ which is again harmonic, with frequency
   \omega_z \approx \sqrt{\frac{\mu}{m}2b_2}.
 \end{equation}
 
+% TODO Cite, could do Treutlein but would rather not (this was foriginally from
+% Ed's notes)
+
 We note that the motion of the particles in the trap must be slow compared to
 the resonant frequency $g_F\mu_BB/\hbar$ to avoid inducing transitions.
 Similarly, the field can be changed adiabatically (slowly compared to the speed
@@ -812,14 +815,21 @@ can therefore anticipate the separation of the nuclear wavefunction into radial
 and angular parts,
 %
 \begin{equation}
-  \psi_n(\mathbf{R}_{AB}) = \frac{1}{R_{AB}}f(R_{AB})Y_{N, M_N}(\theta, \phi)
+  \psi_n(\mathbf{R}_{AB}) = \frac{1}{R_{AB}}f(R_{AB})Y_{R, m_R}(\theta, \phi)
   \label{theory:eqn:nucsep}
 \end{equation}
 %
 where we choose the factor of $1/R_{AB}$ to simplify the equation in the rest
-of the section. We will introduce the operator $\mathbf{N}$ to describe the
+of the section. We will introduce the operator $\mathbf{R}$ to describe the
 rotational angular momentum. The angular part of the solution is given by the usual
-spherical harmonics $Y_{N, M_N}$ where $N$ is the rotational quantum number for
+spherical harmonics $Y_{R, m_R}$ where
+%
+\begin{align}
+  R^2 Y_{R, m_R} &= R(R+1) Y_{R, m_R} \\
+  R_z Y_{R, m_R} &= m_R Y_{R, m_R}
+\end{align}
+
+the rotational quantum number for
 the state, and $M_N$ is the projection onto the nuclear axis.
 
 Substitution of \myeqref{theory:eqn:nucsep} into \myeqref{theory:eqn:nucTISE}
@@ -997,20 +1007,19 @@ $\mathbf{S}$ couples strongly to $L$. We therfore have good quantum numbers
 refering to the projection of $\mathbf{L}$, $\mathbf{S}$, and
 $\mathbf{J}=\mathbf{L}+\mathbf{S}$ onto the axis provide good quantum numbers, which we
 label $\Lambda$, $\Sigma$ and $\Omega$ respectively. There is only a weak
-interaction with $\mathbf{N}$, so the final good quantum numbers are $J$ and
+interaction with $\mathbf{R}$, so the final good quantum numbers are $J$ and
 $S$.
 
 In the second case of interest (b), $L$ is strongly coupled to the axis as
-before, but it then couples to the rotational operator $\mathbf{N}$ to form
-$\mathbf{N} = \mathbf{L} + \mathbf{N}$ % TODO fix the symbols here
-which will couple to $\mathbf{S}$. Here the total angular momentum operator is
-$\mathbf{J} = \mathbf{N} + \mathbf{S}$, and this yields good quantum numbers
-$\Lambda$, $N$, $S$ and $J$.
+before, but it then couples to the rotational operator $\mathbf{R}$ to form
+$\mathbf{N} = \mathbf{L} + \mathbf{R}$ which will couple to $\mathbf{S}$. Here
+the total angular momentum operator is $\mathbf{J} = \mathbf{N} + \mathbf{S}$,
+and this yields good quantum numbers $\Lambda$, $N$, $S$ and $J$.
 
 We label these states by spectroscopic notation taking the form
 %
 \begin{equation} 
-  X^{2S+1}|\Lambda|^\pm_|\Omega|
+  X^{2S+1}|\Lambda|^\pm_{|\Omega|}
 \end{equation}
 %
 where $X$ is used to represent the ground state, but for higher states this is
@@ -1022,10 +1031,12 @@ partiy of the wavefunction on reflection.
 
 \subsection{Hyperfine structure}
 
-The splitting of states that we will consider comes from a nuclear spin, which
-has operator $\mathbf{I}$. The new total angular momentum is  $\mathbf{F} =
-\mathbf{J} + \mathbf{I}$. These states will be important later, since the $m_F$
-substates will be used as weak-field seekers for magnetic trapping.
+These states can be further split into hyperfine states by the angular momentum
+contribution of the nuclear spin, which has operator $\mathbf{I}$.  The new
+total angular momentum is  $\mathbf{F} = \mathbf{J} + \mathbf{I}$. We can
+therefore have substates of the  These states
+will be important later, since the $m_F$ substates will be used as weak-field
+seekers for magnetic trapping.
 
 \section{Quantum optics}
 \label{theory:QO}
