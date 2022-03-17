@@ -4,7 +4,7 @@ principles of laser-cooling and trapping of atoms and molecules, including
 magnetic traps. In section~\ref{theory:chips} I will explain how it is possible
 to create magnetic fields that will trap molecules using wires on the surface
 of a chip. Next, section~\ref{theory:mols} explains the energy structure of
-diatomic molecules. The chapter ends with an overview of \cm{quantum optics...}
+diatomic molecules.
 
 \section{Laser-cooling and trapping}
 
@@ -186,7 +186,6 @@ direction, the light has $\sigma^+$ ($\sigma^-$) polarisation. The result is
 that the particle will then always absorb light that is propagating towards the
 centre of the trap, resulting in a restoring force. We also observe the same
 Doppler cooling force from the molasses, so the resulting force is
-% TODO CITE, this is from Ed's notes
 %
 \begin{equation}
   F = - \alpha v - \left(\frac{\mu B'}{\hbar k}\right)\alpha x.
@@ -241,24 +240,28 @@ that the state with higher energy is the one that is excited. The excited state
 can decay into the lower of the two ground states, where it will follow the
 potential curve until it is pumped again. The particles on average spend more
 time climbing the potential than descending it, and therefore expend energy
-through this process, reducing their temperature to \cm{the recoil limit?}
-
-\cm{TODO: what is the minimum temp?}
-
-\cm{Also possible to just have the molasses, no B field and then we have
-  sub-Doppler cooling}
+through this process, reducing their temperature to the recoil limit, which
+corresponds to the energy exchanged by a single photon scatter
+%
+\begin{equation}
+  T_\text{recoil} = \frac{\hbar k^2}{m k_B}.
+\end{equation}
+%
+Normally to achieve such low temperatures the MOT field is switched off,
+so that only the molasses is active, and the polarisation gradient cooling
+occurs across the entire cloud.
 
 \subsection{Magnetic trapping}
 
-% TODO want to cite 2d mots, pyramid mots, grating mots, etc.
 The MOT is an important tool for trapping, and can be configured in various
-ways~\cite{}, but there is considerable benefit to being able to confine
-particles using only a magnetic field. Since there is no light involved, it is
-much easier to control the trapping potential. This opens the door to
-applications in guiding~\cite{} and transporting~\cite{} particles, but also of
-course, confining close to a surface. This will be discussed in more detail in
-the next section, but for the moment we lmit ourselves to a basic description
-of magnetic trapping.
+ways~\cite{Cotter2016, Lee:96, PhysRevLett.59.2631}, but there is considerable
+benefit to being able to confine particles using only a magnetic field. Since
+there is no light involved, it is much easier to control the trapping
+potential. This opens the door to applications in
+guiding~\cite{PhysRevLett.83.5194} and transporting~\cite{Nakagawa2005}
+particles, but also of course, confining close to a surface. This will be
+discussed in more detail in the next section, but for the moment we limit
+ourselves to a basic description of magnetic trapping.
 
 Continuing with the above example of a two-level particle with $F=1/2$,
 $F'=3/2$, we notice that when the particle is in a state where $g_F m_F > 0$,
@@ -286,7 +289,7 @@ Now the final ingredient is a magnetic potential with a local minimum. There
 are a plethora of examples to choose from, but the canonical choice is the
 quadrupole trap, which can be fomred from a pair of anti-Helmholtz coils, as
 shown in \mysubfigref{theory:fig:fields}{a}. We can approximate the field
-generated near the centre of such a configuration as~\cite{} % Metcalf?
+generated near the centre of such a configuration as~\cite{Metcalf1999}
 %
 % TODO I use this equation somewhere else and I need to change to reference
 % this one...
@@ -319,7 +322,7 @@ this is to instead use a Ioffe-Pritchard trap, which has a non-zero field
 minimum. The standard method of implementing such a trap is shown in
 \mysubfigref{theory:fig:fields}{b}. Four straight wires are arranged in a
 square, with a pair of parallel coils on either end to form end-caps. The field
-generated is of the form~\cite{} % Metcalf?
+generated is of the form~\cite{}
 %
 \begin{equation}
   \mathbf{B} = b_1 \begin{pmatrix} x \\ -y \\ 0 \end{pmatrix}
@@ -369,13 +372,10 @@ which is again harmonic, with frequency
   \omega_z \approx \sqrt{\frac{\mu}{m}2b_2}.
 \end{equation}
 
-% TODO Cite, could do Treutlein but would rather not (this was foriginally from
-% Ed's notes)
-
 We note that the motion of the particles in the trap must be slow compared to
 the resonant frequency $g_F\mu_BB/\hbar$ to avoid inducing transitions.
 Similarly, the field can be changed adiabatically (slowly compared to the speed
-of the trapped particles) without heating~\cite{}. This can be used for
+of the trapped particles) without heating. This can be used for
 transport, or transferring particles between magnetic traps, and will be
 discussed further in chapter~\ref{sim}.
 
@@ -385,7 +385,8 @@ discussed further in chapter~\ref{sim}.
 Of course, the main subject of this thesis is the trapping of particles near
 chips. In this section we will see that it is possible to use wires on a chip,
 combined with external magnetic fields to produce trapping potentials that
-resemble either a quadrupole or Ioffe-Pritchard trap.
+resemble either a quadrupole or Ioffe-Pritchard trap. Further details can be
+found in \inlineref{2011Ac}.
 
 \subsection{Simple wire traps}
 
@@ -393,7 +394,7 @@ We begin our discussion by considering a simple case of a two-dimensional trap.
 This will be formed of a straight wire carrying current $I$, which we
 approximate to have infinite length. Such a wire can be free-standing or
 deposited on a substrate. The magnetic field due to the wire is described by
-the Biot-Savart law~\cite{}, having magnitude
+the Biot-Savart law, having magnitude
 %
 \begin{equation}
   B_w(r) = \frac{\mu_0 I}{2 \pi r}
@@ -404,7 +405,7 @@ hand rule. With such a geometry it is possible to create a ruidmentary
 two-dimensional trap at a distance $h$ from the wire, by applying an external
 bias field, whose direction opposes the field of the wire. To create the trap
 at the desired bias, the strength of the field must be $\tilde{B}_y =
-B(h)$~\cite{2011Ac}.
+B(h)$.
 
 %TODO Use this notation in sim when descirbing calculation of the field!
 Figure \myfigref{theory:fig:simplefield} illustrates this two-dimensional trap.
@@ -473,7 +474,7 @@ $z\rightarrow\infty$.
 %
 We can transform such a trap into a Ioffe-Pritchard trap by applying a second
 bias field along the $x$ direction to lift the field minimum away from
-zero~\cite{2011Ac}.
+zero.
 
 Of course, it is commonly desirable to trap in all three dimensions. A simple
 way to introduce confinement along the $x$ axis is to introduce a secocond wire
@@ -545,7 +546,7 @@ and the curvature along the weak component
   B'' = \frac{\mu I_1}{\pi h^3}.
 \end{equation}
 %
-The trap frequency in the strong direction is~\cite{2011Ac}
+The trap frequency in the strong direction is
 %
 \begin{equation}
   \omega_\perp = \sqrt{\frac{\mu B_\perp'^2}{m B_0}}
@@ -553,7 +554,7 @@ The trap frequency in the strong direction is~\cite{2011Ac}
 \end{equation}
 %
 where $m$ is the particle mass. In the weak direction (along $x$) the frequency
-is~\cite{2011Ac}
+is
 %
 \begin{equation}
   \omega_x = \sqrt{\frac{\mu B''}{m}}.
@@ -597,13 +598,13 @@ field opposes the $I_2$ field in the centre of the trap, the two cancel and
 there is a field zero. Hence the latter configuration is a quadrupole trap.
 
 In the Ioffe-Pritchard configuration, we can write down the field's
-minimum~\cite{PhysRevA.79.013407}
+minimum
 %
 \begin{equation}
   B_0 = \tilde{B}_x + 2\tilde{B}_y \frac{I_1}{I}\frac{h^2}{(d/2)^2 + h^2}
 \end{equation}
 %
-transverse gradient~\cite{PhysRevA.79.013407}
+transverse gradient
 %
 \begin{equation}
   B'_\perp = \frac{2\pi\tilde{B}_y}{\mu_0 I}
@@ -616,10 +617,11 @@ and curvature (in the $h \ll d$ limit)~\cite{PhysRevA.79.013407}
 \end{equation}
 %
 and the trap frequencies are again given by equations~\ref{theory:eqn:perpfreq}
-and~\ref{theory:eqn:xfreq}. In the quadrupole configuration, the traps is
-characterised by the perpendicular gradient $B'_\perp$. 
+and~\ref{theory:eqn:xfreq}~\cite{PhysRevA.79.013407}. In the quadrupole
+configuration, the traps is characterised by the perpendicular gradient
+$B'_\perp$. 
 
-\subsection{Three dimensinal single-wire traps}
+\subsection{Three dimensional single-wire traps}
 
 Although the H-trap provides a method of creating a three dimensional
 microtrap, it is not always convenient to have to use three distinct wires.
@@ -664,7 +666,7 @@ and have typical depths of \cm{??}, but we will discuss in chapter~\ref{sim}
 that it is possible to realise much smaller trap and \cm{deeper} traps.
 
 
-\section{Diatomic molecule theory}
+\section{Physics of diatomic molecules}
 \label{theory:molecules}
 
 Up to this point we have considered abstracted and idealised systems, but in
@@ -672,7 +674,10 @@ the next chapter we will begin to think about the realities of implementing a
 cold molecule experiment. It is essential that we introduce and understand the
 energy structure of diatomic molecules, which is far richer and more complex
 than the structure of atoms, due to the additional effects of vibration and
-rotation of the two nuclei.
+rotation of the two nuclei. This section will explain the physics of diatomic
+molecules so that the particulars of the cooling transitions and magnetically
+trappable states can be easily explained in the next chapter. A far more
+detailed review of the topic can be found in \inlineref{brown_carrington_2003}.
 
 \subsection{Electronic, vibrational, and rotational energy}
 
@@ -681,8 +686,8 @@ with masses  $m_i = m_p Z_i$, $i\in\{A,B\}$ and $m_p$ is the proton rest mass. W
 atoms is $\mathbf{R}_i$ and the distance between them is
 $R_{AB}$ where $\mathbf{R}_{AB} = \mathbf{R}_B - \mathbf{R}_A$. In the case
 that $R_{AB} \rightarrow \infty$ we have two distinct atoms that will behave 
-as we would expect them to in isolation. \cm{I'm not going to describe atomic
-  physics, go read a book.}
+as we would expect them to in isolation (see, for example,
+\inlineref{Foot2005}).
 
 As $R_{AB}$ is reduced, the atoms will begin to perturb each other, with the
 perturbation dominated by the Coloumb interaction between the various charges.
@@ -690,7 +695,7 @@ We can write down the Hamiltonian of such a system, and it is most useful to do
 so in the centre of mass (COM) frame, with the reduced mass
 %
 \begin{equation}
-  m_r = \frac{m_a m_b}{m_a + m_b}
+  \mred{} = \frac{m_a m_b}{m_a + m_b}
 \end{equation}
 %
 and COM location
@@ -709,7 +714,7 @@ interaction, and the motion of the molecules
 where
 %
 \begin{align}
-  T_n &= -\frac{\hbar^2}{2m_r}\nabla_{AB}^2\\
+  T_n &= -\frac{\hbar^2}{2\mred{}}\nabla_{AB}^2\\
   T_e &= -\frac{\hbar^2}{2 m_e}\sum_{i=1}^{N_e} \nabla_i'^2 -
   \frac{\hbar^2}{2(m_a + m_b)}\sum_{i, j} \nabla'_i \cdot \nabla'_j \\
   V_{nn} &= \frac{Z_A Z_b e^2}{4\pi\epsilon_0 R_{AB}} \\
@@ -720,11 +725,10 @@ where
 and we have introduced the relative distances $R_{ij}$ being the distance
 between the $i^\text{th}$ and $j^\text{th}$ electrons, and $R_{Ai}$ the
 distance between $A$ and the $i^\text{th}$ electron (and similar for $B$) as
-shown in \cm{fig that I need to make}. The
-total number of electrons is $N_e$. The primed gradient operators represent
-differentiation with respect to the COM coordinates~\cite{}.
-% TODO Cite Dynamic system notes
-
+shown in \myfigref{theory:fig:mol}. The total number of electrons is
+$N_e$. The primed gradient operators represent differentiation with respect to
+the COM coordinates.
+%
 The time-independent Schr\"odinger equation (TISE),
 %
 \begin{equation}
@@ -733,6 +737,16 @@ The time-independent Schr\"odinger equation (TISE),
 %
 can now be solved for this Hamiltonian, although we will only sketch the
 solution here. A full derivation can be found in \inlineref{}.
+
+\begin{figure}
+  \centering
+  \cm{TODO}
+  \caption{
+    The geometery of a diatomic molecule, with relevant vectors labelled.
+  }
+  \label{theory:fig:mol}
+\end{figure}
+
 
 \subsubsection{Electronic states}
 
@@ -762,7 +776,7 @@ represent the set of electronic coordinates.
 There is then a separate electronic TISE
 %
 \begin{equation}
-  H_e \psi_e(\mathbf{R}_{AB}; \mathbf{r}) = E(R_{AB})\psi_e(\mathbf{R}_{AB};
+  H_e \psi_e(\mathbf{R}_{AB}; \mathbf{r}) = E_e(q, R_{AB})\psi_e(\mathbf{R}_{AB};
   \mathbf{r})
   \label{theory:eqn:TISEelectron}
 \end{equation}
@@ -771,40 +785,46 @@ where the Hamiltonian $H_e = H - T_n$ is the previous Hamiltonian but excluding
 the term for the nuclear motion, because these are stationary in the
 Born-Oppenheimer approximation. This problem now begins to resemble the
 analogous one of finding the electronic states of atoms, and can be solved by
-similar numerical methods~\cite{}. The upshot is that it is possible to
+similar numerical methods~\cite{Foot2005}. The upshot is that it is possible to
 determine the electron eigenstates, which we label $\psi_e(\mathbf{R}_{AB};
-q)$, with $q$ being the quantum number for the electronic configuration. The
-energy of the state is denoted $E_e(q; R_{AB})$, with again $R_{AB}$ being a
-parameter of the nuclear separation. It is common to approximate this energy as
+q)$, with $q$ being the quantum number for the electronic
+configuration\footnote{The numbering of the electronic configurations is
+actually more complicated than this. We will discuss how these states are
+labelled in section~\ref{theory:qnos}.}. The
+energy of the state is denoted $E_e(q, R_{AB})$, with $q$ and (again) $R_{AB}$
+being
+parameters of this value. It is common to approximate this energy as
 the Morse potential
 %
 \begin{equation}
-  E_e(q; R_{AB}) = ??
+  E_e(q, R_{AB}) = D(1-e^{-\beta(R_{AB} - R_{AB}^0)})^2
 \end{equation}
 %
-where $R_{AB}^0$ is the equilibrium displacement of the nucleii.
+where $R_{AB}^0$ is the equilibrium displacement of the nucleii, $D$ is the
+dissociation energy, and $\beta$ is a parameter for the width of the
+potential. All of these are dependent on the electronic configuration, but this
+dpendence is suppressed in the notation.
 
 Implicit in the Born-Oppenheimer approximation is that the electronic
 configuration is the largest contribution to the state's energy. We can make a
 na\"ive estimate of this energy as the typical kinetic energy of the electrons
-% TODO Right symbol here?
 %
 \begin{equation}
-  E_e \approx \frac{p^2}{2m} = \frac{\hbar^2}{2ma^2}
+  E_e \approx \frac{p^2}{2m_e} = \frac{\hbar^2}{2m_e a^2}
 \end{equation}
 %
-where the lengthscale of the molecule $a \approx \SI{1}{\angstrom}$, so that
-$E_e \approx \times \SI{1000}{\tera\hertz}$. This gives us the first order
-contribution to the energy of the molecule. In practice, these energies are in
-the range \SIrange{300}{3000}{\tera\hertz}. \cm{Or is this the separation?}
+where $a\sim\SI{1}{\angstrom}$ is the lengthscale of the molecule and $m_e$ is
+the electron mass, so that $E_e/h \sim \SI{1000}{\tera\hertz}$. This
+gives us the first order contribution to the energy of the molecule. 
 
 \subsubsection{Nuclear motion}
 
 We now turn our attention to the nuclear wavefunction. With a bit of
-work~\cite{} it is possible to write down the relevant TISE
+work~\cite{brown_carrington_2003} it is possible to write down the relevant
+TISE
 %
 \begin{equation}
-  \left(-\frac{\hbar^2}{2m_r}\nabla_{AB}^2 + E_e(q; R_{AB}) -
+  \left(-\frac{\hbar^2}{2\mred{}}\nabla_{AB}^2 + E_e(q, R_{AB}) -
   E\right)\psi_n(\mathbf{R}_{AB}) = 0.
   \label{theory:eqn:nucTISE}
 \end{equation}
@@ -815,7 +835,7 @@ can therefore anticipate the separation of the nuclear wavefunction into radial
 and angular parts,
 %
 \begin{equation}
-  \psi_n(\mathbf{R}_{AB}) = \frac{1}{R_{AB}}f(R_{AB})Y_{R, m_R}(\theta, \phi)
+  \psi_n(\mathbf{R}_{AB}) = \frac{1}{R_{AB}}f(R_{AB})Y_{R, m_R}(\theta, \phi),
   \label{theory:eqn:nucsep}
 \end{equation}
 %
@@ -836,8 +856,8 @@ Substitution of \myeqref{theory:eqn:nucsep} into \myeqref{theory:eqn:nucTISE}
 yields 
 %
 \begin{equation}
-  \left(-\frac{\hbar^2}{2m_r}\frac{\dd^2}{\dd R_{AB}^2} +
-    \frac{\hbar^2 N(N+1)}{2m_rR_{AB}^2} + E_e(q; R_{AB}) - E\right)f(R_{AB}).
+  \left(-\frac{\hbar^2}{2\mred{}}\frac{\dd^2}{\dd R_{AB}^2} +
+    \frac{\hbar^2 R(R+1)}{2\mred{}R_{AB}^2} + E_e(q; R_{AB}) - E\right)f(R_{AB}).
 \end{equation}
 %
 where we have expanded $\nabla_{AB}^2$ in terms of the second derivative in
@@ -846,15 +866,19 @@ an oscillator in the Morse potential $E_e(q; R_{AB})$, with an additional
 energy term that arises due to the rotation,
 %
 \begin{equation}
-  E_\text{rot}(N) = \frac{N(N+1)}{2m_r R_{AB}^2}.
+  E_\text{rot}(R) = \frac{R(R+1)}{2\mred{} R_{AB}^2}.
+  \label{theory:eqn:rotenergy}
 \end{equation}
 
-The vibrational part of the wavefunction, which for clarity we now denote
-$f_\text{vib}(v; R_{AB}) = f(R_{AB})$ can be solved by the standard
+The vibrational part of the wavefunction can be solved by the standard
 computational methods for finding the wavefunctions of anharmonic
-potentials~\cite{}. These vibrational states form the usual ladder of states
-inside the Morse potential~\cite{} as pictured in \cm{fig}. At low energy the
-Morse potential approximates to a harmonic potential
+potentials~\cite{Foot2005}. These vibrational states form the usual ladder of
+% TODO Check this Binney cite OK? Does he really do this?
+states inside an anharmonic potential~\cite{Binney} as pictured in
+\myfigref{theory:fig:vibtrans}. We label these states with the quantum number
+$v$, and so re-write $f(R_{AB}) = f_v(R_{AB})$ to clarify which vibrational
+level we are referring to. At low energy the Morse potential approximates
+to a harmonic potential
 %
 \begin{equation}
   E_e(q; R_{AB}) \approx D\beta^2(R_{AB} - R_{AB}^0)^2
@@ -863,59 +887,59 @@ Morse potential approximates to a harmonic potential
 where the vibrational frequency is related to the potential by
 %
 \begin{equation}
-  \frac{1}{2}m_r\omega_\text{vib}^2(R_{AB}-R_{AB}^0)^2 = D\beta^2(R_{AB}-R_{AB}^0)^2.
+  \frac{1}{2}\mred{}\omega_\text{vib}^2(R_{AB}-R_{AB}^0)^2 = D\beta^2(R_{AB}-R_{AB}^0)^2.
   \label{theory:eqn:vibfreqrel}
 \end{equation}  
 %
-Similarly, the
-low-lying states will approximate those of a harmonic potential
-%
-\begin{equation}
-  E_\text{vib} = \hbar\omega_\text{vib}\left(v+\frac{1}{2}\right).
-\end{equation}
 
-% TODO Rename E_e E_e^\text{typ} or some such thing? Sim for other typical
-% vals?
-We can estimate this vibrational frequency by considering the opposite limit
-near dissacosiation. We approximate $D$ to be the typical electronic energy
-$E_e$ and note that for
-disassociation to occur we expect $\beta(R_{AB} - R_{AB}^0) > 1$ and also
-that at this point $(R_{AB} - R_{AB}^0)^2\sim a^2$. We therefore substitute into
-\myeqref{theory:eqn:vibfreqrel} $D\approx E_e$ and $\beta\approx a^-1$
+We can estimate this vibrational frequency by considering the opposite limit,
+near dissociation. We approximate $D$ to be the typical electronic energy $E_e$
+and note that for dissociation to occur we expect $\beta(R_{AB} - R_{AB}^0) >
+1$ and also that at this point $(R_{AB} - R_{AB}^0)^2\sim a^2$. We therefore
+substitute into \myeqref{theory:eqn:vibfreqrel} $D\approx E_e$ and
+$\beta\approx a^{-1}$
 %
 \begin{equation}
-  \hbar\omega_\text{vib} \approx \sqrt{\frac{\hbar^4}{m_r m_e a^4}} \approx
-    \SI{10}{\tera\hertz}.
+  \hbar\omega_\text{vib} \approx \sqrt{\frac{\hbar^4}{\mred{} m_e a^4}} \sim
+    h\times\SI{10}{\tera\hertz}.
 \end{equation}
 %
-where we took $m_r\approx m_e$.
+where we took $\mred{}\approx m_e$.
 
-Comparing this to the rotational energy in \cm{ref eqn}, where we expect
-typical values
+We now have and estimate for the vibrational energy, and the final step is to
+compare this to the rotational energy in \myeqref{theory:eqn:rotenergy}, where
+we expect typical values
 %
 \begin{equation}
-  E_\text{rot} = \frac{\hbar}{2 m_r R^0_{AB}} \approx \SI{100}{\giga\hertz}
+  E_\text{rot} = \frac{\hbar}{2 \mred{} R^0_{AB}} \sim h\times\SI{100}{\giga\hertz}
 \end{equation}
 %
 it is clear that the vibrational energy levels further perturb the vibrational
 levels.
 
-\subsubsection{Summary}
+\subsubsection{Qualitative summary}
 
-We have desribed how the wavefunction of a diatomic molecule in free space can
+We have described how the wavefunction of a diatomic molecule in free space can
 be written as three separate wavefunctions, one each for the electronic,
 vibrational and rotational Hamiltonians. We denote the wavefunction in terms of
 the good quantum numbers
 %
 \begin{equation}
-  \psi(q, v, N, M_N) = \frac{1}{R_{AB}}\psi_e(q, \mathbf{R}_{AB})f_\text{vib}(v; R_A{B})Y_{N, M_N}(\theta, \phi)
+  \psi(q, v, R, M_R) = \frac{1}{R_{AB}}\psi_e(\mathbf{R}_{AB};q)
+  f_v(R_{AB})Y_{N, M_N}(\theta, \phi).
 \end{equation}
 %
-although it will be more useful to us throughout this thesis to write this in
-braket notation. In particular we will use the notation $\ket{N,
-M_N}_\text{rot}$ to denote the rotational state of a molecule. This notation
-will be further developed in section~\ref{theory:finestructure} when we
-introduce the effects of the fine structure on the molecular state.
+The Born-Oppenheimer approximation states that the electrons move on a much
+faster timescale than the nucleii, and hence have a higher energy (by about a
+factor of $100$) than the nuclear motional energy.
+
+Due to this difference in timescale, the nucleii move in the electrostatic potential
+generated by the nucleii, which can be shown to be a Morse potential. This
+means that the nucleii vibrate as an anharmonic oscillator, with some
+equilibrium distance $R_{AB}^0$. The vibrational motion is again higher (by
+about a factor of $100$) than the rotational energy, which comes from the
+tumbling of the two nucleii.
+
 
 \subsection{Transitions}
 
@@ -925,8 +949,8 @@ introduce the effects of the fine structure on the molecular state.
 We will now state without derivation, the selection rules describing the
 allowed transitions between the various states of the molecule. A complete
 derivation can be found in \inlineref{}. We will label the original state in
-the transition $\ket{1} = \ket{q, v, N, m_N}$ and the final state $\ket{2} =
-\ket{q', v', N', m_N'}$.
+the transition $\ket{1} = \ket{q, v, R, m_R}$ and the final state $\ket{2} =
+\ket{q', v', R', m_R'}$.
 
 It is useful to remember that the following results are found by considering
 the intensity of the transition, which is proportional to $|d_{12}|^2$, where
@@ -948,10 +972,10 @@ various texts, including \cm{citations}.
 \subsubsection{Pure rotational transitions}
 
 In a pure rotational transition $q'=q$ and $v'=v$. Such transitions are
-permitted only when $\Delta N = N' - N = \pm1$. The selection rule for $M_N$ is
+permitted only when $\Delta R = R' - R = \pm1$. The selection rule for $M_R$ is
 dependent on the polarisation of the transition light. For linearly polarised
-light $\Delta M_N = M_N' - M_N =
-0$, whereas for circularly polarised light $\Delta M_N =  \pm1$ for
+light $\Delta M_R = M_R' - M_R =
+0$, whereas for circularly polarised light $\Delta M_R =  \pm1$ for
 $\sigma^\mp$ polarised light.
 
 \subsubsection{Vibrational transitions}
@@ -967,31 +991,41 @@ rotational transition.
 When the electronic state changes the analysis is more complicated, and there
 are no consistent selection rules. This can be explained when we recall that
 the matrix element $d_{12}$ is an integral over the state's wavefunction $\psi
-= \psi_q f_v(R_{AB}) Y_{N, M_N}$. When
-the electronic states are the same, the electronic contribution becomes a
-factor of one and the vibrational states are all states from the same
-anharmonic oscillator, as can be seen in \cm{figure}. In this case we can
-derive the above selection rules.
+= R_{AB}^{-1}\psi_ef_v(R_{AB}) Y_{R, M_R}$. When the
+electronic states are the same, the electronic contribution becomes a factor of
+one and the vibrational states are all states from the same anharmonic
+oscillator, as can be seen in \myfigref{theory:fig:vibtrans}. In this case we
+can derive the above selection rules.
+
+\begin{figure}
+  \centering
+  \cm{TODO make this}
+  \caption{
+    A cartoon depiction of a transition between electronic states. Various
+    vibrational levels are shown for each electronic potential. The transition
+    that is depicted is strong due to a large overlap integral between the two
+    states.
+  }
+  \label{theory:fig:vibtrans}
+\end{figure}
 
 Now that $q\neq q'$, the vibrational states are not the states from the same
 anharmonic potentials, and so the overlap integrals of the wave functions must
 be computed numerically. The vibrational component of the integral is called
 the Franck-Condon factor, and is written as
 %
-\cm{TODO}.
+\begin{equation}
+  q_{v',v} = \left|\int f*_v(R_{AB}f_v(R_{AB})\dd R_{AB}\right|^2.
+\end{equation}
 %
-Various overlap integrals and their Franck-Condon factors are shown for a
-\cm{simple example in a figure}.
-
 The rotational state can change by the same selection rules as before, except
 in the case that the rotational angular momentum is coupled to the angular
 momentum of the electrons. In this case we can have $J$ as the good quantum
-number, with a selection rule $\Delta J = 0, \pm1$. \cm{What about $F$?}
+number, with a selection rule $\Delta J = 0, \pm1$.
 
 
 \subsection{Good quantum numbers}
-
-% TODO Cite, this is based on Hannah and Luke's theses.
+\label{theory:qnos}
 
 We will now briefly review the quantum numbers that we have introduced to
 describe the molecule state. First note that the quantum number for the
@@ -999,11 +1033,21 @@ electronic level is not really a quantum number at all. It obfuscates the true
 quantum numbers, which come from the angular momentum operators for the
 electrons. We will describe the good quantum numbers for two of Hund's cases,
 which differ depending on how strongly each of the angular momentum operators
-couple to each other.
+couple to each other. They are pictured in \myfigref{theory:fig:hund}.
+
+\begin{figure}
+  \centering{TODO}
+  \caption{Coupling schemes in Hund's (a) and (b) cases. In both, the spin
+  electronic coupling is strongest. In case (a) the spin-orbit coupling is
+  stronger than the rotational, and the opposite is true in case (b).
+  }
+  \label{theory:fig:hund}
+\end{figure}
+
 
 In the first case (a), the electron orbital angular momentum $\mathbf{L}$ is
 strongly coupled to the molecular axis, and the spin angular momentum
-$\mathbf{S}$ couples strongly to $L$. We therfore have good quantum numbers
+$\mathbf{S}$ couples strongly to $L$. We therefore have good quantum numbers
 refering to the projection of $\mathbf{L}$, $\mathbf{S}$, and
 $\mathbf{J}=\mathbf{L}+\mathbf{S}$ onto the axis provide good quantum numbers, which we
 label $\Lambda$, $\Sigma$ and $\Omega$ respectively. There is only a weak
@@ -1018,9 +1062,9 @@ and this yields good quantum numbers $\Lambda$, $N$, $S$ and $J$.
 
 We label these states by spectroscopic notation taking the form
 %
-\begin{equation} 
+\begin{equation*} 
   X^{2S+1}|\Lambda|^\pm_{|\Omega|}
-\end{equation}
+\end{equation*}
 %
 where $X$ is used to represent the ground state, but for higher states this is
 replaced by incrementing letters of the alphabet, starting with $A$ for the
@@ -1028,6 +1072,18 @@ first excited state. $\Lambda$ is not represented by its numerical value, but
 by the greek characters $\Sigma$, $\Pi$, $\Delta$, etc.\ in analogy with the
 notation for the oribtal states in atoms. The superscipt $\pm$ represents the
 partiy of the wavefunction on reflection.
+
+Up to this point we have mainly denoted the wavefunctions as functions, but we
+will soon find it useful to write the states using braket notation. We will not
+denote electronic states, this way, but will describe the other quantum
+numbers. For example, we may write for a Hund (b) case state $\ket{N, S, J,
+\Lambda}$. However, for an electronic state where $L=0$, we could express this
+in an equivalent manner such as $\ket{N, m_N}_\text{rot}\ket{S, m_S}$. The
+quantum number that the ket refers to is implicit by its contents.
+%
+%TODO In this case remove ket{*}_rot subscripts, OR ammend this sentence, eg:
+% "or is specified to be a rotational state by the subscript
+% $\ket{*}_\text{rot}$"
 
 \subsection{Hyperfine structure}
 
@@ -1038,22 +1094,10 @@ therefore have substates of the  These states
 will be important later, since the $m_F$ substates will be used as weak-field
 seekers for magnetic trapping.
 
-\section{Quantum optics}
-\label{theory:QO}
-
-In this section we introduce a general model of molecules interacting with
-light.  Since this is a broad field, I will focus the discussion only on the
-details that are directly used in this thesis.  Namely the calculation of the
-scattering rates for molecules in a light field and the coupling of molecules
-to a light field in a resonator.
-
-%\cm{Do I also need to discuss the normal mw spectroscopy in free space?}
-
-\subsection{Scattering rates}
-
-\cm{To come later}
-
+% TODO MOVE THIS
 \subsection{Cavity quantum electrodynamics}
+
+\cm{This section is getting moved to microwaves.}
 
 A key part of the motivation for a molecule chip trap is the idea that
 integrated microwave guides can be used to couple photons to the rotational
