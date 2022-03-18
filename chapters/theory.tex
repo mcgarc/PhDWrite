@@ -1,20 +1,20 @@
-In this chapter I will give an abstracted overview of the theory that is
-pertinent to this thesis. In section~\ref{theory:lasercool} I will describe the
-principles of laser-cooling and trapping of atoms and molecules, including
-magnetic traps. In section~\ref{theory:chips} I will explain how it is possible
-to create magnetic fields that will trap molecules using wires on the surface
-of a chip. Next, section~\ref{theory:mols} explains the energy structure of
-diatomic molecules.
+This chapter outlines some backtround theory that will be important throughout
+the rest of the thesis. In section~\ref{theroy:cool} I will give an abstracted
+overview of the principles of laser-cooling and trapping of atoms and
+molecules, including magnetic traps. In section~\ref{theory:chips} I will
+explain how it is possible to create magnetic fields for such traps using wires
+on the surface of a chip. Finally, I will introduce the structure of diatomic
+molecules, which is essential for applying these techniques in our experiment.
 
 \section{Laser-cooling and trapping}
 
 \subsection{Doppler cooling}
 
 We will introduce Doppler cooling in the idealised case of a two-level atom or
-molecule (henceforth, the particle) travelling in one dimension.  Say that
+molecule (henceforth the particle) travelling in one dimension, $x$.  Say that
 light is incident on the particle from the positive $x$ direction. If the light
 is resonant with an internal transition then the particle can absorb a photon,
-which will at some later time be re-emitted and the particle will decay. The
+which will at some later time be re-emitted the particle decays. The
 emission of the photon has no preferred direction, and so over a large number
 of these scatters the average effect is a net reduciton in the atom's velocity
 in the positive $x$ direction.
@@ -35,7 +35,7 @@ The photon momentum is the usual value
 and the scattering rate will be the product of the decay rate of the transition
 (its linewidth) $\Gamma$ and the population of the excited state $\rho_{22}$.
 We write the excited state in this way since it can be found from the optical
-Bloch equations in the rotating wave approximation, and steady state to
+Bloch equations in the rotating wave approximation and in steady state to
 be~\cite{Metcalf1999}
 %
 \begin{equation}
@@ -43,7 +43,7 @@ be~\cite{Metcalf1999}
 \end{equation}
 %
 Where $\Omega$ is the Rabi frequency. We introudce the unitless parameters
-$\delta = (\omega - \omega_0)/\Gamma$, $s=\Omega^2/(2\Gamma)$ so that
+$\delta = (\omega - \omega_0)/\Gamma$ and $s=\Omega^2/(2\Gamma)$ so that
 %
 \begin{equation}
   \rho_{22} = \frac{s/2}{\delta^2 + 1 + s}.
@@ -58,7 +58,7 @@ We can now write down the scattering rate
 and force follows as
 %
 \begin{equation}
-  F = \frac{s\gamma\hbar k}{\delta^2 + 1 + s}.
+  F = \frac{s\gamma}{\delta^2 + 1 + s}\hbar k.
 \end{equation}
 
 The force acting on the particle can be related to its velocity by the Doppler
@@ -80,7 +80,7 @@ where $\delta$ represents the detuning of the laser from the resonant frequency
 at rest, and the second term is the additional shift due to the Doppler effect.
 
 However, what if the light is incident from the negative $x$ direction? In this
-case, there is a blue not a red shift, and we have
+case, there is a blue shift, and we have
 %
 \begin{equation}
   \delta \rightarrow \delta_- = \delta - \frac{\omega_0}{\gamma c}v.
@@ -95,31 +95,33 @@ By combining counter-propagating beams, it is possible to create a net force
 where
 %
 \begin{equation}
-  F_\pm = \frac{s\gamma\hbar k}{\delta_\pm^2 + 1 + s}.
+  F_\pm = \frac{s\gamma}{\delta_\pm^2 + 1 + s}\hbar k.
 \end{equation}
 %
 For small $v$ we perform a Taylor expansion around $v=0$ to find that
 %
 \begin{equation}
-  F_\text{res} \approx \frac{4\hbar k^2 s \delta}{(1 + s
-  +\delta^2)^2}v.
+  F_\text{res} \approx \frac{ s \delta}{(1 + s
+  +\delta^2)^2}4\hbar k^2v.
 \end{equation}
 %
 Which is maximised when $\delta = -1$ and $s = 1 + \delta^2 = 2$, so that
 %
 \begin{equation}
-  F = -\frac{\hbar k^2}{2} v = - \alpha v.
+  F = - \alpha v
 \end{equation}
 %
+where $\alpha  = - \hbar k^2 /2$.
+
 So the counter-propagating beams provide a velocity-dependent damping
 force. We call this arrangement an optical molasses, and it can equally be
 applied in three dimensions.
-
+%
 It is important to note that the particles will not be brought to a standstill
 under this effect. The molasses force does not contain the information
 on the heating that occurs when the particles re-emit the absorbed photons.
 This stochastic process limits the minimum attainable temperature to the
-Doppler temperature~\cite{}
+Doppler temperature~\cite{Metcalf1999}
 %
 \begin{equation}
   T_D = \frac{\hbar\Gamma}{k_B}.
@@ -129,22 +131,23 @@ Doppler temperature~\cite{}
 
 Doppler cooling is an important tool in the creation of ultracold atoms and
 molecules, but it is of note that this technique does not provide any
-position-dependent restoring force, i.e. molecules that are slowed by the
-above-described techniques are not trapped.
+position-dependent restoring force. In other words, particles that are slowed
+by the above-described techniques are not trapped.
 %
 The magneto-optical trap (MOT) is the preeminent tool of atomic and molecular
 physics, providing a way to trap a relatively cold gas of particles. It is the
-backbone of many experiments~\cite{} including our own~\cite{}. In this section
-I will describe the basic operation of the common type-I MOT, that is a two
-level system where the the ground state has angular momentum $F=0$ and the
-excited state has angular momentum $F'=1$.  In reality the molecule MOTs that
-we will discuss are type-II systems ($F'\leq F$) but these are more complicated
-and will be discussed in section~\ref{section:overview}.
+backbone of many experiments including our own~\cite{Williams2017}. In this
+section I will describe the basic operation of the common type-I MOT, that is a
+two level system where the ground state has angular momentum $F$ and the
+excited state has angular momentum $F'$ such that $F''>F$. In this example
+$F=0$ and $F'=1$ are chosen.  In reality the molecule MOT that we will discuss
+is a type-II MOT ($F'\leq F$) but such systems are more complicated and will be
+discussed in the context of our experiment in section~\ref{section:overview}.
 
 The MOT consists of two components, a magnetic quadrupole field, and restoring
 laser beams, which are detuned from the $F\rightarrow F'$ transition by some
-amount $\delta$. This setup is shown for one dimension in \cm{fig from
-presentation}. The Zeeman effect lifts the degeneracy of the excited state, and
+amount $\delta$. This setup is shown for one dimension in
+\myfigref{theory:fig:MOT}. The Zeeman effect lifts the degeneracy of the excited state, and
 introudces the usual energy shift~\cite{Binney}
 %
 \begin{equation}
@@ -160,8 +163,8 @@ and for positive $x$ the $m_F=1$ state has lower energy (when $g_F>0$, if
 $g_F<0$ this is reversed).
 %
 The detuning $\delta$ is chosen such that this shift brings the lowered state
-into resonance with the light, meaning that the particle will preferrentially
-absorb photons when it is away from the centre.
+into resonance with the light. That the particle will then preferentially
+absorb photons when it is away from the trap centre.
 
 \begin{figure}[ht]
   \centering
@@ -173,40 +176,41 @@ absorb photons when it is away from the centre.
     degeneracy of the excited state as shown by the black lines. The light is
     red-detuned so as to be resonant with the transition to the lower $m_F$
     state, but only the restoring beam will be absorbed due to the choice of
-    polarisation. The excited state will decay back to the ground state (dashed
-    lines).
+    polarisation. The direction of the momentum change $\Delta\mathbf{p}$ is
+    indicated by the black arrows. The excited state will decay back to the
+    ground state (dashed lines).
   }
   \label{theory:fig:MOT}
 \end{figure}
 
 We wish to ensure that when a photon is absorbed the momentum change provides a
 restoring force towards the centre of the MOT. This is achieved by choosing the
-polarisation of the light so that coming from the positive (negative) $x$
-direction, the light has $\sigma^+$ ($\sigma^-$) polarisation. The result is
+polarisation  so that the light coming from the positive (negative) direction
+has $\sigma^+$ ($\sigma^-$) polarisation. The result is
 that the particle will then always absorb light that is propagating towards the
 centre of the trap, resulting in a restoring force. We also observe the same
 Doppler cooling force from the molasses, so the resulting force is
 %
 \begin{equation}
-  F = - \alpha v - \left(\frac{\mu B'}{\hbar k}\right)\alpha x.
+  F = - \alpha v - \left(\frac{\mu_B B'}{\hbar k}\right)\alpha x.
 \end{equation}
 
 \subsection{Sub-Doppler cooling}
 
 We might expect that a MOT would cool the atoms to around the Doppler
 temperature, but in fact the temperate reached is often lower, due to
-sub-Doppler cooling effects that often occur in a MOT. Chiefly, we consider
-polarisation gradient cooling. This cannot occur in the $F=0$, $F'=1$ system
-used to introduce the MOT, so we consider instead a new system with $F=1/2$,
-$F'=3/2$ which we note is still a type-I MOT.
+sub-Doppler cooling effects that often occur in a MOT. The most common of these
+is polarisation gradient cooling, which cannot occur in the $F=0$, $F'=1$
+system used to introduce the MOT. We instead consider a new system with
+$F=1/2$, $F'=3/2$ which we note is still a type-I MOT.
 
 In the centre of the MOT where there is near zero magnetic field, the $m_F$
 states of the system would be degenerate expect that the degeneracy can be
 lifted by the field of the light. This is the a.c. Stark shift, which is a
-function of the polarisation of the light. When the light has $\sigma_\pm$
+function of the light's polarisation. When the light has $\sigma_\pm$
 polarisation, the $m_F=\mp1/2$ state is mixed more strongly with the exited
-state, and so is higher. The relative matrix elements are shown in \cm{fig to
-reproduce from Ed or elsewhere...}.
+state, and so is higher. The relative matrix elements are shown in
+\mysubfigref{theory:fig:subdoppler}{a}.
 
 \begin{figure}[htb]
   \centering
@@ -218,7 +222,7 @@ reproduce from Ed or elsewhere...}.
       \put(4, 50){(b)}
       \put(105, 60){$F'=3/2$}
       \put(105, 28){$F=1/2$}
-      \put(105, 2){Polarisation}
+      \put(98, 2){Polarisation} % Was at x=105 but went outside hbox
     \end{overpic}
     \end{subfigure}
     \caption{In (a) we have \cm{some coupling matrix elements} Subfigure (b)
@@ -228,13 +232,14 @@ reproduce from Ed or elsewhere...}.
       particle in the molasses (pink circle) will follow a path such as the one
       shown here in pink, being pumped into the $F'=3/2$ state at the top of
       the potential hill, then decaying (dashed grey lines) back to the lower
-      of the ground states and climbing the hill again. \cm{Cite inspiration}
+      of the ground states and climbing the hill again.
   }
+  \label{theory:fig:subdoppler}
 \end{figure}
 
 The counter-propagating beams establish a polarisation gradient across the
 trap, and hence the Stark shift of the ground states also varies across the
-trap, as shown in \myfigref{}. We have the additional effect that the
+trap, as shown in \mysubfigref{theory:fig:subdoppler}{b}. We have the additional effect that the
 $m_F=\pm1/2$ state is only pumped by the $\sigma^\mp$ light, and so it happens
 that the state with higher energy is the one that is excited. The excited state
 can decay into the lower of the two ground states, where it will follow the
@@ -244,14 +249,18 @@ through this process, reducing their temperature to the recoil limit, which
 corresponds to the energy exchanged by a single photon scatter
 %
 \begin{equation}
-  T_\text{recoil} = \frac{\hbar k^2}{m k_B}.
+  T_\text{recoil} = \frac{\hbar^2 k^2}{m k_B}
 \end{equation}
 %
-Normally to achieve such low temperatures the MOT field is switched off,
-so that only the molasses is active, and the polarisation gradient cooling
-occurs across the entire cloud.
+which is normally on the order of a \SI{1}{\micro\kelvin}.  Normally to achieve
+such low temperatures the MOT field is switched off, so that only the molasses
+is active, and the polarisation gradient cooling occurs across the entire
+cloud.Lower temperatures can be reached by other techniques such as evaporative
+cooling~\cite{Metcalf1999}.
+
 
 \subsection{Magnetic trapping}
+\label{theory:magtraps}
 
 The MOT is an important tool for trapping, and can be configured in various
 ways~\cite{Cotter2016, Lee:96, PhysRevLett.59.2631}, but there is considerable
@@ -259,7 +268,7 @@ benefit to being able to confine particles using only a magnetic field. Since
 there is no light involved, it is much easier to control the trapping
 potential. This opens the door to applications in
 guiding~\cite{PhysRevLett.83.5194} and transporting~\cite{Nakagawa2005}
-particles, but also of course, confining close to a surface. This will be
+particles, but also confining close to a surface such as that of a chip. This will be
 discussed in more detail in the next section, but for the moment we limit
 ourselves to a basic description of magnetic trapping.
 
@@ -276,13 +285,13 @@ maximum in free space.
 Note that the dependence here is on the magnitude of the magnetic field, so the
 direction of the field does not directly affect the trapping potential.
 
-So to magnetically trap our particle we need to first ensure it is in a
+To magnetically trap our particle we need to first ensure it is in a
 weak-field seeking state, and then we need to introduce a magnetic field with a
 local minimum. It is possible to transfer into either of the states
-$\ket{F=3/2, m_F=\pm3/2}$, applying only $\sigma_\pm$ light will optically pump
-into the respective state. After the pumping scheme it is possible (if desired)
-to either of the $\ket{F=1/2, m_F=\pm1/2}$ states by a \cm{microwave
-transition}. Depending on the sign of $g_F$ (or for the excited state $g_{F'}$) 
+$\ket{F=3/2, m_F=\pm3/2}$ by applying only $\sigma_\pm$ light to optically pump
+into the respective state, as was discussed for sub-Doppler cooling. After the pumping scheme it is possible (if desired)
+to transfer to either of the $\ket{F=1/2, m_F=\pm1/2}$ states by applying a
+microwave pulse~\cite{WilliamsMagnetic2018}. Depending on the sign of $g_F$ (or for the excited state $g_{F'}$) 
 one of these states is bound to be a weak-field seeker.
 
 Now the final ingredient is a magnetic potential with a local minimum. There
@@ -314,15 +323,15 @@ coils (black arrows) The field near the trap centre is also shown (pink arrow).
   \label{theory:fig:fields}
 \end{figure}
 
-One of the drawbacks to a qaudrupole is taht the magnetic field at the centre
+One of the drawbacks to a quadrupole is that the magnetic field at the centre
 is zero. In regions of low field there is no breaking of the degeneracy, and so
 it is possible for the $m_F$ quantum number to change to an un-trappable state.
-This is known as a spin-flip or Majorana loss.~\cite{} One method of resolving
-this is to instead use a Ioffe-Pritchard trap, which has a non-zero field
-minimum. The standard method of implementing such a trap is shown in
+This is known as a spin-flip or Majorana loss~\cite{Brink2006}. One method of
+resolving this is to instead use a Ioffe-Pritchard trap, which has a non-zero
+field minimum. The standard method of implementing such a trap is shown in
 \mysubfigref{theory:fig:fields}{b}. Four straight wires are arranged in a
 square, with a pair of parallel coils on either end to form end-caps. The field
-generated is of the form~\cite{}
+generated is of the form
 %
 \begin{equation}
   \mathbf{B} = b_1 \begin{pmatrix} x \\ -y \\ 0 \end{pmatrix}
@@ -382,11 +391,11 @@ discussed further in chapter~\ref{sim}.
 \section{Chip trap theory}
 \label{theory:chips}
 
-Of course, the main subject of this thesis is the trapping of particles near
-chips. In this section we will see that it is possible to use wires on a chip,
-combined with external magnetic fields to produce trapping potentials that
-resemble either a quadrupole or Ioffe-Pritchard trap. Further details can be
-found in \inlineref{2011Ac}.
+The main subject of this thesis is the trapping of particles near chips. In
+this section we will see that it is possible to use wires on a chip, combined
+with external magnetic fields to produce trapping potentials that resemble
+either a quadrupole or Ioffe-Pritchard trap. Further details can be found in
+\inlineref{2011Ac}.
 
 \subsection{Simple wire traps}
 
@@ -400,12 +409,12 @@ the Biot-Savart law, having magnitude
   B_w(r) = \frac{\mu_0 I}{2 \pi r}
 \end{equation}
 %
-$r$ is the distance from the wire. The direction of the field obeys the right
-hand rule. With such a geometry it is possible to create a ruidmentary
+where $r$ is the distance from the wire. The direction of the field obeys the
+right hand rule. With such a geometry it is possible to create a rudimentary
 two-dimensional trap at a distance $h$ from the wire, by applying an external
-bias field, whose direction opposes the field of the wire. To create the trap
-at the desired bias, the strength of the field must be $\tilde{B}_y =
-B(h)$.
+bias field $\mathbf{\tilde{B}}$, whose direction opposes the field of the wire.
+To create the trap at the desired bias, the strength of the field must be
+$\tilde{B}_y = B(h)$.
 
 %TODO Use this notation in sim when descirbing calculation of the field!
 Figure \myfigref{theory:fig:simplefield} illustrates this two-dimensional trap.
@@ -415,13 +424,12 @@ positive direction (out of the page). This generates the expected field
 $\mathbf{B}$ shown in subfigure (a). This is superimposed with the bias field
 $\mathbf{\tilde{B}}_y$, also shown in (a), to produce the resulting field
 $\mathbf{B} = \mathbf{B}_w + \mathbf{\tilde{B}}$ shown
-in (b). This subfigure details the field lines (pink arrows), however these do
-not tell the whole story, since weak-field seekers go to areas where the
-magnitude of the field ($B$) is low. This is shown by the gradient, with darker
-areas (blue, guide to the eye) indicating areas of lower field. The bias field
+in (b). This subfigure details the field lines (pink arrows) and field
+magnitude, shown by the colour gradient
+(blue, guide to the eye) where darker areas indicate lower field. The bias field
 is chosen to induce a field minimum at $h=\SI{1}{\milli\meter}$. Subfigure (c)
-shows a cut-through of the potential along $y$ with $x=0$, $z=h$. Subfigure (d)
-also shows a cut-through of the potential along $z$ with $x=y=0$. This
+shows a cut through of the potential along $y$ with $x=0$, $z=h$. Subfigure (d)
+also shows a cut through of the potential along $z$ with $x=y=0$. This
 demonstrates the two-dimensional trap.
 
 \begin{figure}[htbp]
@@ -466,25 +474,30 @@ centre by a (two-dimensional) quadrupole with gradient
   B' = -\frac{2\pi \tilde{B}_y^2}{\mu_0 I}.
 \end{equation}
 %
-The depth of the trap is $\mu \tilde{B}_y$, where $\mu$ is the \cm{magnetic dipole
-moment} of the trapped particle. This can be seen in
+The depth of the trap is $\mu \tilde{B}_y$, where $\mu$ is the magnetic dipole
+moment of the trapped particle. This can be seen in
 \mysubfigref{theory:fig:simplefield}{d}: the potential is $B = |B_w(z) +
 \tilde{B}_y|$, and so has an asymptote at $B=|\tilde{B}_y|$ as
-$z\rightarrow\infty$.
+$z\rightarrow\infty$. We usually write this depth as a temperature
+%
+\begin{equation}
+  T  = \frac{\mu \tilde{B}_y}{k_B}.
+  \label{theory:eqn:depth}
+\end{equation}
 %
 We can transform such a trap into a Ioffe-Pritchard trap by applying a second
 bias field along the $x$ direction to lift the field minimum away from
 zero.
 
 Of course, it is commonly desirable to trap in all three dimensions. A simple
-way to introduce confinement along the $x$ axis is to introduce a secocond wire
+way to introduce confinement along the $x$ axis is to introduce a second wire
 trap acting in the perpendicular direction. Such a device is called a dimple
 trap (or cross conductor trap, or X-trap) and is illustrated in
 \myfigref{theory:fig:dimple}. We label the current in the second wire $I_1$
 and the new bias field, which is parallel to the $x$-axis and opposes the
 $I_1$ field is labelled $\mathbf{B}_x$. In the case that $I_1 \ll I$, the
 second wire can be treated as a perturbation of the first. The field minimum is
-therefore still at $h$, and its depth is \cm{ref earlier equation?}.
+therefore still at $h$, and its depth is given by \myeqref{theory:eqn:depth}.
 
 \begin{figure}[htb]
     \centering
@@ -514,7 +527,7 @@ therefore still at $h$, and its depth is \cm{ref earlier equation?}.
     minimum. The field lines (pink) and magnitude (blue, darker is weaker,
     guide to the eye) is shown in subfigure (b) along $x=0$. Note the strong
     field region along the $y$ axis around the $I_1$ wire. Subfigure (c) shows
-    a cut-through of the trapping potential in the $x$ direction with $y=0$,
+    a cut through of the trapping potential in the $x$ direction with $y=0$,
     $z=h$.
   }
   \label{theory:fig:dimple}
@@ -525,7 +538,8 @@ chosen to exactly cancel the magnetic field at the centre, or it can be used as
 a Ioffe-Pritchard trap when there is a non-zero minimum. We will focus on the
 latter case, in which case it is useful to write down the trap frequencies, the
 derivation of which is similar to the one for the six-wire field discussed in
-\cm{ref theory to be writtern}.
+section~\ref{theory:magtraps}.
+%
 Since the trapping from the $I$ wire will be stronger than the $x$-axis
 confinement from the $I_1 << I$ wire, we $\omega_x$ to be the weak trapping
 direction. We again write down the field minimum
@@ -590,7 +604,7 @@ refer to the wire carrying current $I$ as the axis of the trap.
 
 We note that we need not choose $I_1$ and $I_2$ to be the same, although from
 now on we will assume that they have the same magnitude, the sign can differ.
-In other words the currents can be parallel or anti-parallel. In the former
+In other words these currents can be parallel or anti-parallel. In the former
 case the trap forms a Ioffe-Pritchard trap; this is due to the fields from
 $I_1$ and $I_2$ adding in the centre, to provide some overall non-zero
 component in the $x$ direction. When the currents are anti-paraellel, the $I_1$
@@ -610,10 +624,10 @@ transverse gradient
   B'_\perp = \frac{2\pi\tilde{B}_y}{\mu_0 I}
 \end{equation}
 %
-and curvature (in the $h \ll d$ limit)~\cite{PhysRevA.79.013407}
+and curvature~\cite{PhysRevA.79.013407}
 %
 \begin{equation}
-  B'' = \frac{12\tilde{B}_y I_1 h^2}{I (d/2)^4}
+  B'' = \tilde{B}_x + 2\tidle{B}_y\rac{I_1}{I_0}\frac{h^2}{(d/2)^2+h^2}
 \end{equation}
 %
 and the trap frequencies are again given by equations~\ref{theory:eqn:perpfreq}
@@ -627,7 +641,7 @@ Although the H-trap provides a method of creating a three dimensional
 microtrap, it is not always convenient to have to use three distinct wires.
 Fortunately the H-trap can be approximated by a single wire, either in a
 U-shape for the quadrupole variant, or a Z-shape for the Ioffe-Pritchard
-variant. These are pictured in \cm{theory:fig:HUZ}. Note that for the U-trap
+variant. These are pictured in \myfigref{theory:fig:HUZ}. Note that for the U-trap
 the currents in the off-axis wires are once again anti-parallel, and in the
 Z-trap these currents are parallel. For the U- and Z-traps, we denote the
 distance between the end wires as $d$, and again refer to this as the axis.
@@ -662,8 +676,9 @@ comparable for the H-trap in quadrupole configuration and the U-trap.
 
 This illustrates that a single current-carrying wire can be used to form a trap
 in three dimensions. The examples here use length scales of a few millimeters,
-and have typical depths of \cm{??}, but we will discuss in chapter~\ref{sim}
-that it is possible to realise much smaller trap and \cm{deeper} traps.
+and have typical depths of \SI{100}{\nano\kelvin}, but we will discuss in
+chapter~\ref{sim} that it is possible to realise much smaller trap and deeper
+traps.
 
 
 \section{Physics of diatomic molecules}
@@ -695,13 +710,13 @@ We can write down the Hamiltonian of such a system, and it is most useful to do
 so in the centre of mass (COM) frame, with the reduced mass
 %
 \begin{equation}
-  \mred{} = \frac{m_a m_b}{m_a + m_b}
+  \mred{} = \frac{m_A m_B}{m_A + m_B}
 \end{equation}
 %
 and COM location
 %
 \begin{equation}
-  \mathbf{R}_\text{COM} = \frac{m_a \mathbf{R}_a + m_b \mathbf{R}_b}{m_a+m_b}.
+  \mathbf{R}_\text{COM} = \frac{m_A \mathbf{R}_a + m_B \mathbf{R}_b}{m_A+m_B}.
 \end{equation}
 %
 The Hamiltonian is then the sum of the terms arising from the Coulomb
@@ -716,9 +731,9 @@ where
 \begin{align}
   T_n &= -\frac{\hbar^2}{2\mred{}}\nabla_{AB}^2\\
   T_e &= -\frac{\hbar^2}{2 m_e}\sum_{i=1}^{N_e} \nabla_i'^2 -
-  \frac{\hbar^2}{2(m_a + m_b)}\sum_{i, j} \nabla'_i \cdot \nabla'_j \\
+  \frac{\hbar^2}{2(m_A + m_B)}\sum_{i, j} \nabla'_i \cdot \nabla'_j \\
   V_{nn} &= \frac{Z_A Z_b e^2}{4\pi\epsilon_0 R_{AB}} \\
-  V_{en} &= - \frac{e^2}{4\pi\epsilon_0}\sum_{i=1}^N \left(\frac{Z_A}{R_{iA}} + \frac{Z_B}{R_{iB}}\right) \\
+  V_{en} &= - \frac{e^2}{4\pi\epsilon_0}\sum_{i=1}^N \left(\frac{Z_A}{R_{Ai}} + \frac{Z_B}{R_{Bi}}\right) \\
   V_{ee} &= \frac{e^2}{4\pi\epsilon_0}\sum_{i<j} \frac{1}{R_{ij}}
 \end{align}
 %
@@ -736,7 +751,7 @@ The time-independent Schr\"odinger equation (TISE),
 \end{equation}
 %
 can now be solved for this Hamiltonian, although we will only sketch the
-solution here. A full derivation can be found in \inlineref{}.
+solution here. A full derivation can be found in \inlineref{brown_carrington_2003}.
 
 \begin{figure}
   \centering
@@ -777,7 +792,7 @@ represent the set of electronic coordinates.
 There is then a separate electronic TISE
 %
 \begin{equation}
-  H_e \psi_e(\mathbf{R}_{AB}; \mathbf{r}) = E_e(q, R_{AB})\psi_e(\mathbf{R}_{AB};
+  H_e \psi_e(\mathbf{R}_{AB}; \mathbf{r}) = E_e(R_{AB}, \mathbf{r})\psi_e(\mathbf{R}_{AB};
   \mathbf{r})
   \label{theory:eqn:TISEelectron}
 \end{equation}
@@ -792,19 +807,19 @@ q)$, with $q$ being the quantum number for the electronic
 configuration\footnote{The numbering of the electronic configurations is
 actually more complicated than this. We will discuss how these states are
 labelled in section~\ref{theory:qnos}.}. The
-energy of the state is denoted $E_e(q, R_{AB})$, with $q$ and (again) $R_{AB}$
-being
-parameters of this value. It is common to approximate this energy as
-the Morse potential
+energy of the state is now denoted $E_e(q; R_{AB})$, with $q$ as a parameter
+and $E_e$ a function of  $R_{AB}$.
+It is common to approximate this energy as the Morse potential
 %
 \begin{equation}
-  E_e(q, R_{AB}) = D(1-e^{-\beta(R_{AB} - R_{AB}^0)})^2
+  E_e(q; R_{AB}) = D(1-e^{-\beta(R_{AB} - R_{AB}^0)})^2
 \end{equation}
 %
 where $R_{AB}^0$ is the equilibrium displacement of the nucleii, $D$ is the
 dissociation energy, and $\beta$ is a parameter for the width of the
 potential. All of these are dependent on the electronic configuration, but this
-dpendence is suppressed in the notation.
+dependence is suppressed in the notation. On a long timescale, the $E_e$
+dependence on $R_{AB}$ averages away, and so $E_e = E_e(q)$.
 
 Implicit in the Born-Oppenheimer approximation is that the electronic
 configuration is the largest contribution to the state's energy. We can make a
@@ -825,7 +840,7 @@ work~\cite{brown_carrington_2003} it is possible to write down the relevant
 TISE
 %
 \begin{equation}
-  \left(-\frac{\hbar^2}{2\mred{}}\nabla_{AB}^2 + E_e(q, R_{AB}) -
+  \left(-\frac{\hbar^2}{2\mred{}}\nabla_{AB}^2 + E_e(q; R_{AB}) -
   E\right)\psi_n(\mathbf{R}_{AB}) = 0.
   \label{theory:eqn:nucTISE}
 \end{equation}
@@ -846,7 +861,7 @@ rotational angular momentum. The angular part of the solution is given by the us
 spherical harmonics $Y_{R, m_R}$ where
 %
 \begin{align}
-  R^2 Y_{R, m_R} &= R(R+1) Y_{R, m_R} \\
+  \mathbf{R}^2 Y_{R, m_R} &= R(R+1) Y_{R, m_R} \\
   R_z Y_{R, m_R} &= m_R Y_{R, m_R}
 \end{align}
 
@@ -862,14 +877,12 @@ yields
 \end{equation}
 %
 where we have expanded $\nabla_{AB}^2$ in terms of the second derivative in
-$R_{AB}$ and the angular momentum operator $N^2$. This equation is now that of
-an oscillator in the Morse potential $E_e(q; R_{AB})$, with an additional
-energy term that arises due to the rotation,
+$R_{AB}$ and the angular momentum operator $\mathbf{N}^2$. This equation is now
+that of an oscillator in the Morse potential $E_e(q; R_{AB})$, with an
+additional energy term that arises due to the rotation,
 %
-\begin{equation}
-  E_\text{rot}(R) = \frac{R(R+1)}{2\mred{} R_{AB}^2}.
-  \label{theory:eqn:rotenergy}
-\end{equation}
+\begin{equation} E_\text{rot}(R) = \frac{R(R+1)}{2\mred{} R_{AB}^2}.
+\label{theory:eqn:rotenergy} \end{equation}
 
 The vibrational part of the wavefunction can be solved by the standard
 computational methods for finding the wavefunctions of anharmonic
@@ -878,7 +891,9 @@ potentials~\cite{Foot2005}. These vibrational states form the usual ladder of
 states inside an anharmonic potential~\cite{Binney} as pictured in
 \myfigref{theory:fig:vibtrans}. We label these states with the quantum number
 $v$, and so re-write $f(R_{AB}) = f_v(R_{AB})$ to clarify which vibrational
-level we are referring to. At low energy the Morse potential approximates
+level we are referring to.
+
+At low energy the Morse potential approximates
 to a harmonic potential
 %
 \begin{equation}
@@ -892,7 +907,6 @@ where the vibrational frequency is related to the potential by
   \label{theory:eqn:vibfreqrel}
 \end{equation}  
 %
-
 We can estimate this vibrational frequency by considering the opposite limit,
 near dissociation. We approximate $D$ to be the typical electronic energy $E_e$
 and note that for dissociation to occur we expect $\beta(R_{AB} - R_{AB}^0) >
@@ -935,11 +949,15 @@ faster timescale than the nucleii, and hence have a higher energy (by about a
 factor of $100$) than the nuclear motional energy.
 
 Due to this difference in timescale, the nucleii move in the electrostatic potential
-generated by the nucleii, which can be shown to be a Morse potential. This
+generated by the nucleii, which can be approximated to be a Morse potential. This
 means that the nucleii vibrate as an anharmonic oscillator, with some
 equilibrium distance $R_{AB}^0$. The vibrational motion is again higher (by
 about a factor of $100$) than the rotational energy, which comes from the
-tumbling of the two nucleii.
+tumbling of the two nucleii. The total energy is
+%
+\begin{equation}
+  E(q,v,R) = E_e(q) + E_\text{vib}(v) + E_\text{rot}(R).
+\end{equation}
 
 
 \subsection{Transitions}
@@ -948,11 +966,10 @@ tumbling of the two nucleii.
 % Talk more about microwave spectroscopy elsewhere?
 
 We will now state without derivation, the selection rules describing the
-allowed transitions between the various states of the molecule. A complete
-derivation can be found in \inlineref{}. We will label the original state in
+allowed transitions between the various states of the molecule. We will label the original state in
 the transition $\ket{1} = \ket{q, v, R, m_R}$ and the final state $\ket{2} =
 \ket{q', v', R', m_R'}$.
-
+%
 It is useful to remember that the following results are found by considering
 the intensity of the transition, which is proportional to $|d_{12}|^2$, where
 %
@@ -962,13 +979,15 @@ the intensity of the transition, which is proportional to $|d_{12}|^2$, where
 %
 is the matrix element of the transition, $\mathbf{d}$ is the dipole matrix
 operator, and $\mathbf{\epsilon}$ is a vector representing the polarisation of
-the light. This matrix element is evaluated by re-writing in a spherical basis,
-then writing this basis so that the $z$ axis is aligned with the internuclear
-axis. This yields an integral over the electronic, vibrational and rotational
+the light.
+
+This matrix element is evaluated by re-writing in a spherical basis, then
+writing this basis so that the $z$ axis is aligned with the internuclear axis.
+This yields an integral over the electronic, vibrational and rotational
 wavefunctions. Deriving this integral and its solution is beyond the scope of
 this discussion, as it is not required to understand the rest of the thesis. It
-has been explained far more eloquently and succinctly than I am capable of in
-various texts, including \cm{citations}.
+has been explained eloquently and succinctly in various texts, including
+\inlineref{brown_carrington_2003}.
 
 \subsubsection{Pure rotational transitions}
 
@@ -1010,9 +1029,9 @@ can derive the above selection rules.
   \label{theory:fig:vibtrans}
 \end{figure}
 
-Now that $q\neq q'$, the vibrational states are not the states from the same
-anharmonic potentials, and so the overlap integrals of the wave functions must
-be computed numerically. The vibrational component of the integral is called
+Now that $q\neq q'$, the vibrational states are not states of the same
+anharmonic potential, and so the overlap integral of the wave functions must
+be computed numerically. The vibrational component of this integral is called
 the Franck-Condon factor, and is written as
 %
 \begin{equation}
@@ -1064,26 +1083,26 @@ these operators are their projections onto the axis which we label $\Lambda$
 and $\Sigma$  respectively, as well as $S$. $L$ is not a good quantum number
 since it couples very stongly to the axis and so precesses rapidly around it.
 
-The rotation operator $\mathbf{R}$ coupling is even weaker,
-and hence can be approximated to couple to the projection of $\mathbf{L} +
-\mathbf{S}$ onto the axis. We label this projection $\mathbf{\Omega} = \Omega
-\mathbf{\hat{e}}$ where $\mathbf{\hat{e}}$ is the unit vector along the axis,
-and $\Omega = \Lambda + \Sigma$. The total angular momentum is $\mathbf{J} =
-\mathbf{L} + \mathbf{S} + \mathbf{N}$. Again, due to the rapid precession of
-$\mathbf{L}$ and $\mathbf{S}$, we show this in the figure as a precession of
-$\mathbf{\Omega} = \Omega\mathbf{\hat{e}}$ and $\mathbf{R}$ around
-$\mathbf{J}$. Note however, that $\mathbf{\Omega}$ is not truely an operator,
-and is only useful for illustrative purposes.
+The rotation operator $\mathbf{R}$ coupling is even weaker, and hence can be
+approximated to couple to the projection of $\mathbf{L} + \mathbf{S}$ onto the
+axis. We label this projection $\mathbf{\Omega} = \Omega \mathbf{\hat{e}}$
+where $\mathbf{\hat{e}}$ is the unit vector along the axis, and $\Omega =
+\Lambda + \Sigma$. The total angular momentum is $\mathbf{J} = \mathbf{L} +
+\mathbf{S} + \mathbf{N}$. Again, due to the rapid precession of $\mathbf{L}$
+and $\mathbf{S}$, we show this in the figure as a precession of
+$\mathbf{\Omega}$ and $\mathbf{R}$ around $\mathbf{J}$. Note that
+$\mathbf{\Omega}$ is not truly an operator, and is only useful for illustrative
+purposes.
 
 In the second case of interest (b), $\mathbf{L}$ is strongly coupled to the
-axis as before, but its projection onto the axis now creates a good quantum
-number $\Lambda$. Here $\Lambda$ is a good quantum number, but not $L$ as in
-the (a) case. $\mathbf{R}$ has the next strongest coupling, so we define a new
-operator $\mathbf{N} = \mathbf{L} + \mathbf{R}$, which for illustrative
-purposes we show in the figure as $\Lambda \mathbf{\hat{e}} + \mathbf{R}$.
-$\mathbf{N}$ and $\mathbf{S}$ now couple and precess around $\mathbf{J} =
-\mathbf{N} + \mathbf{S}$. The good quantum numbers for both cases are
-summarised in the figure.
+axis as before, and its projection onto the axis again creates a good quantum
+number $\Lambda$. $L$ is not a good number for the same reason as before.
+$\mathbf{R}$ has the next strongest coupling, so we define a new operator
+$\mathbf{N} = \mathbf{L} + \mathbf{R}$, which for illustrative purposes we show
+in the figure as $\Lambda \mathbf{\hat{e}} + \mathbf{R}$.  $\mathbf{N}$ and
+$\mathbf{S}$ now couple and precess around $\mathbf{J} = \mathbf{N} +
+\mathbf{S}$. The good quantum numbers for both cases are summarised in the
+figure. If $L=0$ for a state then it will obey this case.
 
 We label these states by spectroscopic notation taking the form
 %
@@ -1094,9 +1113,10 @@ We label these states by spectroscopic notation taking the form
 where $X$ is used to represent the ground state, but for higher states this is
 replaced by incrementing letters of the alphabet, starting with $A$ for the
 first excited state. $\Lambda$ is not represented by its numerical value, but
-by the greek characters $\Sigma$, $\Pi$, $\Delta$, etc.\ in analogy with the
-notation for the oribtal states in atoms. The superscipt $\pm$ represents the
-partiy of the wavefunction on reflection.
+by the Greek characters $\Sigma$, $\Pi$, $\Delta$, etc.\ in analogy with the
+notation for the orhital states in atoms. The superscript $\pm$ represents the
+parity of the wavefunction on reflection. When $\Omega$ is redundant it can be
+omitted.
 
 Up to this point we have mainly denoted the wavefunctions as functions, but we
 will soon find it useful to write the states using braket notation. We will not
@@ -1113,17 +1133,19 @@ quantum number that the ket refers to is implicit by its contents.
 \subsection{Hyperfine structure}
 
 These states can be further split into hyperfine states by the angular momentum
-contribution of the nuclear spin, which has operator $\mathbf{I}$.  The new
-total angular momentum is  $\mathbf{F} = \mathbf{J} + \mathbf{I}$. We can
-therefore have substates of the  These states
+contribution of the nuclear spin, which has operator $\mathbf{I}$. The new
+total angular momentum is  $\mathbf{F} = \mathbf{J} + \mathbf{I}$. These states
 will be important later, since the $m_F$ substates will be used as weak-field
 seekers for magnetic trapping.
 
 % TODO MOVE THIS
 \subsection{Cavity quantum electrodynamics}
 
-\cm{This section is getting moved to microwaves.}
+\cm{This section is getting moved to microwaves. Need to ensure that when
+moved, any motivation pointing in this direction also moves.}
 
+% TODO Can probably get rid of a lot of this, depends on context of where I put
+% it.
 A key part of the motivation for a molecule chip trap is the idea that
 integrated microwave guides can be used to couple photons to the rotational
 transitions of the molecules. Of particular interest is the idea
