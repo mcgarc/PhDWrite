@@ -215,7 +215,9 @@ state, and so is higher. The relative matrix elements are shown in
 \begin{figure}[htb]
   \centering
   \begin{subfigure}[b]{0.45\textwidth}
-      \cm{Optical pumping fig}
+    \begin{overpic}[width=0.8\textwidth]{figs/theory/pump.pdf}
+      \put(4, 50){(a)}
+    \end{overpic}
     \end{subfigure}
   \begin{subfigure}[b]{0.45\textwidth}
     \begin{overpic}[width=0.8\textwidth]{figs/theory/molasses.pdf}
@@ -225,14 +227,20 @@ state, and so is higher. The relative matrix elements are shown in
       \put(98, 2){Polarisation} % Was at x=105 but went outside hbox
     \end{overpic}
     \end{subfigure}
-    \caption{In (a) we have \cm{some coupling matrix elements} Subfigure (b)
-      shows the polarisation gradient cooling scheme described in the main
-      text.  The polarisation gradient is depicted in the bottom row, and the
-      $m_F=1/2$ ($m_F=-1/2$) state is shown by the dashed (solid) line. A
-      particle in the molasses (pink circle) will follow a path such as the one
-      shown here in pink, being pumped into the $F'=3/2$ state at the top of
-      the potential hill, then decaying (dashed grey lines) back to the lower
-      of the ground states and climbing the hill again.
+    \caption{In (a) we have the optical pumping scheme, and polarisation shift
+      for $\sigma^+$ light. The relative coupling strengths (squared values
+      shown inline) cause the $m_F=1/2$ state to be reduced further than
+      $m_F=-1/2$.  The reverse is true for $\sigma^-$ light. The optical
+      pumping (pink arrows and dashed decay) show how population can be
+      transferred to $m_F=3/2$. A similar scheme can be used to pump to
+      $m_F=-3/2$ with $\sigma^-$ light. Subfigure (b) shows the polarisation
+      gradient cooling scheme described in the main text.  The polarisation
+      gradient is depicted in the bottom row, and the $m_F=1/2$ ($m_F=-1/2$)
+      state is shown by the dashed (solid) line. A particle in the molasses
+      (pink circle) will follow a path such as the one shown here in pink,
+      being pumped into the $F'=3/2$ state at the top of the potential hill,
+      then decaying (dashed grey lines) back to the lower of the ground states
+      and climbing the hill again.
   }
   \label{theory:fig:subdoppler}
 \end{figure}
