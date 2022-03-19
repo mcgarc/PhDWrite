@@ -10,25 +10,54 @@ The chip flange assembly which was introduced at the end of
 chapter~\ref{overview} is shown in \myfigref{exper:fig:flange} (see also
 \mysubfigref{overview:fig:chipchamber}{b}). It is designed
 to hold the chip in position for loading \CaF{}, whilst also providing current
-delivery and heat sinking. 
+delivery and heat sinking. Considerations have been made for future experiments
+using microwaves, with two high-frequency microwave feedthroughs incorporated
+as well. The flange was manufactured by Allectra GmbH, and the heat sink was
+machined in the Imperial College workshop.
 
 \begin{figure}
   \centering
-  \cm{TODO Exploded view}
+  \cm{TODO Exploded view alongside photo of the whole thing assembled (with
+  wire etc.)}
   \caption{}
   \label{exper:fig:flange}
 \end{figure}
 
 The copper heat sink is mounted to the flange using screws where the thread has
 been partially removed. This is done to precent any trapped gas causing virtual
-leaks inside the chamber. The heat sink supports the subchip and also incorporates the large
-U-trap, which is recessed beneath the chip. It is electrically isolated from
-the heat sink by \AlN{} plates. This material is chosen since it is an
-electrical insulator, but will still allow the conduction of heat away from the
-U-wire. The subchip is attached to the heat sink with metal screws. Since the
-conductor tracks are at points very close to the mounting holes, we isolate the
-screws from the surface using polyimide washers, which were made in the
-Imperial workshop.
+leaks inside the chamber. The heat sink supports the subchip and also
+incorporates the large U-trap, which is recessed beneath the chip. It is
+electrically isolated from the heat sink by \AlN{} plates. This material is
+chosen since it is an electrical insulator, but will still allow the conduction
+of heat away from the U-wire whilst being UHV compatible. The subchip is
+attached to the heat sink with metal screws. Since the conductor tracks are at
+points very close to the mounting holes, we isolate the screws from the surface
+using washers made from polyimide (another UHV compatible insulator) which were
+manufactured in the College workshop.
+
+The current is delivered to the U-wire through two high-current feedthroughs.
+For the chip currents, the 16-pin feedthrough is used, and is connected to the
+subchip by kapton-coated wires from LewVac. When connecting the wires to the
+subchip we use polyimide bushings (also made in the College workshop) to ensure
+that they are electrically isolated from the aluminium core of the PCB.
+
+The flange is mounted in the chip chamber, a DN63 cube chamber from Kurt J.
+Lesker Co.\ (KJL) whose configuration is shown in \myfigref{exper:fig:chamber}.
+A \cm{turbo pump} is connected to the chamber via a tee, so that there is still
+a clear line of sight across the surface of the chip. We install three
+AR-coated viewports, also from KJL, as shown in the figure. This provides
+optical access across the surface of the chip for illumination, imaging
+molecules as they fall and a viewpoint from below looking towards the surface.
+We attach a DN63-DN40 adapter opposite the chip flange, this will be where the
+chamber is attached to the \CaF{} experiment in the future, but for testing
+purposes a \cm{pirani gauge} is attached instead.
+
+\begin{figure}
+  \centering
+  \cm{Figure showing the layout of the chamber.}
+  \caption{}
+  \label{exper:fig:chamber}
+\end{figure}
 
 
 \section{Vacuum testing}
