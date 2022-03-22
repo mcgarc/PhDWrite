@@ -238,12 +238,12 @@ scattering~\cite{Truppe2017a}.
 The transverse heating effect can be further reduced by applying slowing beams
 in the transverse direction, also on the $X\rightarrow B$ transition, but this
 time the light has the r.f.\ sidebands to address the $X$ hyperfine structure
-rather than the slowing chirp. This collimates the molecule beam due to
-Doppler cooling taking place in the transverse direction. This process occurs before the slowing light is
-turned on, any molecules that are pumped into $X(v=1)$ can be re-cycled by the
-\pewpew{}{10} repump that is combined with the slowing light. The slowing procedure described above is carried
-out simultaneously, providing the remixing of dark ground states and the $v=1$
-repump light.
+rather than the slowing chirp. This collimates the molecule beam due to Doppler
+cooling taking place in the transverse direction. This process occurs before
+the slowing light is turned on, any molecules that are pumped into $X(v=1)$ can
+be re-cycled by the \pewpew{}{10} repump that is combined with the slowing
+light. The slowing procedure described above is carried out simultaneously,
+providing the remixing of dark ground states and the $v=1$ repump light.
 %
 Scattering of light in the transverse direction can collimate the beam, and has
 been shown to improve the population of the MOT by a factor of
@@ -398,22 +398,37 @@ and described for \CaF{} in \inlineref{Jurgilas2021}.
 In this scheme a weak magnetic field (\SI{200}{\milli\gauss}) is applied across
 the cloud, and two beams of light are incident on the molecules. Both act on
 the $X\rightarrow B$ transition, but their frequency components are tuned to be
-close to the $F=2$ and $F=1^-$ hyperfine levels respectively. The $F=2$ ($F=1^-$)
-frequency component propagates parallel (perpendicular) to the magnetic field
-and its polarisation is chosen to drive $\sigma^+$ ($\pi$) transitions. This
-means that the only state dark to the light is the magnetically trappable state
-$\ket{N=1, F=2, m_F=2}$, which is eventually populated. From here it is
-possible to transfer to other states by microwave spectroscopy
-techniques~\cite{WilliamsMagnetic2018}.
+close to the $F=2$ and $F=1^-$ hyperfine levels respectively. The $F=2$
+($F=1^-$) frequency component propagates parallel (perpendicular) to the
+magnetic field and its polarisation is chosen to drive $\sigma^+$ ($\pi$)
+transitions. This means that the only state dark to the light is the
+magnetically trappable state $\ket{N=1, F=2, m_F=2}$, which is eventually
+populated. From here it is possible to transfer to other states by microwave
+spectroscopy techniques~\cite{WilliamsMagnetic2018}. Various weak-field seeking
+states of \CaF{} are detailed in \myfigref{overview:fig:magtrapstates}.
 
-% TODO Make sure this ket notation for stretched states is clear (from theory)
+\begin{figure}
+  \cm{Weak field seekers as in trapping paper, do $N=0, 1, 2$ and highlight
+    streteched states.}
+  \caption{Hyperfine strucutre of \CaF{} $X$ states, with weak-field seekers
+    and stretched states highlighted.}
+  \label{overview:fig:magrapstates}
+\end{figure}
+
+
+% Removed the rot notation here, I think this is being taken out everywhere...
+% TODO Check that this is the case
 At this stage we also introduce three stretched states in \CaF{}. These states
-lie in the $X$ electronic level, and are denoted $\ket{N}_\text{str} = \ket{N,
-m_N=N}_\text{rot}\ket{S, m_S=S}\ket{I,m_I=I}$, where the degeneracy must be
-lifted by the application of an external magnetic field, $m_X$ is then the
-projection of $X$ onto this field's axis. The stretched states are of interest
-because they are not only weak-field seekers, but the transitions between
-neighbouring stretched states
+lie in the $X$ electronic level, and are denoted
+%
+\begin{equation}
+  \ket{N}_\text{str} = \ket{N, m_N=N}\ket{S, m_S=S}\ket{I,m_I=I},
+\end{equation}
+%
+where the degeneracy must be lifted by the application of an external magnetic
+field, $m_X$ is then the projection of $X$ onto this field's axis. The
+stretched states are of interest because they are not only weak-field seekers,
+but the transitions between neighbouring stretched states
 ($\ket{N}_\text{str}\leftrightarrow\ket{N+1}_\text{str}$) are highly
 insensitive to magnetic fields. Of particular note are, the
 $\ket{0}_\text{str}\leftrightarrow\ket{1}_\text{str}$ ($\omega_0/(2\pi) =
