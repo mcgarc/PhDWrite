@@ -77,7 +77,34 @@ the bakeout process with various iterations of our design. The key results
 reported here concern the vacuum compatability of the Epoxy Technology glue,
 and the solder.
 
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+        ymode=log,
+        enlargelimits=true,
+        xlabel=Mass number,
+        ylabel=Partial pressure (\si{\milli\bar}),
+        width=0.8\textwidth,
+        height = 0.4\textwidth,
+        legend pos=north east,
+        x tick label style={/pgf/number format/.cd, set thousands separator={}},
+        ylabel style={yshift=10pt}
+    ]
+      \addplot [thick, color=blue] table {figs/exper/rga/emptyData.dat};
+      \addlegendentry{Empty chamber};
+      \addplot [thick, color=pink] table {figs/exper/rga/chipData.dat};
+      \addlegendentry{Chip assembly};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{RGA scan for the chip chamber assembly when empty, and when loaded
+  with the chip flange assembly.}
+  \label{}
+\end{figure}
+
 \section{Current testing}
+
+
 
 
 \section{Scatter testing}
