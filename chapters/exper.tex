@@ -73,9 +73,22 @@ water that has been absorbed into the chamber walls.
 The chamber was first leak checked~\cite{} and then brought to UHV pressure
 with the chip flange assembly replaced with a blank. This provided a baseline
 pressure for the chamber. We then swapped in the flange assembly, and repeated
-the bakeout process with various iterations of our design. The key results
-reported here concern the vacuum compatability of the Epoxy Technology glue,
-and the solder.
+the bakeout process with various iterations of our design. In our design
+process we were careful to choose materials that are UHV compatible but it was
+important to check that the assembly could reach the pressures required. In
+particular we were concerned with the Epoxy Technology glue, since any errors
+in the mixing and application procedure could cause outgassing, and the solder,
+which was not rated for UHV uses.
+
+To measure the pressure of the chamber an RGA scan is undertaken, with the
+resulting partial pressures shown with and without the chip assembly in
+\myfigref{exper:fig:rga}. The total pressure (the sum of the partial pressures)
+is \SI{5.0E-10}{\milli\bar} and \SI{8.8E-10}{\milli\bar} in each case respectively. The scan with the chip assembly
+has a similar shape to the empty chamber scan, but with slightly higher values.
+In both, we see the typical peaks for hydrogen (2), water (18) and nitrogen
+(28), which dominate the spectrum. This is typical of a scan through a UHV
+system~\cite{}, and suggests that the chip assembly does not introduce any
+sources of contamination or outgassing into the experiment.
 
 \begin{figure}[h]
   \centering
@@ -99,7 +112,7 @@ and the solder.
   \end{tikzpicture}
   \caption{RGA scan for the chip chamber assembly when empty, and when loaded
   with the chip flange assembly.}
-  \label{}
+  \label{exper:fig:rga}
 \end{figure}
 
 \section{Current testing}
