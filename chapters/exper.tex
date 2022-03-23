@@ -59,6 +59,8 @@ purposes a \cm{pirani gauge or RGA} is attached instead.
   \label{exper:fig:chamber}
 \end{figure}
 
+\cm{Paragraph on current drivers}
+
 
 \section{Vacuum testing}
 
@@ -121,7 +123,8 @@ sources of contamination or outgassing into the experiment.
 It was also important to test the currents that can be achieved through the
 chip trapping wires. These tests were conducted with the chip under vacuum
 ($P<10^{-6}\si{\milli\bar}$) and using the setup shown in
-\myfigref{exper:fig:curtest}. A regulated power supply delivers a current to
+\myfigref{exper:fig:curtest}, which was used since our custom current drivers
+where not ready at this stage. A regulated power supply delivers a current to
 the chip, controlled by a FET circuit that is in turn switched by a signal
 generator. This gives us control over the pulse length, and allows us to
 deliver up to \cm{volts and amps}.
@@ -162,9 +165,12 @@ the chip, as described in the next section.
 
 \subsection{Solder tests}
 
-Since the wirebonds failed far below the required currents for our traps, it
-was determined that a
-
+An alternative to wirebonding is to directly solder the chip to the subchip.
+This must be done carefully, as described in section~\ref{fab:solder} but
+if done correctly it yields a highly stable electrical connection. \cm{The
+UHV compatability of this method is discussed in a section to come (if I swap
+the order around, which one?)} The same current tests were performed as for the 
+wirebonded chips, as shown in \cm{the same fig or different?}
 
 
 \section{Scatter testing}
