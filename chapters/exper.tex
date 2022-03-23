@@ -116,7 +116,54 @@ sources of contamination or outgassing into the experiment.
 \end{figure}
 
 \section{Current testing}
+% TODO I think maybe this should go above vacuum tests?
 
+It was also important to test the currents that can be achieved through the
+chip trapping wires. These tests were conducted with the chip under vacuum
+($P<10^{-6}\si{\milli\bar}$) and using the setup shown in
+\myfigref{exper:fig:curtest}. A regulated power supply delivers a current to
+the chip, controlled by a FET circuit that is in turn switched by a signal
+generator. This gives us control over the pulse length, and allows us to
+deliver up to \cm{volts and amps}.
+
+\begin{figure}
+  \centering
+  \cm{Show diagram of current testing setup}
+  \caption{}
+  \label{exper:fig:curtest}
+\end{figure}
+
+\subsection{Wirebond tests}
+
+We originally tested a number of designs where the chip was connected to the
+subchip via wirebonds. In these cases it was found that the wirebonds were
+unreliable at such high currents. They were tested using a
+\SI{200}{\milli\second} pulse, repeating every \SI{10}{\second}. The results
+are shown in \myfigref{}. The wirebonds were universally unable to sustain the
+current pusles when they reached \cm{2 amps I think?}. Visual inspection of the
+chips showed that the wires were intact, but the wirebond joints had failed.
+This was confirmed by checking the electrical continuity across the chip.
+
+The wirebonds failed at a current far below that required to form our traps. We
+attempted to improve the maximum current by increasing the number of wirebonds
+on each pad, and by improving the quality of the wirebond joints. We found that
+the former yielded an improvement to the maximum current capacity, but the
+quality of the wirebond joints was difficult to quantify. As a rule of thumb,
+the wirebonds were re-done if they could not withstand a light tug from a pair
+of tweezers. Ultimately the number of wirebonds that it was possible to produce
+was limited by the width of the wirebond pad, and the width of the wirebonder
+head. We could achieve \cm{tenish}.
+
+We considered using a ribon wirebond~\cite{}, which promises higher current
+throughput by using a ribon-shaped wire rather than a round one. This was not
+possible due to the unavailabliity of the the hardware at LCN. Another option
+was to use higher-diameter wire, but instead we attempted to directly solder
+the chip, as described in the next section.
+
+\subsection{Solder tests}
+
+Since the wirebonds failed far below the required currents for our traps, it
+was determined that a
 
 
 
