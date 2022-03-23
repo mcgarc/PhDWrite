@@ -1,4 +1,4 @@
-This chapter outlines some backtround theory that will be important throughout
+This chapter outlines some background theory that will be important throughout
 the rest of the thesis. In section~\ref{theroy:cool} I will give an abstracted
 overview of the principles of laser-cooling and trapping of atoms and
 molecules, including magnetic traps. In section~\ref{theory:chips} I will
@@ -14,9 +14,9 @@ We will introduce Doppler cooling in the idealised case of a two-level atom or
 molecule (henceforth the particle) travelling in one dimension, $x$.  Say that
 light is incident on the particle from the positive $x$ direction. If the light
 is resonant with an internal transition then the particle can absorb a photon,
-which will at some later time be re-emitted the particle decays. The
+which will at some later time be re-emitted the particle spontaneously decays. The
 emission of the photon has no preferred direction, and so over a large number
-of these scatters the average effect is a net reduciton in the atom's velocity
+of these scatters the average effect is a net reduction in the atom's velocity
 in the positive $x$ direction.
 
 In order to quantify this process, we might start by asking ourselves, what is
@@ -26,23 +26,24 @@ the force exerted on the particle by the photons? This will be~\cite{Foot2005}
   F = \text{photon momentum} \times \text{scattering rate}.
 \end{equation}
 %
-The photon momentum is the usual value
+The momentum of a photon is
 %
+% TODO Ensure constants are defined at some point, maybe here...
 \begin{equation}
   p_\gamma = \hbar k = \frac{hc}{\omega}
 \end{equation}
 %
 and the scattering rate will be the product of the decay rate of the transition
 (its linewidth) $\Gamma$ and the population of the excited state $\rho_{22}$.
-We write the excited state in this way since it can be found from the optical
-Bloch equations in the rotating wave approximation and in steady state to
-be~\cite{Metcalf1999}
+We use this notation to denote the excited state population, since it can be
+found by solving the optical Bloch equations in the rotating wave approximation
+and in steady state. This gives~\cite{Metcalf1999}
 %
 \begin{equation}
 \rho_{22} = \frac{\Omega^2/4}{(\omega-\omega_0)^2 + \Omega^2/2 + \Gamma^2/4}.
 \end{equation}
 %
-Where $\Omega$ is the Rabi frequency. We introudce the unitless parameters
+Where $\Omega$ is the Rabi frequency. We introduce the unitless parameters
 $\delta = (\omega - \omega_0)/\Gamma$ and $s=\Omega^2/(2\Gamma)$ so that
 %
 \begin{equation}
@@ -63,14 +64,13 @@ and force follows as
 
 The force acting on the particle can be related to its velocity by the Doppler
 effect. A particle moving at speed $v$ will have its resonant frequency shifted
-so that it has some new frequency $\omega'$ such that
+to new frequency $\omega'$ such that
 %
 \begin{equation}
   \frac{\omega'-\omega_0}{\omega_0} = \frac{v}{c},
 \end{equation}
 %
-i.e.\ the frequency is red-detuned from the transition frequency at rest. The
-result is that $\delta$ can be re-written as
+Therefore $\delta$ can be re-written as
 %
 \begin{equation}
   \delta \rightarrow \delta_+ = \delta + \frac{\omega_0}{\gamma c}v
@@ -78,9 +78,12 @@ result is that $\delta$ can be re-written as
 %
 where $\delta$ represents the detuning of the laser from the resonant frequency
 at rest, and the second term is the additional shift due to the Doppler effect.
+For a particle with $v>0$, this means that the light must be red-shifted to
+remain resonant with the particle's transition (or blue-shifted for $v<0$).
 
-However, what if the light is incident from the negative $x$ direction? In this
-case, there is a blue shift, and we have
+However, what if the light is incident from the negative $x$ direction? This is
+analogous to changing the sign of $v$ in the above case, so we can immediately
+write
 %
 \begin{equation}
   \delta \rightarrow \delta_- = \delta - \frac{\omega_0}{\gamma c}v.
@@ -113,7 +116,7 @@ Which is maximised when $\delta = -1$ and $s = 1 + \delta^2 = 2$, so that
 %
 where $\alpha  = - \hbar k^2 /2$.
 
-So the counter-propagating beams provide a velocity-dependent damping
+Hence the counter-propagating beams provide a velocity-dependent damping
 force. We call this arrangement an optical molasses, and it can equally be
 applied in three dimensions.
 %
@@ -139,7 +142,7 @@ physics, providing a way to trap a relatively cold gas of particles. It is the
 backbone of many experiments including our own~\cite{Williams2017}. In this
 section I will describe the basic operation of the common type-I MOT, that is a
 two level system where the ground state has angular momentum $F$ and the
-excited state has angular momentum $F'$ such that $F''>F$. In this example
+excited state has angular momentum $F'$ such that $F'>F$. In this example
 $F=0$ and $F'=1$ are chosen.  In reality the molecule MOT that we will discuss
 is a type-II MOT ($F'\leq F$) but such systems are more complicated and will be
 discussed in the context of our experiment in section~\ref{section:overview}.
@@ -148,7 +151,7 @@ The MOT consists of two components, a magnetic quadrupole field, and restoring
 laser beams, which are detuned from the $F\rightarrow F'$ transition by some
 amount $\delta$. This setup is shown for one dimension in
 \myfigref{theory:fig:MOT}. The Zeeman effect lifts the degeneracy of the excited state, and
-introudces the usual energy shift~\cite{Binney}
+introduces the energy shift~\cite{Binney}
 %
 \begin{equation}
   \Delta E = g_F m_F \mu_B B
@@ -261,10 +264,10 @@ corresponds to the energy exchanged by a single photon scatter
 \end{equation}
 %
 which is normally on the order of a \SI{1}{\micro\kelvin}.  Normally to achieve
-such low temperatures the MOT field is switched off, so that only the molasses
-is active, and the polarisation gradient cooling occurs across the entire
-cloud.Lower temperatures can be reached by other techniques such as evaporative
-cooling~\cite{Metcalf1999}.
+such low temperatures the magnetic field of the MOT is switched off, so that
+only the molasses is active, and the polarisation gradient cooling occurs
+across the entire cloud.Lower temperatures can be reached by other techniques
+such as evaporative cooling~\cite{Metcalf1999}.
 
 
 \subsection{Magnetic trapping}
@@ -293,14 +296,15 @@ maximum in free space.
 Note that the dependence here is on the magnitude of the magnetic field, so the
 direction of the field does not directly affect the trapping potential.
 
-To magnetically trap our particle we need to first ensure it is in a
-weak-field seeking state, and then we need to introduce a magnetic field with a
-local minimum. It is possible to transfer into either of the states
-$\ket{F=3/2, m_F=\pm3/2}$ by applying only $\sigma_\pm$ light to optically pump
-into the respective state, as was discussed for sub-Doppler cooling. After the pumping scheme it is possible (if desired)
-to transfer to either of the $\ket{F=1/2, m_F=\pm1/2}$ states by applying a
-microwave pulse~\cite{WilliamsMagnetic2018}. Depending on the sign of $g_F$ (or for the excited state $g_{F'}$) 
-one of these states is bound to be a weak-field seeker.
+To magnetically trap our particle we need to first ensure it is in a weak-field
+seeking state, and then we need to introduce a magnetic field with a local
+minimum. It is possible to transfer into either of the states $\ket{F=3/2,
+m_F=\pm3/2}$ by applying only $\sigma_\pm$ light to optically pump into the
+respective state, as was discussed for sub-Doppler cooling. After the pumping
+scheme it is possible (if desired) to transfer to either of the $\ket{F=1/2,
+m_F=\pm1/2}$ states by applying a microwave pulse~\cite{WilliamsMagnetic2018}.
+Depending on the sign of $g_F$ (or for the excited state $g_{F'}$) one of these
+states will be a weak-field seeker.
 
 Now the final ingredient is a magnetic potential with a local minimum. There
 are a plethora of examples to choose from, but the canonical choice is the
@@ -327,7 +331,7 @@ currents in the coils as well as their geometry.
   configuration for a
   Ioffe-Pritchard trap, with longitudinal currents (blue arrows) and endcap
 coils (black arrows) The field near the trap centre is also shown (pink arrow).
-\cm{reproduced from Ed's notes}}
+}
   \label{theory:fig:fields}
 \end{figure}
 
@@ -422,7 +426,7 @@ right hand rule. With such a geometry it is possible to create a rudimentary
 two-dimensional trap at a distance $h$ from the wire, by applying an external
 bias field $\mathbf{\tilde{B}}$, whose direction opposes the field of the wire.
 To create the trap at the desired bias, the strength of the field must be
-$\tilde{B}_y = B(h)$.
+$\tilde{B}_y = B_w(h)$.
 
 %TODO Use this notation in sim when descirbing calculation of the field!
 Figure \myfigref{theory:fig:simplefield} illustrates this two-dimensional trap.
@@ -486,7 +490,7 @@ The depth of the trap is $\mu \tilde{B}_y$, where $\mu$ is the magnetic dipole
 moment of the trapped particle. This can be seen in
 \mysubfigref{theory:fig:simplefield}{d}: the potential is $B = |B_w(z) +
 \tilde{B}_y|$, and so has an asymptote at $B=|\tilde{B}_y|$ as
-$z\rightarrow\infty$. We usually write this depth as a temperature
+$z\rightarrow\infty$. It is useful to write this depth as a temperature
 %
 \begin{equation}
   T  = \frac{\mu \tilde{B}_y}{k_B}.
@@ -548,9 +552,10 @@ latter case, in which case it is useful to write down the trap frequencies, the
 derivation of which is similar to the one for the six-wire field discussed in
 section~\ref{theory:magtraps}.
 %
-Since the trapping from the $I$ wire will be stronger than the $x$-axis
-confinement from the $I_1 << I$ wire, we $\omega_x$ to be the weak trapping
-direction. We again write down the field minimum
+The trapping from the $I$ wire will be stronger than the $x$-axis
+confinement from the $I_1 << I$ wire, hence the trapping frequency in this
+direction ($\omega_x$) will be lower than the trapfrequency in the other
+directions ($\omega_\perp$). We again write down the field minimum
 %
 \begin{equation}
   B_0 = \left|\tilde{B}_x + \frac{\mu_0 I_1}{2\pi h}\right|,
@@ -649,10 +654,11 @@ Although the H-trap provides a method of creating a three dimensional
 microtrap, it is not always convenient to have to use three distinct wires.
 Fortunately the H-trap can be approximated by a single wire, either in a
 U-shape for the quadrupole variant, or a Z-shape for the Ioffe-Pritchard
-variant. These are pictured in \myfigref{theory:fig:HUZ}. Note that for the U-trap
-the currents in the off-axis wires are once again anti-parallel, and in the
-Z-trap these currents are parallel. For the U- and Z-traps, we denote the
-distance between the end wires as $d$, and again refer to this as the axis.
+variant~\cite{2011Ac}. These are pictured in \myfigref{theory:fig:HUZ}. Note
+that for the U-trap the currents in the off-axis wires are once again
+anti-parallel, and in the Z-trap these currents are parallel. For the U- and
+Z-traps, we denote the distance between the end wires as $d$, and again refer
+to this as the axis.
 
 \begin{figure}[htbp]
   \centering
@@ -699,7 +705,7 @@ energy structure of diatomic molecules, which is far richer and more complex
 than the structure of atoms, due to the additional effects of vibration and
 rotation of the two nuclei. This section will explain the physics of diatomic
 molecules so that the particulars of the cooling transitions and magnetically
-trappable states can be easily explained in the next chapter. A far more
+trappable states can be easily explained in the next chapter. A more
 detailed review of the topic can be found in \inlineref{brown_carrington_2003}.
 
 \subsection{Electronic, vibrational, and rotational energy}
@@ -894,7 +900,7 @@ additional energy term that arises due to the rotation,
 
 The vibrational part of the wavefunction can be solved by the standard
 computational methods for finding the wavefunctions of anharmonic
-potentials~\cite{Foot2005}. These vibrational states form the usual ladder of
+potentials~\cite{Foot2005}. These vibrational states form a ladder of
 % TODO Check this Binney cite OK? Does he really do this?
 states inside an anharmonic potential~\cite{Binney} as pictured in
 \myfigref{theory:fig:vibtrans}. We label these states with the quantum number
@@ -937,8 +943,8 @@ we expect typical values
   E_\text{rot} = \frac{\hbar}{2 \mred{} R^0_{AB}} \sim h\times\SI{100}{\giga\hertz}
 \end{equation}
 %
-it is clear that the vibrational energy levels further perturb the vibrational
-levels.
+it is clear that the rotational energy levels can be treated as perturbations
+of the vibrational levels.
 
 \subsubsection{Qualitative summary}
 
@@ -973,10 +979,10 @@ tumbling of the two nucleii. The total energy is
 % Just basic ideas or electronic, vibrational, ro-vibrational transitions.
 % Talk more about microwave spectroscopy elsewhere?
 
-We will now state without derivation, the selection rules describing the
-allowed transitions between the various states of the molecule. We will label the original state in
-the transition $\ket{1} = \ket{q, v, R, m_R}$ and the final state $\ket{2} =
-\ket{q', v', R', m_R'}$.
+We will now state the selection rules describing the allowed transitions
+between the various states of the molecule~\cite{brown_carrington_2003}. We
+will label the original state in the transition $\ket{1} = \ket{q, v, R, m_R}$
+and the final state $\ket{2} = \ket{q', v', R', m_R'}$.
 %
 It is useful to remember that the following results are found by considering
 the intensity of the transition, which is proportional to $|d_{12}|^2$, where
@@ -999,20 +1005,20 @@ has been explained eloquently and succinctly in various texts, including
 
 \subsubsection{Pure rotational transitions}
 
-In a pure rotational transition $q'=q$ and $v'=v$. Such transitions are
-permitted only when $\Delta R = R' - R = \pm1$. The selection rule for $M_R$ is
-dependent on the polarisation of the transition light. For linearly polarised
-light $\Delta M_R = M_R' - M_R =
-0$, whereas for circularly polarised light $\Delta M_R =  \pm1$ for
-$\sigma^\mp$ polarised light.
+In a pure rotational transition, the electronic and vibrational states are
+unchanged ($q'=q$ and $v'=v$). Such transitions are permitted only when $\Delta
+R = R' - R = \pm1$. The selection rule for $M_R$ is dependent on the
+polarisation of the transition light. For linearly polarised light $\Delta M_R
+= M_R' - M_R = 0$, whereas for circularly polarised light $\Delta M_R =  \pm1$
+for $\sigma^\mp$ polarised light.
 
 \subsubsection{Vibrational transitions}
 
-In the case where $q'=q$ we have the same selection rules for any change in the
-rotational quantum numbers. It can be shown that the additional selection rule
-for the vibrational transition is $\Delta v = v' - v = \pm 1$. Of course,
-$\Delta v = 0$ is allowed, but then this reduces to the above case of a pure
-rotational transition.
+In the case where there is still no change in electronic state ($q'=q$) we have
+the same selection rules for any change in the rotational quantum numbers. It
+can be shown that the additional selection rule for the vibrational transition
+is $\Delta v = v' - v = \pm 1$. Of course, $\Delta v = 0$ is allowed, but then
+this reduces to the above case of a pure rotational transition.
 
 \subsubsection{Changing the electronic state}
 
