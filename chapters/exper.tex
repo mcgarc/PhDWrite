@@ -157,11 +157,19 @@ of tweezers. Ultimately the number of wirebonds that it was possible to produce
 was limited by the width of the wirebond pad, and the width of the wirebonder
 head. We could achieve \cm{tenish}.
 
-We considered using a ribon wirebond~\cite{}, which promises higher current
-throughput by using a ribon-shaped wire rather than a round one. This was not
-possible due to the unavailabliity of the the hardware at LCN. Another option
-was to use higher-diameter wire, but instead we attempted to directly solder
-the chip, as described in the next section.
+This was sufficient current to saturate the expected maximum current in the
+\cm{small but in um} wire. It was found that this wire could sustain up to
+\cm{some current} reliably, across multiple chips before failing. This can be
+distinguished from the failure of the wirebonds by checking the electrical
+continuity across the chip, and by visual inspection of the wire. An example of
+a failed wire is shown in \cm{another figure, or a subfigure? Who knows...}
+
+There are various options that could be used to increase the maximum current of
+the wirebonds.  We considered using a ribon wirebond~\cite{}, which promises
+higher current throughput by using a ribon-shaped wire rather than a round one.
+This was not possible due to the unavailabliity of the the hardware at LCN.
+Another option was to use higher-diameter wire, but instead we attempted to
+directly solder the chip, as described in the next section.
 
 \subsection{Solder tests}
 
@@ -170,7 +178,10 @@ This must be done carefully, as described in section~\ref{fab:solder} but
 if done correctly it yields a highly stable electrical connection. \cm{The
 UHV compatability of this method is discussed in a section to come (if I swap
 the order around, which one?)} The same current tests were performed as for the 
-wirebonded chips, as shown in \cm{the same fig or different?}
+wirebonded chips, as shown in \cm{the same fig or different?}.
+
+Solder connections allowed the application of currents up to the limit of the
+current supply. At this point 
 
 
 \section{Scatter testing}
