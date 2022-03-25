@@ -210,6 +210,43 @@ would expect instead to be limited by the reduced scattering rate in the
 off-diagaonal transitions. In this section I will \cm{either just describe the
 technique, or do this and show some results (fat chance...)}
 
+\subsection{Calculating the scattering rate}
+
+The scattering rates calculated in section \cm{ref theory} can be modified to
+apply to a multilevel system~\cite{Metcalf1999}. For a system with $n_e$
+excited and $n_g$ ground states, which we assume are all connected with equal
+strength, there is a new effective linewidth
+%
+\begin{equation}
+  \Gamma_\text{eff} = \frac{2n_e}{n_g + n_e}\Gamma
+\end{equation}
+%
+and intensity parameter
+%
+\begin{equation}
+  s_\text{eff} = \frac{2(n_g + n_e)}{n_g^2}s.
+\end{equation}
+%
+So the scattering rate becomes
+%
+\begin{equation}
+  R = \frac{f s_\text{eff}\Gamma_\text{eff}}{1 + s_\text{eff} +
+    \delta_\text{eff}}
+\end{equation}
+%
+where we have $\delta_\text{eff} = (\omega-\omega_0)/\Gamma$. \cm{And the
+  factor of $f$ comes in to ruin my life.}
+%
+\cm{I need to introduce stauration intensity concept in theory ch.}
+%
+Note that the new intensity paramater corresponds to a new effective saturation
+intensity
+%
+\begin{equation}
+  I_\text{s, eff} = \frac{n_g^2}{2(n_g + n_2)}I_s.
+\end{equation}
+
+
 \subsection{Implementation in \CaF{}}
 
 % TODO Show name and model of bandpass filter
