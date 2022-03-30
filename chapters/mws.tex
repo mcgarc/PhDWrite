@@ -351,26 +351,18 @@ Material & $\sigma$ ($\times10^6\si{\siemens\per\meter}$) & $\mu_r$ & Ref. \\ [ 
 
 As can be seen by comparing the values in \mytableref{mws:table:diprops} and
 \myfigref{mws:fig:conductorloss}, the conductor losses clearly dominate over
-the dielectric losses. For this reason it is common to use superconductors for
-CPWs~\cite{}, since for a superconductor $\sigma \to \infty$ and hence $R_s$
-and $\alpha_c \to 0$.  This will not prevent the implementation of a microwave
-guide on a multi-layer chip trap, but it will impact our ability to build
-incorporate a microwave resonator as we will now discuss.
-
-That said, it should be noted that the high loss will not prevent the use of
-the CPW to directly drive microwave transitions in trapped molecules. This
-would allow the same coherent control achieved in free space
-experiments~\cite{WilliamsMagnetic2018} although realisation of the
-% TODO Maybe this is just JCH here? Could probably ref eqn once I sort out the
-% theory...
-Jaynes-Cummings Hamiltonian will
-clearly not be possible and a strong driving field may be required to overcome
-losses.  With loss of $\alpha \approx \alpha_c$, and waveguides of lengths on
+the dielectric losses.
+%
+With loss of $\alpha \approx \alpha_c$, and waveguides of lengths on
 the scale of a few centimeter, we can expect a total loss of around
 $\SI{400}{\per\metre} \times \SI{0.01}{\metre} = \SI{35}{\decibel}$. This
 should be sufficiently small that microwaves of the required power to drive
 rotational transitions will be able to reach molecules
 trapped on the chip.~\cite{Treutlein2008}
+%
+However, such high conductor losses will prevent the implmentation of a
+high-$Q$ microwave resonator on the chip, as we will discuss in the next
+section.
 
 \subsection{CPW resonators}
 \label{mws:resonators}
@@ -412,7 +404,7 @@ expressed in terms of an attenuation constant
 \end{equation}
 %
 From \myfigref{mws:fig:conductorloss} and \mytableref{mws:table:diprops} we
-find that without the use of superconductors, the attenuation will be dominated
+find that using conventional materials, the attenuation will be dominated
 by conductor losses, and $Q\sim10$. This is not sufficient for our purposes.
 
 % TODO Could improve the prose here
@@ -442,9 +434,128 @@ Having established the principles of the CPW, and that such a device can
 operate on a polyimide substrate, we can now consider the logistics of
 implementing such a device with our design. In this section we will consider
 the details of the how the coupling of molecules to a CPW can work in practice,
-including tuning the molecular rotational frequency using the Stark shift,  the
-delivery of microwaves to the science chip, and schemes for sideband cooling
-and state readout with the microwaves.
+including the coupling Hamiltonian, tuning the molecular rotational frequency
+using the Stark shift,  the delivery of microwaves to the science chip, and
+schemes for sideband cooling and state readout with the microwaves.
+
+\subsection{Cavity quantum electrodynamics}
+
+For our purposes, the coupling of a single molecule and the microwave field can
+be treated as the coupling of a two-level system to a quantum mode of a cavity
+field. The canonical description of such a system is given by the familiar
+Jaynes-Cummings Hamiltonian (JCH) in the rotating wave
+approximation~\cite{gerry_knight_2004}, which we will now briefly review. The
+relevant Hamiltonian is
+%
+\begin{equation}
+  H_\text{JC} = \hbar\omega_c a^\dagger a + \frac{\hbar \omega_0}{2} \sigma_z +
+  \frac{\hbar\Omega}{2}(a^\dagger \sigma_- + a\sigma_+)
+  \label{theory:eqn:JCH}
+\end{equation}
+%
+where $a$ ($a^\dagger$) is the annihilation (creation) operator of the photons,
+$\Omega$ is the Rabi frequency of the interaction, $\sigma_i$ with $i\in{x, y,
+z}$ are the Pauli matrices, and $\sigma_\pm = (\sigma_x \pm i\sigma_y)/2$ are
+the raising and lowering operators of the molecule state. The detuning of the
+cavity resonance from that of the spin is $\Delta = \omega_0 - \omega_c$. The
+system is shown in \mysubfigref{theory:fig:JCHstates}{a}.
+
+\begin{figure}
+  %\includegraphics{}
+  \cm{Part (a) is image of JCH system, (b) is state manifold without coupling
+  or detuning, (c) is state manifold with coupling (d) adds detuning (similar
+  to Bohi fig 1)}
+  \caption{\cm{TODO}}
+  \label{theory:fig:JCHstates}
+\end{figure}
+
+We denote the ground (exicted) state of the molecule as $\ket{g}$ ($\ket{e}$).
+The light field state can be taken to be a Fock state ($\ket{n}$ with $n \in
+\mathbb{Z}$). Note that the final term in equation~\ref{theory:eqn:JCH}) has
+the effect of exciting the ground state while absorbing a photon
+($\ket{g}\ket{n} \leftrightarrow \ket{e}\ket{n-1}$) or lowering the excited state
+and releasing a photon ($\ket{e}\ket{n} \leftrightarrow \ket{g}\ket{n+1}$).
+
+Following the procedure in \inlineref{gerry_knight_2004}, we can see that this
+mixing of the states results in a shift of the energy levels to create the
+dressed states
+%
+\begin{align}
+  \ket{+, n} &= \cos\Phi_n \ket{g}\ket{n} + \sin\Phi_n \ket{e}\ket{n+1} \\
+  \ket{-, n} &= -\sin\Phi_n \ket{g}\ket{n} + \cos\Phi_n \ket{e}\ket{n+1}
+\end{align}
+%
+with
+%
+\begin{equation}
+  \tan(2\Phi_n) = \frac{\Omega\sqrt{n+1}}{\Delta}
+\end{equation}
+%
+and having shifted energies
+%
+\begin{equation}
+  E_{\pm, n} = (n+1)\hbar\omega_c \pm \frac{\hbar}{2}\sqrt{\Omega^2(n+1) +
+  \Delta^2}.
+  \label{theory:eqn:JCHenergies}
+\end{equation}
+%
+It is useful to consider the manifold of states as depicted in
+\myfigref{theory:fig:JCHstates}.  
+%TODO This fig
+Note that in the limit of no coupling
+($\Omega = 0$) and no detuning ($\Delta = 0$) the energies are that of the bare
+states, and $\ket{g}\ket{n+1}$ is degenerate with $\ket{e}\ket{n}$, as in part
+(b) of the subfigure. Introducing coupling ($\Omega \neq 0$) lifts this
+degeneracy, as in part (c). When the detuning is non-zero ($\Delta \neq 0$)
+there is additional offset due to the second term in
+\myeqref{theory:eqn:JCHenergies}, see part (d) of the figure.
+
+The strong coupling r\'egime is reached when the coupling $g=2\Omega$ is
+greater than the rate of decay from the cavity $\kappa = \omega_0 / Q$, where
+$Q$ is called the quality factor of the cavity. The coupling parameter is
+related to the transition dipole moment $d$ and the amplitude of the electric
+field $E_0$ by
+%
+\begin{equation}
+  \hbar g = \frac{d E_0}{2}.
+\end{equation}
+%
+For the resonator, the amplitude of the electric field can be expressed in
+terms of the cavity parameters by considering the electric field density
+%
+\begin{equation}
+  \frac{1}{2} \epsilon_0 E_0 = \frac{\hbar \omega_0}{V}
+\end{equation}
+%
+where $V$ is the volume of the mode in the cavity. The idea is to confine the
+molecules in a trap that is on the $w=\SI{10}{\micro\meter}$ scale (see
+chapter~\ref{overview}) and the resonator will necessarily have a length on the
+scale of $\lambda_0 = 2\pi c / \omega_0$, therefore $V\approx w^2\lambda_0$.
+Hence we have that
+%
+\begin{equation}
+  g = \sqrt{\frac{2\pi c d^2}{\hbar \epsilon_0 w^2 \lambda_0^2}}.
+\end{equation}
+
+% TODO maybe move this whole sentence above
+For the rotational \CaF{} transitions that we introduced above, in
+section~\ref{theory:molecules} $d = \mu/\sqrt{3}$ with $\mu =
+\SI{31}{\debye}$.
+%
+The coupling strength is therefore expected to be
+%
+% See nbs/2022-02-08_coupling.nb
+\begin{equation}
+  \frac{g}{2\pi} = \SI{20}{\kilo\hertz}
+\end{equation}
+%
+and for strong coupling a cavity quality of
+%
+\begin{equation}
+  Q = \frac{\omega_0}{g} > 1.7 \times 10^5
+\end{equation}
+%
+is required.
 
 \subsection{Stark shift}
 
