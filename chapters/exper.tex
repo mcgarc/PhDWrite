@@ -193,6 +193,24 @@ current supply. At this point
 imaging, but this creates a load of scatter which reduces SNR. We call this
 something like direct-imaging...}
 
+There are various possible methods of imaging \CaF{}. Of course in a MOT or
+molasses it is possible to simply observe the scattered light to see a cloud,
+but in a beam experiment~\cite{} or in the context of the chip trap, we must
+introduce light just for the purposes of imaging. This is performed routinely
+in the exiting experiment, with \pewpew{C}{00} used to excite molecules to
+$A(v=0)$. The molecules then spontaneously decay to the $X$ state, and we image
+the \SI{606}{\nano\meter} light that is emitted when they decay to $X(v=0)$.
+This can be done with a CCD to image a cloud, or in a beam experiment a PMT
+may be used. \cm{No undefined acronyms...}
+
+In this same-wavelength imaging (SWI) method any light that is scattered from
+the surroundings can make its way to the detector and create a background
+scatter, reducing signal-to-noise ratio (SNR). This is a common problem in
+imaging of molecular clouds, and steps such as painting the chamber and its
+components black are taken to reduce scatter~\cite{}. However such \cm{methods}
+may not be sufficient or possible for a chip experiment, where we want to image
+molecules close to a surface that could be highly reflective.
+
 One possible method of reducing background whilst imaging molecules is Raman
 Resonance Optical Cycling (RROC), an background-free imaging scheme recently
 proposed and demonstrated using \SrF{} in \inlineref{Shaw2021}. In this scheme,
@@ -203,7 +221,7 @@ $>\SI{10}{\tera\hertz}$, and so it is possible to use a bandpass filter to
 exclude the imaging light from any measurement. For an ideal bandpass filter
 this would remove any background from imaging light scattered by the apparatus.
 
-Reference~\cite{Shaw2021} reports a suppersion of scattered light by a factor
+Reference~\cite{Shaw2021} reports a suppresion of scattered light by a factor
 of $\sim10^6$, and an average emission of 20 photons per molecule. In this
 experiment, a beam of molecules was imaged, and this emission is limited by the
 interaction time during travel. For imaging a stationary cloud of molecules we
@@ -262,7 +280,6 @@ When they are saturated, the maximum scattering rate is the same as for a
 \begin{equation}
   R_\text{max} = \frac{\Gamma_\text{eff}}{2}.
 \end{equation}
-
 
 \subsection{Implementation in \CaF{}}
 
