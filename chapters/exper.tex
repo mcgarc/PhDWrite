@@ -190,7 +190,8 @@ current supply. At this point
 \section{Background-free imaging}
 
 \cm{Normally we just image with 606nm light and do light-induced fluorescence
-imaging, but this creates a load of scatter which reduces SNR.}
+imaging, but this creates a load of scatter which reduces SNR. We call this
+something like direct-imaging...}
 
 One possible method of reducing background whilst imaging molecules is Raman
 Resonance Optical Cycling (RROC), an background-free imaging scheme recently
@@ -221,29 +222,45 @@ strength, there is a new effective linewidth
   \Gamma_\text{eff} = \frac{2n_e}{n_g + n_e}\Gamma
 \end{equation}
 %
-and intensity parameter
+which arises because at saturation, the scattered particle spends approximately
+the same amount of time in each of the states. Similarly there is an effective
+intensity parameter,
 %
 \begin{equation}
-  s_\text{eff} = \frac{2(n_g + n_e)}{n_g^2}s.
+  s_\text{eff,v',v} = \frac{2(n_g + n_e)}{n_g^2}q_{v',v}s
 \end{equation}
 %
-So the scattering rate becomes
+which also includes the the Franck-Condon factor $q_{v', v}$ . This accounts
+for the varying strength of transitions between vibrational states in a
+diatomic molecules (\cm{reference section}).
+
+Making the substitutions $\Gamma\rightarrow\Gamma_\text{eff}$ and $s\rightarrow
+s_\text{eff}$ into \cm{relevant equation} we have the scattering rate between
+levels $v'$ and $v$ as
 %
 \begin{equation}
-  R = \frac{f s_\text{eff}\Gamma_\text{eff}}{1 + s_\text{eff} +
-    \delta_\text{eff}}
+  R_{v',v} = \frac{q_{v',v} s_\text{eff}\Gamma_\text{eff}}{1 + q_{v',v}
+  s_\text{eff} + \delta}.
 \end{equation}
 %
-where we have $\delta_\text{eff} = (\omega-\omega_0)/\Gamma$. \cm{And the
-  factor of $f$ comes in to ruin my life.}
-%
-\cm{I need to introduce stauration intensity concept in theory ch.}
-%
-Note that the new intensity paramater corresponds to a new effective saturation
-intensity
+From now on we will take $\delta = 0$. Notice that introducing $s_\text{eff}$
+is equivalent to a change in the saturation intensity
 %
 \begin{equation}
-  I_\text{s, eff} = \frac{n_g^2}{2(n_g + n_2)}I_s.
+  I_\text{s, eff, v', v} = \frac{n_g^2}{2(n_g + n_e)}q_{v',v}I_s.
+\end{equation}
+%
+%
+Typical off-diagonal Franck-Condon factors will be $q_{v',v} \sim 10^{-2}$
+(this scheme will only work when the molecule chosen is highly diagonal) and
+$n_g \sim n_e$, so significantly more intensity is required to saturate these
+off-diagonal transitions. 
+% TODO Again, need to talk about this for simple case in theory
+When they are saturated, the maximum scattering rate is the same as for a
+\cm{direct-imaging scheme}
+%
+\begin{equation}
+  R_\text{max} = \frac{\Gamma_\text{eff}}{2}.
 \end{equation}
 
 
@@ -254,9 +271,9 @@ intensity
 This scheme for \CaF{} is shown in \myfigref{exper:fig:bgfreelevels}. The
 \pewpew{}{01} and \pewpew{}{10} light is used to drive the transitions at
 \SI{585}{\nano\meter} and \SI{628}{\nano\meter} respectively (see
-\mytableref{overview:table:lasers}). Fluorescenc from the decay on the
+\mytableref{overview:table:lasers}). Fluorescence from the decay on the
 \SI{606}{\nano\meter} transitions $v'=0\rightarrow v=0$ and $v'=1\rightarrow
-v=1$ is isolated by a bandpassfilter, and can be imaged without the usual
+v=1$ is isolated by a bandpass filter, and can be imaged without the usual
 background scatter.
 
 \begin{figure}
@@ -270,6 +287,49 @@ background scatter.
   }
   \label{exper:fig:bgfreelevels}
 \end{figure}
+
+There are $n_g = 24$ ground states and $n_e = 8$ excited states,\footnote{There
+are $\sum_{F\in\{1,0,1,2\}}(2F+1) = 12$ Zeeman substates in $X(v=0)$ and the
+same in $X(v=1)$, they are shown in \cm{magstate figure}. The case is similar
+for $A(v=0)$ and $A(v=1)$.}
+%
+The relevant Franck-Condon factors are
+%
+\begin{align}
+  q_{0,1} &= 0.03,\\
+  q_{1,0} &= 0.015.\\
+\end{align}
+%
+In practice a further factor of 3 is required to account for the fact that the
+polarisation of the light is effectively random with respect to the orientation
+of the molecules. So the scattering total scattering rate at saturation is
+%
+\begin{align}
+  R_\text{max} &= R_{0,1} + R_{1,0}\\
+               &= (q_{0,1} + q_{1,0})\frac{\Gamma n_e}{2\times3\times(n_e + n_g)}
+               &= \SI{1.96}{\mega\hertz}.
+\end{align}
+%
+or $(q_{0,1} + q_{1,0}) = \SI{1.5}{\percent}$ of the scattering rate for the
+standard fluorescence imaging technique using \pewpew{C}{00}.
+
+% This is mostly junk
+%In \inlineref{Shaw2021} it is reported that the RROC scheme will produce a
+%lower scattering rate than the DI scheme below saturation, but at saturation it
+%is possible to obtain higher scattering rates with the RROC scheme. This is
+%because the authors compare RROC to a DI scheme which includes a
+%$v=1\rightarrow v'=0$ repump. This means that the $X(v=1)$ states must be
+%included when counting the ground states for DI, but not the $A(v=1)$. In other
+%words, $\Gamme_\text{eff}$ changes between the two schemes, which does not
+%occur here.
+%
+%This is different
+%from the result in \inlineref{Shaw2021}, because the authors compare their RROC
+%scheme to a LIF scheme acting on $v=0 \rightarrow v'=0$ combined with a
+%$v=1\rightarrow v'=0$ repump. When the repump is included there are additional
+%ground states, but not additional excited states, which results in a higher
+%maximum scattering rate in the RROC scheme.
+
 
 \subsection{Results}
 
