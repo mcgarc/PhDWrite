@@ -112,10 +112,10 @@ distinguish the $X\rightarrow B$ transition.
 The permitted decay paths are shown by the dashed lines, along with their
 branching ratios. One of the reasons \CaF{} is chosen for study over other
 molecules is its highly diagonal Franck-Condon factors, so that most decays
-occur with $v'=v$. However for large numbers of scattered photons we must
-employ the various repump lasers to avoid pumping into states that are dark to
-the cooling light, as we shall see when we discuss slowing of the beam and the
-MOT.
+occur with $v'=v$. However, as we discussed in section~\ref{thoery:coolmols},
+for large numbers of scattered photons we must employ the various repump lasers
+to avoid pumping into states that are dark to the cooling light. This will be
+discussed further when describing slowing of the beam and the MOT.
 
 Hyperfine splitting occurs in \CaF{} due to the spin-half contribution of the
 fluorine atom. This is not resolved in the $A$ state, but we account for the
@@ -252,34 +252,31 @@ $\sim3$~\cite{Jurgilas2021}.
 \subsection{Capture in a MOT}
 \label{overview:MOT}
 
-Positioned \SI{130}{\centi\meter} from the cell's exit aperture is the centre
-of the MOT chamber. The MOT magnetic field is provided by in-vacuum
-anti-Helmholtz coils, and the \pewpew{}{00}, \pewpew{}{10}, \pewpew{}{21},
-\pewpew{}{32} light is incident on the molecules. These lasers are combined to
-form a single beam, which is reflected along each axis before being
-retro-reflected through the entire experiment to provide the restoring beams.
+We aim to capture molecules in a MOT positioned \SI{130}{\centi\meter} from the
+cell's exit aperture inside a separate vacuum chamber. The MOT magnetic field
+is provided by in-vacuum anti-Helmholtz coils and the MOT light is formed from
+a single beam which is reflected along each axis before being retro-reflected
+through the entire experiment to provide the restoring beams.
 %
-The operating principle of the \CaF{} MOT is similar to those described in
-\cm{ref section in theory}, but with some key differences that we outline here.
-A complete description is far beyond the scope of this overview, and has been
-described in detail elsewhere, for example see \inlineref{Williams2017}.  We
-will not discuss an important alternative scheme for forming a \CaF{} MOT, the
-r.f.\ MOT, a description of which can be found in
-\inlineref{PhysRevLett.119.103201}.
+We described in section~\ref{theory:coolmols} that laser cooling and trapping of diatomic
+molecules requires us to address three key differences to atomic systems. The
+first is the repumping of the vibational levels, which we have already allueded
+to for the slowing. We apply vibrational repumps (\pewpew{}{10}, \pewpew{}{21}
+and \pewpew{}{32}) along with the main cooling light (\pewpew{}{00}), to avoid
+populating the dark states.  All of these beams must have the r.f.\ sidebands
+to address the hyperfine levels of the $X$ state (recall that the hyperfine
+levels of $A$ are unresolved).
 
-First, the significant number of photon scatters in the MOT mean that it is
-necessary to apply the vibrational repumps (\pewpew{}{10}, \pewpew{}{21} and
-\pewpew{}{32}) along with the main cooling light (\pewpew{}{00}), or else
-molecules will be pumped into these dark states. All of these beams must have
-the r.f.\ sidebands to address the hyperfine levels of the $X$ state (recall
-that the hyperfine levels of $A$ are unresolved).
-
-The second nuance is that the \CaF{} MOT is that it is a type-II MOT~\cite{1367-2630-18-12-123017},
-meaning that the angular momentum of the excited state ($A(v=0)$, with $F'=1$)
-is less than that of the ground state ($X(v=0)$ with $F=2$). Unlike a type-I
-MOT (where $F'>F$), it is therefore possible for a molecule that has been
-pumped into the excited state to decay into a dark state, or into a state that
-is anti-trapped by the MOT~\cite{}.
+The second nuance is the rotational branching, which we avoid by cooling on the
+$X(N=1) \rightarrow A(N=0)$ transition. This immediately leads to the third
+nuance, which is the remixing of resulting dark states. 
+%
+The \CaF{} MOT is a type-II MOT~\cite{1367-2630-18-12-123017}, meaning that the
+angular momentum of the excited state ($A(v=0)$, with $F'=1$) is less than that
+of the ground state ($X(v=0)$ with $F=2$). Unlike a type-I MOT (where $F'>F$),
+it is therefore possible for a molecule that has been pumped into the excited
+state to decay into a dark state, or into a state that is anti-trapped by the
+MOT~\cite{Fitch2021}.
 %
 To resolve this, we employ a dual-frequency MOT. The main MOT transition is
 addressed by the \pewpew{}{00} light, with r.f.\ sidebands added to address the
@@ -322,6 +319,12 @@ The MOT temperature is reduced to its minimum value by lowering the intensity
 of \pewpew{}{00}, since this reduces the effects of sub-Doppler
 heating~\cite{Truppe2017}. We typically observe MOT temperatures of
 $<\SI{4}{\milli\kelvin}$.
+%
+A complete description of the \CaF{} MOT is far beyond the scope of this
+overview, and has been described in detail elsewhere, for example see
+\inlineref{Williams2017}. We will not discuss an important alternative scheme
+for forming a \CaF{} MOT, the r.f.\ MOT, a description of which can be found in
+\inlineref{PhysRevLett.119.103201}.
 
 \subsection{Optical molasses}
 
