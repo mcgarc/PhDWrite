@@ -221,72 +221,8 @@ $>\SI{10}{\tera\hertz}$, and so it is possible to use a bandpass filter to
 exclude the imaging light from any measurement. For an ideal bandpass filter
 this would remove any background from imaging light scattered by the apparatus.
 
-Reference~\cite{Shaw2021} reports a suppresion of scattered light by a factor
-of $\sim10^6$, and an average emission of 20 photons per molecule. In this
-experiment, a beam of molecules was imaged, and this emission is limited by the
-interaction time during travel. For imaging a stationary cloud of molecules we
-would expect instead to be limited by the reduced scattering rate in the
-off-diagaonal transitions. In this section I will \cm{either just describe the
-technique, or do this and show some results (fat chance...)}
-
-\subsection{Calculating the scattering rate}
-
-The scattering rates calculated in section \cm{ref theory} can be modified to
-apply to a multilevel system~\cite{Metcalf1999}. For a system with $n_e$
-excited and $n_g$ ground states, which we assume are all connected with equal
-strength, there is a new effective linewidth
-%
-\begin{equation}
-  \Gamma_\text{eff} = \frac{2n_e}{n_g + n_e}\Gamma
-\end{equation}
-%
-which arises because at saturation, the scattered particle spends approximately
-the same amount of time in each of the states. Similarly there is an effective
-intensity parameter,
-%
-\begin{equation}
-  s_\text{eff,v',v} = \frac{2(n_g + n_e)}{n_g^2}q_{v',v}s
-\end{equation}
-%
-which also includes the the Franck-Condon factor $q_{v', v}$ . This accounts
-for the varying strength of transitions between vibrational states in a
-diatomic molecules (\cm{reference section}).
-
-Making the substitutions $\Gamma\rightarrow\Gamma_\text{eff}$ and $s\rightarrow
-s_\text{eff}$ into \cm{relevant equation} we have the scattering rate between
-levels $v'$ and $v$ as
-%
-\begin{equation}
-  R_{v',v} = \frac{q_{v',v} s_\text{eff}\Gamma_\text{eff}}{1 + q_{v',v}
-  s_\text{eff} + \delta}.
-\end{equation}
-%
-From now on we will take $\delta = 0$. Notice that introducing $s_\text{eff}$
-is equivalent to a change in the saturation intensity
-%
-\begin{equation}
-  I_\text{s, eff, v', v} = \frac{n_g^2}{2(n_g + n_e)}q_{v',v}I_s.
-\end{equation}
-%
-%
-Typical off-diagonal Franck-Condon factors will be $q_{v',v} \sim 10^{-2}$
-(this scheme will only work when the molecule chosen is highly diagonal) and
-$n_g \sim n_e$, so significantly more intensity is required to saturate these
-off-diagonal transitions. 
-% TODO Again, need to talk about this for simple case in theory
-When they are saturated, the maximum scattering rate is the same as for a
-\cm{direct-imaging scheme}
-%
-\begin{equation}
-  R_\text{max} = \frac{\Gamma_\text{eff}}{2}.
-\end{equation}
-
-\subsection{Implementation in \CaF{}}
-
-% TODO Show name and model of bandpass filter
-
-This scheme for \CaF{} is shown in \myfigref{exper:fig:bgfreelevels}. The
-\pewpew{}{01} and \pewpew{}{10} light is used to drive the transitions at
+This scheme is shown for \CaF{} in \myfigref{exper:fig:bgfreelevels}, where
+the \pewpew{}{01} and \pewpew{}{10} light is used to drive the transitions at
 \SI{585}{\nano\meter} and \SI{628}{\nano\meter} respectively (see
 \mytableref{overview:table:lasers}). Fluorescence from the decay on the
 \SI{606}{\nano\meter} transitions $v'=0\rightarrow v=0$ and $v'=1\rightarrow
@@ -305,48 +241,108 @@ background scatter.
   \label{exper:fig:bgfreelevels}
 \end{figure}
 
-There are $n_g = 24$ ground states and $n_e = 8$ excited states,\footnote{There
-are $\sum_{F\in\{1,0,1,2\}}(2F+1) = 12$ Zeeman substates in $X(v=0)$ and the
-same in $X(v=1)$, they are shown in \cm{magstate figure}. The case is similar
-for $A(v=0)$ and $A(v=1)$.}
+Reference~\cite{Shaw2021} reports a suppresion of scattered light by a factor
+of $\sim10^6$, and an average emission of 20 photons per molecule. In this
+experiment, a beam of molecules was imaged, and this emission is limited by the
+interaction time during travel. For imaging a stationary cloud of molecules we
+would expect instead to be limited by the reduced scattering rate in the
+off-diagaonal transitions. In this section I will \cm{either just describe the
+technique, or do this and show some results (fat chance...)}
+
+\subsection{Calculating the scattering rate}
+
+The scattering rates calculated in section \cm{ref theory} can be modified to
+apply to a multilevel system~\cite{Metcalf1999}. For a system with $n_e$
+excited and $n_g$ ground states, which we assume are all connected with equal
+strength (this can be ensured by applying a magnetic field to remix dark
+states), there is a new effective linewidth~\cite{}
 %
+\begin{equation}
+  \Gamma_\text{eff} = \frac{2n_e}{n_g + n_e}\Gamma
+\end{equation}
+%
+which arises because at saturation, the scattered particle spends approximately
+the same amount of time in each of the states. Similarly there is an effective
+intensity parameter,
+%
+\begin{equation}
+  s_\text{eff} = \frac{2(n_g + n_e)}{n_g^2}.
+\end{equation}
+%
+
+Making the substitutions $\Gamma\rightarrow\Gamma_\text{eff}$ and $s\rightarrow
+s_\text{eff}$ into \cm{relevant equation} we have the scattering rate between
+levels $v'$ and $v$ as
+%
+\begin{equation}
+  R = \frac{s_\text{eff}\Gamma_\text{eff}}{1 + s_\text{eff} + \delta}.
+\end{equation}
+%
+From now on we will take $\delta = 0$.
+
+Notice that introducing $s_\text{eff}$ is equivalent to a change in the
+saturation intensity
+%
+\begin{equation}
+  I_\text{s, eff} = \frac{n_g^2}{2(n_g + n_e)}I_s.
+\end{equation}
+%
+However we have made an implicit assumption that the transition being driven is
+\cm{strongly coupled to the light}, which is not true in the case of the
+off-diagonal transitions. Here we are limited by the photon excitation rate,
+which is
+%
+\begin{equation}
+  R_\text{ex} = \frac{\Omega^2}{\Gamma}
+\end{equation}
+%
+with $\Omega$ as the usual Rabi frequency
+%
+\begin{equation}
+  \hbar \Omega = \bra{g}\mathbf{d}\cdot\mathbf{E}\ket{g}.
+\end{equation}
+%
+\cm{define quantities}
+%
+This quantity can be estimated as follows, first take the orientation of the
+molecule to be random with respect to the light field, so that the dot product
+averages across the ensemble to give $dE/3$. Next, we consider the matrix
+element $\bra{g}d\ket{e}$ as discussed in \cm{reference transition section}.
+This term will contribute an electronic factor ($d_e\SI{6}{\debye}$
+for the $A\rightarrow X$ transition in \CaF{}), a vibrational factor (the
+square root Franck-Condon factor $q_{v',v}$) and a rotational part
+(approximately $1/\sqrt{3}$). The field amplitude is related to the instnsity
+in the usual way, so the excitation rate is
+%
+\begin{equation}
+  R_\text{ex} \approx \frac{2 d_e^2 q_{v',v}}{81 \hbar^2 c \epsilon_0 \Gamma}I.
+\end{equation}
+
 The relevant Franck-Condon factors are
 %
 \begin{align}
   q_{0,1} &= 0.03,\\
-  q_{1,0} &= 0.015.\\
+  q_{1,0} &= 0.015,\\
+  q_{0,0} &\approx q_{1,1} \approx 1,
 \end{align}
 %
-In practice a further factor of 3 is required to account for the fact that the
-polarisation of the light is effectively random with respect to the orientation
-of the molecules. So the scattering total scattering rate at saturation is
-%
-\begin{align}
-  R_\text{max} &= R_{0,1} + R_{1,0}\\
-               &= (q_{0,1} + q_{1,0})\frac{\Gamma n_e}{2\times3\times(n_e + n_g)}
-               &= \SI{1.96}{\mega\hertz}.
-\end{align}
-%
-or $(q_{0,1} + q_{1,0}) = \SI{1.5}{\percent}$ of the scattering rate for the
-standard fluorescence imaging technique using \pewpew{C}{00}.
+and since the off-diagonal ($v' \neq v$) are a factor of $\sim100$ smaller than
+the diagonal transitions, an increase in the intensity of the same factor is
+required to achieve the same scattering rates here as for the diagonal
+transitions. Since the two transitions are uncoupled, the total scattering rate
+for the RROC scheme will be the lower of these two $R_\text{ex}$ values.
 
-% This is mostly junk
-%In \inlineref{Shaw2021} it is reported that the RROC scheme will produce a
-%lower scattering rate than the DI scheme below saturation, but at saturation it
-%is possible to obtain higher scattering rates with the RROC scheme. This is
-%because the authors compare RROC to a DI scheme which includes a
-%$v=1\rightarrow v'=0$ repump. This means that the $X(v=1)$ states must be
-%included when counting the ground states for DI, but not the $A(v=1)$. In other
-%words, $\Gamme_\text{eff}$ changes between the two schemes, which does not
-%occur here.
-%
-%This is different
-%from the result in \inlineref{Shaw2021}, because the authors compare their RROC
-%scheme to a LIF scheme acting on $v=0 \rightarrow v'=0$ combined with a
-%$v=1\rightarrow v'=0$ repump. When the repump is included there are additional
-%ground states, but not additional excited states, which results in a higher
-%maximum scattering rate in the RROC scheme.
+\subsection{Experimental implementation}
 
+The \pewpew{}{01} laser used for this experiment is the Spectra 380D, a single
+frequency ring dye laser, using \cm{name of dye}. The power output at
+\SI{585}{\nano\meter} is expected to have a maximum of \cm{??}, which means
+that a \cm{??} diameter beam or smaller is required to saturate the transition.
+Due to this limitation we performed two experiments: identifying the transition
+in the \CaF{} beam using a narrow laser beam waist, and imaging the \CaF{}
+cloud in the MOT chamber with a \SI{5}{\milli\meter} $1/e$ diameter waist.
+
+The 
 
 \subsection{Results}
 
