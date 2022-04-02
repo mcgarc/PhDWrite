@@ -332,8 +332,6 @@ required to achieve the same scattering rates here as for the diagonal
 transitions. Since the two transitions are uncoupled, the total scattering rate
 for the RROC scheme will be the lower of these two $R_\text{ex}$ values.
 
-\subsection{Experimental implementation}
-
 The \pewpew{}{01} laser used for this experiment is the Spectra 380D, a single
 frequency ring dye laser, using \cm{name of dye}. The power output at
 \SI{585}{\nano\meter} is expected to have a maximum of \cm{??}, which means
@@ -342,26 +340,79 @@ Due to this limitation we performed two experiments: identifying the transition
 in the \CaF{} beam using a narrow laser beam waist, and imaging the \CaF{}
 cloud in the MOT chamber with a \SI{5}{\milli\meter} $1/e$ diameter waist.
 
-The laser system for \pewpew{}{01} is shown in \myfigref{exper:fig:laser}. The
-beam is collimated to \cm{1/e diameter} and then split on a glass plate. The
-majority of the power goes on to the main branch of the system, and the two
-pickoffs are directed to the reference cavity (for local locking) and wavemeter
-\cm{be more specific}.
-%
-In the main branch there is an EOM \cm{be more specific about frequency, etc.}, to provide the sidebands which address the
-hyperfine levels of the $X$ state. These are the same as the ones discussed in
-\cm{section and also paper maybe?} This was not included for the experiment
-imgaging the molecule beam \cm{I think}. For experiments in the MOT chamber an
-AOM \cm{which one?} in a single-pass configuration to control switching \cm{by
-  picking off first order}
+\section{Identifying the transition frequency}
+
+In this first experiment \pewpew{}{01} was used to identify the $X(v=0)
+\rightarrow A(v=1)$ transition frequency. A pulsed beam of \CaF{} was addressed
+with \pewpew{}{01}, with the laser frequency scanned across the pulses. At
+resonance, the laser drives the transition and light-induced fluorescence can
+be observed. The apparatus is shown in \myfigref{exper:fig:beamapp}. A cavity
+referenced to \cm{780nm Rb transition} and a wavemeter were used to reference
+the laser frequency.
 
 \begin{figure}
   \centering
-  \cm{Schematic of laser system}
+  \cm{Figure of (full?) laser system and the beam apparatus}
+  \caption{}
+  \label{exper:fig:beamapp}
+\end{figure}
+
+A buffer-gas source (\cm{see section}) was used to produce the \CaF{} beam,
+which had \cm{mols per steradian}, \cm{as established by imaging on the
+$X(v=0)\rightarrow A(v=0)$ transition. The beam was driven by \pewpew{}{01}
+with \cm{diameter} and \cm{intensity}. Light-induced fluorescence was imaged
+using a \cm{lens, spec and position}, focusing onto a photo-multiplier tube
+(PMT) \cm{in some place}.
+
+The laser frequency was scanned \cm{from x to y in df intervals with some
+repetition?}. The signal from the PMT is shown as a function of the \cm{cavity
+freq or voltage} in \myfigref{exper:fig:beamresult}. A strong peak was found at
+\cm{frequency}, with a small sideband at \cm{??} \cm{maybe this has something
+to do with fine structure?}. \cm{The peak is smaller than a typical 606nm peak
+but hopefully we have better SNR?}
+
+\begin{figure}
+  \centering
+  \cm{Result of beam experiment graph}
+  \caption{}
+  \label{exper:fig:beamresult}
+\end{figure}
+
+\subsubsection{Imaging the \CaF{} cloud}
+
+% TODO Probably need to say that the two sources are different and give the new
+% beam parameters
+% TODO Leaves out a lot of details. Maybe do the figure first and then come
+% abck to this? E.g.
+% Mag fields
+% Retroreflection
+% How we did imaging (lenses and cameras, bandpass filter)
+Having identified the $X(v=0)\rightarrow A(=1)$ transition we attempted to use 
+the RROC scheme to image \CaF{} molecules in the MOT chamber. The molecules
+were captured from the beam and captured in a MOT \cm{how many?} they were held
+for \cm{time} before being cooled in the blue-detuned molasses. We Then turned
+off \pewpew{}{00} and turned on \pewpew{}{01} to enact the RROC scheme. The
+apparatus and procedure are detailed in \myfigref{}.
+
+\begin{figure}
+  \centering
+  \cm{Imagingin another two part fig, one with experiment timeline and another
+  with the apparatus. Laser system shown with beam experiment}
   \caption{}
   \label{exper:fig:laser}
 \end{figure}
 
-\subsection{Results}
+Changes were made to the laser system from the beam experiment.  In the main
+branch an EOM was added \cm{be more specific about frequency, etc.}, to provide
+the sidebands which address the hyperfine levels of the $X$ state. These are
+the same as the ones discussed in \cm{section and also paper maybe?} We also
+installed an AOM \cm{which one?} in a single-pass configuration to control
+switching \cm{by picking off first order}.
 
-% He wrote, cautiously...
+The 1/e diameter of \pewpew{}{01} was \SI{5}{\milli\meter}, with an intensity
+of \cm{??}. The frequency was scanned \cm{I wrote down how in notes}. However
+it was not possible to identify any RROC imaging of the cloud. I attribute this
+to the low intensity of the \pewpew{}{01} beam, which was due both to the
+increased beam diameter, and reduced operating power of the laser when the
+experiment was undertaken. The latter of these could be addressed, but \cm{back
+of the envelope calculation suggests that it woulc not be sufficient}.
