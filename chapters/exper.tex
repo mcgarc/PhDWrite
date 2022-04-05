@@ -332,8 +332,10 @@ required to achieve the same scattering rates here as for the diagonal
 transitions. Since the two transitions are uncoupled, the total scattering rate
 for the RROC scheme will be the lower of these two $R_\text{ex}$ values.
 
-The \pewpew{}{01} laser used for this experiment is the Spectra 380D, a single
-frequency ring dye laser, using \cm{name of dye}. The power output at
+The \pewpew{}{01} laser used for this experiment is the Spectra Physics 380D, a single
+frequency ring dye laser, using \cm{name of dye} and pumped by a Spectra
+Physics Millenia EV, a continuous wave diode-pumped solid state laser. The
+power output from the 380D at
 \SI{585}{\nano\meter} is expected to have a maximum of \cm{??}, which means
 that a \cm{??} diameter beam or smaller is required to saturate the transition.
 Due to this limitation we performed two experiments: identifying the transition
@@ -346,37 +348,71 @@ In this first experiment \pewpew{}{01} was used to identify the $X(v=0)
 \rightarrow A(v=1)$ transition frequency. A pulsed beam of \CaF{} was addressed
 with \pewpew{}{01}, with the laser frequency scanned across the pulses. At
 resonance, the laser drives the transition and light-induced fluorescence can
-be observed. The apparatus is shown in \myfigref{exper:fig:beamapp}. A cavity
-referenced to \cm{780nm Rb transition} and a wavemeter were used to reference
-the laser frequency.
+be observed. The apparatus is shown in \myfigref{exper:fig:beamapp}, and I will
+now explain the experiment in greater detail.
 
 \begin{figure}
   \centering
   \includegraphics[width=\textwidth]{figs/exper/beamexper.pdf}
   \caption{The optical (a) and vacuum (b) setup for the spectroscopy
     experiments. The dye jet (orange) is pumped by the \cm{type} laser (green
-    arrow). Beamsplitters (BS) are used to pick off the main beam for locking
-    with the reference cavities, analysis with the wavemeter and comparision to
-    IR light with the scanning cavity. Note that the AOM and EOM are not
-    installed for the beam experiment, and are only used for the \cm{MOT}
-    experiment. The buffer-gas source and \CaF{} beam are shown, similarly to
-    \cm{reference earlier figure}. A PMT is mounted above the beam (out of the
-    page) as described in the main text.
+    arrow). Beamsplitters (BS) are used to generate pick offs from the main
+    beam. These are used for locking
+    to the reference cavities, analysis with the wavemeter and comparision to
+    IR light (pink arrow). The latter of these is achieved using the dichroic
+    mirrors (DM) and  the scanning cavity as described in the main text. Note
+    that the AOM and EOM are not installed for the beam experiment, and are
+    only used for the \cm{MOT} experiment. The buffer-gas source and \CaF{}
+    beam are shown, similarly to \cm{reference earlier figure}. A PMT is
+    mounted above the beam (out of the page) as described in the main text.
   }
   \label{exper:fig:beamapp} 
 \end{figure}
 
-A buffer-gas source (\cm{see section}) was used to produce the \CaF{} beam.
-This experiment was undertaken on a separate \CaF{} source to the one used in
-the experiment above, but it is functionally identical, and is further
+%The latter is achieved by combining the two
+%    wavelengths with a dichroic mirror (DM), passing both through a scanning
+%    cavity, splitting the wavelengths on a second DM, and observing the
+%    relative location of transmission peaks through the scan.
+
+A buffer-gas source (\cm{see section}) was used to produce the pulsed \CaF{}
+beam.  This experiment was undertaken on a separate \CaF{} source to the one
+used in the experiment above, but it is functionally identical, and is further
 described in \cm{cite Gautam's thesis?}. This source produces \cm{mols per
 steradian}, \cm{as established by imaging on the $X(v=0)\rightarrow A(v=0)$
 transition.} The beam was driven by \pewpew{}{01} with \cm{diameter} and
 \cm{intensity}. Light-induced fluorescence was imaged using a \cm{lens, spec
-and position}, focusing onto a photo-multiplier tube (PMT) \cm{in some place}.
+and position}, focusing onto a photo-multiplier tube (PMT) \cm{in some
+place}.
 
 The laser frequency was scanned \cm{from x to y in df intervals with some
-repetition?}. The signal from the PMT is shown as a function of the \cm{cavity
+repetition?}. Figure~\ref{exper:fig:beamapp} shows the stable locking cavities,
+which are part of the 380D's stabilisation mechanism. In addition to this, we
+reference \pewpew{}{01} to the $F=2 \rightarrow F'=2, 3$ cross-over feature of
+the \esRb{} $D_2$ line via a separate reference laser. The frequency offset
+lock used to achieve this is described in \inlineref{Jurgilas2021}. This
+infrared (IR) reference light is combined with the \pewpew{}{01} beam using  a
+dichroic mirror (DM). This beam is then passed through a scanning cavity,
+before being split into the two frequency components on a second DM. We then
+observe the relative location of the transmission peaks across the cavity scan,
+and can use a feedback loop to lock the dye laser to the reference by transfer
+cavity lock (also described in \inlineref{Jurgilas2021}). Further referencing
+is possible by a pickoff to a \cm{name of wavemeter}.
+
+As well as locking and measuring the laser frequency, the setup allows the
+addtion of the sidebands used to address the hyperfine states of the $X$ state.
+This is achieved using an electro-optic modulator (EOM) \cm{made of something
+and tuned to freq}.
+%
+Not shown in the figure are flip-mount mirrors, which can be used to inspect
+the r.f.\ sidebands in the scanning cavity.
+%
+Additionaly we include an acousto-optic modulator (AOM),
+which is used to switch the light on and off. When the AOM is driven, the first
+order diffraction is picked out using an iris, and then coupled into a fibre
+leading to the experiment. When the AOM is not driven the light passes straight
+through the crystal and is blocked by the blades of the iris.
+
+The signal from the PMT is shown as a function of the \cm{cavity
 freq or voltage} in \myfigref{exper:fig:beamresult}. A strong peak was found at
 \cm{frequency}, with a small sideband at \cm{??} \cm{maybe this has something
 to do with fine structure?}. \cm{The peak is smaller than a typical 606nm peak
