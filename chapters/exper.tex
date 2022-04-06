@@ -361,10 +361,12 @@ now explain the experiment in greater detail.
     to the reference cavities, analysis with the wavemeter and comparision to
     IR light (pink arrow). The latter of these is achieved using the dichroic
     mirrors (DM) and  the scanning cavity as described in the main text. Note
-    that the AOM and EOM are not installed for the beam experiment, and are
+    that the AOM is not installed for the beam experiment, and is
     only used for the \cm{MOT} experiment. The buffer-gas source and \CaF{}
-    beam are shown, similarly to \cm{reference earlier figure}. A PMT is
-    mounted above the beam (out of the page) as described in the main text.
+    beam are shown, similarly to \cm{reference earlier figure}. The
+    \pewpew{}{10} and \pewpew{}{01} light is combined to induce fluorescence in
+    the molecules, which is detected with a PMT, mounted above the beam (out of
+    the page).
   }
   \label{exper:fig:beamapp} 
 \end{figure}
@@ -400,8 +402,8 @@ is possible by a pickoff to a \cm{name of wavemeter}.
 
 As well as locking and measuring the laser frequency, the setup allows the
 addtion of the sidebands used to address the hyperfine states of the $X$ state.
-This is achieved using an electro-optic modulator (EOM) \cm{made of something
-and tuned to freq}.
+This is achieved using an electro-optic modulator (EOM) which is driven at
+\SI{24}{\mega\hertz}.
 %
 Not shown in the figure are flip-mount mirrors, which can be used to inspect
 the r.f.\ sidebands in the scanning cavity.
@@ -412,11 +414,20 @@ order diffraction is picked out using an iris, and then coupled into a fibre
 leading to the experiment. When the AOM is not driven the light passes straight
 through the crystal and is blocked by the blades of the iris.
 
+The \pewpew{}{01} light is combined with the \pewpew{}{10} light on a DM, and
+the combined beam is incident on the \CaF{} molecules perpendicular to
+the forward velocity of the beam. The shines continuously, so that the
+repetition rate of the experiment is controlled by the pulsing of the \CaF{}
+source. The beam is imaged in the source chamber, almost immediately outside
+the cell, \cm{and inside the radiation shields}.
+% TODO Do I discuss rad shields?
+%
 The signal from the PMT is shown as a function of the \cm{cavity
 freq or voltage} in \myfigref{exper:fig:beamresult}. A strong peak was found at
 \cm{frequency}, with a small sideband at \cm{??} \cm{maybe this has something
 to do with fine structure?}. \cm{The peak is smaller than a typical 606nm peak
 but hopefully we have better SNR?}
+% TODO Need to improve this, what did we actually do? Waiting for the data
 
 \begin{figure}
   \centering
@@ -454,12 +465,6 @@ an exposure time of \cm{\SI{10}{\milli\second}} is used.
   \label{exper:fig:laser}
 \end{figure}
 
-Changes were made to the laser system from the beam experiment.  In the main
-branch an EOM was added \cm{be more specific about frequency, etc.}, to provide
-the sidebands which address the hyperfine levels of the $X$ state. These are
-the same as the ones discussed in \cm{section and also paper maybe?} We also
-installed an AOM \cm{which one?} in a single-pass configuration to control
-switching \cm{by picking off first order}.
 
 The 1/e diameter of \pewpew{}{01} was \SI{5}{\milli\meter}, with an intensity
 of \cm{??}. The frequency was scanned \cm{I wrote down how in notes}. However
