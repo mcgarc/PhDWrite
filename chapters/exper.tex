@@ -179,10 +179,63 @@ This must be done carefully, as described in section~\ref{fab:solder} but
 if done correctly it yields a highly stable electrical connection. \cm{The
 UHV compatability of this method is discussed in a section to come (if I swap
 the order around, which one?)} The same current tests were performed as for the 
-wirebonded chips, as shown in \cm{the same fig or different?}.
+wirebonded chips, as shown in \cm{the same fig or different?}. For solder
+joints, the results were reliably repeatable, and we were able to observe
+sufficient current densities for trapping (compared to those laid out in
+section~\ref{overview:design}).
 
-Solder connections allowed the application of currents up to the limit of the
-current supply. At this point 
+We consider a typical example of testing using the small wire
+(\SI{9}{\micro\meter}), on a chip where the wire height achieved was
+\SI{9}{\micro\meter}. Again, the current was pulsed on for
+\SI{200}{\milli\second} once every \SI{10}{\seconds}, which we imagine to be
+representative of a typical experiment. We show the current through the chip as
+a function of supply density in \mysubfigref{exper:fig:current}{a}. Also shown
+is a linear fit to the first ten data points. We observe here that for low
+voltages, the current obeys Ohm's law, as we would expect, but this diverges
+for higher voltages, suggesting that heating occurs in the device.
+
+\begin{figure}
+  \centering
+  \cm{(a) should be VI plot, and (b) the resistance vs I}
+  \caption{}
+  \label{exper:fig:current}
+\end{figure}
+
+Nonetheless, with sufficient voltage it is possible to achieve currents of
+\SI{6.8}{\ampere}, which  corresponds to a current density of
+$j=\SI{6.8}{\ampere}/(\SI{9}{\micro\meter}\times\SI{9}{\micro\meter})=
+\SI{8.4E10}{\ampere\per\meter\squared}$. This is slightly higher than was
+expected (see again section~\ref{overview:design}), and potentially not the
+maximum current density achievable: we did not test this chip to the point of
+failure as we wanted to preserve it and the required current for trapping had
+already been met.
+
+Further, the resistance of the chip as a function of current can be found by
+fitting a third order polynomial to the $IV$ curve in
+\mysubfigref{exper:fig:current}{a}, and taking its derivative. This derivative
+approximates the chip's conductance at that voltage and current, the resistance
+is easily found by taking the reciprocal of this conductance and the result is
+shown in \mysubfigref{exper:fig:current}{b}. We see that for high $I$, the
+resistance is increasing quadraticlly, and therefore assume that the wire is
+nearing its point of failure.
+
+\subsection{Wire failure}
+
+During testing of another chip, we were able to pass sufficient current to
+destroy the small wire, although this was during an early stage of the tests
+and so the current at which this occurred was not properly recorded. However it
+is useful to be able to distinguish a good wire from one that has been
+destroyed by heating. These are shown in \myfigref{exper:fig:brokenwire}~(a)
+and~(b) respectively.
+
+\begin{figure}
+  \centering
+  \cm{(a) good wire, (b) bad wire from OneNote 7 April}
+  \caption{A wire before (a) and after (b) destruction due to fusing under
+    extreme current load.
+    }
+  \label{exper:fig:brokenwire}
+\end{figure}
 
 
 \section{Scatter testing}
