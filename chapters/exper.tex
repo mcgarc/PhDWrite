@@ -146,7 +146,7 @@ even the small wires, but these were not reliably repeatable, and often
 resulted in the wirebonds being broken.
 
 These tests were conducted using a \SI{200}{\milli\second} pulse of current,
-repeating every \SI{10}{\seconds}. The supply voltage was ramped up gradually,
+repeating every \SI{10}{\second}. The supply voltage was ramped up gradually,
 and the current through the chip was measured via the potential difference
 across the FET controller's sense resistor (see \myfigref{exper:fig:curtest}).
 Several iterations of chips (with varying wire heights) were tested, using all
@@ -187,17 +187,63 @@ section~\ref{overview:design}).
 We consider a typical example of testing using the small wire
 (\SI{9}{\micro\meter}), on a chip where the wire height achieved was
 \SI{9}{\micro\meter}. Again, the current was pulsed on for
-\SI{200}{\milli\second} once every \SI{10}{\seconds}, which we imagine to be
+\SI{200}{\milli\second} once every \SI{10}{\second}, which we imagine to be
 representative of a typical experiment. We show the current through the chip as
 a function of supply density in \mysubfigref{exper:fig:current}{a}. Also shown
 is a linear fit to the first ten data points. We observe here that for low
 voltages, the current obeys Ohm's law, as we would expect, but this diverges
 for higher voltages, suggesting that heating occurs in the device.
 
+%\cm{(a) should be VI plot, and (b) the resistance vs I}
+% Data from 2022-04-06_thesis_currenttest.nb (and from there just OneNote)
 \begin{figure}
   \centering
-  \cm{(a) should be VI plot, and (b) the resistance vs I}
-  \caption{}
+  \begin{subfigure}[b]{0.45\textwidth}
+  \begin{tikzpicture}
+    \begin{axis}[
+        enlargelimits=true,
+        xlabel=$V$ (volts),
+        ylabel=$I$ (amperes),
+        width=\textwidth,
+        height = \textwidth,
+        x tick label style={/pgf/number format/.cd, set thousands separator={}},
+        %ylabel style={yshift=10pt}
+    ]
+        \addplot [thick, blue, only marks] coordinates { (0.5, 0.1)(1, 0.28)(1.5, 0.46)(2, 0.64)(3, 1.04)(3.5, 1.2)(4, 1.4)(5, 1.7)(6, 2.2)(7, 2.6)(8, 2.8)(9, 3.)(10, 3.4)(11, 3.6)(12, 4.)(13, 4.4)(14, 4.6)(15, 4.8)(16, 5.)(17, 5.4)(18, 5.6)(19, 6.)(20, 6.)(21, 6.4)(22, 6.6)(23, 6.6)(24, 6.8) };
+        \addplot[thick, pink, mark=none] coordinates {(0,-0.1136) (24,9.025)};
+        \node[] at (axis cs: 1,8.5) {(a)};
+      \end{axis}
+  \end{tikzpicture}
+  \end{subfigure}
+  %
+  \begin{subfigure}[b]{0.45\textwidth}
+  \begin{tikzpicture}
+    \begin{axis}[
+        enlargelimits=true,
+        xlabel=$I$ (amperes),
+        ylabel=$R$ (ohm),
+        width=\textwidth,
+        height = \textwidth,
+        x tick label style={/pgf/number format/.cd, set thousands separator={}},
+        %ylabel style={yshift=10pt}
+    ]
+        \addplot [thick, blue, only marks] coordinates {
+            (0.1, 2.7138)(0.28, 2.71005)(0.46, 2.70983)(0.64,
+  2.71315)(1.04, 2.7332)(1.2, 2.74611)(1.4, 2.76617)(1.7,
+  2.80446)(2.2, 2.89012)(2.6, 2.97829)(2.8, 3.02893)(3.,
+  3.08393)(3.4, 3.20705)(3.6, 3.27515)(4., 3.42447)(4.4,
+  3.59126)(4.6, 3.6812)(4.8, 3.77551)(5., 3.87419)(5.4,
+  4.08465)(5.6, 4.19643)(6., 4.43309)(6., 4.43309)(6.4,
+  4.68722)(6.6, 4.82084)(6.6, 4.82084)(6.8, 4.95882)
+};
+        \node[] at (axis cs: 1,8.5) {(b)};
+      \end{axis}
+  \end{tikzpicture}
+  \end{subfigure}
+  \caption{Increasing current in the small chip wire. The current is shown as a
+  function of supply voltage in (a). The pink line shows a linear fit to the
+  first ten points. In (b) this is converted into a resistance (as described in
+the main text), which increases for higher currents.}
   \label{exper:fig:current}
 \end{figure}
 
