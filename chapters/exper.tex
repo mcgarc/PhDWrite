@@ -127,7 +127,7 @@ chip trapping wires. These tests were conducted with the chip under vacuum
 where not ready at this stage. A regulated power supply delivers a current to
 the chip, controlled by a FET circuit that is in turn switched by a signal
 generator. This gives us control over the pulse length, and allows us to
-deliver up to \cm{volts and amps}.
+deliver up to \cm{\SI{30}{\volt} and \SI{10}{\ampere}}.
 
 \begin{figure}
   \centering
@@ -139,30 +139,31 @@ deliver up to \cm{volts and amps}.
 \subsection{Wirebond tests}
 
 We originally tested a number of designs where the chip was connected to the
-subchip via wirebonds. In these cases it was found that the wirebonds were
-unreliable at such high currents. They were tested using a
-\SI{200}{\milli\second} pulse, repeating every \SI{10}{\second}. The results
-are shown in \myfigref{}. The wirebonds were universally unable to sustain the
-current pusles when they reached \cm{2 amps I think?}. Visual inspection of the
-chips showed that the wires were intact, but the wirebond joints had failed.
-This was confirmed by checking the electrical continuity across the chip.
+subchip with wirebonds using the method described in \cm{ref wirebond
+subsection}. In these cases it was found that the wirebonds were unreliable at
+high currents. It was possible to achieve pulses of several amperes through
+even the small wires, but these were not reliably repeatable, and often
+resulted in the wirebonds being broken.
 
-The wirebonds failed at a current far below that required to form our traps. We
-attempted to improve the maximum current by increasing the number of wirebonds
-on each pad, and by improving the quality of the wirebond joints. We found that
-the former yielded an improvement to the maximum current capacity, but the
-quality of the wirebond joints was difficult to quantify. As a rule of thumb,
-the wirebonds were re-done if they could not withstand a light tug from a pair
-of tweezers. Ultimately the number of wirebonds that it was possible to produce
-was limited by the width of the wirebond pad, and the width of the wirebonder
-head. We could achieve \cm{tenish}.
+These tests were conducted using a \SI{200}{\milli\second} pulse of current,
+repeating every \SI{10}{\seconds}. The supply voltage was ramped up gradually,
+and the current through the chip was measured via the potential difference
+across the FET controller's sense resistor (see \myfigref{exper:fig:curtest}).
+Several iterations of chips (with varying wire heights) were tested, using all
+trapping wires. However no meaningful results for maximum attainable current
+were found, as invariably the wirebonds would fail. This was eastablished by a
+visual inspection of the chip, and checking the electrical continuity across
+the trapping wires, and from the subchip to the chip.
 
-This was sufficient current to saturate the expected maximum current in the
-\cm{small but in um} wire. It was found that this wire could sustain up to
-\cm{some current} reliably, across multiple chips before failing. This can be
-distinguished from the failure of the wirebonds by checking the electrical
-continuity across the chip, and by visual inspection of the wire. An example of
-a failed wire is shown in \cm{another figure, or a subfigure? Who knows...}
+We attempted to improve the maximum current by increasing the number of
+wirebonds on each pad, and by improving the quality of the wirebond joints. We
+found that the former yielded an improvement to the maximum current capacity,
+but the quality of the wirebond joints was difficult to quantify. As a rule of
+thumb, the wirebonds were re-done if they could not withstand a light tug from
+a pair of tweezers. Ultimately the number of wirebonds that it was possible to
+produce was limited by the width of the wirebond pad, and the width of the
+wirebonder head. We could achieve approximately ten wirebonds per pad somewhat
+reliably.
 
 There are various options that could be used to increase the maximum current of
 the wirebonds.  We considered using a ribon wirebond~\cite{}, which promises
