@@ -335,6 +335,38 @@ and~(b) respectively.
 \section{Scatter testing}
 \label{exper:scatter}
 
+As alluded to above, there is some concern that imaging close to the chip will
+cause significant background scatter, and make imaging the molecules
+challenging. To investigate this, the imaging scheme shown in
+\mysubfigref{exper:fig:exper}{b} was configured in the same way that will later
+be used to image molecules.  A high NA (\cm{value}) lens with a focal length of
+\cm{??} was installed inside the chamber, to collect as much light from the
+molecules as possible. This is then imaged onto a CCD using a second \cm{10cm?}
+lens, in a four-$f$ configuration. Although we do not have access to molecules,
+we can still shine the laser across the chip and observe the background
+scatter.
+
+% TODO Did we also use background subtraction?
+At first \pewpew{}{00} was used, with a power of \cm{??}.  The height of the
+beam above the chip was varied, controlled by a micrometer screw gauge. The
+total signal on the CCD was taken as a measure of scatter. It is not
+immediately obvious how we would expect the signal to change as a function of
+the beam's height. The beam can scatter off the viewport, and further
+reflection around the chamber, including from the chip flange assembly, could
+lead to unexpected levels of scatter even when the beam is far from the chip.
+
+The results are shown in \myfigref{exper:fig:scatter}...
+%
+This figure also shows the background scatter when using \pewpew{}{10} and
+\pewpew{}{01} in combination with a \SI{606}{\nano\meter} bandpass filter, this
+will be relevant to the background-free imaging scheme described in the next
+section.
+
+\begin{figure}
+  \cm{Background scatter graph}
+  \caption{}
+  \label{exper:fig:scatter}
+\end{figure}
 
 \section{Background-free imaging}
 \label{exper:bgf}
