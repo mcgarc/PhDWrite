@@ -118,7 +118,7 @@ section~\ref{mws:integrating}) which will be required for future experiments.
 These yielded similar results to those discussed above, with no discernable
 change in the pressure.
 
-\begin{figure}[h]
+  \begin{figure}[htb]
   \centering
   \begin{tikzpicture}
     \begin{axis}[
@@ -153,14 +153,18 @@ chip trapping wires. These tests were conducted with the chip under vacuum
 ($P<10^{-6}\si{\milli\bar}$) and using the setup shown in
 \myfigref{exper:fig:curtest}, which was used since our custom current drivers
 where not ready at this stage. A regulated power supply delivers a current to
-the chip, controlled by a FET circuit that is in turn switched by a signal
+the chip, controlled by the FET circuit that is in turn switched by a signal
 generator. This gives us control over the pulse length, and allows us to
-deliver up to \cm{\SI{30}{\volt} and \SI{10}{\ampere}}.
+deliver voltage $V_\text{PSU}$ up to \SI{30}{\volt} to the chip, represnted
+here by the resistor $R_\text{load}$. The current through the chip can be
+measured via the potential difference across $R_\text{sense} = \SI{0.5}{\ohm}$.
 
-\begin{figure}
+\begin{figure}[htb]
   \centering
-  \cm{Show diagram of current testing setup}
-  \caption{}
+  \includegraphics[width=0.5\textwidth]{figs/exper/circuit.pdf}
+  \caption{The electronic circuit used to test the chip wires. The chip is
+  represented by resistor $R_\text{load}$. The operational amplifier is powered
+  by a separate power supply.}
   \label{exper:fig:curtest}
 \end{figure}
 
