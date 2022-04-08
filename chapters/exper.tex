@@ -224,7 +224,7 @@ for higher voltages, suggesting that heating occurs in the device.
 
 %\cm{(a) should be VI plot, and (b) the resistance vs I}
 % Data from 2022-04-06_thesis_currenttest.nb (and from there just OneNote)
-\begin{figure}
+\begin{figure}[htb]
   \centering
   \begin{subfigure}[b]{0.45\textwidth}
   \begin{tikzpicture}
@@ -302,11 +302,28 @@ is useful to be able to distinguish a good wire from one that has been
 destroyed by heating. These are shown in \myfigref{exper:fig:brokenwire}~(a)
 and~(b) respectively.
 
-\begin{figure}
+\begin{figure}[htb]
   \centering
-  \cm{(a) good wire, (b) bad wire from OneNote 7 April}
+  %\cm{(a) good wire, (b) bad wire from OneNote 7 April}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \begin{overpic}[width=\textwidth]{figs/exper/burn/good.png}
+      \put(9,20){\SI{100}{\micro\meter}}
+      \put(85, 70){(a)}
+  \end{overpic}
+  \end{subfigure}
+  \hspace{1cm}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+  \begin{overpic}[width=\textwidth]{figs/exper/burn/bad.png}
+      \put(9,20){\SI{100}{\micro\meter}}
+    \put(85, 70){(b)}
+  \end{overpic}
+  \end{subfigure}
   \caption{A wire before (a) and after (b) destruction due to fusing under
-    extreme current load.
+    extreme current load. Note that the clearly defined edges and solid colour
+    have changed to a wobbly and poorly-defined region. In bothsubfigures ,
+    part of a fanout is also visible.
     }
   \label{exper:fig:brokenwire}
 \end{figure}
