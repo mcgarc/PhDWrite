@@ -2,26 +2,21 @@ The chip apparatus was assembled for preliminary tests, but isolated from the
 main \CaF{} experiment. This modest setup was useful for a variety of
 measurements, which will be discussed below, including vacuum compatibility,
 current testing under vacuum, and looking at the amount of background scatter
-from the apparatus during imaging.
+from the apparatus during imaging. We anticipate background scatter to be a
+significant challenge in an experiment close to a surface, and discuss
+possibilities for a background-free imaging scheme in
+section~\ref{exper:bgf}.
 
 \section{Experiment assembly}
 
-The chip flange assembly which was introduced at the end of
-chapter~\ref{overview} is shown in \myfigref{exper:fig:flange} (see also
-\mysubfigref{overview:fig:chipchamber}{b}). It is designed
-to hold the chip in position for loading \CaF{}, whilst also providing current
-delivery and heat sinking. Considerations have been made for future experiments
-using microwaves, with two high-frequency microwave feedthroughs incorporated
-as well. The flange was manufactured by Allectra GmbH, and the heat sink was
-machined in the Imperial College workshop.
-
-\begin{figure}
-  \centering
-  \cm{TODO Exploded view alongside photo of the whole thing assembled (with
-  wire etc.)}
-  \caption{}
-  \label{exper:fig:flange}
-\end{figure}
+In this section we will give details of the apparatus, especially the chip
+flange assembly, which was introduced at the end of chapter~\ref{overview}. The
+flange assembly is designed to hold the chip in position for loading \CaF{},
+whilst also providing current delivery and heat sinking. Considerations have
+been made for future experiments using microwaves, with two high-frequency
+microwave feedthroughs incorporated as well. The flange was manufactured by
+Allectra GmbH, and the heat sink was machined in the Imperial College workshop.
+A detailed view is shown in \myfigref{overview:fig:chipchamber}.
 
 The copper heat sink is mounted to the flange using screws where the thread has
 been partially removed. This is done to precent any trapped gas causing virtual
@@ -42,25 +37,50 @@ subchip we use polyimide bushings (also made in the College workshop) to ensure
 that they are electrically isolated from the aluminium core of the PCB.
 
 The flange is mounted in the chip chamber, a DN63 cube chamber from Kurt J.
-Lesker Co.\ (KJL) whose configuration is shown in \myfigref{exper:fig:chamber}.
-A \cm{turbo pump} is connected to the chamber via a tee, so that there is still
-a clear line of sight across the surface of the chip. We install three
-AR-coated viewports, also from KJL, as shown in the figure. This provides
-optical access across the surface of the chip for illumination, imaging
-molecules as they fall and a viewpoint from below looking towards the surface.
-We attach a DN63-DN40 adapter opposite the chip flange, this will be where the
-chamber is attached to the \CaF{} experiment in the future, but for testing
-purposes a \cm{pirani gauge or RGA} is attached instead.
+Lesker Co.\ (KJL) whose configuration is shown in \myfigref{exper:fig:exper}.
+The assembly is designed so that molecules will enter the chamber along an axis
+that is \SI{3}{\milli\meter} from the surface of the chip. A tee is installed
+to allow for additional vacuum ports whilst still allowing a clear line of
+sight across the chip surface. This is shown in the figure by the pink arrow,
+and passes through twhothrough the viewports AR-coated viewports, also from
+KJL, as shown in the figure. This provides optical access across the surface of
+the chip for illumination.  Onto the tee we attach a \cm{turbo pump}, backed by
+a scroll (not pictured).  There is also a DN63-DN40 adapter opposite the chip
+flange, this will be where the chamber is attached to the \CaF{} experiment in
+the future, but for testing purposes a \cm{pirani gauge or RGA} is attached
+instead.
 
 \begin{figure}
   \centering
-  \cm{Figure showing the layout of the chamber.}
-  \caption{}
-  \label{exper:fig:chamber}
+  \includegraphics[width=\textwidth]{figs/exper/exper.pdf}
+  \caption{A top-down (a) and profile (b) view of the chip experiment. In (a)
+  we show the line of sight through the chamber by the pink arrow. In (b) we
+  show a view as if looking through the viewport on the tee, and also highlight
+  the position of the interior lens inside the chamber. Here the
+  pink arrow denotes the path of light collected for imaging from beneath the
+  chip.}
+  \label{exper:fig:exper}
 \end{figure}
 
-\cm{Paragraph on current drivers}
+The optical access allows for two main styles of imaging experiment. In both, a
+laser beam will enter through the viewports as shown in
+\mysubfigref{exper:fig:exper}{a}. Light-induced fluorescence can then be imaged
+by collecting the light along this axis, this would allow measurement of the
+changing height of molecules that are released from the trap as they fall under
+gravity. 
+%
+An alternative arrangement is shown in in \mysubfigref{exper:fig:exper}{b},
+where light is collected from a viewport beneath the chip and imaged onto a
+CCD. This may be useful since it avoids imaging along the path of the light
+driving the transitions and could reduce background scatter. We anticipate
+background scatter to be a significant problem for an experiment that is
+conducted close to what essentially amounts to a giant mirror, and this scheme
+will be discussed further in section~\ref{exper:scatter}.
 
+Finally, we note that the current drivers for the experiment were not completed
+as part of this project. Instead, a simple regulated power supply and
+field-effect transistor (FET) switch were used to control current pulses for
+testing. This will be discussed in section~\ref{exper:current}.
 
 \section{Vacuum testing}
 
@@ -118,6 +138,7 @@ sources of contamination or outgassing into the experiment.
 \end{figure}
 
 \section{Current testing}
+\label{exper:current}
 % TODO I think maybe this should go above vacuum tests?
 
 It was also important to test the currents that can be achieved through the
@@ -207,7 +228,7 @@ for higher voltages, suggesting that heating occurs in the device.
         width=\textwidth,
         height = \textwidth,
         x tick label style={/pgf/number format/.cd, set thousands separator={}},
-        %ylabel style={yshift=10pt}
+        ylabel style={yshift=-8pt}
     ]
         \addplot [thick, blue, only marks] coordinates { (0.5, 0.1)(1, 0.28)(1.5, 0.46)(2, 0.64)(3, 1.04)(3.5, 1.2)(4, 1.4)(5, 1.7)(6, 2.2)(7, 2.6)(8, 2.8)(9, 3.)(10, 3.4)(11, 3.6)(12, 4.)(13, 4.4)(14, 4.6)(15, 4.8)(16, 5.)(17, 5.4)(18, 5.6)(19, 6.)(20, 6.)(21, 6.4)(22, 6.6)(23, 6.6)(24, 6.8) };
         \addplot[thick, pink, mark=none] coordinates {(0,-0.1136) (24,9.025)};
@@ -225,7 +246,7 @@ for higher voltages, suggesting that heating occurs in the device.
         width=\textwidth,
         height = \textwidth,
         x tick label style={/pgf/number format/.cd, set thousands separator={}},
-        %ylabel style={yshift=10pt}
+        ylabel style={yshift=-8pt}
     ]
         \addplot [thick, blue, only marks] coordinates {
             (0.1, 2.7138)(0.28, 2.71005)(0.46, 2.70983)(0.64,
@@ -285,9 +306,11 @@ and~(b) respectively.
 
 
 \section{Scatter testing}
+\label{exper:scatter}
 
 
 \section{Background-free imaging}
+\label{exper:bgf}
 
 \cm{Normally we just image with 606nm light and do light-induced fluorescence
 imaging, but this creates a load of scatter which reduces SNR. We call this

@@ -624,43 +624,61 @@ This stage of the project has not yet been reached, but the planned fabrication
 procedure for microwave guides is discussed in \cm{ref section} and their
 operation is discussed in chapters~\ref{mws} and \ref{squeeze}.
 
-\begin{figure}
-  \centering
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=0.9\textwidth]{figs/overview/chamber_xsecarrow.pdf}
-    \caption{}
-  \end{subfigure}
-  \hspace{1cm}
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=0.9\textwidth]{figs/chip_pic_crop.png}
-    \caption{}
-  \end{subfigure}
+\begin{figure}[htb]
+    \centering
+    \begin{tabular}[t]{c}
+\begin{subfigure}{\textwidth}
+    \centering
+    \smallskip
+    \begin{overpic}[abs,
+      width=\textwidth]{figs/exper/labeled_explosion.pdf}
+      \put(20, 132){(a)}
+    \end{overpic}
+\end{subfigure}
+    \\[1cm]
+        \begin{tabular}{cc}% if you add [t], than sub images are pushed down
+        \smallskip
+            \begin{subfigure}[t]{0.45\textwidth}
+                \centering
+                \begin{overpic}[abs, width=\textwidth]{figs/overview/chamber_xsecarrow.pdf}
+                  \put(5, 160){(b)}
+                \end{overpic}
+              \end{subfigure}&
+            \begin{subfigure}[t]{0.45\textwidth}
+                \centering
+                \begin{overpic}[abs, width=\textwidth]{figs/chip_pic_crop.png}
+                  \put(1, 160){(c)}
+                \end{overpic}
+            \end{subfigure}
+        \end{tabular}
+    \end{tabular}
   \caption{
-  A cross section of the chip chamber is shown in (a). The arrow shows how
+  The chip experiment is shown in detail. In (a) we show an exploded view of
+  the chip flange assembly, with the various components labeled.
+  A cross section of the chip chamber is shown in (b). The arrow shows how
   molecules will enter the chamber, brought in by the MTT.
-  In (b) we have the chip assembly fully constructed, with a view of the
+  In (c) we have the chip assembly fully constructed, with a view of the
     aluminium-core PCB (subchip) for current delivery. The
     microwave feedthroughs remain disconnected.
   }
   \label{overview:fig:chipchamber}
 \end{figure}
 
-% TODO Put exploded view with details in the experiment chapter
-% TODO Remember for experiment we need important details like flange is 3mm
-% from axis!
 
-To facilitate all of this, the internals of the chip chamber have been designed
-as shown in cross section in \mysubfigref{overview:fig:chipchamber}{a}.
+To facilitate all of this, the chip and supporting infrastructure is mounted on
+a flange with supporting infrastructure, as detailed in
+\myfigref{overview:fig:chipchamber}. This chip flange assembly is equipped with
+a large copper heat sink, a large U-wire to form the macroscopic alignment trap
+and a subchip for current and microwave delivery. It is mounted into a recess
+in the subchip so that it is flush with the surface. The chip is mounted facing
+downwards so that molecules can be dropped for imaging as they fall. The flange
+itself is fitted with two high-current (\SI{100}{\ampere}) feedthroughs, a
+16-pin feedthrough rated for \SI{3}{\ampere} currents, and microwave
+feedthroughs. All access to the chip is therfore through this one flange,
+allowing for easy access and assembly.  It will be housed in a separate vacuum
+chamber (the chip chamber), positioned as shown in
+\myfigref{overview:fig:vacuumsystem}. The chip chamber will be arranged so that
 Molecules can be brought in along the transport axis (shown by the arrow in the
-figure) and positioned below the surface of the chip, which is mounted on the
-chip flange assembly. The chip flange assembly is pictured in
-\mysubfigref{overview:fig:chipchamber}{b}, and is is equipped with a large
-copper heat sink, a large U-wire to form the macroscopic alignment trap and a
-subchip for current and microwave delivery. It is mounted
-into a recess in the subchip so that it is flush with the surface. The chip is
-mounted facing downwards so that molecules can be dropped for imaging as they
-fall. The flange itself is fitted with two high-current (\SI{100}{\ampere})
-feedthroughs, a 16-pin feedthrough rated for \SI{3}{\ampere} currents, and
-microwave feedthroughs. All access to the chip is therfore through this one
-flange, allowing for easy access and assembly. The flange assembly will be
-explained in further detail in chapter~\ref{experiment}.
+\mysubfigref{overview:fig:chipchamber}{b}) and positioned below the surface of
+the chip.  This arrangement will be explained in further detail in
+chapter~\ref{experiment}.
