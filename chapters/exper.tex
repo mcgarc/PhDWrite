@@ -365,8 +365,30 @@ This figure also shows the background scatter when using \pewpew{}{10} and
 will be relevant to the background-free imaging scheme described in the next
 section.
 
+% NOTE This data is from 2021-11-30_bgfreeimg2.nb
+% The export isn't really clean, I manually changed a value in the file and
+% added the column headers
 \begin{figure}
-  \cm{Background scatter graph}
+  \begin{tikzpicture}
+    \begin{axis}[
+        %ymode=log,
+        enlargelimits=true,
+        xlabel=Position from chip (\si{\milli\meter}),
+        ylabel=Predicted photon scatters,
+        width=0.8\textwidth,
+        height = 0.4\textwidth,
+        legend pos=north east,
+        x tick label style={/pgf/number format/.cd, set thousands separator={}},
+        ylabel style={yshift=10pt}
+    ]
+      \addplot [thick, color=Lorange, only marks, error bars/y explicit, error bars/y dir=both] table [x=x, y=y, y error=err] {figs/exper/bgf606.dat};
+      \addlegendentry{\SI{606}{\nano\meter}};
+      \addplot [thick, color=Lred, only marks, error bars/y explicit, error bars/y dir=both] table [x=x, y=y, y error=err] {figs/exper/bgf628.dat};
+      \addlegendentry{\SI{628}{\nano\meter}};
+      \addplot [thick, color=gold, only marks, error bars/y explicit, error bars/y dir=both] table [x=x, y=y, y error=err] {figs/exper/bgf585.dat};
+      \addlegendentry{\SI{585}{\nano\meter}};
+    \end{axis}
+  \end{tikzpicture}
   \caption{}
   \label{exper:fig:scatter}
 \end{figure}
