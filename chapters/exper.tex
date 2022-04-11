@@ -344,54 +344,91 @@ challenging. To investigate this, the imaging scheme shown in
 \mysubfigref{exper:fig:exper}{b} was configured in the same way that will later
 be used to image molecules.  A high NA (\cm{value}) lens with a focal length of
 \cm{??} was installed inside the chamber, to collect as much light from the
-molecules as possible. This is then imaged onto a CCD using a second \cm{10cm?}
-lens, in a four-$f$ configuration. Although we do not have access to molecules,
-we can still shine the laser across the chip and observe the background
-scatter.
+molecules as possible. This is then imaged onto a Hamamatsu ImagEM X2 EM-CCD
+camera C9100-23B using a second \cm{bi-convex \SI{100}{\milli\meter}-focal
+length}
+lens, in a four-$f$ configuration. The EM-CCD camera is chosen to be able to
+achieve large gain for small signals on individual pixels. We use
+\SI{100}{\milli\second} exposure and $2\times2$ binning of the pixels.
 
-% TODO Did we also use background subtraction?
-At first \pewpew{}{00} was used, with a power of \cm{??}.  The height of the
-beam above the chip was varied, controlled by a micrometer screw gauge. The
-total signal on the CCD was taken as a measure of scatter. It is not
-immediately obvious how we would expect the signal to change as a function of
-the beam's height. The beam can scatter off the viewport, and further
-reflection around the chamber, including from the chip flange assembly, could
-lead to unexpected levels of scatter even when the beam is far from the chip.
-
-The results are shown in \myfigref{exper:fig:scatter}...
+Although we do not have access to molecules, we can still shine the laser
+across the chip and observe the background scatter. We do this for various
+positions of the beam with respect to the chip surface, controlling the height
+with a micrometer screw gauge. Five images were taken at each beam position,
+from which we subtracted a background image taken with the laser light off, and
+then calculate the number of laser photons scattered onto the EM-CCD using the
+equation
 %
-This figure also shows the background scatter when using \pewpew{}{10} and
-\pewpew{}{01} in combination with a \SI{606}{\nano\meter} bandpass filter, this
-will be relevant to the background-free imaging scheme described in the next
-section.
+\begin{equation}
+  \text{photon number} = \frac{N_\text{px} k}{G_\text{a}
+    G_\text{EM}\eta}
+\end{equation}
+%
+where $N_\text{px}$ is the pixel value, $k=2.2$ is the conversion factor in CCD
+mode for our camera, $G_\text{a}=1$ is the analogue gain,
+$G_\text{EM}=1$ is the EM gain and $\eta=0.95$ is the quantum efficiency of the
+detector\footnote{The dark value offset of the camera is accounted for by the 
+background subtraction.}.
 
-% NOTE This data is from 2021-11-30_bgfreeimg2.nb
-% The export isn't really clean, I manually changed a value in the file and
-% added the column headers
+The beam $1/e^2$ diameter is chosen to be \SI{500}{\micro\meter}, and we
+normalise the number of photon scatters produced for a beam with power
+\SI{10}{\milli\watt}, such as may typically be used in an experiment. The
+results are shown in \myfigref{exper:fig:scatter}, note that we define the
+positive direction to be below the chip's surface. The shape of the curve
+indicates that the most scattering occurs when the laser strikes the heat sink,
+but of most interest to us is that the scatter is significantly higher than we
+would observe when imaging in, for example, the existing MOT chamber.
+
+%%  Some notes from doing the analysis of my laser results
+%along with the background when the laser is turned off (black line) and
+%background scatter when using \pewpew{}{10} and \pewpew{}{01} in combination
+%with a \SI{606}{\nano\meter} bandpass filter. This will be relevant to the
+%background-free imaging scheme described in the next section. The chip is
+%positioned at height $0$, and the positive direction is moving the beam away
+%from the surface (towards the ground).
+
+% This data is from 2021-11-30_bgfreeimg2.nb
+% Now changed to scattertest_thesischeck.nb
 \begin{figure}
   \begin{tikzpicture}
     \begin{axis}[
         %ymode=log,
         enlargelimits=true,
         xlabel=Position from chip (\si{\milli\meter}),
-        ylabel=Predicted photon scatters,
+        ylabel=Normalised scatters ($\times 10^6$),
         width=0.8\textwidth,
         height = 0.4\textwidth,
         legend pos=north east,
         x tick label style={/pgf/number format/.cd, set thousands separator={}},
         ylabel style={yshift=10pt}
     ]
-      \addplot [thick, color=Lorange, only marks, error bars/y explicit, error bars/y dir=both] table [x=x, y=y, y error=err] {figs/exper/bgf606.dat};
-      \addlegendentry{\SI{606}{\nano\meter}};
-      \addplot [thick, color=Lred, only marks, error bars/y explicit, error bars/y dir=both] table [x=x, y=y, y error=err] {figs/exper/bgf628.dat};
-      \addlegendentry{\SI{628}{\nano\meter}};
-      \addplot [thick, color=gold, only marks, error bars/y explicit, error bars/y dir=both] table [x=x, y=y, y error=err] {figs/exper/bgf585.dat};
-      \addlegendentry{\SI{585}{\nano\meter}};
+      \addplot [thick, color=Lorange, only marks, error bars/y explicit, error bars/y dir=both] table [x=x, y=y, y error=err] {figs/exper/bgf2606.dat};
+%      \addlegendentry{\SI{606}{\nano\meter}};
+%      \addplot [thick, color=Lred, only marks, error bars/y explicit, error bars/y dir=both] table [x=x, y=y, y error=err] {figs/exper/bgf2628.dat};
+%      \addlegendentry{\SI{628}{\nano\meter}};
+%      \addplot [thick, color=gold, only marks, error bars/y explicit, error bars/y dir=both] table [x=x, y=y, y error=err] {figs/exper/bgf2585.dat};
+%      \addlegendentry{\SI{585}{\nano\meter}};
+%      %\addplot[thick, black, mark=none] coordinates {(-3.5,0.165) (3.6,0.165)};
+%      %\addlegendentry{Laser off}
     \end{axis}
   \end{tikzpicture}
-  \caption{}
+  \caption{Background scatter normalised for a \SI{10}{\milli\watt} beam for
+  various distances from the chip surface. Positive is away from the chip,
+negative is into the heatsink.  }
   \label{exper:fig:scatter}
 \end{figure}
+
+In the existing experiment, we would expect that for a \SI{10}{\milli\watt}
+beam and \SI{100}{\milli\second} exposure we would see only on the order of a
+thousand scattered photons~\cite{Williams2018}. As such, we have moved far
+beyond the limit in which we would normally image a MOT, where we have \cm{$N$}
+molecules, and typically collect \SI{3.4E4}{photons\per\second} from each
+one~\cite{Williams2018}. Instead, we will image $\sim10$ molecules dropped from
+a magnetic trap, so can expect significantly reduced fluorescence.
+% Hannah's pg 88 for these numbers.
+%
+To reduce the number of background photons, a background-free imaging scheme
+has been investigated, as is discussed in the next section.
 
 \section{Background-free imaging}
 \label{exper:bgf}
@@ -547,9 +584,9 @@ power output from the 380D at
 that a \cm{??} diameter beam or smaller is required to saturate the transition.
 Due to this limitation we performed two experiments: identifying the transition
 in the \CaF{} beam using a narrow laser beam waist, and imaging the \CaF{}
-cloud in the MOT chamber with a \SI{5}{\milli\meter} $1/e$ diameter waist.
+cloud in the MOT chamber with a \SI{5}{\milli\meter} $1/e^2$ diameter waist.
 
-\section{Identifying the transition frequency}
+\subsection{Identifying the transition frequency}
 
 In this first experiment \pewpew{}{01} was used to identify the $X(v=0)
 \rightarrow A(v=1)$ transition frequency. A pulsed beam of \CaF{} was addressed
@@ -642,6 +679,13 @@ but hopefully we have better SNR?}
   \caption{}
   \label{exper:fig:beamresult}
 \end{figure}
+
+Following this, the scatter tests were performed as described in
+section~\ref{exper:scatter}, but for \pewpew{}{01} and \pewpew{}{10} both at
+\SI{10}{\milli\watt} and using
+the bandpass filter to isolate theses wavelengths from the EM-CCD. It was
+found that this yielded pixel counts that were consistent with measuring the
+background, i.e.\ the bandpass filter successfully blocked all the light.
 
 \subsubsection{Imaging the \CaF{} cloud}
 
