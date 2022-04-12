@@ -316,7 +316,7 @@ Material & $\sigma$ ($\times10^6\si{\siemens\per\meter}$) & $\mu_r$ & Ref. \\ [ 
       \addplot [thick, black] table {figs/mws/conductorlossvaryt.dat};
       \addplot [style=thick, color=blue] table [y index=2] {figs/mws/conductorlossvaryt.dat};
       \addplot [style=thick, color=pink] table [y index=3] {figs/mws/conductorlossvaryt.dat};
-      \node [] at (5cm, 3.1cm) {(a)};
+      \node [] at (4.5cm, 2.6cm) {(a)};
     \end{axis}
   \end{tikzpicture}
   \end{subfigure}
@@ -333,7 +333,7 @@ Material & $\sigma$ ($\times10^6\si{\siemens\per\meter}$) & $\mu_r$ & Ref. \\ [ 
       \addplot [thick, black] table {figs/mws/conductorlossvarys.dat};
       \addplot [style=thick, color=blue] table [y index=2] {figs/mws/conductorlossvarys.dat};
       \addplot [style=thick, color=pink] table [y index=3] {figs/mws/conductorlossvarys.dat};
-      \node [] at (5cm, 3.1cm) {(b)};
+      \node [] at (4.5cm, 2.6cm) {(b)};
     \end{axis}
   \end{tikzpicture}
   \end{subfigure}
@@ -807,7 +807,7 @@ This results in a cooling rate
     ]
       \addplot [thick, black] table {figs/mws/coolrate.dat};
     \end{axis}
-    \node [] at (0.6, 3.2) {(a)};
+    \node [] at (0.6, 2.7) {(a)};
   \end{tikzpicture}
   \end{subfigure}
   \hspace{1cm}
@@ -827,7 +827,7 @@ This results in a cooling rate
       \addplot [style=thick, color=pink] table [y index=3] {figs/mws/mintemps.dat};
       %\addlegendentry{\SI{4}{\kelvin}}
     \end{axis}
-    \node [] at (0.6, 3.2) {(b)};
+    \node [] at (0.6, 2.7) {(b)};
   \end{tikzpicture}
   \end{subfigure}
   \caption{
@@ -855,11 +855,11 @@ The lowest motional state that can be reached is determined by the background
 photon number in the resonator. A typical high-$Q$ cavity will operate at a few
 tens of millikelvin~\cite{doi:10.1063/1.3010859} but these temperatures require
 a dilution fridge, and high-temperature superconductors can operate at typical
-cryocooler temperatures of $T_\text{res}=\SI{4}{\kelvin}$. This corresponds
+cryocooler temperatures of $T_\text{c}=\SI{4}{\kelvin}$. This corresponds
 to a background photon number of
 %
 \begin{equation}
-  \overline{m} = \frac{k_B T_\text{res}}{\hbar \omega_0}.
+  \overline{m} = \frac{k_B T_c}{\hbar \omega_0}.
 \end{equation}
 %
 It has been commonly shown that other sources of background photons can be
@@ -872,7 +872,7 @@ when the molecule motion and photon energy are in thermal equilibrium, so that
 %
 \begin{align}
   T_\text{min} &= \frac{\hbar \omega_t \overline{m}}{k_B}
-               &= \frac{\omega_t}{\omega_0}T_\text{res}
+               &= \frac{\omega_t}{\omega_0}T_c
 \end{align}
 %
 which is shown as a function of the trapping current for various resonator
@@ -1007,7 +1007,7 @@ $\ket{\beta}$ so that $\arg(\alpha)=0$ and $\arg(\beta)=-\varphi$.
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.3\textwidth]{figs/mws/homodyne.pdf}
+  \includegraphics[width=0.4\textwidth]{figs/mws/homodyne.pdf}
   \caption{Schematic of a homodyne measurement. The state to be measured
     $\ket{\Psi_a}$ is incident on port (a) of the beamsplitter, and the local
     oscillator $\ket{\beta}$ is incident on port (b). The signal from
