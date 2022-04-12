@@ -32,14 +32,17 @@ the force exerted on the particle by the photons? This will be
   F = \text{photon momentum} \times \text{scattering rate}.
 \end{equation}
 %
-The momentum of a photon is
+The momentum of a photon with frequency $\omega$
 %
-% TODO Ensure constants are defined at some point, maybe here...
+% TODO Ensure this is the right place to define these constants.
 \begin{equation}
   p_\gamma = \hbar k = \frac{\hbar\omega}{c}
 \end{equation}
 %
-and the scattering rate will be the product of the decay rate of the transition
+where $c$ is the speed of light, $\hbar$ is the reduced Planck constant, and $k
+= 2\pi\omega/c$ is the photon's wavenumber.
+%
+The scattering rate will be the product of the decay rate of the transition
 (its linewidth) $\Gamma$ and the population of the excited state $\rho_{22}$.
 We use this notation to denote the excited state population, since it can be
 found by solving the optical Bloch equations in the rotating wave approximation
@@ -1074,6 +1077,8 @@ factor of one and the vibrational states are all states from the same
 anharmonic oscillator, as can be seen in \myfigref{theory:fig:vibtrans}. In
 this case we can derive the above selection rules.
 
+% For reference, in this fig, the functions are two gaussians and
+% (x**5-18*x**3+15*x)*exp(-x**2)
 \begin{figure}
   \centering
   \includegraphics[height=0.4\textwidth]{figs/theory/vibtrans.pdf}
