@@ -1,49 +1,120 @@
+\cm{Use intro to couch thesis in terms of what others have already done}
+
 Opening spiel
+\cite{Andre2006}
+
+\section{Ultracold atoms}
+
+% Keep this somewhat short, it doesn't need to be long but hit all the main
+% points here.
+
+Cold atoms and laser cooling -- well established technologies
+Nobel speech: https://journals.aps.org/rmp/pdf/10.1103/RevModPhys.70.721
+Can also cite Metcalf
+(also bring in idea of UHV here somewhere)
+- cf ions \cite{}, emphasis on neutral atoms however
+- laser slowing
+  > radiation pressure https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.40.1639
+  > zeeman slowing https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.48.596
+  > chirped light (Apparently a Phillips 1983 paper but can't find it, just
+  leave, cite the lecture or metcalf I guess)
+- magnetic trapping \cite{PhysRevLett.54.2596}
+- MOT \cite{PhysRevLett.59.2631}
+- subdoppler \cite{Dalibard:89}
+- evaporative cooling to BEC (Cornell https://www.science.org/doi/10.1126/science.269.5221.198)
+https://journals.aps.org/prx/abstract/10.1103/PhysRevX.8.021036)
+- dipole trap (Chu 1986 https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.57.314) ,
+- tweezer (https://www.nature.com/articles/nphys698)
+- lattice (https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.81.3108)
+- SWOT (want to discuss this in outlook so introduce here)
+- coherent control e.g. simulation in lattice https://www.nature.com/articles/s42254-020-0195-3
+- measurement, e.g. (clocks 2018 lattice clock
+- miniaturisation e.f. grating MOT (https://www.nature.com/articles/nnano.2013.47) some other
+possible refs in jabref but they are probably not as good. Maybe look inside
+them for more...
+- atom chips (mention ions and ion chips)
 
 \section{Ultracold molecules}
 
-Cold atoms and laser cooling -- well established technologies
-- evaporative cooling to BEC
-- coherent control
-- dipole trap, tweezer, single atom, lattice
-- magnetic trapping
-- atom chips
-(also bring in idea of UHV here somewhere)
 
 Cold molecules also well established, but younger
-- SrF MOT
-- CaF MOT
+- \emph{Direct} (review: \cite{Tarbutt2018} first cooling with SrF \cite{Shuman2009}, followed by
+radiation pressure paper \cite{PhysRevLett.108.103002}) vs. indirect cooling
+(producing RbCs Durham, I think this is the original indirect
+https://www.nature.com/articles/nphys3985)
+- Direct cooling into storage rings https://pubs.acs.org/doi/abs/10.1021/cr200349r
+(can mention briefly if at all) \cite{PhysRevA.89.033604}
+- Longitudinal laser slowing of supersonic CaF https://journals.aps.org/pra/abstract/10.1103/PhysRevA.89.053416
+- SrF MOT \cite{Barry2014} and improved in ~\cite{PhysRevLett.116.063004}
+- CaF buffer gas source (details, maybe not for here): \cite{Truppe2018} % Cite
+info on TandF says 2018 but think it's 2017? Original bufgas source
+\cite{Barry2011} or not?? I think this one is first? \cite{Maxwell2005}
+- CaF slowing Truppe: \cite{Truppe2017a} Doyle: \cite{0953-4075-49-17-174001}
+- CaF MOT Doyle: r.f. MOT \cite{PhysRevLett.119.103201}
+- Subdoppler cooling \cite{Truppe2017}
+- Deep cooling of CaF \cite{PhysRevLett.123.033202}
 - CaF dipole traps (Doyle group)
-- CaF coherent control, long lived states
+- CaF trap and coherent control ~\cite{WilliamsMagnetic2018}
+- CaF (and RbCs) coherent control ~\cite{Blackmore_2018}, long lived states
+(Caldwell) ~\cite{PhysRevLett.124.063001}
+- Non-destructive imaging of cloud \cite{PhysRevLett.121.083201}
+- Tweezer array of CaF Doyle \cite{Anderegg2019}, undergoing coherent control
+\cite{PhysRevLett.127.123202} (2021)
+- Ongoing cooling investigation - transverse (similar to what has been done for
+YbF https://iopscience.iop.org/article/10.1088/2058-9565/ac107e) and ZS https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.127.263002
 
 Some problems:
 - Harder to cool due to complex energy structure
 - Typically lower density clouds than atoms (makes things more challenging and
 e.g. evaporative cooling impossible)
 
-Newer things, polyatomic MOTs, collisions, next step sympathetic cooling
+Newer things, polyatomic MOTs (Doyle: https://arxiv.org/abs/2112.08349),
+which have some uses maybe? https://projects.iq.harvard.edu/files/jdoyle/files/jps_cp_spin2021.pdf
+collisions first: \cite{son2019collisional}, us \cite{Jurgilas2021, JurgilasPRL_2021}, next step sympathetic cooling
 
 Useful features of molecules
 - Permanent electric dipole moment, long range interaction -> simulation
+- Various novel ideas:
+   qudits \cite{Sawant_2020}
+   topological qubits: theory (Zoller) \cite{Micheli2006};  experiment ~\cite{Gross995}
 - Interesting to study for Q. chemistry (see collisions above)
 - spectrosocpy: eEDM
+(latest ACME https://www.nature.com/articles/s41586-018-0599-8,
+review https://arxiv.org/abs/2203.08103, 
 - Long lived states (above) + strong mw coupling in rot states (segway to chip)
 
 \section{Chip traps}
 
 Basic operating principles
+- original idea for atoms in high field gradients ~\cite{PhysRevA.52.4004}
 - magnetic trap from wires and bias fields
+- first trap \cite{Reichel1999} (inc novel mirror-MOT) precise control of
+atoms in U-trap and some evaporation
+- nice trapping and guiding \cite{Folman2000} more trapping and guiding
 - microfabrication of the wires allows for highly local traps
 - can trap within microns of a surface
+- electrostatic trapping also possible, as in Andre paper, and e.g.
+\cite{Bethlem2000}
 
 Uses
+- robust, lots of BECs (first (check?) \cite{Haensel2001} but close is \cite{Ott2001})
+- compact, integrated device for e.g. frequency standard \cite{RAMIREZMARTINEZ2011247}
 - investigate physics with quantum object close to macroscopic
 - integrate with mw devices on the chip
+    > set up that we can do this already for beams, but better to trap, e.g.
+      Rydberg atoms, Hogan -- there are better cites including in jabref
+      https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.125.073201
+    > multi-level (Truetlein thesis \cite{Treutlein2008} but paper maybe
+      better... \cite{Boehi2009})
+    > superconducting \cite{Bernon2013}
 - ideas of scalability?
 
-Atom chips
+Big review: \cite{2011Ac}
 
-Molecule chip trap
+\section{Molecule chip trap}
+% TODO Combine with structure section to be one 'this thesis'/ 'CaF chip'
+% section?
+
 - back to idea above of long states and strong coupling to mws, promising
 architecture \cite{Andre2006}
 - ready to implement this in CaF with our experiment (phase space densities,
