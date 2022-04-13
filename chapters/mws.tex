@@ -613,24 +613,24 @@ hyperfine states, or effects due to the magnetic field can be ignored.
   \begin{tikzpicture}
     \begin{axis}[
         enlargelimits=true,
-        xlabel=Field strength ($B/\mu_e$),
+        xlabel=Field strength (\si{\kilo\volt\per\centi\meter}),
         ylabel=State energy (\si{\giga\hertz}),
         width=0.7\textwidth,
         height = 0.4\textwidth,
         legend pos=outer north east
         %x tick label style={/pgf/number format/.cd, set thousands separator={}}
     ]
-      \addplot [thick, black] table {figs/mws/stark.dat};
+      \addplot [thick, black] table {figs/mws/starkReal.dat};
       \addlegendentry{$\ket{0,0}$}
-      \addplot [style=thick, color=blue] table [y index=2] {figs/mws/stark.dat};
+      \addplot [style=thick, color=blue] table [y index=2] {figs/mws/starkReal.dat};
       \addlegendentry{$\ket{1,0}$}
-      \addplot [style=thick, color=pink] table [y index=3] {figs/mws/stark.dat};
+      \addplot [style=thick, color=pink] table [y index=3] {figs/mws/starkReal.dat};
       \addlegendentry{$\ket{1,\pm1}$}
-      \addplot [style=thick, color=purple] table [y index=4] {figs/mws/stark.dat};
+      \addplot [style=thick, color=purple] table [y index=4] {figs/mws/starkReal.dat};
       \addlegendentry{$\ket{2,0}$}
-      \addplot [style=thick, color=gold] table [y index=5] {figs/mws/stark.dat};
+      \addplot [style=thick, color=gold] table [y index=5] {figs/mws/starkReal.dat};
       \addlegendentry{$\ket{2,\pm1}$}
-      \addplot [style=thick, color=grey] table [y index=6] {figs/mws/stark.dat};
+      \addplot [style=thick, color=grey] table [y index=6] {figs/mws/starkReal.dat};
       \addlegendentry{$\ket{2,\pm2}$}
     \end{axis}
   \end{tikzpicture}
