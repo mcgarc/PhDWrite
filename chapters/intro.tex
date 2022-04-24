@@ -165,36 +165,107 @@ Similar vein...  Atom chip on ISS \cite{Frye2021}
 
 \section{Ultracold molecules}
 
+% TODO Ensure I have discussed Rydberg atoms and coupling to hyperfine levels
+There are a number of potential benefits that can come from cooling molecules
+rather than atoms. For example with molecules it is possible to have a
+permanent electric dipole moment, allowing for the various benefits discussed
+for Rydberg atom experiments but in the ground state of the molecule.
+%
+\cm{Explore fundamental physics, eEDM, etc.}
+%
+Molecules also have a far richer energy structure than atoms; a diatomic
+molecule will have both vibrational and rotational energy levels, which can be
+leveraged for novel imaging schemes, strong coupling to microwave transitions,
+amongst other applications. However these introduce additional complications
+that make experiments with ultracold molecules more challenging than their
+atomic equivalents.
 
-Cold molecules also well established, but younger
-- \emph{Direct} (review: \cite{Tarbutt2018} first cooling with SrF \cite{Shuman2009}, followed by
-slowing with E field \cite{Bethlem1999} (mention this because relevant later)
-radiation pressure paper \cite{PhysRevLett.108.103002}) vs. indirect cooling
-(producing RbCs Durham\cite{PhysRevA.89.033604}, I think this is the original indirect \cite{Moses2017} (can mention briefly if at all)  
-- Direct cooling into storage rings (Thesis \cite{Crompvoets2005} review of mol beams \cite{vandeMeerakker2012})
-- Longitudinal laser slowing of supersonic CaF \cite{PhysRevA.89.053416}
-- SrF MOT \cite{Barry2014} and improved in ~\cite{PhysRevLett.116.063004}
-- CaF buffer gas source (details, maybe not for here): \cite{Truppe2018} % Cite
-info on TandF says 2018 but think it's 2017? Original bufgas source
-\cite{Barry2011} or not?? I think this one is first? \cite{Maxwell2005}
-- CaF slowing Truppe: \cite{Truppe2017a} Doyle: \cite{0953-4075-49-17-174001}
-- CaF MOT Doyle: r.f. MOT \cite{PhysRevLett.119.103201}
-- Subdoppler cooling \cite{Truppe2017}
-- Deep cooling of CaF \cite{PhysRevLett.123.033202}
-- CaF dipole traps (Doyle group)
-- CaF trap and coherent control ~\cite{WilliamsMagnetic2018}
-- CaF (and RbCs) coherent control ~\cite{Blackmore_2018}, long lived states
-(Caldwell) ~\cite{PhysRevLett.124.063001}
+There are two main schools of ultracold molecule experiments, in the first of
+these gases of cold atoms are used to synthesise cold molecules, ususally by
+association by Feschbach resonance~\cite{Moses2017,PhysRevA.89.033604}. However
+in this thesis we will focus on the direct cooling of hot diatomic molecules.
+The first experiment to successfully trap molecules was reported by Weinstein
+et al.~\cite{Weinstein1998}, who created calcium monohydride (\CaH{}) molecules
+by laser ablation, and then to below the depth of a magnetic trap by buffer-gas
+cooling. In this technique, an inert buffer gas is used as an intermediary to
+thermalise the molecuels with a cold copper cell typically held at a few
+kelvin.
+%
+% TODO Can talk about Stark deceleration of rydberg atoms above at some point
+An alternative technique to slow a beam of molecules was developed in Gerard
+Meijer's group, who leveraged the permanent electric dipole moment of molecules
+used Stark deceleration to first slow a beam of carbon
+monoxide~\cite{Bethlem1999}, and later to slow then electrostatically trap
+ammonia in both a quadrupole trap~\cite{Bethlem2000} and a storage
+ring~\cite{Crompvoets2001, Crompvoets2005}.  However \cm{both of these are
+still quite hot}.
+
+Buffer gas cooling became a staple of cold molecule experiments, being
+routinely used in the production of slow, high-flux molecular
+beams~\cite{Maxwell2005, Barry2011}.
+% CITE https://aip.scitation.org/doi/abs/10.1063/1.2717178
+Optical cycling in a diatomic molecule with the potential of laser slowing was
+first seen using strontium monofluoride (\SrF{}) by DeMille's
+group~\cite{Shuman2009}. To account for the more complex energy structure of
+the molecule, additional lasers were used to repump the molecule from states
+that were dark to the cooling transition.
+% Can I rephrase this to highlight additional experimental complication?
+Soon enough the DeMille group had applied the technique to achieve
+laser-slowing~\cite{PhysRevLett.108.103002} and eventually an \SrF{}
+MOT~\cite{Barry2014, PhysRevLett.116.063004}. \cm{These were colder with
+potential for further reducing temp with other schemes...}
+
+Alongside the development of laser-cooling \SrF{}, there have been developments
+in the laser-cooling of various other molecules, notably ytterbium monofluoride
+(\YbF{}) and calcium monofluoride (\CaF{}), the latter being the main molecule
+of focus in this thesis. YbF has been used in various experiments to measure
+the electric dipole moment of the electron, with important implications for
+high-energy physics~\cite{}. Meanwhile, \CaF{} shows promise as a molecule of
+itnerest for investigating quantum information and the fundamentals of quantum
+chemisty~\cite{}. Laser-slowing of \CaF{} was first observed in the Centre for
+Cold Matter (CCM) at Imperial College London~\cite{PhysRevA.89.053416}, where a
+supersonic beam was slowed by \SI{20}{\meter\per\second} using a chirped beam of
+light. The \CaF{} experiment was further developed with the implementation of a
+buffer gas source for \CaF{}~\cite{Truppe2018}, with further developments in
+laser slowing coming from both CCM~\cite{Truppe2017a} and the Doyle group in
+Harvard~\cite{0953-4075-49-17-174001}.
+% TODO Check Truppe2017a is right cite for here and that the entry is correct
+
+A \CaF{} MOT was first reported by the Harvard
+group~\cite{PhysRevLett.119.103201}, followed shortly by CCM~\cite{}. Both
+experiments taking slightly different approaches to avoid the pumping of
+molecules into dark states, using r.f.\ switching and dual-frequency techniques
+respectively. The \CaF{} MOT has opened the door to experiments with large
+clouds of \CaF{} molecules, with today's MOTs capable of loading \cm{number}
+molecules. The temperatures of these clouds can be further reduced to below the
+Doppler limit~\cite{Truppe2017, PhysRevLett.123.033202} and can then be further
+trapped and controlled by some of the same techniques already discussed above
+for atoms. This includes confinement in magnetic~\cite{WilliamsMagnetic2018}
+and optical dipole traps~\cite{}, in a
+lattice~\cite{} and recently with a single \CaF{} molecule in optical
+tweezers\cm{?? \cite{}}. Futher cooling schemes such as transverse
+cooling (similar to that seen for \YbF in \inlineref{Alauze2021}) and
+Zeeman-Sisyphys cooling have been demonstrated\cite{Fitch2016,
+PhysRevLett.127.263002}. Combining these various schemes with ongoing research
+into collisions with atoms~\cite{PhysRevLett.126.153401} and sympathetic
+cooling could see even lower \CaF{} temperatures achieved in the near future.
+% TODO Check tweezer cite and what it says before they go into the above
+%Tweezer array of CaF Doyle \cite{Anderegg2019}
+
+\CaF{} has shown to have promise in quantum information and simulation, with
+coherent control in a magnetic trap having been
+demonstrated~\cite{WilliamsMagnetic2018, Blackmore_2018} with long coherence
+times~\cite{PhysRevLett.124.063001} \cm{how long?} Coherent control of the
+molecule is also possible in a tweezer trap~\cite{PhysRevLett.127.123202},
+% TODO Check this PRL cite is legit for what I am saying (coherent control in
+% tweeze)
+showing that there is significant potential for the implementation of
+simulations such as those described in \cm{Zoller paper? and other?}
+
+\cm{Another para on why this is actually useful, maybe say a bit more at the
+start of this section too...}
+
 - Non-destructive imaging of cloud \cite{PhysRevLett.121.083201}
-- Tweezer array of CaF Doyle \cite{Anderegg2019}, undergoing coherent control
-\cite{PhysRevLett.127.123202} (2021)
-- Ongoing cooling investigation - transverse (similar to what has been done for
-YbF \cite{Alauze2021}) and ZS proposal \cite{Fitch2016}, experiment \cite{PhysRevLett.127.263002}
-
-Some problems:
-- Harder to cool due to complex energy structure
-- Typically lower density clouds than atoms (makes things more challenging and
-e.g. evaporative cooling impossible)
 
 Newer things, polyatomic MOTs (Doyle: \cite{Vilas2021}), which have some uses maybe? ~\cite{DoylePolyatomic2022}
 collisions first: \cite{son2019collisional}, us \cite{Jurgilas2021, JurgilasPRL_2021}, next step sympathetic cooling
@@ -212,6 +283,39 @@ Useful features of molecules
 
 
 \section{Molecule chip trap}
+
+% TODO Check that I do actually say this...
+We have seen in the above discussion that ultracold molecules can be a useful
+tool in quantum information and simulations. Further, recent developments in
+cooling techniques mean that we are now able to produce dense clouds of
+molecules such as \CaF{}, which exhibit long coherence times in magnetic traps.
+Various techniques that have been applied to cold atoms have been equally
+succesfully applied to cold molecules, but a conspicuous absence in the
+preceeding discussion is a chip trap for ultracold molecules.
+
+% TODO Need to build up a bit better that it has been hard to do this so far
+% because of lack of molecuel psd
+Such a device is of significant interest, since the various capabilities of
+atom chips: a robust and stable \cm{architecture} for performing cold molecule
+experiments \cm{would be super useful}. Further, the rotational transitions in
+a diatomic molecule couple very strongly to microwave fields, much more so than
+the hyperfine transitions in atoms. It has been proposed that building a
+molecule chip with integrated microwave guides, similar to equivalent atom
+chips reported in \cm{inlinerefs treutelin (Paper not thesis) and superconducting chip}
+could be used for non-demolition state readout, \cm{somethign else} and
+sideband cooling into the ground state of the trap~\cite{Andre2006}.
+
+There has been some existing work investigating molecules trapped close to
+chips, mainly by the Meijer group, who have designed and implemented
+microfabricated Stark decelerators~\cite{}, and even trapped molecules on a
+chip~\cite{}. However, similar to their other work, these molecules are much
+hotter than can be achieved with laser-cooling. In this thesis, I will discuss
+the work that has been undertaken towards loading ultracold \CaF{} molecules
+into a microfabricated magnetic chip trap, with potential for the future
+integration of microwave guides, and the implementation of an integrated
+molecule chip trap as was proposed in \inlineref{Andre2006}.
+
+
 
 Justify
 
@@ -236,8 +340,7 @@ moreo promised with ODT)
 \section{The structure of this thesis}
 % TODO combine with above section?
 
-This thesis will present the design and construction of a \CaF{} chip trap
-experiment. In chapter~\ref{theory} we will introduce key background theory: 
+In chapter~\ref{theory} we will introduce key background theory: 
 laser-cooling of simple systems, the operation of chip traps, and the physics
 of diatomic molecules. Next chapter~\ref{overview} gives an overview of the
 existing \CaF{} experiment, as well as some particulars of the laser-cooling
