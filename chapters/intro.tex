@@ -144,30 +144,17 @@ atom chips trapping and guiding \cite{Folman2000}
 Atom chips were found to be a robust tool for cold atom experiments, including
 the production of BECs, with groups from \cm{Hansel group} and \cm{Ott group}
 both reporting \cm{Rb? BECs} \cm{at the same conference} in 2001~\cite{Hansel2001,
-dtt2001}. In 2004 it was demonstrated by the MPI group that coherence times 
-of around \SI{1}{\second} could be achieved for \esRB{} atoms held in a chip
-trap within \SI{100}{\micro\meter} of the surface. In this experiment microwave
-fields were used to drive hyperfine tranisitons in the molecules, with the
-microwave radiation delivered from an external source. This was soon extended to
-experiments where the microwaves were delivered by on-chip microwave
-components~\cite{Treutlein2008, Boehi2009}, with a view to develop a microwave
-trap~\cite{} and perform quantum gates entirely on-chip. It was also shown that
-the coherence was sufficient to implement an atomic clock on a
-chip~\cite{Knappe2004}.
-%
-\cm{ramsey infterferometery?}
-%
-\cm{and later freq. standard \cite{RAMIREZMARTINEZ2011247}}
+dtt2001}. 2004 saw the first implementation of an on-chip Michelson
+interferometer, based on the creation, splitting and guiding of BECs all on a
+chip. In the same year, prospect of integrated atom chip devices was fully
+realised at NIST \cm{acronym?}, where a compact and portable atomic chip clock
+was developed~\cite{Knappe2004}. This has since become a commercial product
+with uses across a variety of fields, such as military and space
+science~\cite{RAMIREZMARTINEZ2011247} including an atom chip experiment
+conducted on board the International Space Station~\cite{Frye2021}.
 
-Michelson interfferometer \cite{Wang2005}
-Long coherence times (58s) \cite{Deutsch2010}
-superconducting (sc) atom chip \cite{Nirrengarten2006}
-sc chip for BEC
-(Roux, C., Emmert, A., Lupascu, A., Nir- rengarten, T., Nogues, G., Brune, M.,
-Raimond, J.-M., and Haroche, S. (2008) Eur. Phys. Lett. 81, 56004.)
+\cm{Various other interesting experiments:
 Meissner effect \cite{Cano2008}
-Couple BEC to sc loop (Singh, M. (2009) Opt. Express 17, 2600)
-...more superconducting \cite{Bernon2013}
 
 INteraction with surface (Casmir-polder)
 \cite{PhysRevA.72.033610}
@@ -184,8 +171,50 @@ Squeezing BEC
 
 Squeezing in cavity, Monica S-S (chip for preparation - useful example of experiment
 easier) \cite{PhysRevLett.104.073604}
+}
 
-Similar vein...  Atom chip on ISS \cite{Frye2021}
+Also in 2004, it was demonstrated by the MPI group that coherence times 
+of around \SI{1}{\second} could be achieved for \esRb{} atoms held in a chip
+trap within \SI{100}{\micro\meter} of the surface. In this experiment microwave
+fields were used to drive hyperfine tranisitons in the molecules, with the
+microwave radiation delivered from an external source. This was soon extended to
+experiments where the microwaves were delivered by on-chip microwave
+components~\cite{Treutlein2008, Boehi2009}, with a view to develop a microwave
+trap~\cite{} and perform quantum gates entirely on-chip.
+
+% TODO I don't think this should be a footnote, need to make a clear case why
+% superconductors are important...
+We will discuss in chapter~\ref{mws} that for low-loss microwave photons on a
+chip\footnote{Which is a requirement for the implementation of microwave
+  cavities and hence the realisation of cavity quantum electrodynamic systems.}
+it is highly beneficial to operate in the superconducting regime. This provides
+the additional benefit of being able to create deep traps by passing high
+current through superconducting trapping wires. A superconducting atom chip was
+first realised by \cm{the French groups} in 2006~\cite{Nirrengarten2006}, with
+a BEC on a superconducting chip following in 2008~\cite{Roux2008}.
+
+Subsequent development of these superconducting atom chips lead to full quantum
+control of an atom cloud held in place above a superconducting microwave
+resonator~\cite{Bernon2013}. Here the resonator was designed to be
+off the atomic resonance, so that the internal state of the trapped atoms were
+unaffected by its presence. Of additional note in this paper is the loading
+scheme used for the chip -- an optical tweezer is used to bring the atoms from
+a room-temperature environment to within \SI{400}{\micro\meter} of the chip
+surface, before being transferred to surface-based microtraps.
+%
+A later experiment~\cite{Hatterman2017} would see the coupling of atoms to the
+microwave resonator, realising a hybrid atom-microwave system, and the
+investigation of microwave cavity quantum electrodynamics. Rabi oscillations
+between hyperfine transitions could be driven, but strong coupling was not, and
+has not been achieved.
+% But falling atoms have been strongly coupled to other resonators so it is
+% possible.. https://www.nature.com/articles/nature05147
+%
+% TODO Why is strong coupling important?
+
+% TODO Need to have introduced rydberg atoms already?
+\cm{Strong coupling with rydberg atoms? Pivot to Hogan papers, lead in to
+  molecules...}
 
 \section{Ultracold molecules}
 
