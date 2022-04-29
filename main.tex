@@ -216,11 +216,6 @@
 \newcommand*\meas[1]{\tilde{#1}}
 
 
-% Uncomment and fill if using article
-%\title{Early stage assessment: molecule chip}
-%\author{Cameron McGarry\\ 
-%Supervisors: Mike Tarbutt and Ben Sauer}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   Begin Document and Title/ Abstract     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -230,31 +225,38 @@
 % Title page
 \input{./chapters/title}
 
-%% Abstract
-%\chapter*{Abstract}
-%\input{./chapters/abs}
-%\clearpage
-%
-%\chapter*{Declarations}
-%\input{./chapters/dec}
-%\clearpage
-%
+% Abstract
+\chapter*{Abstract}
+\input{./chapters/abs}
+\clearpage
+
+\chapter*{Declarations}
+\input{./chapters/dec}
+\clearpage
+
 % TODO Remove this chapter before submission to Spiral
-%\chapter*{Covid-19 impact statement}
-%\input{./chapters/covid}
-%\clearpage
-%
-%\chapter*{Acknowledgements}
+\chapter*{Covid-19 impact statement}
+\input{./chapters/covid}
+\clearpage
+
+\chapter*{Acknowledgements}
+% TODO Remember to put these in at some point!
+\cm{WIP}
 %\input{./chapters/acks}
 
-% TOC
+% TOC (keep it black)
+{
+\hypersetup{linkcolor=black}
 \tableofcontents
+}
 \clearpage
 
 % Numbers on
 \pagenumbering{arabic}
 %NOTE This must be manually set so that numbering starts on title page
-\setcounter{page}{5} 
+% TODO Ensure this makes sense before submission
+% TODO Ensure this makes sense after removal of covid statement
+\setcounter{page}{9}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                Body Start                %
