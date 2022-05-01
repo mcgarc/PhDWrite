@@ -1,28 +1,34 @@
 % Could have mentioned ion chips. Reviews:
 %\cite{RevModPhys.62.531}
-%\cite{Romaszko2020} (mostly chips?)
+%\cite{Romaszko2020} (mostly chips?) -- I actually do use this one...
 
-One of the reasurring things about new experiments with ultracold molecules is
-that a lot of what researchers may wish to accomplish has an
-already-accomplished analogue in the well-established field of cold atoms. On
-the whole, researchers of molecules have been able to foolow this existing
-roadmap, from laser slowing, to magneto-optical trapping, to optical dipole
-trapping; all of which will be discussed in the next section. A next obvious goal may
-be evaporative cooling and the creation of a Bose-Einstein condensate, but
-there is another convenient and useful tool of cold atom experiments whose
-molecular parallel has yet to be realised.
+On the whole, researchers of ultracold molecules have been able to follow the
+existing roadmap of atomic experiments, from laser slowing, to magneto-optical
+trapping, to optical dipole trapping. Another cold atom experiment, the chip
+trap, does not yet have a molecular analogue. As we will see below, this tool
+has proven to be of great use as a robust, compact and portable device for cold
+atom experiments. A molecular counterpart could prove to be equally invaluable,
+and offer improvements on existing atom chips. This could include allowing
+strong coupling to on-chip microwave fields and  the realisation of a cavity
+quantum electrodynamics system.
 
-This tool is the atom chip which, we will see below, has proven to be of great
-use as a robust, compact and portable device for cold atom experiments. A
-molecular counterpart could prove to be equally invaluable, and offer
-improvements on existing atom chips, by allowing strong coupling to microwave
-fields on the chip, including the realisation of a cavity quantum
-electrodynamics system. Such a device was originally proposed by Andre et
-al.~\cite{Andre2006}, as a `coherent all-electrical interface between polar
-molecules and mesoscopic superconducting resonators.'
+The molecule chip was originally proposed by Andre et al.~\cite{Andre2006} as
+a means of leveraging the long coherence times of a diatomic molecule in
+combination with robust control using on-chip microwave guides. In this
+proposal a single molecule is trapped in the near field of a resonator, which
+can be used for state control and readout. The built-in integration with
+microwave photons would allow the exchange of information via a flying qubit,
+either to other devices on the same chip, or to other separate devices.
+%
+It is possible to envision how such a device is scalable, and could be used to 
+interact with other quantum devices that operate in the microwave regime, such
+as superconducting charge qubits.
 
-This chapter provides an outline as to why a molecule chip trap for ultracold
-molecules is a desirable goal, starting from a review of cold atoms, to atom
+At the time of this proposal, the field of ultracold molecules was in its
+infancy. Today it is possible to create dense clouds of ultracold molecules,
+which are ripe for loading onto a chip trap. In this thesis I will describe the
+work that has been undertaken to implement such a device. This chapter will
+further motivate my research, starting with a review of cold atoms, to atom
 chips and then cold molecules. I will then summarise the motivation for a
 molecule chip and outline the structure of the thesis.
 
@@ -31,10 +37,10 @@ molecule chip and outline the structure of the thesis.
 Laser cooling of atoms is a developed field, with the 1997 Nobel Prize in
 Physics having been awarded to Cohen-Tannoudji, Chu and Phillips for
 `development of methods to cool and trap atoms with laser
-light'~\cite{RevModPhys.70.721}. The subject is reviewed in various texts, with
+light'~\cite{RevModPhys.70.721}. This subject is reviewed in various texts, with
 the canonical reference being Metcalf and van der Straten~\cite{Metcalf1999}.
 Here I will give a brief qualitative overview of the topic and its many
-applications in modern physics, which include quantum: information,
+applications in modern physics, which include quantum information,
 communication and metrology. Further details on these cooling mechanisms are
 given in section~\ref{theory:cooltrap}.
 
@@ -45,10 +51,12 @@ direction of travel. Over a large number of photon scatters this results in a
 net reduction in the forward velocity of the atoms~\cite{PhysRevLett.40.1639}.
 This principle of slowing with radiation pressure was first observed by
 Wineland et al.~\cite{PhysRevLett.40.1639} in \Mg{} ions, but one of the key
-goals of laser slowing was to sufficiently reduce the velocity of a beam of
-neutral atoms (produced in, for example, an oven) to sufficiently low
-velocities for trapping. 
+goals of laser slowing was to reduce the velocity of a beam of neutral atoms
+(produced in, for example, an oven) as was achieved by Andreev et
+al.~\cite{Andreev1981}.
 
+A futher goal was to reduce the velocity even further, so that the slowed atoms
+could be loaded into a magnetic trap.
 To achieve this it is essential to account for the change in the resonant
 frequency of the atoms due to the Doppler shift that occurs as the atom's
 velocity is reduced. Phillips and Metcalf~\cite{PhysRevLett.48.596} were able
@@ -61,7 +69,7 @@ resonant with the atoms as they slow down.  Such experiments must take place
 under ultra high vacuum to prevent loss by collisions with a background gas.
 
 Magnetic trapping of the atoms soon followed, with the slow atomic beam
-directed into a quadrupole field generated by current-carrying coils. The atoms
+directed into a quadrupole field generated by current carrying coils. The atoms
 could be pumped into a weak-field seeking state, and trapped in the field
 minimum~\cite{PhysRevLett.54.2596}. The next key development was the
 implementation of the magneto-optical trap (MOT) where atoms were confined by a
@@ -140,7 +148,8 @@ useful tool for miniaturised and robust cold atom experiments. These can be
 integrated with, for example, microwave components, to form hybrid quantum
 systems. Further details will be presented in section~\ref{theory:chips}, but
 here I will give a brief overview of the operating principles and history of
-atomic chip traps.
+atomic chip traps. I will also begin to introduce why loading molecules onto a
+chip may be a useful development of these experiments.
 
 We have already discussed the idea of trapping atoms in a quadrupole magnetic
 field, however in the above-described experiments the fields were generated by
@@ -264,8 +273,8 @@ atomic equivalents.
 
 There are two main schools of ultracold molecule experiments, in the first of
 these gases of cold atoms are used to synthesise cold molecules, usually by
-association by Feshbach resonance~\cite{PhysRevA.89.033604}. However
-in this thesis we will focus on the direct cooling of hot diatomic molecules.
+association by Feshbach resonance~\cite{PhysRevA.89.033604}.
+In this thesis we will focus on the direct cooling of hot diatomic molecules.
 The first experiment to successfully trap molecules was reported by Weinstein
 et al.~\cite{Weinstein1998}, who created calcium monohydride (\CaH{}) molecules
 by laser ablation, and then to below the depth of a magnetic trap by buffer-gas
@@ -420,7 +429,7 @@ transitions that can be achieved in magnetic traps.
 
 In chapter~\ref{theory} we will introduce key background theory: 
 laser-cooling of simple systems, the operation of chip traps, and the physics
-of diatomic molecules. Next chapter~\ref{overview} gives an overview of the
+of diatomic molecules. Next, chapter~\ref{overview} gives an overview of the
 existing \CaF{} experiment, as well as some particulars of the laser-cooling
 methods used specifically for \CaF{}. Here we will also outline the new chip
 experiment, and how it will integrate with the existing apparatus. We have
@@ -429,11 +438,11 @@ presented in chapter~\ref{sim}.
 
 We microfabricated chip traps, as will be discussed in chapter~\ref{fab}, and
 then loaded these into a vacuum chamber for initial testing. This included
-testing that the current capcity of the trapping wires was as expected, that
+testing that the current capcity of the trapping wires was as expected: that
 ultra-high vacuum could be reached, and that it will be possible to image
 molecules without too much background scatter created by the chip. These tests,
 and a scheme to reduce the background scatter are discussed in
-chapter~\ref{experiment}. Chapter~\ref{mws} describes how a microwave guide and
+chapter~\ref{exper}. Chapter~\ref{mws} describes how a microwave guide and
 resonator can be implemented as part of the experiment, as well as the
 behavoiur of a single molecule coupled to a microwave cavity. We will extend
 this idea for ensembles of molecules coupled to a cavity in
