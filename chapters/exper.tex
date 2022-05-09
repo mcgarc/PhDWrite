@@ -151,7 +151,6 @@ change in the pressure.
 
 \section{Current testing}
 \label{exper:current}
-% TODO I think maybe this should go above vacuum tests?
 
 It was also important to test the currents that can be achieved through the
 chip trapping wires. These tests were conducted with the chip under vacuum
@@ -213,14 +212,13 @@ directly solder the chip, as described in the next section.
 \subsection{Solder tests}
 
 An alternative to wirebonding is to directly solder the chip to the subchip.
-This must be done carefully, as described in section~\ref{fab:solder} but
-if done correctly it yields a highly stable electrical connection. \cm{The
-UHV compatability of this method is discussed in a section to come (if I swap
-the order around, which one?)} The same current tests were performed as for the 
-wirebonded chips, as shown in \cm{the same fig or different?}. For solder
-joints, the results were reliably repeatable, and we were able to observe
-sufficient current densities for trapping (compared to those laid out in
-section~\ref{overview:design}).
+This must be done carefully, as described in section~\ref{fab:solder} but if
+done correctly it yields a highly stable electrical connection. In the next
+section I will demonstrate that this method is compatible with UHV. Current
+tests were performed with the same apparatus as for the wirebonded chips, as
+shown in \myfigref{exper:fig:curtest}. For solder joints, the results were
+reliably repeatable, and we were able to observe sufficient current densities
+for trapping (compared to those laid out in section~\ref{overview:design}).
 
 We consider a typical example of testing using the small wire
 (\SI{9}{\micro\meter}), on a chip where the wire height achieved was
@@ -313,7 +311,7 @@ and~(b) respectively.
 
 \begin{figure}[htb]
   \centering
-  %\cm{(a) good wire, (b) bad wire from OneNote 7 April}
+  %(a) good wire, (b) bad wire from OneNote 7 April
   \begin{subfigure}[b]{0.45\textwidth}
     \centering
     \begin{overpic}[width=\textwidth]{figs/exper/burn/good.png}
@@ -341,18 +339,32 @@ and~(b) respectively.
 \section{Scatter testing}
 \label{exper:scatter}
 
-As alluded to above, there is some concern that imaging close to the chip will
-cause significant background scatter, and make imaging the molecules
-challenging. To investigate this, the imaging scheme shown in
+In the existing \CaF{} experiment, the molecules can be imaged by light-induced
+fluorescence.  The $X(v=0)\rightarrow A(v=0)$ transition is driven by
+\pewpew{}{00}, and light is emitted as the molecules spontaneously decay from
+$A$ back to $X$. Most molecules will decay back to $X(v=0)$, releasing a photon
+at the same wavelength as the laser, which can be collected and imaged on a
+CCD. Since the laser and fluorescence are at the same frequency, any light
+scattered from the viewports or from nearby objects such as the quadrupole
+coils will create a background that must be accounted for in post-processing.
+Various steps are taken to reduce this background, which would otherwise
+obscure any signal. Most notably the internals of the chamber are painted black
+to reduce reflections. However it is not clear whether it will be possible to
+blacken the chip without compromising its capacity to operate. We also
+anticipate that scatter will be worse near the chip than in existing
+experiments since it is highly reflective.
+
+To investigate this, the imaging scheme shown in
 \mysubfigref{exper:fig:exper}{b} was configured in the same way that will later
-be used to image molecules.  A high NA (\cm{value}) lens with a focal length of
-\cm{??} was installed inside the chamber, to collect as much light from the
-molecules as possible. This is then imaged onto a Hamamatsu ImagEM X2 EM-CCD
-camera C9100-23B using a second \cm{bi-convex \SI{100}{\milli\meter}-focal
-length}
-lens, in a four-$f$ configuration. The EM-CCD camera is chosen to be able to
-achieve large gain for small signals on individual pixels. We use
-\SI{100}{\milli\second} exposure and $2\times2$ binning of the pixels.
+be used to image molecules.  A plano-convex lens with a focal length of
+\SI{26}{\milli\meter} and diameter of \SI{2}{\inch} was installed inside the
+chamber. This high numerical numerical aperture lens was chosen to collect as
+much light from the molecules as possible. This is then imaged onto a Hamamatsu
+ImagEM X2 EM-CCD camera C9100-23B using a second biconvex
+\SI{100}{\milli\meter}-focal length lens, in a four-$f$ configuration. The
+EM-CCD camera is chosen to be able to achieve large gain for small signals on
+individual pixels. We use \SI{100}{\milli\second} exposure and $2\times2$
+binning of the pixels.
 
 Although we do not have access to molecules, we can still shine the laser
 across the chip and observe the background scatter. We do this for various
@@ -392,10 +404,12 @@ would observe when imaging in, for example, the existing MOT chamber.
 
 % This data is from 2021-11-30_bgfreeimg2.nb
 % Now changed to scattertest_thesischeck.nb
+% I removed the data from the other wavelengths because it's basically
+% meaningless
 \begin{figure}
+  \centering
   \begin{tikzpicture}
     \begin{axis}[
-        %ymode=log,
         enlargelimits=true,
         xlabel=Position from chip (\si{\milli\meter}),
         ylabel=Normalised scatters ($\times 10^6$),
@@ -405,58 +419,28 @@ would observe when imaging in, for example, the existing MOT chamber.
         x tick label style={/pgf/number format/.cd, set thousands separator={}},
         ylabel style={yshift=10pt}
     ]
-      \addplot [thick, color=Lorange, only marks, error bars/y explicit, error bars/y dir=both] table [x=x, y=y, y error=err] {figs/exper/bgf2606.dat};
-%      \addlegendentry{\SI{606}{\nano\meter}};
-%      \addplot [thick, color=Lred, only marks, error bars/y explicit, error bars/y dir=both] table [x=x, y=y, y error=err] {figs/exper/bgf2628.dat};
-%      \addlegendentry{\SI{628}{\nano\meter}};
-%      \addplot [thick, color=gold, only marks, error bars/y explicit, error bars/y dir=both] table [x=x, y=y, y error=err] {figs/exper/bgf2585.dat};
-%      \addlegendentry{\SI{585}{\nano\meter}};
-%      %\addplot[thick, black, mark=none] coordinates {(-3.5,0.165) (3.6,0.165)};
-%      %\addlegendentry{Laser off}
+      \addplot [thick, color=black, only marks, error bars/y explicit, error bars/y dir=both] table [x=x, y=y, y error=err] {figs/exper/bgf2606.dat};
     \end{axis}
   \end{tikzpicture}
   \caption{Background scatter normalised for a \SI{10}{\milli\watt} beam for
   various distances from the chip surface. Positive is away from the chip,
-negative is into the heatsink.  }
+negative is into the heatsink.}
   \label{exper:fig:scatter}
 \end{figure}
 
 In the existing experiment, we would expect that for a \SI{10}{\milli\watt}
 beam and \SI{100}{\milli\second} exposure we would see only on the order of a
 thousand scattered photons~\cite{Williams2018}. As such, we have moved far
-beyond the limit in which we would normally image a MOT, where we have \cm{$N$}
-molecules, and typically collect \SI{3.4E4}{photons\per\second} from each
-one~\cite{Williams2018}. Instead, we will image $\sim10$ molecules dropped from
-a magnetic trap, so can expect significantly reduced fluorescence.
-% Hannah's pg 88 for these numbers.
-%
-To reduce the number of background photons, a background-free imaging scheme
-has been investigated, as is discussed in the next section.
+beyond the limit in which we would normally image a MOT, where we typically
+collect on the order of $10^6$ photons over a \SI{10}{\milli\second} exposure.
+% From Hannah's thesis (pg 88), 10ms exposure, 3.4E4 photon/s/mol and ~10^4 mols
+Instead we will image $\sim10$ molecules dropped from a magnetic trap, so can
+expect significantly reduced fluorescence.  To reduce the number of background
+photons, a background-free imaging scheme has been investigated, as is
+discussed in the next section.
 
 \section{Background-free imaging}
 \label{exper:bgf}
-
-\cm{Normally we just image with 606nm light and do light-induced fluorescence
-imaging, but this creates a load of scatter which reduces SNR. We call this
-something like direct-imaging...}
-
-There are various possible methods of imaging \CaF{}. Of course in a MOT or
-molasses it is possible to simply observe the scattered light to see a cloud,
-but in a beam experiment~\cite{} or in the context of the chip trap, we must
-introduce light just for the purposes of imaging. This is performed routinely
-in the exiting experiment, with \pewpew{C}{00} used to excite molecules to
-$A(v=0)$. The molecules then spontaneously decay to the $X$ state, and we image
-the \SI{606}{\nano\meter} light that is emitted when they decay to $X(v=0)$.
-This can be done with a CCD to image a cloud, or in a beam experiment a PMT
-may be used. \cm{No undefined acronyms...}
-
-In this same-wavelength imaging (SWI) method any light that is scattered from
-the surroundings can make its way to the detector and create a background
-scatter, reducing signal-to-noise ratio (SNR). This is a common problem in
-imaging of molecular clouds, and steps such as painting the chamber and its
-components black are taken to reduce scatter~\cite{}. However such \cm{methods}
-may not be sufficient or possible for a chip experiment, where we want to image
-molecules close to a surface that could be highly reflective.
 
 One possible method of reducing background whilst imaging molecules is Raman
 Resonance Optical Cycling (RROC), an background-free imaging scheme recently
@@ -474,7 +458,8 @@ the \pewpew{}{01} and \pewpew{}{10} light is used to drive the transitions at
 \mytableref{overview:table:lasers}). Fluorescence from the decay on the
 \SI{606}{\nano\meter} transitions $v'=0\rightarrow v=0$ and $v'=1\rightarrow
 v=1$ is isolated by a bandpass filter, and can be imaged without the usual
-background scatter.
+background scatter. The filter used here is a Semrock FF01-605/15-25, which
+allows light of wavelength $605\pm{15}\si{\nano\meter}$ to pass through it.
 
 \begin{figure}
   \centering
@@ -488,21 +473,21 @@ background scatter.
   \label{exper:fig:bgfreelevels}
 \end{figure}
 
-Reference~\cite{Shaw2021} reports a suppresion of scattered light by a factor
+Reference~\cite{Shaw2021} reports a suppression of scattered light by a factor
 of $\sim10^6$, and an average emission of 20 photons per molecule. In this
 experiment, a beam of molecules was imaged, and this emission is limited by the
 interaction time during travel. For imaging a stationary cloud of molecules we
 would expect instead to be limited by the reduced scattering rate in the
-off-diagaonal transitions. In this section I will \cm{either just describe the
-technique, or do this and show some results (fat chance...)}
+off-diagonal transitions. In this section I will describe the technique, and
+describe experiments conducted in a beam and in the MOT chamber.
 
 \subsection{Calculating the scattering rate}
 
-The scattering rates calculated in section \cm{ref theory} can be modified to
+The scattering rates calculated in section~\ref{theory:cooltrap} can be modified to
 apply to a multilevel system~\cite{Metcalf1999}. For a system with $n_e$
 excited and $n_g$ ground states, which we assume are all connected with equal
 strength (this can be ensured by applying a magnetic field to remix dark
-states), there is a new effective linewidth~\cite{}
+states), there is a new effective linewidth~\cite{Williams2017}
 %
 \begin{equation}
   \Gamma_\text{eff} = \frac{2n_e}{n_g + n_e}\Gamma
@@ -518,8 +503,8 @@ intensity parameter,
 %
 
 Making the substitutions $\Gamma\rightarrow\Gamma_\text{eff}$ and $s\rightarrow
-s_\text{eff}$ into \cm{relevant equation} we have the scattering rate between
-levels $v'$ and $v$ as
+s_\text{eff}$ into \myeqref{theory:eqn:scatteringrate} we have the scattering
+rate between levels $v'$ and $v$ as
 %
 \begin{equation}
   R = \frac{s_\text{eff}\Gamma_\text{eff}}{1 + s_\text{eff} + \delta}.
@@ -535,7 +520,7 @@ saturation intensity
 \end{equation}
 %
 However we have made an implicit assumption that the transition being driven is
-\cm{strongly coupled to the light}, which is not true in the case of the
+strongly coupled to the light, which is not true in the case of the
 off-diagonal transitions. Here we are limited by the photon excitation rate,
 which is
 %
@@ -543,23 +528,25 @@ which is
   R_\text{ex} = \frac{\Omega^2}{\Gamma}
 \end{equation}
 %
-with $\Omega$ as the usual Rabi frequency
+with $\Omega$ as the usual Rabi frequency, which we write in terms of the
+dipole moment $\mathbf{d}$ and the electric field $\mathbf{E}$
 %
 \begin{equation}
-  \hbar \Omega = \bra{g}\mathbf{d}\cdot\mathbf{E}\ket{g}.
+  \hbar \Omega = \bra{g}\mathbf{d}\cdot\mathbf{E}\ket{g},
 \end{equation}
 %
-\cm{define quantities}
-%
-This quantity can be estimated as follows, first take the orientation of the
-molecule to be random with respect to the light field, so that the dot product
-averages across the ensemble to give $dE/3$. Next, we consider the matrix
-element $\bra{g}d\ket{e}$ as discussed in \cm{reference transition section}.
-This term will contribute an electronic factor ($d_e\SI{6}{\debye}$
-for the $A\rightarrow X$ transition in \CaF{}), a vibrational factor (the
-square root Franck-Condon factor $q_{v',v}$) and a rotational part
-(approximately $1/\sqrt{3}$). The field amplitude is related to the instnsity
-in the usual way, so the excitation rate is
+where $\ket{g}$ and $\ket{e}$ are the ground and excited state of the
+transition respectively.
+
+The Rabi frequency can be estimated as follows, first take the orientation of
+the molecule to be random with respect to the light field, so that the dot
+product averages across the ensemble to give $dE/3$. Next, we consider the
+matrix element $\bra{g}d\ket{e}$ as discussed in
+section~\ref{theory:transitions}.  This term will contribute an electronic
+factor ($d_e\SI{6}{\debye}$ for the $A\rightarrow X$ transition in \CaF{}), a
+vibrational factor (the square root Franck-Condon factor $q_{v',v}$) and a
+rotational part (approximately $1/\sqrt{3}$). The field amplitude is related to
+the instnsity in the usual way, so the excitation rate is
 %
 \begin{equation}
   R_\text{ex} \approx \frac{2 d_e^2 q_{v',v}}{81 \hbar^2 c \epsilon_0 \Gamma}I.
@@ -573,166 +560,167 @@ The relevant Franck-Condon factors are
   q_{0,0} &\approx q_{1,1} \approx 1,
 \end{align}
 %
-and since the off-diagonal ($v' \neq v$) are a factor of $\sim100$ smaller than
-the diagonal transitions, an increase in the intensity of the same factor is
-required to achieve the same scattering rates here as for the diagonal
-transitions. Since the two transitions are uncoupled, the total scattering rate
-for the RROC scheme will be the lower of these two $R_\text{ex}$ values.
+and since the off-diagonal transitions ($v' \neq v$) are a factor of $\sim100$
+smaller than the diagonal transitions, an increase in the intensity of the same
+factor is required to achieve the same scattering rates. Since the two
+transitions are uncoupled, the total scattering rate for the RROC scheme will
+be the lower of these two $R_\text{ex}$ values.
 
-The \pewpew{}{01} laser used for this experiment is the Spectra Physics 380D, a single
-frequency ring dye laser, using \cm{name of dye} and pumped by a Spectra
-Physics Millenia EV, a continuous wave diode-pumped solid state laser. The
-power output from the 380D at
-\SI{585}{\nano\meter} is expected to have a maximum of \cm{??}, which means
-that a \cm{??} diameter beam or smaller is required to saturate the transition.
-Due to this limitation we performed two experiments: identifying the transition
-in the \CaF{} beam using a narrow laser beam waist, and imaging the \CaF{}
-cloud in the MOT chamber with a \SI{5}{\milli\meter} $1/e^2$ diameter waist.
+The \pewpew{}{01} laser used for the following experiments is the Spectra
+Physics 380D, a single frequency ring dye laser, using Rhodamine 6G dye and
+pumped by a Spectra Physics Millenia EV, a continuous wave diode-pumped solid
+state laser. The power output from the 380D at \SI{585}{\nano\meter} is
+expected to have a maximum of approximately \SI{300}{\milli\watt}, which means
+that a \SI{1}{\milli\meter} diameter beam or smaller is required to saturate
+the transition.  Due to this limitation we performed two experiments:
+identifying the transition in the \CaF{} beam using a narrow laser beam waist,
+and imaging the \CaF{} cloud in the MOT chamber with a \SI{5}{\milli\meter}
+$1/e^2$ diameter waist.
 
 \subsection{Identifying the transition frequency}
 
 In this first experiment \pewpew{}{01} was used to identify the $X(v=0)
 \rightarrow A(v=1)$ transition frequency. A pulsed beam of \CaF{} was addressed
-with \pewpew{}{01}, with the laser frequency scanned across the pulses. At
-resonance, the laser drives the transition and light-induced fluorescence can
-be observed. The apparatus is shown in \myfigref{exper:fig:beamapp}, and I will
-now explain the experiment in greater detail.
+with \pewpew{}{01}, with the laser frequency scanned between pulses.  When the
+laser is at resonance it drives the transition and light-induced fluorescence
+can be observed. The apparatus is shown in \myfigref{exper:fig:beamapp}, with
+subfigure (a) showing the layout of the \pewpew{}{01} laser system. The
+majority of the light passes through an electo-optic moldulator, which is used
+to add the sidebands for addressing the hyperfine structure of the $X(v=0)$
+state, and an acousto-optic modulator (AOM) which is used for switching. In
+this experiment the EOM is switched off, and the AOM is not installed as
+switching is not required.
 
 \begin{figure}
   \centering
-  \includegraphics[width=\textwidth]{figs/exper/beamexper.pdf}
+  \includegraphics[width=\textwidth]{figs/exper/beamexper_reduced.pdf}
   \caption{The optical (a) and vacuum (b) setup for the spectroscopy
-    experiments. The dye jet (orange) is pumped by the \cm{type} laser (green
-    arrow). Beamsplitters (BS) are used to generate pick offs from the main
-    beam. These are used for locking
-    to the reference cavities, analysis with the wavemeter and comparision to
-    IR light (pink arrow). The latter of these is achieved using the dichroic
-    mirrors (DM) and  the scanning cavity as described in the main text. Note
-    that the AOM is not installed for the beam experiment, and is
-    only used for the \cm{MOT} experiment. The buffer-gas source and \CaF{}
-    beam are shown, similarly to \cm{reference earlier figure}. The
-    \pewpew{}{10} and \pewpew{}{01} light is combined to induce fluorescence in
-    the molecules, which is detected with a PMT, mounted above the beam (out of
-    the page).
+    experiments. The dye jet (orange) is pumped (green
+    arrow) to produce \pewpew{}{01} (yellow arrow). Beamsplitters (BS) are used
+    to generate pick offs from the main beam. These are used for locking to the
+    reference cavities, analysis with the wavemeter and comparision to IR light
+    (pink arrow). The latter of these is achieved using the dichroic mirrors
+    (DM) and  the scanning cavity as described in the main text. In (b) the
+    buffer-gas source and \CaF{} beam are shown
+    (c.f.~\myfigref{overview:fig:CaFcartoon}). The \pewpew{}{01} light is
+    incident on the beam to inudce fluorescence, which is detected with a PMT,
+    mounted above the beam (out of the page).
   }
   \label{exper:fig:beamapp} 
 \end{figure}
 
-%The latter is achieved by combining the two
-%    wavelengths with a dichroic mirror (DM), passing both through a scanning
-%    cavity, splitting the wavelengths on a second DM, and observing the
-%    relative location of transmission peaks through the scan.
+The laser frequency is locked by the Spectra stable lock cavities. These
+consist of one reference cavity and one scanning cavity. The light passes
+through these and is measured on a photodiode. This signal is fed back to the
+laser to control the cavity length and the laser frequency. This provides
+stabilisation down to the \SI{100}{\mega\hertz} level. For more precise locking
+of the laser frequency, we reference \pewpew{}{01} to the $F=2 \rightarrow
+F'=2, 3$ cross-over feature of the \esRb{} $D_2$ line via a separate reference
+laser. The frequency offset lock used to achieve this is described in
+\inlineref{Jurgilas2021}. This infrared (IR) reference light is combined with
+the \pewpew{}{01} beam using  a dichroic mirror (DM). This beam is then passed
+through a scanning cavity, before being split into the two frequency components
+on a second DM. We then observe the relative location of the transmission peaks
+across the cavity scan, and can use a feedback loop to lock the dye laser to
+the reference by transfer cavity lock (also described in
+\inlineref{Jurgilas2021}). Further referencing is possible by a pickoff to a
+wavemeter. % TODO Name of wavemeter?
 
-A buffer-gas source (\cm{see section}) was used to produce the pulsed \CaF{}
-beam.  This experiment was undertaken on a separate \CaF{} source to the one
-used in the experiment above, but it is functionally identical, and is further
-described in \cm{cite Gautam's thesis?}. This source produces \cm{mols per
-steradian}, \cm{as established by imaging on the $X(v=0)\rightarrow A(v=0)$
-transition.} The beam was driven by \pewpew{}{01} with \cm{diameter} and
-\cm{intensity}. Light-induced fluorescence was imaged using a \cm{lens, spec
-and position}, focusing onto a photo-multiplier tube (PMT) \cm{in some
-place}.
+A buffer-gas source  was used to produce the pulsed \CaF{} beam.  This
+experiment was undertaken on a separate \CaF{} source to the one used on the
+main beamline that was descibed in section~\ref{overview:existing}, but it is
+functionally identical.  The beam was driven by \pewpew{}{01} with beam
+diameter \SI{500}{\micro\meter} and power \SI{100}{\milli\watt}.  Light-induced
+fluorescence was collected by a lens onto a photo-multiplier tube (PMT) mounted
+above the beamline, as shown in \mysubfigref{exper:fig:beamapp}{b}.
 
-The laser frequency was scanned \cm{from x to y in df intervals with some
-repetition?}. Figure~\ref{exper:fig:beamapp} shows the stable locking cavities,
-which are part of the 380D's stabilisation mechanism. In addition to this, we
-reference \pewpew{}{01} to the $F=2 \rightarrow F'=2, 3$ cross-over feature of
-the \esRb{} $D_2$ line via a separate reference laser. The frequency offset
-lock used to achieve this is described in \inlineref{Jurgilas2021}. This
-infrared (IR) reference light is combined with the \pewpew{}{01} beam using  a
-dichroic mirror (DM). This beam is then passed through a scanning cavity,
-before being split into the two frequency components on a second DM. We then
-observe the relative location of the transmission peaks across the cavity scan,
-and can use a feedback loop to lock the dye laser to the reference by transfer
-cavity lock (also described in \inlineref{Jurgilas2021}). Further referencing
-is possible by a pickoff to a \cm{name of wavemeter}.
+The laser frequency was scanned from \SI{512.0725}{\terra\hertz} to
+\SI{512.0750}{\terra\hertz} in \SI{25}{\mega\hertz} intervals. At each
+frequency the total signal on the PMT is measured, using the Semrock
+bandpass filter to remove background signal. This is shown in
+figure~\ref{exerp:fig:beamresult}, where we can see that there are two clear
+peaks. We interpret the large peak to be due to resonance with the $F=0$, $1^+$
+and $2$ hyperfine levels, which we cannot resolve individually. We attribute
+the second peak to the $F=1^-$ hyperfine level. This confirms that we are
+capable of 
 
-As well as locking and measuring the laser frequency, the setup allows the
-addtion of the sidebands used to address the hyperfine states of the $X$ state.
-This is achieved using an electro-optic modulator (EOM) which is driven at
-\SI{24}{\mega\hertz}.
-%
-Not shown in the figure are flip-mount mirrors, which can be used to inspect
-the r.f.\ sidebands in the scanning cavity.
-%
-Additionaly we include an acousto-optic modulator (AOM),
-which is used to switch the light on and off. When the AOM is driven, the first
-order diffraction is picked out using an iris, and then coupled into a fibre
-leading to the experiment. When the AOM is not driven the light passes straight
-through the crystal and is blocked by the blades of the iris.
-
-The \pewpew{}{01} light is combined with the \pewpew{}{10} light on a DM, and
-the combined beam is incident on the \CaF{} molecules perpendicular to
-the forward velocity of the beam. The shines continuously, so that the
-repetition rate of the experiment is controlled by the pulsing of the \CaF{}
-source. The beam is imaged in the source chamber, almost immediately outside
-the cell, \cm{and inside the radiation shields}.
-% TODO Do I discuss rad shields?
-%
-The signal from the PMT is shown as a function of the \cm{cavity
-freq or voltage} in \myfigref{exper:fig:beamresult}. A strong peak was found at
-\cm{frequency}, with a small sideband at \cm{??} \cm{maybe this has something
-to do with fine structure?}. \cm{The peak is smaller than a typical 606nm peak
-but hopefully we have better SNR?}
-% TODO Need to improve this, what did we actually do? Waiting for the data
-
-\begin{figure}
+% From Mathematica 20201019_maybewrongfile.nb
+% Incidentally, it was the right file...
+\begin{figure}[htb]
   \centering
-  \cm{Result of beam experiment graph}
+  \begin{tikzpicture}
+    \begin{axis}[
+        enlargelimits=true,
+        xlabel=Laser frequency (\si{\terra\hertz},
+        ylabel=PMT signal (\si{\volts}),
+        width=0.8\textwidth,
+        height = 0.4\textwidth,
+        x tick label style={/pgf/number format/.cd, set thousands separator={}}
+        %ylabel style={yshift=10pt}
+    ]
+      \addplot [thick, color=black] table {figs/exper/findtransition.dat};
+    \end{axis}
+  \end{tikzpicture}
   \caption{}
   \label{exper:fig:beamresult}
 \end{figure}
 
-Following this, the scatter tests were performed as described in
-section~\ref{exper:scatter}, but for \pewpew{}{01} and \pewpew{}{10} both at
-\SI{10}{\milli\watt} and using
-the bandpass filter to isolate theses wavelengths from the EM-CCD. It was
-found that this yielded pixel counts that were consistent with measuring the
-background, i.e.\ the bandpass filter successfully blocked all the light.
-
-\subsubsection{Imaging the \CaF{} cloud}
+\subsubsection{Attempt to image the \CaF{} cloud}
 
 Having identified the $X(v=0)\rightarrow A(=1)$ transition frequency, we
 attempted to use the RROC scheme to image a cloud of \CaF{} molecules in the
-MOT chamber (see \cm{overview figure}). In this experiment the main \CaF{}
-buffer-gas source was used, producing a pulse of \cm{mols per steradian}. These
-underwent the usual slowing procedures described in section~\cm{ref experiment
-section of overview} -- the slowing light was incident on the molecules for
-\cm{time}, reducing their speed to \cm{speed} before they were captured in the
-MOT. Before being captured in the MOT. An image was taken of the light
-scattered from the MOT, and after\cm{time} the magnetic field was switched off
-to form a molasses. Molecules are cooled in the molasses for \cm{time} before
-the \cm{magnetic field switched to constant, repumps turned off, slowing repump
-turned on (which is just v1 repump I think) and the \emph{retroreflected} 01
-beam is turned on.}
+MOT chamber described in section~\ref{overview:existing}. In this experiment
+the main \CaF{} buffer-gas source was used. The molecules underwebt the usual
+slowing procedures described above, to create a \SI{50}{\micro\kelvin} cloud
+with diameter of approximately \SI{3}{\milli\meter}. The cloud is then imaged
+by using a combination of the \pewpew{}{01} and \pewpew{10} light.
 
-The MOT and RROC images are taken using a Hamamatsu \cm{ORCA?} camera. Light is
-focussed onto the CCD by \cm{imgaging system in Sarunas' thesis}. In both cases
-an exposure time of \cm{\SI{10}{\milli\second}} is used.
+The former is controlled using the same system as described above, but with the
+EOM now turned on and overdriven, so as to produce the required sidebands to
+address each hyeprfine state of $X(v=0)$ (see chapter~\ref{overview} and for
+example \inlineref{Truppe2017}). In addition the AOM is installed and used to
+switch the beam on and off. When powered, the majority of the beam is
+defclected into the first order mode of the AOM, which is coupled into a fibre
+and brought to the experiment for imaging. Otherwise the beam passes straight
+through the centre of the AOM and is blocked. At the chamber, the beam is
+expanded to \SI{5}{\milli\meter} diameter and passes through the centre of the
+chamber before being retro-reflected to increase the power delivery and avoid
+pusing molecules with the beam. 
+%
+The \pewpew{10} light is provided by the molasses beams.
 
+In this experiment we create a MOT, and then switch off the magnetic field to
+create a molasses. We hold the molecules in the molasses for
+\SI{20}{\milli\second}, during which time an image of the flourescence is taken
+using a Hamamatsu Orca R2 CCD camera.
+% NOTE Sarunas wrote about the imaging system in his thesis that I can ref
+The exposure last \SI{10}{\milli\seconds}. Following which \pewpew{}{00} is
+switched off, and \pewpew{}{01} is switched on, along with a \SI{1}{\gauss}
+magnetic bias field.  The direction of the field is chosen to ensure that the
+molecules are not pumped into a state that is dark to \pewpew{}{01}, which
+could otherwise occur due to the light's polarisation. A second
+\SI{10}{\milli\second} exposure is then taken with the camera to image the
+flourescence in the RROC scheme.
 
-\begin{figure}
-  \centering
-  \cm{Imagingin another two part fig, one with experiment timeline and another
-  with the apparatus. Laser system shown with beam experiment}
-  \caption{}
-  \label{exper:fig:laser}
-\end{figure}
-
-
-The 1/e diameter of \pewpew{}{01} was \SI{5}{\milli\meter}, with an intensity
-of \cm{??}. The frequency was scanned \cm{I wrote down how in notes}. However
-it was not possible to identify any RROC imaging of the cloud. I attribute this
-to the low intensity of the \pewpew{}{01} beam, which was due both to the
-increased beam diameter, and reduced operating power of the laser when the
-experiment was undertaken. The latter of these could be addressed, but \cm{back
-of the envelope calculation suggests that it woulc not be sufficient}.
+Due to expanding the beam to a much larger diameter (\SI{5}{\milli\meter} as
+opposed to the \SI{500}{\micro\meter}), the intensity of the light is a factor
+of 100 lower than in the previous experiment. Despite scanning the frequency of
+\pewpew{}{01} across the same range as before, it was not possible to drive the
+transition sufficiently for imaging. This result was somewhat anticipated, as
+was reported in \inlineref{Shaw2021}, much higher laser power is required for
+the RROC scheme than in conventional flourescence imaging. However it was
+not clear before starting whether the background would be sufficiently low to
+observe the transition in this experiment.
 
 \section{Summary}
 
-\begin{itemize}
-    \item Did successful current tests
-    \item Did successful vacuum tests
-    \item Found transition for RROC scheme
-    \item Need a lot more power to do it properly
-\end{itemize}
+To summaries the results of this chapter, I have shown that the molecule chip
+experiment is compatible with ultra-high vacuum conditions required for the
+\CaF{} experiment, and that sufficient current can be achieved to create the
+traps that were described and simulated in chapter~\ref{sim}. The chip trap is
+therefore ready for loading with \CaF{} molecules. These molecules could be
+imaged with an optical cycling scheme to reduce background scatter. I have
+tested such a scheme in a \CaF{} beam where it was possible to resolve the
+required $X(v=0)\rightarrow A(v=1)$ transition, but due to the limited power of
+the laser used it was not possible to successfully implement the scheme for a
+cloud of cold molecules.
