@@ -217,7 +217,7 @@ period the trap's phase-space emittance.
 \begin{figure}[htb]
   \centering
   \scalebox{0.8}{\import{figs/simsThesis/}{psa_1D.pgf}}
-  \caption{
+  \caption[Phase-space acceptance examples]{
     The phase-space acceptance for harmonic (a, d), anharmonic (b, e) and
     Z-wire trap (c, e) are shown. The top row shows the initial positions of
     the particles: those that are accepted by the trap are shaded blue,
@@ -326,7 +326,8 @@ the unit vector $\hat{\mathbf{\phi}} = \mathbf{I}\times\mathbf{q}/(qI)$.
     \node[shift={(2mm, 4mm)}] at (R) {$I$};
     \node[fill=white] at (-5.0, 1.8) {$s_\text{seg}(\mathbf{q})$};
   \end{tikzpicture}
-  \caption{Geometry of a wire segment (bold) carrying current $I$, whose field
+  \caption[Geometry of wire segment]{
+    Geometry of a wire segment (bold) carrying current $I$, whose field
   can be calculated using \myeqref{sim:eq:segmentfield}. The dotted line
   shows $s_\text{seg}(\mathbf{q})$, the shortest distance from the point at
   which the field is calculated ($\mathbf{q}$) to the line parallel with the
@@ -368,7 +369,8 @@ $z=\SI{3}{\milli\meter}$, as shown in \myfigref{sim:fig:initsum}.
 \begin{figure}[htb]
 \centering
   \import{figs/simsThesis/}{init_summary.pgf}
-  \caption{ The particle distribution in phase-space after initialisation. A
+  \caption[Phase-space simulation initialisation]{
+    The particle distribution in phase-space after initialisation. A
   scatter plot of the $z\,v_z$-phase-space plane the is shown in (a), with
   histograms of $z$ and $v_z$ distributions in (c) and (b) respectively. The
   position distributions for $x$ and $y$ are shown in (d) in orange and green
@@ -405,7 +407,7 @@ decreases, as we have said we expect.
 \begin{figure}[p]
 \centering
   \scalebox{0.8}{\import{figs/simsThesis/}{adiabatic_3sim.pgf}}
-  \caption{
+  \caption[Simulation of exchange between quadrupole traps]{
     Exchange between two quadrupole traps, separated by \SI{3}{\milli\meter},
     for three different ramp times. The top row shows the $x$-projection of the
     phase-space distributions of the particles at the start of the simulation
@@ -444,7 +446,7 @@ be reached for processes lasting around \SI{100}{\milli\second}.
 \begin{figure}[t!]
 \centering
   \scalebox{0.8}{\import{figs/simsThesis/}{adiabatic_varyramps.pgf}}
-  \caption{
+  \caption[Affect of ramp duration on phase-space distribution]{
     The final temperature and size of particle clouds transferred between
     offset quadrupole traps at various ramp times. Note that the large
     oscillations in width that occur for short ramp times (see
@@ -492,7 +494,7 @@ after the ramp is shown in \myfigref{sim:fig:mttusim}.
 \begin{figure}[p]
 \centering
   \scalebox{0.8}{\import{figs/simsThesis/}{mtt_u_summary.pgf}}
-  \caption{
+  \caption[Simulation of transfer from MTT to U-trap]{
     The simulation of the transfer from the MTT to the U-wire. The state of the
     system is presented at the end of the initialisation procedure (blue) when
     the trapping potential is that of the MTT, and after ramping to the U-trap
@@ -528,7 +530,7 @@ phase-space for each projection throughout the ramp, as shown in
     \scalebox{0.8}{\import{figs/simsThesis/}{mtt_u_detail_y.pgf}} \\
     \scalebox{0.8}{\import{figs/simsThesis/}{mtt_u_detail_z.pgf}}
   \end{tabular}
-  \caption{
+  \caption[Phase-space distribution throughout MTT-U handover]{
     Each pair of rows shows the phase-space plots for the MTT to U-trap
     handover simulation in the $q_i$-$v_i$ plane, along with the cut-through of
     the potential through the trap centre along $q_i$ at various times. This
@@ -583,7 +585,7 @@ the particle losses there is minimal change to the particle distribution
 \begin{figure}[p]
 \centering
   \scalebox{0.8}{\import{figs/simsThesis/}{u_z_summary.pgf}}
-  \caption{
+  \caption[Simulation of transfer from U-trap to Z-trap]{
     The simulation of the transfer from the U-wire to the Z-wire. The state of
     the system is presented at the end of the initialisation procedure (blue)
     when the trapping potential is that of the U-trap, and after ramping to the
@@ -620,7 +622,7 @@ new trap minimum at $z=\SI{1}{\milli\meter}$.
 \begin{figure}[p]
 \centering
   \scalebox{0.8}{\import{figs/simsThesis/}{z_summary.pgf}}
-  \caption{
+  \caption[Simulation of compression in Z-trap]{
     The simulation of the compression in the Z-wire trap. The state of the
     system is presented at the end of the initialisation procedure (blue) when
     the trapping potential minimum is held \SI{3}{\milli\meter} from the
@@ -648,7 +650,7 @@ that are changed for each ramp are also shown.
 \begin{figure}[p]
 \centering
   \scalebox{0.8}{\import{figs/simsThesis/}{total_summary.pgf}}
-  \caption{
+  \caption[Summary of loading simulations]{
     Details for each stage of the simulation in turn. The top two rows show
     properties of the molecule cloud and the second two rows show the trapping
     currents and bias fields throughout. Column (a) shows the initialisation
@@ -739,7 +741,7 @@ loss. The final occupation is shown in
     \put(0,44.5){(b)}
     \put(0,21){(c)}
   \end{overpic}}
-  \caption{
+  \caption[Mode-matching on-chip traps]{
     The acceptance (solid) and expected occupation (dashed) of each Z-wire
     trap. This is calculated by finding the acceptance in the weak ($x$)
     trapping direction. Row (a) shows $\mathrm{Z0_f}$, with occupation

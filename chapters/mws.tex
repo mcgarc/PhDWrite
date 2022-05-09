@@ -47,7 +47,8 @@ finite-element simulation, as is done here.
       \put(-20, 130){(b)}
     \end{overpic}
   \end{subfigure}
-	\caption{Subfigure (a) shows a perspective view of a segment of CPW on dielectric substrate, with
+	\caption[Waveguide geometry and field]{
+    Subfigure (a) shows a perspective view of a segment of CPW on dielectric substrate, with
 pertinent geometry and dielectric constants labeled. The field lines are
 sketched, and shown in detail in the cut-through in (b). Here the field lines
 are calculated analytically for arbitrary parameters.}
@@ -219,7 +220,7 @@ the \SI{10}{\giga\hertz} regime.
 
 % For Edwards cite, seee Appendix B saved in Physics Resources/CPW
 \begin{table}[tb!]
-  \caption{Dielectric constants and loss for various substrates in the
+  \caption[Various dielectric constants]{Dielectric constants and loss for various substrates in the
   \SI{10}{\giga\hertz} regime at room temperature}
 \centering
 \begin{tabular}{l c c c c }
@@ -276,7 +277,7 @@ impedance of $Z_0=\SI{50}{\ohm}$.
 % https://www.tibtech.com/conductivite.php?lang=en_US
 % 
 \begin{table}[tb!]
-  \caption{Electrical constants for various conductors in the
+  \caption[Various electrical constants]{Electrical constants for various conductors in the
   \SI{10}{\giga\hertz} regime at room temperature}
 \centering
 \begin{tabular}{l c c c}
@@ -328,7 +329,7 @@ Material & $\sigma$ ($\times10^6\si{\siemens\per\meter}$) & $\mu_r$ & Ref. \\ [ 
     \end{axis}
   \end{tikzpicture}
   \end{subfigure}
-    \caption{
+    \caption[Conductor losses for a CPW]{
       Conductor losses are plotted for (a) varying the conductor height of the
       CPW and (b) varying the centre conductor width. Losses are shown for gold
       on sapphire (black), silver on sapphire (blue) and gold on polyimide
@@ -376,7 +377,8 @@ interface between the resonator and the waveguide~\cite{doi:10.1063/1.3010859}.
 \begin{figure}
   \centering
   \includegraphics[width=.6\textwidth]{figs/mws/resonators.pdf}
-  \caption{Different schemes for capacative coupling into a microwave
+  \caption[Capacative coupling schemes for resonator]{
+    Different schemes for capacative coupling into a microwave
     resonator. Gold represents conductor and black a dielectric substrate. In
     (a) the resonator runs parallel to a waveguide that feeds in microwaves.
     The input port is denoted by the arrow. In (b) the resonator is in series
@@ -453,7 +455,8 @@ system is shown in \mysubfigref{theory:fig:JCHstates}{a}.
 
 \begin{figure}
   \includegraphics[width=\textwidth]{figs/mws/JCH.pdf}
-  \caption{A two-level cavity QED system. Subfigure (a) shows a schematic of
+  \caption[Two-lvel cavity QED system]{
+    A two-level cavity QED system. Subfigure (a) shows a schematic of
     the system, where microwaves interact with a rotational transition in
     \CaF{}. This implements the JCH, whose energy levels are shown both on (b)
     and off (c) resonance. Energy spacings are highlighted in purple. This
@@ -628,7 +631,8 @@ hyperfine states, or effects due to the magnetic field can be ignored.
       \addlegendentry{$\ket{2,\pm2}$}
     \end{axis}
   \end{tikzpicture}
-  \caption{The Stark effect for low-lying rotational states of the \CaF{} molecule $\ket{N,
+  \caption[The Stark effect in \CaF{}]{
+    The Stark effect for low-lying rotational states of the \CaF{} molecule $\ket{N,
     m_N}$ found by second order perturbation theory.}
   \label{mws:fig:stark}
 \end{figure}
@@ -703,7 +707,7 @@ a single CPW in \myfigref{mws:fig:implement}.
             \end{subfigure}
         \end{tabular}\\
     \end{tabular}
-  \caption{
+  \caption[Microwave components of the flange assembly]{
     The microwave components of the flange assembly (flange, feedthroughs,
     barrel connectors, launchers, PCB and chip) are shown in (a). In (b) we
     have the chip design from \myfigref{overview:figs:chipexperiment} (not to
@@ -775,7 +779,7 @@ This results in a cooling rate
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.6\textwidth]{figs/mws/sidebandcool.pdf}
-  \caption{
+  \caption[Sideband cooling scheme]{
     The sideband cooling scheme is shown, with an external driving field
     applied to the $\ket{g, m}\rightarrow\ket{e, m-1}$ transition. Decay on
     $\ket{e,m}\rightarrow\ket{g,m}$ is strongly enhanced by the resonator,
@@ -822,7 +826,7 @@ This results in a cooling rate
     \node [] at (0.6, 2.7) {(b)};
   \end{tikzpicture}
   \end{subfigure}
-  \caption{
+  \caption[Calculated sideband cooling rates]{
     Subfigure (a) shows the cooling rate for varying trapping current for a
     $Q=10^6$ resonator and dimple trap (see section~\ref{theory:simple}).
     Subfigure (b) shows the minimum temperature that can be achieved as a
@@ -1000,7 +1004,8 @@ $\ket{\beta}$ so that $\arg(\alpha)=0$ and $\arg(\beta)=-\varphi$.
 \begin{figure}
   \centering
   \includegraphics[width=0.4\textwidth]{figs/mws/homodyne.pdf}
-  \caption{Schematic of a homodyne measurement. The state to be measured
+  \caption[Schematic of a homodyne measurement]{
+    Schematic of a homodyne measurement. The state to be measured
     $\ket{\Psi_a}$ is incident on port (a) of the beamsplitter, and the local
     oscillator $\ket{\beta}$ is incident on port (b). The signal from
     photodiodes at the output ports is summed to produce a homodyne

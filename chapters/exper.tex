@@ -146,8 +146,9 @@ change in the pressure.
       \addlegendentry{Chip assembly};
     \end{axis}
   \end{tikzpicture}
-  \caption{RGA scan for the chip chamber assembly when empty, and when loaded
-  with the chip flange assembly.}
+  \caption[RGA scan of empty and full chambers]{
+    RGA scan of the chip chamber assembly when empty, and when loaded with the
+  chip flange assembly.}
   \label{exper:fig:rga}
 \end{figure}
 
@@ -169,7 +170,8 @@ measured via the potential difference across $R_\text{sense} = \SI{0.5}{\ohm}$.
 \begin{figure}[htb]
   \centering
   \includegraphics[width=0.5\textwidth]{figs/exper/circuit.pdf}
-  \caption{The electronic circuit used to test the chip wires. The chip is
+  \caption[Current testing electronics]{
+    The electronic circuit used to test the chip wires. The chip is
   represented by resistor $R_\text{load}$. The operational amplifier is powered
   by a separate power supply. This figure was produced using the assets from
   \inlineref{ElCompLib}.}
@@ -278,7 +280,8 @@ for higher voltages, suggesting that heating occurs in the device.
       \end{axis}
   \end{tikzpicture}
   \end{subfigure}
-  \caption{Increasing current in the small chip wire. The current is shown as a
+  \caption[Increasing current across the small chip wire]{
+    Increasing current in the small chip wire. The current is shown as a
   function of supply voltage in (a). The pink line shows a linear fit to the
   first ten points. In (b) this is converted into a resistance (as described in
 the main text), which increases for higher currents.}
@@ -330,7 +333,8 @@ and~(b) respectively.
     \put(85, 70){(b)}
   \end{overpic}
   \end{subfigure}
-  \caption{A wire before (a) and after (b) destruction due to fusing under
+  \caption[A wire before and after destruction]{
+    A wire before (a) and after (b) destruction due to fusing under
     extreme current load. Note that the clearly defined edges and solid colour
     have changed to a wobbly and poorly-defined region. In bothsubfigures ,
     part of a fanout is also visible.
@@ -425,7 +429,8 @@ would observe when imaging in, for example, the existing MOT chamber.
       \addplot [thick, color=black, only marks, error bars/y explicit, error bars/y dir=both] table [x=x, y=y, y error=err] {figs/exper/bgf2606.dat};
     \end{axis}
   \end{tikzpicture}
-  \caption{Background scatter normalised for a \SI{10}{\milli\watt} beam for
+  \caption[Background scatter from the chip]{
+    Background scatter normalised for a \SI{10}{\milli\watt} beam for
   various distances from the chip surface. Positive is away from the chip,
 negative is into the heatsink.}
   \label{exper:fig:scatter}
@@ -467,7 +472,7 @@ allows light of wavelength $605\pm{15}\si{\nano\meter}$ to pass through it.
 \begin{figure}[b]
   \centering
   \includegraphics[width=0.9\textwidth]{figs/energylevels/bgfree.pdf}
-  \caption{
+  \caption[The RROC scheme for \CaF{}]{
   The RROC scheme for \CaF{}. An optical cycle is established, with pumping on
   the $v=0 \rightarrow v'=1$ (gold) and $v=1 \rightarrow v'=0$ (red) transitions.
   Fluorescence from the $v=v'$ transitions (orange) is distinguished from the
@@ -604,7 +609,8 @@ switching is not required.
 \begin{figure}
   \centering
   \includegraphics[width=\textwidth]{figs/exper/beamexper_reduced.pdf}
-  \caption{The optical (a) and vacuum (b) setup for the spectroscopy
+  \caption[Optical and vacuum setup for RROC spectroscopy experiment]{
+    The optical (a) and vacuum (b) setup for the spectroscopy
     experiments. The dye jet (orange) is pumped (green
     arrow) to produce \pewpew{}{01} (yellow arrow). Beamsplitters (BS) are used
     to generate pick offs from the main beam. These are used for locking to the
@@ -674,7 +680,8 @@ capable of resoling the new transition that is required for the RROC scheme.
       \addplot [thick, color=black, only marks] table {figs/exper/findtransition.dat};
     \end{axis}
   \end{tikzpicture}
-  \caption{Laser-induced fluorescence signal from \pewpew{}{01} incident on a
+  \caption[Fluorescence from \CaF{} due to \pewpew{}{01}]{
+    Laser-induced fluorescence signal from \pewpew{}{01} incident on a
   \CaF{} beam. The signal is measured by a PMT.}
   \label{exper:fig:beamresult}
 \end{figure}

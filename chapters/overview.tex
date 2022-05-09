@@ -42,7 +42,8 @@ beam quickly exits this chamber into the low pressure region.
     %  \put(95, 29){\color{Lgreen}{\pewpew{S}{00}}}
     %\end{overpic}
     %\vspace{1cm}
-  \caption{A schematic of the \CaF{} source, slowing region and MOT chamber.
+  \caption[\CaF{} source]{
+    A schematic of the \CaF{} source, slowing region and MOT chamber.
   \CaF{} molecules (blue) are produced by the buffer gas cell, and are
   slowed by longitudinal slowing and transverse cooling light (green,
   \pewpew{S}{00}). The molecules are then captured in a MOT (MOT light
@@ -74,7 +75,7 @@ distinguish the $X\rightarrow B$ transition.
   \centering
   % wide figure adds some padding to try and centre the levels a bit better
   \includegraphics[width=0.98\textwidth]{figs/energylevels/main_sbs_2_wide.pdf}
-  \caption{
+  \caption[The energy levels of \CaF{}]{
     The energy levels of \CaF{} are shown, along with the lasers that will be
     used to address the various transitions (further information is found in
     \mytableref{overview:table:lasers}). The branching ratios for the allowed
@@ -101,8 +102,8 @@ distinguish the $X\rightarrow B$ transition.
   \pewpew{}{10} & $X(v=1)$ & $A(v=0)$ & 585.4 \\
  \hline
 \end{tabular}
-\caption{
-  The various laser transitions used in this thesis.  The laser \pewpew{}{10}
+\caption[Lasers, transitions and wavelengths]{
+  The various lasers used in this thesis.  The laser \pewpew{}{10}
   is included for completion, and will be explained in
   chapter~\ref{experiment}.
   }
@@ -149,7 +150,7 @@ are presented in \mytableref{overview:table:constants}.
   %Chemistry dipole moment & $\mu_c$ & $3\si{\debye}$ \\
  \hline
 \end{tabular}
-\caption{
+\caption[\CaF{} constants]{
   Various constants for \CaF{} taken from \inlineref{Anderegg2019a}. Note that
   the magnetic dipole moment is taken to be the Bohr magenton.
   }
@@ -172,7 +173,8 @@ the cell in a beam.
 \begin{figure}
   \centering
   \includegraphics[width=0.6\textwidth]{figs/overview/cell.pdf}
-  \caption{The buffer gas cell. Helium and \SFsix flow into the cell. \Ca{}
+  \caption[The buffer gas cell]{
+    The buffer gas cell. Helium and \SFsix flow into the cell. \Ca{}
   atoms are ablated from a target (shown in blue) by a Nd:YAG laser. \CaF{} molecules are
 formed which thermalise with the \He{} and a molecule beam exits from the aperture.}
   \label{overview:fig:source}
@@ -305,7 +307,7 @@ blue-detuned light to have $\sigma_+$ polarisation.
       \put(5, 5){\color{blue}{$\sigma^+$}}
       \put(5, 81){\color{pink}{$\sigma^-$}}
     \end{overpic}
-  \caption{
+  \caption[Dual-frequency cooling scheme]{
     A dual frequency scheme for the type-II case $F'=0$, $F=1$. The molecules
     in each state (circles) can be pumped by their corresponding red- (blue-)
     detuned light. This figure is adapted from one in \inlineref{Williams2018}.
@@ -353,14 +355,16 @@ shown in the figure.
       \put(105, 38){Bright states}
     \end{overpic}
     \vspace{1cm}
-  \caption{Blue detuned molasses for a type-II system with $F=1$, $F'=0$. Here
+  \caption[Blue-detuned molasses]{
+    Blue-detuned molasses for a type-II system with $F=1$, $F'=0$. Here
     the polarisation gradient across a 1D system (bottom row) causes a change
     in the coupling strength of bright states. A molecule travelling through
     the gradient (blue) will be preferentially excited by \pewpew{}{00} to the
     excited state when the coupling is strong. It will decay into the dark
     states, and adiabatically transfer back to the light states (black arrow)
     when the coupling is weak.  Repeating this process results in a net loss of
-  energy for the molecule. This figure is adapted from \inlineref{1367-2630-18-12-123017}.}
+  energy for the molecule. This figure is adapted from
+\inlineref{1367-2630-18-12-123017}.}
   \label{overview:fig:molasses}
 \end{figure}
 
@@ -414,7 +418,8 @@ states of \CaF{} are detailed in \myfigref{overview:fig:magtrapstates}.
 \begin{figure}
   \centering
   \includegraphics[height=0.45\textwidth]{figs/energylevels/magsplit.pdf}
-  \caption{Hyperfine strucutre of \CaF{} ground states. The stretched states
+  \caption[Hyperfine structe in \CaF{}]{
+    Hyperfine strucutre of \CaF{} ground states. The stretched states
     are highlighted in blue, and other weak-field seekers are highlighted in
     pink. Adapted from \inlineref{WilliamsMagnetic2018}.}
   \label{overview:fig:magtrapstates}
@@ -520,7 +525,7 @@ be transferred onto the chip trap.
         \node[] at (0.54,0.2) {\small Source};
       \end{scope}
     \end{tikzpicture}
-  \caption{
+  \caption[The \CaF{} experiment]{
     The \CaF{} experiment is shown along with the planned additional chip
     chamber. Not shown: external transport coils and transverse cooling region.}
   \label{overview:fig:vacuumsystem}
@@ -598,7 +603,8 @@ the trapped cloud in the $x$ direction.
   $\mathrm{Z2}$ &  2 & 9& 2.7& $100\rightarrow10$ \\
  \hline
 \end{tabular}
-  \caption{Details on the wire dimensions, maximum current, and desired
+  \caption[Trapping wire properties]{
+    Details on the wire dimensions, maximum current, and desired
   trapping heights. The wire design is shown in
   \mysubfigref{overview:fig:chiplayout}. Note that the U-wire current is
   limited by vacuum feedthroughs and not by the maximum current calculated by
@@ -630,7 +636,7 @@ in chapter~\ref{fab}.
       \put(8, 10){\small $\mathrm{Z_1}$}
       \put(8, 200){\small $\mathrm{Z_2}$}
     \end{overpic}
-  \caption{
+  \caption[Chip schematic]{
     A schematic of
     the chip features, with the scaling exaggerated for visibility. The three
     overlapping Z-wires are shown and labeled. The gaps between the wires are
@@ -682,7 +688,7 @@ operation is discussed in chapters~\ref{mws} and \ref{squeeze}.
             \end{subfigure}
         \end{tabular}
     \end{tabular}
-  \caption{
+  \caption[Chip experiment details]{
   The chip experiment is shown in detail. In (a) we show an exploded view of
   the chip flange assembly, with the various components labeled.
   A cross section of the chip chamber is shown in (b). The arrow shows how
