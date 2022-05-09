@@ -11,3 +11,5 @@ figs/
 *.html
 *.bcf
 *.run.xml
+*.lof
+*.lot
