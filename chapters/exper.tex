@@ -650,18 +650,22 @@ capable of
   \centering
   \begin{tikzpicture}
     \begin{axis}[
-        enlargelimits=true,
-        xlabel=Laser frequency (\si{\tera\hertz},
-        ylabel=PMT signal (\si{\volt}),
+%        enlargelimits=true,
+        xmin=512.0725,
+        xmax=512.075,
+        xlabel=Laser frequency (\si{\tera\hertz}),
+        ylabel=PMT signal (\si{\milli\volt}),
         width=0.8\textwidth,
         height = 0.4\textwidth,
-        x tick label style={/pgf/number format/.cd, set thousands separator={}}
-        %ylabel style={yshift=10pt}
+        /pgf/number format/precision=4,
+        xtick={512.075, 512.073, 512.073, 512.074},
+        ylabel style={yshift=10pt}
     ]
-      \addplot [thick, color=black] table {figs/exper/findtransition.dat};
+      \addplot [thick, color=black, only marks] table {figs/exper/findtransition.dat};
     \end{axis}
   \end{tikzpicture}
-  \caption{}
+  \caption{Laser-induced fluorescence signal from \pewpew{}{01} incident on a
+  \CaF{} beam. The signal is measured by a PMT.}
   \label{exper:fig:beamresult}
 \end{figure}
 
