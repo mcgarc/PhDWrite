@@ -25,6 +25,10 @@
 % preprint % gives 12pt font
 %]{revtex4-1}
 
+% Page sizes for A4
+\setlength{\paperheight}{297mm}
+\setlength{\paperwidth}{210mm}
+
 % --- Macro dependencies ---
 %\usepackage{xcolor} % Uncomment if not using bibliography links
 
@@ -52,8 +56,9 @@
 \usepackage[T1]{fontenc} % Some fonts in some bibs...
 \usepackage{amssymb}
 \usepackage{import} % For importing pgfs with embedded pngs
-\usepackage{layouts}
+%\usepackage{layouts}
 \usepackage{mathtools} % Originally for prescripts
+\usepackage{lmodern} % Fonts?
 
 % --- Page headings ---
 \usepackage{fancyhdr}
@@ -142,6 +147,7 @@
 % Have to load tikz after xcolor
 \usepackage{tikz}
 \usepackage{pgfplots} % For plotting
+\pgfplotsset{compat=1.7} % Use recent version
 \usetikzlibrary{calc,patterns,angles,quotes}
 
 % --- Bib title (not line) ---
@@ -282,7 +288,7 @@
 %NOTE This must be manually set so that numbering starts on title page
 % TODO Ensure this makes sense before submission
 % TODO Ensure this makes sense after removal of covid statement
-\setcounter{page}{9}
+\setcounter{page}{12}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                Body Start                %

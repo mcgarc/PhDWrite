@@ -1,7 +1,7 @@
 This chapter outlines some background theory that will be important throughout
-the rest of the thesis. In section~\ref{theroy:cool} I will give an abstracted
-overview of the principles of laser-cooling and trapping of atoms and
-molecules, including magnetic traps. In section~\ref{theory:chips} I will
+the rest of the thesis. In section~\ref{theory:cooltrap} I will give an
+abstracted overview of the principles of laser-cooling and trapping of atoms
+and molecules, including magnetic traps. In section~\ref{theory:chips} I will
 explain how it is possible to create magnetic fields for such traps using wires
 on the surface of a chip. Finally, I will introduce the structure of diatomic
 molecules, which is essential for understanding how to apply these techniques
@@ -156,7 +156,8 @@ this section I will describe the basic operation of the common type-I MOT, that
 is a two level system where the ground state has angular momentum $F$ and the
 excited state has angular momentum $F'$ such that $F'>F$. In this example $F=0$
 and $F'=1$ are chosen.  In reality the molecule MOT that we will discuss is a
-type-II MOT ($F'\leq F$), as will be outlined in section~\ref{theory:molMOT}.
+type-II MOT ($F'\leq F$), as will be discussed in
+section~\ref{theory:coolmols}.
 
 The MOT consists of two components, a magnetic quadrupole field, and restoring
 laser beams, which are detuned from the $F\rightarrow F'$ transition by some
@@ -513,6 +514,7 @@ where the height can be written in terms of the bias field by
 %
 \begin{equation}
   h = -\frac{\mu_0 I}{2\pi \tilde{B}_y}.
+  \label{theory:eqn:height}
 \end{equation}
 %
 So the gradient near the centre is

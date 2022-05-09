@@ -421,7 +421,6 @@ and investigating lower quality resonators coupled to molecules.
 % forget, so now this comment exists.
 
 \section{How to couple a molecule to a coplanar waveguide}
-\label{mws:integrating}
 
 Having established the principles of the CPW, and that such a device can
 operate on a polyimide substrate, we can now consider the logistics of
@@ -432,6 +431,7 @@ using the Stark shift,  the delivery of microwaves to the science chip, and
 schemes for sideband cooling and state readout with the microwaves.
 
 \subsection{Cavity quantum electrodynamics}
+\label{mws:CQED}
 
 For our purposes, the coupling of a single molecule and the microwave field can
 be treated as the coupling of a two-level system to a quantum mode of a cavity
@@ -638,7 +638,7 @@ hyperfine states, or effects due to the magnetic field can be ignored.
 \end{figure}
 
 \subsection{Integrating microwave components}
-\label{mws:integrating}
+\label{mws:components}
 
 % COMPONENTS
 % Vacuum-side barrel connector
@@ -650,7 +650,7 @@ hyperfine states, or effects due to the magnetic field can be ignored.
 % I can't quite find this, think the new version is this one
 % https://www.mdcprecision.com/9251004-sma-coaxial-feedthrough-1-pin-grounded-shield-double-ended-weldable
 
-The chip flange (shown in \myfigref{overview:figs:chipexperiment}) has been
+The chip flange (shown in \myfigref{overview:fig:chipchamber}) has been
 designed to incorporate MDC Precision's SMA45-GS-WELD \SI{2.92}{\milli\meter}
 high-frequency SMA feedthroughs. These welded connectors can be used to bring
 microwaves inside the chip chamber, where they can be launched onto a CPW on
@@ -710,7 +710,7 @@ a single CPW in \myfigref{mws:fig:implement}.
   \caption[Microwave components of the flange assembly]{
     The microwave components of the flange assembly (flange, feedthroughs,
     barrel connectors, launchers, PCB and chip) are shown in (a). In (b) we
-    have the chip design from \myfigref{overview:figs:chipexperiment} (not to
+    have the chip design from \myfigref{overview:fig:chipchamber} (not to
     scale) with the
     additional microwave guide layer overlayed (red). Conversely to the lower
     layer, the microwave layer shows areas where the dielectric is exposed, so
@@ -887,7 +887,7 @@ useful in chapter~\ref{squeeze}.
 We again assume that the molecule is trapped in the $N=0$ or $N=1$ stretched
 states. In this case the resonator is driven by a microwave field, so that the
 molecule-resonator coupling is described by the Jaynes-Cummings
-Hamiltonian that was discussed in section~\ref{theory:QO}.
+Hamiltonian that was discussed in section~\ref{mws:CQED}.
 %
 Entangling of the light and molecule state can be achieved in the dispersive
 regime, where the transition frequency is tuned so that $|\Delta|\gg g$.

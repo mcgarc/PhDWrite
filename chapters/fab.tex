@@ -5,18 +5,19 @@ the London Centre for Nanotechnology (LCN) cleanroom.
 
 \section{Overview of the fabrication procedure}
 
-As discussed in chapter ~\ref{design}, our trap has been designed so that the size of the wires is small compared to
-the size and height of the trapped cloud. As such trapping wires on the chip
-are as small as \SI{3}{\micro\meter} in width. Such small features can be
-produced using standard photolithography techniques~\cite{Madou2002} however,
-the maximum height of features produced in these procedures is usually of the
-order \SI{100}{\nano\meter}.
+As discussed in section~\ref{overview:design}, our trap has been designed so
+that the size of the wires is small compared to the size and height of the
+trapped cloud. As such trapping wires on the chip are as small as
+\SI{3}{\micro\meter} in width. Such small features can be produced using
+standard photolithography techniques~\cite{Madou2002} however, the maximum
+height of features produced in these procedures is usually of the order
+\SI{100}{\nano\meter}.
 %
-The approximate height required for our wires can be calculated using a  typical
-current density achieved on atom chips, such as that reported in
+The approximate height required for our wires can be calculated using a
+typical current density achieved on atom chips, such as that reported in
 \inlineref{Treutlein2008}, where it is found that
 $j=\SI{6E10}{\ampere\per\meter\squared}$. Using the wire widths and currents in
-\mytableref{design:table:wires}, it is clear that the height required for our
+\mytableref{overview:table:wires}, it is clear that the height required for our
 wires is $h \sim I w/j = \SI{1}{\ampere} \times
 \SI{10}{\micro\meter}/\SI{6E10}{\ampere\per\meter\squared} \sim
 \SI{1}{\micro\meter}$.
@@ -114,12 +115,12 @@ These steps are discussed further in section~\ref{fab:planned}.
 We learned to use the cleanroom facilities and developed the chip design in
 parallel. An example of an early design for the chip is shown in
 \myfigref{fab:figs:earlydesign}. These early design choices were informed by
-some of the ideas discussed in chapter~\ref{design}, but were overly
+some of the ideas discussed in section~\ref{overview:design}, but were overly
 complicated, and were based on the assumption that the traps should share an
 axial wire, so that all trap centres were in the same position in the
-\xyplane{}. Later analysis (described in chapter~\cm{design I think}) showed
+\xyplane{}. Later analysis using preliminary simulations similar showed
 that this was not necessary, and so a design more similar to that shown in
-\myfigref{design:fig:chipexperiment} was adopted.
+\myfigref{overview:fig:chiplayout} was adopted.
 
 \begin{figure}[ht]
   \begin{subfigure}[b]{0.45\textwidth}
@@ -367,7 +368,7 @@ between exposure and electroplating.
 In electroplating, a conductive target (here the die) is connected to an
 electric circuit as an anode and placed into an electrolytic solution along
 with a cathode. Current is passed through the solution causing ions to be
-deposited onto the target. This is illustrated in \mysubfigref{fab:fig:etch}{a}
+deposited onto the target. This is illustrated in \mysubfigref{fab:fig:eplate}{a}
 and  an overview of electroplating can be found in \inlineref{Schlesinger2011}.
 Reference~\cite{Ruythooren_2000} gives a more specific discussion of using
 electroplating for microfabrication.
@@ -573,7 +574,7 @@ mould used to fabricate these wires.
   \caption[Stylus profiling characterisation features]{
     Stylus profiling of the characterisation features. In (a) the
   characterisation lines feature of the chip is shown in detail (c.f.
-  \mysubfigref{design:fig:chipexperiment}{b}) the grey dashed line denoting the
+  \myfigref{overview:fig:chiplayout}) the grey dashed line denoting the
   profile. Typical profiles are shown in (b), for both the photoresist
   mould and the plated wires. Stylus size limits the size of the trenches that
   can be fully profiled, and can make both trenches and hills appear narrower
@@ -726,7 +727,7 @@ plating efficiency between batches.
     \caption[The importance of a fresh bath]{
       The importance of a fresh bath. For large features
       ($>50\si{\micro\meter}$) we sometimes observe this `shadowing' effect,
-      shown here on the \SI{200}{\micro\meter} wire of \ph{design 2}. this can
+      shown here on the \SI{200}{\micro\meter} wire. This can
       be seen as a gradual gradient on the microscope (a), and confirmed with
       stylus profiling (b). The profile is taken in the direction and position
       of the white dotted line shown in (a). Changing to fresh golbath solution
@@ -803,7 +804,7 @@ become detached from the chip, see \myfigref{fab:fig:overetch}. This could
 be due to over-etching, or poor adhesion from electroplating. To overcome this
 we made changes to the chip design, making the central wire larger (the Z2 wire
 was originally only \SI{4}{\micro\meter} in width) and adding the anchoring
-pads shown in \mysubfigref{design:fig:chipexperiment}{b}. It is helpful when
+pads shown in \myfigref{overview:fig:chiplayout}. It is helpful when
 etching to be very careful with the chip, and hold it in the etchant with
 tweezers as opposed to dropping it. This ensures that the die can be removed
 and placed into water without delay -- particularly important when the etching
@@ -841,7 +842,7 @@ time is only a few seconds.
 
 To ensure that the etches have been successful, stylus profiling is once again
 performed. We ensure that the wires are of a sufficient height and width to
-achieve the required currents as detailed in chapter~\ref{design}. Visual
+achieve the required currents as detailed in section~\ref{overview:design}. Visual
 inspection under an optical microscope is also useful to ensure that the
 silicon dioxide has been completely exposed. A multimeter is used to confirm
 that there is continuity across the wires.
@@ -874,14 +875,13 @@ that there is continuity across the wires.
 
 % Check when I introduce initials here, could be in ch 1 or smth
 To be used in the molecule experiment, the die must be mounted on the subchip
-described in section~\ref{design:overview} and electrical connections made. We
+described in section~\ref{overview:design} and electrical connections made. We
 attempted two methods of doing this, first we tried a combination of gluing the
 die into the subchip and making connections with wirebonds. We later found that
 the wirebonds failed before reaching the requried current, and therefore were
-unsuitable (see \cm{section in
-experiment chapter}). Alternatively it is possible to solder directly between
-the die and the subchip, in this case gluing is not required to hold the chip
-in place.
+unsuitable (see section~\ref{exper:current}). Alternatively it is possible to
+solder directly between the die and the subchip, in this case gluing is not
+required to hold the chip in place.
 
 \subsection{Gluing and wirebonding}
 \label{fab:gluebond}
@@ -942,7 +942,7 @@ achieve sufficiently low vacuum without using the special UHV compatible
 method. Simply soldering with the RS Components solder and cleaning the subchip
 assembly with IPA was sufficient to reach pressures on the order of
 \SI{1E-10}{\milli\bar}, as discussed \cm{in a later chapter}. The coplted chip
-mounted to the subchip is shown in \myfigref{fab:fig:mountedsubchip}.
+mounted to the subchip is shown in \myfigref{fab:fig:mountedchip}.
 
 \begin{figure}
   \centering
