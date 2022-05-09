@@ -110,8 +110,10 @@ solder, which was not rated for UHV uses.
 To measure the pressure of the chamber an RGA scan is undertaken, with the
 resulting partial pressures shown with and without the chip assembly in
 \myfigref{exper:fig:rga}. The total pressure (the sum of the partial pressures)
-is \SI{5.0E-10}{\milli\bar} and \SI{8.8E-10}{\milli\bar} in each case
-respectively. The scan with the chip assembly has a similar shape to the empty
+is \SI{5.0E-10}{\milli\bar} in the first case and \SI{8.8E-10}{\milli\bar} in
+the second.
+%
+The scan with the chip assembly has a similar shape to the empty
 chamber scan, but with slightly higher values.  In both, we see the typical
 peaks for hydrogen (2), water (18) and nitrogen (28), which dominate the
 spectrum. This is typical of a scan through a UHV system~\cite{PfeifferVacuum},
@@ -189,7 +191,7 @@ and the current through the chip was measured via the potential difference
 across the FET controller's sense resistor (see \myfigref{exper:fig:curtest}).
 Several iterations of chips (with varying wire heights) were tested, using all
 trapping wires. However no meaningful results for maximum attainable current
-were found, as invariably the wirebonds would fail. This was eastablished by a
+were found, as invariably the wirebonds would fail. This was established by a
 visual inspection of the chip, and checking the electrical continuity across
 the trapping wires and from the subchip to the chip.
 
@@ -206,7 +208,7 @@ reliably.
 There are various options that could be used to increase the maximum current of
 the wirebonds.  We considered using a ribon wirebond, which promises
 higher current throughput by using a ribon-shaped wire rather than a round one.
-This was not possible due to the unavailabliity of the the hardware at LCN.
+This was not possible due to the unavailability of the the hardware at LCN.
 Another option was to use higher-diameter wire, but instead we attempted to
 directly solder the chip, as described in the next section.
 
@@ -296,7 +298,7 @@ Further, the resistance of the chip as a function of current can be found by
 fitting a third order polynomial to the $IV$ curve in
 \mysubfigref{exper:fig:current}{a}, and taking its derivative. This derivative
 approximates the chip's conductance at that voltage and current, the resistance
-is easily found by taking the reciprocal of this conductance and the result is
+is found by taking the reciprocal of this conductance, and the result is
 shown in \mysubfigref{exper:fig:current}{b}. We see that for high $I$, the
 resistance is increasing quadraticlly, and therefore assume that the wire is
 nearing its point of failure.
@@ -462,7 +464,7 @@ v=1$ is isolated by a bandpass filter, and can be imaged without the usual
 background scatter. The filter used here is a Semrock FF01-605/15-25, which
 allows light of wavelength $605\pm{15}\si{\nano\meter}$ to pass through it.
 
-\begin{figure}
+\begin{figure}[b]
   \centering
   \includegraphics[width=0.9\textwidth]{figs/energylevels/bgfree.pdf}
   \caption{
@@ -526,14 +528,14 @@ off-diagonal transitions. Here we are limited by the photon excitation rate,
 which is
 %
 \begin{equation}
-  R_\text{ex} = \frac{\Omega^2}{\Gamma}
+  R_\text{ex} = \frac{\Omega^2}{\Gamma_\text{eff}}
 \end{equation}
 %
 with $\Omega$ as the usual Rabi frequency, which we write in terms of the
 dipole moment $\mathbf{d}$ and the electric field $\mathbf{E}$
 %
 \begin{equation}
-  \hbar \Omega = \bra{g}\mathbf{d}\cdot\mathbf{E}\ket{g},
+  \hbar \Omega = \bra{g}\mathbf{d}\cdot\mathbf{E}\ket{e},
 \end{equation}
 %
 where $\ket{g}$ and $\ket{e}$ are the ground and excited state of the
@@ -542,15 +544,22 @@ transition respectively.
 The Rabi frequency can be estimated as follows, first take the orientation of
 the molecule to be random with respect to the light field, so that the dot
 product averages across the ensemble to give $dE/3$. Next, we consider the
-matrix element $\bra{g}d\ket{e}$ as discussed in
-section~\ref{theory:transitions}.  This term will contribute an electronic
-factor ($d_e\SI{6}{\debye}$ for the $A\rightarrow X$ transition in \CaF{}), a
-vibrational factor (the square root Franck-Condon factor $q_{v',v}$) and a
-rotational part (approximately $1/\sqrt{3}$). The field amplitude is related to
-the instnsity in the usual way, so the excitation rate is
+matrix element $\bra{g}d\ket{e}$ as was discussed in
+section~\ref{theory:transitions}. For our transition this this term will
+consist of three factors, an electronic factor ($d_e=\SI{6}{\debye}$ for the
+$A\rightarrow X$ transition in \CaF{}), a vibrational factor (the square root
+Franck-Condon factor $q_{v',v}$) and a rotational part (approximately
+$1/\sqrt{3}$), so that
 %
 \begin{equation}
-  R_\text{ex} \approx \frac{2 d_e^2 q_{v',v}}{81 \hbar^2 c \epsilon_0 \Gamma}I.
+  \bra{g}d\ket{e} \approx d_e\sqrt{\frac{q_{v', v}}{3}}.
+\end{equation}
+%
+Additionally we use the usual relationship between the field amplitude and the
+intensity ($I=c\epsilon_0E^2/2$) so the excitation rate is
+%
+\begin{equation}
+  R_\text{ex} \approx \frac{d_e^2 q_{v',v}}{81 \hbar^2 c \epsilon_0 \Gamma}I.
 \end{equation}
 
 The relevant Franck-Condon factors are
@@ -643,7 +652,7 @@ figure~\ref{exerp:fig:beamresult}, where we can see that there are two clear
 peaks. We interpret the large peak to be due to resonance with the $F=0$, $1^+$
 and $2$ hyperfine levels, which we cannot resolve individually. We attribute
 the second peak to the $F=1^-$ hyperfine level. This confirms that we are
-capable of 
+capable of resoling the new transition that is required for the RROC scheme.
 
 % From Mathematica 20201019_maybewrongfile.nb
 % Incidentally, it was the right file...
@@ -670,27 +679,28 @@ capable of
   \label{exper:fig:beamresult}
 \end{figure}
 
-\subsubsection{Attempt to image the \CaF{} cloud}
+\subsection{Attempt to image the \CaF{} cloud}
 
 Having identified the $X(v=0)\rightarrow A(=1)$ transition frequency, we
 attempted to use the RROC scheme to image a cloud of \CaF{} molecules in the
-MOT chamber described in section~\ref{overview:existing}. In this experiment
-the main \CaF{} buffer-gas source was used. The molecules underwebt the usual
-slowing procedures described above, to create a \SI{50}{\micro\kelvin} cloud
-with diameter of approximately \SI{3}{\milli\meter}. The cloud is then imaged
-by using a combination of the \pewpew{}{01} and \pewpew{10} light.
+MOT chamber which was described in section~\ref{overview:existing}. The
+molecules underwent the usual slowing procedures, also described above, to
+create a \SI{50}{\micro\kelvin} cloud with diameter of approximately
+\SI{3}{\milli\meter}. The cloud is then imaged by using a combination of the
+\pewpew{}{01} and \pewpew{}{10} light.
 
-The former is controlled using the same system as described above, but with the
-EOM now turned on and overdriven, so as to produce the required sidebands to
-address each hyeprfine state of $X(v=0)$ (see chapter~\ref{overview} and for
-example \inlineref{Truppe2017}). In addition the AOM is installed and used to
-switch the beam on and off. When powered, the majority of the beam is
-defclected into the first order mode of the AOM, which is coupled into a fibre
-and brought to the experiment for imaging. Otherwise the beam passes straight
-through the centre of the AOM and is blocked. At the chamber, the beam is
-expanded to \SI{5}{\milli\meter} diameter and passes through the centre of the
-chamber before being retro-reflected to increase the power delivery and avoid
-pusing molecules with the beam. 
+We again use the \pewpew{}{01} system described above and shown in
+\mysubfigref{exper:fig:beamapp}{a}, but with the EOM now turned on and
+overdriven. This produces the required sidebands to address each hyeprfine
+state of $X(v=0)$ (see chapter~\ref{overview} and for example
+\inlineref{Truppe2017}). In addition the AOM is installed and used to switch
+the beam on and off. When powered, the majority of the beam is defclected into
+the first order mode of the AOM, which is coupled into a fibre and brought to
+the experiment for imaging. Otherwise the beam passes straight through the
+centre of the AOM and is blocked. At the chamber, the beam is expanded to
+\SI{5}{\milli\meter} diameter and passes through the centre of the chamber
+before being retro-reflected to increase the power delivery and avoid pusing
+molecules with the beam. 
 %
 The \pewpew{10} light is provided by the molasses beams.
 
@@ -714,12 +724,12 @@ of 100 lower than in the previous experiment. Despite scanning the frequency of
 transition sufficiently for imaging. This result was somewhat anticipated, as
 was reported in \inlineref{Shaw2021}, much higher laser power is required for
 the RROC scheme than in conventional flourescence imaging. However it was
-not clear before starting whether the background would be sufficiently low to
-observe the transition in this experiment.
+not clear before starting whether the background would be sufficiently reduced
+to observe the transition in this experiment.
 
 \section{Summary}
 
-To summaries the results of this chapter, I have shown that the molecule chip
+To summarise the results of this chapter, I have shown that the molecule chip
 experiment is compatible with ultra-high vacuum conditions required for the
 \CaF{} experiment, and that sufficient current can be achieved to create the
 traps that were described and simulated in chapter~\ref{sim}. The chip trap is
