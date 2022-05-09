@@ -96,7 +96,8 @@
 						eprint=false,
 						giveninits=true,
             sortcites=true,
-            sorting=none
+            sorting=none,
+            language=british
 						]{biblatex}
 
 % This is the macro to do this. see SE:
@@ -104,9 +105,14 @@
 % and 
 % https://tex.stackexchange.com/questions/48400/ACbiblatex-make-title-hyperlink-to-dois-url-or-isbn
 \newbibmacro{string+doi}[1]{%
-  \iffieldundef{doi}{#1}{\href{http://dx.doi.org/\thefield{doi}}{#1}}}
+  \iffieldundef{doi}{%
+    \iffieldundef{url}{#1}{\href{\thefield{url}}{#1}}
+    }{%
+    \href{http://dx.doi.org/\thefield{doi}}{#1}%
+  }}
 \DeclareFieldFormat{title}{\usebibmacro{string+doi}{\mkbibemph{#1}}}
 \DeclareFieldFormat[article]{title}{\usebibmacro{string+doi}{\mkbibquote{#1}}}
+\DeclareFieldFormat[thesis]{title}{\usebibmacro{string+doi}{\mkbibquote{#1}}}
 
 % Manually remove notes
 \AtEveryBibitem{%
