@@ -473,7 +473,7 @@ additional experiment.
 \section{Design requirements and overview}
 \label{overview:design}
 
-As discussed in \cm{the introduction} the aim of this project is ultimately to
+As discussed in chapter~\ref{intro} the aim of this project is ultimately to
 trap molecules in close proximity to microwave resonators so that we can
 perform coherent control of quantum states on the rotational transitions in the
 molecules.
@@ -491,7 +491,7 @@ shift is
 \end{equation}
 %
 We want this and the gradient $V'_\text{vdW}(z)$ to be small compared to the
-vacuum Rabi frequency found in \cm{reference theory section}. We find this to
+vacuum Rabi frequency found in section~\ref{theory:cooltrap}. We find this to
 be true when $z\geq\SI{10}{\micro\meter}$, which we deem is the closest that we
 will trap molecules to the surface.  We therefore require that trapping
 electronics will be on a smaller scale than this so that trapping potential is
@@ -534,15 +534,13 @@ be transferred onto the chip trap.
 At this point, we note that the long-lived stretched states discussed in
 section~\ref{overview:existing} are promising candidates for the qubit states
 in a molecule chip. For this reason it was decided that using magnetic traps,
-such as those described in \cm{ref theory section} would be preferable to the
+such as those described in section~\ref{theory:chips} would be preferable to the
 electrostatic traps suggested in \inlineref{Andre2006}. We are now faced with
 the question of how exactly we can load molecules from the MTT into the
 microscopic chip trap.
 
-% TODO Check this para because I will presumably discuss relevant stuff in
-% intro/theory
 Fortunately this problem has previously been addressed for atom chips. We
-discussed already in \cm{reference intro} that atoms can be guided on chips by
+discussed already in chapter~\ref{intro} that atoms can be guided on chips by
 changing of trapping currents and voltages. We also discussed the transfer of
 atoms between on-chip magnetic traps. For the problem of loading from a
 macroscopic trap, we can turn to \inlineref{Ott2001}, where transfer from a
@@ -550,7 +548,7 @@ transport trap to a microtrap is made easier by the use of an intermediary
 macroscopic trap that is well-aligned with the microtrap.
 We propose a similar solution: embedding a mcaroscopic U-wire beneath our chip
 trap which is aligned to the chip and makes a large target for loading form the
-MTT.  This will be discussed further in \cm{experiment chapter}.
+MTT.
 
 To ensure that molecules are then loaded into the smallest trap efficiently, we
 again follow the footsteps of atom chips, and have designed  a series of traps
@@ -657,8 +655,8 @@ Notice that this design does not incorporate microwave guides. These are to be
 installed on a second level, separated from the trapping wires by a thin
 insulating layer, on which we can fabricate coplanar waveguides~\cite{1127105}.
 This stage of the project has not yet been reached, but the planned fabrication
-procedure for microwave guides is discussed in \cm{ref section} and their
-operation is discussed in chapters~\ref{mws} and \ref{squeeze}.
+procedure for microwave guides is discussed in section~\ref{fab:planned} and
+their operation is discussed in chapters~\ref{mws} and \ref{squeeze}.
 
 \begin{figure}[htb]
     \centering
