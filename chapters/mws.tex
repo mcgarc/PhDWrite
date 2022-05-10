@@ -9,6 +9,7 @@ will then present two uses of single \CaF{} molecules coupled to microwave
 guides: sideband cooling and state readout.
 
 \section{The coplanar waveguide}
+\label{mws:CPW}
 
 The CPW was originally proposed by Cheng P.~Wen as a means
 of guiding microwaves across the surface of a dielectric
@@ -155,7 +156,8 @@ by~\cite{Simons2004}
 \end{equation}
 %
 The height $h$ in this context will be the thickness of the dielectric layer
-between the wires and the chips which, as was discussed in chapter~\ref{fab},
+between the wires and the chips which, as was discussed in
+section~\ref{fab:planned},
 will be at minimum a few microns.  Even in the extreme case of
 $h\sim\SI{10}{\micro\meter}$, this cutoff will always be several orders of
 magnitude above our operating frequency.  The cutoff frequency can therefore be
@@ -387,9 +389,8 @@ interface between the resonator and the waveguide~\cite{doi:10.1063/1.3010859}.
   \label{mws:fig:resonators}.
 \end{figure}
 
-Recall from the discussion in chapter~\ref{theory} that for strong coupling we
-require $Q > 1.7 \times 10^5$. The quality factors for CPW resonators can be
-expressed in terms of an attenuation constant
+The quality factors for CPW resonators can be expressed in terms of an
+attenuation constant
 %
 \begin{equation}
   Q = \frac{\omega_0}{2c\alpha}.
@@ -398,7 +399,8 @@ expressed in terms of an attenuation constant
 %
 From \myfigref{mws:fig:conductorloss} and \mytableref{mws:table:diprops} we
 find that using conventional materials, the attenuation will be dominated
-by conductor losses, and $Q\sim10$. This is not sufficient for our purposes.
+by conductor losses, and $Q\sim10$. In section~\ref{mws:coupling} that we
+require $Q > 1.7 \times 10^5$.
 
 % TODO Could improve the prose here
 Conductor losses can be eliminated by use of a superconducting CPW. Such
@@ -421,6 +423,7 @@ and investigating lower quality resonators coupled to molecules.
 % forget, so now this comment exists.
 
 \section{How to couple a molecule to a coplanar waveguide}
+\label{mws:coupling}
 
 Having established the principles of the CPW, and that such a device can
 operate on a polyimide substrate, we can now consider the logistics of
@@ -525,9 +528,9 @@ terms of the cavity parameters by considering the electric field density
 %
 where $V$ is the volume of the mode in the cavity. The idea is to confine the
 molecules in a trap that is on the $w=\SI{10}{\micro\meter}$ scale (see
-chapter~\ref{overview}) and the resonator will necessarily have a length on the
-scale of $\lambda_0 = 2\pi c / \omega_0$, therefore $V\approx w^2\lambda_0$.
-Hence we have that
+section~\ref{overview:design}) and the resonator will necessarily have a length
+on the scale of $\lambda_0 = 2\pi c / \omega_0$, therefore $V\approx
+w^2\lambda_0$. Hence we have that
 %
 \begin{equation}
   g = \sqrt{\frac{2\pi c d^2}{\hbar \epsilon_0 w^2 \lambda_0^2}}.
@@ -658,17 +661,16 @@ the subchip. Microwaves will be transferred through from the feedthrough to the
 subchip using a SMA male-male barrel adapter from Pasternak, and a female-clamp
 PCB launcher from Pasternack. The launching assembly can be seen in
 \mysubfigref{mws:fig:implement}{a}. These components have been tested for UHV
-compatibility, as discussed in \cm{reference relevant chapter}.  The flange
+compatibility, as discussed in section~\ref{exper:vacuum}.  The flange
 assembly has been designed to allow microwaves to exit the chamber, where they
 can be terminated or measured.
 
 Once launched onto the subchip, the microwaves will be delivered by CPW to the
 subchip. 
 %
-As discussed in chapter~\ref{fab} the subchip in its current form is based on an
-aluminium-core PCB, however in future iterations of the experiment this can be
-replaced with, for example, an Arlon AD1000 board, which will be a suitable
-carrier for both trapping currents and microwaves~\cite{Morgan2020}. 
+In future iterations of the experiment the aluminium-core PCB can be replaced
+with, for example, an Arlon AD1000 board, which will be a suitable carrier for
+both trapping currents and microwaves~\cite{Morgan2020}. 
 %
 % TODO Do I actually ever call it a 'science chip'?
 The subchip CPW will be connected to the science chip CPW by wire-bonds.  At
@@ -733,13 +735,12 @@ to implement the electrostatic traps described in \inlineref{Andre2006}.
 
 This subsection summarises the sideband cooling scheme presented in
 \inlineref{Andre2006} and presents cooling rates for our trapping scheme with
-\CaF{}.  Throughout the section we assume that we operate with a single molecule
-coupled to a high-quality cavity ($Q\sim10^6$, $\kappa \approx 2\pi\times
-\SI{20}{\kilo\hertz}$) in the strong coupling regime ($g\sim10^5$). We take
-the molecule to act as a two-level system in the stretched states.
-For our example we choose $\ket{g}=\ket{0}_\text{str}$ and
-$\ket{e}=\ket{1}_\text{str}$. \cm{Refer back to the stretched state notation in
-  theory chapter}
+\CaF{}.  Throughout the section we assume that we operate with a single
+molecule coupled to a high-quality cavity ($Q\sim10^6$, $\kappa \approx
+2\pi\times \SI{20}{\kilo\hertz}$) in the strong coupling regime ($g\sim10^5$).
+We take the molecule to act as a two-level system in the stretched state, which
+we introduced in section~\ref{overview:existing}.  For our example we choose
+$\ket{g}=\ket{0}_\text{str}$ and $\ket{e}=\ket{1}_\text{str}$.
 
 In the macroscopic magnetic trap, the
 $\ket{e}\rightarrow\ket{g}$ decay is very slow ($\Gamma \sim

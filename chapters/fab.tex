@@ -900,7 +900,7 @@ virtual leaks under vacuum conditions.
 %
 Finally the chip and subchip are removed from the bag for baking at
 \SI{115}{\celsius} for an hour and left to cool. Vacuum testing of the glue is
-described in \cm{a later section}.
+described in section~\ref{exper:vacuum}.
 
 After gluing the chip into place, an electrical connection can be formed by
 wirebonding. In this process a thin wire is attached between the subchip and
@@ -941,8 +941,9 @@ testing (discussed in \cm{ref section}). We found that we were able to
 achieve sufficiently low vacuum without using the special UHV compatible
 method. Simply soldering with the RS Components solder and cleaning the subchip
 assembly with IPA was sufficient to reach pressures on the order of
-\SI{1E-10}{\milli\bar}, as discussed \cm{in a later chapter}. The coplted chip
-mounted to the subchip is shown in \myfigref{fab:fig:mountedchip}.
+\SI{1E-10}{\milli\bar}, as we will see in section~\ref{exper:vacuum}. The
+completed chip mounted to the subchip is shown in
+\myfigref{fab:fig:mountedchip}.
 
 \begin{figure}
   \centering
@@ -966,7 +967,7 @@ individual dies.
 \section{Planned fabrication of microwave layer}
 \label{fab:planned}
 
-In \cm{an earlier chapter}
+In chapter~\ref{intro},
 we described how a molecule chip could allow strong coupling between \CaF{}
 molecules and a microwave field, however for this to be possible there must be
 good overlap between the microwave field and the trapped
@@ -978,17 +979,19 @@ trapping wires, upon which a CPW can be fabricated by photolithography. The
 trap centre can be positioned at a resonator antinode, where the microwave
 field is strongest.
 
-Our fabrication scheme can be extended in a similar fashion. The first stage will be to spin coat the insulating layer on top of an
-etched chip, as shown in \mysubfigref{fab:fig:process}{11}. Again taking our
-lead from \inlineref{Treutlein2008}, we will use polyimide. Polyimide is chosen
-due to its low dielectric loss tangent ($\tan\delta_e = 0.016$) which will
-be discussed further in \cm{microwave chapter}.
+Our fabrication scheme can be extended in a similar fashion. The first stage
+will be to spin coat the insulating layer on top of an etched chip, as shown in
+\mysubfigref{fab:fig:process}{11}. Again taking our lead from
+\inlineref{Treutlein2008}, we will use polyimide. Polyimide is chosen due to
+its low dielectric loss tangent ($\tan\delta_e = 0.016$) which will be
+discussed further in section~\ref{mws:CPW}.
 
 When spin coating the polyimide it is essential that we are able to produce a
 flat surface onto which we can fabricate the microwave layer. We can do this by
 applying multiple layers of polyimide on the spin coater, so that any bumps are
 smoothed out. This is known as planarization and is discussed further in
-\inlineref{Madou2002}.
+\inlineref{Madou2002}. We expect this coating to have a thickness between $1$
+and \SI{10}{\micro\meter}.
 
 After the application of a planarized polyimide layer it will be possible to
 fabricate microwave guides on the surface by lithography. The end result is
@@ -999,4 +1002,3 @@ discuss in \cm{microwaves chapter} that for a microwave resonator we must use
 a superconducting CPW, or else the quality factor will be too low due to
 resistive losses. The fabrication of superconducting CPWs is a well developed
 field, and is discussed in for example \inlineref{doi:10.1063/1.3010859}.
-
