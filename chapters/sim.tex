@@ -5,12 +5,10 @@ the chip trap.
 \section{Motion of molecules in a trap}
 \label{sim:motion}
 
-% TODO Is the Bohr magneton introduced above?
-% TODO Do I introduce this ket notation above?
 We can assume that the motion of the molecules in the trap is classical. They
 move in the potential $V(t, \mathbf{q}) = \mu B(t, \mathbf{q})$, where
 $\mu\approx\mu_B$ is the magnetic dipole moment of the molecule in the
-$\ket{0,1,1}$ state.  The motion of any one particle is described by Hamilton's
+$\ket{N=0,F=1,m_F=1}$ state.  The motion of any one particle is described by Hamilton's
 equations,~\cite{Lichtenberg1969}
 %
 \begin{align}
@@ -43,9 +41,8 @@ It is helpful for us to write the phase-space volume $V$ in terms of the
 spatial volume occupied by the ensemble ($V_\text{space}$) and its temperature.
 This is possible because in thermal equilibrium the momentum distribution is 
 %
-% TODO Check denominator of normalisation
 \begin{equation}
-  f(p) = \frac{1}{(\pi m k_B T)^\frac{3}{2}}\exp(-\frac{p^2}{2 m k_B T})
+  f(p) = \frac{1}{(2 \pi m k_B T)^\frac{3}{2}}\exp(-\frac{p^2}{2 m k_B T})
 \end{equation}
 %
 whose maximum value
@@ -99,9 +96,8 @@ we are able to trap in the final trap will be
   \label{sim:eq:psd_N}
 \end{equation}
 %
-% TODO Check that these parameters are not introduced somewhere else earlier.
 Phase space densities of $\rho_\text{\CaF{}} = 1.4\times10^{-8}$ can be
-achieved by compressing the cloud in an optical dipole trap~\cite{PhysRevLett.121.083201}. The
+achieved by compressing the cloud in an optical dipole trap. The
 smallest trap will have volume
 $V_\text{trap}\sim(\SI{10}{\micro\meter})^2\times\SI{1}{\milli\meter}$ and
 depth
@@ -267,15 +263,6 @@ simulation.
 The Van der Waals attraction between the chip and the molecules is neglected,
 since the molecules will (by design) never be close enough to the chip for this
 force to be significant.
-
-% TODO Move this to theory?
-When simulating the motion of the particles in a quadrupole coil trap (such as
-the MTT), the magnetic field is assumed to be an ideal quadrupole, so
-%
-\begin{equation}
-  \mathbf{B}(x, y, z) = B'\begin{pmatrix} -x/2 \\ -y/2 \\ z \end{pmatrix}
-\end{equation}
-where $B'$ is the field gradient in the $z$ direction. 
 
 The magnetic potentials of the wire traps are calculated by considering the
 traps to be formed of segments of straight wires, each producing a magnetic

@@ -121,7 +121,6 @@ where we have assumed that we are in the limit of a thick dielectric layer ($h
 \gg W$) so that most of the field density below the surface is inside the
 dielectric.
 %
-% TODO Ensure $c$ is introduced already somewhere above...
 The phase velocity  is~\cite{Simons2004}
 %
 \begin{align}
@@ -430,7 +429,7 @@ operate on a polyimide substrate, we can now consider the logistics of
 implementing such a device with our design. In this section we will consider
 the details of the how the coupling of molecules to a CPW can work in practice,
 including the coupling Hamiltonian, tuning the molecular rotational frequency
-using the Stark shift,  the delivery of microwaves to the science chip, and
+using the Stark shift,  the delivery of microwaves to the chip, and
 schemes for sideband cooling and state readout with the microwaves.
 
 \subsection{Cavity quantum electrodynamics}
@@ -500,7 +499,6 @@ and having shifted energies
 %
 It is useful to consider the manifold of states as depicted in
 \myfigref{theory:fig:JCHstates}.  
-%TODO This fig
 Note that in the limit of no coupling
 ($\Omega = 0$) and no detuning ($\Delta = 0$) the energies are that of the bare
 states, and $\ket{g}\ket{n+1}$ is degenerate with $\ket{e}\ket{n}$, as in part
@@ -579,15 +577,14 @@ that the energy shift of $\ket{N,m_N}$ is
 %
 \begin{equation}
   \Delta_{N, m_N} = \sum_{N', m_N'} \frac{(\mu_e E)^2}{E_\text{rot}(N) -
-  E_\text{rot}(N')} |\prescript{}{\text{rot}}{\bra{N', m_N'}}C_0^{(1)} \ket{N,
-m_N}_\text{rot}|^2.
+  E_\text{rot}(N')} |{\bra{N', m_N'}}C_0^{(1)} \ket{N, m_N}|^2.
 \label{mws:eqn:Stark}
 \end{equation}
 %
 The matrix element here can be found by application of the Wigner-Eckart
 theorem~\cite{edmonds1996}.
 %
-\begin{multline} \prescript{}{\text{rot}}{\bra{N', m_N'}}C_0^{(1)} \ket{N, m_N}_\text{rot} =
+\begin{multline} {\bra{N', m_N'}}C_0^{(1)} \ket{N, m_N} =
   \\ (-1)^{m_N'}\sqrt{(2N+1)(2N'+1)}
   % 3 j symbols
   \begin{pmatrix} N' & 1 & N \\ -m_N' & 0 & m_N \end{pmatrix} \begin{pmatrix}
@@ -672,8 +669,7 @@ In future iterations of the experiment the aluminium-core PCB can be replaced
 with, for example, an Arlon AD1000 board, which will be a suitable carrier for
 both trapping currents and microwaves~\cite{Morgan2020}. 
 %
-% TODO Do I actually ever call it a 'science chip'?
-The subchip CPW will be connected to the science chip CPW by wire-bonds.  At
+The subchip CPW will be connected to the chip CPW by wire-bonds.  At
 the point where the wire-bonds connect, the CPW can be chosen to be 
 large enough so that it is easy to make good connection with the wire bonds. The CPW
 can then tapered down to reduce the field size while maintaining the same $k_0$
