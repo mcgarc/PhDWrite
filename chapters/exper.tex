@@ -160,7 +160,7 @@ change in the pressure.
 
 It was also important to test the currents that can be achieved through the
 chip trapping wires. These tests were conducted with the chip under vacuum
-($P<10^{-6}\si{\milli\bar}$) and using the setup shown in
+($P<10^{-6}\,\si{\milli\bar}$) and using the setup shown in
 \myfigref{exper:fig:curtest}, which was used since our custom current drivers
 where not ready at this stage. A regulated power supply delivers a current to
 the chip, controlled by the FET circuit that is in turn switched by a signal
@@ -228,7 +228,7 @@ reliably repeatable, and we were able to observe sufficient current densities
 for trapping (compared to those laid out in section~\ref{overview:design}).
 
 We consider a typical example of testing using the small wire
-(\SI{9}{\micro\meter}), on a chip where the wire height achieved was
+(width \SI{9}{\micro\meter}), on a chip where the wire height achieved was
 \SI{9}{\micro\meter}. Again, the current was pulsed on for
 \SI{200}{\milli\second} once every \SI{10}{\second}, which we imagine to be
 representative of a typical experiment. We show the current through the chip as
@@ -295,7 +295,7 @@ Nonetheless, with sufficient voltage it is possible to achieve currents of
 $j=\SI{6.8}{\ampere}/(\SI{9}{\micro\meter}\times\SI{9}{\micro\meter})=
 \SI{8.4E10}{\ampere\per\meter\squared}$. This is slightly higher than was
 expected (see again section~\ref{overview:design}), and potentially not the
-maximum current density achievable: we did not test this chip to the point of
+maximum current density achievable. We did not test this chip to the point of
 failure as we wanted to preserve it and the required current for trapping had
 already been met.
 
@@ -469,7 +469,7 @@ the \pewpew{}{01} and \pewpew{}{10} light is used to drive the transitions at
 \SI{606}{\nano\meter} transitions $v'=0\rightarrow v=0$ and $v'=1\rightarrow
 v=1$ is isolated by a bandpass filter, and can be imaged without the usual
 background scatter. The filter used here is a Semrock FF01-605/15-25, which
-allows light of wavelength $605\pm{15}\si{\nano\meter}$ to pass through it.
+allows light of wavelength $605\pm{15}\,\si{\nano\meter}$ to pass through it.
 
 \begin{figure}[b]
   \centering
@@ -553,10 +553,9 @@ the molecule to be random with respect to the light field, so that the dot
 product averages across the ensemble to give $dE/3$. Next, we consider the
 matrix element $\bra{g}d\ket{e}$ as was discussed in
 section~\ref{theory:transitions}. For our transition this this term will
-consist of three factors, an electronic factor ($d_e=\SI{6}{\debye}$ for the
-$A\rightarrow X$ transition in \CaF{}), a vibrational factor (the square root
-Franck-Condon factor $q_{v',v}$) and a rotational part (approximately
-$1/\sqrt{3}$), so that
+consist of three factors, an electronic factor ($d_e=\SI{6}{\debye}$), a
+vibrational factor (the square root Franck-Condon factor $q_{v',v}$) and a
+rotational part (approximately $1/\sqrt{3}$), so that
 %
 \begin{equation}
   \bra{g}d\ket{e} \approx d_e\sqrt{\frac{q_{v', v}}{3}}.
@@ -588,7 +587,7 @@ Physics 380D, a single frequency ring dye laser, using Rhodamine 6G dye and
 pumped by a Spectra Physics Millenia EV, a continuous wave diode-pumped solid
 state laser. The power output from the 380D at \SI{585}{\nano\meter} is
 expected to have a maximum of approximately \SI{300}{\milli\watt}, which means
-that a \SI{1}{\milli\meter} diameter beam or smaller is required to saturate
+that a \SI{1}{\milli\meter} $1/e^2$ diameter beam or smaller is required to saturate
 the transition.  Due to this limitation we performed two experiments:
 identifying the transition in the \CaF{} beam using a narrow laser beam waist,
 and imaging the \CaF{} cloud in the MOT chamber with a \SI{5}{\milli\meter}
@@ -647,7 +646,7 @@ wavemeter. % TODO Name of wavemeter?
 A buffer-gas source  was used to produce the pulsed \CaF{} beam.  This
 experiment was undertaken on a separate \CaF{} source to the one used on the
 main beamline that was descibed in section~\ref{overview:existing}, but it is
-functionally identical.  The beam was driven by \pewpew{}{01} with beam
+functionally identical.  The beam was driven by \pewpew{}{01} with $1/e^2$
 diameter \SI{500}{\micro\meter} and power \SI{100}{\milli\watt}.  Light-induced
 fluorescence was collected by a lens onto a photo-multiplier tube (PMT) mounted
 above the beamline, as shown in \mysubfigref{exper:fig:beamapp}{b}.
@@ -694,7 +693,7 @@ Having identified the $X(v=0)\rightarrow A(=1)$ transition frequency, we
 attempted to use the RROC scheme to image a cloud of \CaF{} molecules in the
 MOT chamber which was described in section~\ref{overview:existing}. The
 molecules underwent the usual slowing procedures, also described above, to
-create a \SI{50}{\micro\kelvin} cloud with diameter of approximately
+create a \SI{50}{\micro\kelvin} cloud with $1/e^2$ diameter of approximately
 \SI{3}{\milli\meter}. The cloud is then imaged by using a combination of the
 \pewpew{}{01} and \pewpew{}{10} light.
 
@@ -707,9 +706,9 @@ the beam on and off. When powered, the majority of the beam is defclected into
 the first order mode of the AOM, which is coupled into a fibre and brought to
 the experiment for imaging. Otherwise the beam passes straight through the
 centre of the AOM and is blocked. At the chamber, the beam is expanded to
-\SI{5}{\milli\meter} diameter and passes through the centre of the chamber
-before being retro-reflected to increase the power delivery and avoid pusing
-molecules with the beam. 
+\SI{5}{\milli\meter} $1/e^2$ diameter and passes through the centre of the
+chamber before being retro-reflected to increase the power delivery and avoid
+pusing molecules with the beam. 
 %
 The \pewpew{10} light is provided by the molasses beams.
 
@@ -718,9 +717,9 @@ create a molasses. We hold the molecules in the molasses for
 \SI{20}{\milli\second}, during which time an image of the flourescence is taken
 using a Hamamatsu Orca R2 CCD camera.
 % NOTE Sarunas wrote about the imaging system in his thesis that I can ref
-The exposure last \SI{10}{\milli\second}. Following which \pewpew{}{00} is
-switched off, and \pewpew{}{01} is switched on, along with a \SI{1}{\gauss}
-magnetic bias field.  The direction of the field is chosen to ensure that the
+The exposure last \SI{10}{\milli\second}, following which \pewpew{}{00} is
+switched off, and \pewpew{}{01} is switched on along with a \SI{1}{\gauss}
+magnetic bias field. The direction of the field is chosen to ensure that the
 molecules are not pumped into a state that is dark to \pewpew{}{01}, which
 could otherwise occur due to the light's polarisation. A second
 \SI{10}{\milli\second} exposure is then taken with the camera to image the
