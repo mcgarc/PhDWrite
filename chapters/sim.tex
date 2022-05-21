@@ -220,7 +220,7 @@ period the trap's phase-space emittance.
     particles that are lost are shaded red, and metastable particles in orange.
     The energy contour of the trap depth is also shown. The end state of the
     simulation is shown in the lower row. Note the filamentation effect in (e)
-    and (f), where the effective phase-space density of the particles increases
+    and (f), where the effective phase-space density of the particles decreases
     as they explore regions that are energetically accessible. The harmonic and
     anharmonic examples are inspired by the discussion in
     \inlineref{Crompvoets2005}.
@@ -488,8 +488,8 @@ after the ramp is shown in \myfigref{sim:fig:mttusim}.
     (red). The phase-space distributions are shown in the $z$-$v_z$ plane in
     (a) and (b), with histograms of the $z$ and $v_z$ projections in (c) and
     (e) respectively. The potentials at the start and end of the transfer are
-    shown in (d). Subfigure (f) shows the temperature particle number varying
-    throughout the fields are varied in the times that are shaded grey
+    shown in (d). Subfigure (f) shows the temperature and the particle number
+    varying throughout. Transfer occurs during the times that are shaded grey
     (c.f.~\myfigref{sim:fig:simsum}).
   }
   \label{sim:fig:mttusim}
@@ -526,8 +526,8 @@ phase-space for each projection throughout the ramp, as shown in
     of the trapping potential, as can be seen at \SI{75}{\milli\second}. These
     reductions can occur when moving between different types of traps, such as
     from the coil-based to wire trap, or from a quadrupole to Ioffe-Pritchard
-    trap. Care must be taken in such cases to ensure the potential sufficiently
-    deep throughout the handover.
+    trap. Care must be taken in such cases to ensure the potential is
+    sufficiently deep throughout the handover.
 }
   \label{sim:fig:mttudetail}
 \end{figure}
@@ -579,9 +579,10 @@ the particle losses there is minimal change to the particle distribution
     Z-trap (red). The phase-space distributions are shown in the $z$-$v_z$
     plane in (a) and (b), with histograms of the $z$ and $v_z$ projections in
     (c) and (e) respectively. The potentials at the start and end of the
-    transfer are shown in (d). Subfigure (f) shows the temperature particle
-    number varying throughout the fields are varied in the times that are
-    shaded grey (c.f.~\myfigref{sim:fig:simsum}).
+    transfer are shown in (d). Subfigure (f) shows the temperature and the
+    particle number varying throughout the simulation. Transfer occurs during
+    the times that are shaded grey (c.f.~\myfigref{sim:fig:simsum}).
+
   }
   \label{sim:fig:uzsim}
 \end{figure}
@@ -617,9 +618,9 @@ new trap minimum at $z=\SI{1}{\milli\meter}$.
     The phase-space distributions are shown in the $z$-$v_z$ plane in (a) and
     (b), with histograms of the $z$ and $v_z$ projections in (c) and (e)
     respectively. The potentials at the start and end of the transfer are shown
-    in (d). Subfigure (f) shows the temperature particle number varying
-    throughout the fields are varied in the times that are shaded grey
-    (c.f.~\myfigref{sim:fig:simsum}).
+    in (d). Subfigure (f) shows the temperature and the particle number varying
+    throughout the simulation. Transfer occurs during the times that are shaded
+    grey (c.f.~\myfigref{sim:fig:simsum}).
   }
   \label{sim:fig:zsim}
 \end{figure}
@@ -653,9 +654,9 @@ The simulation shows that the loading of the initial chip trap can bring in
 approximately 60\% of the initial cloud. We assumed an initial temperature of
 \SI{50}{\micro\kelvin}, however refining the transport process could allow us
 to load clouds of lower temperatures, which could mean that a higher loading
-efficiency is possible. It may also be possible to implement some cooling in
-the chip chamber to reduce this temperature, but we are restricted by the
-limited optical access.
+efficiency is possible. It may also be possible to implement cooling during the
+trap transfer, but this is restricted by the limited optical access in the chip
+chamber.
 %
 There is some expansion of the cloud as molecules are lost, particularly caused
 during the U-Z handover stage.
@@ -716,10 +717,12 @@ they occupy. This expected occupation region is calculated from the
 energy-contour in phase-space that matches the temperature of the cloud, and is
 marked by the dotted line. There is now handover into $\mathrm{Z2_i}$, with the
 particles inside the phase-space acceptance contained in the new trap. We
-expect spillover losses of 84\%. In the final
-stage the trap is compressed, into $\mathrm{Z2_f}$, during which we expect no
-loss. The final occupation is shown in
-\mysubfigref{sim:fig:phasematchinggrid}{c}.
+expect spillover losses of 84\%. In the final stage the trap is compressed,
+into $\mathrm{Z2_f}$, during which we expect no loss. The final occupation is
+shown in \mysubfigref{sim:fig:phasematchinggrid}{c}.
+%
+Particle loss during the procedure can be estimated from the mismatching of
+these phase-space emittances and acceptances.
 
 \begin{figure}[tbhp]
 \centering
@@ -744,20 +747,18 @@ loss. The final occupation is shown in
   \label{sim:fig:phasematchinggrid}
 \end{figure}
 
-Particle loss during the procedure can be estimated from the mismatching
-of these phase-space emittances and acceptances.
 
-The above-described spillover losses can be combined with the loading efficiency
-described by the trajectory simulations. We 
-expect a loading efficieny of 2\%. This would deliver only 50 molecules into
-the final trap in what is a highly-idealised loading simulation. Notably the
-analysis of the phase-space acceptance does not account for an increase in
-effective phase-space density by filamenation, which will further reduce the
-final occupation. This confirms
-that we will need to produce a much higher initial phase-space density to
-load a sufficiently large number of molecules into the trap. However it is
-clear that this procedure can be used to load a cloud Ongoing efforts to produce higher
-density clouds of \CaF{} could improve this final molecule number even further.
+The above-described spillover losses can be combined with the loading
+efficiency described by the trajectory simulations. We expect a loading
+efficieny of 2\%. This would deliver only 50 molecules into the final trap in
+what is a highly-idealised loading simulation. Notably the analysis of the
+phase-space acceptance does not account for decrease in effective phase-space
+density by filamenation, which will further reduce the final occupation. This
+confirms that we will need to produce a much higher initial phase-space density
+to load a sufficiently large number of molecules into the trap. However it is
+clear that this procedure can be used to load a cloud Ongoing efforts to
+produce higher density clouds of \CaF{} could improve this final molecule
+number even further.
 
 \section{Summary}
 
