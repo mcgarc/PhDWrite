@@ -43,16 +43,15 @@ beam quickly exits this chamber into the low pressure region.
     %\end{overpic}
     %\vspace{1cm}
   \caption[\CaF{} source]{
-    A schematic of the \CaF{} source, slowing region and MOT chamber.
-  \CaF{} molecules (blue) are produced by the buffer gas cell, and are
-  slowed by longitudinal slowing and transverse cooling light (green,
-  \pewpew{S}{00}). The molecules are then captured in a MOT (MOT light
-  \pewpew{}{00} and repumps combined are shown here in orange) where
-  they can be further cooled and transferred to a magnetic trap. The molecules
-  can then be transported out of the chamber by the MTT in the direction of the
-  pink arrow. A detailed view of the source is shown in
-  \myfigref{overview:fig:source}}. This figure is based on one in
-  \inlineref{Truppe2017}.
+    A schematic of the \CaF{} source, slowing region and MOT chamber.  \CaF{}
+    molecules (blue) are produced by the buffer gas cell, and are slowed by
+    longitudinal slowing and transverse cooling light (green, \pewpew{S}{00}).
+    The molecules are then captured in a MOT (MOT light \pewpew{}{00} and
+    repumps combined are shown here in orange) where they can be further cooled
+    and transferred to a magnetic trap. The molecules can then be transported
+    out of the chamber by the MTT in the direction of the pink arrow. A
+    detailed view of the source is shown in \myfigref{overview:fig:source}. This
+    figure is based on one in \inlineref{Truppe2017}.}
   \label{overview:fig:CaFcartoon}
 \end{figure}
 
@@ -69,7 +68,8 @@ Figure~\ref{overview:fig:CaFenergy} and \mytableref{overview:table:lasers} also
 label the various lasers that are used to addressed the \CaF{} transitions. We
 denote these \pewpew{}{vv'} where $v$ ($v'$) is the lower (excited)
 vibrational level that the laser addresses. The superscript $S$ is used to
-distinguish the $X\rightarrow B$ transition.
+distinguish the $X\rightarrow B$ transition since it is used for the slowing
+light.
 
 \begin{figure}
   \centering
@@ -121,19 +121,22 @@ discussed further when describing slowing of the beam and the MOT.
 Hyperfine splitting occurs in \CaF{} due to the spin-half contribution of the
 fluorine atom. This is not resolved in the $A$ state, but we account for the
 hyperfine splitting of the $X$ state, which is shown in the box of
-\myfigref{overview:fig:CaFenergy}. It worth explaining why we have the four $F$
-states $F=2,1^+,0,1^-$. These arise due to an $\mathbf{S}\cdot\mathbf{N}$ term
-in the Hamiltonian. Since we are in Hund's (b) case, the $N=1$ state is
-split into angular momenta states $\mathbf{J}= \mathbf{N} + \mathbf{S}$. Here
-$S=1/2$, so the possible values of $J$ are $3/2$ and $1/2$. Each of these is
-again split by the hyperfine interaction into $\mathbf{F} = \mathbf{J} +
-\mathbf{I}$, with $I=1/2$. This gives us the allowed values $F=2,1^+,0,1^-$.
+\myfigref{overview:fig:CaFenergy}. It is worth explaining why we have the four
+$F$ states $F=2,1^+,0,1^-$. These arise due to the combination  of the
+hyperfine interaction and a spin rotation interaction of the form
+$\mathbf{S}\cdot\mathbf{N}$. Since we are in Hund's (b) case, the $N=1$ state
+is split into angular momenta states $\mathbf{J}= \mathbf{N} + \mathbf{S}$.
+Here $S=1/2$, so the possible values of $J$ are $N+1/2$ and $N-1/2$ (with the
+exception of $N=0$ where we have only $J=1/2$). For $N=1$, we ahve $J=3/2$ and
+$J=1/2$. Each of these is again split by the hyperfine interaction into
+$\mathbf{F} = \mathbf{J} + \mathbf{I}$, with $I=1/2$. This gives us the allowed
+values $F=2,1^+,0,1^-$.
 
-In the $B$ level, the $F=0$ and $F=1$ states
-are split by \SI{20}{\mega\hertz}, which can be neglected for the purposes of
-our discussion. A full description of the \CaF{} energy structure and various
-constants can be found in \inlineref{Anderegg2019a}, those that are most useful
-are presented in \mytableref{overview:table:constants}.
+In the $B$ state, the $F=0$ and $F=1$ states are split by \SI{20}{\mega\hertz},
+which can usually be neglected for the purposes of our discussion. A full
+description of the \CaF{} energy structure and various constants can be found
+in \inlineref{Anderegg2019a}, those that are most useful are presented in
+\mytableref{overview:table:constants}.
 
 \begin{table}
   \centering
@@ -144,7 +147,7 @@ are presented in \mytableref{overview:table:constants}.
   Mass & m & \SI{59}{\amu}\\
   Electric dipole moment ($X$ state) & $\mu_e$ & $\SI{-3.08}{\debye}$\\
   % Don't confuse EDM with transition moment
-  Magnetic dipole moment & $\mu_B$ & \SI{9.274}{\joule\per\tesla} \\
+  Magnetic dipole moment & $g_F\mu_B m_F$ & \\
   % This is what Ed uses in his notebook, I think it is the same as mu_e...
   % Had to convert form his units, but pretty sure this is right.
   %Chemistry dipole moment & $\mu_c$ & $3\si{\debye}$ \\
@@ -152,7 +155,9 @@ are presented in \mytableref{overview:table:constants}.
 \end{tabular}
 \caption[\CaF{} constants]{
   Various constants for \CaF{} taken from \inlineref{Anderegg2019a}. Note that
-  the magnetic dipole moment is taken to be the Bohr magenton.
+  the magnetic dipole moment is given in terms of the g-Factor $g_F$ and the
+  quantum number $m_F$, which are state dependent, as well as the Bohr magenton
+  $\mu_B = \SI{9.274}{\joule\per\tesla}$.
   }
   \label{overview:table:constants}
 \end{table}
@@ -161,14 +166,12 @@ are presented in \mytableref{overview:table:constants}.
 
 We begin all our experiments by creating a pulsed beam of \CaF{} molecules
 using a buffer gas source. This is pictured in \myfigref{overview:fig:source}
-and consists of a copper cell cooled to \SI{4}{\kelvin}. inside which the
-\CaF{} molecules are formed from the reaction of \Ca{} atoms, ablated from a
-target (shown in blue) by a Nd:YAG laser and \SFsix{} gas. Since the reagents
-are hot (ablation warms the \Ca{} and the \SFsix{} is at \SI{270}{\kelvin}) it
-is necessary to thermalise the molecules to reduce their temperature. This is
-achieved with the eponymous buffer gas, in this case \He{}, which flows into
-the cell at \SI{4}{\kelvin} and thermliases with the molecules before they exit
-the cell in a beam.
+and consists of a copper cell cooled to \SI{4}{\kelvin}. 
+%
+Helium gas, also cooled to \SI{4}{\kelvin}, and \SFsix{} gas near room
+temperature, flow through the cell. A \Ca{} target (shown in blue) is ablated
+by a pulsed Nd:YAG laser. The \Ca{} reacts with the \SFsix{} to produce \CaF{}, which is
+then flushed out of the cell by the helium flow.
 
 \begin{figure}
   \centering
@@ -180,7 +183,7 @@ formed which thermalise with the \He{} and a molecule beam exits from the apertu
   \label{overview:fig:source}
 \end{figure}
 
-The cell is designed to optimise the flow of \He{} so as to thermalise with
+The cell is designed to optimise the flow of \He{} so as to entrain the 
 \CaF{} and guide it to the exit aperture without the creation of vortices,
 where the molecules can be trapped~\cite{Truppe2018}. For this reason \He{}
 enters from towards the rear of the cell at \SI{4}{\kelvin} and flows towards
@@ -196,7 +199,8 @@ also use a copper shield, coated with coconut charcoal and cooled to
 \SI{4}{\kelvin} as a helium absorber~\cite{doi:10.1116/1.574141}. This is
 thermally cycled overnight when the source is not in use to avoid saturation.
 As noted in \inlineref{Jurgilas2021}, this buffer gas source originally
-produced up to \SI{5E10}{molecules/steradian} molecules in $X(N=1, v=0)$ with a
+produced up to \SI{5E10}{molecules/steradian} molecules in $X(N=1, v=0)$ per
+pulse, with a
 mean velocity of \SI{160}{\meter\per\second}~\cite{Truppe2018} but its
 performance has degraded since the original report. As a result we now observe
 \SIrange{50}{60}{\percent} lower MOT population than at the time
@@ -225,31 +229,13 @@ exponential chirp originally proposed in \inlineref{Anderegg2019}  produced a
 \SIrange{60}{80}{\percent} improvement in the number of molecules in the
 MOT~\cite{Jurgilas2021}.
 
-Slowing the beam has the undesirable effect of increasing the transverse
-velocity of the molecules. This is due to the stochastic change in the
-molecules' momentum as they emit photons isotropically. The change in
-transverse velocity is $v_r\sqrt{N_\gamma/3}\sim\SI{0.4}{\meter\per\second}$,
-where $N_\gamma \sim 10^4$ is the number of photons scattered during cooling,
-and $v_r=\SI{1.27}{\centi\meter\per\second}$ is the recoil
-velocity~\cite{Jurgilas2021}.  One method of reducing this effect is to focus
-the combined light so as to converge towards the cell to reduce transverse
-scattering~\cite{Truppe2017a}.
-
-\subsection{Transverse cooling}
-
-The transverse heating effect can be further reduced by applying slowing beams
-in the transverse direction, also on the $X\rightarrow B$ transition, but this
-time the light has the r.f.\ sidebands to address the $X$ hyperfine structure
-rather than the slowing chirp. This collimates the molecule beam due to Doppler
-cooling taking place in the transverse direction. This process occurs before
-the slowing light is turned on, any molecules that are pumped into $X(v=1)$ can
-be re-cycled by the \pewpew{}{10} repump that is combined with the slowing
-light. The slowing procedure described above is carried out simultaneously,
-providing the remixing of dark ground states and the $v=1$ repump light.
-%
-Scattering of light in the transverse direction can collimate the beam, and has
-been shown to improve the population of the MOT by a factor of
-$\sim3$~\cite{Jurgilas2021}.
+It is also possible to reduce the transverse velocity of the beam by applying
+slowing beams in the perpendicular direction close to the source. This is shown
+for one dimension in the `slowing and transverse cooling' section of
+\myfigref{overview:fig:CaFcartoon}, however in reality there is a second pair
+of beams going into and out of the page. For this cooling step we also use the
+$X\rightarrow B$ transition along with the \pewpew{}{10}
+repump~\cite{Jurgilas2021}.
 
 \subsection{Capture in a MOT}
 \label{overview:MOT}
