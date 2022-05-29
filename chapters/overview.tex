@@ -248,10 +248,8 @@ through the entire experiment to provide the restoring beams.
 %
 We described in section~\ref{theory:coolmols} that laser cooling and trapping of diatomic
 molecules requires us to address three key differences to atomic systems. The
-first is the repumping of the vibational levels, which we have already allueded
-to for the slowing. We apply vibrational repumps (\pewpew{}{10}, \pewpew{}{21}
-and \pewpew{}{32}) along with the main cooling light (\pewpew{}{00}), to avoid
-populating the dark states.  All of these beams must have the r.f.\ sidebands
+first is the repumping of the vibational levels. We apply vibrational repumps (\pewpew{}{10}, \pewpew{}{21}
+and \pewpew{}{32}) along with the main cooling light (\pewpew{}{00}).  All of these beams must have the r.f.\ sidebands
 to address the hyperfine levels of the $X$ state (recall that the hyperfine
 levels of $A$ are unresolved).
 
@@ -260,27 +258,18 @@ $X(N=1) \rightarrow A(N=0)$ transition. This immediately leads to the third
 nuance, which is the remixing of resulting dark states. 
 %
 The \CaF{} MOT is a type-II MOT~\cite{1367-2630-18-12-123017}, meaning that the
-angular momentum of the excited state ($A(v=0)$, with $F'=1$) is less than that
-of the ground state ($X(v=0)$ with $F=2$). Unlike a type-I MOT (where $F'>F$),
-it is therefore possible for a molecule that has been pumped into the excited
-state to decay into a dark state, or into a state that is anti-trapped by the
-MOT~\cite{Fitch2021}.
+angular momentum of the excited state  is less than that of the ground state .
+Unlike a type-I MOT (where $F'>F$), it is possible for a molecule that has been
+pumped into the excited state to decay into a dark state, or into a state that
+is anti-trapped by the MOT~\cite{Fitch2021}.
 %
-To resolve this, we employ a dual-frequency MOT. The main MOT transition is
-addressed by the \pewpew{}{00} light, with r.f.\ sidebands added to address the
-different hyperfine levels. The sideband addressing the $F=1$ hyperfine state
-is given opposite polarisation, and simultaneously serves as a second frequency
-for the $F=2$ state. This ensures that the normally anti-trapped states are
-repumped by the restoring beam into the MOT cycle. The $F=2$ level is now
-strongly trapped and although the other levels remain weakly trapped, this is
-sufficient to create a strong MOT.
-
-A simplified case with $F=0$ and $F'=1$ is shown in
-\myfigref{overview:fig:dualfreq}. When there is no blue-detuned light, any
-molecule that decays into the $m_F=-1$ state can be lost from the cycle. When
-the blue-detuned light is present these molecules can be repumped. Since this
-transition has a change in $m_F$ of $\Delta m_F = m'_F- m_F=1$, we require the
-blue-detuned light to have $\sigma_+$ polarisation.
+To resolve this, we employ a dual-frequency MOT.
+\myfigureref{overview:fig:dualfreq} illustrates this MOT scheme for the
+simplified case of a ground state with $F=1$ and an excited state with $F'=0$.
+%
+When there is no blue-detuned light, any molecule that decays into the $m_F=-1$
+state can be lost from the cycle. When blue-detuned light of opposite
+polarisation is present these molecules can be repumped. 
 
 \begin{figure}
   \centering
@@ -304,9 +293,9 @@ blue-detuned light to have $\sigma_+$ polarisation.
 We are typically able to capture on the order of $10^4$ molecules from our
 beam.  The MOT population can be estimated by the light-induced fluorescence.
 The MOT temperature is reduced to its minimum value by lowering the intensity
-of \pewpew{}{00}, since this reduces the effects of sub-Doppler
-heating~\cite{Truppe2017}. We typically observe MOT temperatures of
-$<\SI{4}{\milli\kelvin}$.
+of \pewpew{}{00}, since this reduces the effects of Sisyphus
+heating~\cite{Truppe2017}. We typically observe MOT temperatures below
+\SI{4}{\milli\kelvin}.
 %
 A complete description of the \CaF{} MOT is far beyond the scope of this
 overview, and has been described in detail elsewhere, for example see
@@ -316,20 +305,19 @@ for forming a \CaF{} MOT, the r.f.\ MOT, a description of which can be found in
 
 \subsection{Optical molasses}
 
+% TODO I would like to understand this better before the viva, I should look
+% into this. I wrote down what I thought it was in an earlier revision
 Sub-Doppler cooling of \CaF{} is achieved with a blue-detuned molasses. In this
-scheme the MOT coils are switched off, and \pewpew{C}{00} is now blue-detuned
+scheme the MOT coils are switched off, and \pewpew{}{00} is now blue-detuned
 from the transition frequency. This scheme is somewhat complex, so consider
-again the simplified example of a $F=1$ hyperfine level ground state, and $F=0$
-excited state travelling in 1D, as is shown in
-\myfigref{overview:fig:molasses}.  The counter-propagating beams establish a
-polarisation-gradient, which couple the hyperfine states in $F=1$ to the $F'=0$
-state. As explained in \inlineref{Weidem_ller_1994} we will have bright states
-(superposition states of $\ket{F=1, m_F=1}$ and $\ket{F=1, m_F=-1}$) that are
-coupled to the excited state by the a.c.\  Stark shift, and dark states
-($\ket{F=1, m_F=0}$ and another superposition state) that are not coupled. The
-strength of this coupling varies as a function of the polarisation, and so as
-molecules move through the gradient the bright state energy changes, as is
-shown in the figure.
+again the simplified example of a molecules travelling in one dimension and
+having an $F=1$ ground state and $F'=0$ excited state, as is shown in
+\myfigref{overview:fig:molasses}.  The counter-propagating beams establish
+gradients of both polarisation and intenisty.  As explained in
+\inlineref{Weidem_ller_1994} we will have bright states that have an a.c.\
+Stark shift, and dark states which do not.  The a.c.\ Stark shift of the bright
+states polarisation, and so as molecules move through the gradient the bright
+state energy changes, as is shown in the figure.
 
 \begin{figure}[htb]
   \centering
@@ -356,28 +344,30 @@ shown in the figure.
 
 When a molecule in a bright state moves through the polarisation gradient it
 can expend energy climbing the potential. At the top of the potential it is
-preferentially pumped into the dark state via the excited state. From the dark
-state, molecules can adiabatically transfer back into the dark state at regions
-where the energy difference is low. The molecule can now repeat this cycle,
-each time losing energy travelling up the potential. Note that the light must
-be blue-detuned because in the case of red-detuning the bright states have
-lower energy than the dark states, and there is a heating rather than a cooling
+preferentially pumped into the dark state because optical pumping is most
+likely to happen where the intensity is high. From the dark state, molecules
+can non-adiabatically transfer back into the dark state at regions where the
+energy difference is low. The molecule can now repeat this cycle, each time
+losing energy travelling up the potential. Note that the light must be
+blue-detuned because in the case of red-detuning the bright states have lower
+energy than the dark states, and there is a heating rather than a cooling
 effect~\cite{1367-2630-18-12-123017}.
 
-In the three-dimensional case the same principle applies but we must account
-for intensity gradients, which will affect the change in coupling of the states
-as well as polarisation gradients. We must also consider the numerous energy
-levels of \CaF{} and the sideband structure required to address the hyperfine
-state, a full treatment requires solving the optical Bloch equations, which is
-done in \inlineref{1367-2630-18-12-123017}. In our experiment we apply this
-technique to produce a \CaF{} cloud of temperature
+These same principles apply in the three dimensional case, although the
+polarisation and intensity structure of the light field is more complicated.
+We must also consider the numerous energy levels of \CaF{} and the sideband
+structure required to address the hyperfine state. A full treatment requires
+solving the optical Bloch equations, which is done in
+\inlineref{1367-2630-18-12-123017}. In our experiment we apply this technique
+to produce a \CaF{} cloud of temperature
 $<\SI{6}{\micro\kelvin}$~\cite{PhysRevLett.123.033202}.
 
 \subsection{Magnetic trapping and transport}
 
 The molecules can now be transferred into a weak-field seeking state by optical
 pumping. The weak-field seekers can be confined in a magnetic trap, provided
-either by the MOT coils, or by the external transport coils. In the case of the
+either by the MOT coils, or by the external transport coils (see
+\myfigref{overview:fig:CaFcartoon}. In the case of the
 latter, the molecules can then be transferred to the tweezer chamber, or in the
 future to the chip for loading.
 
@@ -417,6 +407,7 @@ lie in the $X$ electronic level, and are denoted
 %
 \begin{equation}
   \ket{N}_\text{str} = \ket{N, m_N=N}\ket{S, m_S=S}\ket{I,m_I=I},
+  \label{theory:eqn:stretched}
 \end{equation}
 %
 where the degeneracy must be lifted by the application of an external magnetic
@@ -441,17 +432,18 @@ collisions chamber.
 
 \subsection{Other experiments}
 
-The \CaF{} MOT is the workhorse of our experiment, providing molecules which
-can be further cooled cooled further (as discussed above) used for experiments
-in collisions with \Rb{} atoms (see \inlinerefs{Jurgilas2021, JurgilasIOP2021,
-PhysRevLett.126.153401}) and optical tweezers. The tweezer experiment is
-undertaken in the neighbouring tweezer chamber, which is loaded by transporting
-molecules in the MTT, a quadrupole trap with coils mounted on a transport stage
-outside the vacuum chamber. This transport of the molecules is similar to that
-used in \inlinerefs{Lewandowski2003,PhysRevResearch.1.033035} and elsewhere. It
-will be discussed further in chapter~\ref{exper}. In the next section, we
-will begin to discuss how the molecule chip can also be incorporated as an
-additional experiment.
+The \CaF{} MOT is the workhorse of our experiment which, after the further
+cooling discussed above, can be used to study collisions with \Rb{} atoms (see
+\inlinerefs{Jurgilas2021, JurgilasIOP2021, PhysRevLett.126.153401}) or can be
+loaded into optical tweezers. The tweezer experiment is undertaken in the
+neighbouring tweezer chamber (see \myfigref{overview:fig:vacuumsystem}), which
+is loaded by transporting molecules in the magnetic transport trap (MTT), a
+quadrupole trap with coils mounted on a transport stage outside the vacuum
+chamber. This transport of the molecules is similar to that used in
+\inlinerefs{Lewandowski2003,PhysRevResearch.1.033035} and elsewhere. It will be
+discussed further in chapter~\ref{exper}. In the next section, we will begin to
+discuss how the molecule chip can also be incorporated as an additional
+experiment.
 
 
 \section{Design requirements and overview}
@@ -465,22 +457,96 @@ molecules.
 Following the proposal by \inlineref{Andre2006}, this can be achieved in a chip
 architecture, with the molecule trapped as close to the resonator as possible.
 %
-The limiting factor will come from the Van der Waals force, where the
-fluctuating electric dipole moment of the molecule results in attraction
-between the molecule and the chip surface~\cite{2011Ac}. The associated energy
-shift is 
+The ultimate limiting factor will come from the Van der Waals force\footnote{
+  One might wonder about the effect of an increase in black body radiation near
+  to the chip.  It transpires that the excitation rate for \CaF{} by black body
+  radiation remains mostly constant as the molecule approaches a
+  surface~\cite{PhysRevA.78.052901}.
+  %Further, we consider the Van der Waals force rather than the Casimir-Polder
+  %force because the distance to the surface is small compared to the
+  %wavelength of the rotational transition.
+}, where the fluctuating electric dipole moment of the molecule results in
+attraction between the molecule and the chip surface~\cite{2011Ac}. The
+associated energy shift is 
 %
 \begin{equation}
-  V_\text{vdW}(z) \approx \frac{\mu_e^2}{4\pi\epsilon_0 h z^3}.
+  V_\text{VdW}(z) \approx \frac{\mu_e^2}{4\pi\epsilon_0 z^3}.
 \end{equation}
 %
-We want this and the gradient $V'_\text{vdW}(z)$ to be small compared to the
-vacuum Rabi frequency found in section~\ref{theory:cooltrap}. We find this to
-be true when $z\geq\SI{10}{\micro\meter}$, which we deem is the closest that we
-will trap molecules to the surface.  We therefore require that trapping
-electronics will be on a smaller scale than this so that trapping potential is
-sufficiently localised.  Features of such a size can be easily created by
+We require that the gradient,
+%
+\begin{equation}
+V'_\text{VdW}(z) = \frac{3 \mu_e^2}{4 \pi\epsilon_0 z^4},
+\end{equation}
+%
+is small compared to the force from a magnetic trap, which can be calculated
+for a representative dimple trap \myeqref{theory:eqn:dimplegrad}, taking the
+operating current to be $I = \SI{1}{\milli\ampere}$. The condition
+$V'_\text{VdW}(z) \ll \mu_B B'$ can be written as
+%
+\begin{equation}
+  z \gg \sqrt{\frac{3 \mu_e c^2}{2 \mu_B I}},
+\end{equation}
+%
+limiting the height by $z \gg 10^{-7}\,\si{\meter}$. We therefore take the
+minimum possible trap height to be \SI{10}{\micro\meter}. The trapping wires
+must be on a smaller scale than this so that the trapping potential is
+sufficiently localised. Features of suh a size can be easily created by
 standard photolithography techniques.
+
+%% I wrote this whole bit, but I think it's actually not necessary, as the
+%% 10^-7 limit is sufficient. I only didn't delete it because it's kind of
+%% useful but not committed yet..
+
+%However, this is not the full story, since the Van der Waals shift must also be
+%small compared to the vacuum Rabi frequency for the transition driven by a
+%on-chip microwave resonator. This quantity can be found as follows: consider a
+%microwave resonator with length $\lambda/4$, with $\lambda$ being the
+%wavelength of the resonator, and a length scale $L$ in the
+%transverse direction. The mode field will occupy a volume $V\approx L^2 \lambda
+%/ 4$, and we can write the field amplitude ($E_0$) to its angular frequency ($\omega$) by $\epsilon_0
+%E_0^2 V \approx \hbar \omega_0$. We can therefore write the field amplitude as
+%%
+%\begin{equation}
+%  E_0 \approx \frac{2 f}{L}\sqrt{\frac{h}{\epsilon_0 c}}.
+%\end{equation}
+%%
+%The vacuum Rabi frequency ($\Omega$) is related to the matrix element for the
+%transition
+%\begin{equation}
+%  \hbar \Omega = \bra{g}\mathbf{d}\cdot\mathbf{E}\ket{e},
+%  \label{overview:eqn:rabi}
+%\end{equation}
+%%
+%where we take the ground and excited states to be the stretched states
+%$\ket{0}_\text{str}$ and $\ket{1}_\ket{str}$ respectively (see
+%\myeqref{overview:eqn:stretched}). 
+%%
+%Take the orientation of
+%the molecule to be random with respect to the light field, so that the dot
+%product averages across the ensemble to give $dE/3$. The matrix element is 
+%%
+%\begin{equation}
+%  \bra{g}d\ket{e} = \frac{\mu_e}{\sqrt{3}},
+%\end{equation}
+%%
+%where the factor of $\sqrt{3}$ arises due to this being a rotational
+%transition. This follows from the discussion in section~\ref{theory:transitions}.
+%The Rabi frequency is now written as
+%%
+%\begin{equation}
+%  \Omega = /frac{2\omega \mu_e}{L}\sqrt{\frac{1}{h \epsilon_0 c}}.
+%\end{equation}
+
+%In chapter~\ref{mws} we will discuss microwave resonators in more detail, but
+%for now we will take the length scale $L\sim\SI{10}{\micro\meter}$, which is
+%typical of those found in the literature. The requirement $\hbar \Omega \ll
+%V_\text{VdW}(z)$ can now be shown to be equivalent to $z \ gg
+%\SI{1}{\miro\meter}$. We therefore take the minimum possible trapping height to
+%be \SI{10}{\micro\meter}. This introduces the design requirement that trapping
+%wires will be on a smaller scale than this so that trapping potential is
+%sufficiently localised.  Features of such a size can be easily created by
+%standard photolithography techniques.
 
 Additionally, we aim to integrate the chip trap into our existing \CaF{}
 experiment. This can be done by the addition of a new chamber to our setup,
@@ -525,20 +591,20 @@ microscopic chip trap.
 
 Fortunately this problem has previously been addressed for atom chips. We
 discussed already in chapter~\ref{intro} that atoms can be guided on chips by
-changing of trapping currents and voltages. We also discussed the transfer of
+changing of trapping currents. We also discussed the transfer of
 atoms between on-chip magnetic traps. For the problem of loading from a
 macroscopic trap, we can turn to \inlineref{Ott2001}, where transfer from a
 transport trap to a microtrap is made easier by the use of an intermediary
 macroscopic trap that is well-aligned with the microtrap.
-We propose a similar solution: embedding a mcaroscopic U-wire beneath our chip
-trap which is aligned to the chip and makes a large target for loading form the
+We propose a similar solution: embedding a macroscopic U-wire beneath our chip
+trap which is aligned to the chip and makes a large target for loading from the
 MTT.
 
 To ensure that molecules are then loaded into the smallest trap efficiently, we
-again follow the footsteps of atom chips, and have designed  a series of traps
-of decreasing size~\cite{Reichel1999}. For magnetic traps, the width of the
-wires should decrease, so that the molecules remain localised around
-the trap centre throughout loading. 
+again follow in the footsteps of atom chips, and have designed  a series of
+traps of decreasing size~\cite{Reichel1999}. For magnetic traps, the width of
+the wires should decrease, so that the molecules remain localised around the
+trap centre throughout loading. 
 %
 Each wire trap will begin trapping at one height before the bias field is
 increased to bring the trap centre closer to the surface (as per
@@ -561,9 +627,9 @@ $k_B\times\SI{1}{\milli\kelvin}$, then we require a trapping current of
 chapter~\ref{fab} that the maximum wire height that can reliably be fabricated
 is \SI{5}{\micro\meter}, and we expect that the wires will be able to carry a
 maximum current density of \SI{6E10}{\ampere\per\meter\squared}, as was found
-for a similar chip design in \inlineref{Treutlein2008}. The Z-wire will
-have a width $w=\SI{200}{\micro\meter}$. The currents and widths of other wires
-are calculated similarly.
+for a similar chip design in \inlineref{Treutlein2008}. Consequently, the
+required width of the first Z-wire is $w=\SI{200}{\micro\meter}$. The currents
+and widths of other wires are calculated similarly.
 %
 All wires have been designed to
 carry twice the current that is required in the loading scheme, so that there
@@ -588,7 +654,7 @@ the trapped cloud in the $x$ direction.
   \caption[Trapping wire properties]{
     Details on the wire dimensions, maximum current, and desired
   trapping heights. The wire design is shown in
-  \mysubfigref{overview:fig:chiplayout}. Note that the U-wire current is
+  \myfigref{overview:fig:chiplayout}. Note that the U-wire current is
   limited by vacuum feedthroughs and not by the maximum current calculated by
   the wire dimensions.  The maximum currents have been designed for use at only
   50\% of their potential maximum ($I_\text{max}$).
@@ -633,6 +699,8 @@ in chapter~\ref{fab}.
     chapter~\ref{fab}. The crest of Imperial College London (iv) is also
     included.}
   \label{overview:fig:chiplayout}
+  % TODO See Mike's comment on this in 2022-05-10 feedback. Could be a qn in
+  % viva...
 \end{figure}
 
 Notice that this design does not incorporate microwave guides. These are to be
@@ -682,20 +750,19 @@ their operation is discussed in chapters~\ref{mws} and \ref{squeeze}.
   \label{overview:fig:chipchamber}
 \end{figure}
 
-To facilitate all of this, the chip and supporting infrastructure is mounted on
-a flange with supporting infrastructure, as detailed in
-\myfigref{overview:fig:chipchamber}. This chip flange assembly is equipped with
-a large copper heat sink, a large U-wire to form the macroscopic alignment trap
-and a subchip for current and microwave delivery. It is mounted into a recess
-in the subchip so that it is flush with the surface. The chip is mounted facing
-downwards so that molecules can be dropped for imaging as they fall. The flange
-itself is fitted with two high-current (\SI{100}{\ampere}) feedthroughs, a
-16-pin feedthrough rated for \SI{3}{\ampere} currents, and microwave
-feedthroughs. All access to the chip is therfore through this one flange,
-allowing for easy access and assembly.  It will be housed in a separate vacuum
-chamber (the chip chamber), positioned as shown in
-\myfigref{overview:fig:vacuumsystem}. The chip chamber will be arranged so that
-Molecules can be brought in along the transport axis (shown by the arrow in the
-\mysubfigref{overview:fig:chipchamber}{b}) and positioned below the surface of
-the chip.  This arrangement will be explained in further detail in
-chapter~\ref{exper}.
+To facilitate all of this, the chip is mounted on a flange with supporting
+infrastructure, as detailed in \myfigref{overview:fig:chipchamber}. This chip
+flange assembly is equipped with a large copper heat sink, a large U-wire to
+form the macroscopic alignment trap and a subchip for current and microwave
+delivery. It is mounted into a recess in the subchip so that it is flush with
+the surface. The chip is mounted facing downwards so that molecules can be
+dropped for imaging as they fall. The flange itself is fitted with two
+high-current (\SI{100}{\ampere}) feedthroughs, a 16-pin feedthrough rated for
+\SI{3}{\ampere} currents, and microwave feedthroughs. All access to the chip is
+therefore through this one flange, allowing for easy access and assembly.  It
+will be housed in a separate vacuum chamber (the chip chamber), positioned as
+shown in \myfigref{overview:fig:vacuumsystem}. The chip chamber will be
+arranged so that molecules can be brought in along the transport axis (shown by
+the arrow in the \mysubfigref{overview:fig:chipchamber}{b}) and positioned
+below the surface of the chip.  This arrangement will be explained in further
+detail in chapter~\ref{exper}.
