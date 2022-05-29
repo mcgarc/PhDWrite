@@ -9,24 +9,24 @@ section~\ref{exper:bgf}.
 
 \section{Experiment assembly}
 
-In this section we will give details of the apparatus, especially the chip
-flange assembly, which was introduced in section~\ref{overview:design}. The
-flange assembly is designed to hold the chip in position for loading \CaF{},
-whilst also providing current delivery and heat sinking. Considerations have
-been made for future experiments using microwaves, with two high-frequency
-microwave feedthroughs incorporated as well. The flange was manufactured by
-Allectra GmbH, and the heat sink was machined in the CCM workshop.  A detailed
-view is shown in \myfigref{overview:fig:chipchamber}.
+In this section I give details of the apparatus, especially the chip flange
+assembly, which was introduced in section~\ref{overview:design}. The flange
+assembly is designed to hold the chip in position for loading \CaF{}, whilst
+also providing current delivery and heat sinking. Considerations have been made
+for future experiments using microwaves, with two high-frequency microwave
+feedthroughs incorporated as well. The flange was manufactured by Allectra
+GmbH, and the heat sink was machined in the CCM workshop.  A detailed view is
+shown in \myfigref{overview:fig:chipchamber}.
 
 The copper heat sink is mounted to the flange using screws where the thread has
 been partially removed. This is done to prevent any trapped gas causing virtual
 leaks inside the chamber. The heat sink supports the subchip and also
 incorporates the large U-trap, which is recessed beneath the chip. It is
 electrically isolated from the heat sink by \AlN{} plates. This material is
-chosen since it is an electrical insulator, but will still allow the conduction
-of heat away from the U-wire whilst being UHV compatible. The subchip is
-attached to the heat sink with metal screws. For the PCB we choose an
-aluminium-core PCB to ensure good heat transer away from the chip. Since the
+chosen since it is an electrical insulator, but a good heat conductor, allowing
+the conduction of heat away from the U-wire whilst being UHV compatible. The
+subchip is attached to the heat sink with metal screws. For the PCB we choose
+an aluminium-core PCB to ensure good heat transfer away from the chip. Since the
 conductor tracks come very close to the mounting holes, we isolate the screws
 from the surface using washers made from polyimide (another UHV compatible
 insulator) which were manufactured in the CCM workshop.
@@ -46,9 +46,9 @@ still allowing a clear line of sight across the chip surface. The direction of
 the line of sight is shown in the figure by the pink arrow, and passes through
 the anti-reflection coated viewports which also from KJL. This provides optical
 access across the surface of the chip for illumination.  Onto the tee we attach
-a Agilent TwissTorr 84 FS turbo pump, backed by a scroll (not pictured).  There
-is also a DN63-DN40 adapter opposite the chip flange, this will be where the
-chamber is attached to the \CaF{} experiment in the future, but for testing
+a Agilent TwissTorr 84 FS turbo pump, backed by a scroll pump (not pictured).
+There is also a DN63-DN40 adapter opposite the chip flange. This will be where
+the chamber is attached to the \CaF{} experiment in the future, but for testing
 purposes a pirani gauge or Leybold residual gas analyzer (RGA) is attached
 instead.
 
@@ -77,13 +77,8 @@ where light is collected from a viewport beneath the chip and imaged onto a
 CCD. This may be useful since it avoids imaging along the path of the light
 driving the transitions and could reduce background scatter. We anticipate
 background scatter to be a significant problem for an experiment that is
-conducted close to what essentially amounts to a giant mirror, and this scheme
-will be discussed further in section~\ref{exper:scatter}.
-
-Finally, we note that the current drivers for the experiment were not completed
-as part of this project. Instead, a simple regulated power supply and
-field-effect transistor (FET) switch were used to control current pulses for
-testing. This will be discussed in section~\ref{exper:current}.
+conducted close to a surface, and this issue will be discussed further in
+section~\ref{exper:scatter}.
 
 \section{Vacuum testing}
 \label{exper:vacuum}
@@ -93,7 +88,7 @@ the chamber. This is useful for diagnosing leaks and outgassing in the chamber.
 To reach UHV pressures, it is required to bake the experiment.  Heater tape is
 applied and the chamber is wrapped in foil, the temperature is then raised over
 the course of a few hours to just over 100 degrees Celsius.  It is held at this
-temperature for atleast 48 hours, before being ramped back down. This removes
+temperature for at least 48 hours, before being ramped back down. This removes
 excess water vapour from inside the chamber, and expels any water that has been
 absorbed into the chamber walls. The exact parameters of the bake are recorded,
 but it was found that following this approximate procedure was sufficient for
@@ -115,18 +110,22 @@ resulting partial pressures shown with and without the chip assembly in
 is \SI{5.0E-10}{\milli\bar} in the first case and \SI{8.8E-10}{\milli\bar} in
 the second.
 %
-The scan with the chip assembly has a similar shape to the empty
-chamber scan, but with slightly higher values.  In both, we see the typical
-peaks for hydrogen (2), water (18) and nitrogen (28), which dominate the
-spectrum. This is typical of a scan through a UHV system~\cite{PfeifferVacuum},
-and suggests that the chip assembly does not introduce any sources of
-contamination or outgassing into the experiment.
+The scan with the chip assembly has a similar shape to the empty chamber scan,
+but with slightly higher values.  In both, we see the typical peaks for
+hydrogen (2), water (18) and nitrogen (28), which dominate the spectrum. This
+is typical of a scan through a UHV system~\cite{PfeifferVacuum}, and suggests
+that the chip assembly does not introduce any sources of contamination or
+outgassing into the experiment.
 %
 Further tests were conducted when using a chip with wirebonds rather than
 solder, and the microwave barrel connectors and launchers (see
 section~\ref{mws:components}) which will be required for future experiments.
 These yielded similar results to those discussed above, with no discernible
-change in the pressure.
+change in the pressure. It is likely that lower pressures could be reached
+using a longer or hotter bake. However, the pressure obtained here is already
+sufficient for trapping molecules for several seconds. At this point, the
+lifetime becomes limited by vibrational heating of the molecules from
+black-body radiation at room temperature.
 
   \begin{figure}[htb]
   \centering
@@ -165,9 +164,12 @@ chip trapping wires. These tests were conducted with the chip under vacuum
 where not ready at this stage. A regulated power supply delivers a current to
 the chip, controlled by the FET circuit that is in turn switched by a signal
 generator. This gives us control over the pulse length, and allows us to
-deliver voltage $V_\text{PSU}$ up to \SI{30}{\volt} to the chip, represnted
-here by the resistor $R_\text{load}$. The current through the chip can be
-measured via the potential difference across $R_\text{sense} = \SI{0.5}{\ohm}$.
+deliver a voltage drop $V_\text{PSU}$ up to \SI{30}{\volt} to the chip, since
+the sense resistance ($R_\text{sense}$) is much larger than the load resistance
+from the wires ($R_\text{load}$).
+
+%The current through the chip can be measured via the potential difference
+%across $R_\text{sense} = \SI{0.5}{\ohm}$.
 
 \begin{figure}[htb]
   \centering
@@ -210,11 +212,11 @@ wirebonder head. We could achieve approximately ten wirebonds per pad somewhat
 reliably.
 
 There are various options that could be used to increase the maximum current of
-the wirebonds.  We considered using a ribon wirebond, which promises
-higher current throughput by using a ribon-shaped wire rather than a round one.
-This was not possible due to the unavailability of the the hardware at LCN.
-Another option was to use higher-diameter wire, but instead we attempted to
-directly solder the chip, as described in the next section.
+the wirebonds.  We considered using a ribbon wirebond, which promises larger
+current throughput by using a ribbon-shaped wire rather than a round one.  This
+was not possible due to the unavailability of the the hardware at LCN.  Another
+option was to use higher-diameter wire, but this was unavailable so  instead we
+attempted to directly solder the chip, as described in the next section.
 
 \subsection{Solder tests}
 
@@ -225,14 +227,14 @@ section I will demonstrate that this method is compatible with UHV. Current
 tests were performed with the same apparatus as for the wirebonded chips, as
 shown in \myfigref{exper:fig:curtest}. For solder joints, the results were
 reliably repeatable, and we were able to observe sufficient current densities
-for trapping (compared to those laid out in section~\ref{overview:design}).
+for trapping (comparable to those laid out in section~\ref{overview:design}).
 
 We consider a typical example of testing using the small wire
 (width \SI{9}{\micro\meter}), on a chip where the wire height achieved was
 \SI{9}{\micro\meter}. Again, the current was pulsed on for
 \SI{200}{\milli\second} once every \SI{10}{\second}, which we imagine to be
 representative of a typical experiment. We show the current through the chip as
-a function of supply density in \mysubfigref{exper:fig:current}{a}. Also shown
+a function of supply voltage in \mysubfigref{exper:fig:current}{a}. Also shown
 is a linear fit to the first ten data points. We observe here that for low
 voltages, the current obeys Ohm's law, as we would expect, but this diverges
 for higher voltages, suggesting that heating occurs in the device.
@@ -295,18 +297,22 @@ Nonetheless, with sufficient voltage it is possible to achieve currents of
 $j=\SI{6.8}{\ampere}/(\SI{9}{\micro\meter}\times\SI{9}{\micro\meter})=
 \SI{8.4E10}{\ampere\per\meter\squared}$. This is slightly higher than was
 expected (see again section~\ref{overview:design}), and potentially not the
-maximum current density achievable. We did not test this chip to the point of
-failure as we wanted to preserve it and the required current for trapping had
-already been met.
+maximum current density achievable. This is probably because the current was
+not continuous but instead pulsed with a low (but realistic) duty cycle. We did
+not test this chip to the point of failure as we wanted to preserve it and the
+required current for trapping had already been met.
 
 Further, the resistance of the chip as a function of current can be found by
 fitting a third order polynomial to the $IV$ curve in
 \mysubfigref{exper:fig:current}{a}, and taking its derivative. This derivative
 approximates the chip's conductance at that voltage and current, the resistance
 is found by taking the reciprocal of this conductance, and the result is
-shown in \mysubfigref{exper:fig:current}{b}. We see that for high $I$, the
-resistance is increasing quadraticlly, and therefore assume that the wire is
-nearing its point of failure.
+shown in \mysubfigref{exper:fig:current}{b}. The dependence of resistance on
+temperature for gold is known, and we an deduce that at the maximum current
+here the temperature reached is \SI{550}{\kelvin}. This suggests that the wire
+is operating below the point of failure, which we might anticipate to occur
+when the operating temperature reaches the melting point of gold
+(\SI{1300}{\kelvin}).
 
 \subsection{Wire failure}
 
@@ -350,30 +356,31 @@ and~(b) respectively.
 
 In the existing \CaF{} experiment, the molecules can be imaged by light-induced
 fluorescence.  The $X(v=0)\rightarrow A(v=0)$ transition is driven by
-\pewpew{}{00}, and light is emitted as the molecules spontaneously decay from
-$A$ back to $X$. Most molecules will decay back to $X(v=0)$, releasing a photon
-at the same wavelength as the laser, which can be collected and imaged on a
-CCD. Since the laser and fluorescence are at the same frequency, any light
-scattered from the viewports or from nearby objects such as the quadrupole
-coils will create a background that must be accounted for in post-processing.
-Various steps are taken to reduce this background, which would otherwise
-obscure any signal. Most notably the internals of the chamber are painted black
-to reduce reflections. However it is not clear whether it will be possible to
-blacken the chip without compromising its capacity to operate. We also
-anticipate that scatter will be worse near the chip than in existing
-experiments since it is highly reflective.
+\pewpew{}{00} along with the vibrational repumps, and light is emitted as the
+molecules spontaneously decay from $A$ back to $X$. Most molecules will decay
+back to $X(v=0)$, releasing a photon at the same wavelength as the laser, which
+can be collected and imaged on a CCD camera. Since the laser and fluorescence
+are at the same frequency, any light scattered from the viewports or from
+nearby objects such as the quadrupole coils will create a background that must
+be accounted for in post-processing.  Various steps are taken to reduce this
+background, which would otherwise obscure any signal. Most notably the
+internals of the chamber are painted black to reduce reflections. However it is
+not clear whether it will be possible to blacken the chip without compromising
+its capacity to operate. We also anticipate that scatter will be worse near the
+chip than in existing experiments since it is highly reflective.
 
-To investigate this, the imaging scheme shown in
+To investigate this issue, the imaging scheme shown in
 \mysubfigref{exper:fig:exper}{b} was configured in the same way that will later
 be used to image molecules.  A plano-convex lens with a focal length of
 \SI{26}{\milli\meter} and diameter of \SI{2}{\inch} was installed inside the
 chamber. This high numerical numerical aperture lens was chosen to collect as
 much light from the molecules as possible. This is then imaged onto a Hamamatsu
 ImagEM X2 EM-CCD camera C9100-23B using a second biconvex
-\SI{100}{\milli\meter}-focal length lens, in a four-$f$ configuration. The
+\SI{100}{\milli\meter}-focal length lens, in a $4f$ configuration. The
 EM-CCD camera is chosen to be able to achieve large gain for small signals on
 individual pixels. We use \SI{100}{\milli\second} exposure and $2\times2$
 binning of the pixels.
+% TODO Add 4f drawing to fig 6.1 and reference here
 
 Although we do not have access to molecules, we can still shine the laser
 across the chip and observe the background scatter. We do this for various
@@ -395,9 +402,9 @@ detector\footnote{The dark value offset of the camera is accounted for by the
 background subtraction.}.
 
 The beam $1/e^2$ diameter is chosen to be \SI{500}{\micro\meter}, and we
-normalise the number of photon scatters produced for a beam with power
+normalise the number of scattered photons produced for a beam with power
 \SI{10}{\milli\watt}, such as may typically be used in an experiment. The
-results are shown in \myfigref{exper:fig:scatter}, note that we define the
+results are shown in \myfigref{exper:fig:scatter}, where we have defined the
 positive direction to be below the chip's surface. The shape of the curve
 indicates that the most scattering occurs when the laser strikes the heat sink,
 but of most interest to us is that the scatter is significantly higher than we
@@ -421,7 +428,7 @@ would observe when imaging in, for example, the existing MOT chamber.
     \begin{axis}[
         enlargelimits=true,
         xlabel=Position from chip (\si{\milli\meter}),
-        ylabel=Normalised scatters ($\times 10^6$),
+        ylabel=Photons in \SI{100}{\milli\second} ($\times 10^6$),
         width=0.8\textwidth,
         height = 0.4\textwidth,
         legend pos=north east,
@@ -438,22 +445,16 @@ negative is into the heatsink.}
   \label{exper:fig:scatter}
 \end{figure}
 
-In the existing experiment, we would expect that for a \SI{10}{\milli\watt}
-beam and \SI{100}{\milli\second} exposure we would see only on the order of a
-thousand scattered photons~\cite{Williams2018}. As such, we have moved far
-beyond the limit in which we would normally image a MOT, where we typically
-collect on the order of $10^6$ photons over a \SI{10}{\milli\second} exposure.
-% From Hannah's thesis (pg 88), 10ms exposure, 3.4E4 photon/s/mol and ~10^4 mols
-Instead we will image $\sim10$ molecules dropped from a magnetic trap, so can
-expect significantly reduced fluorescence.  To reduce the number of background
-photons, a background-free imaging scheme has been investigated, as is
-discussed in the next section.
+In the existing experiment, the number of background photons detected in
+\SI{100}{\milli\second} due to the scatter from a \SI{10}{\milli\watt} beam is
+about $10^3$. To reduce the number of background photons, a background-free
+imaging scheme has been investigated, as is discussed in the next section.
 
 \section{Background-free imaging}
 \label{exper:bgf}
 
 One possible method of reducing background whilst imaging molecules is Raman
-Resonance Optical Cycling (RROC), an background-free imaging scheme recently
+Resonance Optical Cycling (RROC), a background-free imaging scheme recently
 proposed and demonstrated using \SrF{} in \inlineref{Shaw2021}. In this scheme,
 off-diagonal ($v\neq v'$) vibrational transitions are driven to excite the
 molecule, which will decay primarily on the diagonal ($v=v'$) transitions. The
@@ -469,7 +470,8 @@ the \pewpew{}{01} and \pewpew{}{10} light is used to drive the transitions at
 \SI{606}{\nano\meter} transitions $v'=0\rightarrow v=0$ and $v'=1\rightarrow
 v=1$ is isolated by a bandpass filter, and can be imaged without the usual
 background scatter. The filter used here is a Semrock FF01-605/15-25, which
-allows light of wavelength $605\pm{15}\,\si{\nano\meter}$ to pass through it.
+allows light of wavelength $605\pm{15}\,\si{\nano\meter}$ to pass through it
+with 95\% efficiency.
 
 \begin{figure}[b]
   \centering
