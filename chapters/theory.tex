@@ -51,9 +51,19 @@ and in steady state. This gives~\cite{Metcalf1999}
 \rho_{22} = \frac{\Omega^2/4}{(\omega-\omega_0)^2 + \Omega^2/2 + \Gamma^2/4}.
 \end{equation}
 %
-Where $\Omega$ is the Rabi frequency. We introduce $\gamma=\Gamma/2$, as well
-as the unitless parameters $\delta = (\omega - \omega_0)/\gamma$ and
-$s=2\Omega^2/(\Gamma^2)$ so that
+Here $\Omega$ is the Rabi frequency,
+%
+\begin{equation}
+  \hbar \Omega = \bra{g}\mathbf{d}\cdot\mathbf{E}\ket{e},
+  \label{theory:eqn:rabi}
+\end{equation}
+%
+with $\ket{g}$ and $\ket{e}$ as the ground and excited state of the
+transition respectively, $\mathbf{d}$ as the dipole operator, and $\mathbf{E}$
+as the driving field.
+%
+We introduce $\gamma=\Gamma/2$, as well as the unitless parameters $\delta =
+(\omega - \omega_0)/\gamma$ and $s=2\Omega^2/(\Gamma^2)$ so that
 %
 \begin{equation}
   \rho_{22} = \frac{s/2}{\delta^2 + 1 + s}.
@@ -66,11 +76,33 @@ We can now write down the scattering rate
   \label{theory:eqn:scatteringrate}
 \end{equation}
 %
-and force follows as
+and the force follows as
 %
 \begin{equation}
   F = \frac{s\gamma}{\delta^2 + 1 + s}\hbar k.
 \end{equation}
+
+At this point it is useful to note that the scattering rate will be saturated
+for sufficiently large $s$. When the detuning is small, saturation occurs when
+$\delta \ll 1 \ll s$. Hence the saturation condition is $\Omega^2 \gg
+\Gamma^2 /2$. This can be used to determine the intensity at which the
+transition will be saturated. Using \myeqref{theory:eqn:rabi} and relating the
+field amplitude to the intensity by
+%
+\begin{equation}
+  I=\frac{c\epsilon_0E^2}{2}
+  \label{theory:eqn:IrelE}
+\end{equation}
+%
+the saturation intensity (the intensity at which $s=1$) is
+%
+\begin{equation}
+  I_s = \frac{c \epsilon_0 \Gamma^2}{4}\left|\bra{g}\mathbf{d}\cdot\bm{\epsilon}\ket{e}\right|^{-2}
+\end{equation}
+%
+where we have re-written the field vector in terms of its amplitude ($E$) and
+direction ($\bm{\epsilon}$), $\mathbf{E} = E\bm{\epsilon}$. Note also that
+we can write $s=I/I_s$.
 
 The force acting on the particle can be related to its velocity by the Doppler
 effect. A particle moving at speed $v$ will have its resonant frequency shifted
@@ -1029,19 +1061,20 @@ tumbling of the two nucleii. The total energy is
 
 We will now state the selection rules describing the allowed transitions
 between the various states of the molecule~\cite{brown_carrington_2003}. We
-will label the original state in the transition $\ket{1} = \ket{q, v, R, m_R}$
-and the final state $\ket{2} = \ket{q', v', R', m_R'}$.
+will label the original state in the transition $\ket{g} = \ket{q, v, R, m_R}$
+and the final state $\ket{e} = \ket{q', v', R', m_R'}$.
 %
 It is useful to remember that the following results are found by considering
-the intensity of the transition, which is proportional to $|d_{12}|^2$, where
+the intensity of the transition. This, as we saw above when discussing the Rabi
+frequency, is proportional to $|d_{ge}|^2$, where
 %
 \begin{equation}
-  d_{12} = \bra{1}\mathbf{d}\cdot\mathbf{\epsilon}\ket{2}
+  d_{ge} = \bra{g}\mathbf{d}\cdot\bm{\epsilon}\ket{e}
 \end{equation}
 %
-is the matrix element of the transition, $\mathbf{d}$ is the dipole moment 
-operator, and $\mathbf{\epsilon}$ is a vector representing the polarisation of
-the light.
+is the matrix element of the transition. Again we have $\mathbf{d}$ as the
+dipole moment operator, and $\bm{\epsilon}$ as the vector representing the
+polarisation of the light.
 
 This matrix element is best evaluated by re-writing it in a spherical basis,
 then writing this basis so that the $z$ axis is aligned with the internuclear
@@ -1073,7 +1106,7 @@ this reduces to the above case of a pure rotational transition.
 
 When the electronic state changes the analysis is more complicated, and there
 are no consistent selection rules for the change in the vibrational state. This
-can be explained when we recall that the matrix element $d_{12}$ is an integral
+can be explained when we recall that the matrix element $d_{ge}$ is an integral
 over the state's wavefunction $\psi = R_{AB}^{-1}\psi_ef_v(R_{AB}) Y_{R, m_R}$.
 When the electronic states are the same, the electronic contribution becomes a
 factor of one and the vibrational states are all states from the same
@@ -1111,7 +1144,7 @@ number, with a selection rule $\Delta J = 0, \pm1$.
 
 \subsubsection{Parity}
 
-Since $\mathbf{d}$ is anti-symmetric under parity inversion, $d_{12}$ will be
+Since $\mathbf{d}$ is anti-symmetric under parity inversion, $d_{ge}$ will be
 zero unless the parity of the wavefunction changes during the transition. This
 does not apply to homonuclear molecules. 
 
