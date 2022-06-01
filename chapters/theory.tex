@@ -101,8 +101,8 @@ the saturation intensity (the intensity at which $s=1$) is
 \end{equation}
 %
 where we have re-written the field vector in terms of its amplitude ($E$) and
-direction ($\bm{\epsilon}$), $\mathbf{E} = E\bm{\epsilon}$. Note also that
-we can write $s=I/I_s$.
+direction ($\bm{\epsilon}$ which is a unit vector), $\mathbf{E} =
+E\bm{\epsilon}$. Note also that we can write $s=I/I_s$.
 
 The force acting on the particle can be related to its velocity by the Doppler
 effect. A particle moving at speed $v$ will have its resonant frequency shifted
@@ -219,7 +219,7 @@ absorb photons when it is away from the trap centre.
     Illustration of the operating principle of a one-dimensional MOT on
     a two-level system with $F=0$ and $F'=1$. The particle is represented by
     the circle, and has counter-propagating beams of light (pink arrows)
-    incident on it. A quardupole magnetic field is applied, lifting the
+    incident on it. A quadrupole magnetic field is applied, lifting the
     degeneracy of the excited state as shown by the black lines. The light is
     red-detuned so as to be resonant with the transition to the lower $m_F$
     state, but only the restoring beam will be absorbed due to the choice of
@@ -265,7 +265,7 @@ When the light drives $\sigma^+$ transitions, the $m_F=1/2 \rightarrow
 m'_F=3/2$ transition will be the strongest, and hence experience the greatest
 shift. This example is pictured, along with the relative matrix elements, in 
 \mysubfigref{theory:fig:subdoppler}{a}. For the case of $\sigma^-$ transitions
-being drive, similar reasoning means that the $m_F=-1/2$ state is lower.
+being driven, similar reasoning means that the $m_F=-1/2$ state is lower.
 
 \begin{figure}[htb]
   \centering
@@ -292,11 +292,11 @@ being drive, similar reasoning means that the $m_F=-1/2$ state is lower.
 
 The counter-propagating beams establish a polarisation gradient across the
 trap, and hence the Stark shift of the ground states also varies across the
-trap, as shown in \mysubfigref{theory:fig:subdoppler}{b}. The polarisation
-gradient is such that the lower of the two ground states is preferentially is
-excited to the upper level.
+trap, as shown in \mysubfigref{theory:fig:subdoppler}{b}. The detuning of the
+light means that whichever of the $m_F$ states is higher is preferentially
+excited to the excited $F'=3/2$ level.
 %
-The excited state can decay into the lower of the two ground states, where it
+The atom can then decay into the lower of the two ground states, where it
 will follow the potential curve until it is pumped again. The particles on
 average spend more time climbing the potential than descending it, and
 therefore expend energy through this process, reducing their temperature to the
@@ -323,8 +323,7 @@ benefit to being able to confine particles using only a magnetic field.
 Primarily, a magnetic trap can be a conservative potential, where the total
 energy of the system remains the same, and transitions do not need to be
 actively driven to maintain the trap. This allows for coherent control of
-particles in trappable states.\footnote{Another method of implementing a
-  conservative trap is the optical dipole trap~\cite{Foot2005}.}
+particles in trappable states.
 %
 Another benefit of a magnetic trap is that since there is no light involved, it
 is much easier to control the trapping potential. This opens the door to
@@ -340,9 +339,9 @@ the Zeeman shift due to a magnetic field is positive (c.f.\
 \myeqref{theory:eqn:zeeman}). Hence if the magnetic field $B$ is chosen such
 that there is a local minimum in the vicinity of the particle, then these
 states will be attracted to that minimum. Such a state is called a weak-field
-seeker. We can equally have stong-field seeksers when $g_F m_F < 0$, but these
-cannot be trapped since it is not possible to create a local magnetic field
-maximum in free space.
+seeker. We can equally have strong-field seekers when $g_F m_F < 0$, but these
+cannot be magnetically trapped since it is not possible to create a local
+magnetic field maximum in free space.
 %
 Note that the dependence here is on the magnitude of the magnetic field, so the
 direction of the field does not directly affect the trapping potential.
@@ -351,7 +350,7 @@ To magnetically trap our particle we need to first ensure it is in a weak-field
 seeking state, and then we need to introduce a magnetic field with a local
 minimum. The first of these is readily achieved by optical
 pumping~\cite{PhysRevLett.54.2596}.  A suitable magnetic field can be formed in
-many ways, but the canonical choice is the quadrupole trap, which can be fomred
+many ways, but the canonical choice is the quadrupole trap, which can be formed
 from a pair of anti-Helmholtz coils, as shown in
 \mysubfigref{theory:fig:fields}{a}. We can approximate the field generated near
 the centre of such a configuration as~\cite{Metcalf1999}
@@ -438,7 +437,7 @@ which is again harmonic, with frequency
 
 Note that if the orientation of the magnetic field at the particle changes too
 quickly, due to the motion of the particle through the inhomogeneous field,
-spin flip transitions will be driven. To avoid this, we typically require the
+spin flip transitions will be driven. To avoid this, we typically require that
 $(\dd B/\dd t)/B$ to be small compared to $g_F \mu_B B/\hbar$. Provided this
 condition is satisfied, the particle will adiabatically follow the changing
 magnetic field and there will be loss.
@@ -770,7 +769,7 @@ Up to this point we have considered abstracted and idealised systems, but in
 the next chapter we will begin to think about the realities of trapping cold
 molecules on a chip. It is essential that we introduce and understand the
 energy structure of diatomic molecules, which is far richer and more complex
-than the structure of atoms, due to the additional effects of vibration and
+than the structure of atoms due to the additional effects of vibration and
 rotation of the two nuclei. This section will explain the physics of diatomic
 molecules so that the particulars of the cooling transitions and magnetically
 trappable states can be easily explained in the next chapter. A more
@@ -831,7 +830,7 @@ The terms in these equations are the obvious kinetic energy and potential
 energy terms, except for the second term in \myeqref{theory:eqn:mpterm} which
 is less obvious. It is the mass polarisation term which accounts for small
 fluctuations in the COM for the whole molecule relative to the COM of the
-nuclei. It is explained in more detail in \inlineref{brown_carrington_2003}.
+nuclei.
 %
 The time-independent Schr\"odinger equation (TISE),
 %
@@ -848,7 +847,7 @@ sketch the solution here. A full derivation can be found in
   \includegraphics[width=0.25\textwidth]{figs/theory/mols.pdf}
   \caption[Geometry of a diatomic molecule]{
     The geometery of a diatomic molecule, with relevant vectors labelled.
-    Nucleii in blue and pink, electrons in purple.
+    Nuclei in blue and pink, electrons in purple.
   }
   \label{theory:fig:mol}
 \end{figure}
@@ -865,7 +864,7 @@ electrons, that is
 \end{equation}
 %
 We now make the Born-Oppenheimer approximation, where we say that because the
-nuclear mass is much higher than that of the electrons, the nucleii are
+nuclear mass is much higher than that of the electrons, the nuclei are
 stationary on the timescale of the electronic motion. For this
 reason we are able to separate the wavefunction into the electronic and nuclear
 parts
@@ -905,7 +904,7 @@ potential
   E_e(q; R_{AB}) = D(1-e^{-\beta(R_{AB} - R_{AB}^0)})^2,
 \end{equation}
 %
-where $R_{AB}^0$ is the equilibrium displacement of the nucleii, $D$ is the
+where $R_{AB}^0$ is the equilibrium displacement of the nuclei, $D$ is the
 dissociation energy, and $\beta$ is a parameter for the width of the
 potential. All of these are dependent on the electronic configuration, but this
 dependence is suppressed in the notation. From here on, we suppress the
@@ -925,9 +924,9 @@ gives us the first order contribution to the energy of the molecule.
 
 \subsubsection{Nuclear motion}
 
-We now turn our attention to the nuclear wavefunction. With a bit of
-work~\cite{brown_carrington_2003} it is possible to write down the relevant
-TISE
+We now turn our attention to the nuclear wavefunction. It is possible to
+continue manipulation of the Hamiltonian so as to write down the relevant
+TISE for the nuclei~\cite{brown_carrington_2003}
 %
 \begin{equation}
   \left(-\frac{\hbar^2}{2\mred{}}\nabla_{AB}^2 + E_e(q; R_{AB}) -
@@ -935,7 +934,7 @@ TISE
   \label{theory:eqn:nucTISE}
 \end{equation}
 %
-Note that the potential that the nucleii move through is the potential
+Note that the potential that the nuclei move through is the potential
 generated by the electron configuration, and that this potential is central. We
 can therefore anticipate the separation of the nuclear wavefunction into radial
 and angular parts,
@@ -1038,15 +1037,15 @@ vibrational and rotational Hamiltonians. We denote the wavefunction in the form
 \end{equation}
 %
 The Born-Oppenheimer approximation states that the electrons move on a much
-faster timescale than the nucleii, and hence have a higher energy (by about a
+faster timescale than the nuclei, and hence have a higher energy (by about a
 factor of $100$) than the nuclear motional energy.
 
-Due to this difference in timescale, the nucleii move in the electrostatic potential
+Due to this difference in timescale, the nuclei move in the electrostatic potential
 generated by the electrons, which can be approximated to be a Morse potential. This
-means that the nucleii vibrate as an anharmonic oscillator, with some
+means that the nuclei vibrate as an anharmonic oscillator, with some
 equilibrium distance $R_{AB}^0$. The vibrational motion is again higher (by
 about a factor of $100$) than the rotational energy, which comes from the
-tumbling of the two nucleii. The total energy is
+tumbling of the two nuclei. The total energy is
 %
 \begin{equation}
   E_{q,v,R} = E_e(q) + E_\text{vib}(v) + E_\text{rot}(R).
@@ -1073,7 +1072,7 @@ frequency, is proportional to $|d_{ge}|^2$, where
 \end{equation}
 %
 is the matrix element of the transition. Again we have $\mathbf{d}$ as the
-dipole moment operator, and $\bm{\epsilon}$ as the vector representing the
+dipole moment operator, and $\bm{\epsilon}$ as the unit vector representing the
 polarisation of the light.
 
 This matrix element is best evaluated by re-writing it in a spherical basis,
@@ -1179,7 +1178,7 @@ $\mathbf{S}$ couples strongly to $\mathbf{L}$. Hence, these momenta both
 precess around the molecular axis. The good quantum numbers associated with
 these operators are their projections onto the axis which we label $\Lambda$
 and $\Sigma$  respectively, as well as $S$. $L$ is not a good quantum number
-since it couples very stongly to the axis and so precesses rapidly around it.
+since it couples very strongly to the axis and so precesses rapidly around it.
 %
 The rotation operator $\mathbf{R}$ coupling is even weaker, and hence can be
 approximated to couple to the projection of $\mathbf{L} + \mathbf{S}$ onto the
