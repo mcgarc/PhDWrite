@@ -6,8 +6,9 @@ informed the design choices, with changes due to fabrication discussed in
 chapter~\ref{fab}. The design will be further justified by simulation in
 chapter~\ref{sim}.
 %
-We begin with a discussion of the existing experiment. I will then give an
-overview and motivation of the design of the new experiment.
+We begin with a discussion of the existing experiment, which will be used to
+create the ultracold \CaF{} for loading onto the chip. I will then give an
+overview and motivation of the design of the chip experiment.
 
 
 \section{Existing \CaF{} experiment}
@@ -81,7 +82,7 @@ light.
     \mytableref{overview:table:lasers}). The branching ratios for the allowed
     decays are shown with dashed lines. Note that the $X(N=0)$ level is
     included, but for simplicity the $X(N=2)$ level is omitted. The box shows
-    the hyperfine states of $X(N=1, v=0)$, and how these arise from the $N$ and
+    the hyperfine states of $X(N=1, v=0)$, how these arise from the $N$ and
     $J$ angular momenta as described in the main text. This figure is adapted from
     \inlineref{Williams2017}. 
   }
@@ -119,15 +120,15 @@ to avoid pumping into states that are dark to the cooling light. This will be
 discussed further when describing slowing of the beam and the MOT.
 
 Hyperfine splitting occurs in \CaF{} due to the spin-half contribution of the
-fluorine atom. This is not resolved in the $A$ state, but we account for the
-hyperfine splitting of the $X$ state, which is shown in the box of
+fluorine atom. This is not resolved in the $A$ state, but it accounts for the
+hyperfine splitting of the $X$ state as is shown in the box of
 \myfigref{overview:fig:CaFenergy}. It is worth explaining why we have the four
 $F$ states $F=2,1^+,0,1^-$. These arise due to the combination  of the
 hyperfine interaction and a spin rotation interaction of the form
 $\mathbf{S}\cdot\mathbf{N}$. Since we are in Hund's (b) case, the $N=1$ state
 is split into angular momenta states $\mathbf{J}= \mathbf{N} + \mathbf{S}$.
 Here $S=1/2$, so the possible values of $J$ are $N+1/2$ and $N-1/2$ (with the
-exception of $N=0$ where we have only $J=1/2$). For $N=1$, we ahve $J=3/2$ and
+exception of $N=0$ where we have only $J=1/2$). For $N=1$, we have $J=3/2$ and
 $J=1/2$. Each of these is again split by the hyperfine interaction into
 $\mathbf{F} = \mathbf{J} + \mathbf{I}$, with $I=1/2$. This gives us the allowed
 values $F=2,1^+,0,1^-$.
@@ -211,9 +212,9 @@ performance has degraded since the original report. As a result we now observe
 The buffer gas source produces a beam of molecules with mean forward velocity
 \SI{160}{\meter\per\second} -- slower than for example, a supersonic
 source~\cite{Mathavan2016} but they are still far above the capture velocity of
-our MOT, which is $\approx\SI{10}{\meter\per\second}$. The beam's velocity can be
-further reduced by radiation pressure due to a counter-propagating beam of
-\pewpew{S}{00} slowing light. This is chirped to account for the change in
+our MOT, which is approximately \SI{10}{\meter\per\second}. The beam's velocity
+can be further reduced by radiation pressure due to a counter-propagating beam
+of \pewpew{S}{00} slowing light. This is chirped to account for the change in
 Doppler shift of the transition frequency as the molecules slow. The slowing
 light is also combined with the \pewpew{}{10} repump light to avoid pumping
 into the $X(v=1)$ state. To again account for Doppler shift during slowing, the
@@ -316,8 +317,8 @@ having an $F=1$ ground state and $F'=0$ excited state, as is shown in
 gradients of both polarisation and intenisty.  As explained in
 \inlineref{Weidem_ller_1994} we will have bright states that have an a.c.\
 Stark shift, and dark states which do not.  The a.c.\ Stark shift of the bright
-states polarisation, and so as molecules move through the gradient the bright
-state energy changes, as is shown in the figure.
+states depends on polarisation, and so as molecules move through the gradient
+the bright state energy changes, as is shown in the figure.
 
 \begin{figure}[htb]
   \centering
@@ -344,8 +345,9 @@ state energy changes, as is shown in the figure.
 
 When a molecule in a bright state moves through the polarisation gradient it
 can expend energy climbing the potential. At the top of the potential it is
-preferentially pumped into the dark state because optical pumping is most
-likely to happen where the intensity is high. From the dark state, molecules
+preferentially pumped into the dark state because the probability of pumping is
+proportional to the square of the Rabi frequency, which is highest at the top
+of the hill. From the dark state, molecules
 can non-adiabatically transfer back into the dark state at regions where the
 energy difference is low. The molecule can now repeat this cycle, each time
 losing energy travelling up the potential. Note that the light must be
@@ -479,8 +481,8 @@ We require that the gradient,
 V'_\text{vdW}(z) = \frac{3 \mu_e^2}{4 \pi\epsilon_0 z^4},
 \end{equation}
 %
-is small compared to the force from a magnetic trap, which can be calculated
-for a representative dimple trap \myeqref{theory:eqn:dimplegrad}, taking the
+to be small compared to the force from a magnetic trap, which can be calculated
+for a representative dimple trap using \myeqref{theory:eqn:dimplegrad}. Taking the
 operating current to be $I = \SI{1}{\milli\ampere}$. The condition
 $V'_\text{vdW}(z) \ll \mu_B B'$ can be written as
 %
@@ -491,7 +493,7 @@ $V'_\text{vdW}(z) \ll \mu_B B'$ can be written as
 limiting the height by $z \gg 10^{-7}\,\si{\meter}$. We therefore take the
 minimum possible trap height to be \SI{10}{\micro\meter}. The trapping wires
 must be on a smaller scale than this so that the trapping potential is
-sufficiently localised. Features of suh a size can be easily created by
+sufficiently localised. Features of such a size can be easily created by
 standard photolithography techniques.
 
 %% I wrote this whole bit, but I think it's actually not necessary, as the
