@@ -69,11 +69,10 @@ density~\cite{PhysRevA.52.1423}
   \rho = \frac{N}{V} = \frac{N \lambda_\text{dB}(T)^3}{V_\text{space}}.
 \end{equation}
 %
-For a given cloud with phase-space density $\rho$, trap with volume
-$V_\text{trap}$ and depth $T_\text{depth}$,
-the maximum possible number of particles that can be trapped is $\rho
-V_\text{trap}/\lambda_\text{dB, trap}^3$, where $\lambda_\text{dB, trap} =
-\lambda_\text{dB}(T_\text{depth})$.
+For a given cloud with uniform phase-space density $\rho$, trap with volume
+$V_\text{trap}$ and depth $T_\text{depth}$, the maximum possible number of
+particles that can be trapped is $\rho V_\text{trap}/\lambda_\text{dB,
+trap}^3$, where $\lambda_\text{dB, trap} = \lambda_\text{dB}(T_\text{depth})$.
 
 A second powerful tool for determining the motion of the particles is
 Liouville's theorem~\cite{Landau1982, Hand1998} which states that the phase-space
@@ -87,7 +86,7 @@ the final trap.
 
 % This calculation in Mathematica notebook 2022-01-20
 If we do not introduce any further cooling steps, then the number of molecules
-we are able to trap in the final trap will be
+we are able to contain in the final trap will be
 %
 \begin{equation}
   N_\text{final} = \frac{\rho_\text{\CaF{}}V_\text{trap}}
@@ -96,12 +95,13 @@ we are able to trap in the final trap will be
   \label{sim:eq:psd_N}
 \end{equation}
 %
-Phase space densities of $\rho_\text{\CaF{}} = 1.4\times10^{-8}$ can be
-achieved by compressing the cloud in an optical dipole trap. The
-smallest trap will have volume
+Phase space densities of $\rho_\text{\CaF{}} \sim 10^{-8}$ can be achieved by
+laser cooling\footnote{Even higher phase-space densities (of the order
+  $10^{-4}$) have been achieved using a cross-dipole trap~\cite{Anderegg2019a},
+  but for now this is beyond the capabilities of our
+experiment}~\cite{PhysRevLett.121.083201}. The smallest trap will have volume
 $V_\text{trap}\sim(\SI{10}{\micro\meter})^2\times\SI{1}{\milli\meter}$ and
-depth
-$T_\text{trap}=\SI{4}{\milli\kelvin}$, which can be calculated by
+depth $T_\text{trap}=\SI{4}{\milli\kelvin}$, which can be calculated by
 equation~\ref{theory:eqn:depth}.
 %
 % TODO Mike crossed this out here. Should be OK because it should probably go
@@ -408,11 +408,11 @@ decreases, as we have said we expect.
 \end{figure}
 
 
-The question then is at what point do we enter the adiabatic r\'egime?
+The question then is at what point do we enter the adiabatic regime?
 \myfigref{sim:fig:adiavary} shows the cloud width and temperature at the end
 of the simulation for varying $t_\text{ramp}$. After
 $t_\text{ramp}\sim\SI{50}{\milli\second}$ the reduction is minimal, and we are
-strongly in the adiabatic r\'egime. This is approximately the timescale we
+strongly in the adiabatic regime. This is approximately the timescale we
 would expect. Although the trap is not harmonic, we can still give the
 characteristic period for a particle that has a characteristic amplitude of
 motion. Assuming that the particle is under constant acceleration, the
@@ -423,17 +423,18 @@ timescale for a particle to traverse the trap is
 \end{equation}
 %
 where $\sigma$ here means the width of the trapped cloud. To be in the
-adiabatic r\'egime, we expect to have any particle traverse the trap multiple
+adiabatic regime, we expect to have any particle traverse the trap multiple
 times over the duration of a ramp Our typical \CaF{}
 clouds
 have width $\sigma = \SI{5}{\milli\meter}$, so the timescale will be $\tau
-\approx \SI{10}{\milli\second}$. We therefore expect the adiabatic r\'egime to
-be reached for processes lasting around \SI{100}{\milli\second}.
+\approx \SI{10}{\milli\second}$. We expect the adiabatic regime to
+be reached when a process takes place over a duration that is several multiples
+of this timescale, which is in good agreement with the simulations.
 
 \begin{figure}[t!]
 \centering
   \scalebox{0.8}{\import{figs/simsThesis/}{adiabatic_varyramps.pgf}}
-  \caption[Affect of ramp duration on phase-space distribution]{
+  \caption[Effect of ramp duration on phase-space distribution]{
     The final temperature and size of particle clouds transferred between
     offset quadrupole traps at various ramp times. Note that the large
     oscillations in width that occur for short ramp times (see
@@ -468,6 +469,8 @@ throughout the simulations is given at the end of the section, see especially
 \subsection{MTT - U transfer}
 \label{sim:sim:trans_U}
 
+% This is PSD 3.8E-10, which is a lot lower than can reasonably be achieved.
+% Might be asked to comment on this
 The cloud is initialised by the usual procedure, with $\sigma_i =
 \SI{1}{\milli\meter}$ and $T=\SI{50}{\micro\kelvin}$, corresponding to the
 typical cloud sizes and temperatures we measure in the tweezer chamber after
@@ -501,14 +504,13 @@ The phase-space distribution in the $z$-$v_z$ projection is shown for the start
 little change to the velocity distribution, but in position the particles shift
 to occupy the positive $z$ direction, where the potential is less steep.
 
-Looking at the change in the particle number throughout the ramp
-(\mysubfigref{sim:fig:mttusim}{f}) it is clear that there is some loss
-during the ramp (shaded grey region of the figure). We would naively expect
-there to be no loss during this transfer, since the final trap depth is larger
-than the temperature of the cloud, and there is good mode-matching of the two
-potentials. To see why this loss occurs, we  look at the evolution in
-phase-space for each projection throughout the ramp, as shown in
-\myfigref{sim:fig:mttudetail}.
+Looking at the change in the particle number throughout the ramp (grey region
+of \mysubfigref{sim:fig:mttusim}{f}) it is clear that there is some particle
+loss. We would naively expect there to be no loss during this transfer, since
+the final trap depth is larger than the temperature of the cloud, and there is
+good mode-matching of the two potentials. To see why this loss occurs, we  look
+at the evolution in phase-space for each projection throughout the ramp, as
+shown in \myfigref{sim:fig:mttudetail}.
 
 \begin{figure}[htp]
 \centering
@@ -551,10 +553,10 @@ this process as a continuation of the MTT-U transfer.  The Z-wire current is
 then linearly ramped on over \SI{100}{\milli\second} to \SI{30}{\ampere}, while
 the U-wire current is ramped off. The
 bias fields are linearly ramped to maintain the trap height at
-\SI{3}{\milli\meter}. The ramps are summarised in \myfigref{sim:fig:simsum}
-and the simulation is presented in \myfigref{sim:fig:uzsim}.
+\SI{3}{\milli\meter}. The simulation is presented in \myfigref{sim:fig:uzsim},
+and the ramps are summarised in \myfigref{sim:fig:simsum}.
 
-In this figure we have the initial (a, blue) and final (b, red) particle
+In the former figure we have the initial (a, blue) and final (b, red) particle
 distributions.  With the $z$ velocities and positions summarised in the
 histograms in (c) and (e) respectively. We can see that the mean position and
 velocity remains the same, but it is clear from (b) that there are a number of
@@ -562,12 +564,12 @@ particles that have picked up velocity in the positive $z$ direction, and can
 be seen leaving the trap. This is the notable streak to the right of the
 subfigure, and can also be seen in the tail of the histogram in (e). The
 particle number decreases by 20\% as seen in (f), although the particles do not
-fully leave the trap until the next step (see
-\mysubfigref{sim:fig:simsum}{d}). This loss is similar to that of the MTT to
-U-trap handover, with a decrease in trap depth that we attribute from changing
-from a quadrupole to Ioffe-Pritchard trap. This changeover can be seen in (d)
-where we note that the final trapping potential's minimum is non-zero. Despite
-the particle losses there is minimal change to the particle distribution
+fully leave the trap until the next step (see \mysubfigref{sim:fig:simsum}{d}).
+This loss is similar to that of the MTT to U-trap handover, with a decrease in
+trap depth that we attribute from changing from a quadrupole to Ioffe-Pritchard
+trap. This changeover can be seen in (d) where we note that the final trapping
+potential's minimum is non-zero. Despite the particle losses there is minimal
+change to the particle distribution
 
 \begin{figure}[p]
 \centering
@@ -594,7 +596,7 @@ from \SI{3}{\milli\meter} below the chip surface to \SI{1}{\milli\meter} below.
 Here only the $y$ bias field is changed so  that the trap depth
 increases and the cloud is compressed, providing good localisation of the
 molecules. Ramping the height linearly requires the bias to change as a
-function of time so that $B_{\text{bias}, y} \propto t^{-1}$.
+function of time so that $\tilde{B}_{y} \propto t^{-1}$.
 
 As can be seen in \myfigref{sim:fig:zsim}, there is particle loss,
 although much of this is due to particles that had already left the trapping
@@ -603,7 +605,7 @@ number is decreasing before the ramp begins. The other major effect of the ramp
 is heating, which occurs due to the spatial compression and conservation of
 phase-space density.
 %
-The transfer of the cloud towards the chip surface is succesful, as can be seen
+The transfer of the cloud towards the chip surface is successful, as can be seen
 in \mysubfigref{sim:fig:zsim}{e}, the particles are highly localised around the
 new trap minimum at $z=\SI{1}{\milli\meter}$.
 
@@ -749,14 +751,15 @@ these phase-space emittances and acceptances.
 
 
 The above-described spillover losses can be combined with the loading
-efficiency described by the trajectory simulations. We expect a loading
-efficieny of 2\%. This would deliver only 50 molecules into the final trap in
+efficiency determined by the trajectory simulations. We expect a total loading
+efficiency of 2\%. This would deliver only 50 molecules into the final trap in
 what is a highly-idealised loading simulation. Notably the analysis of the
 phase-space acceptance does not account for decrease in effective phase-space
 density by filamenation, which will further reduce the final occupation. This
 confirms that we will need to produce a much higher initial phase-space density
 to load a sufficiently large number of molecules into the trap. However it is
-clear that this procedure can be used to load a cloud Ongoing efforts to
+clear that this procedure can be applied to much higher density clouds, such as
+those which can be produced using optical dipole traps. Ongoing efforts to
 produce higher density clouds of \CaF{} could improve this final molecule
 number even further.
 
