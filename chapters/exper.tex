@@ -216,7 +216,7 @@ reliably.
 There are various options that could be used to increase the maximum current of
 the wirebonds.  We considered using a ribbon wirebond, which promises larger
 current throughput by using a ribbon-shaped wire rather than a round one.  This
-was not possible due to the unavailability of the the hardware at LCN.  Another
+was not possible due to the unavailability of the hardware at LCN.  Another
 option was to use higher-diameter wire, but this was unavailable so  instead we
 attempted to directly solder the chip, as described in the next section.
 
@@ -305,7 +305,7 @@ not test this chip to the point of failure as we wanted to preserve it and the
 required current for trapping had already been met.
 
 Further, the resistance of the chip as a function of current can be found by
-fitting a third order polynomial to the $IV$ curve in
+fitting a third order polynomial to the $I\,V$ curve in
 \mysubfigref{exper:fig:current}{a}, and taking its derivative. This derivative
 approximates the chip's conductance at that voltage and current, the resistance
 is found by taking the reciprocal of this conductance, and the result is
@@ -496,7 +496,7 @@ describe experiments conducted in a beam and in the MOT chamber.
 
 \subsection{Scattering rate and power requirements}
 
-We saw in section~\ref{theory:trapcool} that the scattering rate for a
+We saw in section~\ref{theory:cooltrap} that the scattering rate for a
 molecular transition is saturated for sufficiently high intensity $I>I_s$,
 where the saturation intensity
 %
@@ -584,11 +584,12 @@ with \pewpew{}{01}, with the laser frequency scanned between pulses.  When the
 laser is at resonance it drives the transition and light-induced fluorescence
 can be observed. The apparatus is shown in \myfigref{exper:fig:beamapp}, with
 subfigure (a) showing the layout of the \pewpew{}{01} laser system. The
-majority of the light passes through an electo-optic modulator, which is used
+light passes through an electo-optic modulator, which is used
 to add the sidebands for addressing the hyperfine structure of the $X(v=0)$
 state, and an acousto-optic modulator (AOM) which is used for switching the
 light on and off. In this experiment the EOM is switched off, and the AOM is
-not installed as switching is not required.
+not installed as switching is not required. There are various pickoffs for
+measuring the frequency of the light, as will be detailed below.
 
 \begin{figure}
   \centering
@@ -619,7 +620,7 @@ The laser frequency is locked by the Spectra stable lock cavities. These
 consist of one reference cavity and one scanning cavity. The light passes
 through these and is measured on a photodiode. This signal is fed back to the
 laser to control the cavity length and the laser frequency. This provides
-stabilisation down to the \SI{100}{\mega\hertz} level. For more precise locking
+stabilisation down to the \SI{10}{\mega\hertz} level. For more precise locking
 of the laser frequency, we reference \pewpew{}{01} to a \SI{780}{\nano\meter}
 laser, which is in turn locked to a saturated absorption feature in a \Rb{}
 vapour cell, specifically the $F=2 \rightarrow F'=2, 3$ cross-over feature of
@@ -636,7 +637,7 @@ be read from a wavemeter with 600 MHz precision.
 
 A buffer-gas source  was used to produce the pulsed \CaF{} beam.  This
 experiment was undertaken on a separate \CaF{} source to the one used on the
-main beamline that was descibed in section~\ref{overview:existing}, but it is
+main beamline that was described in section~\ref{overview:existing}, but it is
 functionally identical.  The beam was driven by \pewpew{}{01} with $1/e^2$
 diameter \SI{500}{\micro\meter} and power \SI{100}{\milli\watt}.  Light-induced
 fluorescence was collected by a lens onto a photo-multiplier tube (PMT) mounted
@@ -718,14 +719,14 @@ could otherwise occur due to the light's polarisation. A second
 fluorescence in the RROC scheme.
 
 Due to expanding the beam to a much larger diameter (\SI{5}{\milli\meter} as
-opposed to the \SI{500}{\micro\meter}), the intensity of the light is a factor
+opposed to \SI{500}{\micro\meter}), the intensity of the light is a factor
 of 100 lower than in the previous experiment. Despite scanning the frequency of
 \pewpew{}{01} across the same range as before, it was not possible to drive the
-transition sufficiently for imaging. This result was somewhat anticipated, as
-was reported in \inlineref{Shaw2021}, much higher laser power is required for
-the RROC scheme than in conventional flourescence imaging. However it was
-not clear before starting whether the background would be sufficiently reduced
-to observe the transition in this experiment.
+transition sufficiently for imaging. This result was somewhat anticipated
+since, as was reported in \inlineref{Shaw2021}, much higher laser power is
+required for the RROC scheme than in conventional fluorescence imaging. However
+it was not clear before starting whether the background would be sufficiently
+reduced to observe the transition in this experiment.
 
 \section{Summary}
 
