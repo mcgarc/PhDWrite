@@ -30,7 +30,7 @@ should be trapped at a distance $h\sim S$ above the centre of the CPW to
 achieve a good overlap~\cite{Boehi2009}. The electric field surrounding the CPW is shown
 in \mysubfigref{mws:fig:CPW}{b}. The equations defining this field can be found
 analytically~\cite{Simons2004}, or the field can be determined by a
-finite-element simulation, as is done here.
+finite-element simulation.
 
 \begin{figure}[ht]
   \centering
@@ -127,7 +127,7 @@ The phase velocity  is~\cite{Simons2004}
   v_\text{ph} &= \frac{c}{\sqrt{\epsilon_\text{eff}}} \\
     &= \frac{c}{\sqrt{(1 + \epsilon_\text{r})/2}}.
 \end{align}
-
+%
 Now using the approximation~\cite{Collin2007}
 $\sqrt{\mu_0/\epsilon_0}\approx120\pi\,\si{\theohm}$ we have the line
 impedance~\cite{Simons2004}
@@ -203,7 +203,7 @@ Dielectric losses in the thick dielectric limit are described
 by ~\cite{Collin2007}
 \begin{equation}
   \alpha_d =
-  \frac{\omega_0}{4c}\frac{\epsilon_r}{\sqrt{\epsilon_\mathrm{eff}}}
+  \frac{\omega_0\epsilon_r}{4c\sqrt{\epsilon_\mathrm{eff}}}
   \tan \delta_e,
 \end{equation}
 %
@@ -249,7 +249,7 @@ Conductor losses arise due to dissipation in the centre conductor and ground
 plane of the CPW~\cite{Simons2004}.  The conductor attenuation constant is
 %
 \begin{equation}
-  \alpha_c = \frac{R_c +R_g}{2Z_0},
+  \alpha_c = \frac{R_c +R_g}{2Z_0}\,\si{\per\meter},
 \end{equation}
 %
 where $R_c$ and $R_g$ are the series resistances per unit length of the centre
@@ -352,7 +352,8 @@ the dielectric losses.
 %
 With loss of $\alpha \approx \alpha_c$, and waveguides of lengths on
 the scale of a few centimeter, we can expect a total loss of around
-$\SI{400}{\per\metre} \times \SI{0.01}{\metre} = \SI{35}{\decibel}$. This
+%\SI{400}{\per\metre} \times \SI{0.01}{\metre} = \SI{35}{\decibel}$. This
+$\SI{35}{\decibel}$. This
 should be sufficiently small that microwaves of the required power to drive
 rotational transitions will be able to reach molecules
 trapped on the chip.~\cite{Treutlein2008}
@@ -471,7 +472,7 @@ system is shown in \mysubfigref{theory:fig:JCHstates}{a}.
   \label{theory:fig:JCHstates}
 \end{figure}
 
-We denote the ground (exicted) state of the molecule as $\ket{g}$ ($\ket{e}$).
+We denote the ground (excited) state of the molecule as $\ket{g}$ ($\ket{e}$).
 The light field state can be taken to be a Fock state ($\ket{n}$ with $n \in
 \mathbb{Z}$). Note that the final term in equation~\ref{theory:eqn:JCH}) has
 the effect of exciting the ground state while absorbing a photon
@@ -504,14 +505,14 @@ and having shifted energies
 It is useful to consider the manifold of states as depicted in
 \myfigref{theory:fig:JCHstates}.  
 Note that in the limit of no coupling
-($\Omega = 0$) and no detuning ($\Delta = 0$) the energies are that of the bare
-states, and $\ket{g}\ket{n+1}$ is degenerate with $\ket{e}\ket{n}$, as in part
-(b) of the subfigure. Introducing coupling ($\Omega \neq 0$) lifts this
+($\Omega = 0$) and no detuning ($\Delta = 0$) the energies are those of the
+bare states, and $\ket{g}\ket{n+1}$ is degenerate with $\ket{e}\ket{n}$, as in
+part (b) of the subfigure. Introducing coupling ($\Omega \neq 0$) lifts this
 degeneracy, as in part (c). When the detuning is non-zero ($\Delta \neq 0$)
 there is additional offset due to the second term in
 \myeqref{theory:eqn:JCHenergies}, see part (d) of the figure.
 
-The strong coupling r\'egime is reached when the coupling $g=2\Omega$ is
+The strong coupling regime is reached when the coupling $g=2\Omega$ is
 greater than the rate of decay from the cavity $\kappa = \omega_0 / Q$, where
 $Q$ is called the quality factor of the cavity. The coupling parameter is
 related to the transition dipole moment $d$ and the amplitude of the electric
@@ -811,7 +812,7 @@ This results in a cooling rate
         ymode=log,
         enlargelimits=true,
         xlabel=Trapping current (\si{\ampere}),
-        ylabel=$T_\text{min}$ (\si{\nano\kelvin}),
+        ylabel=$T_\text{min}$ (\si{\micro\kelvin}),
         width=\textwidth,
         height = 0.7\textwidth,
         x tick label style={/pgf/number format/.cd, set thousands separator={}}
@@ -864,7 +865,7 @@ We expect the minimum temperature achievable by sideband cooling to be reached
 when the molecule motion and photon energy are in thermal equilibrium, so that
 %
 \begin{align}
-  T_\text{min} &= \frac{\hbar \omega_t \overline{m}}{k_B}
+  T_\text{min} &= \frac{\hbar \omega_t \overline{m}}{k_B} \\
                &= \frac{\omega_t}{\omega_0}T_c
 \end{align}
 %
@@ -943,7 +944,7 @@ where
 %
 and $\ket{\Psi(0)} = \ket{\psi}\ket{\alpha}$ is the state of the system at the
 time of measurement. This can be expanded by inserting the definition of the
-coherent and molecule states,
+coherent state and expanding the molecule state,
 %
 \begin{equation}
   \ket{\Psi(T)} = e^{-\frac{|\alpha|^2}{2}}\sum_{n=0}^\infty
@@ -953,8 +954,8 @@ coherent and molecule states,
 \end{equation}
 %
 where $\nu = g^2/\Delta$.
-Now the number operator in the exponent acts on $\ket{n}$, and the spin
-operator acts on $\ket{N}$ for
+Now the number operator in the exponent acts on the light state ($\ket{n}$) and
+the spin operator acts on the molecule state ($\ket{g}$ or $\ket{e}$) for
 %
 \begin{equation}
    \ket{\Psi(T)} = e^{-\frac{|\alpha|^2}{2}}\sum_{n=0}^\infty
@@ -1034,8 +1035,8 @@ detector is therefore
   e^{-i\varphi})\ket{\Psi_a}.
 \end{align}
 %
-Note that in the last equality we have used $b\ket{\beta}=\beta\ket{beta}$, and
-also the equivalent conjugate expression $\bra{\beta}b^\dagger =
+Note that in the last equality we have used $b\ket{\beta}=\beta\ket{\beta}$,
+and also the equivalent conjugate expression $\bra{\beta}b^\dagger =
 \beta^*\ket{\beta}$ to remove the $b$ and $b^\dagger$ operators and replace
 them with their eigenvalues.
 %
@@ -1049,7 +1050,7 @@ its real and imaginary parts. They are defined by~\cite{gerry_knight_2004}
 The expected photon difference is now
 \begin{equation}
   \langle c^\dagger c - d^\dagger d\rangle =
-  2|\beta|\bra{\Psi_a}(Y\cos\varphi - X\sin\varphi)\ket{\Psi_a} \\
+  2|\beta|\bra{\Psi_a}(Y\cos\varphi - X\sin\varphi)\ket{\Psi_a}.
   \label{squeeze:eqn:homoquads}
 \end{equation}
 
@@ -1099,6 +1100,7 @@ The detuning required for our $g$ and $Q$ is therefore
 which is well within the bounds achievable with the Stark shift.
 
 \subsection{State preparation}
+\label{mws:cats}
 
 The engtangling of the molecule and light state will produce a powerful system
 with applications beyond simple state readout. First, the system can be used to
