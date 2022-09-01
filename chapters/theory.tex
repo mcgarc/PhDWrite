@@ -3,9 +3,9 @@ the rest of the thesis. In section~\ref{theory:cooltrap} I will give an
 abstracted overview of the principles of laser-cooling and trapping of atoms
 and molecules, including magnetic traps. In section~\ref{theory:chips} I will
 explain how it is possible to create magnetic fields for such traps using wires
-on the surface of a chip. Finally, I will introduce the structure of diatomic
-molecules, which is essential for understanding how to apply these techniques
-to our experiment.
+on the surface of a chip. Finally in section~\ref{theory:molecules} I will
+introduce the structure of diatomic molecules, which is essential for
+understanding how to apply these techniques to our experiment.
 
 \section{Laser-cooling and trapping}
 \label{theory:cooltrap}
@@ -887,18 +887,18 @@ There is then a separate electronic TISE
 \end{equation}
 %
 where the Hamiltonian $H_e = H - T_n$ is the previous Hamiltonian but excluding
-the term for the nuclear motion, because these are stationary in the
-Born-Oppenheimer approximation. This problem now begins to resemble the
-analogous one of finding the electronic states of atoms, and can be solved by
-similar numerical methods~\cite{Foot2005, bransden2003}. The upshot is that it
-is possible to determine the electron eigenstates, which we label
-$\psi_e(\mathbf{R}_{AB}; q)$, with $q$ being the quantum number for the
-electronic configuration\footnote{The numbering of the electronic
-configurations is actually more complicated than this. We will discuss how
-these states are labelled in section~\ref{theory:qnos}.}. The energy of the
-state is now denoted $E_e(q; R_{AB})$, with $q$ as a parameter and $E_e$ a
-function of  $R_{AB}$.  It is common to approximate this energy as the Morse
-potential
+the term for the nuclear motion.
+%
+This problem now begins to resemble the analogous one of finding the electronic
+states of atoms, and can be solved by similar numerical methods~\cite{Foot2005,
+bransden2003}. The upshot is that it is possible to determine the electron
+eigenstates, which we label $\psi_e(\mathbf{R}_{AB}; q)$, with $q$ being the
+quantum number for the electronic configuration\footnote{The numbering of the
+electronic configurations is actually more complicated than this. We will
+discuss how these states are labelled in section~\ref{theory:qnos}.}. The
+energy of the state is now denoted $E_e(q; R_{AB})$, with $q$ as a parameter
+and $E_e$ a function of  $R_{AB}$.  It is common to approximate this energy as
+the Morse potential
 %
 \begin{equation}
   E_e(q; R_{AB}) = D(1-e^{-\beta(R_{AB} - R_{AB}^0)})^2,
@@ -1180,7 +1180,7 @@ these operators are their projections onto the axis which we label $\Lambda$
 and $\Sigma$  respectively, as well as $S$. $L$ is not a good quantum number
 since it couples very strongly to the axis and so precesses rapidly around it.
 %
-The rotation operator $\mathbf{R}$ coupling is even weaker, and hence can be
+The rotation operator $\mathbf{R}$ coupling is much weaker, and hence can be
 approximated to couple to the projection of $\mathbf{L} + \mathbf{S}$ onto the
 axis. We label this projection $\mathbf{\Omega} = \Omega \mathbf{\hat{e}}$
 where $\mathbf{\hat{e}}$ is the unit vector along the internuclear axis, and $\Omega =
