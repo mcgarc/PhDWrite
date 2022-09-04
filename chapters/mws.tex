@@ -23,14 +23,14 @@ provide easy access to the ground plane for shunt connections.
 The CPW's geometry is defined by the centre conductor width ($S$) and the
 channel width ($W$). The height of the conductor is $t$ and the dielectric
 height is $h$.  The geometry of the CPW determines the region the microwave
-field occupies, as illustrated in \mysubfigref{mws:fig:CPW}{b}.  The CPW
-can therefore be designed to maximise overlap between the microwave field and a
-cloud of molecules trapped nearby.  As a rough approximation the molecules
-should be trapped at a distance $h\sim S$ above the centre of the CPW to
-achieve a good overlap~\cite{Boehi2009}. The electric field surrounding the CPW is shown
-in \mysubfigref{mws:fig:CPW}{b}. The equations defining this field can be found
-analytically~\cite{Simons2004}, or the field can be determined by a
-finite-element simulation.
+field occupies, as illustrated in \mysubfigref{mws:fig:CPW}{b}.  The CPW can
+therefore be designed to maximise overlap between the microwave field and a
+cloud of molecules trapped nearby.  As a rough approximatio, this is achieved
+whenthe molecules are trapped above the centre of the CPW, at a distance on the
+same lengthscale as $S$ \cite{Boehi2009}. The electric field surrounding the
+CPW is shown in \mysubfigref{mws:fig:CPW}{b}. The equations defining this field
+can be found analytically~\cite{Simons2004}, or the field can be determined by
+a finite-element simulation.
 
 \begin{figure}[ht]
   \centering
@@ -139,13 +139,13 @@ impedance~\cite{Simons2004}
 \end{align}
 Note that the impedance of the waveguide has dependence only on the geometry in
 the form of the ratio $k_0$, and the relative permittivity of the
-substrate.~\cite{Simons2004} This means that for any substrate we choose, the
+substrate~\cite{Simons2004}. This means that for any substrate we choose, the
 value of $k_0$ can be chosen to fix the impedance at the standard $Z_0 =
-\SI{50}{\ohm}$. This is useful for building macroscopic input ports to the CPW,
-and then tapering for a highly localised field near the molecule trap.
-%
-Therefore as long as $k_0$ is held constant the CPW can be tapered to change the
-size of the centre conductor, and hence control the region the field occupies.
+\SI{50}{\ohm}$, which is useful for impedance matching to external components.
+It is also possible to match between microwcopic and microscopic components by
+tapering the CPW scale whilst holding $k_0$ constant. This allows the building
+of macroscopic input ports to the CPW, and then tapering for a highly localised
+field near the molecule trap.
 
 % NOTE
 % Removing this because I don't think it really matters and I don't fully
@@ -190,10 +190,10 @@ There are two contributing terms to the attenuation constant
 %
 which are the contributions from the dielectric and the conductor respectively. We
 neglect small contributions from radiative losses~\cite{Frankel1991}. Bending
-losses can also be ignored as long as the radius of the bends are much larger
+losses can also be ignored as long as the radii of the bends are much larger
 than the wavelength of the propagating wave. We must be mindful of this during
 design, since the typical wavelengths for rotational transitions are on the
-order of centimeters.  We also do not consider the insertion loss of the
+order of millimeters.  We also do not consider the insertion loss of the
 resonator, since this does not affect the quality
 factor~\cite{doi:10.1063/1.3010859}.
 
@@ -338,7 +338,7 @@ Material & $\sigma$ ($\times10^6\,\si{\siemens\per\meter}$) & $\mu_r$ & Ref. \\ 
       Conductor losses are plotted for (a) varying the conductor height of the
       CPW and (b) varying the centre conductor width. Losses are shown for gold
       on sapphire (black), silver on sapphire (blue) and gold on polyimide
-      (red). In (a) a typical conductor width of $S=\SI{10}{\micro\meter}$ is
+      (pink). In (a) a typical conductor width of $S=\SI{10}{\micro\meter}$ is
       assumed, and in (b) the thickness of the conductors is taken to be
       $t=\SI{5}{\micro\meter}$. In both cases the impedance is set to $Z_0 =
       \SI{50}{\ohm}$ by choosing $k_0$, according to \myeqref{mws:eqn:Z0}.
