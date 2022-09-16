@@ -184,10 +184,10 @@ physics, providing a way to trap a relatively cold gas of particles. It is the
 backbone of many experiments including the cooling and trapping of \CaF{}
 molecules, which is the starting point for this work~\cite{Williams2017}. In
 this section I will describe the basic operation of the common type-I MOT, that
-is a two level system where the ground state has angular momentum $F$ and the
-excited state has angular momentum $F'$ such that $F'>F$. In this example $F=0$
-and $F'=1$ are chosen.  In reality the molecule MOT that we will discuss is a
-type-II MOT ($F'\leq F$), as will be discussed in
+is a two level system where the ground state has total angular momentum $F$ and
+the excited state has total angular momentum $F'$ such that $F'>F$. In this
+example $F=0$ and $F'=1$ are chosen.  In reality the molecule MOT that we will
+discuss is a type-II MOT ($F'\leq F$), as will be discussed in
 section~\ref{theory:coolmols}.
 
 The MOT consists of two components, a magnetic quadrupole field, and restoring
@@ -307,10 +307,10 @@ scatter
   T_\text{recoil} = \frac{\hbar^2 k^2}{m k_B}
 \end{equation}
 %
-which is normally on the order of a \SI{1}{\micro\kelvin}.  Normally to achieve
+which is normally on the order of \SI{1}{\micro\kelvin}.  Normally to achieve
 such low temperatures the magnetic field of the MOT is switched off, so that
 only the molasses is active, and the polarisation gradient cooling occurs
-across the entire cloud.Lower temperatures can be reached by other techniques
+across the entire cloud. Lower temperatures can be reached by other techniques
 such as evaporative cooling~\cite{Metcalf1999}.
 
 \subsection{Magnetic trapping}
@@ -340,8 +340,8 @@ the Zeeman shift due to a magnetic field is positive (c.f.\
 that there is a local minimum in the vicinity of the particle, then these
 states will be attracted to that minimum. Such a state is called a weak-field
 seeker. We can equally have strong-field seekers when $g_F m_F < 0$, but these
-cannot be magnetically trapped since it is not possible to create a local
-magnetic field maximum in free space.
+cannot be magnetically trapped since, according to Earnshaw's theorem, it is
+not possible to create a local magnetic field maximum in free space.
 %
 Note that the dependence here is on the magnitude of the magnetic field, so the
 direction of the field does not directly affect the trapping potential.
@@ -440,7 +440,7 @@ quickly, due to the motion of the particle through the inhomogeneous field,
 spin flip transitions will be driven. To avoid this, we typically require that
 $(\dd B/\dd t)/B$ to be small compared to $g_F \mu_B B/\hbar$. Provided this
 condition is satisfied, the particle will adiabatically follow the changing
-magnetic field and there will be loss.
+magnetic field and there will be no loss.
 %
 Similarly, the field can be changed adiabatically (slowly compared to the speed
 of the trapped particles) without heating. This can be used for
@@ -655,6 +655,12 @@ is
   \label{theory:eqn:xfreq}
 \end{equation}
 
+It is worth noting that in this simplified diagram, and in those to follow, the
+wires are shown as touching. In reality it is common to electrically isolate
+the wires from one another during fabrication. However in section~\cm{TODO}, we
+will also present a scheme for how electrically connected wires can have their
+currents controlled independently.
+
 \subsection{The H-trap}
 
 Consider the dimple trap, but with $\tilde{B}_x$ set to zero. Now what was
@@ -742,13 +748,16 @@ a single Z-wire also with current \SI{1}{\milli\ampere}. In both cases
 $d=\SI{10}{\milli\meter}$, and a bias field of \SI{2}{\milli\gauss} in the $y$
 direction is chosen, so as to create a minimum at approximately
 $z=\SI{1}{\milli\meter}$ from the axis. The potentials are similarly
-comparable for the H-trap in quadrupole configuration and the U-trap.
+comparable for the H-trap in quadrupole configuration and the U-trap. Note that
+the ambient magnetic field in the lab can be zeroed by the use of shim coils
+outside the experiment.
 
 \begin{figure}[htbp]
   \centering
   \import{figs/theory/wires/}{HZcontours.pgf}
   \caption[Comparison of H- and Z-traps]{
-    Contour plots comparing the potentials for a H-trap in
+    Contour plots comparing the potentials ($B =
+    \sqrt{\mathbf{B}\cdot\mathbf{B}}$) for a H-trap in
     Ioffe-Pritchard configuration (left column) and Z-trap (right column), with
     cut throughs for $z=\SI{1}{\milli\meter}$ (top row) and $x=0$ (bottom row).
     All wires carry a current of $I=\SI{1}{\milli\ampere}$ and a bias field of
@@ -826,11 +835,16 @@ shown in \myfigref{theory:fig:mol}.  The total number of electrons is $N_e$.
 The primed gradient operators represent differentiation with respect to the COM
 coordinates.
 %
-The various terms represent the kinetic energy of the nuclei and the elctrons
-in the COM frame, the various Coulomb attraction and repulsions, and the
-so-called mass-polarisation term. This is the second term in
-\myeqref{theory:eqn:mpterm}, and it accounts for small fluctuations in the COM
-for the whole molecule relative to the COM of the nuclei.
+These terms represent the kinetic energy of the nuclei and the elctrons
+in the COM frame ($T_n$ and first term in $T_e$ respectively), the various
+Coulomb attraction and repulsions $V_*$ terms), and the
+so-called mass polarisation term. This is the second term in
+\myeqref{theory:eqn:mpterm}, and it is a correction term to account for small
+fluctuations in the COM. This is necessary since the movement of any one
+particle will change the position of the COM, hence the particle coordinates
+are all coupled in this frame. Fortunately this term can usually be neglected,
+or treated as a perturbation. ~\cite{}
+% TODO Can cite https://arxiv.org/pdf/1601.04735.pdf
 %
 The time-independent Schr\"odinger equation (TISE),
 %
@@ -1090,15 +1104,18 @@ unchanged ($q'=q$ and $v'=v$). Such transitions are permitted only when $\Delta
 R = R' - R = \pm1$. The selection rule for $m_R$ is dependent on the
 polarisation of the light. For linearly polarised light $\Delta m_R = m_R' -
 m_R = 0$, whereas for circularly polarised light $\Delta m_R =  \pm1$ for
-$\sigma^\pm$ polarised light.
+$\sigma^\pm$ polarised light. The molecule tumbles with a rotation vector
+perpendicular to the internuclear axis, any rotation around the internuclear
+axis is symetrically invariant.
 
 \subsubsection{Vibrational transitions}
 
 In the case where there is still no change in electronic state ($q'=q$) we have
 the same selection rules for any change in the rotational quantum numbers. It
 can be shown that when the states are well approximated by a quantum harmonic
-oscillator, the additional selection rule for the vibrational transition
-is $\Delta v = v' - v = \pm 1$. Of course, $\Delta v = 0$ is allowed, but then
+oscillator (which occurs for sufficiently small $v$ so that we can ignore the
+anharmonicity), the additional selection rule for the vibrational transition is
+$\Delta v = v' - v = \pm 1$. Of course, $\Delta v = 0$ is allowed, but then
 this reduces to the above case of a pure rotational transition.
 
 \subsubsection{Changing the electronic state}
@@ -1173,19 +1190,20 @@ of the angular momentum operators couple to each other. They are pictured in
 
 
 In the first case (a), the electron orbital angular momentum $\mathbf{L}$ is
-strongly coupled to the molecular axis, and the spin angular momentum
-$\mathbf{S}$ couples strongly to $\mathbf{L}$. Hence, these momenta both
-precess around the molecular axis. The good quantum numbers associated with
-these operators are their projections onto the axis which we label $\Lambda$
-and $\Sigma$  respectively, as well as $S$. $L$ is not a good quantum number
-since it couples very strongly to the axis and so precesses rapidly around it.
+strongly coupled to the molecular axis by the electrostatic force, and the spin
+angular momentum $\mathbf{S}$ couples strongly to $\mathbf{L}$ by spin-orbit
+coupling. Hence, these momenta both precess around the molecular axis. The good
+quantum numbers associated with these operators are their projections onto the
+axis which we label $\Lambda$ and $\Sigma$  respectively, as well as $S$. $L$
+is not a good quantum number since it couples very strongly to the axis and so
+precesses rapidly around it.
 %
 The rotation operator $\mathbf{R}$ coupling is much weaker, and hence can be
 approximated to couple to the projection of $\mathbf{L} + \mathbf{S}$ onto the
 axis. We label this projection $\mathbf{\Omega} = \Omega \mathbf{\hat{e}}$
 where $\mathbf{\hat{e}}$ is the unit vector along the internuclear axis, and $\Omega =
 \Lambda + \Sigma$. The total angular momentum is $\mathbf{J} = \mathbf{L} +
-\mathbf{S} + \mathbf{N}$. Again, due to the rapid precession of $\mathbf{L}$
+\mathbf{S} + \mathbf{R}$. Again, due to the rapid precession of $\mathbf{L}$
 and $\mathbf{S}$, we show this in the figure as a precession of
 $\mathbf{\Omega}$ and $\mathbf{R}$ around $\mathbf{J}$. Note that
 $\mathbf{\Omega}$ is not truly an operator, and is only useful for illustrative
