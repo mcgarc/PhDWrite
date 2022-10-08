@@ -1025,14 +1025,19 @@ $\beta\approx a^{-1}$
     h\times\SI{10}{\tera\hertz},
 \end{equation}
 %
-where we took $\mred{}\approx m_p$.
+where we took $\mred{}\approx m_p$. The vibrational energy $E_\text{vib}$ can
+be approximated for low $v$ as a harmonic oscillator, so that
+%
+\begin{equation}
+  E_\text{vib}(v)\approx \hbar\omega_\text{vib}\left(v+\frac{1}{2}\right).
+\end{equation}
 
 We now have and estimate for the vibrational energy, and the final step is to
 compare this to the rotational energy in \myeqref{theory:eqn:rotenergy}, where
 we expect typical values
 %
 \begin{equation}
-  E_\text{rot} = \frac{\hbar}{2 \mred{} R^0_{AB}} \sim h\times\SI{100}{\giga\hertz}
+  E_\text{rot}(0) = \frac{\hbar}{2 \mred{} R^0_{AB}} \sim h\times\SI{100}{\giga\hertz}
 \end{equation}
 %
 it is clear that the rotational energy levels can be treated as perturbations
