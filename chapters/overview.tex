@@ -557,9 +557,11 @@ experiment. This can be done by the addition of a new chamber to our setup,
 shown in \myfigref{overview:fig:vacuumsystem}. The chip chamber will be
 positioned along the existing MTT axis, allowing extension of the transport
 system and the delivery of molecules to this chamber. \CaF{} molecules can then
-be transferred onto the chip trap.
+be transferred onto the chip trap via the process also outlined in
+\myfigref{overview:fig:vacuumsystem}.
 
 \begin{figure}[htb]
+\begin{subfigure}{\textwidth}
   \centering
     \begin{tikzpicture}
       \node[anchor=south west,inner sep=0] (image)
@@ -579,9 +581,36 @@ be transferred onto the chip trap.
         \node[] at (0.54,0.2) {\small Source};
       \end{scope}
     \end{tikzpicture}
-  \caption[The \CaF{} experiment]{
+\end{subfigure} \\
+
+\begin{subfigure}{\textwidth}
+  \centering
+\begin{tikzpicture}
+  \node (buffer) [process] {Buffer gas source};
+  \node (slowing) [process, right of=buffer, xshift=3cm] {Laser slowing};
+  \draw [farrow] (buffer) -- (slowing);
+  \node (MOT) [process, right of=slowing, xshift=3cm] {Capture in MOT};
+  \draw [farrow] (slowing) -- (MOT);
+  \node (cool) [process, below of=MOT, yshift=-1cm] {Further cooling\\in molasses};
+  \draw [farrow] (MOT) -- (cool);
+  \node (mag) [process, below of=slowing, yshift=-1cm] {Transfer to\\magnetic trap};
+  \draw [farrow] (cool) -- (mag);
+  \node (MTT) [process, below of=buffer, yshift=-1cm] {Transfer to\\ external MTT};
+  \draw [farrow] (mag) -- (MTT);
+  \node (transport) [process, below of=MTT, yshift=-1cm] {Transport to\\ chip chamber};
+  \draw [farrow] (MTT) -- (transport);
+  \node (loadU) [process, below of=mag, yshift=-1cm] {Load into\\ U-trap};
+  \draw [farrow] (transport) -- (loadU);
+  \node (loadchip) [process, below of=cool, yshift=-1cm] {Load onto\\ chip};
+  \draw [farrow] (loadU) -- (loadchip);
+
+\end{tikzpicture}
+\end{subfigure}
+
+  \caption[The \CaF{} and \CaF{} chip experiment]{
     The \CaF{} experiment is shown along with the planned additional chip
-    chamber. Not shown: external transport coils and transverse cooling region.}
+    chamber. Not shown: external transport coils and transverse cooling region.
+  The flowchart outlines the various stages of the chip experiment.}
   \label{overview:fig:vacuumsystem}
 \end{figure}
 
