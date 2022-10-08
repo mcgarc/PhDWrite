@@ -264,7 +264,14 @@ The magnetic potentials of the wire traps are calculated by considering the
 traps to be formed of segments of straight wires, each producing a magnetic
 field $\mathbf{B}_\text{seg}^{(i)}$, and the bias field
 $\mathbf{B}_\text{bias}(t)$.  The total field is the sum of contributions from
-the set of all segments ($S$), and the bias. The potential is therefore
+the set of all segments ($S$), and the bias. We also make the approximation
+that the field changes slowly compared to the alignment of the spin with the
+field\footnote{This means that simulations investigating fast-changing fields
+  present an optimistic result. However we will see below that the limiting
+  factor for changing the field is the time constant of the classical motion of
+  the molecules. Hence this adiabtic approximation is sufficent for our
+investigations.}, so that $V=\mathbf{\mu}\cdot\mathbf{B}\approx\mu B$.  The
+potential is therefore
 %
 \begin{equation} V_\text{mag}(t, \mathbf{q}) = \mu B (t, \mathbf{q}) = \mu
 \left| \sum_{i\in S} \mathbf{B}_\text{seg}^{(i)}(t, \mathbf{q}) +
@@ -272,9 +279,11 @@ the set of all segments ($S$), and the bias. The potential is therefore
 %
 where the field of each wire segment is~\cite{Griffiths2017}
 %
-\begin{equation} \mathbf{B}_\text{seg}(t, \mathbf{q}) = \frac{\mu_0 I(t)}{4\pi
-s_\text{seg}(\mathbf{q})} (\sin(\theta_2)  -
-\sin(\theta_1))\hat{\mathbf{\phi}}. \label{sim:eq:segmentfield}
+\begin{equation}
+    \mathbf{B}_\text{seg}(t, \mathbf{q}) = \frac{\mu_0 I(t)}{4\pi
+    s_\text{seg}(\mathbf{q})} (\sin(\theta_2)  -
+    \sin(\theta_1))\hat{\mathbf{\phi}}.
+    \label{sim:eq:segmentfield}
 \end{equation}
 %
 Here $s_\text{seg}(\mathbf{q})$ represents the shortest distance between the
