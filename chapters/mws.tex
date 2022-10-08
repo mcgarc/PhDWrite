@@ -52,7 +52,8 @@ a finite-element simulation.
     Subfigure (a) shows a perspective view of a segment of CPW on dielectric substrate, with
 pertinent geometry and dielectric constants labeled. The field lines are
 sketched, and shown in detail in the cut-through in (b). Here the field lines
-are calculated analytically for arbitrary parameters.}
+are calculated analytically for arbitrary parameters. In both subfigs the even
+mode of the CPW is shown.}
 	\label{mws:fig:CPW}
 \end{figure}
 
@@ -402,14 +403,14 @@ attenuation constant
 \end{equation}
 %
 From \myfigref{mws:fig:conductorloss} and \mytableref{mws:table:diprops} we
-find that using conventional materials, the attenuation will be dominated
-by conductor losses, and $Q\sim10$. In section~\ref{mws:coupling} that we
-require $Q > 1.7 \times 10^5$.
+find that using conventional materials, the attenuation will be dominated by
+conductor losses, and $Q\sim10$. It will be shown in section~\ref{mws:coupling}
+that we require $Q > 1.7 \times 10^5$ for our purposes.
 
 % TODO Could improve the prose here
 Conductor losses can be eliminated by use of a superconducting CPW. Such
 devices are a developed technology, which have been used for coupling to
-solid-state qubits~\cite{Wallraff2004}. Operating at the low temperatures
+solid-state qubits~\cite{Wallraff2004}. Operating at the cryogenic temperatures
 required for superconductors allows the achievement of very high quality
 factors of order $10^6$~\cite{doi:10.1063/1.3552890, Day2003}. For such devices
 the quality factor is dominated by the dielectric losses, and as such a
@@ -544,6 +545,7 @@ For the rotational \CaF{} transitions that we introduced above, in
 section~\ref{theory:molecules} $d = \mu/\sqrt{3}$ with $\mu =
 \SI{31}{\debye}$.
 %
+\jvg{What is this ($\mu$) compared to Cooper-pair box? He says 36k D}
 The coupling strength is therefore expected to be
 %
 % See nbs/2022-02-08_coupling.nb
@@ -717,6 +719,9 @@ a single CPW in \myfigref{mws:fig:implement}.
     regions that aren't pink are covered with conductor. Example voltage pads
     for Stark-shifting the molecules are also shown. Subfigure (c) shows a
     detailed view of the trapping region.
+    \cm{Comment somewhere (in body) on the fact that alignment of CPW doesn't
+      matter for the transition -- relates to dipole moment qn that I can't
+      answer.}
   }
   \label{mws:fig:implement}
 \end{figure}
