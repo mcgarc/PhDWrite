@@ -1,5 +1,5 @@
 The chip apparatus was assembled for preliminary tests, but isolated from the 
-main \CaF{} experiment. This modest setup was useful for a variety of
+main \CaF{} experiment. This setup was useful for a variety of
 measurements, which will be discussed below, including vacuum compatibility,
 current testing under vacuum, and looking at the amount of background scatter
 from the apparatus during imaging. We anticipate background scatter to be a
@@ -114,7 +114,7 @@ the second.
 %
 The scan with the chip assembly has a similar shape to the empty chamber scan,
 but with slightly higher values.  In both, we see the typical peaks for
-hydrogen (2), water (18) and nitrogen (28), which dominate the spectrum. This
+\Htwo{} (2), water (18) and \Ntwo{} (28), which dominate the spectrum. This
 is typical of a scan through a UHV system~\cite{PfeifferVacuum}, and suggests
 that the chip assembly does not introduce any sources of contamination or
 outgassing into the experiment.
@@ -163,12 +163,17 @@ It was also important to test the currents that can be achieved through the
 chip trapping wires. These tests were conducted with the chip under vacuum
 ($P<10^{-6}\,\si{\milli\bar}$) and using the setup shown in
 \myfigref{exper:fig:curtest}, which was used since our custom current drivers
-where not ready at this stage. A regulated power supply delivers a current to
-the chip, controlled by the FET circuit that is in turn switched by a signal
-generator. This gives us control over the pulse length, and allows us to
-deliver a voltage drop $V_\text{PSU}$ up to \SI{30}{\volt} to the chip, since
-the sense resistance ($R_\text{sense}$) is much larger than the load resistance
-from the wires ($R_\text{load}$).
+where not ready at this stage. It is important to test the current in the wires
+in pulses, with a duty cycle resembling what will be required in the trapping
+experiment where the trapping wires will be switched on for a few hundred
+milliseconds, a few times every minute. This repetition rate being limited by
+the speed of the transport coils. For this reason, a regulated power supply at
+voltage $V_\text{PSU}$ is used to induce a current in the
+chip wirers, with his current is controlled by the FET circuit that is in turn
+switched by a signal generator. This allows control over the pulse length, and
+for the delivery a voltage drop of $V_\text{PSU}$ up to \SI{30}{\volt}
+across the chip, since the sense resistance ($R_\text{sense}$) is much larger
+than the load resistance from the wires ($R_\text{load}$).
 
 %The current through the chip can be measured via the potential difference
 %across $R_\text{sense} = \SI{0.5}{\ohm}$.
@@ -308,13 +313,13 @@ Further, the resistance of the chip as a function of current can be found by
 fitting a third order polynomial to the $I\,V$ curve in
 \mysubfigref{exper:fig:current}{a}, and taking its derivative. This derivative
 approximates the chip's conductance at that voltage and current, the resistance
-is found by taking the reciprocal of this conductance, and the result is
-shown in \mysubfigref{exper:fig:current}{b}. The dependence of resistance on
-temperature for gold is known, and we an deduce that at the maximum current
-here the temperature reached is \SI{550}{\kelvin}. This suggests that the wire
-is operating below the point of failure, which we might anticipate to occur
-when the operating temperature reaches the melting point of gold
-(\SI{1300}{\kelvin}).
+is found by taking the reciprocal of this conductance, and the result is shown
+in \mysubfigref{exper:fig:current}{b}. The resistivity scales proportionally to
+the temperature~\cite{}, and so it can be decuded that the doubling of the
+reistance corresponds to a doubling of the temperature from room temperature to
+around \SI{550}{\kelvin}.  This suggests that the wire is operating below the
+point of failure, which we might anticipate to occur when the operating
+temperature reaches the melting point of gold (\SI{1300}{\kelvin}).
 
 \subsection{Wire failure}
 
@@ -363,7 +368,7 @@ molecules spontaneously decay from $A$ back to $X$. Most molecules will decay
 back to $X(v=0)$, releasing a photon at the same wavelength as the laser, which
 can be collected and imaged on a CCD camera. Since the laser and fluorescence
 are at the same frequency, any light scattered from the viewports or from
-nearby objects such as the quadrupole coils will create a background that must
+nearby objects, such as the quadrupole coils, will create a background that must
 be accounted for in post-processing.  Various steps are taken to reduce this
 background, which would otherwise obscure any signal. Most notably the
 internals of the chamber are painted black to reduce reflections. However it is
@@ -584,7 +589,7 @@ with \pewpew{}{01}, with the laser frequency scanned between pulses.  When the
 laser is at resonance it drives the transition and light-induced fluorescence
 can be observed. The apparatus is shown in \myfigref{exper:fig:beamapp}, with
 subfigure (a) showing the layout of the \pewpew{}{01} laser system. The
-light passes through an electo-optic modulator, which is used
+light passes through an electro-optic modulator, which is used
 to add the sidebands for addressing the hyperfine structure of the $X(v=0)$
 state, and an acousto-optic modulator (AOM) which is used for switching the
 light on and off. In this experiment the EOM is switched off, and the AOM is
