@@ -156,8 +156,12 @@ in \inlineref{Anderegg2019a}, those that are most useful are presented in
 \caption[\CaF{} constants]{
   Various constants for \CaF{} taken from \inlineref{Anderegg2019a}. Note that
   the magnetic dipole moment is given in terms of the g-Factor $g_F$ and the
-  quantum number $m_F$, which are state dependent, as well as the Bohr magenton
+  quantum number $m_F$, which are state dependent, as well as the Bohr magneton
   $\mu_B = \SI{9.274}{\joule\per\tesla}$.
+  \jvg{How does this compare to cavity QED system?}
+  \cm{I have a comment here 'Don't confuse EDM with transition moment' I think
+    there is some fundamental misunderstanding here and I need to talk to Mike
+    about it.}
   }
   \label{overview:table:constants}
 \end{table}
@@ -166,7 +170,7 @@ in \inlineref{Anderegg2019a}, those that are most useful are presented in
 
 We begin all our experiments by creating a pulsed beam of \CaF{} molecules
 using a buffer gas source. This is pictured in \myfigref{overview:fig:source}
-and consists of a copper cell cooled to \SI{4}{\kelvin}. 
+and consists of a copper cell which is cryogenically cooled to \SI{4}{\kelvin}.
 %
 Helium gas, also cooled to \SI{4}{\kelvin}, and \SFsix{} gas near room
 temperature, flow through the cell. A \Ca{} target (shown in blue) is ablated
@@ -687,10 +691,9 @@ in chapter~\ref{fab}.
       \put(8, 200){\small $\mathrm{Z_2}$}
     \end{overpic}
   \caption[Chip schematic]{
-    A schematic of
-    the chip features, with the scaling exaggerated for visibility. The three
-    overlapping Z-wires are shown and labeled. The gaps between the wires are
-    highlighted.
+    A schematic of the single-layer chip features, with the scaling exaggerated
+    for visibility. The three overlapping Z-wires are shown and labeled. The
+    gaps between the wires are highlighted.
     %
     Toward the left (i) is the
     electroplating connection pad and various features used for
@@ -705,7 +708,10 @@ in chapter~\ref{fab}.
   % viva...
 \end{figure}
 
-Notice that this design does not incorporate microwave guides. These are to be
+Notice that this design is a single-layer design, with the wires intersecting.
+A system has been devised to ensure that the desired currents are achieved in
+each wire segment, and is described in chapter~\cm{somehwere}. Furhter, this
+inital design does not incorporate microwave guides. These are to be
 installed on a second level, separated from the trapping wires by a thin
 insulating layer, on which we can fabricate coplanar waveguides~\cite{1127105}.
 This stage of the project has not yet been reached, but the planned fabrication
