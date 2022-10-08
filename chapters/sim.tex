@@ -269,9 +269,9 @@ that the field changes slowly compared to the alignment of the spin with the
 field\footnote{This means that simulations investigating fast-changing fields
   present an optimistic result. However we will see below that the limiting
   factor for changing the field is the time constant of the classical motion of
-  the molecules. Hence this adiabtic approximation is sufficent for our
-investigations.}, so that $V=\mathbf{\mu}\cdot\mathbf{B}\approx\mu B$.  The
-potential is therefore
+  the molecules (which is longer than the dipole alignment). Hence this
+adiabatic approximation is sufficient for our investigations.}, so that
+$V=\mathbf{\mu}\cdot\mathbf{B}\approx\mu B$.  The potential is therefore
 %
 \begin{equation} V_\text{mag}(t, \mathbf{q}) = \mu B (t, \mathbf{q}) = \mu
 \left| \sum_{i\in S} \mathbf{B}_\text{seg}^{(i)}(t, \mathbf{q}) +
@@ -379,7 +379,8 @@ to cause heating and increase the size of the cloud.  However, if we ramp
 between the traps adiabatically then we expect the phase-space density to be
 conserved. In order to understand how best to load the chip trap it is
 important that we understand the extent of heating in the case of rapid
-transfer and the timescale required to be adiabatic.
+transfer and the timescale required to be adiabatic with respect to the motion
+of the molecules.
 
 We investigate this with a simple example: consider two ideal quadrupole traps
 with gradients of \SI{60}{\gauss\per\centi\meter} separated by
@@ -469,7 +470,8 @@ handover from the MTT to the U-wire; then the U-wire to $\mathrm{Z0_i}$.
 Finally we will simulate the compression in the Z-wire trap from
 $\mathrm{Z0_i}$ to $\mathrm{Z0_f}$. A full summary of the changing parameters
 throughout the simulations is given at the end of the section, see especially
-\myfigref{sim:fig:simsum}.
+\myfigref{sim:fig:simsum}. Note that throughout the rest of this chapter we say
+that the chip is situated at a height $z=0$.
 
 \subsection{MTT - U transfer}
 \label{sim:sim:trans_U}
