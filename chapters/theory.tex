@@ -1076,10 +1076,11 @@ tumbling of the two nuclei. The total energy is
 % Just basic ideas or electronic, vibrational, ro-vibrational transitions.
 % Talk more about microwave spectroscopy elsewhere?
 
-We will now state the selection rules describing the allowed transitions
-between the various states of the molecule~\cite{brown_carrington_2003}. We
-will label the original state in the transition $\ket{g} = \ket{q, v, R, m_R}$
-and the final state $\ket{e} = \ket{q', v', R', m_R'}$.
+We will now state with brief justification the selection rules describing the
+allowed transitions between the various states of the
+molecule~\cite{brown_carrington_2003}. We will label the original state in the
+transition $\ket{g} = \ket{q, v, R, m_R}$ and the final state $\ket{e} =
+\ket{q', v', R', m_R'}$.
 %
 It is useful to remember that the following results are found by considering
 the intensity of the transition. This, as we saw above when discussing the Rabi
@@ -1087,26 +1088,63 @@ frequency, is proportional to $|d_{ge}|^2$, where
 %
 \begin{equation}
   d_{ge} = \bra{g}\mathbf{d}\cdot\bm{\epsilon}\ket{e}
+  \label{theory:eqn:dge}
 \end{equation}
 %
-is the matrix element of the transition. Again we have $\mathbf{d}$ as the
-dipole moment operator, and $\bm{\epsilon}$ as the unit vector representing the
-polarisation of the light.
+is the matrix element of the transition, representing a coupling between the
+molecular dipole and the light. Again we have $\mathbf{d}$ as the dipole moment
+operator, and $\bm{\epsilon}$ as the unit vector representing the polarisation
+of the light. This coupling is closely related to the permanent dipole moment,
+but it is different and is induced by the light, analogously to the more
+familiar case of the perturbation of an alkali atom by an oscillating
+field~\cite{Foot2005}. Hence the actual orientation
+of the molecule relative to the field does not affect the transition matrix
+element; note how any angular terms will be contained inside the integral and
+so will be automatically included in the selection rules).
 
-This matrix element is best evaluated by re-writing it in a spherical basis,
-then writing this basis so that the $z$ axis is aligned with the internuclear
-axis. This yields an integral over the electronic, vibrational and rotational
-wavefunctions. Deriving this integral and its solution is beyond the scope of
-this discussion, as it is not required to understand the rest of the thesis. It
-has been explained eloquently and succinctly in various texts, including
-\inlineref{brown_carrington_2003}.
+Since we will typically consider cases with linear or circular polarisation, it
+is convenient to take $\bm{\epsilon}$ to be represented in the spherical basis.
+To evaluate the above integral we therefore express the dipole moment in this
+rotated frame by means of a rotation operator. This process is fully described
+in \inlinefef{brown_carrington_2003}. The result allows us to separate to good
+approximation the molecular transitions due to the changing rotational,
+vibrational and electronic states.
+
+% Junk that I want to commit in case I want it at some point in the future...
+
+%$D^{(1)}(\Theta, \Phi)$,
+%so that
+%%
+%\begin{equation}
+%  d_r = \sum_s D^{(1)\dagger}_{r,s}(\Theta, \Phi) \tilde{d}_s
+%\end{equation}
+%%
+%where $\tidle{d}_q$ is the rotated dipole moment. By substitution of the above
+%we therefore have
+%%
+%\begin{equation}
+%  d_{eg} = \sum{r}\epsilon_r\sum_s M_{r,s} \bra{q', v'}\mu_s\ket{q, v}.
+%\end{equation}
+%%
+%Where the factor
+%%
+%\begin{equation}
+%  M_{r,s} = \bra{R', m_R'} D_{r,s}^{(1)}\ket{R, m_R}
+%\end{equation}
+%%
+%represents all change in the rotational state, and contains all dependence on
+%the angular coordiante.
+%
+%This matrix element is best evaluated by re-writing it in a spherical basis,
+%then writing this basis so that the $z$ axis is aligned with the internuclear
+%axis. Re-writing \myeqref{theory:eqn:dge} in terms of the spherical basis unit
+%vectors $\hat{e}_p$ we have
+%%
+%\begin{equation}
+%  d_{ge} = \sum_p \bm{\epsilon}\cdot \hat{e}_p  \text{etcetera}
+%\end{equation}
 
 \subsubsection{Pure rotational transitions}
-
-\jvg{How is the rotation axis aligned?}
-\cm{Need to insert something somewhere about this -- it relates to the point I
-  am missing about the dipole moments alignment that was the main sticking
-  point in the viva -- should talk to Mike.}
 
 In a pure rotational transition, the electronic and vibrational states are
 unchanged ($q'=q$ and $v'=v$). Such transitions are permitted only when $\Delta
