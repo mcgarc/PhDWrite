@@ -445,7 +445,9 @@ chamber. This transport of the molecules is similar to that used in
 \inlinerefs{Lewandowski2003,PhysRevResearch.1.033035} and elsewhere. It will be
 discussed further in chapter~\ref{exper}. In the next section, we will begin to
 discuss how the molecule chip can also be incorporated as an additional
-experiment.
+experiment. I will present computer-aided designs of the chip chamber, which
+were created by Kyle Jarvis in CCM, as well as my design for a PCB for power
+delivery.
 
 
 \section{Design requirements and overview}
@@ -743,6 +745,24 @@ This stage of the project has not yet been reached, but the planned fabrication
 procedure for microwave guides is discussed in section~\ref{fab:planned} and
 their operation is discussed in chapters~\ref{mws} and \ref{squeeze}.
 
+To facilitate all of this, the chip is mounted on a flange with supporting
+infrastructure, as detailed in \myfigref{overview:fig:chipchamber}. This chip
+flange assembly is equipped with a large copper heat sink, a large U-wire to
+form the macroscopic alignment trap and a subchip for current and microwave
+delivery (detailed in \myfigref{overview:fig:subchip}). It is mounted into a
+recess in the subchip so that it is flush with the surface. The chip is mounted
+facing downwards so that molecules can be dropped for imaging as they fall. The
+flange itself is fitted with two high-current (\SI{100}{\ampere}) feedthroughs,
+a 16-pin feedthrough rated for \SI{3}{\ampere} currents, and microwave
+feedthroughs. All access to the chip is therefore through this one flange,
+allowing for easy access and assembly.  It will be housed in a separate vacuum
+chamber (the chip chamber), positioned as shown in
+\myfigref{overview:fig:vacuumsystem}. The chip chamber will be arranged so that
+molecules can be brought in along the transport axis (shown by the arrow in the
+\mysubfigref{overview:fig:chipchamber}{b}) and positioned below the surface of
+the chip. This arrangement will be explained in further detail in
+chapter~\ref{exper}.
+
 \begin{figure}[htb]
     \centering
     \begin{tabular}[t]{c}
@@ -783,19 +803,12 @@ their operation is discussed in chapters~\ref{mws} and \ref{squeeze}.
   \label{overview:fig:chipchamber}
 \end{figure}
 
-To facilitate all of this, the chip is mounted on a flange with supporting
-infrastructure, as detailed in \myfigref{overview:fig:chipchamber}. This chip
-flange assembly is equipped with a large copper heat sink, a large U-wire to
-form the macroscopic alignment trap and a subchip for current and microwave
-delivery. It is mounted into a recess in the subchip so that it is flush with
-the surface. The chip is mounted facing downwards so that molecules can be
-dropped for imaging as they fall. The flange itself is fitted with two
-high-current (\SI{100}{\ampere}) feedthroughs, a 16-pin feedthrough rated for
-\SI{3}{\ampere} currents, and microwave feedthroughs. All access to the chip is
-therefore through this one flange, allowing for easy access and assembly.  It
-will be housed in a separate vacuum chamber (the chip chamber), positioned as
-shown in \myfigref{overview:fig:vacuumsystem}. The chip chamber will be
-arranged so that molecules can be brought in along the transport axis (shown by
-the arrow in the \mysubfigref{overview:fig:chipchamber}{b}) and positioned
-below the surface of the chip.  This arrangement will be explained in further
-detail in chapter~\ref{exper}.
+\begin{figure}
+  \centering
+  \includegraphics[width=0.4\textwidth]{figs/overview/subchip.pdf}
+  \caption{The subchip layout for power delivery to the chip. Traces are shown
+  in pink (the number of traces used depends on the number of wires in the chip
+  design and can vary between subchips), and mounting holes in blue. The chip
+  is situated in a recessed alcove marked by the gold square.}
+  \label{overview:fig:subchip}
+\end{figure}
