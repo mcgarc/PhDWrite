@@ -271,20 +271,36 @@ structure, including the rotational states. These are closely-spaced energy
 levels of opposite parity, with strong electric dipole transitions between
 them. Hence, molecules are far more polarisable than atoms and couple strongly
 to d.c.\ electric fields and resonant microwave fields, and also to one another
-through their dipole-dipole interactions.\footnote{As an example, for the
-cavity-QED experiments that we will consider here, typical atomic Rabi
-frequencies will be in the regime of
-$2\pi\times\SI{20}{\kilo\hertz}$~\cite{Hattermann2017}, as opposed to the
-anticipated $2\pi\times\SI{1}{\mega\hertz}$ for the molecular
-system~\cite{Andre2006}. \label{intro:fn:coupling}}
-%
-% or $2\pi\times\SI{100}{\mega\hertz}$ for superconducting
-% systems~\cite{PhysRevA.69.062320}
+through their dipole-dipole interactions. Together with their long coherence
+times, this makes them an attractive candidate for use in quantum
+technologies, as shown in \mytableref{intro:table:typicals}.
 %
 Molecules also allows the investigation of fundamental physics, such as the
 measurement of the electron's electric dipole moment, which has helped to
 constrain particle physics theories that go beyond the standard
 model~\cite{ACMEreview}.
+
+\begin{table}
+  \centering
+\begin{tabular}{lcc}
+  \hline\hline
+  System & $\Omega_\text{typ}/(2\pi)$ & $\tau_\text{typ}$ \\
+  \hline
+  Superconducting & \SI{100}{\mega\hertz} & $\SI{\sim100}{\micro\second}$ \\
+  Atomic & \SI{20}{\kilo\hertz} & $\SI{>1}{\second}$ \\
+  Molecular & \SI{1}{\mega\hertz} & $\SI{>1}{\second}$ \\
+ \hline
+\end{tabular}
+  \caption[Typical properties of various on-chip systems]{
+    Typical Rabi frequencies ($\Omega_\text{typ}$) and coherence times
+    ($\tau_\text{typ}$) for various quantum systems on chips. Molecules can
+    achieve sufficient Rabi frequencies to reach the strong-coupling regime,
+    whilst also offering long coherence times as seen in atomic systems. 
+    See \inlinerefs{Foot2005, Andre2006, Fitch2021, PhysRevA.69.062320,
+    Kim2021}.
+  }
+  \label{intro:table:typicals}
+\end{table}
 
 The energy structure of molecules is far richer than that of atoms; a diatomic
 molecule will have both vibrational and rotational energy levels, which can be
@@ -413,20 +429,20 @@ constrain multiple molecules at various sites across the chip surface. They can
 then be transported by changing the electric potentials, which simply amounts
 to changing the voltages on trapping electrodes.
 
-Another very significnat benefit of a molecule chip system is that the
+Another very significant benefit of a molecule chip system is that the
 rotational transitions in a diatomic molecule can couple very strongly to
-microwave fields, much more so than the hyperfine transitions in
-atoms.\footnote{See footnote~\ref{intro:fn:coupling}.} Andr\'e et
-al.~\cite{Andre2006} propose that building a molecule chip with integrated
-microwave guides, similar to equivalent atom chips reported in
-\inlineref{Nirrengarten2006}, could enable strong coupling between microwaves
-and rotational states, resulting in the production of powerful tools for
-quantum information and communication. Amongst these are the ability to carry
-out a state-dependent measurement of the molecule. This, along with the ability
-to drive microwave transitions using the guide, allows the device to be totally
-self contained -- once molecules are loaded all interactions can be performed
-electrically. The long-lived rotational states of \CaF{} make this molecule a
-promising candidate for such a device.
+microwave fields, much more so than the hyperfine transitions in atoms (see
+\mytableref{intro:table:typicals}). Andr\'e et al.~\cite{Andre2006} propose that
+building a molecule chip with integrated microwave guides, similar to
+equivalent atom chips reported in \inlineref{Nirrengarten2006}, could enable
+strong coupling between microwaves and rotational states, resulting in the
+production of powerful tools for quantum information and communication. Amongst
+these are the ability to carry out a state-dependent measurement of the
+molecule. This, along with the ability to drive microwave transitions using the
+guide, allows the device to be totally self contained -- once molecules are
+loaded all interactions can be performed electrically. The long-lived
+rotational states of \CaF{} make this molecule a promising candidate for such a
+device.
 
 Along with readout, strong coupling to a resonator could allow for the
 implementation of a novel sideband cooling scheme to reduce the molecule's
