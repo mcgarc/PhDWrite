@@ -803,32 +803,20 @@ chapter~\ref{exper}.
 
 \begin{figure}[htb]
     \centering
-    \begin{tabular}[t]{c}
-\begin{subfigure}{\textwidth}
-    \centering
-    \smallskip
     \begin{overpic}[abs,
       width=\textwidth]{figs/exper/labeled_explosion.pdf}
       \put(20, 132){(a)}
+      \put(20, -80){(b)} % Yes, I am putting these here. No I am not sorry.
+      \put(20, -250){(c)}
     \end{overpic}
-\end{subfigure}
-    \\[1cm]
-        \begin{tabular}{cc}% if you add [t], than sub images are pushed down
-        \smallskip
-            \begin{subfigure}[t]{0.45\textwidth}
-                \centering
-                \begin{overpic}[abs, width=\textwidth]{figs/overview/chamber_xsecarrow.pdf}
-                  \put(5, 160){(b)}
-                \end{overpic}
-              \end{subfigure}&
-            \begin{subfigure}[t]{0.45\textwidth}
-                \centering
-                \begin{overpic}[abs, width=\textwidth]{figs/chip_pic_crop.png}
-                  \put(1, 160){(c)}
-                \end{overpic}
-            \end{subfigure}
-        \end{tabular}
-    \end{tabular}
+    \\
+    \begin{overpic}[abs, width=0.5\textwidth]{figs/overview/chamber_xsecarrow.pdf}
+      %\put(5, 160){(b)}
+    \end{overpic}
+  \\
+    \begin{overpic}[abs, width=0.5\textwidth]{figs/chip_pic_crop.png}
+      %\put(5, 160){(c)}
+    \end{overpic}
   \caption[Chip experiment details]{
   The chip experiment is shown in detail. In (a) we show an exploded view of
   the chip flange assembly, with the various components labeled.
