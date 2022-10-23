@@ -542,7 +542,9 @@ For the rotational \CaF{} transitions that we introduced above, in
 section~\ref{theory:molecules} $d = \mu/\sqrt{3}$ with $\mu =
 \SI{31}{\debye}$.
 %
-\jvg{What is this ($\mu$) compared to Cooper-pair box? He says 36k D}
+% Going to leave this as it was a viva qn, not a correction. Also discussed in
+% intro
+%\jvg{What is this ($\mu$) compared to Cooper-pair box? He says 36k D}
 The coupling strength is therefore expected to be
 %
 % See nbs/2022-02-08_coupling.nb
@@ -670,13 +672,18 @@ In future iterations of the experiment the aluminium-core PCB can be replaced
 with, for example, an Arlon AD1000 board, which will be a suitable carrier for
 both trapping currents and microwaves~\cite{Morgan2020}. 
 %
-The subchip CPW will be connected to the chip CPW by wire-bonds.  At
-the point where the wire-bonds connect, the CPW can be chosen to be 
-large enough so that it is easy to make good connection with the wire bonds. The CPW
-can then tapered down to reduce the field size while maintaining the same $k_0$
-and hence the same impedance. This CPW can be capacitively coupled to a
-microwave resonator, but for a simple example we show a multi-layer design for
-a single CPW in \myfigref{mws:fig:implement}.
+The subchip CPW will be connected to the chip CPW by wire-bonds.  At the point
+where the wire-bonds connect, the CPW can be chosen to be large enough so that
+it is easy to make good connection with the wire bonds. The CPW can then
+tapered down to reduce the field size while maintaining the same $k_0$ and
+hence the same impedance. This CPW can be capacitively coupled to a microwave
+resonator, but for a simple example we show a multi-layer design for a single
+CPW in \myfigref{mws:fig:implement}. Note that the orientation of the waveguide
+relative to the trapping wires is not important for driving transitions (the
+molecules' orientation is not determined by the trap geometery or relevant to
+the incoming field direction) but this orientation is chosen with the hopes
+that any bumps caused by the wires will not unduly affect the waveguide
+properties.
 
 \begin{figure}[htb]
     \centering
