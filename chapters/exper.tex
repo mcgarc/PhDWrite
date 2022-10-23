@@ -167,17 +167,18 @@ It was also important to test the currents that can be achieved through the
 chip trapping wires. These tests were conducted with the chip under vacuum
 ($P<10^{-6}\,\si{\milli\bar}$) and using the setup shown in
 \myfigref{exper:fig:curtest}, which was used since our custom current drivers
-where not ready at this stage. It is important to test the current in the wires
+where not ready at this stage (although I will describe the concept behind them
+at the end of this section). It is important to test the current in the wires
 in pulses, with a duty cycle resembling what will be required in the trapping
 experiment where the trapping wires will be switched on for a few hundred
 milliseconds, a few times every minute. This repetition rate being limited by
 the speed of the transport coils. For this reason, a regulated power supply at
-voltage $V_\text{PSU}$ is used to induce a current in the
-chip wirers, with his current is controlled by the FET circuit that is in turn
-switched by a signal generator. This allows control over the pulse length, and
-for the delivery a voltage drop of $V_\text{PSU}$ up to \SI{30}{\volt}
-across the chip, since the sense resistance ($R_\text{sense}$) is much larger
-than the load resistance from the wires ($R_\text{load}$).
+voltage $V_\text{PSU}$ is used to induce a current in the chip wirers, with his
+current is controlled by the FET circuit that is in turn switched by a signal
+generator. This allows control over the pulse length, and for the delivery a
+voltage drop of $V_\text{PSU}$ up to \SI{30}{\volt} across the chip, since the
+sense resistance ($R_\text{sense}$) is much larger than the load resistance
+from the wires ($R_\text{load}$).
 
 %The current through the chip can be measured via the potential difference
 %across $R_\text{sense} = \SI{0.5}{\ohm}$.
@@ -355,12 +356,45 @@ and~(b) respectively.
   \caption[A wire before and after destruction]{
     A wire before (a) and after (b) destruction due to fusing under
     extreme current load. Note that the clearly defined edges and solid colour
-    have changed to a wobbly and poorly-defined region. In bothsubfigures ,
+    have changed to a wobbly and poorly-defined region. In both subfigures ,
     part of a fanout is also visible.
     }
   \label{exper:fig:brokenwire}
 \end{figure}
 
+\subsection{Current driver concept}
+\label{exper:current:drivers}
+
+One problem that I have not yet expanded on is how exactly we intend to control
+the currents on the surface of the chip in the main experiment. There is not an
+obvious solution to this since, as we have explained above, the trapping wires are
+fabricated on a single level and are all electrically connected to each other.
+The challenge is to regulate the trapping currents so that any two wires can be
+ramped on and off independently of each other. A solution was developed by Ben
+Sauer and Noah Fitch of CCM, and is illustrated in
+\myfigref{exper:fig:drivers}.
+
+\begin{figure}[htb]
+  \centering
+  \includegraphics[width=0.6\textwidth]{figs/exper/current_drivers_rot.pdf}
+  \caption[Chip current driver concept]{
+  A circuit diagram showing the concept for controlling currents in
+  electrically connected chip wires. The current in each trapping wire (blue,
+  pink and purple) is controlled by its own dedicated current driver
+  (correspondingly coloured), and isolated from the others by diodes. The gold
+  square denotes the chip, where the wires will be electrically connected.
+  }
+  \label{exper:fig:drivers}
+\end{figure}
+
+In this concept, the current in each wire is controlled by a dedicated current
+driver. Each of these current drivers is isolated from the other wires by the
+use of diodes positioned at either end of the trapping wire. This system is
+represented in the figure by a series of Z-trapping wires colour coded to match
+their respective current driver. The wires are connected on the chip, denoted
+here by the gold square. The current drivers themselves can be configured for
+arbitrary usage, but should be controlled via an input voltage for use with the
+existing \CaF{} experiment control software.
 
 \section{Scatter testing}
 \label{exper:scatter}
