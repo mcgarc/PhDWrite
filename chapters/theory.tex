@@ -577,25 +577,19 @@ therefore still at $h$, and its depth is given by \myeqref{theory:eqn:depth}.
 
 \begin{figure}[htb]
     \centering
-    \begin{tabular}[t]{cc}
-\begin{subfigure}{0.3\textwidth}
-    \centering
-    \smallskip
-    \includegraphics[width=\textwidth]{figs/theory/wires/dimple.pdf}
-\end{subfigure}
-    &
-        \begin{tabular}{c}% if you add [t], than sub images are pushed down
-        \smallskip
-            \begin{subfigure}[t]{0.4\textwidth}
-                \centering
-                  \import{figs/theory/wires/}{dimpleheat_alone.pgf}
-            \end{subfigure}\\
-            \begin{subfigure}[t]{0.4\textwidth}
-                \centering
-                  \import{figs/theory/wires/}{dimple_x.pgf}
-            \end{subfigure}
-        \end{tabular}\\
-    \end{tabular}
+  \begin{subfigure}{0.35\textwidth}
+      \centering
+      \smallskip
+      \includegraphics[width=\textwidth]{figs/theory/wires/dimple_margin.pdf}
+  \end{subfigure} \\[5mm]
+  \begin{subfigure}[t]{0.4\textwidth}
+      \centering
+      \import{figs/theory/wires/}{dimpleheat_alone.pgf}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.4\textwidth}
+      \centering
+      \import{figs/theory/wires/}{dimple_x.pgf}
+  \end{subfigure}
   \caption[Dimple trap]{
     The geometry of the dimple trap is shown in subfigure (a), with the new
     wire along $y$ carrying current $I_1$ intersecting the $I$ wire. An
@@ -658,7 +652,7 @@ is
 It is worth noting that in this simplified diagram, and in those to follow, the
 wires are shown as touching. In reality it is common to electrically isolate
 the wires from one another during fabrication. However in
-section~\ref{exper:currents:drivers}, we
+section~\ref{exper:current:drivers}, we
 will also present a scheme for how electrically connected wires can have their
 currents controlled independently.
 
@@ -1095,13 +1089,8 @@ frequency, is proportional to $|d_{ge}|^2$, where
 is the matrix element of the transition, representing a coupling between the
 molecular dipole and the light. Again we have $\mathbf{d}$ as the dipole moment
 operator, and $\bm{\epsilon}$ as the unit vector representing the polarisation
-of the light. This coupling is closely related to the permanent dipole moment,
-but it is different and is induced by the light, analogously to the more
-familiar case of the perturbation of an alkali atom by an oscillating
-field~\cite{Foot2005}. Hence the actual orientation
-of the molecule relative to the field does not affect the transition matrix
-element; note how any angular terms will be contained inside the integral and
-so will be automatically included in the selection rules).
+of the light. This dipole moment operator is the familiar one from atomic
+physics, and is the same regardless of the molecule's orientation.
 
 Since we will typically consider cases with linear or circular polarisation, it
 is convenient to take $\bm{\epsilon}$ to be represented in the spherical basis.
@@ -1120,7 +1109,8 @@ polarisation of the light. For linearly polarised light $\Delta m_R = m_R' -
 m_R = 0$, whereas for circularly polarised light $\Delta m_R =  \pm1$ for
 $\sigma^\pm$ polarised light. The molecule tumbles with a rotation vector
 perpendicular to the internuclear axis, any rotation around the internuclear
-axis is symmetrically invariant.
+axis is symmetrically invariant. The intensity of rotational transitions is
+proportional to the square of the molecular frame dipole moment.
 
 \subsubsection{Vibrational transitions}
 
