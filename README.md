@@ -9,3 +9,5 @@ directory, e.g. `ln -s $BIB_PATH bib.bib`.
 
 Bibliography is setup to run with biber, so run `pdflatex main.tex` then `biber
 main` ad nauseum to render.
+
+Figures are now included in the repo. SVGs can be made available upon request.

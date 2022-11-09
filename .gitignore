@@ -5,8 +5,6 @@
 *.blg
 *.bib.*
 *.toc
-figs
-figs/
 *.out
 *.html
 *.bcf
