@@ -1044,7 +1044,7 @@ detector is therefore
 %
 Note that in the last equality we have used $b\ket{\beta}=\beta\ket{\beta}$,
 and also the equivalent conjugate expression $\bra{\beta}b^\dagger =
-\beta^*\ket{\beta}$ to remove the $b$ and $b^\dagger$ operators and replace
+\beta^*\bra{\beta}$ to remove the $b$ and $b^\dagger$ operators and replace
 them with their eigenvalues.
 %
 We now introduce the canonical quadratures of the light field, corresponding to
@@ -1097,14 +1097,10 @@ condition, that
   \frac{g^2}{\Delta\kappa} \ll 1.
 \end{equation}
 %
-The detuning required for our $g$ and $Q$ is therefore
-%
+The detuning required for our $g$ and $Q$ is therefore $\Delta \gg 2\pi \times
+\SI{5}{\mega\hertz}$, which is within the bounds achievable with the Stark
+shift.
 % From calculation in 2022-02-08_coupling
-\begin{equation}
-  \frac{\Delta}{2 \pi} \gg \SI{5}{\mega\hertz}
-\end{equation}
-%
-which is well within the bounds achievable with the Stark shift.
 
 \subsection{State preparation}
 \label{mws:cats}
@@ -1152,6 +1148,6 @@ be~\cite{Andre2006}
 \end{equation}
 %
 where $\sigma^i_k$ is the $\sigma_k$ operator acting on the
-$i^\text{th}$ molecule. It can be shown that such an interaction can be used to
+$i^\text{th}$ molecule. Such an interaction can be used to
 implement a two-qubit operation on a chip~\cite{Andre2006,
 PhysRevA.69.062320}.
